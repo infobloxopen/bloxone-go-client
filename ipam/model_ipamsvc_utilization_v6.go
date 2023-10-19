@@ -19,11 +19,11 @@ var _ MappedNullable = &IpamsvcUtilizationV6{}
 
 // IpamsvcUtilizationV6 The __UtilizationV6__ object represents IPV6 address usage statistics for an object.
 type IpamsvcUtilizationV6 struct {
-	Abandoned *IpamsvcInteger128 `json:"abandoned,omitempty"`
-	Dynamic   *IpamsvcInteger128 `json:"dynamic,omitempty"`
-	Static    *IpamsvcInteger128 `json:"static,omitempty"`
-	Total     *IpamsvcInteger128 `json:"total,omitempty"`
-	Used      *IpamsvcInteger128 `json:"used,omitempty"`
+	Abandoned *string `json:"abandoned,omitempty"`
+	Dynamic   *string `json:"dynamic,omitempty"`
+	Static    *string `json:"static,omitempty"`
+	Total     *string `json:"total,omitempty"`
+	Used      *string `json:"used,omitempty"`
 }
 
 // NewIpamsvcUtilizationV6 instantiates a new IpamsvcUtilizationV6 object
@@ -44,9 +44,9 @@ func NewIpamsvcUtilizationV6WithDefaults() *IpamsvcUtilizationV6 {
 }
 
 // GetAbandoned returns the Abandoned field value if set, zero value otherwise.
-func (o *IpamsvcUtilizationV6) GetAbandoned() IpamsvcInteger128 {
+func (o *IpamsvcUtilizationV6) GetAbandoned() string {
 	if o == nil || IsNil(o.Abandoned) {
-		var ret IpamsvcInteger128
+		var ret string
 		return ret
 	}
 	return *o.Abandoned
@@ -54,7 +54,7 @@ func (o *IpamsvcUtilizationV6) GetAbandoned() IpamsvcInteger128 {
 
 // GetAbandonedOk returns a tuple with the Abandoned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcUtilizationV6) GetAbandonedOk() (*IpamsvcInteger128, bool) {
+func (o *IpamsvcUtilizationV6) GetAbandonedOk() (*string, bool) {
 	if o == nil || IsNil(o.Abandoned) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *IpamsvcUtilizationV6) HasAbandoned() bool {
 	return false
 }
 
-// SetAbandoned gets a reference to the given IpamsvcInteger128 and assigns it to the Abandoned field.
-func (o *IpamsvcUtilizationV6) SetAbandoned(v IpamsvcInteger128) {
+// SetAbandoned gets a reference to the given string and assigns it to the Abandoned field.
+func (o *IpamsvcUtilizationV6) SetAbandoned(v string) {
 	o.Abandoned = &v
 }
 
 // GetDynamic returns the Dynamic field value if set, zero value otherwise.
-func (o *IpamsvcUtilizationV6) GetDynamic() IpamsvcInteger128 {
+func (o *IpamsvcUtilizationV6) GetDynamic() string {
 	if o == nil || IsNil(o.Dynamic) {
-		var ret IpamsvcInteger128
+		var ret string
 		return ret
 	}
 	return *o.Dynamic
@@ -86,7 +86,7 @@ func (o *IpamsvcUtilizationV6) GetDynamic() IpamsvcInteger128 {
 
 // GetDynamicOk returns a tuple with the Dynamic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcUtilizationV6) GetDynamicOk() (*IpamsvcInteger128, bool) {
+func (o *IpamsvcUtilizationV6) GetDynamicOk() (*string, bool) {
 	if o == nil || IsNil(o.Dynamic) {
 		return nil, false
 	}
@@ -102,15 +102,15 @@ func (o *IpamsvcUtilizationV6) HasDynamic() bool {
 	return false
 }
 
-// SetDynamic gets a reference to the given IpamsvcInteger128 and assigns it to the Dynamic field.
-func (o *IpamsvcUtilizationV6) SetDynamic(v IpamsvcInteger128) {
+// SetDynamic gets a reference to the given string and assigns it to the Dynamic field.
+func (o *IpamsvcUtilizationV6) SetDynamic(v string) {
 	o.Dynamic = &v
 }
 
 // GetStatic returns the Static field value if set, zero value otherwise.
-func (o *IpamsvcUtilizationV6) GetStatic() IpamsvcInteger128 {
+func (o *IpamsvcUtilizationV6) GetStatic() string {
 	if o == nil || IsNil(o.Static) {
-		var ret IpamsvcInteger128
+		var ret string
 		return ret
 	}
 	return *o.Static
@@ -118,7 +118,7 @@ func (o *IpamsvcUtilizationV6) GetStatic() IpamsvcInteger128 {
 
 // GetStaticOk returns a tuple with the Static field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcUtilizationV6) GetStaticOk() (*IpamsvcInteger128, bool) {
+func (o *IpamsvcUtilizationV6) GetStaticOk() (*string, bool) {
 	if o == nil || IsNil(o.Static) {
 		return nil, false
 	}
@@ -134,15 +134,15 @@ func (o *IpamsvcUtilizationV6) HasStatic() bool {
 	return false
 }
 
-// SetStatic gets a reference to the given IpamsvcInteger128 and assigns it to the Static field.
-func (o *IpamsvcUtilizationV6) SetStatic(v IpamsvcInteger128) {
+// SetStatic gets a reference to the given string and assigns it to the Static field.
+func (o *IpamsvcUtilizationV6) SetStatic(v string) {
 	o.Static = &v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
-func (o *IpamsvcUtilizationV6) GetTotal() IpamsvcInteger128 {
+func (o *IpamsvcUtilizationV6) GetTotal() string {
 	if o == nil || IsNil(o.Total) {
-		var ret IpamsvcInteger128
+		var ret string
 		return ret
 	}
 	return *o.Total
@@ -150,7 +150,7 @@ func (o *IpamsvcUtilizationV6) GetTotal() IpamsvcInteger128 {
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcUtilizationV6) GetTotalOk() (*IpamsvcInteger128, bool) {
+func (o *IpamsvcUtilizationV6) GetTotalOk() (*string, bool) {
 	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
@@ -166,15 +166,15 @@ func (o *IpamsvcUtilizationV6) HasTotal() bool {
 	return false
 }
 
-// SetTotal gets a reference to the given IpamsvcInteger128 and assigns it to the Total field.
-func (o *IpamsvcUtilizationV6) SetTotal(v IpamsvcInteger128) {
+// SetTotal gets a reference to the given string and assigns it to the Total field.
+func (o *IpamsvcUtilizationV6) SetTotal(v string) {
 	o.Total = &v
 }
 
 // GetUsed returns the Used field value if set, zero value otherwise.
-func (o *IpamsvcUtilizationV6) GetUsed() IpamsvcInteger128 {
+func (o *IpamsvcUtilizationV6) GetUsed() string {
 	if o == nil || IsNil(o.Used) {
-		var ret IpamsvcInteger128
+		var ret string
 		return ret
 	}
 	return *o.Used
@@ -182,7 +182,7 @@ func (o *IpamsvcUtilizationV6) GetUsed() IpamsvcInteger128 {
 
 // GetUsedOk returns a tuple with the Used field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcUtilizationV6) GetUsedOk() (*IpamsvcInteger128, bool) {
+func (o *IpamsvcUtilizationV6) GetUsedOk() (*string, bool) {
 	if o == nil || IsNil(o.Used) {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *IpamsvcUtilizationV6) HasUsed() bool {
 	return false
 }
 
-// SetUsed gets a reference to the given IpamsvcInteger128 and assigns it to the Used field.
-func (o *IpamsvcUtilizationV6) SetUsed(v IpamsvcInteger128) {
+// SetUsed gets a reference to the given string and assigns it to the Used field.
+func (o *IpamsvcUtilizationV6) SetUsed(v string) {
 	o.Used = &v
 }
 

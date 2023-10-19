@@ -9,16 +9,16 @@ Name | Type | Description | Notes
 **AsmScopeFlag** | Pointer to **int64** | Incremented by 1 if the IP address usage limits for automated scope management are exceeded for any subnets in the address block. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The CIDR of the address block. This is required, if _address_ does not specify it in its input. | [optional] 
 **Comment** | Pointer to **string** | The description for the address block. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DdnsClientUpdate** | Pointer to **string** | Controls who does the DDNS updates.  Valid values are: * _client_: DHCP server updates DNS if requested by client. * _server_: DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _ignore_: DHCP server always updates DNS, even if the client says not to. * _over_client_update_: Same as _server_. DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _over_no_update_: DHCP server updates DNS even if the client requests that no updates be done. If the client requests to do the update, DHCP server allows it.  Defaults to _client_. | [optional] 
 **DdnsConflictResolutionMode** | Pointer to **string** | The mode used for resolving conflicts while performing DDNS updates.  Valid values are: * _check_with_dhcid_: It includes adding a DHCID record and checking that record via conflict detection as per RFC 4703. * _no_check_with_dhcid_: This will ignore conflict detection but add a DHCID record when creating/updating an entry. * _check_exists_with_dhcid_: This will check if there is an existing DHCID record but does not verify the value of the record matches the update. This will also update the DHCID record for the entry. * _no_check_without_dhcid_: This ignores conflict detection and will not add a DHCID record when creating/updating a DDNS entry.  Defaults to _check_with_dhcid_. | [optional] 
 **DdnsDomain** | Pointer to **string** | The domain suffix for DDNS updates. FQDN, may be empty.  Defaults to empty. | [optional] 
 **DdnsGenerateName** | Pointer to **bool** | Indicates if DDNS needs to generate a hostname when not supplied by the client.  Defaults to _false_. | [optional] 
 **DdnsGeneratedPrefix** | Pointer to **string** | The prefix used in the generation of an FQDN.  When generating a name, DHCP server will construct the name in the format: [ddns-generated-prefix]-[address-text].[ddns-qualifying-suffix]. where address-text is simply the lease IP address converted to a hyphenated string.  Defaults to \&quot;myhost\&quot;. | [optional] 
-**DdnsSendUpdates** | Pointer to **NullableBool** | Determines if DDNS updates are enabled at the address block level. Defaults to _true_. | [optional] 
+**DdnsSendUpdates** | Pointer to **bool** | Determines if DDNS updates are enabled at the address block level. Defaults to _true_. | [optional] 
 **DdnsTtlPercent** | Pointer to **float32** | DDNS TTL value - to be calculated as a simple percentage of the lease&#39;s lifetime, using the parameter&#39;s value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified. | [optional] 
 **DdnsUpdateOnRenew** | Pointer to **bool** | Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_. | [optional] 
-**DdnsUseConflictResolution** | Pointer to **NullableBool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
+**DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
 **DhcpConfig** | Pointer to [**IpamsvcDHCPConfig**](IpamsvcDHCPConfig.md) |  | [optional] 
 **DhcpOptions** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The list of DHCP options for the address block. May be either a specific option or a group of options. | [optional] 
 **DhcpUtilization** | Pointer to [**IpamsvcDHCPUtilization**](IpamsvcDHCPUtilization.md) |  | [optional] 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **Space** | **string** | The resource identifier. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the address block in JSON format. | [optional] 
 **Threshold** | Pointer to [**IpamsvcUtilizationThreshold**](IpamsvcUtilizationThreshold.md) |  | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **Usage** | Pointer to **[]string** | The usage is a combination of indicators, each tracking a specific associated use. Listed below are usage indicators with their meaning:  usage indicator        | description  ---------------------- | --------------------------------  _IPAM_                 |  AddressBlock is managed in BloxOne DDI.  _DISCOVERED_           |  AddressBlock is discovered by some network discovery probe like Network Insight or NetMRI in NIOS. | [optional] [readonly] 
 **Utilization** | Pointer to [**IpamsvcUtilization**](IpamsvcUtilization.md) |  | [optional] 
 **UtilizationV6** | Pointer to [**IpamsvcUtilizationV6**](IpamsvcUtilizationV6.md) |  | [optional] 
@@ -208,16 +208,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcAddressBlock) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcAddressBlock) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDdnsClientUpdate
 
 `func (o *IpamsvcAddressBlock) GetDdnsClientUpdate() string`
@@ -368,16 +358,6 @@ SetDdnsSendUpdates sets DdnsSendUpdates field to given value.
 
 HasDdnsSendUpdates returns a boolean if a field has been set.
 
-### SetDdnsSendUpdatesNil
-
-`func (o *IpamsvcAddressBlock) SetDdnsSendUpdatesNil(b bool)`
-
- SetDdnsSendUpdatesNil sets the value for DdnsSendUpdates to be an explicit nil
-
-### UnsetDdnsSendUpdates
-`func (o *IpamsvcAddressBlock) UnsetDdnsSendUpdates()`
-
-UnsetDdnsSendUpdates ensures that no value is present for DdnsSendUpdates, not even an explicit nil
 ### GetDdnsTtlPercent
 
 `func (o *IpamsvcAddressBlock) GetDdnsTtlPercent() float32`
@@ -453,16 +433,6 @@ SetDdnsUseConflictResolution sets DdnsUseConflictResolution field to given value
 
 HasDdnsUseConflictResolution returns a boolean if a field has been set.
 
-### SetDdnsUseConflictResolutionNil
-
-`func (o *IpamsvcAddressBlock) SetDdnsUseConflictResolutionNil(b bool)`
-
- SetDdnsUseConflictResolutionNil sets the value for DdnsUseConflictResolution to be an explicit nil
-
-### UnsetDdnsUseConflictResolution
-`func (o *IpamsvcAddressBlock) UnsetDdnsUseConflictResolution()`
-
-UnsetDdnsUseConflictResolution ensures that no value is present for DdnsUseConflictResolution, not even an explicit nil
 ### GetDhcpConfig
 
 `func (o *IpamsvcAddressBlock) GetDhcpConfig() IpamsvcDHCPConfig`
@@ -983,16 +953,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcAddressBlock) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcAddressBlock) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetUsage
 
 `func (o *IpamsvcAddressBlock) GetUsage() []string`

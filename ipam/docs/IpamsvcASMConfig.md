@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AsmThreshold** | Pointer to **int64** | ASM shows the number of addresses forecast to be used _forecast_period_ days in the future, if it is greater than _asm_threshold_ percent * _dhcp_total_ (see _dhcp_utilization_) then the subnet is flagged. | [optional] 
-**Enable** | Pointer to **NullableBool** | Indicates if Automated Scope Management is enabled. | [optional] 
-**EnableNotification** | Pointer to **NullableBool** | Indicates if ASM should send notifications to the user. | [optional] 
+**Enable** | Pointer to **bool** | Indicates if Automated Scope Management is enabled. | [optional] 
+**EnableNotification** | Pointer to **bool** | Indicates if ASM should send notifications to the user. | [optional] 
 **ForecastPeriod** | Pointer to **int64** | The forecast period in days. | [optional] 
 **GrowthFactor** | Pointer to **int64** | Indicates the growth in the number or percentage of IP addresses. | [optional] 
 **GrowthType** | Pointer to **string** | The type of factor to use: _percent_ or _count_. | [optional] 
@@ -84,16 +84,6 @@ SetEnable sets Enable field to given value.
 
 HasEnable returns a boolean if a field has been set.
 
-### SetEnableNil
-
-`func (o *IpamsvcASMConfig) SetEnableNil(b bool)`
-
- SetEnableNil sets the value for Enable to be an explicit nil
-
-### UnsetEnable
-`func (o *IpamsvcASMConfig) UnsetEnable()`
-
-UnsetEnable ensures that no value is present for Enable, not even an explicit nil
 ### GetEnableNotification
 
 `func (o *IpamsvcASMConfig) GetEnableNotification() bool`
@@ -119,16 +109,6 @@ SetEnableNotification sets EnableNotification field to given value.
 
 HasEnableNotification returns a boolean if a field has been set.
 
-### SetEnableNotificationNil
-
-`func (o *IpamsvcASMConfig) SetEnableNotificationNil(b bool)`
-
- SetEnableNotificationNil sets the value for EnableNotification to be an explicit nil
-
-### UnsetEnableNotification
-`func (o *IpamsvcASMConfig) UnsetEnableNotification()`
-
-UnsetEnableNotification ensures that no value is present for EnableNotification, not even an explicit nil
 ### GetForecastPeriod
 
 `func (o *IpamsvcASMConfig) GetForecastPeriod() int64`

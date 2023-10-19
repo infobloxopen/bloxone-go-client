@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Abandoned** | Pointer to [**IpamsvcInteger128**](IpamsvcInteger128.md) |  | [optional] 
-**Dynamic** | Pointer to [**IpamsvcInteger128**](IpamsvcInteger128.md) |  | [optional] 
-**Static** | Pointer to [**IpamsvcInteger128**](IpamsvcInteger128.md) |  | [optional] 
-**Total** | Pointer to [**IpamsvcInteger128**](IpamsvcInteger128.md) |  | [optional] 
-**Used** | Pointer to [**IpamsvcInteger128**](IpamsvcInteger128.md) |  | [optional] 
+**Abandoned** | Pointer to **string** |  | [optional] 
+**Dynamic** | Pointer to **string** |  | [optional] 
+**Static** | Pointer to **string** |  | [optional] 
+**Total** | Pointer to **string** |  | [optional] 
+**Used** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAbandoned
 
-`func (o *IpamsvcUtilizationV6) GetAbandoned() IpamsvcInteger128`
+`func (o *IpamsvcUtilizationV6) GetAbandoned() string`
 
 GetAbandoned returns the Abandoned field if non-nil, zero value otherwise.
 
 ### GetAbandonedOk
 
-`func (o *IpamsvcUtilizationV6) GetAbandonedOk() (*IpamsvcInteger128, bool)`
+`func (o *IpamsvcUtilizationV6) GetAbandonedOk() (*string, bool)`
 
 GetAbandonedOk returns a tuple with the Abandoned field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAbandoned
 
-`func (o *IpamsvcUtilizationV6) SetAbandoned(v IpamsvcInteger128)`
+`func (o *IpamsvcUtilizationV6) SetAbandoned(v string)`
 
 SetAbandoned sets Abandoned field to given value.
 
@@ -56,20 +56,20 @@ HasAbandoned returns a boolean if a field has been set.
 
 ### GetDynamic
 
-`func (o *IpamsvcUtilizationV6) GetDynamic() IpamsvcInteger128`
+`func (o *IpamsvcUtilizationV6) GetDynamic() string`
 
 GetDynamic returns the Dynamic field if non-nil, zero value otherwise.
 
 ### GetDynamicOk
 
-`func (o *IpamsvcUtilizationV6) GetDynamicOk() (*IpamsvcInteger128, bool)`
+`func (o *IpamsvcUtilizationV6) GetDynamicOk() (*string, bool)`
 
 GetDynamicOk returns a tuple with the Dynamic field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDynamic
 
-`func (o *IpamsvcUtilizationV6) SetDynamic(v IpamsvcInteger128)`
+`func (o *IpamsvcUtilizationV6) SetDynamic(v string)`
 
 SetDynamic sets Dynamic field to given value.
 
@@ -81,20 +81,20 @@ HasDynamic returns a boolean if a field has been set.
 
 ### GetStatic
 
-`func (o *IpamsvcUtilizationV6) GetStatic() IpamsvcInteger128`
+`func (o *IpamsvcUtilizationV6) GetStatic() string`
 
 GetStatic returns the Static field if non-nil, zero value otherwise.
 
 ### GetStaticOk
 
-`func (o *IpamsvcUtilizationV6) GetStaticOk() (*IpamsvcInteger128, bool)`
+`func (o *IpamsvcUtilizationV6) GetStaticOk() (*string, bool)`
 
 GetStaticOk returns a tuple with the Static field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatic
 
-`func (o *IpamsvcUtilizationV6) SetStatic(v IpamsvcInteger128)`
+`func (o *IpamsvcUtilizationV6) SetStatic(v string)`
 
 SetStatic sets Static field to given value.
 
@@ -106,20 +106,20 @@ HasStatic returns a boolean if a field has been set.
 
 ### GetTotal
 
-`func (o *IpamsvcUtilizationV6) GetTotal() IpamsvcInteger128`
+`func (o *IpamsvcUtilizationV6) GetTotal() string`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *IpamsvcUtilizationV6) GetTotalOk() (*IpamsvcInteger128, bool)`
+`func (o *IpamsvcUtilizationV6) GetTotalOk() (*string, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *IpamsvcUtilizationV6) SetTotal(v IpamsvcInteger128)`
+`func (o *IpamsvcUtilizationV6) SetTotal(v string)`
 
 SetTotal sets Total field to given value.
 
@@ -131,20 +131,20 @@ HasTotal returns a boolean if a field has been set.
 
 ### GetUsed
 
-`func (o *IpamsvcUtilizationV6) GetUsed() IpamsvcInteger128`
+`func (o *IpamsvcUtilizationV6) GetUsed() string`
 
 GetUsed returns the Used field if non-nil, zero value otherwise.
 
 ### GetUsedOk
 
-`func (o *IpamsvcUtilizationV6) GetUsedOk() (*IpamsvcInteger128, bool)`
+`func (o *IpamsvcUtilizationV6) GetUsedOk() (*string, bool)`
 
 GetUsedOk returns a tuple with the Used field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsed
 
-`func (o *IpamsvcUtilizationV6) SetUsed(v IpamsvcInteger128)`
+`func (o *IpamsvcUtilizationV6) SetUsed(v string)`
 
 SetUsed sets Used field to given value.
 

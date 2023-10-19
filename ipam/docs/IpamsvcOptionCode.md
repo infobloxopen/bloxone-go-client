@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Array** | Pointer to **bool** | Indicates whether the option value is an array of the type or not. | [optional] 
 **Code** | **int64** | The option code. | 
 **Comment** | Pointer to **string** | The description for the option code. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Name** | **string** | The name of the option code. Must contain 1 to 256 characters. Can include UTF-8. | 
 **OptionSpace** | **string** | The resource identifier. | 
 **Source** | Pointer to **string** | The source for the option code.  Valid values are:  * _dhcp_server_  * _reserved_  * _blox_one_ddi_  * _customer_  Defaults to _customer_. | [optional] [readonly] 
 **Type** | **string** | The option type for the option code.  Valid values are: * _address4_ * _address6_ * _boolean_ * _empty_ * _fqdn_ * _int8_ * _int16_ * _int32_ * _text_ * _uint8_ * _uint16_ * _uint32_ | 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 
 ## Methods
 
@@ -129,16 +129,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcOptionCode) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcOptionCode) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetId
 
 `func (o *IpamsvcOptionCode) GetId() string`
@@ -274,16 +264,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcOptionCode) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcOptionCode) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

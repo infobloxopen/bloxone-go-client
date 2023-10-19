@@ -22,6 +22,7 @@ type ConfigViewInheritance struct {
 	AddEdnsOptionInOutgoingQuery      *Inheritance2InheritedBool            `json:"add_edns_option_in_outgoing_query,omitempty"`
 	CustomRootNsBlock                 *ConfigInheritedCustomRootNSBlock     `json:"custom_root_ns_block,omitempty"`
 	DnssecValidationBlock             *ConfigInheritedDNSSECValidationBlock `json:"dnssec_validation_block,omitempty"`
+	DtcConfig                         *ConfigInheritedDtcConfig             `json:"dtc_config,omitempty"`
 	EcsBlock                          *ConfigInheritedECSBlock              `json:"ecs_block,omitempty"`
 	EdnsUdpSize                       *Inheritance2InheritedUInt32          `json:"edns_udp_size,omitempty"`
 	FilterAaaaAcl                     *ConfigInheritedACLItems              `json:"filter_aaaa_acl,omitempty"`
@@ -157,6 +158,38 @@ func (o *ConfigViewInheritance) HasDnssecValidationBlock() bool {
 // SetDnssecValidationBlock gets a reference to the given ConfigInheritedDNSSECValidationBlock and assigns it to the DnssecValidationBlock field.
 func (o *ConfigViewInheritance) SetDnssecValidationBlock(v ConfigInheritedDNSSECValidationBlock) {
 	o.DnssecValidationBlock = &v
+}
+
+// GetDtcConfig returns the DtcConfig field value if set, zero value otherwise.
+func (o *ConfigViewInheritance) GetDtcConfig() ConfigInheritedDtcConfig {
+	if o == nil || IsNil(o.DtcConfig) {
+		var ret ConfigInheritedDtcConfig
+		return ret
+	}
+	return *o.DtcConfig
+}
+
+// GetDtcConfigOk returns a tuple with the DtcConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigViewInheritance) GetDtcConfigOk() (*ConfigInheritedDtcConfig, bool) {
+	if o == nil || IsNil(o.DtcConfig) {
+		return nil, false
+	}
+	return o.DtcConfig, true
+}
+
+// HasDtcConfig returns a boolean if a field has been set.
+func (o *ConfigViewInheritance) HasDtcConfig() bool {
+	if o != nil && !IsNil(o.DtcConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetDtcConfig gets a reference to the given ConfigInheritedDtcConfig and assigns it to the DtcConfig field.
+func (o *ConfigViewInheritance) SetDtcConfig(v ConfigInheritedDtcConfig) {
+	o.DtcConfig = &v
 }
 
 // GetEcsBlock returns the EcsBlock field value if set, zero value otherwise.
@@ -881,6 +914,9 @@ func (o ConfigViewInheritance) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnssecValidationBlock) {
 		toSerialize["dnssec_validation_block"] = o.DnssecValidationBlock
+	}
+	if !IsNil(o.DtcConfig) {
+		toSerialize["dtc_config"] = o.DtcConfig
 	}
 	if !IsNil(o.EcsBlock) {
 		toSerialize["ecs_block"] = o.EcsBlock

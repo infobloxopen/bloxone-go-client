@@ -6,15 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddEdnsOptionInOutgoingQuery** | Pointer to **bool** | _add_edns_option_in_outgoing_query_ adds client IP, MAC address and view name into outgoing recursive query. Defaults to _false_. | [optional] 
 **Comment** | Pointer to **string** | Optional. Comment for view. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | The timestamp when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The timestamp when the object has been created. | [optional] [readonly] 
 **CustomRootNs** | Pointer to [**[]ConfigRootNS**](ConfigRootNS.md) | Optional. List of custom root nameservers. The order does not matter.  Error if empty while _custom_root_ns_enabled_ is _true_. Error if there are duplicate items in the list.  Defaults to empty. | [optional] 
 **CustomRootNsEnabled** | Pointer to **bool** | Optional. _true_ to use custom root nameservers instead of the default ones.  The _custom_root_ns_ is validated when enabled.  Defaults to _false_. | [optional] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration. | [optional] 
-**DnssecEnableValidation** | Pointer to **NullableBool** | Optional. _true_ to perform DNSSEC validation. Ignored if _dnssec_enabled_ is _false_.  Defaults to _true_. | [optional] 
-**DnssecEnabled** | Pointer to **NullableBool** | Optional. Master toggle for all DNSSEC processing. Other _dnssec_*_ configuration is unused if this is disabled.  Defaults to _true_. | [optional] 
+**DnssecEnableValidation** | Pointer to **bool** | Optional. _true_ to perform DNSSEC validation. Ignored if _dnssec_enabled_ is _false_.  Defaults to _true_. | [optional] 
+**DnssecEnabled** | Pointer to **bool** | Optional. Master toggle for all DNSSEC processing. Other _dnssec_*_ configuration is unused if this is disabled.  Defaults to _true_. | [optional] 
 **DnssecRootKeys** | Pointer to [**[]ConfigTrustAnchor**](ConfigTrustAnchor.md) | DNSSEC root keys. The root keys are not configurable.  A default list is provided by cloud management and included here for config generation. | [optional] [readonly] 
 **DnssecTrustAnchors** | Pointer to [**[]ConfigTrustAnchor**](ConfigTrustAnchor.md) | Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty. | [optional] 
-**DnssecValidateExpiry** | Pointer to **NullableBool** | Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_. | [optional] 
+**DnssecValidateExpiry** | Pointer to **bool** | Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_. | [optional] 
+**DtcConfig** | Pointer to [**ConfigDTCConfig**](ConfigDTCConfig.md) |  | [optional] 
 **EcsEnabled** | Pointer to **bool** | Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false-. | [optional] 
 **EcsForwarding** | Pointer to **bool** | Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_. | [optional] 
 **EcsPrefixV4** | Pointer to **int64** | Optional. Maximum scope length for v4 ECS.  Unsigned integer, min 1 max 24  Defaults to 24. | [optional] 
@@ -41,14 +42,14 @@ Name | Type | Description | Notes
 **Notify** | Pointer to **bool** | _notify_ all external secondary DNS servers.  Defaults to _false_. | [optional] 
 **QueryAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Clients must match this ACL to make authoritative queries. Also used for recursive queries if that ACL is unset.  Defaults to empty. | [optional] 
 **RecursionAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Clients must match this ACL to make recursive queries. If this ACL is empty, then the _query_acl_ will be used instead.  Defaults to empty. | [optional] 
-**RecursionEnabled** | Pointer to **NullableBool** | Optional. _true_ to allow recursive DNS queries.  Defaults to _true_. | [optional] 
+**RecursionEnabled** | Pointer to **bool** | Optional. _true_ to allow recursive DNS queries.  Defaults to _true_. | [optional] 
 **SortList** | Pointer to [**[]ConfigSortListItem**](ConfigSortListItem.md) | Optional. Specifies a sorted network list for A/AAAA records in DNS query response.  Defaults to _empty_. | [optional] 
 **SynthesizeAddressRecordsFromHttps** | Pointer to **bool** | _synthesize_address_records_from_https_ enables/disables creation of A/AAAA records from HTTPS RR Defaults to _false_. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | Tagging specifics. | [optional] 
 **TransferAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Clients must match this ACL to receive zone transfers.  Defaults to empty. | [optional] 
 **UpdateAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Specifies which hosts are allowed to issue Dynamic DNS updates for authoritative zones of _primary_type_ _cloud_.  Defaults to empty. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
-**UseForwardersForSubzones** | Pointer to **NullableBool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UseForwardersForSubzones** | Pointer to **bool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
 **UseRootForwardersForLocalResolutionWithB1td** | Pointer to **bool** | _use_root_forwarders_for_local_resolution_with_b1td_ allows DNS recursive queries sent to root forwarders for local resolution when deployed alongside BloxOne Thread Defense. Defaults to _false_. | [optional] 
 **ZoneAuthority** | Pointer to [**ConfigZoneAuthority**](ConfigZoneAuthority.md) |  | [optional] 
 
@@ -146,16 +147,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *ConfigView) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *ConfigView) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetCustomRootNs
 
 `func (o *ConfigView) GetCustomRootNs() []ConfigRootNS`
@@ -256,16 +247,6 @@ SetDnssecEnableValidation sets DnssecEnableValidation field to given value.
 
 HasDnssecEnableValidation returns a boolean if a field has been set.
 
-### SetDnssecEnableValidationNil
-
-`func (o *ConfigView) SetDnssecEnableValidationNil(b bool)`
-
- SetDnssecEnableValidationNil sets the value for DnssecEnableValidation to be an explicit nil
-
-### UnsetDnssecEnableValidation
-`func (o *ConfigView) UnsetDnssecEnableValidation()`
-
-UnsetDnssecEnableValidation ensures that no value is present for DnssecEnableValidation, not even an explicit nil
 ### GetDnssecEnabled
 
 `func (o *ConfigView) GetDnssecEnabled() bool`
@@ -291,16 +272,6 @@ SetDnssecEnabled sets DnssecEnabled field to given value.
 
 HasDnssecEnabled returns a boolean if a field has been set.
 
-### SetDnssecEnabledNil
-
-`func (o *ConfigView) SetDnssecEnabledNil(b bool)`
-
- SetDnssecEnabledNil sets the value for DnssecEnabled to be an explicit nil
-
-### UnsetDnssecEnabled
-`func (o *ConfigView) UnsetDnssecEnabled()`
-
-UnsetDnssecEnabled ensures that no value is present for DnssecEnabled, not even an explicit nil
 ### GetDnssecRootKeys
 
 `func (o *ConfigView) GetDnssecRootKeys() []ConfigTrustAnchor`
@@ -376,16 +347,31 @@ SetDnssecValidateExpiry sets DnssecValidateExpiry field to given value.
 
 HasDnssecValidateExpiry returns a boolean if a field has been set.
 
-### SetDnssecValidateExpiryNil
+### GetDtcConfig
 
-`func (o *ConfigView) SetDnssecValidateExpiryNil(b bool)`
+`func (o *ConfigView) GetDtcConfig() ConfigDTCConfig`
 
- SetDnssecValidateExpiryNil sets the value for DnssecValidateExpiry to be an explicit nil
+GetDtcConfig returns the DtcConfig field if non-nil, zero value otherwise.
 
-### UnsetDnssecValidateExpiry
-`func (o *ConfigView) UnsetDnssecValidateExpiry()`
+### GetDtcConfigOk
 
-UnsetDnssecValidateExpiry ensures that no value is present for DnssecValidateExpiry, not even an explicit nil
+`func (o *ConfigView) GetDtcConfigOk() (*ConfigDTCConfig, bool)`
+
+GetDtcConfigOk returns a tuple with the DtcConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDtcConfig
+
+`func (o *ConfigView) SetDtcConfig(v ConfigDTCConfig)`
+
+SetDtcConfig sets DtcConfig field to given value.
+
+### HasDtcConfig
+
+`func (o *ConfigView) HasDtcConfig() bool`
+
+HasDtcConfig returns a boolean if a field has been set.
+
 ### GetEcsEnabled
 
 `func (o *ConfigView) GetEcsEnabled() bool`
@@ -1056,16 +1042,6 @@ SetRecursionEnabled sets RecursionEnabled field to given value.
 
 HasRecursionEnabled returns a boolean if a field has been set.
 
-### SetRecursionEnabledNil
-
-`func (o *ConfigView) SetRecursionEnabledNil(b bool)`
-
- SetRecursionEnabledNil sets the value for RecursionEnabled to be an explicit nil
-
-### UnsetRecursionEnabled
-`func (o *ConfigView) UnsetRecursionEnabled()`
-
-UnsetRecursionEnabled ensures that no value is present for RecursionEnabled, not even an explicit nil
 ### GetSortList
 
 `func (o *ConfigView) GetSortList() []ConfigSortListItem`
@@ -1216,16 +1192,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *ConfigView) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *ConfigView) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetUseForwardersForSubzones
 
 `func (o *ConfigView) GetUseForwardersForSubzones() bool`
@@ -1251,16 +1217,6 @@ SetUseForwardersForSubzones sets UseForwardersForSubzones field to given value.
 
 HasUseForwardersForSubzones returns a boolean if a field has been set.
 
-### SetUseForwardersForSubzonesNil
-
-`func (o *ConfigView) SetUseForwardersForSubzonesNil(b bool)`
-
- SetUseForwardersForSubzonesNil sets the value for UseForwardersForSubzones to be an explicit nil
-
-### UnsetUseForwardersForSubzones
-`func (o *ConfigView) UnsetUseForwardersForSubzones()`
-
-UnsetUseForwardersForSubzones ensures that no value is present for UseForwardersForSubzones, not even an explicit nil
 ### GetUseRootForwardersForLocalResolutionWithB1td
 
 `func (o *ConfigView) GetUseRootForwardersForLocalResolutionWithB1td() bool`

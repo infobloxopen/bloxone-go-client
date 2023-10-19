@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DnssecRootKeys** | Pointer to [**[]ConfigTrustAnchor**](ConfigTrustAnchor.md) | DNSSEC root keys. The root keys are not configurable.  A default list is provided by cloud management and included here for config generation. | [optional] [readonly] 
 **DnssecTrustAnchors** | Pointer to [**[]ConfigTrustAnchor**](ConfigTrustAnchor.md) | Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty. | [optional] 
 **DnssecValidateExpiry** | Pointer to **bool** | Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_. | [optional] 
+**DtcConfig** | Pointer to [**ConfigDTCConfig**](ConfigDTCConfig.md) |  | [optional] 
 **EcsEnabled** | Pointer to **bool** | Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false_. | [optional] 
 **EcsForwarding** | Pointer to **bool** | Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_. | [optional] 
 **EcsPrefixV4** | Pointer to **int64** | Optional. Maximum scope length for v4 ECS.  Unsigned integer, min 1 max 24.  Defaults to 24. | [optional] 
@@ -267,6 +268,31 @@ SetDnssecValidateExpiry sets DnssecValidateExpiry field to given value.
 `func (o *ConfigGlobal) HasDnssecValidateExpiry() bool`
 
 HasDnssecValidateExpiry returns a boolean if a field has been set.
+
+### GetDtcConfig
+
+`func (o *ConfigGlobal) GetDtcConfig() ConfigDTCConfig`
+
+GetDtcConfig returns the DtcConfig field if non-nil, zero value otherwise.
+
+### GetDtcConfigOk
+
+`func (o *ConfigGlobal) GetDtcConfigOk() (*ConfigDTCConfig, bool)`
+
+GetDtcConfigOk returns a tuple with the DtcConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDtcConfig
+
+`func (o *ConfigGlobal) SetDtcConfig(v ConfigDTCConfig)`
+
+SetDtcConfig sets DtcConfig field to given value.
+
+### HasDtcConfig
+
+`func (o *ConfigGlobal) HasDtcConfig() bool`
+
+HasDtcConfig returns a boolean if a field has been set.
 
 ### GetEcsEnabled
 

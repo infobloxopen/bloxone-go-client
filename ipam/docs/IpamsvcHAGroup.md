@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AnycastConfigId** | Pointer to **string** | The resource identifier. | [optional] 
 **Comment** | Pointer to **string** | The description for the HA group. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **Hosts** | [**[]IpamsvcHAGroupHost**](IpamsvcHAGroupHost.md) | The list of hosts. | 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **IpSpace** | Pointer to **string** | The resource identifier. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the HA group. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Status** | Pointer to **string** | Status of the HA group. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the HA group. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 
 ## Methods
 
@@ -110,16 +110,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcHAGroup) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcHAGroup) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetHosts
 
 `func (o *IpamsvcHAGroup) GetHosts() []IpamsvcHAGroupHost`
@@ -310,16 +300,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcHAGroup) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcHAGroup) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

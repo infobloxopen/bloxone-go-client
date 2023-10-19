@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | The description for the option group. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DhcpOptions** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The list of DHCP options for the option group. May be either a specific option or a group of options. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Name** | **string** | The name of the option group. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Protocol** | Pointer to **string** | The type of protocol (_ip4_ or _ip6_). | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the option group in JSON format. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 
 ## Methods
 
@@ -82,16 +82,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcOptionGroup) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcOptionGroup) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDhcpOptions
 
 `func (o *IpamsvcOptionGroup) GetDhcpOptions() []IpamsvcOptionItem`
@@ -237,16 +227,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcOptionGroup) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcOptionGroup) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -265,7 +265,6 @@ Class | Method | HTTP request | Description
  - [IpamsvcInheritedDHCPOptionItem](docs/IpamsvcInheritedDHCPOptionItem.md)
  - [IpamsvcInheritedDHCPOptionList](docs/IpamsvcInheritedDHCPOptionList.md)
  - [IpamsvcInheritedHostnameRewriteBlock](docs/IpamsvcInheritedHostnameRewriteBlock.md)
- - [IpamsvcInteger128](docs/IpamsvcInteger128.md)
  - [IpamsvcIpamHost](docs/IpamsvcIpamHost.md)
  - [IpamsvcKerberosKey](docs/IpamsvcKerberosKey.md)
  - [IpamsvcLeaseAddress](docs/IpamsvcLeaseAddress.md)

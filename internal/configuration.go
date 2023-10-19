@@ -81,11 +81,8 @@ func NewConfiguration() *Configuration {
 		DefaultHeader: make(map[string]string),
 		UserAgent:     "OpenAPI-Generator/1.0.0/go",
 		Debug:         false,
+		Scheme:        "https",
 		Servers: ServerConfigurations{
-			{
-				URL:         "http://csp.infoblox.com/api/ddi/v1",
-				Description: "No description provided",
-			},
 			{
 				URL:         "https://csp.infoblox.com/api/ddi/v1",
 				Description: "No description provided",

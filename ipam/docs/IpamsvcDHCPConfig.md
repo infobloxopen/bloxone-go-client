@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AbandonedReclaimTime** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV4 clients. | [optional] 
 **AbandonedReclaimTimeV6** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV6 clients. | [optional] 
-**AllowUnknown** | Pointer to **NullableBool** | Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured. | [optional] 
+**AllowUnknown** | Pointer to **bool** | Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured. | [optional] 
 **AllowUnknownV6** | Pointer to **bool** | Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured. | [optional] 
 **Filters** | Pointer to **[]string** | The resource identifier. | [optional] 
 **FiltersV6** | Pointer to **[]string** | The resource identifier. | [optional] 
@@ -109,16 +109,6 @@ SetAllowUnknown sets AllowUnknown field to given value.
 
 HasAllowUnknown returns a boolean if a field has been set.
 
-### SetAllowUnknownNil
-
-`func (o *IpamsvcDHCPConfig) SetAllowUnknownNil(b bool)`
-
- SetAllowUnknownNil sets the value for AllowUnknown to be an explicit nil
-
-### UnsetAllowUnknown
-`func (o *IpamsvcDHCPConfig) UnsetAllowUnknown()`
-
-UnsetAllowUnknown ensures that no value is present for AllowUnknown, not even an explicit nil
 ### GetAllowUnknownV6
 
 `func (o *IpamsvcDHCPConfig) GetAllowUnknownV6() bool`

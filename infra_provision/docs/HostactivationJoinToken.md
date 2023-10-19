@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeletedAt** | Pointer to **NullableTime** |  | [optional] 
+**DeletedAt** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
+**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**LastUsedAt** | Pointer to **NullableTime** |  | [optional] 
+**LastUsedAt** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**JoinTokenJoinTokenStatus**](JoinTokenJoinTokenStatus.md) |  | [optional] [default to JOINTOKENJOINTOKENSTATUS_UNKNOWN]
 **Tags** | Pointer to [**TypesJSONValue**](TypesJSONValue.md) |  | [optional] 
@@ -59,16 +59,6 @@ SetDeletedAt sets DeletedAt field to given value.
 
 HasDeletedAt returns a boolean if a field has been set.
 
-### SetDeletedAtNil
-
-`func (o *HostactivationJoinToken) SetDeletedAtNil(b bool)`
-
- SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
-
-### UnsetDeletedAt
-`func (o *HostactivationJoinToken) UnsetDeletedAt()`
-
-UnsetDeletedAt ensures that no value is present for DeletedAt, not even an explicit nil
 ### GetDescription
 
 `func (o *HostactivationJoinToken) GetDescription() string`
@@ -119,16 +109,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 
 HasExpiresAt returns a boolean if a field has been set.
 
-### SetExpiresAtNil
-
-`func (o *HostactivationJoinToken) SetExpiresAtNil(b bool)`
-
- SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-
-### UnsetExpiresAt
-`func (o *HostactivationJoinToken) UnsetExpiresAt()`
-
-UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetId
 
 `func (o *HostactivationJoinToken) GetId() string`
@@ -179,16 +159,6 @@ SetLastUsedAt sets LastUsedAt field to given value.
 
 HasLastUsedAt returns a boolean if a field has been set.
 
-### SetLastUsedAtNil
-
-`func (o *HostactivationJoinToken) SetLastUsedAtNil(b bool)`
-
- SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
-
-### UnsetLastUsedAt
-`func (o *HostactivationJoinToken) UnsetLastUsedAt()`
-
-UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
 ### GetName
 
 `func (o *HostactivationJoinToken) GetName() string`

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AddEdnsOptionInOutgoingQuery** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) |  | [optional] 
 **CustomRootNsBlock** | Pointer to [**ConfigInheritedCustomRootNSBlock**](ConfigInheritedCustomRootNSBlock.md) |  | [optional] 
 **DnssecValidationBlock** | Pointer to [**ConfigInheritedDNSSECValidationBlock**](ConfigInheritedDNSSECValidationBlock.md) |  | [optional] 
+**DtcConfig** | Pointer to [**ConfigInheritedDtcConfig**](ConfigInheritedDtcConfig.md) |  | [optional] 
 **EcsBlock** | Pointer to [**ConfigInheritedECSBlock**](ConfigInheritedECSBlock.md) |  | [optional] 
 **EdnsUdpSize** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
 **FilterAaaaAcl** | Pointer to [**ConfigInheritedACLItems**](ConfigInheritedACLItems.md) |  | [optional] 
@@ -123,6 +124,31 @@ SetDnssecValidationBlock sets DnssecValidationBlock field to given value.
 `func (o *ConfigViewInheritance) HasDnssecValidationBlock() bool`
 
 HasDnssecValidationBlock returns a boolean if a field has been set.
+
+### GetDtcConfig
+
+`func (o *ConfigViewInheritance) GetDtcConfig() ConfigInheritedDtcConfig`
+
+GetDtcConfig returns the DtcConfig field if non-nil, zero value otherwise.
+
+### GetDtcConfigOk
+
+`func (o *ConfigViewInheritance) GetDtcConfigOk() (*ConfigInheritedDtcConfig, bool)`
+
+GetDtcConfigOk returns a tuple with the DtcConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDtcConfig
+
+`func (o *ConfigViewInheritance) SetDtcConfig(v ConfigInheritedDtcConfig)`
+
+SetDtcConfig sets DtcConfig field to given value.
+
+### HasDtcConfig
+
+`func (o *ConfigViewInheritance) HasDtcConfig() bool`
+
+HasDtcConfig returns a boolean if a field has been set.
 
 ### GetEcsBlock
 

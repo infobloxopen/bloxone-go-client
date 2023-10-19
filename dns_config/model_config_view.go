@@ -25,7 +25,7 @@ type ConfigView struct {
 	// Optional. Comment for view.
 	Comment *string `json:"comment,omitempty"`
 	// The timestamp when the object has been created.
-	CreatedAt NullableTime `json:"created_at,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Optional. List of custom root nameservers. The order does not matter.  Error if empty while _custom_root_ns_enabled_ is _true_. Error if there are duplicate items in the list.  Defaults to empty.
 	CustomRootNs []ConfigRootNS `json:"custom_root_ns,omitempty"`
 	// Optional. _true_ to use custom root nameservers instead of the default ones.  The _custom_root_ns_ is validated when enabled.  Defaults to _false_.
@@ -33,15 +33,16 @@ type ConfigView struct {
 	// Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration.
 	Disabled *bool `json:"disabled,omitempty"`
 	// Optional. _true_ to perform DNSSEC validation. Ignored if _dnssec_enabled_ is _false_.  Defaults to _true_.
-	DnssecEnableValidation NullableBool `json:"dnssec_enable_validation,omitempty"`
+	DnssecEnableValidation *bool `json:"dnssec_enable_validation,omitempty"`
 	// Optional. Master toggle for all DNSSEC processing. Other _dnssec_*_ configuration is unused if this is disabled.  Defaults to _true_.
-	DnssecEnabled NullableBool `json:"dnssec_enabled,omitempty"`
+	DnssecEnabled *bool `json:"dnssec_enabled,omitempty"`
 	// DNSSEC root keys. The root keys are not configurable.  A default list is provided by cloud management and included here for config generation.
 	DnssecRootKeys []ConfigTrustAnchor `json:"dnssec_root_keys,omitempty"`
 	// Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty.
 	DnssecTrustAnchors []ConfigTrustAnchor `json:"dnssec_trust_anchors,omitempty"`
 	// Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_.
-	DnssecValidateExpiry NullableBool `json:"dnssec_validate_expiry,omitempty"`
+	DnssecValidateExpiry *bool            `json:"dnssec_validate_expiry,omitempty"`
+	DtcConfig            *ConfigDTCConfig `json:"dtc_config,omitempty"`
 	// Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false-.
 	EcsEnabled *bool `json:"ecs_enabled,omitempty"`
 	// Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_.
@@ -94,7 +95,7 @@ type ConfigView struct {
 	// Optional. Clients must match this ACL to make recursive queries. If this ACL is empty, then the _query_acl_ will be used instead.  Defaults to empty.
 	RecursionAcl []ConfigACLItem `json:"recursion_acl,omitempty"`
 	// Optional. _true_ to allow recursive DNS queries.  Defaults to _true_.
-	RecursionEnabled NullableBool `json:"recursion_enabled,omitempty"`
+	RecursionEnabled *bool `json:"recursion_enabled,omitempty"`
 	// Optional. Specifies a sorted network list for A/AAAA records in DNS query response.  Defaults to _empty_.
 	SortList []ConfigSortListItem `json:"sort_list,omitempty"`
 	// _synthesize_address_records_from_https_ enables/disables creation of A/AAAA records from HTTPS RR Defaults to _false_.
@@ -106,9 +107,9 @@ type ConfigView struct {
 	// Optional. Specifies which hosts are allowed to issue Dynamic DNS updates for authoritative zones of _primary_type_ _cloud_.  Defaults to empty.
 	UpdateAcl []ConfigACLItem `json:"update_acl,omitempty"`
 	// The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation.
-	UpdatedAt NullableTime `json:"updated_at,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_.
-	UseForwardersForSubzones NullableBool `json:"use_forwarders_for_subzones,omitempty"`
+	UseForwardersForSubzones *bool `json:"use_forwarders_for_subzones,omitempty"`
 	// _use_root_forwarders_for_local_resolution_with_b1td_ allows DNS recursive queries sent to root forwarders for local resolution when deployed alongside BloxOne Thread Defense. Defaults to _false_.
 	UseRootForwardersForLocalResolutionWithB1td *bool                `json:"use_root_forwarders_for_local_resolution_with_b1td,omitempty"`
 	ZoneAuthority                               *ConfigZoneAuthority `json:"zone_authority,omitempty"`
@@ -196,47 +197,36 @@ func (o *ConfigView) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ConfigView) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ConfigView) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *ConfigView) SetCreatedAt(v time.Time) {
-	o.CreatedAt.Set(&v)
-}
-
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *ConfigView) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *ConfigView) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetCustomRootNs returns the CustomRootNs field value if set, zero value otherwise.
@@ -335,90 +325,68 @@ func (o *ConfigView) SetDisabled(v bool) {
 	o.Disabled = &v
 }
 
-// GetDnssecEnableValidation returns the DnssecEnableValidation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnssecEnableValidation returns the DnssecEnableValidation field value if set, zero value otherwise.
 func (o *ConfigView) GetDnssecEnableValidation() bool {
-	if o == nil || IsNil(o.DnssecEnableValidation.Get()) {
+	if o == nil || IsNil(o.DnssecEnableValidation) {
 		var ret bool
 		return ret
 	}
-	return *o.DnssecEnableValidation.Get()
+	return *o.DnssecEnableValidation
 }
 
 // GetDnssecEnableValidationOk returns a tuple with the DnssecEnableValidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetDnssecEnableValidationOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DnssecEnableValidation) {
 		return nil, false
 	}
-	return o.DnssecEnableValidation.Get(), o.DnssecEnableValidation.IsSet()
+	return o.DnssecEnableValidation, true
 }
 
 // HasDnssecEnableValidation returns a boolean if a field has been set.
 func (o *ConfigView) HasDnssecEnableValidation() bool {
-	if o != nil && o.DnssecEnableValidation.IsSet() {
+	if o != nil && !IsNil(o.DnssecEnableValidation) {
 		return true
 	}
 
 	return false
 }
 
-// SetDnssecEnableValidation gets a reference to the given NullableBool and assigns it to the DnssecEnableValidation field.
+// SetDnssecEnableValidation gets a reference to the given bool and assigns it to the DnssecEnableValidation field.
 func (o *ConfigView) SetDnssecEnableValidation(v bool) {
-	o.DnssecEnableValidation.Set(&v)
+	o.DnssecEnableValidation = &v
 }
 
-// SetDnssecEnableValidationNil sets the value for DnssecEnableValidation to be an explicit nil
-func (o *ConfigView) SetDnssecEnableValidationNil() {
-	o.DnssecEnableValidation.Set(nil)
-}
-
-// UnsetDnssecEnableValidation ensures that no value is present for DnssecEnableValidation, not even an explicit nil
-func (o *ConfigView) UnsetDnssecEnableValidation() {
-	o.DnssecEnableValidation.Unset()
-}
-
-// GetDnssecEnabled returns the DnssecEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnssecEnabled returns the DnssecEnabled field value if set, zero value otherwise.
 func (o *ConfigView) GetDnssecEnabled() bool {
-	if o == nil || IsNil(o.DnssecEnabled.Get()) {
+	if o == nil || IsNil(o.DnssecEnabled) {
 		var ret bool
 		return ret
 	}
-	return *o.DnssecEnabled.Get()
+	return *o.DnssecEnabled
 }
 
 // GetDnssecEnabledOk returns a tuple with the DnssecEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetDnssecEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DnssecEnabled) {
 		return nil, false
 	}
-	return o.DnssecEnabled.Get(), o.DnssecEnabled.IsSet()
+	return o.DnssecEnabled, true
 }
 
 // HasDnssecEnabled returns a boolean if a field has been set.
 func (o *ConfigView) HasDnssecEnabled() bool {
-	if o != nil && o.DnssecEnabled.IsSet() {
+	if o != nil && !IsNil(o.DnssecEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetDnssecEnabled gets a reference to the given NullableBool and assigns it to the DnssecEnabled field.
+// SetDnssecEnabled gets a reference to the given bool and assigns it to the DnssecEnabled field.
 func (o *ConfigView) SetDnssecEnabled(v bool) {
-	o.DnssecEnabled.Set(&v)
-}
-
-// SetDnssecEnabledNil sets the value for DnssecEnabled to be an explicit nil
-func (o *ConfigView) SetDnssecEnabledNil() {
-	o.DnssecEnabled.Set(nil)
-}
-
-// UnsetDnssecEnabled ensures that no value is present for DnssecEnabled, not even an explicit nil
-func (o *ConfigView) UnsetDnssecEnabled() {
-	o.DnssecEnabled.Unset()
+	o.DnssecEnabled = &v
 }
 
 // GetDnssecRootKeys returns the DnssecRootKeys field value if set, zero value otherwise.
@@ -485,47 +453,68 @@ func (o *ConfigView) SetDnssecTrustAnchors(v []ConfigTrustAnchor) {
 	o.DnssecTrustAnchors = v
 }
 
-// GetDnssecValidateExpiry returns the DnssecValidateExpiry field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnssecValidateExpiry returns the DnssecValidateExpiry field value if set, zero value otherwise.
 func (o *ConfigView) GetDnssecValidateExpiry() bool {
-	if o == nil || IsNil(o.DnssecValidateExpiry.Get()) {
+	if o == nil || IsNil(o.DnssecValidateExpiry) {
 		var ret bool
 		return ret
 	}
-	return *o.DnssecValidateExpiry.Get()
+	return *o.DnssecValidateExpiry
 }
 
 // GetDnssecValidateExpiryOk returns a tuple with the DnssecValidateExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetDnssecValidateExpiryOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DnssecValidateExpiry) {
 		return nil, false
 	}
-	return o.DnssecValidateExpiry.Get(), o.DnssecValidateExpiry.IsSet()
+	return o.DnssecValidateExpiry, true
 }
 
 // HasDnssecValidateExpiry returns a boolean if a field has been set.
 func (o *ConfigView) HasDnssecValidateExpiry() bool {
-	if o != nil && o.DnssecValidateExpiry.IsSet() {
+	if o != nil && !IsNil(o.DnssecValidateExpiry) {
 		return true
 	}
 
 	return false
 }
 
-// SetDnssecValidateExpiry gets a reference to the given NullableBool and assigns it to the DnssecValidateExpiry field.
+// SetDnssecValidateExpiry gets a reference to the given bool and assigns it to the DnssecValidateExpiry field.
 func (o *ConfigView) SetDnssecValidateExpiry(v bool) {
-	o.DnssecValidateExpiry.Set(&v)
+	o.DnssecValidateExpiry = &v
 }
 
-// SetDnssecValidateExpiryNil sets the value for DnssecValidateExpiry to be an explicit nil
-func (o *ConfigView) SetDnssecValidateExpiryNil() {
-	o.DnssecValidateExpiry.Set(nil)
+// GetDtcConfig returns the DtcConfig field value if set, zero value otherwise.
+func (o *ConfigView) GetDtcConfig() ConfigDTCConfig {
+	if o == nil || IsNil(o.DtcConfig) {
+		var ret ConfigDTCConfig
+		return ret
+	}
+	return *o.DtcConfig
 }
 
-// UnsetDnssecValidateExpiry ensures that no value is present for DnssecValidateExpiry, not even an explicit nil
-func (o *ConfigView) UnsetDnssecValidateExpiry() {
-	o.DnssecValidateExpiry.Unset()
+// GetDtcConfigOk returns a tuple with the DtcConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigView) GetDtcConfigOk() (*ConfigDTCConfig, bool) {
+	if o == nil || IsNil(o.DtcConfig) {
+		return nil, false
+	}
+	return o.DtcConfig, true
+}
+
+// HasDtcConfig returns a boolean if a field has been set.
+func (o *ConfigView) HasDtcConfig() bool {
+	if o != nil && !IsNil(o.DtcConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetDtcConfig gets a reference to the given ConfigDTCConfig and assigns it to the DtcConfig field.
+func (o *ConfigView) SetDtcConfig(v ConfigDTCConfig) {
+	o.DtcConfig = &v
 }
 
 // GetEcsEnabled returns the EcsEnabled field value if set, zero value otherwise.
@@ -1352,47 +1341,36 @@ func (o *ConfigView) SetRecursionAcl(v []ConfigACLItem) {
 	o.RecursionAcl = v
 }
 
-// GetRecursionEnabled returns the RecursionEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRecursionEnabled returns the RecursionEnabled field value if set, zero value otherwise.
 func (o *ConfigView) GetRecursionEnabled() bool {
-	if o == nil || IsNil(o.RecursionEnabled.Get()) {
+	if o == nil || IsNil(o.RecursionEnabled) {
 		var ret bool
 		return ret
 	}
-	return *o.RecursionEnabled.Get()
+	return *o.RecursionEnabled
 }
 
 // GetRecursionEnabledOk returns a tuple with the RecursionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetRecursionEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RecursionEnabled) {
 		return nil, false
 	}
-	return o.RecursionEnabled.Get(), o.RecursionEnabled.IsSet()
+	return o.RecursionEnabled, true
 }
 
 // HasRecursionEnabled returns a boolean if a field has been set.
 func (o *ConfigView) HasRecursionEnabled() bool {
-	if o != nil && o.RecursionEnabled.IsSet() {
+	if o != nil && !IsNil(o.RecursionEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetRecursionEnabled gets a reference to the given NullableBool and assigns it to the RecursionEnabled field.
+// SetRecursionEnabled gets a reference to the given bool and assigns it to the RecursionEnabled field.
 func (o *ConfigView) SetRecursionEnabled(v bool) {
-	o.RecursionEnabled.Set(&v)
-}
-
-// SetRecursionEnabledNil sets the value for RecursionEnabled to be an explicit nil
-func (o *ConfigView) SetRecursionEnabledNil() {
-	o.RecursionEnabled.Set(nil)
-}
-
-// UnsetRecursionEnabled ensures that no value is present for RecursionEnabled, not even an explicit nil
-func (o *ConfigView) UnsetRecursionEnabled() {
-	o.RecursionEnabled.Unset()
+	o.RecursionEnabled = &v
 }
 
 // GetSortList returns the SortList field value if set, zero value otherwise.
@@ -1555,90 +1533,68 @@ func (o *ConfigView) SetUpdateAcl(v []ConfigACLItem) {
 	o.UpdateAcl = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ConfigView) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt.Get()
+	return *o.UpdatedAt
 }
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
-	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
+	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ConfigView) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt.IsSet() {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *ConfigView) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt.Set(&v)
+	o.UpdatedAt = &v
 }
 
-// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-func (o *ConfigView) SetUpdatedAtNil() {
-	o.UpdatedAt.Set(nil)
-}
-
-// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
-func (o *ConfigView) UnsetUpdatedAt() {
-	o.UpdatedAt.Unset()
-}
-
-// GetUseForwardersForSubzones returns the UseForwardersForSubzones field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUseForwardersForSubzones returns the UseForwardersForSubzones field value if set, zero value otherwise.
 func (o *ConfigView) GetUseForwardersForSubzones() bool {
-	if o == nil || IsNil(o.UseForwardersForSubzones.Get()) {
+	if o == nil || IsNil(o.UseForwardersForSubzones) {
 		var ret bool
 		return ret
 	}
-	return *o.UseForwardersForSubzones.Get()
+	return *o.UseForwardersForSubzones
 }
 
 // GetUseForwardersForSubzonesOk returns a tuple with the UseForwardersForSubzones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigView) GetUseForwardersForSubzonesOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UseForwardersForSubzones) {
 		return nil, false
 	}
-	return o.UseForwardersForSubzones.Get(), o.UseForwardersForSubzones.IsSet()
+	return o.UseForwardersForSubzones, true
 }
 
 // HasUseForwardersForSubzones returns a boolean if a field has been set.
 func (o *ConfigView) HasUseForwardersForSubzones() bool {
-	if o != nil && o.UseForwardersForSubzones.IsSet() {
+	if o != nil && !IsNil(o.UseForwardersForSubzones) {
 		return true
 	}
 
 	return false
 }
 
-// SetUseForwardersForSubzones gets a reference to the given NullableBool and assigns it to the UseForwardersForSubzones field.
+// SetUseForwardersForSubzones gets a reference to the given bool and assigns it to the UseForwardersForSubzones field.
 func (o *ConfigView) SetUseForwardersForSubzones(v bool) {
-	o.UseForwardersForSubzones.Set(&v)
-}
-
-// SetUseForwardersForSubzonesNil sets the value for UseForwardersForSubzones to be an explicit nil
-func (o *ConfigView) SetUseForwardersForSubzonesNil() {
-	o.UseForwardersForSubzones.Set(nil)
-}
-
-// UnsetUseForwardersForSubzones ensures that no value is present for UseForwardersForSubzones, not even an explicit nil
-func (o *ConfigView) UnsetUseForwardersForSubzones() {
-	o.UseForwardersForSubzones.Unset()
+	o.UseForwardersForSubzones = &v
 }
 
 // GetUseRootForwardersForLocalResolutionWithB1td returns the UseRootForwardersForLocalResolutionWithB1td field value if set, zero value otherwise.
@@ -1721,8 +1677,8 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["created_at"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if !IsNil(o.CustomRootNs) {
 		toSerialize["custom_root_ns"] = o.CustomRootNs
@@ -1733,11 +1689,11 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	if o.DnssecEnableValidation.IsSet() {
-		toSerialize["dnssec_enable_validation"] = o.DnssecEnableValidation.Get()
+	if !IsNil(o.DnssecEnableValidation) {
+		toSerialize["dnssec_enable_validation"] = o.DnssecEnableValidation
 	}
-	if o.DnssecEnabled.IsSet() {
-		toSerialize["dnssec_enabled"] = o.DnssecEnabled.Get()
+	if !IsNil(o.DnssecEnabled) {
+		toSerialize["dnssec_enabled"] = o.DnssecEnabled
 	}
 	if !IsNil(o.DnssecRootKeys) {
 		toSerialize["dnssec_root_keys"] = o.DnssecRootKeys
@@ -1745,8 +1701,11 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnssecTrustAnchors) {
 		toSerialize["dnssec_trust_anchors"] = o.DnssecTrustAnchors
 	}
-	if o.DnssecValidateExpiry.IsSet() {
-		toSerialize["dnssec_validate_expiry"] = o.DnssecValidateExpiry.Get()
+	if !IsNil(o.DnssecValidateExpiry) {
+		toSerialize["dnssec_validate_expiry"] = o.DnssecValidateExpiry
+	}
+	if !IsNil(o.DtcConfig) {
+		toSerialize["dtc_config"] = o.DtcConfig
 	}
 	if !IsNil(o.EcsEnabled) {
 		toSerialize["ecs_enabled"] = o.EcsEnabled
@@ -1824,8 +1783,8 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecursionAcl) {
 		toSerialize["recursion_acl"] = o.RecursionAcl
 	}
-	if o.RecursionEnabled.IsSet() {
-		toSerialize["recursion_enabled"] = o.RecursionEnabled.Get()
+	if !IsNil(o.RecursionEnabled) {
+		toSerialize["recursion_enabled"] = o.RecursionEnabled
 	}
 	if !IsNil(o.SortList) {
 		toSerialize["sort_list"] = o.SortList
@@ -1842,11 +1801,11 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdateAcl) {
 		toSerialize["update_acl"] = o.UpdateAcl
 	}
-	if o.UpdatedAt.IsSet() {
-		toSerialize["updated_at"] = o.UpdatedAt.Get()
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.UseForwardersForSubzones.IsSet() {
-		toSerialize["use_forwarders_for_subzones"] = o.UseForwardersForSubzones.Get()
+	if !IsNil(o.UseForwardersForSubzones) {
+		toSerialize["use_forwarders_for_subzones"] = o.UseForwardersForSubzones
 	}
 	if !IsNil(o.UseRootForwardersForLocalResolutionWithB1td) {
 		toSerialize["use_root_forwarders_for_local_resolution_with_b1td"] = o.UseRootForwardersForLocalResolutionWithB1td

@@ -23,7 +23,7 @@ type IpamsvcRange struct {
 	// The description for the range. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Time when the object has been created.
-	CreatedAt NullableTime `json:"created_at,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// The resource identifier.
 	DhcpHost *string `json:"dhcp_host,omitempty"`
 	// The list of DHCP options. May be either a specific option or a group of options.
@@ -57,7 +57,7 @@ type IpamsvcRange struct {
 	Tags      map[string]interface{}       `json:"tags,omitempty"`
 	Threshold *IpamsvcUtilizationThreshold `json:"threshold,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
-	UpdatedAt     NullableTime          `json:"updated_at,omitempty"`
+	UpdatedAt     *time.Time            `json:"updated_at,omitempty"`
 	Utilization   *IpamsvcUtilization   `json:"utilization,omitempty"`
 	UtilizationV6 *IpamsvcUtilizationV6 `json:"utilization_v6,omitempty"`
 }
@@ -114,47 +114,36 @@ func (o *IpamsvcRange) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IpamsvcRange) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcRange) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IpamsvcRange) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *IpamsvcRange) SetCreatedAt(v time.Time) {
-	o.CreatedAt.Set(&v)
-}
-
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *IpamsvcRange) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *IpamsvcRange) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetDhcpHost returns the DhcpHost field value if set, zero value otherwise.
@@ -677,47 +666,36 @@ func (o *IpamsvcRange) SetThreshold(v IpamsvcUtilizationThreshold) {
 	o.Threshold = &v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IpamsvcRange) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt.Get()
+	return *o.UpdatedAt
 }
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcRange) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
-	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
+	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IpamsvcRange) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt.IsSet() {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *IpamsvcRange) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt.Set(&v)
-}
-
-// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-func (o *IpamsvcRange) SetUpdatedAtNil() {
-	o.UpdatedAt.Set(nil)
-}
-
-// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
-func (o *IpamsvcRange) UnsetUpdatedAt() {
-	o.UpdatedAt.Unset()
+	o.UpdatedAt = &v
 }
 
 // GetUtilization returns the Utilization field value if set, zero value otherwise.
@@ -797,8 +775,8 @@ func (o IpamsvcRange) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["created_at"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if !IsNil(o.DhcpHost) {
 		toSerialize["dhcp_host"] = o.DhcpHost
@@ -845,8 +823,8 @@ func (o IpamsvcRange) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Threshold) {
 		toSerialize["threshold"] = o.Threshold
 	}
-	if o.UpdatedAt.IsSet() {
-		toSerialize["updated_at"] = o.UpdatedAt.Get()
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	if !IsNil(o.Utilization) {
 		toSerialize["utilization"] = o.Utilization

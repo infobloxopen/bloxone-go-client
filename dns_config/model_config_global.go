@@ -34,7 +34,8 @@ type ConfigGlobal struct {
 	// Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty.
 	DnssecTrustAnchors []ConfigTrustAnchor `json:"dnssec_trust_anchors,omitempty"`
 	// Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_.
-	DnssecValidateExpiry *bool `json:"dnssec_validate_expiry,omitempty"`
+	DnssecValidateExpiry *bool            `json:"dnssec_validate_expiry,omitempty"`
+	DtcConfig            *ConfigDTCConfig `json:"dtc_config,omitempty"`
 	// Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false_.
 	EcsEnabled *bool `json:"ecs_enabled,omitempty"`
 	// Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_.
@@ -380,6 +381,38 @@ func (o *ConfigGlobal) HasDnssecValidateExpiry() bool {
 // SetDnssecValidateExpiry gets a reference to the given bool and assigns it to the DnssecValidateExpiry field.
 func (o *ConfigGlobal) SetDnssecValidateExpiry(v bool) {
 	o.DnssecValidateExpiry = &v
+}
+
+// GetDtcConfig returns the DtcConfig field value if set, zero value otherwise.
+func (o *ConfigGlobal) GetDtcConfig() ConfigDTCConfig {
+	if o == nil || IsNil(o.DtcConfig) {
+		var ret ConfigDTCConfig
+		return ret
+	}
+	return *o.DtcConfig
+}
+
+// GetDtcConfigOk returns a tuple with the DtcConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigGlobal) GetDtcConfigOk() (*ConfigDTCConfig, bool) {
+	if o == nil || IsNil(o.DtcConfig) {
+		return nil, false
+	}
+	return o.DtcConfig, true
+}
+
+// HasDtcConfig returns a boolean if a field has been set.
+func (o *ConfigGlobal) HasDtcConfig() bool {
+	if o != nil && !IsNil(o.DtcConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetDtcConfig gets a reference to the given ConfigDTCConfig and assigns it to the DtcConfig field.
+func (o *ConfigGlobal) SetDtcConfig(v ConfigDTCConfig) {
+	o.DtcConfig = &v
 }
 
 // GetEcsEnabled returns the EcsEnabled field value if set, zero value otherwise.
@@ -1559,6 +1592,9 @@ func (o ConfigGlobal) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnssecValidateExpiry) {
 		toSerialize["dnssec_validate_expiry"] = o.DnssecValidateExpiry
+	}
+	if !IsNil(o.DtcConfig) {
+		toSerialize["dtc_config"] = o.DtcConfig
 	}
 	if !IsNil(o.EcsEnabled) {
 		toSerialize["ecs_enabled"] = o.EcsEnabled

@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **AsmConfig** | Pointer to [**IpamsvcASMConfig**](IpamsvcASMConfig.md) |  | [optional] 
 **AsmScopeFlag** | Pointer to **int64** | The number of times the automated scope management usage limits have been exceeded for any of the subnets in this IP space. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The description for the IP space. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DdnsClientUpdate** | Pointer to **string** | Controls who does the DDNS updates.  Valid values are: * _client_: DHCP server updates DNS if requested by client. * _server_: DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _ignore_: DHCP server always updates DNS, even if the client says not to. * _over_client_update_: Same as _server_. DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _over_no_update_: DHCP server updates DNS even if the client requests that no updates be done. If the client requests to do the update, DHCP server allows it.  Defaults to _client_. | [optional] 
 **DdnsConflictResolutionMode** | Pointer to **string** | The mode used for resolving conflicts while performing DDNS updates.  Valid values are: * _check_with_dhcid_: It includes adding a DHCID record and checking that record via conflict detection as per RFC 4703. * _no_check_with_dhcid_: This will ignore conflict detection but add a DHCID record when creating/updating an entry. * _check_exists_with_dhcid_: This will check if there is an existing DHCID record but does not verify the value of the record matches the update. This will also update the DHCID record for the entry. * _no_check_without_dhcid_: This ignores conflict detection and will not add a DHCID record when creating/updating a DDNS entry.  Defaults to _check_with_dhcid_. | [optional] 
 **DdnsDomain** | Pointer to **string** | The domain suffix for DDNS updates. FQDN, may be empty.  Defaults to empty. | [optional] 
 **DdnsGenerateName** | Pointer to **bool** | Indicates if DDNS needs to generate a hostname when not supplied by the client.  Defaults to _false_. | [optional] 
 **DdnsGeneratedPrefix** | Pointer to **string** | The prefix used in the generation of an FQDN.  When generating a name, DHCP server will construct the name in the format: [ddns-generated-prefix]-[address-text].[ddns-qualifying-suffix]. where address-text is simply the lease IP address converted to a hyphenated string.  Defaults to \&quot;myhost\&quot;. | [optional] 
-**DdnsSendUpdates** | Pointer to **NullableBool** | Determines if DDNS updates are enabled at the IP space level. Defaults to _true_. | [optional] 
+**DdnsSendUpdates** | Pointer to **bool** | Determines if DDNS updates are enabled at the IP space level. Defaults to _true_. | [optional] 
 **DdnsTtlPercent** | Pointer to **float32** | DDNS TTL value - to be calculated as a simple percentage of the lease&#39;s lifetime, using the parameter&#39;s value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified. | [optional] 
 **DdnsUpdateOnRenew** | Pointer to **bool** | Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_. | [optional] 
-**DdnsUseConflictResolution** | Pointer to **NullableBool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
+**DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
 **DhcpConfig** | Pointer to [**IpamsvcDHCPConfig**](IpamsvcDHCPConfig.md) |  | [optional] 
 **DhcpOptions** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The list of IPv4 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
 **DhcpOptionsV6** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The list of IPv6 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
@@ -31,11 +31,10 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the IP space. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the IP space in JSON format. | [optional] 
 **Threshold** | Pointer to [**IpamsvcUtilizationThreshold**](IpamsvcUtilizationThreshold.md) |  | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **Utilization** | Pointer to [**IpamsvcUtilization**](IpamsvcUtilization.md) |  | [optional] 
 **UtilizationV6** | Pointer to [**IpamsvcUtilizationV6**](IpamsvcUtilizationV6.md) |  | [optional] 
 **VendorSpecificOptionOptionSpace** | Pointer to **string** | The resource identifier. | [optional] 
-**InheritanceAssignedHosts** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -156,16 +155,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcIPSpace) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcIPSpace) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDdnsClientUpdate
 
 `func (o *IpamsvcIPSpace) GetDdnsClientUpdate() string`
@@ -316,16 +305,6 @@ SetDdnsSendUpdates sets DdnsSendUpdates field to given value.
 
 HasDdnsSendUpdates returns a boolean if a field has been set.
 
-### SetDdnsSendUpdatesNil
-
-`func (o *IpamsvcIPSpace) SetDdnsSendUpdatesNil(b bool)`
-
- SetDdnsSendUpdatesNil sets the value for DdnsSendUpdates to be an explicit nil
-
-### UnsetDdnsSendUpdates
-`func (o *IpamsvcIPSpace) UnsetDdnsSendUpdates()`
-
-UnsetDdnsSendUpdates ensures that no value is present for DdnsSendUpdates, not even an explicit nil
 ### GetDdnsTtlPercent
 
 `func (o *IpamsvcIPSpace) GetDdnsTtlPercent() float32`
@@ -401,16 +380,6 @@ SetDdnsUseConflictResolution sets DdnsUseConflictResolution field to given value
 
 HasDdnsUseConflictResolution returns a boolean if a field has been set.
 
-### SetDdnsUseConflictResolutionNil
-
-`func (o *IpamsvcIPSpace) SetDdnsUseConflictResolutionNil(b bool)`
-
- SetDdnsUseConflictResolutionNil sets the value for DdnsUseConflictResolution to be an explicit nil
-
-### UnsetDdnsUseConflictResolution
-`func (o *IpamsvcIPSpace) UnsetDdnsUseConflictResolution()`
-
-UnsetDdnsUseConflictResolution ensures that no value is present for DdnsUseConflictResolution, not even an explicit nil
 ### GetDhcpConfig
 
 `func (o *IpamsvcIPSpace) GetDhcpConfig() IpamsvcDHCPConfig`
@@ -781,16 +750,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcIPSpace) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcIPSpace) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetUtilization
 
 `func (o *IpamsvcIPSpace) GetUtilization() IpamsvcUtilization`
@@ -865,31 +824,6 @@ SetVendorSpecificOptionOptionSpace sets VendorSpecificOptionOptionSpace field to
 `func (o *IpamsvcIPSpace) HasVendorSpecificOptionOptionSpace() bool`
 
 HasVendorSpecificOptionOptionSpace returns a boolean if a field has been set.
-
-### GetInheritanceAssignedHosts
-
-`func (o *IpamsvcIPSpace) GetInheritanceAssignedHosts() map[string]interface{}`
-
-GetInheritanceAssignedHosts returns the InheritanceAssignedHosts field if non-nil, zero value otherwise.
-
-### GetInheritanceAssignedHostsOk
-
-`func (o *IpamsvcIPSpace) GetInheritanceAssignedHostsOk() (*map[string]interface{}, bool)`
-
-GetInheritanceAssignedHostsOk returns a tuple with the InheritanceAssignedHosts field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInheritanceAssignedHosts
-
-`func (o *IpamsvcIPSpace) SetInheritanceAssignedHosts(v map[string]interface{})`
-
-SetInheritanceAssignedHosts sets InheritanceAssignedHosts field to given value.
-
-### HasInheritanceAssignedHosts
-
-`func (o *IpamsvcIPSpace) HasInheritanceAssignedHosts() bool`
-
-HasInheritanceAssignedHosts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

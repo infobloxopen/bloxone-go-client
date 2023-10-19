@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Optional. Comment for zone configuration. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | The timestamp when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The timestamp when the object has been created. | [optional] [readonly] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration. | [optional] 
 **ExternalForwarders** | Pointer to [**[]ConfigForwarder**](ConfigForwarder.md) | Optional. External DNS servers to forward to. Order is not significant. | [optional] 
 **ForwardOnly** | Pointer to **bool** | Optional. _true_ to only forward. | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **ProtocolFqdn** | Pointer to **string** | Zone FQDN in punycode. | [optional] [readonly] 
 **Tags** | Pointer to **map[string]interface{}** | Tagging specifics. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **View** | Pointer to **string** | The resource identifier. | [optional] 
 **Warnings** | Pointer to [**[]ConfigWarning**](ConfigWarning.md) | The list of a forward zone warnings. | [optional] [readonly] 
 
@@ -92,16 +92,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *ConfigForwardZone) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *ConfigForwardZone) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDisabled
 
 `func (o *ConfigForwardZone) GetDisabled() bool`
@@ -447,16 +437,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *ConfigForwardZone) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *ConfigForwardZone) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetView
 
 `func (o *ConfigForwardZone) GetView() string`

@@ -23,9 +23,9 @@ type IpamsvcASMConfig struct {
 	// ASM shows the number of addresses forecast to be used _forecast_period_ days in the future, if it is greater than _asm_threshold_ percent * _dhcp_total_ (see _dhcp_utilization_) then the subnet is flagged.
 	AsmThreshold *int64 `json:"asm_threshold,omitempty"`
 	// Indicates if Automated Scope Management is enabled.
-	Enable NullableBool `json:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty"`
 	// Indicates if ASM should send notifications to the user.
-	EnableNotification NullableBool `json:"enable_notification,omitempty"`
+	EnableNotification *bool `json:"enable_notification,omitempty"`
 	// The forecast period in days.
 	ForecastPeriod *int64 `json:"forecast_period,omitempty"`
 	// Indicates the growth in the number or percentage of IP addresses.
@@ -90,90 +90,68 @@ func (o *IpamsvcASMConfig) SetAsmThreshold(v int64) {
 	o.AsmThreshold = &v
 }
 
-// GetEnable returns the Enable field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEnable returns the Enable field value if set, zero value otherwise.
 func (o *IpamsvcASMConfig) GetEnable() bool {
-	if o == nil || IsNil(o.Enable.Get()) {
+	if o == nil || IsNil(o.Enable) {
 		var ret bool
 		return ret
 	}
-	return *o.Enable.Get()
+	return *o.Enable
 }
 
 // GetEnableOk returns a tuple with the Enable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcASMConfig) GetEnableOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Enable) {
 		return nil, false
 	}
-	return o.Enable.Get(), o.Enable.IsSet()
+	return o.Enable, true
 }
 
 // HasEnable returns a boolean if a field has been set.
 func (o *IpamsvcASMConfig) HasEnable() bool {
-	if o != nil && o.Enable.IsSet() {
+	if o != nil && !IsNil(o.Enable) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnable gets a reference to the given NullableBool and assigns it to the Enable field.
+// SetEnable gets a reference to the given bool and assigns it to the Enable field.
 func (o *IpamsvcASMConfig) SetEnable(v bool) {
-	o.Enable.Set(&v)
+	o.Enable = &v
 }
 
-// SetEnableNil sets the value for Enable to be an explicit nil
-func (o *IpamsvcASMConfig) SetEnableNil() {
-	o.Enable.Set(nil)
-}
-
-// UnsetEnable ensures that no value is present for Enable, not even an explicit nil
-func (o *IpamsvcASMConfig) UnsetEnable() {
-	o.Enable.Unset()
-}
-
-// GetEnableNotification returns the EnableNotification field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEnableNotification returns the EnableNotification field value if set, zero value otherwise.
 func (o *IpamsvcASMConfig) GetEnableNotification() bool {
-	if o == nil || IsNil(o.EnableNotification.Get()) {
+	if o == nil || IsNil(o.EnableNotification) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableNotification.Get()
+	return *o.EnableNotification
 }
 
 // GetEnableNotificationOk returns a tuple with the EnableNotification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcASMConfig) GetEnableNotificationOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EnableNotification) {
 		return nil, false
 	}
-	return o.EnableNotification.Get(), o.EnableNotification.IsSet()
+	return o.EnableNotification, true
 }
 
 // HasEnableNotification returns a boolean if a field has been set.
 func (o *IpamsvcASMConfig) HasEnableNotification() bool {
-	if o != nil && o.EnableNotification.IsSet() {
+	if o != nil && !IsNil(o.EnableNotification) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableNotification gets a reference to the given NullableBool and assigns it to the EnableNotification field.
+// SetEnableNotification gets a reference to the given bool and assigns it to the EnableNotification field.
 func (o *IpamsvcASMConfig) SetEnableNotification(v bool) {
-	o.EnableNotification.Set(&v)
-}
-
-// SetEnableNotificationNil sets the value for EnableNotification to be an explicit nil
-func (o *IpamsvcASMConfig) SetEnableNotificationNil() {
-	o.EnableNotification.Set(nil)
-}
-
-// UnsetEnableNotification ensures that no value is present for EnableNotification, not even an explicit nil
-func (o *IpamsvcASMConfig) UnsetEnableNotification() {
-	o.EnableNotification.Unset()
+	o.EnableNotification = &v
 }
 
 // GetForecastPeriod returns the ForecastPeriod field value if set, zero value otherwise.
@@ -413,11 +391,11 @@ func (o IpamsvcASMConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AsmThreshold) {
 		toSerialize["asm_threshold"] = o.AsmThreshold
 	}
-	if o.Enable.IsSet() {
-		toSerialize["enable"] = o.Enable.Get()
+	if !IsNil(o.Enable) {
+		toSerialize["enable"] = o.Enable
 	}
-	if o.EnableNotification.IsSet() {
-		toSerialize["enable_notification"] = o.EnableNotification.Get()
+	if !IsNil(o.EnableNotification) {
+		toSerialize["enable_notification"] = o.EnableNotification
 	}
 	if !IsNil(o.ForecastPeriod) {
 		toSerialize["forecast_period"] = o.ForecastPeriod

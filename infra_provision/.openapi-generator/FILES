@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api_ui_join_token.go
 api_uicsr.go
@@ -37,6 +36,4 @@ model_hostactivation_update_join_token_response.go
 model_join_token_join_token_status.go
 model_types_inet_value.go
 model_types_json_value.go
-test/api_ui_join_token_test.go
-test/api_uicsr_test.go
 utils.go

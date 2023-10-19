@@ -38,7 +38,7 @@ type ConfigZoneAuthority struct {
 	// Optional. ZoneAuthority rname.  Defaults to empty.
 	Rname *string `json:"rname,omitempty"`
 	// Optional. Use default value for master name server.  Defaults to true.
-	UseDefaultMname NullableBool `json:"use_default_mname,omitempty"`
+	UseDefaultMname *bool `json:"use_default_mname,omitempty"`
 }
 
 // NewConfigZoneAuthority instantiates a new ConfigZoneAuthority object
@@ -346,47 +346,36 @@ func (o *ConfigZoneAuthority) SetRname(v string) {
 	o.Rname = &v
 }
 
-// GetUseDefaultMname returns the UseDefaultMname field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUseDefaultMname returns the UseDefaultMname field value if set, zero value otherwise.
 func (o *ConfigZoneAuthority) GetUseDefaultMname() bool {
-	if o == nil || IsNil(o.UseDefaultMname.Get()) {
+	if o == nil || IsNil(o.UseDefaultMname) {
 		var ret bool
 		return ret
 	}
-	return *o.UseDefaultMname.Get()
+	return *o.UseDefaultMname
 }
 
 // GetUseDefaultMnameOk returns a tuple with the UseDefaultMname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigZoneAuthority) GetUseDefaultMnameOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UseDefaultMname) {
 		return nil, false
 	}
-	return o.UseDefaultMname.Get(), o.UseDefaultMname.IsSet()
+	return o.UseDefaultMname, true
 }
 
 // HasUseDefaultMname returns a boolean if a field has been set.
 func (o *ConfigZoneAuthority) HasUseDefaultMname() bool {
-	if o != nil && o.UseDefaultMname.IsSet() {
+	if o != nil && !IsNil(o.UseDefaultMname) {
 		return true
 	}
 
 	return false
 }
 
-// SetUseDefaultMname gets a reference to the given NullableBool and assigns it to the UseDefaultMname field.
+// SetUseDefaultMname gets a reference to the given bool and assigns it to the UseDefaultMname field.
 func (o *ConfigZoneAuthority) SetUseDefaultMname(v bool) {
-	o.UseDefaultMname.Set(&v)
-}
-
-// SetUseDefaultMnameNil sets the value for UseDefaultMname to be an explicit nil
-func (o *ConfigZoneAuthority) SetUseDefaultMnameNil() {
-	o.UseDefaultMname.Set(nil)
-}
-
-// UnsetUseDefaultMname ensures that no value is present for UseDefaultMname, not even an explicit nil
-func (o *ConfigZoneAuthority) UnsetUseDefaultMname() {
-	o.UseDefaultMname.Unset()
+	o.UseDefaultMname = &v
 }
 
 func (o ConfigZoneAuthority) MarshalJSON() ([]byte, error) {
@@ -426,8 +415,8 @@ func (o ConfigZoneAuthority) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Rname) {
 		toSerialize["rname"] = o.Rname
 	}
-	if o.UseDefaultMname.IsSet() {
-		toSerialize["use_default_mname"] = o.UseDefaultMname.Get()
+	if !IsNil(o.UseDefaultMname) {
+		toSerialize["use_default_mname"] = o.UseDefaultMname
 	}
 	return toSerialize, nil
 }

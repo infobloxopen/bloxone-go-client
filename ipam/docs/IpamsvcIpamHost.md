@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **Addresses** | Pointer to [**[]IpamsvcHostAddress**](IpamsvcHostAddress.md) | The list of all addresses associated with the IPAM host, which may be in different IP spaces. | [optional] 
 **AutoGenerateRecords** | Pointer to **bool** | This flag specifies if resource records have to be auto generated for the host. | [optional] 
 **Comment** | Pointer to **string** | The description for the IPAM host. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **HostNames** | Pointer to [**[]IpamsvcHostName**](IpamsvcHostName.md) | The name records to be generated for the host.  This field is required if _auto_generate_records_ is true. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Name** | **string** | The name of the IPAM host. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the IPAM host in JSON format. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 
 ## Methods
 
@@ -133,16 +133,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *IpamsvcIpamHost) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *IpamsvcIpamHost) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetHostNames
 
 `func (o *IpamsvcIpamHost) GetHostNames() []IpamsvcHostName`
@@ -263,16 +253,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *IpamsvcIpamHost) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *IpamsvcIpamHost) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

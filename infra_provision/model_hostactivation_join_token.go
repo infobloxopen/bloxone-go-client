@@ -20,12 +20,12 @@ var _ MappedNullable = &HostactivationJoinToken{}
 
 // HostactivationJoinToken struct for HostactivationJoinToken
 type HostactivationJoinToken struct {
-	DeletedAt   NullableTime `json:"deleted_at,omitempty"`
-	Description *string      `json:"description,omitempty"`
-	ExpiresAt   NullableTime `json:"expires_at,omitempty"`
+	DeletedAt   *time.Time `json:"deleted_at,omitempty"`
+	Description *string    `json:"description,omitempty"`
+	ExpiresAt   *time.Time `json:"expires_at,omitempty"`
 	// The resource identifier.
 	Id         *string                   `json:"id,omitempty"`
-	LastUsedAt NullableTime              `json:"last_used_at,omitempty"`
+	LastUsedAt *time.Time                `json:"last_used_at,omitempty"`
 	Name       *string                   `json:"name,omitempty"`
 	Status     *JoinTokenJoinTokenStatus `json:"status,omitempty"`
 	Tags       *TypesJSONValue           `json:"tags,omitempty"`
@@ -55,47 +55,36 @@ func NewHostactivationJoinTokenWithDefaults() *HostactivationJoinToken {
 	return &this
 }
 
-// GetDeletedAt returns the DeletedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
 func (o *HostactivationJoinToken) GetDeletedAt() time.Time {
-	if o == nil || IsNil(o.DeletedAt.Get()) {
+	if o == nil || IsNil(o.DeletedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.DeletedAt.Get()
+	return *o.DeletedAt
 }
 
 // GetDeletedAtOk returns a tuple with the DeletedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HostactivationJoinToken) GetDeletedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeletedAt) {
 		return nil, false
 	}
-	return o.DeletedAt.Get(), o.DeletedAt.IsSet()
+	return o.DeletedAt, true
 }
 
 // HasDeletedAt returns a boolean if a field has been set.
 func (o *HostactivationJoinToken) HasDeletedAt() bool {
-	if o != nil && o.DeletedAt.IsSet() {
+	if o != nil && !IsNil(o.DeletedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetDeletedAt gets a reference to the given NullableTime and assigns it to the DeletedAt field.
+// SetDeletedAt gets a reference to the given time.Time and assigns it to the DeletedAt field.
 func (o *HostactivationJoinToken) SetDeletedAt(v time.Time) {
-	o.DeletedAt.Set(&v)
-}
-
-// SetDeletedAtNil sets the value for DeletedAt to be an explicit nil
-func (o *HostactivationJoinToken) SetDeletedAtNil() {
-	o.DeletedAt.Set(nil)
-}
-
-// UnsetDeletedAt ensures that no value is present for DeletedAt, not even an explicit nil
-func (o *HostactivationJoinToken) UnsetDeletedAt() {
-	o.DeletedAt.Unset()
+	o.DeletedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -130,47 +119,36 @@ func (o *HostactivationJoinToken) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *HostactivationJoinToken) GetExpiresAt() time.Time {
-	if o == nil || IsNil(o.ExpiresAt.Get()) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.ExpiresAt.Get()
+	return *o.ExpiresAt
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HostactivationJoinToken) GetExpiresAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
-	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
+	return o.ExpiresAt, true
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *HostactivationJoinToken) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt.IsSet() {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiresAt gets a reference to the given NullableTime and assigns it to the ExpiresAt field.
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *HostactivationJoinToken) SetExpiresAt(v time.Time) {
-	o.ExpiresAt.Set(&v)
-}
-
-// SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-func (o *HostactivationJoinToken) SetExpiresAtNil() {
-	o.ExpiresAt.Set(nil)
-}
-
-// UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
-func (o *HostactivationJoinToken) UnsetExpiresAt() {
-	o.ExpiresAt.Unset()
+	o.ExpiresAt = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -205,47 +183,36 @@ func (o *HostactivationJoinToken) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise.
 func (o *HostactivationJoinToken) GetLastUsedAt() time.Time {
-	if o == nil || IsNil(o.LastUsedAt.Get()) {
+	if o == nil || IsNil(o.LastUsedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastUsedAt.Get()
+	return *o.LastUsedAt
 }
 
 // GetLastUsedAtOk returns a tuple with the LastUsedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HostactivationJoinToken) GetLastUsedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastUsedAt) {
 		return nil, false
 	}
-	return o.LastUsedAt.Get(), o.LastUsedAt.IsSet()
+	return o.LastUsedAt, true
 }
 
 // HasLastUsedAt returns a boolean if a field has been set.
 func (o *HostactivationJoinToken) HasLastUsedAt() bool {
-	if o != nil && o.LastUsedAt.IsSet() {
+	if o != nil && !IsNil(o.LastUsedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastUsedAt gets a reference to the given NullableTime and assigns it to the LastUsedAt field.
+// SetLastUsedAt gets a reference to the given time.Time and assigns it to the LastUsedAt field.
 func (o *HostactivationJoinToken) SetLastUsedAt(v time.Time) {
-	o.LastUsedAt.Set(&v)
-}
-
-// SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
-func (o *HostactivationJoinToken) SetLastUsedAtNil() {
-	o.LastUsedAt.Set(nil)
-}
-
-// UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
-func (o *HostactivationJoinToken) UnsetLastUsedAt() {
-	o.LastUsedAt.Unset()
+	o.LastUsedAt = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -418,20 +385,20 @@ func (o HostactivationJoinToken) MarshalJSON() ([]byte, error) {
 
 func (o HostactivationJoinToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeletedAt.IsSet() {
-		toSerialize["deleted_at"] = o.DeletedAt.Get()
+	if !IsNil(o.DeletedAt) {
+		toSerialize["deleted_at"] = o.DeletedAt
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.ExpiresAt.IsSet() {
-		toSerialize["expires_at"] = o.ExpiresAt.Get()
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expires_at"] = o.ExpiresAt
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.LastUsedAt.IsSet() {
-		toSerialize["last_used_at"] = o.LastUsedAt.Get()
+	if !IsNil(o.LastUsedAt) {
+		toSerialize["last_used_at"] = o.LastUsedAt
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

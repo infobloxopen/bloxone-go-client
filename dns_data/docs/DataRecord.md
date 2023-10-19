@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AbsoluteNameSpec** | Pointer to **string** | Synthetic field, used to determine _zone_ and/or _name_in_zone_ field for records. | [optional] [readonly] 
 **AbsoluteZoneName** | Pointer to **string** | The absolute domain name of the zone where this record belongs. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The description for the DNS resource record. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | The timestamp when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The timestamp when the object has been created. | [optional] [readonly] 
 **Delegation** | Pointer to **string** | The resource identifier. | [optional] 
 **Disabled** | Pointer to **bool** | Indicates if the DNS resource record is disabled. A disabled object is effectively non-existent when generating configuration.  Defaults to _false_. | [optional] 
 **DnsAbsoluteNameSpec** | Pointer to **string** | The DNS protocol textual representation of _absolute_name_spec_. | [optional] [readonly] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **map[string]interface{}** | The tags for the DNS resource record in JSON format. | [optional] 
 **Ttl** | Pointer to **int64** | The record time to live value in seconds. The range of this value is 0 to 2147483647.  Defaults to TTL value from the SOA record of the zone. | [optional] 
 **Type** | **string** | The DNS resource record type specified in the textual mnemonic format or in the \&quot;TYPEnnn\&quot; format where \&quot;nnn\&quot; indicates the numeric type value.  Value  | Numeric Type | Description -------|--------------|--------------------------------------------- A      | 1            | Address record AAAA   | 28           | IPv6 Address record CAA    | 257          | Certification Authority Authorization record CNAME  | 5            | Canonical Name record DNAME  | 39           | Delegation Name record DHCID  | 49           | DHCP Identifier record MX     | 15           | Mail Exchanger record NAPTR  | 35           | Naming Authority Pointer record NS     | 2            | Name Server record PTR    | 12           | Pointer record SOA    | 6            | Start of Authority record SRV    | 33           | Service record TXT    | 16           | Text record IBMETA | 65536        | Infoblox meta records, not valid for DNS protocol (read-only) | 
-**UpdatedAt** | Pointer to **NullableTime** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **View** | Pointer to **string** | The resource identifier. | [optional] 
 **ViewName** | Pointer to **string** | The display name of the DNS view that contains the parent zone of the DNS resource record. | [optional] [readonly] 
 **Zone** | Pointer to **string** | The resource identifier. | [optional] 
@@ -150,16 +150,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *DataRecord) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *DataRecord) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDelegation
 
 `func (o *DataRecord) GetDelegation() string`
@@ -625,16 +615,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *DataRecord) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *DataRecord) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetView
 
 `func (o *DataRecord) GetView() string`

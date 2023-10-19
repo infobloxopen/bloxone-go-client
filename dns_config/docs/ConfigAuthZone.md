@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Optional. Comment for zone configuration. | [optional] 
-**CreatedAt** | Pointer to **NullableTime** | Time when the object has been created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ConfigExternalPrimary**](ConfigExternalPrimary.md) | Optional. DNS primaries external to BloxOne DDI. Order is not significant. | [optional] 
 **ExternalProviders** | Pointer to [**[]AuthZoneExternalProvider**](AuthZoneExternalProvider.md) | list of external providers for the auth zone. | [optional] [readonly] 
@@ -28,8 +28,8 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **map[string]interface{}** | Tagging specifics. | [optional] 
 **TransferAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Clients must match this ACL to receive zone transfers. | [optional] 
 **UpdateAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Specifies which hosts are allowed to submit Dynamic DNS updates for authoritative zones of _primary_type_ _cloud_.  Defaults to empty. | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
-**UseForwardersForSubzones** | Pointer to **NullableBool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
+**UseForwardersForSubzones** | Pointer to **bool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
 **View** | Pointer to **string** | The resource identifier. | [optional] 
 **Warnings** | Pointer to [**[]ConfigWarning**](ConfigWarning.md) | The list of an auth zone warnings. | [optional] [readonly] 
 **ZoneAuthority** | Pointer to [**ConfigZoneAuthority**](ConfigZoneAuthority.md) |  | [optional] 
@@ -103,16 +103,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *ConfigAuthZone) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *ConfigAuthZone) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetDisabled
 
 `func (o *ConfigAuthZone) GetDisabled() bool`
@@ -678,16 +668,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *ConfigAuthZone) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *ConfigAuthZone) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetUseForwardersForSubzones
 
 `func (o *ConfigAuthZone) GetUseForwardersForSubzones() bool`
@@ -713,16 +693,6 @@ SetUseForwardersForSubzones sets UseForwardersForSubzones field to given value.
 
 HasUseForwardersForSubzones returns a boolean if a field has been set.
 
-### SetUseForwardersForSubzonesNil
-
-`func (o *ConfigAuthZone) SetUseForwardersForSubzonesNil(b bool)`
-
- SetUseForwardersForSubzonesNil sets the value for UseForwardersForSubzones to be an explicit nil
-
-### UnsetUseForwardersForSubzones
-`func (o *ConfigAuthZone) UnsetUseForwardersForSubzones()`
-
-UnsetUseForwardersForSubzones ensures that no value is present for UseForwardersForSubzones, not even an explicit nil
 ### GetView
 
 `func (o *ConfigAuthZone) GetView() string`

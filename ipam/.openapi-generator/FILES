@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api_address.go
 api_address_block.go
@@ -118,7 +117,6 @@ docs/IpamsvcInheritedDHCPOption.md
 docs/IpamsvcInheritedDHCPOptionItem.md
 docs/IpamsvcInheritedDHCPOptionList.md
 docs/IpamsvcInheritedHostnameRewriteBlock.md
-docs/IpamsvcInteger128.md
 docs/IpamsvcIpamHost.md
 docs/IpamsvcKerberosKey.md
 docs/IpamsvcLeaseAddress.md
@@ -288,7 +286,6 @@ model_ipamsvc_inherited_dhcp_option.go
 model_ipamsvc_inherited_dhcp_option_item.go
 model_ipamsvc_inherited_dhcp_option_list.go
 model_ipamsvc_inherited_hostname_rewrite_block.go
-model_ipamsvc_integer128.go
 model_ipamsvc_ip_space.go
 model_ipamsvc_ip_space_inheritance.go
 model_ipamsvc_ipam_host.go
@@ -369,24 +366,4 @@ model_ipamsvc_update_subnet_response.go
 model_ipamsvc_utilization.go
 model_ipamsvc_utilization_threshold.go
 model_ipamsvc_utilization_v6.go
-test/api_address_block_test.go
-test/api_address_test.go
-test/api_asm_test.go
-test/api_dhcp_host_test.go
-test/api_dns_usage_test.go
-test/api_filter_test.go
-test/api_fixed_address_test.go
-test/api_global_test.go
-test/api_ha_group_test.go
-test/api_hardware_filter_test.go
-test/api_ip_space_test.go
-test/api_ipam_host_test.go
-test/api_leases_command_test.go
-test/api_option_code_test.go
-test/api_option_filter_test.go
-test/api_option_group_test.go
-test/api_option_space_test.go
-test/api_range_test.go
-test/api_server_test.go
-test/api_subnet_test.go
 utils.go

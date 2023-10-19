@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Refresh** | Pointer to **int64** | Optional. ZoneAuthority refresh.  Defaults to 10800. | [optional] 
 **Retry** | Pointer to **int64** | Optional. ZoneAuthority retry.  Defaults to 3600. | [optional] 
 **Rname** | Pointer to **string** | Optional. ZoneAuthority rname.  Defaults to empty. | [optional] 
-**UseDefaultMname** | Pointer to **NullableBool** | Optional. Use default value for master name server.  Defaults to true. | [optional] 
+**UseDefaultMname** | Pointer to **bool** | Optional. Use default value for master name server.  Defaults to true. | [optional] 
 
 ## Methods
 
@@ -284,16 +284,6 @@ SetUseDefaultMname sets UseDefaultMname field to given value.
 
 HasUseDefaultMname returns a boolean if a field has been set.
 
-### SetUseDefaultMnameNil
-
-`func (o *ConfigZoneAuthority) SetUseDefaultMnameNil(b bool)`
-
- SetUseDefaultMnameNil sets the value for UseDefaultMname to be an explicit nil
-
-### UnsetUseDefaultMname
-`func (o *ConfigZoneAuthority) UnsetUseDefaultMname()`
-
-UnsetUseDefaultMname ensures that no value is present for UseDefaultMname, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

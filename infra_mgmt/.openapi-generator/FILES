@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api_detail.go
 api_hosts.go
@@ -63,7 +62,4 @@ model_infra_short_service_status.go
 model_infra_unassign_tags_request.go
 model_infra_update_host_response.go
 model_infra_update_service_response.go
-test/api_detail_test.go
-test/api_hosts_test.go
-test/api_services_test.go
 utils.go

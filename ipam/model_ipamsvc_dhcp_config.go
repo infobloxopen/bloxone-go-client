@@ -24,7 +24,7 @@ type IpamsvcDHCPConfig struct {
 	// The abandoned reclaim time in seconds for IPV6 clients.
 	AbandonedReclaimTimeV6 *int64 `json:"abandoned_reclaim_time_v6,omitempty"`
 	// Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured.
-	AllowUnknown NullableBool `json:"allow_unknown,omitempty"`
+	AllowUnknown *bool `json:"allow_unknown,omitempty"`
 	// Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured.
 	AllowUnknownV6 *bool `json:"allow_unknown_v6,omitempty"`
 	// The resource identifier.
@@ -122,47 +122,36 @@ func (o *IpamsvcDHCPConfig) SetAbandonedReclaimTimeV6(v int64) {
 	o.AbandonedReclaimTimeV6 = &v
 }
 
-// GetAllowUnknown returns the AllowUnknown field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowUnknown returns the AllowUnknown field value if set, zero value otherwise.
 func (o *IpamsvcDHCPConfig) GetAllowUnknown() bool {
-	if o == nil || IsNil(o.AllowUnknown.Get()) {
+	if o == nil || IsNil(o.AllowUnknown) {
 		var ret bool
 		return ret
 	}
-	return *o.AllowUnknown.Get()
+	return *o.AllowUnknown
 }
 
 // GetAllowUnknownOk returns a tuple with the AllowUnknown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcDHCPConfig) GetAllowUnknownOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AllowUnknown) {
 		return nil, false
 	}
-	return o.AllowUnknown.Get(), o.AllowUnknown.IsSet()
+	return o.AllowUnknown, true
 }
 
 // HasAllowUnknown returns a boolean if a field has been set.
 func (o *IpamsvcDHCPConfig) HasAllowUnknown() bool {
-	if o != nil && o.AllowUnknown.IsSet() {
+	if o != nil && !IsNil(o.AllowUnknown) {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowUnknown gets a reference to the given NullableBool and assigns it to the AllowUnknown field.
+// SetAllowUnknown gets a reference to the given bool and assigns it to the AllowUnknown field.
 func (o *IpamsvcDHCPConfig) SetAllowUnknown(v bool) {
-	o.AllowUnknown.Set(&v)
-}
-
-// SetAllowUnknownNil sets the value for AllowUnknown to be an explicit nil
-func (o *IpamsvcDHCPConfig) SetAllowUnknownNil() {
-	o.AllowUnknown.Set(nil)
-}
-
-// UnsetAllowUnknown ensures that no value is present for AllowUnknown, not even an explicit nil
-func (o *IpamsvcDHCPConfig) UnsetAllowUnknown() {
-	o.AllowUnknown.Unset()
+	o.AllowUnknown = &v
 }
 
 // GetAllowUnknownV6 returns the AllowUnknownV6 field value if set, zero value otherwise.
@@ -405,8 +394,8 @@ func (o IpamsvcDHCPConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AbandonedReclaimTimeV6) {
 		toSerialize["abandoned_reclaim_time_v6"] = o.AbandonedReclaimTimeV6
 	}
-	if o.AllowUnknown.IsSet() {
-		toSerialize["allow_unknown"] = o.AllowUnknown.Get()
+	if !IsNil(o.AllowUnknown) {
+		toSerialize["allow_unknown"] = o.AllowUnknown
 	}
 	if !IsNil(o.AllowUnknownV6) {
 		toSerialize["allow_unknown_v6"] = o.AllowUnknownV6

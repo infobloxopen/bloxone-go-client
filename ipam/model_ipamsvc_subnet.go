@@ -30,7 +30,7 @@ type IpamsvcSubnet struct {
 	// The description for the subnet. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Time when the object has been created.
-	CreatedAt NullableTime `json:"created_at,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Controls who does the DDNS updates.  Valid values are: * _client_: DHCP server updates DNS if requested by client. * _server_: DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _ignore_: DHCP server always updates DNS, even if the client says not to. * _over_client_update_: Same as _server_. DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _over_no_update_: DHCP server updates DNS even if the client requests that no updates be done. If the client requests to do the update, DHCP server allows it.  Defaults to _client_.
 	DdnsClientUpdate *string `json:"ddns_client_update,omitempty"`
 	// The mode used for resolving conflicts while performing DDNS updates.  Valid values are: * _check_with_dhcid_: It includes adding a DHCID record and checking that record via conflict detection as per RFC 4703. * _no_check_with_dhcid_: This will ignore conflict detection but add a DHCID record when creating/updating an entry. * _check_exists_with_dhcid_: This will check if there is an existing DHCID record but does not verify the value of the record matches the update. This will also update the DHCID record for the entry. * _no_check_without_dhcid_: This ignores conflict detection and will not add a DHCID record when creating/updating a DDNS entry.  Defaults to _check_with_dhcid_.
@@ -42,13 +42,13 @@ type IpamsvcSubnet struct {
 	// The prefix used in the generation of an FQDN.  When generating a name, DHCP server will construct the name in the format: [ddns-generated-prefix]-[address-text].[ddns-qualifying-suffix]. where address-text is simply the lease IP address converted to a hyphenated string.  Defaults to \"myhost\".
 	DdnsGeneratedPrefix *string `json:"ddns_generated_prefix,omitempty"`
 	// Determines if DDNS updates are enabled at the subnet level. Defaults to _true_.
-	DdnsSendUpdates NullableBool `json:"ddns_send_updates,omitempty"`
+	DdnsSendUpdates *bool `json:"ddns_send_updates,omitempty"`
 	// DDNS TTL value - to be calculated as a simple percentage of the lease's lifetime, using the parameter's value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified.
 	DdnsTtlPercent *float32 `json:"ddns_ttl_percent,omitempty"`
 	// Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_.
 	DdnsUpdateOnRenew *bool `json:"ddns_update_on_renew,omitempty"`
 	// When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_.
-	DdnsUseConflictResolution NullableBool       `json:"ddns_use_conflict_resolution,omitempty"`
+	DdnsUseConflictResolution *bool              `json:"ddns_use_conflict_resolution,omitempty"`
 	DhcpConfig                *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
 	// The resource identifier.
 	DhcpHost *string `json:"dhcp_host,omitempty"`
@@ -96,7 +96,7 @@ type IpamsvcSubnet struct {
 	Tags      map[string]interface{}       `json:"tags,omitempty"`
 	Threshold *IpamsvcUtilizationThreshold `json:"threshold,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
-	UpdatedAt NullableTime `json:"updated_at,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// The usage is a combination of indicators, each tracking a specific associated use. Listed below are usage indicators with their meaning:  usage indicator        | description  ---------------------- | --------------------------------  _IPAM_                 |  Subnet is managed in BloxOne DDI.  _DHCP_                 |  Subnet is served by a DHCP Host.  _DISCOVERED_           |  Subnet is discovered by some network discovery probe like Network Insight or NetMRI in NIOS.
 	Usage         []string              `json:"usage,omitempty"`
 	Utilization   *IpamsvcUtilization   `json:"utilization,omitempty"`
@@ -274,47 +274,36 @@ func (o *IpamsvcSubnet) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IpamsvcSubnet) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcSubnet) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IpamsvcSubnet) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *IpamsvcSubnet) SetCreatedAt(v time.Time) {
-	o.CreatedAt.Set(&v)
-}
-
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *IpamsvcSubnet) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *IpamsvcSubnet) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetDdnsClientUpdate returns the DdnsClientUpdate field value if set, zero value otherwise.
@@ -477,47 +466,36 @@ func (o *IpamsvcSubnet) SetDdnsGeneratedPrefix(v string) {
 	o.DdnsGeneratedPrefix = &v
 }
 
-// GetDdnsSendUpdates returns the DdnsSendUpdates field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDdnsSendUpdates returns the DdnsSendUpdates field value if set, zero value otherwise.
 func (o *IpamsvcSubnet) GetDdnsSendUpdates() bool {
-	if o == nil || IsNil(o.DdnsSendUpdates.Get()) {
+	if o == nil || IsNil(o.DdnsSendUpdates) {
 		var ret bool
 		return ret
 	}
-	return *o.DdnsSendUpdates.Get()
+	return *o.DdnsSendUpdates
 }
 
 // GetDdnsSendUpdatesOk returns a tuple with the DdnsSendUpdates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcSubnet) GetDdnsSendUpdatesOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DdnsSendUpdates) {
 		return nil, false
 	}
-	return o.DdnsSendUpdates.Get(), o.DdnsSendUpdates.IsSet()
+	return o.DdnsSendUpdates, true
 }
 
 // HasDdnsSendUpdates returns a boolean if a field has been set.
 func (o *IpamsvcSubnet) HasDdnsSendUpdates() bool {
-	if o != nil && o.DdnsSendUpdates.IsSet() {
+	if o != nil && !IsNil(o.DdnsSendUpdates) {
 		return true
 	}
 
 	return false
 }
 
-// SetDdnsSendUpdates gets a reference to the given NullableBool and assigns it to the DdnsSendUpdates field.
+// SetDdnsSendUpdates gets a reference to the given bool and assigns it to the DdnsSendUpdates field.
 func (o *IpamsvcSubnet) SetDdnsSendUpdates(v bool) {
-	o.DdnsSendUpdates.Set(&v)
-}
-
-// SetDdnsSendUpdatesNil sets the value for DdnsSendUpdates to be an explicit nil
-func (o *IpamsvcSubnet) SetDdnsSendUpdatesNil() {
-	o.DdnsSendUpdates.Set(nil)
-}
-
-// UnsetDdnsSendUpdates ensures that no value is present for DdnsSendUpdates, not even an explicit nil
-func (o *IpamsvcSubnet) UnsetDdnsSendUpdates() {
-	o.DdnsSendUpdates.Unset()
+	o.DdnsSendUpdates = &v
 }
 
 // GetDdnsTtlPercent returns the DdnsTtlPercent field value if set, zero value otherwise.
@@ -584,47 +562,36 @@ func (o *IpamsvcSubnet) SetDdnsUpdateOnRenew(v bool) {
 	o.DdnsUpdateOnRenew = &v
 }
 
-// GetDdnsUseConflictResolution returns the DdnsUseConflictResolution field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDdnsUseConflictResolution returns the DdnsUseConflictResolution field value if set, zero value otherwise.
 func (o *IpamsvcSubnet) GetDdnsUseConflictResolution() bool {
-	if o == nil || IsNil(o.DdnsUseConflictResolution.Get()) {
+	if o == nil || IsNil(o.DdnsUseConflictResolution) {
 		var ret bool
 		return ret
 	}
-	return *o.DdnsUseConflictResolution.Get()
+	return *o.DdnsUseConflictResolution
 }
 
 // GetDdnsUseConflictResolutionOk returns a tuple with the DdnsUseConflictResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcSubnet) GetDdnsUseConflictResolutionOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DdnsUseConflictResolution) {
 		return nil, false
 	}
-	return o.DdnsUseConflictResolution.Get(), o.DdnsUseConflictResolution.IsSet()
+	return o.DdnsUseConflictResolution, true
 }
 
 // HasDdnsUseConflictResolution returns a boolean if a field has been set.
 func (o *IpamsvcSubnet) HasDdnsUseConflictResolution() bool {
-	if o != nil && o.DdnsUseConflictResolution.IsSet() {
+	if o != nil && !IsNil(o.DdnsUseConflictResolution) {
 		return true
 	}
 
 	return false
 }
 
-// SetDdnsUseConflictResolution gets a reference to the given NullableBool and assigns it to the DdnsUseConflictResolution field.
+// SetDdnsUseConflictResolution gets a reference to the given bool and assigns it to the DdnsUseConflictResolution field.
 func (o *IpamsvcSubnet) SetDdnsUseConflictResolution(v bool) {
-	o.DdnsUseConflictResolution.Set(&v)
-}
-
-// SetDdnsUseConflictResolutionNil sets the value for DdnsUseConflictResolution to be an explicit nil
-func (o *IpamsvcSubnet) SetDdnsUseConflictResolutionNil() {
-	o.DdnsUseConflictResolution.Set(nil)
-}
-
-// UnsetDdnsUseConflictResolution ensures that no value is present for DdnsUseConflictResolution, not even an explicit nil
-func (o *IpamsvcSubnet) UnsetDdnsUseConflictResolution() {
-	o.DdnsUseConflictResolution.Unset()
+	o.DdnsUseConflictResolution = &v
 }
 
 // GetDhcpConfig returns the DhcpConfig field value if set, zero value otherwise.
@@ -1419,47 +1386,36 @@ func (o *IpamsvcSubnet) SetThreshold(v IpamsvcUtilizationThreshold) {
 	o.Threshold = &v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IpamsvcSubnet) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt.Get()
+	return *o.UpdatedAt
 }
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpamsvcSubnet) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
-	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
+	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IpamsvcSubnet) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt.IsSet() {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *IpamsvcSubnet) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt.Set(&v)
-}
-
-// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-func (o *IpamsvcSubnet) SetUpdatedAtNil() {
-	o.UpdatedAt.Set(nil)
-}
-
-// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
-func (o *IpamsvcSubnet) UnsetUpdatedAt() {
-	o.UpdatedAt.Unset()
+	o.UpdatedAt = &v
 }
 
 // GetUsage returns the Usage field value if set, zero value otherwise.
@@ -1581,8 +1537,8 @@ func (o IpamsvcSubnet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["created_at"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if !IsNil(o.DdnsClientUpdate) {
 		toSerialize["ddns_client_update"] = o.DdnsClientUpdate
@@ -1599,8 +1555,8 @@ func (o IpamsvcSubnet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsGeneratedPrefix) {
 		toSerialize["ddns_generated_prefix"] = o.DdnsGeneratedPrefix
 	}
-	if o.DdnsSendUpdates.IsSet() {
-		toSerialize["ddns_send_updates"] = o.DdnsSendUpdates.Get()
+	if !IsNil(o.DdnsSendUpdates) {
+		toSerialize["ddns_send_updates"] = o.DdnsSendUpdates
 	}
 	if !IsNil(o.DdnsTtlPercent) {
 		toSerialize["ddns_ttl_percent"] = o.DdnsTtlPercent
@@ -1608,8 +1564,8 @@ func (o IpamsvcSubnet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsUpdateOnRenew) {
 		toSerialize["ddns_update_on_renew"] = o.DdnsUpdateOnRenew
 	}
-	if o.DdnsUseConflictResolution.IsSet() {
-		toSerialize["ddns_use_conflict_resolution"] = o.DdnsUseConflictResolution.Get()
+	if !IsNil(o.DdnsUseConflictResolution) {
+		toSerialize["ddns_use_conflict_resolution"] = o.DdnsUseConflictResolution
 	}
 	if !IsNil(o.DhcpConfig) {
 		toSerialize["dhcp_config"] = o.DhcpConfig
@@ -1684,8 +1640,8 @@ func (o IpamsvcSubnet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Threshold) {
 		toSerialize["threshold"] = o.Threshold
 	}
-	if o.UpdatedAt.IsSet() {
-		toSerialize["updated_at"] = o.UpdatedAt.Get()
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	if !IsNil(o.Usage) {
 		toSerialize["usage"] = o.Usage
