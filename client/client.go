@@ -6,7 +6,6 @@ import (
 	"github.com/infobloxopen/bloxone-go-client/dns_data"
 	"github.com/infobloxopen/bloxone-go-client/infra_mgmt"
 	"github.com/infobloxopen/bloxone-go-client/infra_provision"
-	"github.com/infobloxopen/bloxone-go-client/internal"
 	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
@@ -20,16 +19,16 @@ type APIClient struct {
 }
 
 // NewAPIClient creates a new BloxOne API Client.
-func NewAPIClient(host string, apiKey string) *APIClient {
-	conf := internal.NewConfiguration()
-	conf.Host = host
-	conf.AddDefaultHeader("Authorization", "Token "+apiKey)
-
-	return &APIClient{
-		IPAddressManagementAPI: ipam.NewAPIClient(conf),
-		DNSConfigurationAPI:    dns_config.NewAPIClient(conf),
-		DNSDataAPI:             dns_data.NewAPIClient(conf),
-		HostActivationAPI:      infra_provision.NewAPIClient(conf),
-		InfraManagementAPI:     infra_mgmt.NewAPIClient(conf),
+func NewAPIClient(conf Configuration) (*APIClient, error) {
+	c, err := conf.internal()
+	if err != nil {
+		return nil, err
 	}
+	return &APIClient{
+		IPAddressManagementAPI: ipam.NewAPIClient(c),
+		DNSConfigurationAPI:    dns_config.NewAPIClient(c),
+		DNSDataAPI:             dns_data.NewAPIClient(c),
+		HostActivationAPI:      infra_provision.NewAPIClient(c),
+		InfraManagementAPI:     infra_mgmt.NewAPIClient(c),
+	}, nil
 }
