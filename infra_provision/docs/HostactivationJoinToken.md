@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeletedAt** | Pointer to **time.Time** |  | [optional] 
+**DeletedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Description** | Pointer to **string** |  | [optional] 
 **ExpiresAt** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**LastUsedAt** | Pointer to **time.Time** |  | [optional] 
+**LastUsedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**JoinTokenJoinTokenStatus**](JoinTokenJoinTokenStatus.md) |  | [optional] [default to JOINTOKENJOINTOKENSTATUS_UNKNOWN]
-**Tags** | Pointer to [**TypesJSONValue**](TypesJSONValue.md) |  | [optional] 
-**TokenId** | Pointer to **string** | first half of the token. | [optional] 
-**UseCounter** | Pointer to **int64** |  | [optional] 
+**Tags** | Pointer to **map[string]interface{}** |  | [optional] 
+**TokenId** | Pointer to **string** | first half of the token. | [optional] [readonly] 
+**UseCounter** | Pointer to **int64** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -211,20 +211,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *HostactivationJoinToken) GetTags() TypesJSONValue`
+`func (o *HostactivationJoinToken) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *HostactivationJoinToken) GetTagsOk() (*TypesJSONValue, bool)`
+`func (o *HostactivationJoinToken) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *HostactivationJoinToken) SetTags(v TypesJSONValue)`
+`func (o *HostactivationJoinToken) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 
