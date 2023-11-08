@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the Service (unique). | 
 **PoolId** | **string** | The resource identifier. | 
 **ServiceType** | **string** | The type of the Service deployed on the Host (&#x60;dns&#x60;, &#x60;cdc&#x60;, etc.). | 
-**Tags** | Pointer to **map[string]map[string]interface{}** | Tags associated with this Service. | [optional] 
+**Tags** | Pointer to **map[string]interface{}** | Tags associated with this Service. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Timestamp of the latest update on Service. | [optional] [readonly] 
 
 ## Methods
@@ -273,20 +273,20 @@ SetServiceType sets ServiceType field to given value.
 
 ### GetTags
 
-`func (o *InfraService) GetTags() map[string]map[string]interface{}`
+`func (o *InfraService) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *InfraService) GetTagsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraService) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *InfraService) SetTags(v map[string]map[string]interface{})`
+`func (o *InfraService) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 

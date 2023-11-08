@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewInfraHost("DisplayName_example", "PoolId_example") // InfraHost | 
+    body := *openapiclient.NewInfraHost("DisplayName_example") // InfraHost | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -597,7 +597,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewInfraHost("DisplayName_example", "PoolId_example") // InfraHost | 
+    body := *openapiclient.NewInfraHost("DisplayName_example") // InfraHost | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

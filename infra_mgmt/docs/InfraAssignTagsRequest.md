@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ids** | Pointer to **[]string** | The resource identifier. | [optional] 
 **Override** | Pointer to **bool** |  | [optional] 
-**Tags** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasOverride returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *InfraAssignTagsRequest) GetTags() map[string]map[string]interface{}`
+`func (o *InfraAssignTagsRequest) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *InfraAssignTagsRequest) GetTagsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraAssignTagsRequest) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *InfraAssignTagsRequest) SetTags(v map[string]map[string]interface{})`
+`func (o *InfraAssignTagsRequest) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 

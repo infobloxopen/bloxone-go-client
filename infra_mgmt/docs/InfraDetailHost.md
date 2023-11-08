@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CompositeStatus** | Pointer to **string** | Composite Status of this Host (&#x60;online&#x60;, &#x60;degraded&#x60;, &#x60;error&#x60;, &#x60;offline&#x60;, &#x60;pending&#x60;, &#x60;awaiting approval&#x60;). | [optional] 
 **Configs** | Pointer to [**[]InfraDetailHostServiceConfig**](InfraDetailHostServiceConfig.md) | The list of Host-specific configurations for each Service deployed on this Host. | [optional] 
-**ConnectivityMonitor** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**ConnectivityMonitor** | Pointer to **map[string]interface{}** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The timestamp of creation of Host. | [optional] 
 **Description** | Pointer to **string** | The description of the Host. | [optional] 
 **DisplayName** | Pointer to **string** | The name of the Host. | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **SerialNumber** | Pointer to **string** | The unique serial number of the Host. | [optional] 
 **Services** | Pointer to [**[]InfraDetailHostServiceConfig**](InfraDetailHostServiceConfig.md) | The list of Services deployed on this Host. | [optional] 
 **SiteId** | Pointer to **string** | The Site ID of the Host. | [optional] 
-**Tags** | Pointer to **map[string]map[string]interface{}** | Tags associated with this Host. | [optional] 
+**Tags** | Pointer to **map[string]interface{}** | Tags associated with this Host. | [optional] 
 **Timezone** | Pointer to **string** | The timezone of the Host. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The timestamp of the latest update on Host. | [optional] 
 
@@ -101,20 +101,20 @@ HasConfigs returns a boolean if a field has been set.
 
 ### GetConnectivityMonitor
 
-`func (o *InfraDetailHost) GetConnectivityMonitor() map[string]map[string]interface{}`
+`func (o *InfraDetailHost) GetConnectivityMonitor() map[string]interface{}`
 
 GetConnectivityMonitor returns the ConnectivityMonitor field if non-nil, zero value otherwise.
 
 ### GetConnectivityMonitorOk
 
-`func (o *InfraDetailHost) GetConnectivityMonitorOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraDetailHost) GetConnectivityMonitorOk() (*map[string]interface{}, bool)`
 
 GetConnectivityMonitorOk returns a tuple with the ConnectivityMonitor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectivityMonitor
 
-`func (o *InfraDetailHost) SetConnectivityMonitor(v map[string]map[string]interface{})`
+`func (o *InfraDetailHost) SetConnectivityMonitor(v map[string]interface{})`
 
 SetConnectivityMonitor sets ConnectivityMonitor field to given value.
 
@@ -601,20 +601,20 @@ HasSiteId returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *InfraDetailHost) GetTags() map[string]map[string]interface{}`
+`func (o *InfraDetailHost) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *InfraDetailHost) GetTagsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraDetailHost) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *InfraDetailHost) SetTags(v map[string]map[string]interface{})`
+`func (o *InfraDetailHost) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 
