@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **map[string]map[string]interface{}** | The address of the Location containing address, postal_code, city, state, and country. | [optional] 
+**Address** | Pointer to **map[string]interface{}** | The address of the Location containing address, postal_code, city, state, and country. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Latitude** | Pointer to **float64** | Latitude of the Location. | [optional] 
 **Longitude** | Pointer to **float64** | Longitude of the Location. | [optional] 
-**Metadata** | Pointer to **map[string]map[string]interface{}** | The metadata of the Location which could contain other info such as attributions. | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | The metadata of the Location which could contain other info such as attributions. | [optional] 
 
 ## Methods
 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAddress
 
-`func (o *InfraDetailLocation) GetAddress() map[string]map[string]interface{}`
+`func (o *InfraDetailLocation) GetAddress() map[string]interface{}`
 
 GetAddress returns the Address field if non-nil, zero value otherwise.
 
 ### GetAddressOk
 
-`func (o *InfraDetailLocation) GetAddressOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraDetailLocation) GetAddressOk() (*map[string]interface{}, bool)`
 
 GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddress
 
-`func (o *InfraDetailLocation) SetAddress(v map[string]map[string]interface{})`
+`func (o *InfraDetailLocation) SetAddress(v map[string]interface{})`
 
 SetAddress sets Address field to given value.
 
@@ -131,20 +131,20 @@ HasLongitude returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *InfraDetailLocation) GetMetadata() map[string]map[string]interface{}`
+`func (o *InfraDetailLocation) GetMetadata() map[string]interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *InfraDetailLocation) GetMetadataOk() (*map[string]map[string]interface{}, bool)`
+`func (o *InfraDetailLocation) GetMetadataOk() (*map[string]interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *InfraDetailLocation) SetMetadata(v map[string]map[string]interface{})`
+`func (o *InfraDetailLocation) SetMetadata(v map[string]interface{})`
 
 SetMetadata sets Metadata field to given value.
 
