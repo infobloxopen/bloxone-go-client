@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | The address field in form “a.b.c.d/n” where the “/n” may be omitted. In this case, the CIDR value must be defined in the _cidr_ field. When reading, the _address_ field is always in the form “a.b.c.d”. | 
+**Address** | Pointer to **string** | The address field in form “a.b.c.d/n” where the “/n” may be omitted. In this case, the CIDR value must be defined in the _cidr_ field. When reading, the _address_ field is always in the form “a.b.c.d”. | [optional] 
 **AsmConfig** | Pointer to [**IpamsvcASMConfig**](IpamsvcASMConfig.md) |  | [optional] 
 **AsmScopeFlag** | Pointer to **int64** | Incremented by 1 if the IP address usage limits for automated scope management are exceeded for any subnets in the address block. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The CIDR of the address block. This is required, if _address_ does not specify it in its input. | [optional] 
@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **DhcpConfig** | Pointer to [**IpamsvcDHCPConfig**](IpamsvcDHCPConfig.md) |  | [optional] 
 **DhcpOptions** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The list of DHCP options for the address block. May be either a specific option or a group of options. | [optional] 
 **DhcpUtilization** | Pointer to [**IpamsvcDHCPUtilization**](IpamsvcDHCPUtilization.md) |  | [optional] 
-**DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this address block in JSON format. | [optional] 
-**DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this address block in JSON format. | [optional] 
+**DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this address block in JSON format. | [optional] [readonly] 
+**DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this address block in JSON format. | [optional] [readonly] 
 **HeaderOptionFilename** | Pointer to **string** | The configuration for header option filename field. | [optional] 
 **HeaderOptionServerAddress** | Pointer to **string** | The configuration for header option server address field. | [optional] 
 **HeaderOptionServerName** | Pointer to **string** | The configuration for header option server name field. | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the address block. May contain 1 to 256 characters. Can include UTF-8. | [optional] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **Protocol** | Pointer to **string** | The type of protocol of address block (_ip4_ or _ip6_). | [optional] [readonly] 
-**Space** | **string** | The resource identifier. | 
+**Space** | Pointer to **string** | The resource identifier. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the address block in JSON format. | [optional] 
 **Threshold** | Pointer to [**IpamsvcUtilizationThreshold**](IpamsvcUtilizationThreshold.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 
 ### NewIpamsvcAddressBlock
 
-`func NewIpamsvcAddressBlock(address string, space string, ) *IpamsvcAddressBlock`
+`func NewIpamsvcAddressBlock() *IpamsvcAddressBlock`
 
 NewIpamsvcAddressBlock instantiates a new IpamsvcAddressBlock object
 This constructor will assign default values to properties that have it defined,
@@ -82,6 +82,11 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+### HasAddress
+
+`func (o *IpamsvcAddressBlock) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetAsmConfig
 
@@ -877,6 +882,11 @@ and a boolean to check if the value has been set.
 
 SetSpace sets Space field to given value.
 
+### HasSpace
+
+`func (o *IpamsvcAddressBlock) HasSpace() bool`
+
+HasSpace returns a boolean if a field has been set.
 
 ### GetTags
 

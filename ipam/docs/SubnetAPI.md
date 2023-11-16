@@ -108,7 +108,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcSubnet("Address_example", "Space_example") // IpamsvcSubnet | 
+    body := *openapiclient.NewIpamsvcSubnet() // IpamsvcSubnet | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## SubnetCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse SubnetCreateNextAvailableIP(ctx, id).Execute()
+> IpamsvcCreateNextAvailableIPResponse SubnetCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -175,10 +175,12 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
+    contiguous := true // bool | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. (optional) (default to false)
+    count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional) (default to 1)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), id).Execute()
+    resp, r, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCreateNextAvailableIP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,6 +206,8 @@ Other parameters are passed through a pointer to a apiSubnetCreateNextAvailableI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **contiguous** | **bool** | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. | [default to false]
+ **count** | **int32** | The number of IP addresses requested.  Defaults to 1. | [default to 1]
 
 ### Return type
 
@@ -539,7 +543,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcSubnet("Address_example", "Space_example") // IpamsvcSubnet | 
+    body := *openapiclient.NewIpamsvcSubnet() // IpamsvcSubnet | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | The address of the subnet in the form “a.b.c.d/n” where the “/n” may be omitted. In this case, the CIDR value must be defined in the _cidr_ field. When reading, the _address_ field is always in the form “a.b.c.d”. | 
+**Address** | Pointer to **string** | The address of the subnet in the form “a.b.c.d/n” where the “/n” may be omitted. In this case, the CIDR value must be defined in the _cidr_ field. When reading, the _address_ field is always in the form “a.b.c.d”. | [optional] 
 **AsmConfig** | Pointer to [**IpamsvcASMConfig**](IpamsvcASMConfig.md) |  | [optional] 
 **AsmScopeFlag** | Pointer to **int64** | Set to 1 to indicate that the subnet may run out of addresses. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The CIDR of the subnet. This is required if _address_ does not include CIDR. | [optional] 
@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 **DhcpOptions** | Pointer to [**[]IpamsvcOptionItem**](IpamsvcOptionItem.md) | The DHCP options of the subnet. This can either be a specific option or a group of options. | [optional] 
 **DhcpUtilization** | Pointer to [**IpamsvcDHCPUtilization**](IpamsvcDHCPUtilization.md) |  | [optional] 
 **DisableDhcp** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration.  Defaults to _false_. | [optional] 
-**DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this subnet in JSON format. | [optional] 
-**DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this subnet in JSON format. | [optional] 
+**DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this subnet in JSON format. | [optional] [readonly] 
+**DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this subnet in JSON format. | [optional] [readonly] 
 **HeaderOptionFilename** | Pointer to **string** | The configuration for header option filename field. | [optional] 
 **HeaderOptionServerAddress** | Pointer to **string** | The configuration for header option server address field. | [optional] 
 **HeaderOptionServerName** | Pointer to **string** | The configuration for header option server name field. | [optional] 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **Protocol** | Pointer to **string** | The type of protocol of the subnet (_ip4_ or _ip6_). | [optional] [readonly] 
 **RebindTime** | Pointer to **int64** | The lease rebind time (T2) in seconds. | [optional] 
 **RenewTime** | Pointer to **int64** | The lease renew time (T1) in seconds. | [optional] 
-**Space** | **string** | The resource identifier. | 
+**Space** | Pointer to **string** | The resource identifier. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the subnet in JSON format. | [optional] 
 **Threshold** | Pointer to [**IpamsvcUtilizationThreshold**](IpamsvcUtilizationThreshold.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
@@ -53,7 +53,7 @@ Name | Type | Description | Notes
 
 ### NewIpamsvcSubnet
 
-`func NewIpamsvcSubnet(address string, space string, ) *IpamsvcSubnet`
+`func NewIpamsvcSubnet() *IpamsvcSubnet`
 
 NewIpamsvcSubnet instantiates a new IpamsvcSubnet object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +87,11 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+### HasAddress
+
+`func (o *IpamsvcSubnet) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetAsmConfig
 
@@ -1007,6 +1012,11 @@ and a boolean to check if the value has been set.
 
 SetSpace sets Space field to given value.
 
+### HasSpace
+
+`func (o *IpamsvcSubnet) HasSpace() bool`
+
+HasSpace returns a boolean if a field has been set.
 
 ### GetTags
 

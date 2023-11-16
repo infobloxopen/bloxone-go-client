@@ -112,7 +112,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcAddressBlock("Address_example", "Space_example") // IpamsvcAddressBlock | 
+    body := *openapiclient.NewIpamsvcAddressBlock() // IpamsvcAddressBlock | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableAB
 
-> IpamsvcCreateNextAvailableABResponse AddressBlockCreateNextAvailableAB(ctx, id).Execute()
+> IpamsvcCreateNextAvailableABResponse AddressBlockCreateNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
 
 Create the Next Available Address Block object.
 
@@ -179,10 +179,14 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
+    cidr := int32(56) // int32 | The cidr value of address blocks to be created.
+    count := int32(56) // int32 | Number of address blocks to generate. Default 1 if not set. (optional) (default to 1)
+    name := "name_example" // string | Name of next available address blocks. (optional)
+    comment := "comment_example" // string | Comment of next available address blocks. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableAB(context.Background(), id).Execute()
+    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableAB(context.Background(), id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableAB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,6 +212,10 @@ Other parameters are passed through a pointer to a apiAddressBlockCreateNextAvai
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cidr** | **int32** | The cidr value of address blocks to be created. | 
+ **count** | **int32** | Number of address blocks to generate. Default 1 if not set. | [default to 1]
+ **name** | **string** | Name of next available address blocks. | 
+ **comment** | **string** | Comment of next available address blocks. | 
 
 ### Return type
 
@@ -229,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse AddressBlockCreateNextAvailableIP(ctx, id).Execute()
+> IpamsvcCreateNextAvailableIPResponse AddressBlockCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -249,10 +257,12 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
+    contiguous := true // bool | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. (optional) (default to false)
+    count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional) (default to 1)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableIP(context.Background(), id).Execute()
+    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableIP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,6 +288,8 @@ Other parameters are passed through a pointer to a apiAddressBlockCreateNextAvai
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **contiguous** | **bool** | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. | [default to false]
+ **count** | **int32** | The number of IP addresses requested.  Defaults to 1. | [default to 1]
 
 ### Return type
 
@@ -299,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableSubnet
 
-> IpamsvcCreateNextAvailableSubnetResponse AddressBlockCreateNextAvailableSubnet(ctx, id).Execute()
+> IpamsvcCreateNextAvailableSubnetResponse AddressBlockCreateNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
 
 Create the Next Available Subnet object.
 
@@ -319,10 +331,15 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
+    cidr := int32(56) // int32 | The cidr value of subnets to be created.
+    count := int32(56) // int32 | Number of subnets to generate. Default 1 if not set. (optional) (default to 1)
+    name := "name_example" // string | Name of next available subnets. (optional)
+    comment := "comment_example" // string | Comment of next available subnets. (optional)
+    dhcpHost := "dhcpHost_example" // string | Reference of OnPrem Host associated with the next available subnets to be created. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableSubnet(context.Background(), id).Execute()
+    resp, r, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableSubnet(context.Background(), id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableSubnet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,6 +365,11 @@ Other parameters are passed through a pointer to a apiAddressBlockCreateNextAvai
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cidr** | **int32** | The cidr value of subnets to be created. | 
+ **count** | **int32** | Number of subnets to generate. Default 1 if not set. | [default to 1]
+ **name** | **string** | Name of next available subnets. | 
+ **comment** | **string** | Comment of next available subnets. | 
+ **dhcpHost** | **string** | Reference of OnPrem Host associated with the next available subnets to be created. | 
 
 ### Return type
 
@@ -841,7 +863,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcAddressBlock("Address_example", "Space_example") // IpamsvcAddressBlock | 
+    body := *openapiclient.NewIpamsvcAddressBlock() // IpamsvcAddressBlock | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
