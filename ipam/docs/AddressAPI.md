@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcAddress("Address_example", "Space_example") // IpamsvcAddress | 
+    body := *openapiclient.NewIpamsvcAddress("Address_example") // IpamsvcAddress | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -324,7 +324,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcAddress("Address_example", "Space_example") // IpamsvcAddress | 
+    body := *openapiclient.NewIpamsvcAddress("Address_example") // IpamsvcAddress | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

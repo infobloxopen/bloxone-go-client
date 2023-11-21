@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AsmThreshold** | Pointer to **int64** | ASM shows the number of addresses forecast to be used _forecast_period_ days in the future, if it is greater than _asm_threshold_ percent * _dhcp_total_ (see _dhcp_utilization_) then the subnet is flagged. | [optional] 
-**Enable** | Pointer to **bool** | Indicates if Automated Scope Management is enabled. | [optional] 
-**EnableNotification** | Pointer to **bool** | Indicates if ASM should send notifications to the user. | [optional] 
-**ForecastPeriod** | Pointer to **int64** | The forecast period in days. | [optional] 
-**GrowthFactor** | Pointer to **int64** | Indicates the growth in the number or percentage of IP addresses. | [optional] 
-**GrowthType** | Pointer to **string** | The type of factor to use: _percent_ or _count_. | [optional] 
-**History** | Pointer to **int64** | The minimum amount of history needed before ASM can run on this subnet. | [optional] 
-**MinTotal** | Pointer to **int64** | The minimum size of range needed for ASM to run on this subnet. | [optional] 
-**MinUnused** | Pointer to **int64** | The minimum percentage of addresses that must be available outside of the DHCP ranges and fixed addresses when making a suggested change.. | [optional] 
+**AsmThreshold** | Pointer to **int64** | ASM shows the number of addresses forecast to be used _forecast_period_ days in the future, if it is greater than _asm_threshold_ percent * _dhcp_total_ (see _dhcp_utilization_) then the subnet is flagged. | [optional] [default to 90]
+**Enable** | Pointer to **bool** | Indicates if Automated Scope Management is enabled. | [optional] [default to true]
+**EnableNotification** | Pointer to **bool** | Indicates if ASM should send notifications to the user. | [optional] [default to true]
+**ForecastPeriod** | Pointer to **int64** | The forecast period in days. | [optional] [default to 14]
+**GrowthFactor** | Pointer to **int64** | Indicates the growth in the number or percentage of IP addresses. | [optional] [default to 20]
+**GrowthType** | Pointer to **string** | The type of factor to use: _percent_ or _count_. | [optional] [default to "percent"]
+**History** | Pointer to **int64** | The minimum amount of history needed before ASM can run on this subnet. | [optional] [default to 30]
+**MinTotal** | Pointer to **int64** | The minimum size of range needed for ASM to run on this subnet. | [optional] [default to 10]
+**MinUnused** | Pointer to **int64** | The minimum percentage of addresses that must be available outside of the DHCP ranges and fixed addresses when making a suggested change.. | [optional] [default to 10]
 **ReenableDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods

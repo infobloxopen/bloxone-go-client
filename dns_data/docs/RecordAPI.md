@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewDataRecord(map[string]interface{}(123), "Type_example") // DataRecord | 
+    body := *openapiclient.NewDataRecord(map[string]interface{}(123)) // DataRecord | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -393,7 +393,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewDataRecord(map[string]interface{}(123), "Type_example") // DataRecord | 
+    body := *openapiclient.NewDataRecord(map[string]interface{}(123)) // DataRecord | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

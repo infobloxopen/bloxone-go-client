@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ExternalPrimaries** | Pointer to [**[]ConfigExternalPrimary**](ConfigExternalPrimary.md) | Optional. DNS primaries external to BloxOne DDI. Order is not significant. | [optional] 
 **ExternalProviders** | Pointer to [**[]AuthZoneExternalProvider**](AuthZoneExternalProvider.md) | list of external providers for the auth zone. | [optional] [readonly] 
 **ExternalSecondaries** | Pointer to [**[]ConfigExternalSecondary**](ConfigExternalSecondary.md) | DNS secondaries external to BloxOne DDI. Order is not significant. | [optional] 
-**Fqdn** | **string** | Zone FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | 
+**Fqdn** | Pointer to **string** | Zone FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | [optional] 
 **GssTsigEnabled** | Pointer to **bool** | _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **InheritanceAssignedHosts** | Pointer to [**[]Inheritance2AssignedHost**](Inheritance2AssignedHost.md) | The list of the inheritance assigned hosts of the object. | [optional] [readonly] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Notify** | Pointer to **bool** | Also notify all external secondary DNS servers if enabled.  Defaults to _false_. | [optional] 
 **Nsgs** | Pointer to **[]string** | The resource identifier. | [optional] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
-**PrimaryType** | **string** | Primary type for an authoritative zone. Read only after creation. Allowed values:  * _external_: zone data owned by an external nameserver,  * _cloud_: zone data is owned by a BloxOne DDI host. | 
+**PrimaryType** | Pointer to **string** | Primary type for an authoritative zone. Read only after creation. Allowed values:  * _external_: zone data owned by an external nameserver,  * _cloud_: zone data is owned by a BloxOne DDI host. | [optional] 
 **ProtocolFqdn** | Pointer to **string** | Zone FQDN in punycode. | [optional] [readonly] 
 **QueryAcl** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Optional. Clients must match this ACL to make authoritative queries. Also used for recursive queries if that ACL is unset.  Defaults to empty. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | Tagging specifics. | [optional] 
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewConfigAuthZone
 
-`func NewConfigAuthZone(fqdn string, primaryType string, ) *ConfigAuthZone`
+`func NewConfigAuthZone() *ConfigAuthZone`
 
 NewConfigAuthZone instantiates a new ConfigAuthZone object
 This constructor will assign default values to properties that have it defined,
@@ -222,6 +222,11 @@ and a boolean to check if the value has been set.
 
 SetFqdn sets Fqdn field to given value.
 
+### HasFqdn
+
+`func (o *ConfigAuthZone) HasFqdn() bool`
+
+HasFqdn returns a boolean if a field has been set.
 
 ### GetGssTsigEnabled
 
@@ -517,6 +522,11 @@ and a boolean to check if the value has been set.
 
 SetPrimaryType sets PrimaryType field to given value.
 
+### HasPrimaryType
+
+`func (o *ConfigAuthZone) HasPrimaryType() bool`
+
+HasPrimaryType returns a boolean if a field has been set.
 
 ### GetProtocolFqdn
 

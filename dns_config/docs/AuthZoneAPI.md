@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigAuthZone("Fqdn_example", "PrimaryType_example") // ConfigAuthZone | 
+    body := *openapiclient.NewConfigAuthZone() // ConfigAuthZone | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -387,7 +387,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigAuthZone("Fqdn_example", "PrimaryType_example") // ConfigAuthZone | 
+    body := *openapiclient.NewConfigAuthZone() // ConfigAuthZone | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
