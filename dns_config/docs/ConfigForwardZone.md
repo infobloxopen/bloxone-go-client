@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration. | [optional] 
 **ExternalForwarders** | Pointer to [**[]ConfigForwarder**](ConfigForwarder.md) | Optional. External DNS servers to forward to. Order is not significant. | [optional] 
 **ForwardOnly** | Pointer to **bool** | Optional. _true_ to only forward. | [optional] 
-**Fqdn** | **string** | Zone FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | 
+**Fqdn** | Pointer to **string** | Zone FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | [optional] 
 **Hosts** | Pointer to **[]string** | The resource identifier. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **InternalForwarders** | Pointer to **[]string** | The resource identifier. | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewConfigForwardZone
 
-`func NewConfigForwardZone(fqdn string, ) *ConfigForwardZone`
+`func NewConfigForwardZone() *ConfigForwardZone`
 
 NewConfigForwardZone instantiates a new ConfigForwardZone object
 This constructor will assign default values to properties that have it defined,
@@ -186,6 +186,11 @@ and a boolean to check if the value has been set.
 
 SetFqdn sets Fqdn field to given value.
 
+### HasFqdn
+
+`func (o *ConfigForwardZone) HasFqdn() bool`
+
+HasFqdn returns a boolean if a field has been set.
 
 ### GetHosts
 

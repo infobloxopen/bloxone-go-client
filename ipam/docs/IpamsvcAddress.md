@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **Protocol** | Pointer to **string** | The type of protocol (_ip4_ or _ip6_). | [optional] [readonly] 
 **Range** | Pointer to **string** | The resource identifier. | [optional] 
-**Space** | **string** | The resource identifier. | 
+**Space** | Pointer to **string** | The resource identifier. | [optional] 
 **State** | Pointer to **string** | The state of the address (_used_ or _free_). | [optional] [readonly] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for this address in JSON format. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewIpamsvcAddress
 
-`func NewIpamsvcAddress(address string, space string, ) *IpamsvcAddress`
+`func NewIpamsvcAddress(address string, ) *IpamsvcAddress`
 
 NewIpamsvcAddress instantiates a new IpamsvcAddress object
 This constructor will assign default values to properties that have it defined,
@@ -433,6 +433,11 @@ and a boolean to check if the value has been set.
 
 SetSpace sets Space field to given value.
 
+### HasSpace
+
+`func (o *IpamsvcAddress) HasSpace() bool`
+
+HasSpace returns a boolean if a field has been set.
 
 ### GetState
 

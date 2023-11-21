@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AbandonedReclaimTime** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV4 clients. | [optional] 
-**AbandonedReclaimTimeV6** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV6 clients. | [optional] 
-**AllowUnknown** | Pointer to **bool** | Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured. | [optional] 
-**AllowUnknownV6** | Pointer to **bool** | Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured. | [optional] 
+**AbandonedReclaimTime** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV4 clients. | [optional] [default to 3600]
+**AbandonedReclaimTimeV6** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV6 clients. | [optional] [default to 3600]
+**AllowUnknown** | Pointer to **bool** | Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured. | [optional] [default to true]
+**AllowUnknownV6** | Pointer to **bool** | Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured. | [optional] [default to true]
 **Filters** | Pointer to **[]string** | The resource identifier. | [optional] 
 **FiltersV6** | Pointer to **[]string** | The resource identifier. | [optional] 
-**IgnoreClientUid** | Pointer to **bool** | Enable to ignore the client UID when issuing a DHCP lease. Use this option to prevent assigning two IP addresses for a client which does not have a UID during one phase of PXE boot but acquires one for the other phase. | [optional] 
+**IgnoreClientUid** | Pointer to **bool** | Enable to ignore the client UID when issuing a DHCP lease. Use this option to prevent assigning two IP addresses for a client which does not have a UID during one phase of PXE boot but acquires one for the other phase. | [optional] [default to false]
 **IgnoreList** | Pointer to [**[]IpamsvcIgnoreItem**](IpamsvcIgnoreItem.md) | The list of clients to ignore requests from. | [optional] 
-**LeaseTime** | Pointer to **int64** | The lease duration in seconds. | [optional] 
-**LeaseTimeV6** | Pointer to **int64** | The lease duration in seconds for IPV6 clients. | [optional] 
+**LeaseTime** | Pointer to **int64** | The lease duration in seconds. | [optional] [default to 3600]
+**LeaseTimeV6** | Pointer to **int64** | The lease duration in seconds for IPV6 clients. | [optional] [default to 3600]
 
 ## Methods
 

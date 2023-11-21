@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigForwardZone("Fqdn_example") // ConfigForwardZone | 
+    body := *openapiclient.NewConfigForwardZone() // ConfigForwardZone | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -387,7 +387,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigForwardZone("Fqdn_example") // ConfigForwardZone | 
+    body := *openapiclient.NewConfigForwardZone() // ConfigForwardZone | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

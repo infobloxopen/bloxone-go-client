@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Optional. Comment for zone delegation. | [optional] 
 **DelegationServers** | Pointer to [**[]ConfigDelegationServer**](ConfigDelegationServer.md) | Required. DNS zone delegation servers. Order is not significant. | [optional] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating resource records. | [optional] 
-**Fqdn** | **string** | Delegation FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | 
+**Fqdn** | Pointer to **string** | Delegation FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **ProtocolFqdn** | Pointer to **string** | Delegation FQDN in punycode. | [optional] [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewConfigDelegation
 
-`func NewConfigDelegation(fqdn string, ) *ConfigDelegation`
+`func NewConfigDelegation() *ConfigDelegation`
 
 NewConfigDelegation instantiates a new ConfigDelegation object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +127,11 @@ and a boolean to check if the value has been set.
 
 SetFqdn sets Fqdn field to given value.
 
+### HasFqdn
+
+`func (o *ConfigDelegation) HasFqdn() bool`
+
+HasFqdn returns a boolean if a field has been set.
 
 ### GetId
 
