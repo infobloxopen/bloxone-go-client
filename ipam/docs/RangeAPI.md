@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcRange("End_example", "Space_example", "Start_example") // IpamsvcRange | 
+    body := *openapiclient.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## RangeCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse RangeCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> IpamsvcCreateNextAvailableIPResponse RangeCreateNextAvailableIP(ctx, id).Execute()
 
 Allocate the next available IP address.
 
@@ -102,12 +102,10 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    contiguous := true // bool | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. (optional) (default to false)
-    count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional) (default to 1)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RangeAPI.RangeCreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
+    resp, r, err := apiClient.RangeAPI.RangeCreateNextAvailableIP(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeCreateNextAvailableIP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -133,8 +131,6 @@ Other parameters are passed through a pointer to a apiRangeCreateNextAvailableIP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contiguous** | **bool** | Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_. | [default to false]
- **count** | **int32** | The number of IP addresses requested.  Defaults to 1. | [default to 1]
 
 ### Return type
 
@@ -470,7 +466,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcRange("End_example", "Space_example", "Start_example") // IpamsvcRange | 
+    body := *openapiclient.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
