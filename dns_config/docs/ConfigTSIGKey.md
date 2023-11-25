@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Algorithm** | Pointer to **string** | TSIG key algorithm.  Possible values:  * _hmac_sha256_,  * _hmac_sha1_,  * _hmac_sha224_,  * _hmac_sha384_,  * _hmac_sha512_. | [optional] 
 **Comment** | Pointer to **string** | Comment for TSIG key. | [optional] 
-**Key** | **string** | The resource identifier. | 
+**Key** | Pointer to **string** | The resource identifier. | [optional] 
 **Name** | Pointer to **string** | TSIG key name, FQDN. | [optional] 
 **ProtocolName** | Pointer to **string** | TSIG key name in punycode. | [optional] [readonly] 
 **Secret** | Pointer to **string** | TSIG key secret, base64 string. | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewConfigTSIGKey
 
-`func NewConfigTSIGKey(key string, ) *ConfigTSIGKey`
+`func NewConfigTSIGKey() *ConfigTSIGKey`
 
 NewConfigTSIGKey instantiates a new ConfigTSIGKey object
 This constructor will assign default values to properties that have it defined,
@@ -99,6 +99,11 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
+### HasKey
+
+`func (o *ConfigTSIGKey) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
 
 ### GetName
 
