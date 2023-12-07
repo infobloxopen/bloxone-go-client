@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | Field usage depends on the operation:  * For read operation, _address_ of the _Address_ corresponding to the _ref_ resource.  * For write operation, _address_ to be created if the _Address_ does not exist. Required if _ref_ is not set on write:     * If the _Address_ already exists and is already pointing to the right _Host_, the operation proceeds.     * If the _Address_ already exists and is pointing to a different _Host, the operation must abort.     * If the _Address_ already exists and is not pointing to any _Host_, it is linked to the _Host_. | 
-**Ref** | **string** | The resource identifier. | 
-**Space** | **string** | The resource identifier. | 
+**Address** | Pointer to **string** | Field usage depends on the operation:  * For read operation, _address_ of the _Address_ corresponding to the _ref_ resource.  * For write operation, _address_ to be created if the _Address_ does not exist. Required if _ref_ is not set on write:     * If the _Address_ already exists and is already pointing to the right _Host_, the operation proceeds.     * If the _Address_ already exists and is pointing to a different _Host, the operation must abort.     * If the _Address_ already exists and is not pointing to any _Host_, it is linked to the _Host_. | [optional] 
+**Ref** | Pointer to **string** | The resource identifier. | [optional] 
+**Space** | Pointer to **string** | The resource identifier. | [optional] 
 
 ## Methods
 
 ### NewIpamsvcHostAddress
 
-`func NewIpamsvcHostAddress(address string, ref string, space string, ) *IpamsvcHostAddress`
+`func NewIpamsvcHostAddress() *IpamsvcHostAddress`
 
 NewIpamsvcHostAddress instantiates a new IpamsvcHostAddress object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+### HasAddress
+
+`func (o *IpamsvcHostAddress) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetRef
 
@@ -66,6 +71,11 @@ and a boolean to check if the value has been set.
 
 SetRef sets Ref field to given value.
 
+### HasRef
+
+`func (o *IpamsvcHostAddress) HasRef() bool`
+
+HasRef returns a boolean if a field has been set.
 
 ### GetSpace
 
@@ -86,6 +96,11 @@ and a boolean to check if the value has been set.
 
 SetSpace sets Space field to given value.
 
+### HasSpace
+
+`func (o *IpamsvcHostAddress) HasSpace() bool`
+
+HasSpace returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
