@@ -25,11 +25,11 @@ func Test_infra_mgmt_DetailAPIService(t *testing.T) {
 	configuration := internal.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test DetailAPIService DetailList", func(t *testing.T) {
+	t.Run("Test DetailAPIService DetailHostsList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DetailAPI.DetailList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DetailAPI.DetailHostsList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,11 +37,11 @@ func Test_infra_mgmt_DetailAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DetailAPIService DetailList_1", func(t *testing.T) {
+	t.Run("Test DetailAPIService DetailServicesList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DetailAPI.DetailList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DetailAPI.DetailServicesList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
