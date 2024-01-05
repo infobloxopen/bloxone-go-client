@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The description of the Service. | [optional] 
 **DesiredState** | Pointer to **string** | The desired state of the Service (&#x60;\&quot;start\&quot;&#x60; or &#x60;\&quot;stop\&quot;&#x60;). | [optional] 
 **DesiredVersion** | Pointer to **string** | The desired version of the Service. | [optional] 
-**Destinations** | Pointer to **map[string]interface{}** | Configuration for the interfaces through which this Service can send outgoing traffic. | [optional] 
 **Hosts** | Pointer to [**[]InfraDetailServiceHost**](InfraDetailServiceHost.md) | List of Hosts on which this Service is deployed. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **InterfaceLabels** | Pointer to **[]string** | List of interfaces on which this Service can operate. | [optional] 
@@ -19,7 +18,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the Service. | [optional] 
 **Pool** | Pointer to [**InfraPoolInfo**](InfraPoolInfo.md) |  | [optional] 
 **ServiceType** | Pointer to **string** | The type of the Service deployed on the Host (&#x60;dns&#x60;, &#x60;cdc&#x60;, etc.). | [optional] 
-**SourceInterfaces** | Pointer to **map[string]interface{}** | Configuration for the interfaces through which this Service can take incoming traffic. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | Tags associated with this Service. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Timestamp of the latest update on Service. | [optional] 
 
@@ -217,31 +215,6 @@ SetDesiredVersion sets DesiredVersion field to given value.
 
 HasDesiredVersion returns a boolean if a field has been set.
 
-### GetDestinations
-
-`func (o *InfraDetailService) GetDestinations() map[string]interface{}`
-
-GetDestinations returns the Destinations field if non-nil, zero value otherwise.
-
-### GetDestinationsOk
-
-`func (o *InfraDetailService) GetDestinationsOk() (*map[string]interface{}, bool)`
-
-GetDestinationsOk returns a tuple with the Destinations field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinations
-
-`func (o *InfraDetailService) SetDestinations(v map[string]interface{})`
-
-SetDestinations sets Destinations field to given value.
-
-### HasDestinations
-
-`func (o *InfraDetailService) HasDestinations() bool`
-
-HasDestinations returns a boolean if a field has been set.
-
 ### GetHosts
 
 `func (o *InfraDetailService) GetHosts() []InfraDetailServiceHost`
@@ -416,31 +389,6 @@ SetServiceType sets ServiceType field to given value.
 `func (o *InfraDetailService) HasServiceType() bool`
 
 HasServiceType returns a boolean if a field has been set.
-
-### GetSourceInterfaces
-
-`func (o *InfraDetailService) GetSourceInterfaces() map[string]interface{}`
-
-GetSourceInterfaces returns the SourceInterfaces field if non-nil, zero value otherwise.
-
-### GetSourceInterfacesOk
-
-`func (o *InfraDetailService) GetSourceInterfacesOk() (*map[string]interface{}, bool)`
-
-GetSourceInterfacesOk returns a tuple with the SourceInterfaces field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceInterfaces
-
-`func (o *InfraDetailService) SetSourceInterfaces(v map[string]interface{})`
-
-SetSourceInterfaces sets SourceInterfaces field to given value.
-
-### HasSourceInterfaces
-
-`func (o *InfraDetailService) HasSourceInterfaces() bool`
-
-HasSourceInterfaces returns a boolean if a field has been set.
 
 ### GetTags
 
