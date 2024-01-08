@@ -4,14 +4,14 @@ All URIs are relative to *http://csp.infoblox.com/api/infra/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DetailList**](DetailAPI.md#DetailList) | **Get** /detail_hosts | List all the Hosts along with its associated Services (applications).
-[**DetailList_0**](DetailAPI.md#DetailList_0) | **Get** /detail_services | List all the Services (applications) along with its associated Hosts.
+[**DetailHostsList**](DetailAPI.md#DetailHostsList) | **Get** /detail_hosts | List all the Hosts along with its associated Services (applications).
+[**DetailServicesList**](DetailAPI.md#DetailServicesList) | **Get** /detail_services | List all the Services (applications) along with its associated Hosts.
 
 
 
-## DetailList
+## DetailHostsList
 
-> InfraListDetailHostsResponse DetailList(ctx).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> InfraListDetailHostsResponse DetailHostsList(ctx).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List all the Hosts along with its associated Services (applications).
 
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DetailAPI.DetailList(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
+    resp, r, err := apiClient.DetailAPI.DetailHostsList(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DetailAPI.DetailList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DetailAPI.DetailHostsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DetailList`: InfraListDetailHostsResponse
-    fmt.Fprintf(os.Stdout, "Response from `DetailAPI.DetailList`: %v\n", resp)
+    // response from `DetailHostsList`: InfraListDetailHostsResponse
+    fmt.Fprintf(os.Stdout, "Response from `DetailAPI.DetailHostsList`: %v\n", resp)
 }
 ```
 
@@ -55,7 +55,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDetailListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDetailHostsListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DetailList_0
+## DetailServicesList
 
-> InfraListDetailServicesResponse DetailList_0(ctx).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> InfraListDetailServicesResponse DetailServicesList(ctx).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List all the Services (applications) along with its associated Hosts.
 
@@ -117,13 +117,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DetailAPI.DetailList_0(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
+    resp, r, err := apiClient.DetailAPI.DetailServicesList(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Fields(fields).Tfilter(tfilter).TorderBy(torderBy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DetailAPI.DetailList_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DetailAPI.DetailServicesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DetailList_0`: InfraListDetailServicesResponse
-    fmt.Fprintf(os.Stdout, "Response from `DetailAPI.DetailList_0`: %v\n", resp)
+    // response from `DetailServicesList`: InfraListDetailServicesResponse
+    fmt.Fprintf(os.Stdout, "Response from `DetailAPI.DetailServicesList`: %v\n", resp)
 }
 ```
 
@@ -133,7 +133,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDetailList_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiDetailServicesListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
