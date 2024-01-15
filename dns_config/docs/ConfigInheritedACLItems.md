@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | Pointer to **string** | Optional. Inheritance setting for a field. Defaults to _inherit_. | [optional] 
+**Action** | Pointer to **string** | Optional. Inheritance setting for a field. Defaults to _inherit_. | [optional] [readonly] 
 **DisplayName** | Pointer to **string** | Human-readable display name for the object referred to by _source_. | [optional] [readonly] 
 **Source** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Value** | Pointer to [**[]ConfigACLItem**](ConfigACLItem.md) | Inherited value. | [optional] [readonly] 
