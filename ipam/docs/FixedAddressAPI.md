@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## FixedAddressCreate
 
-> IpamsvcCreateFixedAddressResponse FixedAddressCreate(ctx).Body(body).Execute()
+> IpamsvcCreateFixedAddressResponse FixedAddressCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the fixed address.
 
@@ -34,10 +34,11 @@ import (
 
 func main() {
     body := *openapiclient.NewIpamsvcFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // IpamsvcFixedAddress | 
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Body(body).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,6 +60,7 @@ Other parameters are passed through a pointer to a apiFixedAddressCreateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**IpamsvcFixedAddress**](IpamsvcFixedAddress.md) |  | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
 
 ### Return type
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressList
 
-> IpamsvcListFixedAddressResponse FixedAddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> IpamsvcListFixedAddressResponse FixedAddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve fixed addresses.
 
@@ -175,10 +177,11 @@ func main() {
     pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
     torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
     tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FixedAddressAPI.FixedAddressList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+    resp, r, err := apiClient.FixedAddressAPI.FixedAddressList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,6 +210,7 @@ Name | Type | Description  | Notes
  **pageToken** | **string** |   The service-defined string used to identify a page of resources. A null value indicates the first page.          | 
  **torderBy** | **string** | This parameter is used for sorting by tags. | 
  **tfilter** | **string** | This parameter is used for filtering by tags. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
 
 ### Return type
 
@@ -228,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressRead
 
-> IpamsvcReadFixedAddressResponse FixedAddressRead(ctx, id).Fields(fields).Execute()
+> IpamsvcReadFixedAddressResponse FixedAddressRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the fixed address.
 
@@ -249,10 +253,11 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), id).Fields(fields).Execute()
+    resp, r, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressRead``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,6 +284,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
 
 ### Return type
 
@@ -300,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressUpdate
 
-> IpamsvcUpdateFixedAddressResponse FixedAddressUpdate(ctx, id).Body(body).Execute()
+> IpamsvcUpdateFixedAddressResponse FixedAddressUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the fixed address.
 
@@ -321,10 +327,11 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     body := *openapiclient.NewIpamsvcFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // IpamsvcFixedAddress | 
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,6 +358,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **body** | [**IpamsvcFixedAddress**](IpamsvcFixedAddress.md) |  | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
 
 ### Return type
 
