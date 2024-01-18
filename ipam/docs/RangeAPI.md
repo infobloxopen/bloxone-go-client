@@ -36,7 +36,7 @@ import (
 
 func main() {
     body := *openapiclient.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
-    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -62,7 +62,7 @@ Other parameters are passed through a pointer to a apiRangeCreateRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**IpamsvcRange**](IpamsvcRange.md) |  | 
- **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -253,7 +253,7 @@ func main() {
     pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
     torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
     tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
-    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
  **pageToken** | **string** |   The service-defined string used to identify a page of resources. A null value indicates the first page.          | 
  **torderBy** | **string** | This parameter is used for sorting by tags. | 
  **tfilter** | **string** | This parameter is used for filtering by tags. | 
- **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -403,7 +403,7 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
- **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -477,7 +477,7 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     body := *openapiclient.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
-    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **body** | [**IpamsvcRange**](IpamsvcRange.md) |  | 
- **inherit** | **string** | This parameter is used for getting inheritance_sources. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 

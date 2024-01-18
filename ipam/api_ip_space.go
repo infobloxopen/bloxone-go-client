@@ -401,7 +401,7 @@ func (r ApiIpSpaceCreateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceCreateReque
 	return r
 }
 
-// This parameter is used for getting inheritance_sources.
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
 func (r ApiIpSpaceCreateRequest) Inherit(inherit string) ApiIpSpaceCreateRequest {
 	r.inherit = &inherit
 	return r
@@ -685,7 +685,7 @@ func (r ApiIpSpaceListRequest) Tfilter(tfilter string) ApiIpSpaceListRequest {
 	return r
 }
 
-// This parameter is used for getting inheritance_sources.
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
 func (r ApiIpSpaceListRequest) Inherit(inherit string) ApiIpSpaceListRequest {
 	r.inherit = &inherit
 	return r
@@ -836,7 +836,7 @@ func (r ApiIpSpaceReadRequest) Fields(fields string) ApiIpSpaceReadRequest {
 	return r
 }
 
-// This parameter is used for getting inheritance_sources.
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
 func (r ApiIpSpaceReadRequest) Inherit(inherit string) ApiIpSpaceReadRequest {
 	r.inherit = &inherit
 	return r
@@ -968,7 +968,7 @@ func (r ApiIpSpaceUpdateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceUpdateReque
 	return r
 }
 
-// This parameter is used for getting inheritance_sources.
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
 func (r ApiIpSpaceUpdateRequest) Inherit(inherit string) ApiIpSpaceUpdateRequest {
 	r.inherit = &inherit
 	return r
