@@ -12,6 +12,7 @@ package infra_mgmt
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -45,6 +46,8 @@ type InfraService struct {
 	// Timestamp of the latest update on Service.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
+
+type _InfraService InfraService
 
 // NewInfraService instantiates a new InfraService object
 // This constructor will assign default values to properties that have it defined,
@@ -467,6 +470,43 @@ func (o InfraService) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *InfraService) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"pool_id",
+		"service_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInfraService := _InfraService{}
+
+	err = json.Unmarshal(bytes, &varInfraService)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraService(varInfraService)
+
+	return err
 }
 
 type NullableInfraService struct {

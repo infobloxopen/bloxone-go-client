@@ -22,7 +22,6 @@ import (
 )
 
 type ServerAPI interface {
-
 	/*
 			ServerCreate Create the DHCP configuration profile.
 
@@ -37,7 +36,6 @@ type ServerAPI interface {
 	// ServerCreateExecute executes the request
 	//  @return IpamsvcCreateServerResponse
 	ServerCreateExecute(r ApiServerCreateRequest) (*IpamsvcCreateServerResponse, *http.Response, error)
-
 	/*
 			ServerDelete Move the DHCP configuration profile to the recycle bin.
 
@@ -52,7 +50,6 @@ type ServerAPI interface {
 
 	// ServerDeleteExecute executes the request
 	ServerDeleteExecute(r ApiServerDeleteRequest) (*http.Response, error)
-
 	/*
 			ServerList Retrieve DHCP configuration profiles.
 
@@ -67,7 +64,6 @@ type ServerAPI interface {
 	// ServerListExecute executes the request
 	//  @return IpamsvcListServerResponse
 	ServerListExecute(r ApiServerListRequest) (*IpamsvcListServerResponse, *http.Response, error)
-
 	/*
 			ServerRead Retrieve the DHCP configuration profile.
 
@@ -83,7 +79,6 @@ type ServerAPI interface {
 	// ServerReadExecute executes the request
 	//  @return IpamsvcReadServerResponse
 	ServerReadExecute(r ApiServerReadRequest) (*IpamsvcReadServerResponse, *http.Response, error)
-
 	/*
 			ServerUpdate Update the DHCP configuration profile.
 
@@ -108,10 +103,17 @@ type ApiServerCreateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	body       *IpamsvcServer
+	inherit    *string
 }
 
 func (r ApiServerCreateRequest) Body(body IpamsvcServer) ApiServerCreateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerCreateRequest) Inherit(inherit string) ApiServerCreateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -125,8 +127,8 @@ ServerCreate Create the DHCP configuration profile.
 Use this method to create a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServerCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiServerCreateRequest
 */
 func (a *ServerAPIService) ServerCreate(ctx context.Context) ApiServerCreateRequest {
 	return ApiServerCreateRequest{
@@ -136,8 +138,7 @@ func (a *ServerAPIService) ServerCreate(ctx context.Context) ApiServerCreateRequ
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateServerResponse
+//  @return IpamsvcCreateServerResponse
 func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*IpamsvcCreateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -160,6 +161,9 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Ipams
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -176,6 +180,14 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Ipams
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -220,7 +232,6 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -240,9 +251,9 @@ ServerDelete Move the DHCP configuration profile to the recycle bin.
 Use this method to move a __Server__ object to the recycle bin.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServerDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServerDeleteRequest
 */
 func (a *ServerAPIService) ServerDelete(ctx context.Context, id string) ApiServerDeleteRequest {
 	return ApiServerDeleteRequest{
@@ -339,39 +350,40 @@ type ApiServerListRequest struct {
 	pageToken  *string
 	torderBy   *string
 	tfilter    *string
+	inherit    *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiServerListRequest) Filter(filter string) ApiServerListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiServerListRequest) OrderBy(orderBy string) ApiServerListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiServerListRequest) Fields(fields string) ApiServerListRequest {
 	r.fields = &fields
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiServerListRequest) Offset(offset int32) ApiServerListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiServerListRequest) Limit(limit int32) ApiServerListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiServerListRequest) PageToken(pageToken string) ApiServerListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -389,6 +401,12 @@ func (r ApiServerListRequest) Tfilter(tfilter string) ApiServerListRequest {
 	return r
 }
 
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerListRequest) Inherit(inherit string) ApiServerListRequest {
+	r.inherit = &inherit
+	return r
+}
+
 func (r ApiServerListRequest) Execute() (*IpamsvcListServerResponse, *http.Response, error) {
 	return r.ApiService.ServerListExecute(r)
 }
@@ -399,8 +417,8 @@ ServerList Retrieve DHCP configuration profiles.
 Use this method to retrieve __Server__ objects.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServerListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiServerListRequest
 */
 func (a *ServerAPIService) ServerList(ctx context.Context) ApiServerListRequest {
 	return ApiServerListRequest{
@@ -410,8 +428,7 @@ func (a *ServerAPIService) ServerList(ctx context.Context) ApiServerListRequest 
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListServerResponse
+//  @return IpamsvcListServerResponse
 func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*IpamsvcListServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -455,6 +472,9 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*IpamsvcLi
 	if r.tfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_tfilter", r.tfilter, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -513,7 +533,6 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*IpamsvcLi
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -522,11 +541,18 @@ type ApiServerReadRequest struct {
 	ApiService ServerAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiServerReadRequest) Fields(fields string) ApiServerReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerReadRequest) Inherit(inherit string) ApiServerReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -540,9 +566,9 @@ ServerRead Retrieve the DHCP configuration profile.
 Use this method to retrieve a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServerReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServerReadRequest
 */
 func (a *ServerAPIService) ServerRead(ctx context.Context, id string) ApiServerReadRequest {
 	return ApiServerReadRequest{
@@ -553,8 +579,7 @@ func (a *ServerAPIService) ServerRead(ctx context.Context, id string) ApiServerR
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadServerResponse
+//  @return IpamsvcReadServerResponse
 func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*IpamsvcReadServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -578,6 +603,9 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*IpamsvcRe
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -636,7 +664,6 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*IpamsvcRe
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -645,10 +672,17 @@ type ApiServerUpdateRequest struct {
 	ApiService ServerAPI
 	id         string
 	body       *IpamsvcServer
+	inherit    *string
 }
 
 func (r ApiServerUpdateRequest) Body(body IpamsvcServer) ApiServerUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerUpdateRequest) Inherit(inherit string) ApiServerUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -662,9 +696,9 @@ ServerUpdate Update the DHCP configuration profile.
 Use this method to update a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServerUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServerUpdateRequest
 */
 func (a *ServerAPIService) ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest {
 	return ApiServerUpdateRequest{
@@ -675,8 +709,7 @@ func (a *ServerAPIService) ServerUpdate(ctx context.Context, id string) ApiServe
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateServerResponse
+//  @return IpamsvcUpdateServerResponse
 func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*IpamsvcUpdateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -700,6 +733,9 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Ipams
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -716,6 +752,14 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Ipams
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -760,6 +804,5 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

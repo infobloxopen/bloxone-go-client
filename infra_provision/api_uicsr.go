@@ -22,7 +22,6 @@ import (
 )
 
 type UICSRAPI interface {
-
 	/*
 		UICSRApprove Marks the certificate signing request as approved. The host activation service will then continue with the signing process.
 
@@ -35,7 +34,6 @@ type UICSRAPI interface {
 	// UICSRApproveExecute executes the request
 	//  @return map[string]interface{}
 	UICSRApproveExecute(r ApiUICSRApproveRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
 		UICSRDeny Marks the certificate signing request as denied.
 
@@ -48,7 +46,6 @@ type UICSRAPI interface {
 	// UICSRDenyExecute executes the request
 	//  @return map[string]interface{}
 	UICSRDenyExecute(r ApiUICSRDenyRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
 		UICSRList User can list the certificate signing requests for an account.
 
@@ -60,7 +57,6 @@ type UICSRAPI interface {
 	// UICSRListExecute executes the request
 	//  @return HostactivationListCSRsResponse
 	UICSRListExecute(r ApiUICSRListRequest) (*HostactivationListCSRsResponse, *http.Response, error)
-
 	/*
 			UICSRRevoke Invalidates a certificate by adding it to a certificate revocation list.
 
@@ -78,7 +74,6 @@ type UICSRAPI interface {
 	// UICSRRevokeExecute executes the request
 	//  @return map[string]interface{}
 	UICSRRevokeExecute(r ApiUICSRRevokeRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
 			UICSRRevoke2 Invalidates a certificate by adding it to a certificate revocation list.
 
@@ -120,9 +115,9 @@ func (r ApiUICSRApproveRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 UICSRApprove Marks the certificate signing request as approved. The host activation service will then continue with the signing process.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param activationCode activation code is used by the clients to track the approval of the CSR
-	@return ApiUICSRApproveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param activationCode activation code is used by the clients to track the approval of the CSR
+ @return ApiUICSRApproveRequest
 */
 func (a *UICSRAPIService) UICSRApprove(ctx context.Context, activationCode string) ApiUICSRApproveRequest {
 	return ApiUICSRApproveRequest{
@@ -133,8 +128,7 @@ func (a *UICSRAPIService) UICSRApprove(ctx context.Context, activationCode strin
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UICSRAPIService) UICSRApproveExecute(r ApiUICSRApproveRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -218,7 +212,6 @@ func (a *UICSRAPIService) UICSRApproveExecute(r ApiUICSRApproveRequest) (map[str
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -241,9 +234,9 @@ func (r ApiUICSRDenyRequest) Execute() (map[string]interface{}, *http.Response, 
 /*
 UICSRDeny Marks the certificate signing request as denied.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param activationCode activation code is used by the clients to track the approval of the CSR
-	@return ApiUICSRDenyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param activationCode activation code is used by the clients to track the approval of the CSR
+ @return ApiUICSRDenyRequest
 */
 func (a *UICSRAPIService) UICSRDeny(ctx context.Context, activationCode string) ApiUICSRDenyRequest {
 	return ApiUICSRDenyRequest{
@@ -254,8 +247,7 @@ func (a *UICSRAPIService) UICSRDeny(ctx context.Context, activationCode string) 
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UICSRAPIService) UICSRDenyExecute(r ApiUICSRDenyRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -339,7 +331,6 @@ func (a *UICSRAPIService) UICSRDenyExecute(r ApiUICSRDenyRequest) (map[string]in
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -355,31 +346,31 @@ type ApiUICSRListRequest struct {
 	torderBy   *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiUICSRListRequest) Filter(filter string) ApiUICSRListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiUICSRListRequest) OrderBy(orderBy string) ApiUICSRListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiUICSRListRequest) Offset(offset int32) ApiUICSRListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiUICSRListRequest) Limit(limit int32) ApiUICSRListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiUICSRListRequest) PageToken(pageToken string) ApiUICSRListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -404,8 +395,8 @@ func (r ApiUICSRListRequest) Execute() (*HostactivationListCSRsResponse, *http.R
 /*
 UICSRList User can list the certificate signing requests for an account.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUICSRListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUICSRListRequest
 */
 func (a *UICSRAPIService) UICSRList(ctx context.Context) ApiUICSRListRequest {
 	return ApiUICSRListRequest{
@@ -415,8 +406,7 @@ func (a *UICSRAPIService) UICSRList(ctx context.Context) ApiUICSRListRequest {
 }
 
 // Execute executes the request
-//
-//	@return HostactivationListCSRsResponse
+//  @return HostactivationListCSRsResponse
 func (a *UICSRAPIService) UICSRListExecute(r ApiUICSRListRequest) (*HostactivationListCSRsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -515,7 +505,6 @@ func (a *UICSRAPIService) UICSRListExecute(r ApiUICSRListRequest) (*Hostactivati
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -543,9 +532,9 @@ Validation:
 - one of "cert_serial" or "ophid" should be provided
 - "revoke_reason" is optional
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param certSerial x509 serial number of the certificate. This can be obtained by parsing the client certificate file on the onprem. Either cert_serial or ophid is required
-	@return ApiUICSRRevokeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param certSerial x509 serial number of the certificate. This can be obtained by parsing the client certificate file on the onprem. Either cert_serial or ophid is required
+ @return ApiUICSRRevokeRequest
 */
 func (a *UICSRAPIService) UICSRRevoke(ctx context.Context, certSerial string) ApiUICSRRevokeRequest {
 	return ApiUICSRRevokeRequest{
@@ -556,8 +545,7 @@ func (a *UICSRAPIService) UICSRRevoke(ctx context.Context, certSerial string) Ap
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UICSRAPIService) UICSRRevokeExecute(r ApiUICSRRevokeRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -641,7 +629,6 @@ func (a *UICSRAPIService) UICSRRevokeExecute(r ApiUICSRRevokeRequest) (map[strin
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -669,9 +656,9 @@ Validation:
 - one of "cert_serial" or "ophid" should be provided
 - "revoke_reason" is optional
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ophid On-prem host ID which can be obtained either from on-prem or BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem > click on 3 dots on top right side > General Information > Ophid) .
-	@return ApiUICSRRevoke2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ophid On-prem host ID which can be obtained either from on-prem or BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem > click on 3 dots on top right side > General Information > Ophid) .
+ @return ApiUICSRRevoke2Request
 */
 func (a *UICSRAPIService) UICSRRevoke2(ctx context.Context, ophid string) ApiUICSRRevoke2Request {
 	return ApiUICSRRevoke2Request{
@@ -682,8 +669,7 @@ func (a *UICSRAPIService) UICSRRevoke2(ctx context.Context, ophid string) ApiUIC
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UICSRAPIService) UICSRRevoke2Execute(r ApiUICSRRevoke2Request) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -767,6 +753,5 @@ func (a *UICSRAPIService) UICSRRevoke2Execute(r ApiUICSRRevoke2Request) (map[str
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

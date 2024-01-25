@@ -38,7 +38,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `keys.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), keys.ContextServerIndex, 1)
@@ -46,7 +46,7 @@ ctx := context.WithValue(context.Background(), keys.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `keys.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), keys.ContextServerVariables, map[string]string{
@@ -60,7 +60,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `keys.ContextOperationServerIndices` and `keys.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), keys.ContextOperationServerIndices, map[string]int{
@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *KerberosAPI* | [**KerberosList**](docs/KerberosAPI.md#kerberoslist) | **Get** /keys/kerberos | Retrieve Kerberos keys.
 *KerberosAPI* | [**KerberosRead**](docs/KerberosAPI.md#kerberosread) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
 *KerberosAPI* | [**KerberosUpdate**](docs/KerberosAPI.md#kerberosupdate) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
+*KerberosAPI* | [**KeysKerberosPost**](docs/KerberosAPI.md#keyskerberospost) | **Post** /keys/kerberos | 
 *TsigAPI* | [**TsigCreate**](docs/TsigAPI.md#tsigcreate) | **Post** /keys/tsig | Create the TSIG key.
 *TsigAPI* | [**TsigDelete**](docs/TsigAPI.md#tsigdelete) | **Delete** /keys/tsig/{id} | Delete the TSIG key.
 *TsigAPI* | [**TsigList**](docs/TsigAPI.md#tsiglist) | **Get** /keys/tsig | Retrieve TSIG keys.
@@ -129,8 +130,8 @@ Example
 ```golang
 auth := context.WithValue(
 		context.Background(),
-		sw.ContextAPIKeys,
-		map[string]sw.APIKey{
+		keys.ContextAPIKeys,
+		map[string]keys.APIKey{
 			"Authorization": {Key: "API_KEY_STRING"},
 		},
 	)

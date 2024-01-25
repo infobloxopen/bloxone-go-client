@@ -22,7 +22,6 @@ import (
 )
 
 type AclAPI interface {
-
 	/*
 			AclCreate Create the ACL object.
 
@@ -37,7 +36,6 @@ type AclAPI interface {
 	// AclCreateExecute executes the request
 	//  @return ConfigCreateACLResponse
 	AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateACLResponse, *http.Response, error)
-
 	/*
 			AclDelete Move the ACL object to Recyclebin.
 
@@ -52,7 +50,6 @@ type AclAPI interface {
 
 	// AclDeleteExecute executes the request
 	AclDeleteExecute(r ApiAclDeleteRequest) (*http.Response, error)
-
 	/*
 			AclList List ACL objects.
 
@@ -67,7 +64,6 @@ type AclAPI interface {
 	// AclListExecute executes the request
 	//  @return ConfigListACLResponse
 	AclListExecute(r ApiAclListRequest) (*ConfigListACLResponse, *http.Response, error)
-
 	/*
 			AclRead Read the ACL object.
 
@@ -83,7 +79,6 @@ type AclAPI interface {
 	// AclReadExecute executes the request
 	//  @return ConfigReadACLResponse
 	AclReadExecute(r ApiAclReadRequest) (*ConfigReadACLResponse, *http.Response, error)
-
 	/*
 			AclUpdate Update the ACL object.
 
@@ -125,8 +120,8 @@ AclCreate Create the ACL object.
 Use this method to create an ACL object.
 ACL object (_dns/acl_) represents a named Access Control List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAclCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAclCreateRequest
 */
 func (a *AclAPIService) AclCreate(ctx context.Context) ApiAclCreateRequest {
 	return ApiAclCreateRequest{
@@ -136,8 +131,7 @@ func (a *AclAPIService) AclCreate(ctx context.Context) ApiAclCreateRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigCreateACLResponse
+//  @return ConfigCreateACLResponse
 func (a *AclAPIService) AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateACLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,6 +170,14 @@ func (a *AclAPIService) AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateAC
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -220,7 +222,6 @@ func (a *AclAPIService) AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateAC
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -240,9 +241,9 @@ AclDelete Move the ACL object to Recyclebin.
 Use this method to move an ACL object to Recyclebin.
 ACL object (_dns/acl_) represents a named Access Control List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAclDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAclDeleteRequest
 */
 func (a *AclAPIService) AclDelete(ctx context.Context, id string) ApiAclDeleteRequest {
 	return ApiAclDeleteRequest{
@@ -341,37 +342,37 @@ type ApiAclListRequest struct {
 	torderBy   *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAclListRequest) Fields(fields string) ApiAclListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiAclListRequest) Filter(filter string) ApiAclListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiAclListRequest) Offset(offset int32) ApiAclListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiAclListRequest) Limit(limit int32) ApiAclListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiAclListRequest) PageToken(pageToken string) ApiAclListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiAclListRequest) OrderBy(orderBy string) ApiAclListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -399,8 +400,8 @@ AclList List ACL objects.
 Use this method to list ACL objects.
 ACL object (_dns/acl_) represents a named Access Control List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAclListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAclListRequest
 */
 func (a *AclAPIService) AclList(ctx context.Context) ApiAclListRequest {
 	return ApiAclListRequest{
@@ -410,8 +411,7 @@ func (a *AclAPIService) AclList(ctx context.Context) ApiAclListRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigListACLResponse
+//  @return ConfigListACLResponse
 func (a *AclAPIService) AclListExecute(r ApiAclListRequest) (*ConfigListACLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -513,7 +513,6 @@ func (a *AclAPIService) AclListExecute(r ApiAclListRequest) (*ConfigListACLRespo
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -524,7 +523,7 @@ type ApiAclReadRequest struct {
 	fields     *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAclReadRequest) Fields(fields string) ApiAclReadRequest {
 	r.fields = &fields
 	return r
@@ -540,9 +539,9 @@ AclRead Read the ACL object.
 Use this method to read an ACL object.
 ACL object (_dns/acl_) represents a named Access Control List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAclReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAclReadRequest
 */
 func (a *AclAPIService) AclRead(ctx context.Context, id string) ApiAclReadRequest {
 	return ApiAclReadRequest{
@@ -553,8 +552,7 @@ func (a *AclAPIService) AclRead(ctx context.Context, id string) ApiAclReadReques
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadACLResponse
+//  @return ConfigReadACLResponse
 func (a *AclAPIService) AclReadExecute(r ApiAclReadRequest) (*ConfigReadACLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -636,7 +634,6 @@ func (a *AclAPIService) AclReadExecute(r ApiAclReadRequest) (*ConfigReadACLRespo
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -662,9 +659,9 @@ AclUpdate Update the ACL object.
 Use this method to update an ACL object.
 ACL object (_dns/acl_) represents a named Access Control List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAclUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAclUpdateRequest
 */
 func (a *AclAPIService) AclUpdate(ctx context.Context, id string) ApiAclUpdateRequest {
 	return ApiAclUpdateRequest{
@@ -675,8 +672,7 @@ func (a *AclAPIService) AclUpdate(ctx context.Context, id string) ApiAclUpdateRe
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateACLResponse
+//  @return ConfigUpdateACLResponse
 func (a *AclAPIService) AclUpdateExecute(r ApiAclUpdateRequest) (*ConfigUpdateACLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -716,6 +712,14 @@ func (a *AclAPIService) AclUpdateExecute(r ApiAclUpdateRequest) (*ConfigUpdateAC
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -760,6 +764,5 @@ func (a *AclAPIService) AclUpdateExecute(r ApiAclUpdateRequest) (*ConfigUpdateAC
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

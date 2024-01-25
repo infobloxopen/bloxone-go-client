@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcExclusionRange type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type IpamsvcExclusionRange struct {
 	// The start address of the exclusion range.
 	Start string `json:"start"`
 }
+
+type _IpamsvcExclusionRange IpamsvcExclusionRange
 
 // NewIpamsvcExclusionRange instantiates a new IpamsvcExclusionRange object
 // This constructor will assign default values to properties that have it defined,
@@ -142,6 +145,42 @@ func (o IpamsvcExclusionRange) ToMap() (map[string]interface{}, error) {
 	toSerialize["end"] = o.End
 	toSerialize["start"] = o.Start
 	return toSerialize, nil
+}
+
+func (o *IpamsvcExclusionRange) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"end",
+		"start",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcExclusionRange := _IpamsvcExclusionRange{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcExclusionRange)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcExclusionRange(varIpamsvcExclusionRange)
+
+	return err
 }
 
 type NullableIpamsvcExclusionRange struct {

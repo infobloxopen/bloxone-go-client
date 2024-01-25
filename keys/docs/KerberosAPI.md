@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**KerberosList**](KerberosAPI.md#KerberosList) | **Get** /keys/kerberos | Retrieve Kerberos keys.
 [**KerberosRead**](KerberosAPI.md#KerberosRead) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
 [**KerberosUpdate**](KerberosAPI.md#KerberosUpdate) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
+[**KeysKerberosPost**](KerberosAPI.md#KeysKerberosPost) | **Post** /keys/kerberos | 
 
 
 
@@ -288,6 +289,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KeysUpdateKerberosKeyResponse**](KeysUpdateKerberosKeyResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KeysKerberosPost
+
+> KeysListKerberosKeyResponse KeysKerberosPost(ctx).Body(body).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/infobloxopen/bloxone-go-client"
+)
+
+func main() {
+    body := *openapiclient.NewKerberosKey() // KerberosKey | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.KerberosAPI.KeysKerberosPost(context.Background()).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KeysKerberosPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `KeysKerberosPost`: KeysListKerberosKeyResponse
+    fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.KeysKerberosPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKeysKerberosPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KerberosKey**](KerberosKey.md) |  | 
+
+### Return type
+
+[**KeysListKerberosKeyResponse**](KeysListKerberosKeyResponse.md)
 
 ### Authorization
 

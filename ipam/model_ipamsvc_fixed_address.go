@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -60,6 +61,8 @@ type IpamsvcFixedAddress struct {
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
+
+type _IpamsvcFixedAddress IpamsvcFixedAddress
 
 // NewIpamsvcFixedAddress instantiates a new IpamsvcFixedAddress object
 // This constructor will assign default values to properties that have it defined,
@@ -762,6 +765,43 @@ func (o IpamsvcFixedAddress) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcFixedAddress) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"address",
+		"match_type",
+		"match_value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcFixedAddress := _IpamsvcFixedAddress{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcFixedAddress)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcFixedAddress(varIpamsvcFixedAddress)
+
+	return err
 }
 
 type NullableIpamsvcFixedAddress struct {

@@ -21,7 +21,6 @@ import (
 )
 
 type UploadAPI interface {
-
 	/*
 		UploadUpload Upload content to the keys service.
 
@@ -60,8 +59,8 @@ UploadUpload Upload content to the keys service.
 
 Use this method to upload specified content type to the keys service.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUploadUploadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUploadUploadRequest
 */
 func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequest {
 	return ApiUploadUploadRequest{
@@ -71,8 +70,7 @@ func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequ
 }
 
 // Execute executes the request
-//
-//	@return DdiuploadResponse
+//  @return DdiuploadResponse
 func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*DdiuploadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -111,6 +109,14 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -155,6 +161,5 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

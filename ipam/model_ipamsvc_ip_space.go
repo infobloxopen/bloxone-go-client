@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -77,6 +78,8 @@ type IpamsvcIPSpace struct {
 	// The resource identifier.
 	VendorSpecificOptionOptionSpace *string `json:"vendor_specific_option_option_space,omitempty"`
 }
+
+type _IpamsvcIPSpace IpamsvcIPSpace
 
 // NewIpamsvcIPSpace instantiates a new IpamsvcIPSpace object
 // This constructor will assign default values to properties that have it defined,
@@ -1222,6 +1225,41 @@ func (o IpamsvcIPSpace) ToMap() (map[string]interface{}, error) {
 		toSerialize["vendor_specific_option_option_space"] = o.VendorSpecificOptionOptionSpace
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcIPSpace) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcIPSpace := _IpamsvcIPSpace{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcIPSpace)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcIPSpace(varIpamsvcIPSpace)
+
+	return err
 }
 
 type NullableIpamsvcIPSpace struct {

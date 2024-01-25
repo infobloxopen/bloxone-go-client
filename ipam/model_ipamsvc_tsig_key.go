@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcTSIGKey type satisfies the MappedNullable interface at compile time
@@ -32,6 +33,8 @@ type IpamsvcTSIGKey struct {
 	// The TSIG key secret, base64 string.
 	Secret *string `json:"secret,omitempty"`
 }
+
+type _IpamsvcTSIGKey IpamsvcTSIGKey
 
 // NewIpamsvcTSIGKey instantiates a new IpamsvcTSIGKey object
 // This constructor will assign default values to properties that have it defined,
@@ -262,6 +265,41 @@ func (o IpamsvcTSIGKey) ToMap() (map[string]interface{}, error) {
 		toSerialize["secret"] = o.Secret
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcTSIGKey) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcTSIGKey := _IpamsvcTSIGKey{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcTSIGKey)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcTSIGKey(varIpamsvcTSIGKey)
+
+	return err
 }
 
 type NullableIpamsvcTSIGKey struct {

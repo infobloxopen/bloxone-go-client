@@ -22,7 +22,6 @@ import (
 )
 
 type LbdnAPI interface {
-
 	/*
 		LbdnCreate Create the __LBDN__ object.
 
@@ -36,7 +35,6 @@ type LbdnAPI interface {
 	// LbdnCreateExecute executes the request
 	//  @return ConfigCreateLBDNResponse
 	LbdnCreateExecute(r ApiLbdnCreateRequest) (*ConfigCreateLBDNResponse, *http.Response, error)
-
 	/*
 		LbdnDelete Delete the __LBDN__ object.
 
@@ -50,7 +48,6 @@ type LbdnAPI interface {
 
 	// LbdnDeleteExecute executes the request
 	LbdnDeleteExecute(r ApiLbdnDeleteRequest) (*http.Response, error)
-
 	/*
 		LbdnList List __LBDN__ objects.
 
@@ -64,7 +61,6 @@ type LbdnAPI interface {
 	// LbdnListExecute executes the request
 	//  @return ConfigListLBDNResponse
 	LbdnListExecute(r ApiLbdnListRequest) (*ConfigListLBDNResponse, *http.Response, error)
-
 	/*
 		LbdnRead Read the __LBDN__ object.
 
@@ -79,7 +75,6 @@ type LbdnAPI interface {
 	// LbdnReadExecute executes the request
 	//  @return ConfigReadLBDNResponse
 	LbdnReadExecute(r ApiLbdnReadRequest) (*ConfigReadLBDNResponse, *http.Response, error)
-
 	/*
 		LbdnUpdate Update the __LBDN__ object.
 
@@ -119,8 +114,8 @@ LbdnCreate Create the __LBDN__ object.
 
 Use this method to create a __LBDN__ object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLbdnCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiLbdnCreateRequest
 */
 func (a *LbdnAPIService) LbdnCreate(ctx context.Context) ApiLbdnCreateRequest {
 	return ApiLbdnCreateRequest{
@@ -130,8 +125,7 @@ func (a *LbdnAPIService) LbdnCreate(ctx context.Context) ApiLbdnCreateRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigCreateLBDNResponse
+//  @return ConfigCreateLBDNResponse
 func (a *LbdnAPIService) LbdnCreateExecute(r ApiLbdnCreateRequest) (*ConfigCreateLBDNResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -170,6 +164,14 @@ func (a *LbdnAPIService) LbdnCreateExecute(r ApiLbdnCreateRequest) (*ConfigCreat
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -214,7 +216,6 @@ func (a *LbdnAPIService) LbdnCreateExecute(r ApiLbdnCreateRequest) (*ConfigCreat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -233,9 +234,9 @@ LbdnDelete Delete the __LBDN__ object.
 
 Use this method to delete a __LBDN__ object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiLbdnDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiLbdnDeleteRequest
 */
 func (a *LbdnAPIService) LbdnDelete(ctx context.Context, id string) ApiLbdnDeleteRequest {
 	return ApiLbdnDeleteRequest{
@@ -334,37 +335,37 @@ type ApiLbdnListRequest struct {
 	torderBy   *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiLbdnListRequest) Fields(fields string) ApiLbdnListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiLbdnListRequest) Filter(filter string) ApiLbdnListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiLbdnListRequest) Offset(offset int32) ApiLbdnListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiLbdnListRequest) Limit(limit int32) ApiLbdnListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiLbdnListRequest) PageToken(pageToken string) ApiLbdnListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiLbdnListRequest) OrderBy(orderBy string) ApiLbdnListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -391,8 +392,8 @@ LbdnList List __LBDN__ objects.
 
 Use this method to list __LBDN__ objects.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLbdnListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiLbdnListRequest
 */
 func (a *LbdnAPIService) LbdnList(ctx context.Context) ApiLbdnListRequest {
 	return ApiLbdnListRequest{
@@ -402,8 +403,7 @@ func (a *LbdnAPIService) LbdnList(ctx context.Context) ApiLbdnListRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigListLBDNResponse
+//  @return ConfigListLBDNResponse
 func (a *LbdnAPIService) LbdnListExecute(r ApiLbdnListRequest) (*ConfigListLBDNResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -505,7 +505,6 @@ func (a *LbdnAPIService) LbdnListExecute(r ApiLbdnListRequest) (*ConfigListLBDNR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -516,7 +515,7 @@ type ApiLbdnReadRequest struct {
 	fields     *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiLbdnReadRequest) Fields(fields string) ApiLbdnReadRequest {
 	r.fields = &fields
 	return r
@@ -531,9 +530,9 @@ LbdnRead Read the __LBDN__ object.
 
 Use this method to read a __LBDN__ object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiLbdnReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiLbdnReadRequest
 */
 func (a *LbdnAPIService) LbdnRead(ctx context.Context, id string) ApiLbdnReadRequest {
 	return ApiLbdnReadRequest{
@@ -544,8 +543,7 @@ func (a *LbdnAPIService) LbdnRead(ctx context.Context, id string) ApiLbdnReadReq
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadLBDNResponse
+//  @return ConfigReadLBDNResponse
 func (a *LbdnAPIService) LbdnReadExecute(r ApiLbdnReadRequest) (*ConfigReadLBDNResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -627,7 +625,6 @@ func (a *LbdnAPIService) LbdnReadExecute(r ApiLbdnReadRequest) (*ConfigReadLBDNR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -652,9 +649,9 @@ LbdnUpdate Update the __LBDN__ object.
 
 Use this method to update a __LBDN__ object.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiLbdnUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiLbdnUpdateRequest
 */
 func (a *LbdnAPIService) LbdnUpdate(ctx context.Context, id string) ApiLbdnUpdateRequest {
 	return ApiLbdnUpdateRequest{
@@ -665,8 +662,7 @@ func (a *LbdnAPIService) LbdnUpdate(ctx context.Context, id string) ApiLbdnUpdat
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateLBDNResponse
+//  @return ConfigUpdateLBDNResponse
 func (a *LbdnAPIService) LbdnUpdateExecute(r ApiLbdnUpdateRequest) (*ConfigUpdateLBDNResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -706,6 +702,14 @@ func (a *LbdnAPIService) LbdnUpdateExecute(r ApiLbdnUpdateRequest) (*ConfigUpdat
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -750,6 +754,5 @@ func (a *LbdnAPIService) LbdnUpdateExecute(r ApiLbdnUpdateRequest) (*ConfigUpdat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

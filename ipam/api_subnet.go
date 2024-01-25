@@ -22,7 +22,6 @@ import (
 )
 
 type SubnetAPI interface {
-
 	/*
 			SubnetCopy Copy the subnet.
 
@@ -38,7 +37,6 @@ type SubnetAPI interface {
 	// SubnetCopyExecute executes the request
 	//  @return IpamsvcCopySubnetResponse
 	SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCopySubnetResponse, *http.Response, error)
-
 	/*
 			SubnetCreate Create the subnet.
 
@@ -53,7 +51,6 @@ type SubnetAPI interface {
 	// SubnetCreateExecute executes the request
 	//  @return IpamsvcCreateSubnetResponse
 	SubnetCreateExecute(r ApiSubnetCreateRequest) (*IpamsvcCreateSubnetResponse, *http.Response, error)
-
 	/*
 			SubnetCreateNextAvailableIP Allocate the next available IP address.
 
@@ -69,7 +66,6 @@ type SubnetAPI interface {
 	// SubnetCreateNextAvailableIPExecute executes the request
 	//  @return IpamsvcCreateNextAvailableIPResponse
 	SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
-
 	/*
 			SubnetDelete Move the subnet to the recycle bin.
 
@@ -84,7 +80,6 @@ type SubnetAPI interface {
 
 	// SubnetDeleteExecute executes the request
 	SubnetDeleteExecute(r ApiSubnetDeleteRequest) (*http.Response, error)
-
 	/*
 			SubnetList Retrieve subnets.
 
@@ -99,7 +94,6 @@ type SubnetAPI interface {
 	// SubnetListExecute executes the request
 	//  @return IpamsvcListSubnetResponse
 	SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcListSubnetResponse, *http.Response, error)
-
 	/*
 			SubnetListNextAvailableIP Retrieve the next available IP address.
 
@@ -115,7 +109,6 @@ type SubnetAPI interface {
 	// SubnetListNextAvailableIPExecute executes the request
 	//  @return IpamsvcNextAvailableIPResponse
 	SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
-
 	/*
 			SubnetRead Retrieve the subnet.
 
@@ -131,7 +124,6 @@ type SubnetAPI interface {
 	// SubnetReadExecute executes the request
 	//  @return IpamsvcReadSubnetResponse
 	SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcReadSubnetResponse, *http.Response, error)
-
 	/*
 			SubnetUpdate Update the subnet.
 
@@ -174,9 +166,9 @@ SubnetCopy Copy the subnet.
 Use this method to copy a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetCopyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetCopyRequest
 */
 func (a *SubnetAPIService) SubnetCopy(ctx context.Context, id string) ApiSubnetCopyRequest {
 	return ApiSubnetCopyRequest{
@@ -187,8 +179,7 @@ func (a *SubnetAPIService) SubnetCopy(ctx context.Context, id string) ApiSubnetC
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCopySubnetResponse
+//  @return IpamsvcCopySubnetResponse
 func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCopySubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -272,7 +263,6 @@ func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCo
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -280,10 +270,17 @@ type ApiSubnetCreateRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	body       *IpamsvcSubnet
+	inherit    *string
 }
 
 func (r ApiSubnetCreateRequest) Body(body IpamsvcSubnet) ApiSubnetCreateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiSubnetCreateRequest) Inherit(inherit string) ApiSubnetCreateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -297,8 +294,8 @@ SubnetCreate Create the subnet.
 Use this method to create a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubnetCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSubnetCreateRequest
 */
 func (a *SubnetAPIService) SubnetCreate(ctx context.Context) ApiSubnetCreateRequest {
 	return ApiSubnetCreateRequest{
@@ -308,8 +305,7 @@ func (a *SubnetAPIService) SubnetCreate(ctx context.Context) ApiSubnetCreateRequ
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateSubnetResponse
+//  @return IpamsvcCreateSubnetResponse
 func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*IpamsvcCreateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -332,6 +328,9 @@ func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*Ipams
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -348,6 +347,14 @@ func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*Ipams
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -392,7 +399,6 @@ func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -426,9 +432,9 @@ SubnetCreateNextAvailableIP Allocate the next available IP address.
 Use this method to allocate the next available IP address.
 This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetCreateNextAvailableIPRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetCreateNextAvailableIPRequest
 */
 func (a *SubnetAPIService) SubnetCreateNextAvailableIP(ctx context.Context, id string) ApiSubnetCreateNextAvailableIPRequest {
 	return ApiSubnetCreateNextAvailableIPRequest{
@@ -439,8 +445,7 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIP(ctx context.Context, id s
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateNextAvailableIPResponse
+//  @return IpamsvcCreateNextAvailableIPResponse
 func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -531,7 +536,6 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateN
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -551,9 +555,9 @@ SubnetDelete Move the subnet to the recycle bin.
 Use this method to move a __Subnet__ object to the recycle bin.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetDeleteRequest
 */
 func (a *SubnetAPIService) SubnetDelete(ctx context.Context, id string) ApiSubnetDeleteRequest {
 	return ApiSubnetDeleteRequest{
@@ -650,39 +654,40 @@ type ApiSubnetListRequest struct {
 	orderBy    *string
 	torderBy   *string
 	tfilter    *string
+	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiSubnetListRequest) Fields(fields string) ApiSubnetListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiSubnetListRequest) Filter(filter string) ApiSubnetListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiSubnetListRequest) Offset(offset int32) ApiSubnetListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiSubnetListRequest) Limit(limit int32) ApiSubnetListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiSubnetListRequest) PageToken(pageToken string) ApiSubnetListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiSubnetListRequest) OrderBy(orderBy string) ApiSubnetListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -700,6 +705,12 @@ func (r ApiSubnetListRequest) Tfilter(tfilter string) ApiSubnetListRequest {
 	return r
 }
 
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiSubnetListRequest) Inherit(inherit string) ApiSubnetListRequest {
+	r.inherit = &inherit
+	return r
+}
+
 func (r ApiSubnetListRequest) Execute() (*IpamsvcListSubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetListExecute(r)
 }
@@ -710,8 +721,8 @@ SubnetList Retrieve subnets.
 Use this method to retrieve __Subnet__ objects.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubnetListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSubnetListRequest
 */
 func (a *SubnetAPIService) SubnetList(ctx context.Context) ApiSubnetListRequest {
 	return ApiSubnetListRequest{
@@ -721,8 +732,7 @@ func (a *SubnetAPIService) SubnetList(ctx context.Context) ApiSubnetListRequest 
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListSubnetResponse
+//  @return IpamsvcListSubnetResponse
 func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcListSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -765,6 +775,9 @@ func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcLi
 	}
 	if r.tfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_tfilter", r.tfilter, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -824,7 +837,6 @@ func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcLi
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -858,9 +870,9 @@ SubnetListNextAvailableIP Retrieve the next available IP address.
 Use this method to retrieve the next available IP address.
 This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetListNextAvailableIPRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetListNextAvailableIPRequest
 */
 func (a *SubnetAPIService) SubnetListNextAvailableIP(ctx context.Context, id string) ApiSubnetListNextAvailableIPRequest {
 	return ApiSubnetListNextAvailableIPRequest{
@@ -871,8 +883,7 @@ func (a *SubnetAPIService) SubnetListNextAvailableIP(ctx context.Context, id str
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcNextAvailableIPResponse
+//  @return IpamsvcNextAvailableIPResponse
 func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -957,7 +968,6 @@ func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextA
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -966,11 +976,18 @@ type ApiSubnetReadRequest struct {
 	ApiService SubnetAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiSubnetReadRequest) Fields(fields string) ApiSubnetReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiSubnetReadRequest) Inherit(inherit string) ApiSubnetReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -984,9 +1001,9 @@ SubnetRead Retrieve the subnet.
 Use this method to retrieve a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetReadRequest
 */
 func (a *SubnetAPIService) SubnetRead(ctx context.Context, id string) ApiSubnetReadRequest {
 	return ApiSubnetReadRequest{
@@ -997,8 +1014,7 @@ func (a *SubnetAPIService) SubnetRead(ctx context.Context, id string) ApiSubnetR
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadSubnetResponse
+//  @return IpamsvcReadSubnetResponse
 func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcReadSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1021,6 +1037,9 @@ func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcRe
 
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1080,7 +1099,6 @@ func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcRe
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -1089,10 +1107,17 @@ type ApiSubnetUpdateRequest struct {
 	ApiService SubnetAPI
 	id         string
 	body       *IpamsvcSubnet
+	inherit    *string
 }
 
 func (r ApiSubnetUpdateRequest) Body(body IpamsvcSubnet) ApiSubnetUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiSubnetUpdateRequest) Inherit(inherit string) ApiSubnetUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -1106,9 +1131,9 @@ SubnetUpdate Update the subnet.
 Use this method to update a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiSubnetUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiSubnetUpdateRequest
 */
 func (a *SubnetAPIService) SubnetUpdate(ctx context.Context, id string) ApiSubnetUpdateRequest {
 	return ApiSubnetUpdateRequest{
@@ -1119,8 +1144,7 @@ func (a *SubnetAPIService) SubnetUpdate(ctx context.Context, id string) ApiSubne
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateSubnetResponse
+//  @return IpamsvcUpdateSubnetResponse
 func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*IpamsvcUpdateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1144,6 +1168,9 @@ func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*Ipams
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1160,6 +1187,14 @@ func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*Ipams
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1204,6 +1239,5 @@ func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

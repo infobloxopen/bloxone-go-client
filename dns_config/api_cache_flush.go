@@ -21,7 +21,6 @@ import (
 )
 
 type CacheFlushAPI interface {
-
 	/*
 			CacheFlushCreate Create the Cache Flush object.
 
@@ -62,8 +61,8 @@ CacheFlushCreate Create the Cache Flush object.
 Use this method to create a Cache Flush object.
 The Cache Flush object is for removing entries from the DNS cache on a host. The host must be available and running DNS for this to succeed.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCacheFlushCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCacheFlushCreateRequest
 */
 func (a *CacheFlushAPIService) CacheFlushCreate(ctx context.Context) ApiCacheFlushCreateRequest {
 	return ApiCacheFlushCreateRequest{
@@ -73,8 +72,7 @@ func (a *CacheFlushAPIService) CacheFlushCreate(ctx context.Context) ApiCacheFlu
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *CacheFlushAPIService) CacheFlushCreateExecute(r ApiCacheFlushCreateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -157,6 +155,5 @@ func (a *CacheFlushAPIService) CacheFlushCreateExecute(r ApiCacheFlushCreateRequ
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

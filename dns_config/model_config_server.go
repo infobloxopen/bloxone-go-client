@@ -12,6 +12,7 @@ package dns_config
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -118,6 +119,8 @@ type ConfigServer struct {
 	// Optional. Ordered list of _dns/display_view_ objects served by any of _dns/host_ assigned to a particular DNS Config Profile. Automatically determined. Allows re-ordering only.
 	Views []ConfigDisplayView `json:"views,omitempty"`
 }
+
+type _ConfigServer ConfigServer
 
 // NewConfigServer instantiates a new ConfigServer object
 // This constructor will assign default values to properties that have it defined,
@@ -1853,6 +1856,41 @@ func (o ConfigServer) ToMap() (map[string]interface{}, error) {
 		toSerialize["views"] = o.Views
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigServer) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigServer := _ConfigServer{}
+
+	err = json.Unmarshal(bytes, &varConfigServer)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigServer(varConfigServer)
+
+	return err
 }
 
 type NullableConfigServer struct {

@@ -12,6 +12,7 @@ package dns_config
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConfigSortListItem type satisfies the MappedNullable interface at compile time
@@ -28,6 +29,8 @@ type ConfigSortListItem struct {
 	// Must be empty if _element_ is not _ip_.
 	Source *string `json:"source,omitempty"`
 }
+
+type _ConfigSortListItem ConfigSortListItem
 
 // NewConfigSortListItem instantiates a new ConfigSortListItem object
 // This constructor will assign default values to properties that have it defined,
@@ -188,6 +191,41 @@ func (o ConfigSortListItem) ToMap() (map[string]interface{}, error) {
 		toSerialize["source"] = o.Source
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigSortListItem) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"element",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigSortListItem := _ConfigSortListItem{}
+
+	err = json.Unmarshal(bytes, &varConfigSortListItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigSortListItem(varConfigSortListItem)
+
+	return err
 }
 
 type NullableConfigSortListItem struct {

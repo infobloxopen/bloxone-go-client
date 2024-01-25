@@ -12,6 +12,7 @@ package dns_config
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConfigGlobal type satisfies the MappedNullable interface at compile time
@@ -108,6 +109,8 @@ type ConfigGlobal struct {
 	UseRootForwardersForLocalResolutionWithB1td *bool                `json:"use_root_forwarders_for_local_resolution_with_b1td,omitempty"`
 	ZoneAuthority                               *ConfigZoneAuthority `json:"zone_authority,omitempty"`
 }
+
+type _ConfigGlobal ConfigGlobal
 
 // NewConfigGlobal instantiates a new ConfigGlobal object
 // This constructor will assign default values to properties that have it defined,
@@ -1703,6 +1706,41 @@ func (o ConfigGlobal) ToMap() (map[string]interface{}, error) {
 		toSerialize["zone_authority"] = o.ZoneAuthority
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigGlobal) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigGlobal := _ConfigGlobal{}
+
+	err = json.Unmarshal(bytes, &varConfigGlobal)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigGlobal(varConfigGlobal)
+
+	return err
 }
 
 type NullableConfigGlobal struct {

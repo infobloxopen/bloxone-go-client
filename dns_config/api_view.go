@@ -22,7 +22,6 @@ import (
 )
 
 type ViewAPI interface {
-
 	/*
 			ViewBulkCopy Copies the specified __AuthZone__ and __ForwardZone__ objects in the __View__.
 
@@ -38,7 +37,6 @@ type ViewAPI interface {
 	// ViewBulkCopyExecute executes the request
 	//  @return ConfigBulkCopyResponse
 	ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigBulkCopyResponse, *http.Response, error)
-
 	/*
 			ViewCreate Create the View object.
 
@@ -53,7 +51,6 @@ type ViewAPI interface {
 	// ViewCreateExecute executes the request
 	//  @return ConfigCreateViewResponse
 	ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreateViewResponse, *http.Response, error)
-
 	/*
 			ViewDelete Move the View object to Recyclebin.
 
@@ -68,7 +65,6 @@ type ViewAPI interface {
 
 	// ViewDeleteExecute executes the request
 	ViewDeleteExecute(r ApiViewDeleteRequest) (*http.Response, error)
-
 	/*
 			ViewList List View objects.
 
@@ -83,7 +79,6 @@ type ViewAPI interface {
 	// ViewListExecute executes the request
 	//  @return ConfigListViewResponse
 	ViewListExecute(r ApiViewListRequest) (*ConfigListViewResponse, *http.Response, error)
-
 	/*
 			ViewRead Read the View object.
 
@@ -99,7 +94,6 @@ type ViewAPI interface {
 	// ViewReadExecute executes the request
 	//  @return ConfigReadViewResponse
 	ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewResponse, *http.Response, error)
-
 	/*
 			ViewUpdate Update the View object.
 
@@ -142,8 +136,8 @@ Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one _
 The __AuthZone__ object represents an authoritative zone.
 The __ForwardZone__ object represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewBulkCopyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiViewBulkCopyRequest
 */
 func (a *ViewAPIService) ViewBulkCopy(ctx context.Context) ApiViewBulkCopyRequest {
 	return ApiViewBulkCopyRequest{
@@ -153,8 +147,7 @@ func (a *ViewAPIService) ViewBulkCopy(ctx context.Context) ApiViewBulkCopyReques
 }
 
 // Execute executes the request
-//
-//	@return ConfigBulkCopyResponse
+//  @return ConfigBulkCopyResponse
 func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigBulkCopyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -237,7 +230,6 @@ func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigB
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -245,10 +237,17 @@ type ApiViewCreateRequest struct {
 	ctx        context.Context
 	ApiService ViewAPI
 	body       *ConfigView
+	inherit    *string
 }
 
 func (r ApiViewCreateRequest) Body(body ConfigView) ApiViewCreateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiViewCreateRequest) Inherit(inherit string) ApiViewCreateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -262,8 +261,8 @@ ViewCreate Create the View object.
 Use this method to create a View object.
 Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiViewCreateRequest
 */
 func (a *ViewAPIService) ViewCreate(ctx context.Context) ApiViewCreateRequest {
 	return ApiViewCreateRequest{
@@ -273,8 +272,7 @@ func (a *ViewAPIService) ViewCreate(ctx context.Context) ApiViewCreateRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigCreateViewResponse
+//  @return ConfigCreateViewResponse
 func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreateViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -297,6 +295,9 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -313,6 +314,14 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -357,7 +366,6 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -377,9 +385,9 @@ ViewDelete Move the View object to Recyclebin.
 Use this method to move a View object to Recyclebin.
 Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiViewDeleteRequest
 */
 func (a *ViewAPIService) ViewDelete(ctx context.Context, id string) ApiViewDeleteRequest {
 	return ApiViewDeleteRequest{
@@ -476,39 +484,40 @@ type ApiViewListRequest struct {
 	orderBy    *string
 	tfilter    *string
 	torderBy   *string
+	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiViewListRequest) Fields(fields string) ApiViewListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiViewListRequest) Filter(filter string) ApiViewListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiViewListRequest) Offset(offset int32) ApiViewListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiViewListRequest) Limit(limit int32) ApiViewListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiViewListRequest) PageToken(pageToken string) ApiViewListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiViewListRequest) OrderBy(orderBy string) ApiViewListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -526,6 +535,12 @@ func (r ApiViewListRequest) TorderBy(torderBy string) ApiViewListRequest {
 	return r
 }
 
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiViewListRequest) Inherit(inherit string) ApiViewListRequest {
+	r.inherit = &inherit
+	return r
+}
+
 func (r ApiViewListRequest) Execute() (*ConfigListViewResponse, *http.Response, error) {
 	return r.ApiService.ViewListExecute(r)
 }
@@ -536,8 +551,8 @@ ViewList List View objects.
 Use this method to list View objects.
 Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiViewListRequest
 */
 func (a *ViewAPIService) ViewList(ctx context.Context) ApiViewListRequest {
 	return ApiViewListRequest{
@@ -547,8 +562,7 @@ func (a *ViewAPIService) ViewList(ctx context.Context) ApiViewListRequest {
 }
 
 // Execute executes the request
-//
-//	@return ConfigListViewResponse
+//  @return ConfigListViewResponse
 func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -592,6 +606,9 @@ func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewR
 	if r.torderBy != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_torder_by", r.torderBy, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -650,7 +667,6 @@ func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -659,11 +675,18 @@ type ApiViewReadRequest struct {
 	ApiService ViewAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiViewReadRequest) Fields(fields string) ApiViewReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiViewReadRequest) Inherit(inherit string) ApiViewReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -677,9 +700,9 @@ ViewRead Read the View object.
 Use this method to read a View object.
 Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiViewReadRequest
 */
 func (a *ViewAPIService) ViewRead(ctx context.Context, id string) ApiViewReadRequest {
 	return ApiViewReadRequest{
@@ -690,8 +713,7 @@ func (a *ViewAPIService) ViewRead(ctx context.Context, id string) ApiViewReadReq
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadViewResponse
+//  @return ConfigReadViewResponse
 func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -715,6 +737,9 @@ func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewR
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -773,7 +798,6 @@ func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -782,10 +806,17 @@ type ApiViewUpdateRequest struct {
 	ApiService ViewAPI
 	id         string
 	body       *ConfigView
+	inherit    *string
 }
 
 func (r ApiViewUpdateRequest) Body(body ConfigView) ApiViewUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiViewUpdateRequest) Inherit(inherit string) ApiViewUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -799,9 +830,9 @@ ViewUpdate Update the View object.
 Use this method to update a View object.
 Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiViewUpdateRequest
 */
 func (a *ViewAPIService) ViewUpdate(ctx context.Context, id string) ApiViewUpdateRequest {
 	return ApiViewUpdateRequest{
@@ -812,8 +843,7 @@ func (a *ViewAPIService) ViewUpdate(ctx context.Context, id string) ApiViewUpdat
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateViewResponse
+//  @return ConfigUpdateViewResponse
 func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdateViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -837,6 +867,9 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -853,6 +886,14 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.GetDefaultTags() {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -897,6 +938,5 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
