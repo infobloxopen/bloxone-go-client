@@ -60,8 +60,8 @@ UploadUpload Upload content to the keys service.
 
 Use this method to upload specified content type to the keys service.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUploadUploadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUploadUploadRequest
 */
 func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequest {
 	return ApiUploadUploadRequest{
@@ -71,8 +71,7 @@ func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequ
 }
 
 // Execute executes the request
-//
-//	@return DdiuploadResponse
+//  @return DdiuploadResponse
 func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*DdiuploadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

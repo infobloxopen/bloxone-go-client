@@ -125,8 +125,8 @@ OptionGroupCreate Create the DHCP option group.
 Use this method to create an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionGroupCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOptionGroupCreateRequest
 */
 func (a *OptionGroupAPIService) OptionGroupCreate(ctx context.Context) ApiOptionGroupCreateRequest {
 	return ApiOptionGroupCreateRequest{
@@ -136,8 +136,7 @@ func (a *OptionGroupAPIService) OptionGroupCreate(ctx context.Context) ApiOption
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateOptionGroupResponse
+//  @return IpamsvcCreateOptionGroupResponse
 func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*IpamsvcCreateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -240,9 +239,9 @@ OptionGroupDelete Move the DHCP option group to the recycle bin.
 Use this method to move an __OptionGroup__ object to the recycle bin.
 The __OptionGroup__ object is a named collection of options.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionGroupDeleteRequest
 */
 func (a *OptionGroupAPIService) OptionGroupDelete(ctx context.Context, id string) ApiOptionGroupDeleteRequest {
 	return ApiOptionGroupDeleteRequest{
@@ -341,37 +340,37 @@ type ApiOptionGroupListRequest struct {
 	tfilter    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiOptionGroupListRequest) Fields(fields string) ApiOptionGroupListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiOptionGroupListRequest) Filter(filter string) ApiOptionGroupListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiOptionGroupListRequest) Offset(offset int32) ApiOptionGroupListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiOptionGroupListRequest) Limit(limit int32) ApiOptionGroupListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiOptionGroupListRequest) PageToken(pageToken string) ApiOptionGroupListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiOptionGroupListRequest) OrderBy(orderBy string) ApiOptionGroupListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -399,8 +398,8 @@ OptionGroupList Retrieve DHCP option groups.
 Use this method to retrieve __OptionGroup__ objects.
 The __OptionGroup__ object is a named collection of options.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionGroupListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOptionGroupListRequest
 */
 func (a *OptionGroupAPIService) OptionGroupList(ctx context.Context) ApiOptionGroupListRequest {
 	return ApiOptionGroupListRequest{
@@ -410,8 +409,7 @@ func (a *OptionGroupAPIService) OptionGroupList(ctx context.Context) ApiOptionGr
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListOptionGroupResponse
+//  @return IpamsvcListOptionGroupResponse
 func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListRequest) (*IpamsvcListOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -524,7 +522,7 @@ type ApiOptionGroupReadRequest struct {
 	fields     *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiOptionGroupReadRequest) Fields(fields string) ApiOptionGroupReadRequest {
 	r.fields = &fields
 	return r
@@ -540,9 +538,9 @@ OptionGroupRead Retrieve the DHCP option group.
 Use this method to retrieve an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionGroupReadRequest
 */
 func (a *OptionGroupAPIService) OptionGroupRead(ctx context.Context, id string) ApiOptionGroupReadRequest {
 	return ApiOptionGroupReadRequest{
@@ -553,8 +551,7 @@ func (a *OptionGroupAPIService) OptionGroupRead(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadOptionGroupResponse
+//  @return IpamsvcReadOptionGroupResponse
 func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*IpamsvcReadOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -662,9 +659,9 @@ OptionGroupUpdate Update the DHCP option group.
 Use this method to update an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionGroupUpdateRequest
 */
 func (a *OptionGroupAPIService) OptionGroupUpdate(ctx context.Context, id string) ApiOptionGroupUpdateRequest {
 	return ApiOptionGroupUpdateRequest{
@@ -675,8 +672,7 @@ func (a *OptionGroupAPIService) OptionGroupUpdate(ctx context.Context, id string
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateOptionGroupResponse
+//  @return IpamsvcUpdateOptionGroupResponse
 func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*IpamsvcUpdateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

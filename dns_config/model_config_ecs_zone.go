@@ -12,6 +12,7 @@ package dns_config
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConfigECSZone type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type ConfigECSZone struct {
 	// Zone FQDN in punycode.
 	ProtocolFqdn *string `json:"protocol_fqdn,omitempty"`
 }
+
+type _ConfigECSZone ConfigECSZone
 
 // NewConfigECSZone instantiates a new ConfigECSZone object
 // This constructor will assign default values to properties that have it defined,
@@ -142,6 +145,42 @@ func (o ConfigECSZone) ToMap() (map[string]interface{}, error) {
 		toSerialize["protocol_fqdn"] = o.ProtocolFqdn
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigECSZone) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"access",
+		"fqdn",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigECSZone := _ConfigECSZone{}
+
+	err = json.Unmarshal(bytes, &varConfigECSZone)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigECSZone(varConfigECSZone)
+
+	return err
 }
 
 type NullableConfigECSZone struct {

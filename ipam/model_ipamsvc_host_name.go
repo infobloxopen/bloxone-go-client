@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcHostName type satisfies the MappedNullable interface at compile time
@@ -28,6 +29,8 @@ type IpamsvcHostName struct {
 	// The resource identifier.
 	Zone string `json:"zone"`
 }
+
+type _IpamsvcHostName IpamsvcHostName
 
 // NewIpamsvcHostName instantiates a new IpamsvcHostName object
 // This constructor will assign default values to properties that have it defined,
@@ -179,6 +182,42 @@ func (o IpamsvcHostName) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["zone"] = o.Zone
 	return toSerialize, nil
+}
+
+func (o *IpamsvcHostName) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"zone",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcHostName := _IpamsvcHostName{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcHostName)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcHostName(varIpamsvcHostName)
+
+	return err
 }
 
 type NullableIpamsvcHostName struct {

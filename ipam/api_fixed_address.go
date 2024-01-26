@@ -132,8 +132,8 @@ FixedAddressCreate Create the fixed address.
 Use this method to create a __FixedAddress__ object.
 The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFixedAddressCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFixedAddressCreateRequest
 */
 func (a *FixedAddressAPIService) FixedAddressCreate(ctx context.Context) ApiFixedAddressCreateRequest {
 	return ApiFixedAddressCreateRequest{
@@ -143,8 +143,7 @@ func (a *FixedAddressAPIService) FixedAddressCreate(ctx context.Context) ApiFixe
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateFixedAddressResponse
+//  @return IpamsvcCreateFixedAddressResponse
 func (a *FixedAddressAPIService) FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*IpamsvcCreateFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -250,9 +249,9 @@ FixedAddressDelete Move the fixed address to the recycle bin.
 Use this method to move a __FixedAddress__ object to the recycle bin.
 The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiFixedAddressDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiFixedAddressDeleteRequest
 */
 func (a *FixedAddressAPIService) FixedAddressDelete(ctx context.Context, id string) ApiFixedAddressDeleteRequest {
 	return ApiFixedAddressDeleteRequest{
@@ -352,37 +351,37 @@ type ApiFixedAddressListRequest struct {
 	inherit    *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiFixedAddressListRequest) Filter(filter string) ApiFixedAddressListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiFixedAddressListRequest) OrderBy(orderBy string) ApiFixedAddressListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiFixedAddressListRequest) Fields(fields string) ApiFixedAddressListRequest {
 	r.fields = &fields
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiFixedAddressListRequest) Offset(offset int32) ApiFixedAddressListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiFixedAddressListRequest) Limit(limit int32) ApiFixedAddressListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiFixedAddressListRequest) PageToken(pageToken string) ApiFixedAddressListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -416,8 +415,8 @@ FixedAddressList Retrieve fixed addresses.
 Use this method to retrieve __FixedAddress__ objects.
 The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFixedAddressListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFixedAddressListRequest
 */
 func (a *FixedAddressAPIService) FixedAddressList(ctx context.Context) ApiFixedAddressListRequest {
 	return ApiFixedAddressListRequest{
@@ -427,8 +426,7 @@ func (a *FixedAddressAPIService) FixedAddressList(ctx context.Context) ApiFixedA
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListFixedAddressResponse
+//  @return IpamsvcListFixedAddressResponse
 func (a *FixedAddressAPIService) FixedAddressListExecute(r ApiFixedAddressListRequest) (*IpamsvcListFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -545,7 +543,7 @@ type ApiFixedAddressReadRequest struct {
 	inherit    *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiFixedAddressReadRequest) Fields(fields string) ApiFixedAddressReadRequest {
 	r.fields = &fields
 	return r
@@ -567,9 +565,9 @@ FixedAddressRead Retrieve the fixed address.
 Use this method to retrieve a __FixedAddress__ object.
 The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiFixedAddressReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiFixedAddressReadRequest
 */
 func (a *FixedAddressAPIService) FixedAddressRead(ctx context.Context, id string) ApiFixedAddressReadRequest {
 	return ApiFixedAddressReadRequest{
@@ -580,8 +578,7 @@ func (a *FixedAddressAPIService) FixedAddressRead(ctx context.Context, id string
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadFixedAddressResponse
+//  @return IpamsvcReadFixedAddressResponse
 func (a *FixedAddressAPIService) FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*IpamsvcReadFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -699,9 +696,9 @@ FixedAddressUpdate Update the fixed address.
 Use this method to update a __FixedAddress__ object.
 The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiFixedAddressUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiFixedAddressUpdateRequest
 */
 func (a *FixedAddressAPIService) FixedAddressUpdate(ctx context.Context, id string) ApiFixedAddressUpdateRequest {
 	return ApiFixedAddressUpdateRequest{
@@ -712,8 +709,7 @@ func (a *FixedAddressAPIService) FixedAddressUpdate(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateFixedAddressResponse
+//  @return IpamsvcUpdateFixedAddressResponse
 func (a *FixedAddressAPIService) FixedAddressUpdateExecute(r ApiFixedAddressUpdateRequest) (*IpamsvcUpdateFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

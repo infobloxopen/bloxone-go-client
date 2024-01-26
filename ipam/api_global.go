@@ -95,7 +95,7 @@ type ApiGlobalReadRequest struct {
 	fields     *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiGlobalReadRequest) Fields(fields string) ApiGlobalReadRequest {
 	r.fields = &fields
 	return r
@@ -111,8 +111,8 @@ GlobalRead Retrieve the global configuration.
 Use this method to retrieve the __Global__ configuration object.
 The service operates on single __Global__ (_dhcp/global_) object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalReadRequest
 */
 func (a *GlobalAPIService) GlobalRead(ctx context.Context) ApiGlobalReadRequest {
 	return ApiGlobalReadRequest{
@@ -122,8 +122,7 @@ func (a *GlobalAPIService) GlobalRead(ctx context.Context) ApiGlobalReadRequest 
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadGlobalResponse
+//  @return IpamsvcReadGlobalResponse
 func (a *GlobalAPIService) GlobalReadExecute(r ApiGlobalReadRequest) (*IpamsvcReadGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -215,7 +214,7 @@ type ApiGlobalRead2Request struct {
 	fields     *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiGlobalRead2Request) Fields(fields string) ApiGlobalRead2Request {
 	r.fields = &fields
 	return r
@@ -231,9 +230,9 @@ GlobalRead2 Retrieve the global configuration.
 Use this method to retrieve the __Global__ configuration object.
 The service operates on single __Global__ (_dhcp/global_) object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiGlobalRead2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiGlobalRead2Request
 */
 func (a *GlobalAPIService) GlobalRead2(ctx context.Context, id string) ApiGlobalRead2Request {
 	return ApiGlobalRead2Request{
@@ -244,8 +243,7 @@ func (a *GlobalAPIService) GlobalRead2(ctx context.Context, id string) ApiGlobal
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadGlobalResponse
+//  @return IpamsvcReadGlobalResponse
 func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*IpamsvcReadGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -352,8 +350,8 @@ GlobalUpdate Update the global configuration.
 Use this method to update the __Global__ configuration object.
 The service operates on single __Global__ (_dhcp/global_) object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalUpdateRequest
 */
 func (a *GlobalAPIService) GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequest {
 	return ApiGlobalUpdateRequest{
@@ -363,8 +361,7 @@ func (a *GlobalAPIService) GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequ
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateGlobalResponse
+//  @return IpamsvcUpdateGlobalResponse
 func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -473,9 +470,9 @@ GlobalUpdate2 Update the global configuration.
 Use this method to update the __Global__ configuration object.
 The service operates on single __Global__ (_dhcp/global_) object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiGlobalUpdate2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiGlobalUpdate2Request
 */
 func (a *GlobalAPIService) GlobalUpdate2(ctx context.Context, id string) ApiGlobalUpdate2Request {
 	return ApiGlobalUpdate2Request{
@@ -486,8 +483,7 @@ func (a *GlobalAPIService) GlobalUpdate2(ctx context.Context, id string) ApiGlob
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateGlobalResponse
+//  @return IpamsvcUpdateGlobalResponse
 func (a *GlobalAPIService) GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

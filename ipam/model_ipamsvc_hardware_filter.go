@@ -12,6 +12,7 @@ package ipam
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -49,6 +50,8 @@ type IpamsvcHardwareFilter struct {
 	// The resource identifier.
 	VendorSpecificOptionOptionSpace *string `json:"vendor_specific_option_option_space,omitempty"`
 }
+
+type _IpamsvcHardwareFilter IpamsvcHardwareFilter
 
 // NewIpamsvcHardwareFilter instantiates a new IpamsvcHardwareFilter object
 // This constructor will assign default values to properties that have it defined,
@@ -559,6 +562,41 @@ func (o IpamsvcHardwareFilter) ToMap() (map[string]interface{}, error) {
 		toSerialize["vendor_specific_option_option_space"] = o.VendorSpecificOptionOptionSpace
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcHardwareFilter) UnmarshalJSON(bytes []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcHardwareFilter := _IpamsvcHardwareFilter{}
+
+	err = json.Unmarshal(bytes, &varIpamsvcHardwareFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcHardwareFilter(varIpamsvcHardwareFilter)
+
+	return err
 }
 
 type NullableIpamsvcHardwareFilter struct {
