@@ -56,9 +56,9 @@ ConvertDomainNameConvert Convert the object.
 
 Use this method to convert between Internationalized Domain Name (IDN) and ASCII domain name (Punycode).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param domainName Input domain name in either of IDN or punycode representations.
- @return ApiConvertDomainNameConvertRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param domainName Input domain name in either of IDN or punycode representations.
+	@return ApiConvertDomainNameConvertRequest
 */
 func (a *ConvertDomainNameAPIService) ConvertDomainNameConvert(ctx context.Context, domainName string) ApiConvertDomainNameConvertRequest {
 	return ApiConvertDomainNameConvertRequest{
@@ -69,7 +69,8 @@ func (a *ConvertDomainNameAPIService) ConvertDomainNameConvert(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ConfigConvertDomainNameResponse
+//
+//	@return ConfigConvertDomainNameResponse
 func (a *ConvertDomainNameAPIService) ConvertDomainNameConvertExecute(r ApiConvertDomainNameConvertRequest) (*ConfigConvertDomainNameResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
-	
+
 	"github.com/infobloxopen/bloxone-go-client/internal"
 )
 
@@ -70,7 +70,7 @@ func TestConfiguration_internal(t *testing.T) {
 		{
 			"DefaultTags provided",
 			fields{
-				CSPURL:     "https://stage.csp.infoblox.com",
+				CSPURL:     "https://csp.infoblox.com",
 				ClientName: "terraformv1.1#yug278872h",
 				APIKey:     "12323455",
 				DefaultTags: map[string]string{
@@ -87,7 +87,7 @@ func TestConfiguration_internal(t *testing.T) {
 				},
 				Debug:      false,
 				UserAgent:  fmt.Sprintf("bloxone-%s/%s", sdkIdentifier, version),
-				Servers:    []internal.ServerConfiguration{{URL: "https://stage.csp.infoblox.com"}},
+				Servers:    []internal.ServerConfiguration{{URL: "https://csp.infoblox.com"}},
 				HTTPClient: http.DefaultClient,
 				DefaultTags: map[string]string{
 					clientIdentifier: "terraformv1.1#yug278872h",

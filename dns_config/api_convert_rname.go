@@ -56,9 +56,9 @@ ConvertRnameConvertRName Convert the object.
 
 Use this method to convert email address to the master file RNAME format.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param emailAddress Input email address.
- @return ApiConvertRnameConvertRNameRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param emailAddress Input email address.
+	@return ApiConvertRnameConvertRNameRequest
 */
 func (a *ConvertRnameAPIService) ConvertRnameConvertRName(ctx context.Context, emailAddress string) ApiConvertRnameConvertRNameRequest {
 	return ApiConvertRnameConvertRNameRequest{
@@ -69,7 +69,8 @@ func (a *ConvertRnameAPIService) ConvertRnameConvertRName(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return ConfigConvertRNameResponse
+//
+//	@return ConfigConvertRNameResponse
 func (a *ConvertRnameAPIService) ConvertRnameConvertRNameExecute(r ApiConvertRnameConvertRNameRequest) (*ConfigConvertRNameResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

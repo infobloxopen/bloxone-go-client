@@ -98,37 +98,37 @@ type ApiDhcpHostListRequest struct {
 	torderBy   *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiDhcpHostListRequest) Fields(fields string) ApiDhcpHostListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiDhcpHostListRequest) Filter(filter string) ApiDhcpHostListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiDhcpHostListRequest) Offset(offset int32) ApiDhcpHostListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiDhcpHostListRequest) Limit(limit int32) ApiDhcpHostListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiDhcpHostListRequest) PageToken(pageToken string) ApiDhcpHostListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiDhcpHostListRequest) OrderBy(orderBy string) ApiDhcpHostListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -156,8 +156,8 @@ DhcpHostList Retrieve DHCP hosts.
 Use this method to retrieve DHCP __Host__ objects.
 A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDhcpHostListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiDhcpHostListRequest
 */
 func (a *DhcpHostAPIService) DhcpHostList(ctx context.Context) ApiDhcpHostListRequest {
 	return ApiDhcpHostListRequest{
@@ -167,7 +167,8 @@ func (a *DhcpHostAPIService) DhcpHostList(ctx context.Context) ApiDhcpHostListRe
 }
 
 // Execute executes the request
-//  @return IpamsvcListHostResponse
+//
+//	@return IpamsvcListHostResponse
 func (a *DhcpHostAPIService) DhcpHostListExecute(r ApiDhcpHostListRequest) (*IpamsvcListHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -287,9 +288,9 @@ DhcpHostListAssociations Retrieve DHCP host associations.
 
 Use this method to retrieve __HostAssociation__ objects.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiDhcpHostListAssociationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiDhcpHostListAssociationsRequest
 */
 func (a *DhcpHostAPIService) DhcpHostListAssociations(ctx context.Context, id string) ApiDhcpHostListAssociationsRequest {
 	return ApiDhcpHostListAssociationsRequest{
@@ -300,7 +301,8 @@ func (a *DhcpHostAPIService) DhcpHostListAssociations(ctx context.Context, id st
 }
 
 // Execute executes the request
-//  @return IpamsvcHostAssociationsResponse
+//
+//	@return IpamsvcHostAssociationsResponse
 func (a *DhcpHostAPIService) DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*IpamsvcHostAssociationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -389,7 +391,7 @@ type ApiDhcpHostReadRequest struct {
 	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiDhcpHostReadRequest) Fields(fields string) ApiDhcpHostReadRequest {
 	r.fields = &fields
 	return r
@@ -405,9 +407,9 @@ DhcpHostRead Retrieve the DHCP host.
 Use this method to retrieve a DHCP Host object.
 A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiDhcpHostReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiDhcpHostReadRequest
 */
 func (a *DhcpHostAPIService) DhcpHostRead(ctx context.Context, id string) ApiDhcpHostReadRequest {
 	return ApiDhcpHostReadRequest{
@@ -418,7 +420,8 @@ func (a *DhcpHostAPIService) DhcpHostRead(ctx context.Context, id string) ApiDhc
 }
 
 // Execute executes the request
-//  @return IpamsvcReadHostResponse
+//
+//	@return IpamsvcReadHostResponse
 func (a *DhcpHostAPIService) DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*IpamsvcReadHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -525,9 +528,9 @@ DhcpHostUpdate Update the DHCP hosts.
 Use this method to update a DHCP __Host__ object.
 A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiDhcpHostUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiDhcpHostUpdateRequest
 */
 func (a *DhcpHostAPIService) DhcpHostUpdate(ctx context.Context, id string) ApiDhcpHostUpdateRequest {
 	return ApiDhcpHostUpdateRequest{
@@ -538,7 +541,8 @@ func (a *DhcpHostAPIService) DhcpHostUpdate(ctx context.Context, id string) ApiD
 }
 
 // Execute executes the request
-//  @return IpamsvcUpdateHostResponse
+//
+//	@return IpamsvcUpdateHostResponse
 func (a *DhcpHostAPIService) DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (*IpamsvcUpdateHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

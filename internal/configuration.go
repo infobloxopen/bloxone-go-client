@@ -20,16 +20,16 @@ func (c contextKey) String() string {
 var (
 	// ContextAPIKeys takes a string apikey as authentication for the request
 	ContextAPIKeys = contextKey("apiKeys")
-	
+
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
-	
+
 	// ContextOperationServerIndices uses a server configuration from the index mapping.
 	ContextOperationServerIndices = contextKey("serverOperationIndices")
-	
+
 	// ContextServerVariables overrides a server configuration variables.
 	ContextServerVariables = contextKey("serverVariables")
-	
+
 	// ContextOperationServerVariables overrides a server configuration variables using operation specific values.
 	ContextOperationServerVariables = contextKey("serverOperationVariables")
 )
@@ -117,7 +117,7 @@ func (sc ServerConfigurations) URL(index int, variables map[string]string) (stri
 	}
 	server := sc[index]
 	url := server.URL
-	
+
 	// go through variables and replace placeholders
 	for name, variable := range server.Variables {
 		if value, ok := variables[name]; ok {
@@ -201,20 +201,20 @@ func (c *Configuration) ServerURLWithContext(ctx context.Context, endpoint strin
 	if !ok {
 		sc = c.Servers
 	}
-	
+
 	if ctx == nil {
 		return sc.URL(0, nil)
 	}
-	
+
 	index, err := getServerOperationIndex(ctx, endpoint)
 	if err != nil {
 		return "", err
 	}
-	
+
 	variables, err := getServerOperationVariables(ctx, endpoint)
 	if err != nil {
 		return "", err
 	}
-	
+
 	return sc.URL(index, variables)
 }

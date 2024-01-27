@@ -61,8 +61,8 @@ LeasesCommandCreate Perform actions like clearing DHCP lease(s).
 Use this method to create a __LeasesCommand__ object.
 The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLeasesCommandCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiLeasesCommandCreateRequest
 */
 func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest {
 	return ApiLeasesCommandCreateRequest{
@@ -72,7 +72,8 @@ func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLe
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateLeasesCommandResponse
+//
+//	@return IpamsvcCreateLeasesCommandResponse
 func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*IpamsvcCreateLeasesCommandResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

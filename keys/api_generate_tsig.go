@@ -60,8 +60,8 @@ GenerateTsigGenerateTSIG Generate TSIG key with a random secret.
 
 Use this method to generate a TSIG key with a random secret using the specified algorithm.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGenerateTsigGenerateTSIGRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGenerateTsigGenerateTSIGRequest
 */
 func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIG(ctx context.Context) ApiGenerateTsigGenerateTSIGRequest {
 	return ApiGenerateTsigGenerateTSIGRequest{
@@ -71,7 +71,8 @@ func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIG(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return KeysGenerateTSIGResponse
+//
+//	@return KeysGenerateTSIGResponse
 func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIGExecute(r ApiGenerateTsigGenerateTSIGRequest) (*KeysGenerateTSIGResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
