@@ -25,8 +25,8 @@ type IpamsvcAddress struct {
 	// The description for the address object. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Time when the object has been created.
-	CreatedAt *time.Time       `json:"created_at,omitempty"`
-	DhcpInfo  *IpamsvcDHCPInfo `json:"dhcp_info,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DhcpInfo *IpamsvcDHCPInfo `json:"dhcp_info,omitempty"`
 	// Read only. Represent the value of the same field in the associated _dhcp/fixed_address_ object.
 	DisableDhcp *bool `json:"disable_dhcp,omitempty"`
 	// The discovery attributes for this address in JSON format.
@@ -712,7 +712,7 @@ func (o *IpamsvcAddress) SetUsage(v []string) {
 }
 
 func (o IpamsvcAddress) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -817,3 +817,5 @@ func (v *NullableIpamsvcAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

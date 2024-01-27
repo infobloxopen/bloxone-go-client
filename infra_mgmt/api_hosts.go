@@ -1,7 +1,7 @@
 /*
 Infrastructure Management API
 
-The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---
+The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---   
 
 API version: v1
 */
@@ -18,20 +18,21 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type HostsAPI interface {
 
 	/*
-			HostsAssignTags Assign tags for list of hosts.
+	HostsAssignTags Assign tags for list of hosts.
 
-			Validation:
-		- "ids" is required.
-		- "tags" is required.
+	Validation:
+- "ids" is required.
+- "tags" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHostsAssignTagsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHostsAssignTagsRequest
 	*/
 	HostsAssignTags(ctx context.Context) ApiHostsAssignTagsRequest
 
@@ -40,13 +41,13 @@ type HostsAPI interface {
 	HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-			HostsCreate Create a Host resource.
+	HostsCreate Create a Host resource.
 
-			Validation:
-		- "display_name" is required and should be unique.
+	Validation:
+- "display_name" is required and should be unique.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHostsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHostsCreateRequest
 	*/
 	HostsCreate(ctx context.Context) ApiHostsCreateRequest
 
@@ -55,14 +56,14 @@ type HostsAPI interface {
 	HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCreateHostResponse, *http.Response, error)
 
 	/*
-			HostsDelete Delete a Host resource.
+	HostsDelete Delete a Host resource.
 
-			Validation:
-		- "id" is required.
+	Validation:
+- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHostsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHostsDeleteRequest
 	*/
 	HostsDelete(ctx context.Context, id string) ApiHostsDeleteRequest
 
@@ -70,13 +71,13 @@ type HostsAPI interface {
 	HostsDeleteExecute(r ApiHostsDeleteRequest) (*http.Response, error)
 
 	/*
-		HostsDisconnect Disconnect a Host by resource ID.
+	HostsDisconnect Disconnect a Host by resource ID.
 
-		The user can disconnect the host from the cloud (for example, if in case a host is compromised).
+	The user can disconnect the host from the cloud (for example, if in case a host is compromised).
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiHostsDisconnectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHostsDisconnectRequest
 	*/
 	HostsDisconnect(ctx context.Context, id string) ApiHostsDisconnectRequest
 
@@ -85,10 +86,10 @@ type HostsAPI interface {
 	HostsDisconnectExecute(r ApiHostsDisconnectRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-		HostsList List all the Host resources for an account.
+	HostsList List all the Host resources for an account.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiHostsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHostsListRequest
 	*/
 	HostsList(ctx context.Context) ApiHostsListRequest
 
@@ -97,14 +98,14 @@ type HostsAPI interface {
 	HostsListExecute(r ApiHostsListRequest) (*InfraListHostResponse, *http.Response, error)
 
 	/*
-			HostsRead Get a Host resource.
+	HostsRead Get a Host resource.
 
-			Validation:
-		- "id" is required.
+	Validation:
+- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHostsReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHostsReadRequest
 	*/
 	HostsRead(ctx context.Context, id string) ApiHostsReadRequest
 
@@ -113,12 +114,12 @@ type HostsAPI interface {
 	HostsReadExecute(r ApiHostsReadRequest) (*InfraGetHostResponse, *http.Response, error)
 
 	/*
-		HostsReplace Migrate a Host's configuration from one to another.
+	HostsReplace Migrate a Host's configuration from one to another.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param fromResourceId An application specific resource identity of a resource
-		@param toResourceId An application specific resource identity of a resource
-		@return ApiHostsReplaceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param fromResourceId An application specific resource identity of a resource
+	@param toResourceId An application specific resource identity of a resource
+	@return ApiHostsReplaceRequest
 	*/
 	HostsReplace(ctx context.Context, fromResourceId string, toResourceId string) ApiHostsReplaceRequest
 
@@ -127,14 +128,14 @@ type HostsAPI interface {
 	HostsReplaceExecute(r ApiHostsReplaceRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-			HostsUnassignTags Unassign tag for the list hosts.
+	HostsUnassignTags Unassign tag for the list hosts.
 
-			Validation:
-		- "ids" is required.
-		- "keys" is required.
+	Validation:
+- "ids" is required.
+- "keys" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHostsUnassignTagsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHostsUnassignTagsRequest
 	*/
 	HostsUnassignTags(ctx context.Context) ApiHostsUnassignTagsRequest
 
@@ -143,16 +144,16 @@ type HostsAPI interface {
 	HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-			HostsUpdate Update a Host resource.
+	HostsUpdate Update a Host resource.
 
-			Validation:
-		- "id" is required.
-		- "display_name" is required and should be unique.
-		- "pool_id" is required.
+	Validation:
+- "id" is required.
+- "display_name" is required and should be unique.
+- "pool_id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHostsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHostsUpdateRequest
 	*/
 	HostsUpdate(ctx context.Context, id string) ApiHostsUpdateRequest
 
@@ -165,9 +166,9 @@ type HostsAPI interface {
 type HostsAPIService internal.Service
 
 type ApiHostsAssignTagsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	body       *InfraAssignTagsRequest
+	body *InfraAssignTagsRequest
 }
 
 func (r ApiHostsAssignTagsRequest) Body(body InfraAssignTagsRequest) ApiHostsAssignTagsRequest {
@@ -186,25 +187,24 @@ Validation:
 - "ids" is required.
 - "tags" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHostsAssignTagsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHostsAssignTagsRequest
 */
 func (a *HostsAPIService) HostsAssignTags(ctx context.Context) ApiHostsAssignTagsRequest {
 	return ApiHostsAssignTagsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HostsAPIService) HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsAssignTags")
@@ -286,9 +286,9 @@ func (a *HostsAPIService) HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (m
 }
 
 type ApiHostsCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	body       *InfraHost
+	body *InfraHost
 }
 
 func (r ApiHostsCreateRequest) Body(body InfraHost) ApiHostsCreateRequest {
@@ -306,25 +306,24 @@ HostsCreate Create a Host resource.
 Validation:
 - "display_name" is required and should be unique.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHostsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHostsCreateRequest
 */
 func (a *HostsAPIService) HostsCreate(ctx context.Context) ApiHostsCreateRequest {
 	return ApiHostsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraCreateHostResponse
+//  @return InfraCreateHostResponse
 func (a *HostsAPIService) HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCreateHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraCreateHostResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraCreateHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsCreate")
@@ -406,9 +405,9 @@ func (a *HostsAPIService) HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCre
 }
 
 type ApiHostsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	id         string
+	id string
 }
 
 func (r ApiHostsDeleteRequest) Execute() (*http.Response, error) {
@@ -421,24 +420,24 @@ HostsDelete Delete a Host resource.
 Validation:
 - "id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHostsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHostsDeleteRequest
 */
 func (a *HostsAPIService) HostsDelete(ctx context.Context, id string) ApiHostsDeleteRequest {
 	return ApiHostsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *HostsAPIService) HostsDeleteExecute(r ApiHostsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsDelete")
@@ -510,10 +509,10 @@ func (a *HostsAPIService) HostsDeleteExecute(r ApiHostsDeleteRequest) (*http.Res
 }
 
 type ApiHostsDisconnectRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	id         string
-	body       *InfraDisconnectRequest
+	id string
+	body *InfraDisconnectRequest
 }
 
 func (r ApiHostsDisconnectRequest) Body(body InfraDisconnectRequest) ApiHostsDisconnectRequest {
@@ -530,27 +529,26 @@ HostsDisconnect Disconnect a Host by resource ID.
 
 The user can disconnect the host from the cloud (for example, if in case a host is compromised).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHostsDisconnectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHostsDisconnectRequest
 */
 func (a *HostsAPIService) HostsDisconnect(ctx context.Context, id string) ApiHostsDisconnectRequest {
 	return ApiHostsDisconnectRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HostsAPIService) HostsDisconnectExecute(r ApiHostsDisconnectRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsDisconnect")
@@ -633,49 +631,49 @@ func (a *HostsAPIService) HostsDisconnectExecute(r ApiHostsDisconnectRequest) (m
 }
 
 type ApiHostsListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	filter     *string
-	orderBy    *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	fields     *string
-	tfilter    *string
-	torderBy   *string
+	filter *string
+	orderBy *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	fields *string
+	tfilter *string
+	torderBy *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiHostsListRequest) Filter(filter string) ApiHostsListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiHostsListRequest) OrderBy(orderBy string) ApiHostsListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiHostsListRequest) Offset(offset int32) ApiHostsListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiHostsListRequest) Limit(limit int32) ApiHostsListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiHostsListRequest) PageToken(pageToken string) ApiHostsListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiHostsListRequest) Fields(fields string) ApiHostsListRequest {
 	r.fields = &fields
 	return r
@@ -700,25 +698,24 @@ func (r ApiHostsListRequest) Execute() (*InfraListHostResponse, *http.Response, 
 /*
 HostsList List all the Host resources for an account.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHostsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHostsListRequest
 */
 func (a *HostsAPIService) HostsList(ctx context.Context) ApiHostsListRequest {
 	return ApiHostsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraListHostResponse
+//  @return InfraListHostResponse
 func (a *HostsAPIService) HostsListExecute(r ApiHostsListRequest) (*InfraListHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraListHostResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraListHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsList")
@@ -819,9 +816,9 @@ func (a *HostsAPIService) HostsListExecute(r ApiHostsListRequest) (*InfraListHos
 }
 
 type ApiHostsReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	id         string
+	id string
 }
 
 func (r ApiHostsReadRequest) Execute() (*InfraGetHostResponse, *http.Response, error) {
@@ -834,27 +831,26 @@ HostsRead Get a Host resource.
 Validation:
 - "id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHostsReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHostsReadRequest
 */
 func (a *HostsAPIService) HostsRead(ctx context.Context, id string) ApiHostsReadRequest {
 	return ApiHostsReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraGetHostResponse
+//  @return InfraGetHostResponse
 func (a *HostsAPIService) HostsReadExecute(r ApiHostsReadRequest) (*InfraGetHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraGetHostResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraGetHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsRead")
@@ -932,11 +928,11 @@ func (a *HostsAPIService) HostsReadExecute(r ApiHostsReadRequest) (*InfraGetHost
 }
 
 type ApiHostsReplaceRequest struct {
-	ctx            context.Context
-	ApiService     HostsAPI
+	ctx context.Context
+	ApiService HostsAPI
 	fromResourceId string
-	toResourceId   string
-	body           *InfraReplaceHostRequest
+	toResourceId string
+	body *InfraReplaceHostRequest
 }
 
 func (r ApiHostsReplaceRequest) Body(body InfraReplaceHostRequest) ApiHostsReplaceRequest {
@@ -951,29 +947,28 @@ func (r ApiHostsReplaceRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 HostsReplace Migrate a Host's configuration from one to another.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param fromResourceId An application specific resource identity of a resource
-	@param toResourceId An application specific resource identity of a resource
-	@return ApiHostsReplaceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param fromResourceId An application specific resource identity of a resource
+ @param toResourceId An application specific resource identity of a resource
+ @return ApiHostsReplaceRequest
 */
 func (a *HostsAPIService) HostsReplace(ctx context.Context, fromResourceId string, toResourceId string) ApiHostsReplaceRequest {
 	return ApiHostsReplaceRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		fromResourceId: fromResourceId,
-		toResourceId:   toResourceId,
+		toResourceId: toResourceId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HostsAPIService) HostsReplaceExecute(r ApiHostsReplaceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsReplace")
@@ -1057,9 +1052,9 @@ func (a *HostsAPIService) HostsReplaceExecute(r ApiHostsReplaceRequest) (map[str
 }
 
 type ApiHostsUnassignTagsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	body       *InfraUnassignTagsRequest
+	body *InfraUnassignTagsRequest
 }
 
 func (r ApiHostsUnassignTagsRequest) Body(body InfraUnassignTagsRequest) ApiHostsUnassignTagsRequest {
@@ -1078,25 +1073,24 @@ Validation:
 - "ids" is required.
 - "keys" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHostsUnassignTagsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHostsUnassignTagsRequest
 */
 func (a *HostsAPIService) HostsUnassignTags(ctx context.Context) ApiHostsUnassignTagsRequest {
 	return ApiHostsUnassignTagsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HostsAPIService) HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsUnassignTags")
@@ -1178,10 +1172,10 @@ func (a *HostsAPIService) HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest
 }
 
 type ApiHostsUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HostsAPI
-	id         string
-	body       *InfraHost
+	id string
+	body *InfraHost
 }
 
 func (r ApiHostsUpdateRequest) Body(body InfraHost) ApiHostsUpdateRequest {
@@ -1201,27 +1195,26 @@ Validation:
 - "display_name" is required and should be unique.
 - "pool_id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHostsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHostsUpdateRequest
 */
 func (a *HostsAPIService) HostsUpdate(ctx context.Context, id string) ApiHostsUpdateRequest {
 	return ApiHostsUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraUpdateHostResponse
+//  @return InfraUpdateHostResponse
 func (a *HostsAPIService) HostsUpdateExecute(r ApiHostsUpdateRequest) (*InfraUpdateHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraUpdateHostResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraUpdateHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostsAPIService.HostsUpdate")

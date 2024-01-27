@@ -37,7 +37,7 @@ type IpamsvcASMConfig struct {
 	// The minimum size of range needed for ASM to run on this subnet.
 	MinTotal *int64 `json:"min_total,omitempty"`
 	// The minimum percentage of addresses that must be available outside of the DHCP ranges and fixed addresses when making a suggested change..
-	MinUnused    *int64     `json:"min_unused,omitempty"`
+	MinUnused *int64 `json:"min_unused,omitempty"`
 	ReenableDate *time.Time `json:"reenable_date,omitempty"`
 }
 
@@ -415,7 +415,7 @@ func (o *IpamsvcASMConfig) SetReenableDate(v time.Time) {
 }
 
 func (o IpamsvcASMConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -492,3 +492,5 @@ func (v *NullableIpamsvcASMConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

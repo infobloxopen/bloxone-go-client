@@ -17,19 +17,20 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type LeasesCommandAPI interface {
 
 	/*
-			LeasesCommandCreate Perform actions like clearing DHCP lease(s).
+	LeasesCommandCreate Perform actions like clearing DHCP lease(s).
 
-			Use this method to create a __LeasesCommand__ object.
-		The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
+	Use this method to create a __LeasesCommand__ object.
+The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiLeasesCommandCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiLeasesCommandCreateRequest
 	*/
 	LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest
 
@@ -42,9 +43,9 @@ type LeasesCommandAPI interface {
 type LeasesCommandAPIService internal.Service
 
 type ApiLeasesCommandCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService LeasesCommandAPI
-	body       *IpamsvcLeasesCommand
+	body *IpamsvcLeasesCommand
 }
 
 func (r ApiLeasesCommandCreateRequest) Body(body IpamsvcLeasesCommand) ApiLeasesCommandCreateRequest {
@@ -62,25 +63,24 @@ LeasesCommandCreate Perform actions like clearing DHCP lease(s).
 Use this method to create a __LeasesCommand__ object.
 The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLeasesCommandCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiLeasesCommandCreateRequest
 */
 func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest {
 	return ApiLeasesCommandCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateLeasesCommandResponse
+//  @return IpamsvcCreateLeasesCommandResponse
 func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*IpamsvcCreateLeasesCommandResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateLeasesCommandResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcCreateLeasesCommandResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeasesCommandAPIService.LeasesCommandCreate")

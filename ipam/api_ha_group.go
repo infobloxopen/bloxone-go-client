@@ -18,19 +18,20 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type HaGroupAPI interface {
 
 	/*
-			HaGroupCreate Create the HA group.
+	HaGroupCreate Create the HA group.
 
-			Use this method to create an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+	Use this method to create an __HAGroup__ object.
+The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHaGroupCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHaGroupCreateRequest
 	*/
 	HaGroupCreate(ctx context.Context) ApiHaGroupCreateRequest
 
@@ -39,14 +40,14 @@ type HaGroupAPI interface {
 	HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*IpamsvcCreateHAGroupResponse, *http.Response, error)
 
 	/*
-			HaGroupDelete Delete the HA group.
+	HaGroupDelete Delete the HA group.
 
-			Use this method to delete an __HAGroup__ object.
-		The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
+	Use this method to delete an __HAGroup__ object.
+The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHaGroupDeleteRequest
 	*/
 	HaGroupDelete(ctx context.Context, id string) ApiHaGroupDeleteRequest
 
@@ -54,13 +55,13 @@ type HaGroupAPI interface {
 	HaGroupDeleteExecute(r ApiHaGroupDeleteRequest) (*http.Response, error)
 
 	/*
-			HaGroupList Retrieve HA groups.
+	HaGroupList Retrieve HA groups.
 
-			Use this method to retrieve __HAGroup__ objects.
-		The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
+	Use this method to retrieve __HAGroup__ objects.
+The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHaGroupListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHaGroupListRequest
 	*/
 	HaGroupList(ctx context.Context) ApiHaGroupListRequest
 
@@ -69,14 +70,14 @@ type HaGroupAPI interface {
 	HaGroupListExecute(r ApiHaGroupListRequest) (*IpamsvcListHAGroupResponse, *http.Response, error)
 
 	/*
-			HaGroupRead Retrieve the HA group.
+	HaGroupRead Retrieve the HA group.
 
-			Use this method to retrieve an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+	Use this method to retrieve an __HAGroup__ object.
+The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHaGroupReadRequest
 	*/
 	HaGroupRead(ctx context.Context, id string) ApiHaGroupReadRequest
 
@@ -85,14 +86,14 @@ type HaGroupAPI interface {
 	HaGroupReadExecute(r ApiHaGroupReadRequest) (*IpamsvcReadHAGroupResponse, *http.Response, error)
 
 	/*
-			HaGroupUpdate Update the HA group.
+	HaGroupUpdate Update the HA group.
 
-			Use this method to update an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+	Use this method to update an __HAGroup__ object.
+The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHaGroupUpdateRequest
 	*/
 	HaGroupUpdate(ctx context.Context, id string) ApiHaGroupUpdateRequest
 
@@ -105,9 +106,9 @@ type HaGroupAPI interface {
 type HaGroupAPIService internal.Service
 
 type ApiHaGroupCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HaGroupAPI
-	body       *IpamsvcHAGroup
+	body *IpamsvcHAGroup
 }
 
 func (r ApiHaGroupCreateRequest) Body(body IpamsvcHAGroup) ApiHaGroupCreateRequest {
@@ -125,25 +126,24 @@ HaGroupCreate Create the HA group.
 Use this method to create an __HAGroup__ object.
 The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHaGroupCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHaGroupCreateRequest
 */
 func (a *HaGroupAPIService) HaGroupCreate(ctx context.Context) ApiHaGroupCreateRequest {
 	return ApiHaGroupCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateHAGroupResponse
+//  @return IpamsvcCreateHAGroupResponse
 func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*IpamsvcCreateHAGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateHAGroupResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcCreateHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupCreate")
@@ -225,9 +225,9 @@ func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*Ip
 }
 
 type ApiHaGroupDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HaGroupAPI
-	id         string
+	id string
 }
 
 func (r ApiHaGroupDeleteRequest) Execute() (*http.Response, error) {
@@ -240,24 +240,24 @@ HaGroupDelete Delete the HA group.
 Use this method to delete an __HAGroup__ object.
 The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHaGroupDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHaGroupDeleteRequest
 */
 func (a *HaGroupAPIService) HaGroupDelete(ctx context.Context, id string) ApiHaGroupDeleteRequest {
 	return ApiHaGroupDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *HaGroupAPIService) HaGroupDeleteExecute(r ApiHaGroupDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupDelete")
@@ -329,50 +329,50 @@ func (a *HaGroupAPIService) HaGroupDeleteExecute(r ApiHaGroupDeleteRequest) (*ht
 }
 
 type ApiHaGroupListRequest struct {
-	ctx          context.Context
-	ApiService   HaGroupAPI
-	filter       *string
-	orderBy      *string
-	fields       *string
-	offset       *int32
-	limit        *int32
-	pageToken    *string
-	torderBy     *string
-	tfilter      *string
+	ctx context.Context
+	ApiService HaGroupAPI
+	filter *string
+	orderBy *string
+	fields *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	torderBy *string
+	tfilter *string
 	collectStats *bool
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiHaGroupListRequest) Filter(filter string) ApiHaGroupListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiHaGroupListRequest) OrderBy(orderBy string) ApiHaGroupListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiHaGroupListRequest) Fields(fields string) ApiHaGroupListRequest {
 	r.fields = &fields
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiHaGroupListRequest) Offset(offset int32) ApiHaGroupListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiHaGroupListRequest) Limit(limit int32) ApiHaGroupListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiHaGroupListRequest) PageToken(pageToken string) ApiHaGroupListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -406,25 +406,24 @@ HaGroupList Retrieve HA groups.
 Use this method to retrieve __HAGroup__ objects.
 The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHaGroupListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHaGroupListRequest
 */
 func (a *HaGroupAPIService) HaGroupList(ctx context.Context) ApiHaGroupListRequest {
 	return ApiHaGroupListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListHAGroupResponse
+//  @return IpamsvcListHAGroupResponse
 func (a *HaGroupAPIService) HaGroupListExecute(r ApiHaGroupListRequest) (*IpamsvcListHAGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListHAGroupResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcListHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupList")
@@ -528,14 +527,14 @@ func (a *HaGroupAPIService) HaGroupListExecute(r ApiHaGroupListRequest) (*Ipamsv
 }
 
 type ApiHaGroupReadRequest struct {
-	ctx          context.Context
-	ApiService   HaGroupAPI
-	id           string
-	fields       *string
+	ctx context.Context
+	ApiService HaGroupAPI
+	id string
+	fields *string
 	collectStats *bool
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiHaGroupReadRequest) Fields(fields string) ApiHaGroupReadRequest {
 	r.fields = &fields
 	return r
@@ -557,27 +556,26 @@ HaGroupRead Retrieve the HA group.
 Use this method to retrieve an __HAGroup__ object.
 The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHaGroupReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHaGroupReadRequest
 */
 func (a *HaGroupAPIService) HaGroupRead(ctx context.Context, id string) ApiHaGroupReadRequest {
 	return ApiHaGroupReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadHAGroupResponse
+//  @return IpamsvcReadHAGroupResponse
 func (a *HaGroupAPIService) HaGroupReadExecute(r ApiHaGroupReadRequest) (*IpamsvcReadHAGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadHAGroupResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcReadHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupRead")
@@ -661,10 +659,10 @@ func (a *HaGroupAPIService) HaGroupReadExecute(r ApiHaGroupReadRequest) (*Ipamsv
 }
 
 type ApiHaGroupUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HaGroupAPI
-	id         string
-	body       *IpamsvcHAGroup
+	id string
+	body *IpamsvcHAGroup
 }
 
 func (r ApiHaGroupUpdateRequest) Body(body IpamsvcHAGroup) ApiHaGroupUpdateRequest {
@@ -682,27 +680,26 @@ HaGroupUpdate Update the HA group.
 Use this method to update an __HAGroup__ object.
 The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHaGroupUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHaGroupUpdateRequest
 */
 func (a *HaGroupAPIService) HaGroupUpdate(ctx context.Context, id string) ApiHaGroupUpdateRequest {
 	return ApiHaGroupUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateHAGroupResponse
+//  @return IpamsvcUpdateHAGroupResponse
 func (a *HaGroupAPIService) HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*IpamsvcUpdateHAGroupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateHAGroupResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcUpdateHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupUpdate")

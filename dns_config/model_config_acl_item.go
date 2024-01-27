@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -26,7 +26,7 @@ type ConfigACLItem struct {
 	// Optional. Data for _ip_ _element_.  Must be empty if _element_ is not _ip_.
 	Address *string `json:"address,omitempty"`
 	// Type of element.  Allowed values:  * _any_,  * _ip_,  * _acl_,  * _tsig_key_.
-	Element string         `json:"element"`
+	Element string `json:"element"`
 	TsigKey *ConfigTSIGKey `json:"tsig_key,omitempty"`
 }
 
@@ -194,7 +194,7 @@ func (o *ConfigACLItem) SetTsigKey(v ConfigTSIGKey) {
 }
 
 func (o ConfigACLItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -252,3 +252,5 @@ func (v *NullableConfigACLItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

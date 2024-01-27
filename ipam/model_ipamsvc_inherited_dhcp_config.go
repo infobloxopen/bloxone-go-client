@@ -19,16 +19,16 @@ var _ MappedNullable = &IpamsvcInheritedDHCPConfig{}
 
 // IpamsvcInheritedDHCPConfig The inheritance configuration for a field of type _DHCPConfig_.
 type IpamsvcInheritedDHCPConfig struct {
-	AbandonedReclaimTime   *InheritanceInheritedUInt32        `json:"abandoned_reclaim_time,omitempty"`
-	AbandonedReclaimTimeV6 *InheritanceInheritedUInt32        `json:"abandoned_reclaim_time_v6,omitempty"`
-	AllowUnknown           *InheritanceInheritedBool          `json:"allow_unknown,omitempty"`
-	AllowUnknownV6         *InheritanceInheritedBool          `json:"allow_unknown_v6,omitempty"`
-	Filters                *InheritedDHCPConfigFilterList     `json:"filters,omitempty"`
-	FiltersV6              *InheritedDHCPConfigFilterList     `json:"filters_v6,omitempty"`
-	IgnoreClientUid        *InheritanceInheritedBool          `json:"ignore_client_uid,omitempty"`
-	IgnoreList             *InheritedDHCPConfigIgnoreItemList `json:"ignore_list,omitempty"`
-	LeaseTime              *InheritanceInheritedUInt32        `json:"lease_time,omitempty"`
-	LeaseTimeV6            *InheritanceInheritedUInt32        `json:"lease_time_v6,omitempty"`
+	AbandonedReclaimTime *InheritanceInheritedUInt32 `json:"abandoned_reclaim_time,omitempty"`
+	AbandonedReclaimTimeV6 *InheritanceInheritedUInt32 `json:"abandoned_reclaim_time_v6,omitempty"`
+	AllowUnknown *InheritanceInheritedBool `json:"allow_unknown,omitempty"`
+	AllowUnknownV6 *InheritanceInheritedBool `json:"allow_unknown_v6,omitempty"`
+	Filters *InheritedDHCPConfigFilterList `json:"filters,omitempty"`
+	FiltersV6 *InheritedDHCPConfigFilterList `json:"filters_v6,omitempty"`
+	IgnoreClientUid *InheritanceInheritedBool `json:"ignore_client_uid,omitempty"`
+	IgnoreList *InheritedDHCPConfigIgnoreItemList `json:"ignore_list,omitempty"`
+	LeaseTime *InheritanceInheritedUInt32 `json:"lease_time,omitempty"`
+	LeaseTimeV6 *InheritanceInheritedUInt32 `json:"lease_time_v6,omitempty"`
 }
 
 // NewIpamsvcInheritedDHCPConfig instantiates a new IpamsvcInheritedDHCPConfig object
@@ -369,7 +369,7 @@ func (o *IpamsvcInheritedDHCPConfig) SetLeaseTimeV6(v InheritanceInheritedUInt32
 }
 
 func (o IpamsvcInheritedDHCPConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -446,3 +446,5 @@ func (v *NullableIpamsvcInheritedDHCPConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

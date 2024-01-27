@@ -1,7 +1,7 @@
 /*
 Infrastructure Management API
 
-The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---
+The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---   
 
 API version: v1
 */
@@ -23,8 +23,8 @@ type InfraDetailHost struct {
 	// Composite Status of this Host (`online`, `degraded`, `error`, `offline`, `pending`, `awaiting approval`).
 	CompositeStatus *string `json:"composite_status,omitempty"`
 	// The list of Host-specific configurations for each Service deployed on this Host.
-	Configs             []InfraDetailHostServiceConfig `json:"configs,omitempty"`
-	ConnectivityMonitor map[string]interface{}         `json:"connectivity_monitor,omitempty"`
+	Configs []InfraDetailHostServiceConfig `json:"configs,omitempty"`
+	ConnectivityMonitor map[string]interface{} `json:"connectivity_monitor,omitempty"`
 	// The timestamp of creation of Host.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// The description of the Host.
@@ -33,7 +33,7 @@ type InfraDetailHost struct {
 	DisplayName *string `json:"display_name,omitempty"`
 	// The sub-type of a specific Host type.  Example: For Host type BloxOne Appliance, sub-type could be \"B105\" or \"VEP1425\"
 	HostSubtype *string `json:"host_subtype,omitempty"`
-	HostType    *string `json:"host_type,omitempty"`
+	HostType *string `json:"host_type,omitempty"`
 	// The version of the Host platform services.
 	HostVersion *string `json:"host_version,omitempty"`
 	// The resource identifier.
@@ -43,16 +43,16 @@ type InfraDetailHost struct {
 	// The IP Space of the Host.
 	IpSpace *string `json:"ip_space,omitempty"`
 	// The legacy Host object identifier.
-	LegacyId *string              `json:"legacy_id,omitempty"`
+	LegacyId *string `json:"legacy_id,omitempty"`
 	Location *InfraDetailLocation `json:"location,omitempty"`
 	// The MAC address of the Host.
-	MacAddress      *string `json:"mac_address,omitempty"`
+	MacAddress *string `json:"mac_address,omitempty"`
 	MaintenanceMode *string `json:"maintenance_mode,omitempty"`
 	// The NAT IP address of the Host.
 	NatIp *string `json:"nat_ip,omitempty"`
 	// The unique On-Prem Host ID generated by the On-Prem device and assigned to the Host once it is registered and logged into the Infoblox Cloud.
-	Ophid *string        `json:"ophid,omitempty"`
-	Pool  *InfraPoolInfo `json:"pool,omitempty"`
+	Ophid *string `json:"ophid,omitempty"`
+	Pool *InfraPoolInfo `json:"pool,omitempty"`
 	// The unique serial number of the Host.
 	SerialNumber *string `json:"serial_number,omitempty"`
 	// The list of Services deployed on this Host.
@@ -885,7 +885,7 @@ func (o *InfraDetailHost) SetUpdatedAt(v time.Time) {
 }
 
 func (o InfraDetailHost) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1007,3 +1007,5 @@ func (v *NullableInfraDetailHost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -22,7 +22,7 @@ type IpamsvcHost struct {
 	// The primary IP address of the on-prem host.
 	Address *string `json:"address,omitempty"`
 	// Anycast address configured to the host. Order is not significant.
-	AnycastAddresses []string                     `json:"anycast_addresses,omitempty"`
+	AnycastAddresses []string `json:"anycast_addresses,omitempty"`
 	AssociatedServer *IpamsvcHostAssociatedServer `json:"associated_server,omitempty"`
 	// The description for the on-prem host.
 	Comment *string `json:"comment,omitempty"`
@@ -480,7 +480,7 @@ func (o *IpamsvcHost) SetType(v string) {
 }
 
 func (o IpamsvcHost) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -566,3 +566,5 @@ func (v *NullableIpamsvcHost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

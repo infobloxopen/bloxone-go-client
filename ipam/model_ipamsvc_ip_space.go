@@ -44,8 +44,8 @@ type IpamsvcIPSpace struct {
 	// Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_.
 	DdnsUpdateOnRenew *bool `json:"ddns_update_on_renew,omitempty"`
 	// When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_.
-	DdnsUseConflictResolution *bool              `json:"ddns_use_conflict_resolution,omitempty"`
-	DhcpConfig                *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
+	DdnsUseConflictResolution *bool `json:"ddns_use_conflict_resolution,omitempty"`
+	DhcpConfig *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
 	// The list of IPv4 DHCP options for IP space. May be either a specific option or a group of options.
 	DhcpOptions []IpamsvcOptionItem `json:"dhcp_options,omitempty"`
 	// The list of IPv6 DHCP options for IP space. May be either a specific option or a group of options.
@@ -63,16 +63,16 @@ type IpamsvcIPSpace struct {
 	// The regex bracket expression to match valid characters.  Must begin with \"[\" and end with \"]\" and be a compilable POSIX regex.  Defaults to \"[^a-zA-Z0-9_.]\".
 	HostnameRewriteRegex *string `json:"hostname_rewrite_regex,omitempty"`
 	// The resource identifier.
-	Id                 *string                    `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InheritanceSources *IpamsvcIPSpaceInheritance `json:"inheritance_sources,omitempty"`
 	// The name of the IP space. Must contain 1 to 256 characters. Can include UTF-8.
 	Name string `json:"name"`
 	// The tags for the IP space in JSON format.
-	Tags      map[string]interface{}       `json:"tags,omitempty"`
+	Tags map[string]interface{} `json:"tags,omitempty"`
 	Threshold *IpamsvcUtilizationThreshold `json:"threshold,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
-	UpdatedAt     *time.Time            `json:"updated_at,omitempty"`
-	Utilization   *IpamsvcUtilization   `json:"utilization,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Utilization *IpamsvcUtilization `json:"utilization,omitempty"`
 	UtilizationV6 *IpamsvcUtilizationV6 `json:"utilization_v6,omitempty"`
 	// The resource identifier.
 	VendorSpecificOptionOptionSpace *string `json:"vendor_specific_option_option_space,omitempty"`
@@ -1121,7 +1121,7 @@ func (o *IpamsvcIPSpace) SetVendorSpecificOptionOptionSpace(v string) {
 }
 
 func (o IpamsvcIPSpace) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1259,3 +1259,5 @@ func (v *NullableIpamsvcIPSpace) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

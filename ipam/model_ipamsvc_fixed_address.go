@@ -43,7 +43,7 @@ type IpamsvcFixedAddress struct {
 	// The list of the inheritance assigned hosts of the object.
 	InheritanceAssignedHosts []InheritanceAssignedHost `json:"inheritance_assigned_hosts,omitempty"`
 	// The resource identifier.
-	InheritanceParent  *string                         `json:"inheritance_parent,omitempty"`
+	InheritanceParent *string `json:"inheritance_parent,omitempty"`
 	InheritanceSources *IpamsvcFixedAddressInheritance `json:"inheritance_sources,omitempty"`
 	// The resource identifier.
 	IpSpace *string `json:"ip_space,omitempty"`
@@ -698,7 +698,7 @@ func (o *IpamsvcFixedAddress) SetUpdatedAt(v time.Time) {
 }
 
 func (o IpamsvcFixedAddress) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -799,3 +799,5 @@ func (v *NullableIpamsvcFixedAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

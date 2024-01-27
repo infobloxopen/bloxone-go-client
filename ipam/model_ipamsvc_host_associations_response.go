@@ -22,7 +22,7 @@ type IpamsvcHostAssociationsResponse struct {
 	DhcpPktStats *IpamsvcDHCPPacketStats `json:"dhcp_pkt_stats,omitempty"`
 	// The list of HA groups.
 	HaGroups []IpamsvcHAGroup `json:"ha_groups,omitempty"`
-	Host     *IpamsvcHost     `json:"host,omitempty"`
+	Host *IpamsvcHost `json:"host,omitempty"`
 	// The list of subnets.
 	Subnets []IpamsvcSubnet `json:"subnets,omitempty"`
 }
@@ -173,7 +173,7 @@ func (o *IpamsvcHostAssociationsResponse) SetSubnets(v []IpamsvcSubnet) {
 }
 
 func (o IpamsvcHostAssociationsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,3 +232,5 @@ func (v *NullableIpamsvcHostAssociationsResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

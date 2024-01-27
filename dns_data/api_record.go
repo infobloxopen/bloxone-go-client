@@ -1,7 +1,7 @@
 /*
 DNS Data API
 
-The DNS Data is a BloxOne DDI service providing primary authoritative zone support. DNS Data is authoritative for all DNS resource records and is acting as a primary DNS server. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
+The DNS Data is a BloxOne DDI service providing primary authoritative zone support. DNS Data is authoritative for all DNS resource records and is acting as a primary DNS server. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -18,19 +18,20 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type RecordAPI interface {
 
 	/*
-			RecordCreate Create the DNS resource record.
+	RecordCreate Create the DNS resource record.
 
-			Use this method to create a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to create a DNS __Record__ object.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRecordCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiRecordCreateRequest
 	*/
 	RecordCreate(ctx context.Context) ApiRecordCreateRequest
 
@@ -39,14 +40,14 @@ type RecordAPI interface {
 	RecordCreateExecute(r ApiRecordCreateRequest) (*DataCreateRecordResponse, *http.Response, error)
 
 	/*
-			RecordDelete Move the DNS resource record to recycle bin.
+	RecordDelete Move the DNS resource record to recycle bin.
 
-			Use this method to move a DNS __Record__ object to the recycle bin.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to move a DNS __Record__ object to the recycle bin.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiRecordDeleteRequest
 	*/
 	RecordDelete(ctx context.Context, id string) ApiRecordDeleteRequest
 
@@ -54,13 +55,13 @@ type RecordAPI interface {
 	RecordDeleteExecute(r ApiRecordDeleteRequest) (*http.Response, error)
 
 	/*
-			RecordList Retrieve DNS resource records.
+	RecordList Retrieve DNS resource records.
 
-			Use this method to retrieve DNS __Record__ objects.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to retrieve DNS __Record__ objects.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRecordListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiRecordListRequest
 	*/
 	RecordList(ctx context.Context) ApiRecordListRequest
 
@@ -69,14 +70,14 @@ type RecordAPI interface {
 	RecordListExecute(r ApiRecordListRequest) (*DataListRecordResponse, *http.Response, error)
 
 	/*
-			RecordRead Retrieve the DNS resource record.
+	RecordRead Retrieve the DNS resource record.
 
-			Use this method to retrieve a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to retrieve a DNS __Record__ object.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiRecordReadRequest
 	*/
 	RecordRead(ctx context.Context, id string) ApiRecordReadRequest
 
@@ -85,14 +86,14 @@ type RecordAPI interface {
 	RecordReadExecute(r ApiRecordReadRequest) (*DataReadRecordResponse, *http.Response, error)
 
 	/*
-			RecordSOASerialIncrement Increment serial number for the SOA record.
+	RecordSOASerialIncrement Increment serial number for the SOA record.
 
-			Use this method to increment the serial number for an SOA (Start of Authority) _Record_ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to increment the serial number for an SOA (Start of Authority) _Record_ object.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordSOASerialIncrementRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiRecordSOASerialIncrementRequest
 	*/
 	RecordSOASerialIncrement(ctx context.Context, id string) ApiRecordSOASerialIncrementRequest
 
@@ -101,14 +102,14 @@ type RecordAPI interface {
 	RecordSOASerialIncrementExecute(r ApiRecordSOASerialIncrementRequest) (*DataSOASerialIncrementResponse, *http.Response, error)
 
 	/*
-			RecordUpdate Update the DNS resource record.
+	RecordUpdate Update the DNS resource record.
 
-			Use this method to update a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+	Use this method to update a DNS __Record__ object.
+A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiRecordUpdateRequest
 	*/
 	RecordUpdate(ctx context.Context, id string) ApiRecordUpdateRequest
 
@@ -121,10 +122,10 @@ type RecordAPI interface {
 type RecordAPIService internal.Service
 
 type ApiRecordCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	body       *DataRecord
-	inherit    *string
+	body *DataRecord
+	inherit *string
 }
 
 func (r ApiRecordCreateRequest) Body(body DataRecord) ApiRecordCreateRequest {
@@ -148,25 +149,24 @@ RecordCreate Create the DNS resource record.
 Use this method to create a DNS __Record__ object.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRecordCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRecordCreateRequest
 */
 func (a *RecordAPIService) RecordCreate(ctx context.Context) ApiRecordCreateRequest {
 	return ApiRecordCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DataCreateRecordResponse
+//  @return DataCreateRecordResponse
 func (a *RecordAPIService) RecordCreateExecute(r ApiRecordCreateRequest) (*DataCreateRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *DataCreateRecordResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *DataCreateRecordResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordCreate")
@@ -251,9 +251,9 @@ func (a *RecordAPIService) RecordCreateExecute(r ApiRecordCreateRequest) (*DataC
 }
 
 type ApiRecordDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	id         string
+	id string
 }
 
 func (r ApiRecordDeleteRequest) Execute() (*http.Response, error) {
@@ -266,24 +266,24 @@ RecordDelete Move the DNS resource record to recycle bin.
 Use this method to move a DNS __Record__ object to the recycle bin.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiRecordDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiRecordDeleteRequest
 */
 func (a *RecordAPIService) RecordDelete(ctx context.Context, id string) ApiRecordDeleteRequest {
 	return ApiRecordDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *RecordAPIService) RecordDeleteExecute(r ApiRecordDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordDelete")
@@ -355,50 +355,50 @@ func (a *RecordAPIService) RecordDeleteExecute(r ApiRecordDeleteRequest) (*http.
 }
 
 type ApiRecordListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	fields     *string
-	filter     *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	orderBy    *string
-	tfilter    *string
-	torderBy   *string
-	inherit    *string
+	fields *string
+	filter *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	orderBy *string
+	tfilter *string
+	torderBy *string
+	inherit *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiRecordListRequest) Fields(fields string) ApiRecordListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiRecordListRequest) Filter(filter string) ApiRecordListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiRecordListRequest) Offset(offset int32) ApiRecordListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiRecordListRequest) Limit(limit int32) ApiRecordListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiRecordListRequest) PageToken(pageToken string) ApiRecordListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiRecordListRequest) OrderBy(orderBy string) ApiRecordListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -432,25 +432,24 @@ RecordList Retrieve DNS resource records.
 Use this method to retrieve DNS __Record__ objects.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRecordListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRecordListRequest
 */
 func (a *RecordAPIService) RecordList(ctx context.Context) ApiRecordListRequest {
 	return ApiRecordListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DataListRecordResponse
+//  @return DataListRecordResponse
 func (a *RecordAPIService) RecordListExecute(r ApiRecordListRequest) (*DataListRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *DataListRecordResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *DataListRecordResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordList")
@@ -554,14 +553,14 @@ func (a *RecordAPIService) RecordListExecute(r ApiRecordListRequest) (*DataListR
 }
 
 type ApiRecordReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	id         string
-	fields     *string
-	inherit    *string
+	id string
+	fields *string
+	inherit *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiRecordReadRequest) Fields(fields string) ApiRecordReadRequest {
 	r.fields = &fields
 	return r
@@ -583,27 +582,26 @@ RecordRead Retrieve the DNS resource record.
 Use this method to retrieve a DNS __Record__ object.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiRecordReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiRecordReadRequest
 */
 func (a *RecordAPIService) RecordRead(ctx context.Context, id string) ApiRecordReadRequest {
 	return ApiRecordReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DataReadRecordResponse
+//  @return DataReadRecordResponse
 func (a *RecordAPIService) RecordReadExecute(r ApiRecordReadRequest) (*DataReadRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *DataReadRecordResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *DataReadRecordResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordRead")
@@ -687,10 +685,10 @@ func (a *RecordAPIService) RecordReadExecute(r ApiRecordReadRequest) (*DataReadR
 }
 
 type ApiRecordSOASerialIncrementRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	id         string
-	body       *DataSOASerialIncrementRequest
+	id string
+	body *DataSOASerialIncrementRequest
 }
 
 func (r ApiRecordSOASerialIncrementRequest) Body(body DataSOASerialIncrementRequest) ApiRecordSOASerialIncrementRequest {
@@ -708,27 +706,26 @@ RecordSOASerialIncrement Increment serial number for the SOA record.
 Use this method to increment the serial number for an SOA (Start of Authority) _Record_ object.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiRecordSOASerialIncrementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiRecordSOASerialIncrementRequest
 */
 func (a *RecordAPIService) RecordSOASerialIncrement(ctx context.Context, id string) ApiRecordSOASerialIncrementRequest {
 	return ApiRecordSOASerialIncrementRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DataSOASerialIncrementResponse
+//  @return DataSOASerialIncrementResponse
 func (a *RecordAPIService) RecordSOASerialIncrementExecute(r ApiRecordSOASerialIncrementRequest) (*DataSOASerialIncrementResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *DataSOASerialIncrementResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *DataSOASerialIncrementResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordSOASerialIncrement")
@@ -811,11 +808,11 @@ func (a *RecordAPIService) RecordSOASerialIncrementExecute(r ApiRecordSOASerialI
 }
 
 type ApiRecordUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService RecordAPI
-	id         string
-	body       *DataRecord
-	inherit    *string
+	id string
+	body *DataRecord
+	inherit *string
 }
 
 func (r ApiRecordUpdateRequest) Body(body DataRecord) ApiRecordUpdateRequest {
@@ -839,27 +836,26 @@ RecordUpdate Update the DNS resource record.
 Use this method to update a DNS __Record__ object.
 A __Record__ object represents a DNS resource record in an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiRecordUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiRecordUpdateRequest
 */
 func (a *RecordAPIService) RecordUpdate(ctx context.Context, id string) ApiRecordUpdateRequest {
 	return ApiRecordUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DataUpdateRecordResponse
+//  @return DataUpdateRecordResponse
 func (a *RecordAPIService) RecordUpdateExecute(r ApiRecordUpdateRequest) (*DataUpdateRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *DataUpdateRecordResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *DataUpdateRecordResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordAPIService.RecordUpdate")

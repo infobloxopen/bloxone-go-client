@@ -19,8 +19,8 @@ var _ MappedNullable = &IpamsvcBulkCopyIPSpaceResponse{}
 
 // IpamsvcBulkCopyIPSpaceResponse struct for IpamsvcBulkCopyIPSpaceResponse
 type IpamsvcBulkCopyIPSpaceResponse struct {
-	Errors  []IpamsvcBulkCopyError `json:"errors,omitempty"`
-	Results []IpamsvcCopyResponse  `json:"results,omitempty"`
+	Errors []IpamsvcBulkCopyError `json:"errors,omitempty"`
+	Results []IpamsvcCopyResponse `json:"results,omitempty"`
 }
 
 // NewIpamsvcBulkCopyIPSpaceResponse instantiates a new IpamsvcBulkCopyIPSpaceResponse object
@@ -105,7 +105,7 @@ func (o *IpamsvcBulkCopyIPSpaceResponse) SetResults(v []IpamsvcCopyResponse) {
 }
 
 func (o IpamsvcBulkCopyIPSpaceResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableIpamsvcBulkCopyIPSpaceResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

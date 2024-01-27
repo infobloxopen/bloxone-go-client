@@ -379,7 +379,7 @@ func (o *IpamsvcDNSUsage) SetZone(v string) {
 }
 
 func (o IpamsvcDNSUsage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -456,3 +456,5 @@ func (v *NullableIpamsvcDNSUsage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

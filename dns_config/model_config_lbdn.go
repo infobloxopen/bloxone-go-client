@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -22,10 +22,10 @@ type ConfigLBDN struct {
 	// Optional. Comment for __LBDN__.
 	Comment *string `json:"comment,omitempty"`
 	// Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration.
-	Disabled  *bool            `json:"disabled,omitempty"`
+	Disabled *bool `json:"disabled,omitempty"`
 	DtcPolicy *ConfigDTCPolicy `json:"dtc_policy,omitempty"`
 	// The resource identifier.
-	Id                 *string               `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InheritanceSources *ConfigTTLInheritance `json:"inheritance_sources,omitempty"`
 	// Name of __LBDN__.
 	Name string `json:"name"`
@@ -363,7 +363,7 @@ func (o *ConfigLBDN) SetView(v string) {
 }
 
 func (o ConfigLBDN) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -436,3 +436,5 @@ func (v *NullableConfigLBDN) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

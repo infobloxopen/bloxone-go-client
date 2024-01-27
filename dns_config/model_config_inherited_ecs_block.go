@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -24,8 +24,8 @@ type ConfigInheritedECSBlock struct {
 	// Human-readable display name for the object referred to by _source_.
 	DisplayName *string `json:"display_name,omitempty"`
 	// The resource identifier.
-	Source *string         `json:"source,omitempty"`
-	Value  *ConfigECSBlock `json:"value,omitempty"`
+	Source *string `json:"source,omitempty"`
+	Value *ConfigECSBlock `json:"value,omitempty"`
 }
 
 // NewConfigInheritedECSBlock instantiates a new ConfigInheritedECSBlock object
@@ -174,7 +174,7 @@ func (o *ConfigInheritedECSBlock) SetValue(v ConfigECSBlock) {
 }
 
 func (o ConfigInheritedECSBlock) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,3 +233,5 @@ func (v *NullableConfigInheritedECSBlock) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

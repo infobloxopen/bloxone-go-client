@@ -43,12 +43,12 @@ type IpamsvcGlobal struct {
 	// When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_.
 	DdnsUseConflictResolution *bool `json:"ddns_use_conflict_resolution,omitempty"`
 	// DNS zones that DDNS updates can be sent to. There is no resolver fallback. The target zone must be explicitly configured for the update to be performed.  Updates are sent to the closest enclosing zone.  Error if _ddns_enabled_ is _true_ and the _ddns_domain_ does not have a corresponding entry in _ddns_zones_.  Error if there are items with duplicate zone in the list.  Defaults to empty list.
-	DdnsZones  []IpamsvcDDNSZone  `json:"ddns_zones,omitempty"`
+	DdnsZones []IpamsvcDDNSZone `json:"ddns_zones,omitempty"`
 	DhcpConfig *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
 	// The list of DHCP options or group of options for IPv4. An option list is ordered and may include both option groups and specific options. Multiple occurrences of the same option or group is not an error. The last occurrence of an option in the list will be used.  Error if the graph of referenced groups contains cycles.  Defaults to empty list.
 	DhcpOptions []IpamsvcOptionItem `json:"dhcp_options,omitempty"`
 	// The list of DHCP options or group of options for IPv6. An option list is ordered and may include both option groups and specific options. Multiple occurrences of the same option or group is not an error. The last occurrence of an option in the list will be used.  Error if the graph of referenced groups contains cycles.  Defaults to empty list.
-	DhcpOptionsV6 []IpamsvcOptionItem              `json:"dhcp_options_v6,omitempty"`
+	DhcpOptionsV6 []IpamsvcOptionItem `json:"dhcp_options_v6,omitempty"`
 	DhcpThreshold *IpamsvcDHCPUtilizationThreshold `json:"dhcp_threshold,omitempty"`
 	// The behavior when GSS-TSIG should be used (a matching external DNS server is configured) but no GSS-TSIG key is available. If configured to _false_ (the default) this DNS server is skipped, if configured to _true_ the DNS server is ignored and the DNS update is sent with the configured DHCP-DDNS protection e.g. TSIG key or without any protection when none was configured.  Defaults to _false_.
 	GssTsigFallback *bool `json:"gss_tsig_fallback,omitempty"`
@@ -1226,7 +1226,7 @@ func (o *IpamsvcGlobal) SetVendorSpecificOptionOptionSpace(v string) {
 }
 
 func (o IpamsvcGlobal) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1378,3 +1378,5 @@ func (v *NullableIpamsvcGlobal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
