@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -24,8 +24,8 @@ type ConfigInheritedZoneAuthorityMNameBlock struct {
 	// Human-readable display name for the object referred to by _source_.
 	DisplayName *string `json:"display_name,omitempty"`
 	// The resource identifier.
-	Source *string `json:"source,omitempty"`
-	Value *ConfigZoneAuthorityMNameBlock `json:"value,omitempty"`
+	Source *string                        `json:"source,omitempty"`
+	Value  *ConfigZoneAuthorityMNameBlock `json:"value,omitempty"`
 }
 
 // NewConfigInheritedZoneAuthorityMNameBlock instantiates a new ConfigInheritedZoneAuthorityMNameBlock object
@@ -174,7 +174,7 @@ func (o *ConfigInheritedZoneAuthorityMNameBlock) SetValue(v ConfigZoneAuthorityM
 }
 
 func (o ConfigInheritedZoneAuthorityMNameBlock) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableConfigInheritedZoneAuthorityMNameBlock) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

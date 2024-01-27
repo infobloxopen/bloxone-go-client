@@ -18,25 +18,24 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type IpSpaceAPI interface {
 
 	/*
-	IpSpaceBulkCopy Copy the specified address block and subnets in the IP space.
+		IpSpaceBulkCopy Copy the specified address block and subnets in the IP space.
 
-	Use this method to bulk copy __AddressBlock__ and __Subnet__ objects from one __IPSpace__ object to another __IPSpace__ object.
-The __IPSpace__ object represents an entire address space.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
-The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
+		Use this method to bulk copy __AddressBlock__ and __Subnet__ objects from one __IPSpace__ object to another __IPSpace__ object.
+	The __IPSpace__ object represents an entire address space.
+	The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+	The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
-The _copy_objects_ specifies the list of objects (_ipam/address_block_ and _ipam/subnet_ only) in the _ipam/ip_space_ object to copy.
-The _target_ specifies the _ipam/ip_space_ object to which the objects must be copied.
+	The _copy_objects_ specifies the list of objects (_ipam/address_block_ and _ipam/subnet_ only) in the _ipam/ip_space_ object to copy.
+	The _target_ specifies the _ipam/ip_space_ object to which the objects must be copied.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIpSpaceBulkCopyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiIpSpaceBulkCopyRequest
 	*/
 	IpSpaceBulkCopy(ctx context.Context) ApiIpSpaceBulkCopyRequest
 
@@ -45,14 +44,14 @@ The _target_ specifies the _ipam/ip_space_ object to which the objects must be c
 	IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*IpamsvcBulkCopyIPSpaceResponse, *http.Response, error)
 
 	/*
-	IpSpaceCopy Copy the IP space.
+		IpSpaceCopy Copy the IP space.
 
-	Use this method to copy an __IPSpace__ object.
-The __IPSpace__ object represents an entire address space.
+		Use this method to copy an __IPSpace__ object.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpSpaceCopyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiIpSpaceCopyRequest
 	*/
 	IpSpaceCopy(ctx context.Context, id string) ApiIpSpaceCopyRequest
 
@@ -61,13 +60,13 @@ The __IPSpace__ object represents an entire address space.
 	IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*IpamsvcCopyIPSpaceResponse, *http.Response, error)
 
 	/*
-	IpSpaceCreate Create the IP space.
+		IpSpaceCreate Create the IP space.
 
-	Use this method to create an __IPSpace__ object.
-The __IPSpace__ object represents an entire address space.
+		Use this method to create an __IPSpace__ object.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIpSpaceCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiIpSpaceCreateRequest
 	*/
 	IpSpaceCreate(ctx context.Context) ApiIpSpaceCreateRequest
 
@@ -76,14 +75,14 @@ The __IPSpace__ object represents an entire address space.
 	IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*IpamsvcCreateIPSpaceResponse, *http.Response, error)
 
 	/*
-	IpSpaceDelete Move the IP space to the recycle bin.
+		IpSpaceDelete Move the IP space to the recycle bin.
 
-	Use this method to move an __IPSpace__ object to the recycle bin.
-The __IPSpace__ object represents an entire address space.
+		Use this method to move an __IPSpace__ object to the recycle bin.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpSpaceDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiIpSpaceDeleteRequest
 	*/
 	IpSpaceDelete(ctx context.Context, id string) ApiIpSpaceDeleteRequest
 
@@ -91,13 +90,13 @@ The __IPSpace__ object represents an entire address space.
 	IpSpaceDeleteExecute(r ApiIpSpaceDeleteRequest) (*http.Response, error)
 
 	/*
-	IpSpaceList Retrieve IP spaces.
+		IpSpaceList Retrieve IP spaces.
 
-	Use this method to retrieve __IPSpace__ objects.
-The __IPSpace__ object represents an entire address space.
+		Use this method to retrieve __IPSpace__ objects.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIpSpaceListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiIpSpaceListRequest
 	*/
 	IpSpaceList(ctx context.Context) ApiIpSpaceListRequest
 
@@ -106,14 +105,14 @@ The __IPSpace__ object represents an entire address space.
 	IpSpaceListExecute(r ApiIpSpaceListRequest) (*IpamsvcListIPSpaceResponse, *http.Response, error)
 
 	/*
-	IpSpaceRead Retrieve the IP space.
+		IpSpaceRead Retrieve the IP space.
 
-	Use this method to retrieve an __IPSpace__ object.
-The __IPSpace__ object represents an entire address space.
+		Use this method to retrieve an __IPSpace__ object.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpSpaceReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiIpSpaceReadRequest
 	*/
 	IpSpaceRead(ctx context.Context, id string) ApiIpSpaceReadRequest
 
@@ -122,14 +121,14 @@ The __IPSpace__ object represents an entire address space.
 	IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*IpamsvcReadIPSpaceResponse, *http.Response, error)
 
 	/*
-	IpSpaceUpdate Update the IP space.
+		IpSpaceUpdate Update the IP space.
 
-	Use this method to update an __IPSpace__ object.
-The __IPSpace__ object represents an entire address space.
+		Use this method to update an __IPSpace__ object.
+	The __IPSpace__ object represents an entire address space.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpSpaceUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiIpSpaceUpdateRequest
 	*/
 	IpSpaceUpdate(ctx context.Context, id string) ApiIpSpaceUpdateRequest
 
@@ -142,9 +141,9 @@ The __IPSpace__ object represents an entire address space.
 type IpSpaceAPIService internal.Service
 
 type ApiIpSpaceBulkCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	body *IpamsvcBulkCopyIPSpace
+	body       *IpamsvcBulkCopyIPSpace
 }
 
 func (r ApiIpSpaceBulkCopyRequest) Body(body IpamsvcBulkCopyIPSpace) ApiIpSpaceBulkCopyRequest {
@@ -167,24 +166,25 @@ The __Subnet__ object represents a set of addresses from which addresses are ass
 The _copy_objects_ specifies the list of objects (_ipam/address_block_ and _ipam/subnet_ only) in the _ipam/ip_space_ object to copy.
 The _target_ specifies the _ipam/ip_space_ object to which the objects must be copied.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIpSpaceBulkCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIpSpaceBulkCopyRequest
 */
 func (a *IpSpaceAPIService) IpSpaceBulkCopy(ctx context.Context) ApiIpSpaceBulkCopyRequest {
 	return ApiIpSpaceBulkCopyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcBulkCopyIPSpaceResponse
+//
+//	@return IpamsvcBulkCopyIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*IpamsvcBulkCopyIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcBulkCopyIPSpaceResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcBulkCopyIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceBulkCopy")
@@ -266,10 +266,10 @@ func (a *IpSpaceAPIService) IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) 
 }
 
 type ApiIpSpaceCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	id string
-	body *IpamsvcCopyIPSpace
+	id         string
+	body       *IpamsvcCopyIPSpace
 }
 
 func (r ApiIpSpaceCopyRequest) Body(body IpamsvcCopyIPSpace) ApiIpSpaceCopyRequest {
@@ -287,26 +287,27 @@ IpSpaceCopy Copy the IP space.
 Use this method to copy an __IPSpace__ object.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiIpSpaceCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpSpaceCopyRequest
 */
 func (a *IpSpaceAPIService) IpSpaceCopy(ctx context.Context, id string) ApiIpSpaceCopyRequest {
 	return ApiIpSpaceCopyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCopyIPSpaceResponse
+//
+//	@return IpamsvcCopyIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*IpamsvcCopyIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCopyIPSpaceResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCopyIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceCopy")
@@ -389,10 +390,10 @@ func (a *IpSpaceAPIService) IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*Ipamsv
 }
 
 type ApiIpSpaceCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	body *IpamsvcIPSpace
-	inherit *string
+	body       *IpamsvcIPSpace
+	inherit    *string
 }
 
 func (r ApiIpSpaceCreateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceCreateRequest {
@@ -416,24 +417,25 @@ IpSpaceCreate Create the IP space.
 Use this method to create an __IPSpace__ object.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIpSpaceCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIpSpaceCreateRequest
 */
 func (a *IpSpaceAPIService) IpSpaceCreate(ctx context.Context) ApiIpSpaceCreateRequest {
 	return ApiIpSpaceCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateIPSpaceResponse
+//
+//	@return IpamsvcCreateIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*IpamsvcCreateIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateIPSpaceResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceCreate")
@@ -518,9 +520,9 @@ func (a *IpSpaceAPIService) IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*Ip
 }
 
 type ApiIpSpaceDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	id string
+	id         string
 }
 
 func (r ApiIpSpaceDeleteRequest) Execute() (*http.Response, error) {
@@ -533,24 +535,24 @@ IpSpaceDelete Move the IP space to the recycle bin.
 Use this method to move an __IPSpace__ object to the recycle bin.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiIpSpaceDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpSpaceDeleteRequest
 */
 func (a *IpSpaceAPIService) IpSpaceDelete(ctx context.Context, id string) ApiIpSpaceDeleteRequest {
 	return ApiIpSpaceDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *IpSpaceAPIService) IpSpaceDeleteExecute(r ApiIpSpaceDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceDelete")
@@ -622,50 +624,50 @@ func (a *IpSpaceAPIService) IpSpaceDeleteExecute(r ApiIpSpaceDeleteRequest) (*ht
 }
 
 type ApiIpSpaceListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	torderBy *string
-	tfilter *string
-	inherit *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	torderBy   *string
+	tfilter    *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiIpSpaceListRequest) Fields(fields string) ApiIpSpaceListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiIpSpaceListRequest) Filter(filter string) ApiIpSpaceListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiIpSpaceListRequest) Offset(offset int32) ApiIpSpaceListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiIpSpaceListRequest) Limit(limit int32) ApiIpSpaceListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiIpSpaceListRequest) PageToken(pageToken string) ApiIpSpaceListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiIpSpaceListRequest) OrderBy(orderBy string) ApiIpSpaceListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -699,24 +701,25 @@ IpSpaceList Retrieve IP spaces.
 Use this method to retrieve __IPSpace__ objects.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIpSpaceListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIpSpaceListRequest
 */
 func (a *IpSpaceAPIService) IpSpaceList(ctx context.Context) ApiIpSpaceListRequest {
 	return ApiIpSpaceListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcListIPSpaceResponse
+//
+//	@return IpamsvcListIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceListExecute(r ApiIpSpaceListRequest) (*IpamsvcListIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcListIPSpaceResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcListIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceList")
@@ -820,14 +823,14 @@ func (a *IpSpaceAPIService) IpSpaceListExecute(r ApiIpSpaceListRequest) (*Ipamsv
 }
 
 type ApiIpSpaceReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	id string
-	fields *string
-	inherit *string
+	id         string
+	fields     *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiIpSpaceReadRequest) Fields(fields string) ApiIpSpaceReadRequest {
 	r.fields = &fields
 	return r
@@ -849,26 +852,27 @@ IpSpaceRead Retrieve the IP space.
 Use this method to retrieve an __IPSpace__ object.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiIpSpaceReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpSpaceReadRequest
 */
 func (a *IpSpaceAPIService) IpSpaceRead(ctx context.Context, id string) ApiIpSpaceReadRequest {
 	return ApiIpSpaceReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcReadIPSpaceResponse
+//
+//	@return IpamsvcReadIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*IpamsvcReadIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcReadIPSpaceResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcReadIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceRead")
@@ -952,11 +956,11 @@ func (a *IpSpaceAPIService) IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*Ipamsv
 }
 
 type ApiIpSpaceUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService IpSpaceAPI
-	id string
-	body *IpamsvcIPSpace
-	inherit *string
+	id         string
+	body       *IpamsvcIPSpace
+	inherit    *string
 }
 
 func (r ApiIpSpaceUpdateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceUpdateRequest {
@@ -980,26 +984,27 @@ IpSpaceUpdate Update the IP space.
 Use this method to update an __IPSpace__ object.
 The __IPSpace__ object represents an entire address space.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiIpSpaceUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpSpaceUpdateRequest
 */
 func (a *IpSpaceAPIService) IpSpaceUpdate(ctx context.Context, id string) ApiIpSpaceUpdateRequest {
 	return ApiIpSpaceUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcUpdateIPSpaceResponse
+//
+//	@return IpamsvcUpdateIPSpaceResponse
 func (a *IpSpaceAPIService) IpSpaceUpdateExecute(r ApiIpSpaceUpdateRequest) (*IpamsvcUpdateIPSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcUpdateIPSpaceResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcUpdateIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceUpdate")

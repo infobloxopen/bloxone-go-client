@@ -270,7 +270,7 @@ func (o *IpamsvcCopyAddressBlock) SetSpace(v string) {
 }
 
 func (o IpamsvcCopyAddressBlock) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,5 +336,3 @@ func (v *NullableIpamsvcCopyAddressBlock) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

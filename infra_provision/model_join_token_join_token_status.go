@@ -21,7 +21,7 @@ type JoinTokenJoinTokenStatus string
 // List of JoinTokenJoinTokenStatus
 const (
 	JOINTOKENJOINTOKENSTATUS_UNKNOWN JoinTokenJoinTokenStatus = "UNKNOWN"
-	JOINTOKENJOINTOKENSTATUS_ACTIVE JoinTokenJoinTokenStatus = "ACTIVE"
+	JOINTOKENJOINTOKENSTATUS_ACTIVE  JoinTokenJoinTokenStatus = "ACTIVE"
 	JOINTOKENJOINTOKENSTATUS_EXPIRED JoinTokenJoinTokenStatus = "EXPIRED"
 	JOINTOKENJOINTOKENSTATUS_REVOKED JoinTokenJoinTokenStatus = "REVOKED"
 )
@@ -112,4 +112,3 @@ func (v *NullableJoinTokenJoinTokenStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

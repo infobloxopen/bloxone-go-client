@@ -120,7 +120,7 @@ func (o *IpamsvcUtilizationThreshold) SetLow(v int64) {
 }
 
 func (o IpamsvcUtilizationThreshold) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,5 +170,3 @@ func (v *NullableIpamsvcUtilizationThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

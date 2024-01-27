@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,20 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type AuthZoneAPI interface {
 
 	/*
-	AuthZoneCopy Copies the __AuthZone__ object.
+		AuthZoneCopy Copies the __AuthZone__ object.
 
-	Use this method to copy an __AuthZone__ object to a different __View__.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to copy an __AuthZone__ object to a different __View__.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthZoneCopyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthZoneCopyRequest
 	*/
 	AuthZoneCopy(ctx context.Context) ApiAuthZoneCopyRequest
 
@@ -40,13 +39,13 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 	AuthZoneCopyExecute(r ApiAuthZoneCopyRequest) (*ConfigCopyAuthZoneResponse, *http.Response, error)
 
 	/*
-	AuthZoneCreate Create the AuthZone object.
+		AuthZoneCreate Create the AuthZone object.
 
-	Use this method to create an AuthZone object.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to create an AuthZone object.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthZoneCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthZoneCreateRequest
 	*/
 	AuthZoneCreate(ctx context.Context) ApiAuthZoneCreateRequest
 
@@ -55,14 +54,14 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 	AuthZoneCreateExecute(r ApiAuthZoneCreateRequest) (*ConfigCreateAuthZoneResponse, *http.Response, error)
 
 	/*
-	AuthZoneDelete Moves the AuthZone object to Recyclebin.
+		AuthZoneDelete Moves the AuthZone object to Recyclebin.
 
-	Use this method to move an AuthZone object to Recyclebin.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to move an AuthZone object to Recyclebin.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthZoneDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAuthZoneDeleteRequest
 	*/
 	AuthZoneDelete(ctx context.Context, id string) ApiAuthZoneDeleteRequest
 
@@ -70,13 +69,13 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 	AuthZoneDeleteExecute(r ApiAuthZoneDeleteRequest) (*http.Response, error)
 
 	/*
-	AuthZoneList List AuthZone objects.
+		AuthZoneList List AuthZone objects.
 
-	Use this method to list AuthZone objects.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to list AuthZone objects.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthZoneListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthZoneListRequest
 	*/
 	AuthZoneList(ctx context.Context) ApiAuthZoneListRequest
 
@@ -85,14 +84,14 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 	AuthZoneListExecute(r ApiAuthZoneListRequest) (*ConfigListAuthZoneResponse, *http.Response, error)
 
 	/*
-	AuthZoneRead Read the AuthZone object.
+		AuthZoneRead Read the AuthZone object.
 
-	Use this method to read an AuthZone object.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to read an AuthZone object.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthZoneReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAuthZoneReadRequest
 	*/
 	AuthZoneRead(ctx context.Context, id string) ApiAuthZoneReadRequest
 
@@ -101,14 +100,14 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 	AuthZoneReadExecute(r ApiAuthZoneReadRequest) (*ConfigReadAuthZoneResponse, *http.Response, error)
 
 	/*
-	AuthZoneUpdate Update the AuthZone object.
+		AuthZoneUpdate Update the AuthZone object.
 
-	Use this method to update an AuthZone object.
-This object (_dns/auth_zone_) represents an authoritative zone.
+		Use this method to update an AuthZone object.
+	This object (_dns/auth_zone_) represents an authoritative zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthZoneUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAuthZoneUpdateRequest
 	*/
 	AuthZoneUpdate(ctx context.Context, id string) ApiAuthZoneUpdateRequest
 
@@ -121,9 +120,9 @@ This object (_dns/auth_zone_) represents an authoritative zone.
 type AuthZoneAPIService internal.Service
 
 type ApiAuthZoneCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	body *ConfigCopyAuthZone
+	body       *ConfigCopyAuthZone
 }
 
 func (r ApiAuthZoneCopyRequest) Body(body ConfigCopyAuthZone) ApiAuthZoneCopyRequest {
@@ -141,24 +140,25 @@ AuthZoneCopy Copies the __AuthZone__ object.
 Use this method to copy an __AuthZone__ object to a different __View__.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthZoneCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthZoneCopyRequest
 */
 func (a *AuthZoneAPIService) AuthZoneCopy(ctx context.Context) ApiAuthZoneCopyRequest {
 	return ApiAuthZoneCopyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCopyAuthZoneResponse
+//
+//	@return ConfigCopyAuthZoneResponse
 func (a *AuthZoneAPIService) AuthZoneCopyExecute(r ApiAuthZoneCopyRequest) (*ConfigCopyAuthZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCopyAuthZoneResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCopyAuthZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneCopy")
@@ -240,10 +240,10 @@ func (a *AuthZoneAPIService) AuthZoneCopyExecute(r ApiAuthZoneCopyRequest) (*Con
 }
 
 type ApiAuthZoneCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	body *ConfigAuthZone
-	inherit *string
+	body       *ConfigAuthZone
+	inherit    *string
 }
 
 func (r ApiAuthZoneCreateRequest) Body(body ConfigAuthZone) ApiAuthZoneCreateRequest {
@@ -267,24 +267,25 @@ AuthZoneCreate Create the AuthZone object.
 Use this method to create an AuthZone object.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthZoneCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthZoneCreateRequest
 */
 func (a *AuthZoneAPIService) AuthZoneCreate(ctx context.Context) ApiAuthZoneCreateRequest {
 	return ApiAuthZoneCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCreateAuthZoneResponse
+//
+//	@return ConfigCreateAuthZoneResponse
 func (a *AuthZoneAPIService) AuthZoneCreateExecute(r ApiAuthZoneCreateRequest) (*ConfigCreateAuthZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCreateAuthZoneResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCreateAuthZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneCreate")
@@ -369,9 +370,9 @@ func (a *AuthZoneAPIService) AuthZoneCreateExecute(r ApiAuthZoneCreateRequest) (
 }
 
 type ApiAuthZoneDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	id string
+	id         string
 }
 
 func (r ApiAuthZoneDeleteRequest) Execute() (*http.Response, error) {
@@ -384,24 +385,24 @@ AuthZoneDelete Moves the AuthZone object to Recyclebin.
 Use this method to move an AuthZone object to Recyclebin.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAuthZoneDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthZoneDeleteRequest
 */
 func (a *AuthZoneAPIService) AuthZoneDelete(ctx context.Context, id string) ApiAuthZoneDeleteRequest {
 	return ApiAuthZoneDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *AuthZoneAPIService) AuthZoneDeleteExecute(r ApiAuthZoneDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneDelete")
@@ -473,50 +474,50 @@ func (a *AuthZoneAPIService) AuthZoneDeleteExecute(r ApiAuthZoneDeleteRequest) (
 }
 
 type ApiAuthZoneListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	tfilter *string
-	torderBy *string
-	inherit *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	tfilter    *string
+	torderBy   *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAuthZoneListRequest) Fields(fields string) ApiAuthZoneListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiAuthZoneListRequest) Filter(filter string) ApiAuthZoneListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiAuthZoneListRequest) Offset(offset int32) ApiAuthZoneListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiAuthZoneListRequest) Limit(limit int32) ApiAuthZoneListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiAuthZoneListRequest) PageToken(pageToken string) ApiAuthZoneListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiAuthZoneListRequest) OrderBy(orderBy string) ApiAuthZoneListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -550,24 +551,25 @@ AuthZoneList List AuthZone objects.
 Use this method to list AuthZone objects.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthZoneListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthZoneListRequest
 */
 func (a *AuthZoneAPIService) AuthZoneList(ctx context.Context) ApiAuthZoneListRequest {
 	return ApiAuthZoneListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigListAuthZoneResponse
+//
+//	@return ConfigListAuthZoneResponse
 func (a *AuthZoneAPIService) AuthZoneListExecute(r ApiAuthZoneListRequest) (*ConfigListAuthZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigListAuthZoneResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigListAuthZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneList")
@@ -671,14 +673,14 @@ func (a *AuthZoneAPIService) AuthZoneListExecute(r ApiAuthZoneListRequest) (*Con
 }
 
 type ApiAuthZoneReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	id string
-	fields *string
-	inherit *string
+	id         string
+	fields     *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAuthZoneReadRequest) Fields(fields string) ApiAuthZoneReadRequest {
 	r.fields = &fields
 	return r
@@ -700,26 +702,27 @@ AuthZoneRead Read the AuthZone object.
 Use this method to read an AuthZone object.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAuthZoneReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthZoneReadRequest
 */
 func (a *AuthZoneAPIService) AuthZoneRead(ctx context.Context, id string) ApiAuthZoneReadRequest {
 	return ApiAuthZoneReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigReadAuthZoneResponse
+//
+//	@return ConfigReadAuthZoneResponse
 func (a *AuthZoneAPIService) AuthZoneReadExecute(r ApiAuthZoneReadRequest) (*ConfigReadAuthZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigReadAuthZoneResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigReadAuthZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneRead")
@@ -803,11 +806,11 @@ func (a *AuthZoneAPIService) AuthZoneReadExecute(r ApiAuthZoneReadRequest) (*Con
 }
 
 type ApiAuthZoneUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AuthZoneAPI
-	id string
-	body *ConfigAuthZone
-	inherit *string
+	id         string
+	body       *ConfigAuthZone
+	inherit    *string
 }
 
 func (r ApiAuthZoneUpdateRequest) Body(body ConfigAuthZone) ApiAuthZoneUpdateRequest {
@@ -831,26 +834,27 @@ AuthZoneUpdate Update the AuthZone object.
 Use this method to update an AuthZone object.
 This object (_dns/auth_zone_) represents an authoritative zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAuthZoneUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthZoneUpdateRequest
 */
 func (a *AuthZoneAPIService) AuthZoneUpdate(ctx context.Context, id string) ApiAuthZoneUpdateRequest {
 	return ApiAuthZoneUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigUpdateAuthZoneResponse
+//
+//	@return ConfigUpdateAuthZoneResponse
 func (a *AuthZoneAPIService) AuthZoneUpdateExecute(r ApiAuthZoneUpdateRequest) (*ConfigUpdateAuthZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigUpdateAuthZoneResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigUpdateAuthZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthZoneAPIService.AuthZoneUpdate")

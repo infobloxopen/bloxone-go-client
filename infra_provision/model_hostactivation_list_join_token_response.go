@@ -19,7 +19,7 @@ var _ MappedNullable = &HostactivationListJoinTokenResponse{}
 
 // HostactivationListJoinTokenResponse struct for HostactivationListJoinTokenResponse
 type HostactivationListJoinTokenResponse struct {
-	Page *ApiPageInfo `json:"page,omitempty"`
+	Page    *ApiPageInfo              `json:"page,omitempty"`
 	Results []HostactivationJoinToken `json:"results,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *HostactivationListJoinTokenResponse) SetResults(v []HostactivationJoinT
 }
 
 func (o HostactivationListJoinTokenResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableHostactivationListJoinTokenResponse) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

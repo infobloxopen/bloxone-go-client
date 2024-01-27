@@ -19,23 +19,23 @@ var _ MappedNullable = &IpamsvcIPSpaceInheritance{}
 
 // IpamsvcIPSpaceInheritance The __IPSpaceInheritance__ object specifies how and which fields _IPSpace_ object inherits from the parent.
 type IpamsvcIPSpaceInheritance struct {
-	AsmConfig *IpamsvcInheritedASMConfig `json:"asm_config,omitempty"`
-	DdnsClientUpdate *InheritanceInheritedString `json:"ddns_client_update,omitempty"`
-	DdnsConflictResolutionMode *InheritanceInheritedString `json:"ddns_conflict_resolution_mode,omitempty"`
-	DdnsEnabled *InheritanceInheritedBool `json:"ddns_enabled,omitempty"`
-	DdnsHostnameBlock *IpamsvcInheritedDDNSHostnameBlock `json:"ddns_hostname_block,omitempty"`
-	DdnsTtlPercent *InheritanceInheritedFloat `json:"ddns_ttl_percent,omitempty"`
-	DdnsUpdateBlock *IpamsvcInheritedDDNSUpdateBlock `json:"ddns_update_block,omitempty"`
-	DdnsUpdateOnRenew *InheritanceInheritedBool `json:"ddns_update_on_renew,omitempty"`
-	DdnsUseConflictResolution *InheritanceInheritedBool `json:"ddns_use_conflict_resolution,omitempty"`
-	DhcpConfig *IpamsvcInheritedDHCPConfig `json:"dhcp_config,omitempty"`
-	DhcpOptions *IpamsvcInheritedDHCPOptionList `json:"dhcp_options,omitempty"`
-	DhcpOptionsV6 *IpamsvcInheritedDHCPOptionList `json:"dhcp_options_v6,omitempty"`
-	HeaderOptionFilename *InheritanceInheritedString `json:"header_option_filename,omitempty"`
-	HeaderOptionServerAddress *InheritanceInheritedString `json:"header_option_server_address,omitempty"`
-	HeaderOptionServerName *InheritanceInheritedString `json:"header_option_server_name,omitempty"`
-	HostnameRewriteBlock *IpamsvcInheritedHostnameRewriteBlock `json:"hostname_rewrite_block,omitempty"`
-	VendorSpecificOptionOptionSpace *InheritanceInheritedIdentifier `json:"vendor_specific_option_option_space,omitempty"`
+	AsmConfig                       *IpamsvcInheritedASMConfig            `json:"asm_config,omitempty"`
+	DdnsClientUpdate                *InheritanceInheritedString           `json:"ddns_client_update,omitempty"`
+	DdnsConflictResolutionMode      *InheritanceInheritedString           `json:"ddns_conflict_resolution_mode,omitempty"`
+	DdnsEnabled                     *InheritanceInheritedBool             `json:"ddns_enabled,omitempty"`
+	DdnsHostnameBlock               *IpamsvcInheritedDDNSHostnameBlock    `json:"ddns_hostname_block,omitempty"`
+	DdnsTtlPercent                  *InheritanceInheritedFloat            `json:"ddns_ttl_percent,omitempty"`
+	DdnsUpdateBlock                 *IpamsvcInheritedDDNSUpdateBlock      `json:"ddns_update_block,omitempty"`
+	DdnsUpdateOnRenew               *InheritanceInheritedBool             `json:"ddns_update_on_renew,omitempty"`
+	DdnsUseConflictResolution       *InheritanceInheritedBool             `json:"ddns_use_conflict_resolution,omitempty"`
+	DhcpConfig                      *IpamsvcInheritedDHCPConfig           `json:"dhcp_config,omitempty"`
+	DhcpOptions                     *IpamsvcInheritedDHCPOptionList       `json:"dhcp_options,omitempty"`
+	DhcpOptionsV6                   *IpamsvcInheritedDHCPOptionList       `json:"dhcp_options_v6,omitempty"`
+	HeaderOptionFilename            *InheritanceInheritedString           `json:"header_option_filename,omitempty"`
+	HeaderOptionServerAddress       *InheritanceInheritedString           `json:"header_option_server_address,omitempty"`
+	HeaderOptionServerName          *InheritanceInheritedString           `json:"header_option_server_name,omitempty"`
+	HostnameRewriteBlock            *IpamsvcInheritedHostnameRewriteBlock `json:"hostname_rewrite_block,omitempty"`
+	VendorSpecificOptionOptionSpace *InheritanceInheritedIdentifier       `json:"vendor_specific_option_option_space,omitempty"`
 }
 
 // NewIpamsvcIPSpaceInheritance instantiates a new IpamsvcIPSpaceInheritance object
@@ -600,7 +600,7 @@ func (o *IpamsvcIPSpaceInheritance) SetVendorSpecificOptionOptionSpace(v Inherit
 }
 
 func (o IpamsvcIPSpaceInheritance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -698,5 +698,3 @@ func (v *NullableIpamsvcIPSpaceInheritance) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

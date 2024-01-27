@@ -20,18 +20,18 @@ var _ MappedNullable = &HostactivationJoinToken{}
 
 // HostactivationJoinToken struct for HostactivationJoinToken
 type HostactivationJoinToken struct {
-	DeletedAt *time.Time `json:"deleted_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	DeletedAt   *time.Time `json:"deleted_at,omitempty"`
+	Description *string    `json:"description,omitempty"`
+	ExpiresAt   *time.Time `json:"expires_at,omitempty"`
 	// The resource identifier.
-	Id *string `json:"id,omitempty"`
-	LastUsedAt *time.Time `json:"last_used_at,omitempty"`
-	Name string `json:"name"`
-	Status *JoinTokenJoinTokenStatus `json:"status,omitempty"`
-	Tags map[string]interface{} `json:"tags,omitempty"`
+	Id         *string                   `json:"id,omitempty"`
+	LastUsedAt *time.Time                `json:"last_used_at,omitempty"`
+	Name       string                    `json:"name"`
+	Status     *JoinTokenJoinTokenStatus `json:"status,omitempty"`
+	Tags       map[string]interface{}    `json:"tags,omitempty"`
 	// first half of the token.
-	TokenId *string `json:"token_id,omitempty"`
-	UseCounter *int64 `json:"use_counter,omitempty"`
+	TokenId    *string `json:"token_id,omitempty"`
+	UseCounter *int64  `json:"use_counter,omitempty"`
 }
 
 // NewHostactivationJoinToken instantiates a new HostactivationJoinToken object
@@ -369,7 +369,7 @@ func (o *HostactivationJoinToken) SetUseCounter(v int64) {
 }
 
 func (o HostactivationJoinToken) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -444,5 +444,3 @@ func (v *NullableHostactivationJoinToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

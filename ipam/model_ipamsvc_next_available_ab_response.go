@@ -73,7 +73,7 @@ func (o *IpamsvcNextAvailableABResponse) SetResults(v []IpamsvcAddressBlock) {
 }
 
 func (o IpamsvcNextAvailableABResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableIpamsvcNextAvailableABResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -11,7 +11,7 @@ API version: v1
 package keys
 
 import (
-    "github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
 
 var ServiceBasePath = "/api/ddi/v1"
@@ -19,20 +19,20 @@ var ServiceBasePath = "/api/ddi/v1"
 // APIClient manages communication with the DDI Keys API API vv1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-    *internal.APIClient
+	*internal.APIClient
 
 	// API Services
 	GenerateTsigAPI GenerateTsigAPI
-	KerberosAPI KerberosAPI
-	TsigAPI TsigAPI
-	UploadAPI UploadAPI
+	KerberosAPI     KerberosAPI
+	TsigAPI         TsigAPI
+	UploadAPI       UploadAPI
 }
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *internal.Configuration) *APIClient {
 	c := &APIClient{}
-    c.APIClient = internal.NewAPIClient(cfg)
+	c.APIClient = internal.NewAPIClient(cfg)
 
 	// API Services
 	c.GenerateTsigAPI = (*GenerateTsigAPIService)(&c.Common)

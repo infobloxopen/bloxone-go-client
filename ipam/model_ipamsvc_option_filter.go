@@ -41,7 +41,7 @@ type IpamsvcOptionFilter struct {
 	// The type of protocol of option filter (_ip4_ or _ip6_).
 	Protocol *string `json:"protocol,omitempty"`
 	// The role of DHCP filter (_values_ or _selection_).  Defaults to _values_.
-	Role *string `json:"role,omitempty"`
+	Role  *string                     `json:"role,omitempty"`
 	Rules IpamsvcOptionFilterRuleList `json:"rules"`
 	// The tags for the option filter in JSON format.
 	Tags map[string]interface{} `json:"tags,omitempty"`
@@ -535,7 +535,7 @@ func (o *IpamsvcOptionFilter) SetVendorSpecificOptionOptionSpace(v string) {
 }
 
 func (o IpamsvcOptionFilter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -623,5 +623,3 @@ func (v *NullableIpamsvcOptionFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

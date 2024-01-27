@@ -24,8 +24,8 @@ type IpamsvcInheritedAsmEnableBlock struct {
 	// The human-readable display name for the object referred to by _source_.
 	DisplayName *string `json:"display_name,omitempty"`
 	// The resource identifier.
-	Source *string `json:"source,omitempty"`
-	Value *IpamsvcAsmEnableBlock `json:"value,omitempty"`
+	Source *string                `json:"source,omitempty"`
+	Value  *IpamsvcAsmEnableBlock `json:"value,omitempty"`
 }
 
 // NewIpamsvcInheritedAsmEnableBlock instantiates a new IpamsvcInheritedAsmEnableBlock object
@@ -174,7 +174,7 @@ func (o *IpamsvcInheritedAsmEnableBlock) SetValue(v IpamsvcAsmEnableBlock) {
 }
 
 func (o IpamsvcInheritedAsmEnableBlock) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableIpamsvcInheritedAsmEnableBlock) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

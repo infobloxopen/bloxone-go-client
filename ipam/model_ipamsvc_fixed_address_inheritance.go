@@ -19,10 +19,10 @@ var _ MappedNullable = &IpamsvcFixedAddressInheritance{}
 
 // IpamsvcFixedAddressInheritance The __FixedAddressInheritance__ object specifies how and which fields _FixedAddress_ object inherits from the parent.
 type IpamsvcFixedAddressInheritance struct {
-	DhcpOptions *IpamsvcInheritedDHCPOptionList `json:"dhcp_options,omitempty"`
-	HeaderOptionFilename *InheritanceInheritedString `json:"header_option_filename,omitempty"`
-	HeaderOptionServerAddress *InheritanceInheritedString `json:"header_option_server_address,omitempty"`
-	HeaderOptionServerName *InheritanceInheritedString `json:"header_option_server_name,omitempty"`
+	DhcpOptions               *IpamsvcInheritedDHCPOptionList `json:"dhcp_options,omitempty"`
+	HeaderOptionFilename      *InheritanceInheritedString     `json:"header_option_filename,omitempty"`
+	HeaderOptionServerAddress *InheritanceInheritedString     `json:"header_option_server_address,omitempty"`
+	HeaderOptionServerName    *InheritanceInheritedString     `json:"header_option_server_name,omitempty"`
 }
 
 // NewIpamsvcFixedAddressInheritance instantiates a new IpamsvcFixedAddressInheritance object
@@ -171,7 +171,7 @@ func (o *IpamsvcFixedAddressInheritance) SetHeaderOptionServerName(v Inheritance
 }
 
 func (o IpamsvcFixedAddressInheritance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableIpamsvcFixedAddressInheritance) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

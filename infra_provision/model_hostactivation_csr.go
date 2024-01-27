@@ -20,19 +20,19 @@ var _ MappedNullable = &HostactivationCSR{}
 
 // HostactivationCSR Represents a certificate signing request from an on-prem host.
 type HostactivationCSR struct {
-	ActivationCode *string `json:"activation_code,omitempty"`
-	ClientIp *TypesInetValue `json:"client_ip,omitempty"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Csr *string `json:"csr,omitempty"`
-	HostSerial *string `json:"host_serial,omitempty"`
+	ActivationCode *string         `json:"activation_code,omitempty"`
+	ClientIp       *TypesInetValue `json:"client_ip,omitempty"`
+	CreatedAt      *time.Time      `json:"created_at,omitempty"`
+	Csr            *string         `json:"csr,omitempty"`
+	HostSerial     *string         `json:"host_serial,omitempty"`
 	// The resource identifier.
-	Id *string `json:"id,omitempty"`
+	Id        *string                  `json:"id,omitempty"`
 	JoinToken *HostactivationJoinToken `json:"join_token,omitempty"`
-	Ophid *string `json:"ophid,omitempty"`
-	Signature *string `json:"signature,omitempty"`
-	SrcIp *TypesInetValue `json:"src_ip,omitempty"`
-	State *HostactivationCSRState `json:"state,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Ophid     *string                  `json:"ophid,omitempty"`
+	Signature *string                  `json:"signature,omitempty"`
+	SrcIp     *TypesInetValue          `json:"src_ip,omitempty"`
+	State     *HostactivationCSRState  `json:"state,omitempty"`
+	UpdatedAt *time.Time               `json:"updated_at,omitempty"`
 }
 
 // NewHostactivationCSR instantiates a new HostactivationCSR object
@@ -441,7 +441,7 @@ func (o *HostactivationCSR) SetUpdatedAt(v time.Time) {
 }
 
 func (o HostactivationCSR) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -524,5 +524,3 @@ func (v *NullableHostactivationCSR) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

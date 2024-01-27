@@ -202,7 +202,7 @@ func (o *IpamsvcCopyIPSpace) SetSkipOnError(v bool) {
 }
 
 func (o IpamsvcCopyIPSpace) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -262,5 +262,3 @@ func (v *NullableIpamsvcCopyIPSpace) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

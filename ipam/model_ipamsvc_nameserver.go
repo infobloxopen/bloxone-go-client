@@ -31,7 +31,7 @@ type IpamsvcNameserver struct {
 	KerberosTkeyLifetime *int64 `json:"kerberos_tkey_lifetime,omitempty"`
 	// Determines which protocol is used to establish the security context with the external DNS servers, TCP or UDP.  Defaults to _tcp_.
 	KerberosTkeyProtocol *string `json:"kerberos_tkey_protocol,omitempty"`
-	Nameserver *string `json:"nameserver,omitempty"`
+	Nameserver           *string `json:"nameserver,omitempty"`
 	// The Kerberos principal name of this DNS server that will receive updates.  Defaults to empty.
 	ServerPrincipal *string `json:"server_principal,omitempty"`
 }
@@ -310,7 +310,7 @@ func (o *IpamsvcNameserver) SetServerPrincipal(v string) {
 }
 
 func (o IpamsvcNameserver) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,5 +381,3 @@ func (v *NullableIpamsvcNameserver) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

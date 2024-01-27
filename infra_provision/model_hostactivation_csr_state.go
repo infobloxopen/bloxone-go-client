@@ -20,12 +20,12 @@ type HostactivationCSRState string
 
 // List of hostactivationCSRState
 const (
-	HOSTACTIVATIONCSRSTATE_UNKNOWN HostactivationCSRState = "UNKNOWN"
-	HOSTACTIVATIONCSRSTATE_NEW HostactivationCSRState = "NEW"
+	HOSTACTIVATIONCSRSTATE_UNKNOWN  HostactivationCSRState = "UNKNOWN"
+	HOSTACTIVATIONCSRSTATE_NEW      HostactivationCSRState = "NEW"
 	HOSTACTIVATIONCSRSTATE_VERIFIED HostactivationCSRState = "VERIFIED"
-	HOSTACTIVATIONCSRSTATE_DENIED HostactivationCSRState = "DENIED"
-	HOSTACTIVATIONCSRSTATE_TIMEOUT HostactivationCSRState = "TIMEOUT"
-	HOSTACTIVATIONCSRSTATE_RENEWED HostactivationCSRState = "RENEWED"
+	HOSTACTIVATIONCSRSTATE_DENIED   HostactivationCSRState = "DENIED"
+	HOSTACTIVATIONCSRSTATE_TIMEOUT  HostactivationCSRState = "TIMEOUT"
+	HOSTACTIVATIONCSRSTATE_RENEWED  HostactivationCSRState = "RENEWED"
 )
 
 // All allowed values of HostactivationCSRState enum
@@ -116,4 +116,3 @@ func (v *NullableHostactivationCSRState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -18,20 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type OptionSpaceAPI interface {
 
 	/*
-	OptionSpaceCreate Create the DHCP option space.
+		OptionSpaceCreate Create the DHCP option space.
 
-	Use this method to create an __OptionSpace__ object.
-The __OptionSpace__ object represents a set of DHCP option codes.
+		Use this method to create an __OptionSpace__ object.
+	The __OptionSpace__ object represents a set of DHCP option codes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionSpaceCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiOptionSpaceCreateRequest
 	*/
 	OptionSpaceCreate(ctx context.Context) ApiOptionSpaceCreateRequest
 
@@ -40,14 +39,14 @@ The __OptionSpace__ object represents a set of DHCP option codes.
 	OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*IpamsvcCreateOptionSpaceResponse, *http.Response, error)
 
 	/*
-	OptionSpaceDelete Move the DHCP option space to the recycle bin.
+		OptionSpaceDelete Move the DHCP option space to the recycle bin.
 
-	Use this method to move an __OptionSpace__ object to the recycle bin.
-The __OptionSpace__ object represents a set of DHCP option codes.
+		Use this method to move an __OptionSpace__ object to the recycle bin.
+	The __OptionSpace__ object represents a set of DHCP option codes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionSpaceDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionSpaceDeleteRequest
 	*/
 	OptionSpaceDelete(ctx context.Context, id string) ApiOptionSpaceDeleteRequest
 
@@ -55,13 +54,13 @@ The __OptionSpace__ object represents a set of DHCP option codes.
 	OptionSpaceDeleteExecute(r ApiOptionSpaceDeleteRequest) (*http.Response, error)
 
 	/*
-	OptionSpaceList Retrieve DHCP option spaces.
+		OptionSpaceList Retrieve DHCP option spaces.
 
-	Use this method to retrieve __OptionSpace__ objects.
-The __OptionSpace__ object represents a set of DHCP option codes.
+		Use this method to retrieve __OptionSpace__ objects.
+	The __OptionSpace__ object represents a set of DHCP option codes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionSpaceListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiOptionSpaceListRequest
 	*/
 	OptionSpaceList(ctx context.Context) ApiOptionSpaceListRequest
 
@@ -70,14 +69,14 @@ The __OptionSpace__ object represents a set of DHCP option codes.
 	OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*IpamsvcListOptionSpaceResponse, *http.Response, error)
 
 	/*
-	OptionSpaceRead Retrieve the DHCP option space.
+		OptionSpaceRead Retrieve the DHCP option space.
 
-	Use this method to retrieve an __OptionSpace__ object.
-The __OptionSpace__ object represents a set of DHCP option codes.
+		Use this method to retrieve an __OptionSpace__ object.
+	The __OptionSpace__ object represents a set of DHCP option codes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionSpaceReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionSpaceReadRequest
 	*/
 	OptionSpaceRead(ctx context.Context, id string) ApiOptionSpaceReadRequest
 
@@ -86,14 +85,14 @@ The __OptionSpace__ object represents a set of DHCP option codes.
 	OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*IpamsvcReadOptionSpaceResponse, *http.Response, error)
 
 	/*
-	OptionSpaceUpdate Update the DHCP option space.
+		OptionSpaceUpdate Update the DHCP option space.
 
-	Use this method to update an __OptionSpace__ object.
-The __OptionSpace__ object represents a set of DHCP option codes.
+		Use this method to update an __OptionSpace__ object.
+	The __OptionSpace__ object represents a set of DHCP option codes.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionSpaceUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionSpaceUpdateRequest
 	*/
 	OptionSpaceUpdate(ctx context.Context, id string) ApiOptionSpaceUpdateRequest
 
@@ -106,9 +105,9 @@ The __OptionSpace__ object represents a set of DHCP option codes.
 type OptionSpaceAPIService internal.Service
 
 type ApiOptionSpaceCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService OptionSpaceAPI
-	body *IpamsvcOptionSpace
+	body       *IpamsvcOptionSpace
 }
 
 func (r ApiOptionSpaceCreateRequest) Body(body IpamsvcOptionSpace) ApiOptionSpaceCreateRequest {
@@ -126,24 +125,25 @@ OptionSpaceCreate Create the DHCP option space.
 Use this method to create an __OptionSpace__ object.
 The __OptionSpace__ object represents a set of DHCP option codes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOptionSpaceCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOptionSpaceCreateRequest
 */
 func (a *OptionSpaceAPIService) OptionSpaceCreate(ctx context.Context) ApiOptionSpaceCreateRequest {
 	return ApiOptionSpaceCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateOptionSpaceResponse
+//
+//	@return IpamsvcCreateOptionSpaceResponse
 func (a *OptionSpaceAPIService) OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*IpamsvcCreateOptionSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateOptionSpaceResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceCreate")
@@ -225,9 +225,9 @@ func (a *OptionSpaceAPIService) OptionSpaceCreateExecute(r ApiOptionSpaceCreateR
 }
 
 type ApiOptionSpaceDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService OptionSpaceAPI
-	id string
+	id         string
 }
 
 func (r ApiOptionSpaceDeleteRequest) Execute() (*http.Response, error) {
@@ -240,24 +240,24 @@ OptionSpaceDelete Move the DHCP option space to the recycle bin.
 Use this method to move an __OptionSpace__ object to the recycle bin.
 The __OptionSpace__ object represents a set of DHCP option codes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiOptionSpaceDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionSpaceDeleteRequest
 */
 func (a *OptionSpaceAPIService) OptionSpaceDelete(ctx context.Context, id string) ApiOptionSpaceDeleteRequest {
 	return ApiOptionSpaceDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *OptionSpaceAPIService) OptionSpaceDeleteExecute(r ApiOptionSpaceDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceDelete")
@@ -329,49 +329,49 @@ func (a *OptionSpaceAPIService) OptionSpaceDeleteExecute(r ApiOptionSpaceDeleteR
 }
 
 type ApiOptionSpaceListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService OptionSpaceAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	torderBy *string
-	tfilter *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	torderBy   *string
+	tfilter    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiOptionSpaceListRequest) Fields(fields string) ApiOptionSpaceListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiOptionSpaceListRequest) Filter(filter string) ApiOptionSpaceListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiOptionSpaceListRequest) Offset(offset int32) ApiOptionSpaceListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiOptionSpaceListRequest) Limit(limit int32) ApiOptionSpaceListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiOptionSpaceListRequest) PageToken(pageToken string) ApiOptionSpaceListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiOptionSpaceListRequest) OrderBy(orderBy string) ApiOptionSpaceListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -399,24 +399,25 @@ OptionSpaceList Retrieve DHCP option spaces.
 Use this method to retrieve __OptionSpace__ objects.
 The __OptionSpace__ object represents a set of DHCP option codes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOptionSpaceListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOptionSpaceListRequest
 */
 func (a *OptionSpaceAPIService) OptionSpaceList(ctx context.Context) ApiOptionSpaceListRequest {
 	return ApiOptionSpaceListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcListOptionSpaceResponse
+//
+//	@return IpamsvcListOptionSpaceResponse
 func (a *OptionSpaceAPIService) OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*IpamsvcListOptionSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcListOptionSpaceResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcListOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceList")
@@ -517,13 +518,13 @@ func (a *OptionSpaceAPIService) OptionSpaceListExecute(r ApiOptionSpaceListReque
 }
 
 type ApiOptionSpaceReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService OptionSpaceAPI
-	id string
-	fields *string
+	id         string
+	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiOptionSpaceReadRequest) Fields(fields string) ApiOptionSpaceReadRequest {
 	r.fields = &fields
 	return r
@@ -539,26 +540,27 @@ OptionSpaceRead Retrieve the DHCP option space.
 Use this method to retrieve an __OptionSpace__ object.
 The __OptionSpace__ object represents a set of DHCP option codes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiOptionSpaceReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionSpaceReadRequest
 */
 func (a *OptionSpaceAPIService) OptionSpaceRead(ctx context.Context, id string) ApiOptionSpaceReadRequest {
 	return ApiOptionSpaceReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcReadOptionSpaceResponse
+//
+//	@return IpamsvcReadOptionSpaceResponse
 func (a *OptionSpaceAPIService) OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*IpamsvcReadOptionSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcReadOptionSpaceResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcReadOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceRead")
@@ -639,10 +641,10 @@ func (a *OptionSpaceAPIService) OptionSpaceReadExecute(r ApiOptionSpaceReadReque
 }
 
 type ApiOptionSpaceUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService OptionSpaceAPI
-	id string
-	body *IpamsvcOptionSpace
+	id         string
+	body       *IpamsvcOptionSpace
 }
 
 func (r ApiOptionSpaceUpdateRequest) Body(body IpamsvcOptionSpace) ApiOptionSpaceUpdateRequest {
@@ -660,26 +662,27 @@ OptionSpaceUpdate Update the DHCP option space.
 Use this method to update an __OptionSpace__ object.
 The __OptionSpace__ object represents a set of DHCP option codes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiOptionSpaceUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionSpaceUpdateRequest
 */
 func (a *OptionSpaceAPIService) OptionSpaceUpdate(ctx context.Context, id string) ApiOptionSpaceUpdateRequest {
 	return ApiOptionSpaceUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcUpdateOptionSpaceResponse
+//
+//	@return IpamsvcUpdateOptionSpaceResponse
 func (a *OptionSpaceAPIService) OptionSpaceUpdateExecute(r ApiOptionSpaceUpdateRequest) (*IpamsvcUpdateOptionSpaceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcUpdateOptionSpaceResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcUpdateOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceUpdate")
