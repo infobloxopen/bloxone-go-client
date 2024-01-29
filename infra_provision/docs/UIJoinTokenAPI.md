@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewHostactivationJoinToken() // HostactivationJoinToken | 
+    body := *openapiclient.NewHostactivationJoinToken("Name_example") // HostactivationJoinToken | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -377,7 +377,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewHostactivationJoinToken() // HostactivationJoinToken | 
+    body := *openapiclient.NewHostactivationJoinToken("Name_example") // HostactivationJoinToken | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
