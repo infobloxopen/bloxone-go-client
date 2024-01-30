@@ -24,13 +24,13 @@ import (
 type RangeAPI interface {
 
 	/*
-			RangeCreate Create the range.
+		RangeCreate Create the range.
 
-			Use this method to create a __Range__ object.
-		A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
+		Use this method to create a __Range__ object.
+	A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRangeCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiRangeCreateRequest
 	*/
 	RangeCreate(ctx context.Context) ApiRangeCreateRequest
 
@@ -39,14 +39,14 @@ type RangeAPI interface {
 	RangeCreateExecute(r ApiRangeCreateRequest) (*IpamsvcCreateRangeResponse, *http.Response, error)
 
 	/*
-			RangeCreateNextAvailableIP Allocate the next available IP address.
+		RangeCreateNextAvailableIP Allocate the next available IP address.
 
-			Use this method to allocate the next available IP address.
-		This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
+		Use this method to allocate the next available IP address.
+	This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRangeCreateNextAvailableIPRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRangeCreateNextAvailableIPRequest
 	*/
 	RangeCreateNextAvailableIP(ctx context.Context, id string) ApiRangeCreateNextAvailableIPRequest
 
@@ -55,14 +55,14 @@ type RangeAPI interface {
 	RangeCreateNextAvailableIPExecute(r ApiRangeCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
 
 	/*
-			RangeDelete Move the range to the recycle bin.
+		RangeDelete Move the range to the recycle bin.
 
-			Use this method to move a __Range__ object to the recycle bin.
-		A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
+		Use this method to move a __Range__ object to the recycle bin.
+	A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRangeDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRangeDeleteRequest
 	*/
 	RangeDelete(ctx context.Context, id string) ApiRangeDeleteRequest
 
@@ -70,13 +70,13 @@ type RangeAPI interface {
 	RangeDeleteExecute(r ApiRangeDeleteRequest) (*http.Response, error)
 
 	/*
-			RangeList Retrieve ranges.
+		RangeList Retrieve ranges.
 
-			Use this method to retrieve __Range__ objects.
-		A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
+		Use this method to retrieve __Range__ objects.
+	A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRangeListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiRangeListRequest
 	*/
 	RangeList(ctx context.Context) ApiRangeListRequest
 
@@ -85,14 +85,14 @@ type RangeAPI interface {
 	RangeListExecute(r ApiRangeListRequest) (*IpamsvcListRangeResponse, *http.Response, error)
 
 	/*
-			RangeListNextAvailableIP Retrieve the next available IP address.
+		RangeListNextAvailableIP Retrieve the next available IP address.
 
-			Use this method to retrieve the next available IP address.
-		This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
+		Use this method to retrieve the next available IP address.
+	This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRangeListNextAvailableIPRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRangeListNextAvailableIPRequest
 	*/
 	RangeListNextAvailableIP(ctx context.Context, id string) ApiRangeListNextAvailableIPRequest
 
@@ -101,14 +101,14 @@ type RangeAPI interface {
 	RangeListNextAvailableIPExecute(r ApiRangeListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
 
 	/*
-			RangeRead Retrieve the range.
+		RangeRead Retrieve the range.
 
-			Use this method to retrieve a __Range__ object.
-		A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
+		Use this method to retrieve a __Range__ object.
+	A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRangeReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRangeReadRequest
 	*/
 	RangeRead(ctx context.Context, id string) ApiRangeReadRequest
 
@@ -117,14 +117,14 @@ type RangeAPI interface {
 	RangeReadExecute(r ApiRangeReadRequest) (*IpamsvcReadRangeResponse, *http.Response, error)
 
 	/*
-			RangeUpdate Update the range.
+		RangeUpdate Update the range.
 
-			Use this method to update a __Range__ object.
-		A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
+		Use this method to update a __Range__ object.
+	A __Range__ object represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRangeUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRangeUpdateRequest
 	*/
 	RangeUpdate(ctx context.Context, id string) ApiRangeUpdateRequest
 
@@ -140,10 +140,17 @@ type ApiRangeCreateRequest struct {
 	ctx        context.Context
 	ApiService RangeAPI
 	body       *IpamsvcRange
+	inherit    *string
 }
 
 func (r ApiRangeCreateRequest) Body(body IpamsvcRange) ApiRangeCreateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiRangeCreateRequest) Inherit(inherit string) ApiRangeCreateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -192,6 +199,9 @@ func (a *RangeAPIService) RangeCreateExecute(r ApiRangeCreateRequest) (*IpamsvcC
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -510,6 +520,7 @@ type ApiRangeListRequest struct {
 	pageToken  *string
 	torderBy   *string
 	tfilter    *string
+	inherit    *string
 }
 
 // A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
@@ -557,6 +568,12 @@ func (r ApiRangeListRequest) TorderBy(torderBy string) ApiRangeListRequest {
 // This parameter is used for filtering by tags.
 func (r ApiRangeListRequest) Tfilter(tfilter string) ApiRangeListRequest {
 	r.tfilter = &tfilter
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiRangeListRequest) Inherit(inherit string) ApiRangeListRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -625,6 +642,9 @@ func (a *RangeAPIService) RangeListExecute(r ApiRangeListRequest) (*IpamsvcListR
 	}
 	if r.tfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_tfilter", r.tfilter, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -826,11 +846,18 @@ type ApiRangeReadRequest struct {
 	ApiService RangeAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiRangeReadRequest) Fields(fields string) ApiRangeReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiRangeReadRequest) Inherit(inherit string) ApiRangeReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -881,6 +908,9 @@ func (a *RangeAPIService) RangeReadExecute(r ApiRangeReadRequest) (*IpamsvcReadR
 
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -949,10 +979,17 @@ type ApiRangeUpdateRequest struct {
 	ApiService RangeAPI
 	id         string
 	body       *IpamsvcRange
+	inherit    *string
 }
 
 func (r ApiRangeUpdateRequest) Body(body IpamsvcRange) ApiRangeUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiRangeUpdateRequest) Inherit(inherit string) ApiRangeUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -1004,6 +1041,9 @@ func (a *RangeAPIService) RangeUpdateExecute(r ApiRangeUpdateRequest) (*IpamsvcU
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

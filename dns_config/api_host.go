@@ -24,13 +24,13 @@ import (
 type HostAPI interface {
 
 	/*
-			HostList List DNS Host objects.
+		HostList List DNS Host objects.
 
-			Use this method to list DNS Host objects.
-		A DNS Host object associates DNS configuration with hosts.
+		Use this method to list DNS Host objects.
+	A DNS Host object associates DNS configuration with hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHostListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiHostListRequest
 	*/
 	HostList(ctx context.Context) ApiHostListRequest
 
@@ -39,14 +39,14 @@ type HostAPI interface {
 	HostListExecute(r ApiHostListRequest) (*ConfigListHostResponse, *http.Response, error)
 
 	/*
-			HostRead Read the DNS Host object.
+		HostRead Read the DNS Host object.
 
-			Use this method to read a DNS Host object.
-		A DNS Host object associates DNS configuration with hosts.
+		Use this method to read a DNS Host object.
+	A DNS Host object associates DNS configuration with hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHostReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiHostReadRequest
 	*/
 	HostRead(ctx context.Context, id string) ApiHostReadRequest
 
@@ -55,14 +55,14 @@ type HostAPI interface {
 	HostReadExecute(r ApiHostReadRequest) (*ConfigReadHostResponse, *http.Response, error)
 
 	/*
-			HostUpdate Update the DNS Host object.
+		HostUpdate Update the DNS Host object.
 
-			Use this method to update a DNS Host object.
-		A DNS Host object associates DNS configuration with hosts.
+		Use this method to update a DNS Host object.
+	A DNS Host object associates DNS configuration with hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHostUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiHostUpdateRequest
 	*/
 	HostUpdate(ctx context.Context, id string) ApiHostUpdateRequest
 
@@ -85,6 +85,7 @@ type ApiHostListRequest struct {
 	orderBy    *string
 	tfilter    *string
 	torderBy   *string
+	inherit    *string
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
@@ -132,6 +133,12 @@ func (r ApiHostListRequest) Tfilter(tfilter string) ApiHostListRequest {
 // This parameter is used for sorting by tags.
 func (r ApiHostListRequest) TorderBy(torderBy string) ApiHostListRequest {
 	r.torderBy = &torderBy
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiHostListRequest) Inherit(inherit string) ApiHostListRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -201,6 +208,9 @@ func (a *HostAPIService) HostListExecute(r ApiHostListRequest) (*ConfigListHostR
 	if r.torderBy != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_torder_by", r.torderBy, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -268,11 +278,18 @@ type ApiHostReadRequest struct {
 	ApiService HostAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiHostReadRequest) Fields(fields string) ApiHostReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiHostReadRequest) Inherit(inherit string) ApiHostReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -323,6 +340,9 @@ func (a *HostAPIService) HostReadExecute(r ApiHostReadRequest) (*ConfigReadHostR
 
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -391,10 +411,17 @@ type ApiHostUpdateRequest struct {
 	ApiService HostAPI
 	id         string
 	body       *ConfigHost
+	inherit    *string
 }
 
 func (r ApiHostUpdateRequest) Body(body ConfigHost) ApiHostUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiHostUpdateRequest) Inherit(inherit string) ApiHostUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -446,6 +473,9 @@ func (a *HostAPIService) HostUpdateExecute(r ApiHostUpdateRequest) (*ConfigUpdat
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

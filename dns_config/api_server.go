@@ -24,13 +24,13 @@ import (
 type ServerAPI interface {
 
 	/*
-			ServerCreate Create the Server object.
+		ServerCreate Create the Server object.
 
-			Use this method to create a Server object.
-		A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to create a Server object.
+	A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServerCreateRequest
 	*/
 	ServerCreate(ctx context.Context) ApiServerCreateRequest
 
@@ -39,14 +39,14 @@ type ServerAPI interface {
 	ServerCreateExecute(r ApiServerCreateRequest) (*ConfigCreateServerResponse, *http.Response, error)
 
 	/*
-			ServerDelete Move the Server object to Recyclebin.
+		ServerDelete Move the Server object to Recyclebin.
 
-			Use this method to move a Server object to Recyclebin.
-		A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to move a Server object to Recyclebin.
+	A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerDeleteRequest
 	*/
 	ServerDelete(ctx context.Context, id string) ApiServerDeleteRequest
 
@@ -54,13 +54,13 @@ type ServerAPI interface {
 	ServerDeleteExecute(r ApiServerDeleteRequest) (*http.Response, error)
 
 	/*
-			ServerList List Server objects.
+		ServerList List Server objects.
 
-			Use this method to list Server objects.
-		A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to list Server objects.
+	A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServerListRequest
 	*/
 	ServerList(ctx context.Context) ApiServerListRequest
 
@@ -69,14 +69,14 @@ type ServerAPI interface {
 	ServerListExecute(r ApiServerListRequest) (*ConfigListServerResponse, *http.Response, error)
 
 	/*
-			ServerRead Read the Server object.
+		ServerRead Read the Server object.
 
-			Use this method to read a Server object.
-		A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to read a Server object.
+	A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerReadRequest
 	*/
 	ServerRead(ctx context.Context, id string) ApiServerReadRequest
 
@@ -85,14 +85,14 @@ type ServerAPI interface {
 	ServerReadExecute(r ApiServerReadRequest) (*ConfigReadServerResponse, *http.Response, error)
 
 	/*
-			ServerUpdate Update the Server object.
+		ServerUpdate Update the Server object.
 
-			Use this method to update a Server object.
-		A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to update a Server object.
+	A DNS Config Profile is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerUpdateRequest
 	*/
 	ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest
 
@@ -108,10 +108,17 @@ type ApiServerCreateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	body       *ConfigServer
+	inherit    *string
 }
 
 func (r ApiServerCreateRequest) Body(body ConfigServer) ApiServerCreateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerCreateRequest) Inherit(inherit string) ApiServerCreateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -160,6 +167,9 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Confi
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -339,6 +349,7 @@ type ApiServerListRequest struct {
 	orderBy    *string
 	tfilter    *string
 	torderBy   *string
+	inherit    *string
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
@@ -386,6 +397,12 @@ func (r ApiServerListRequest) Tfilter(tfilter string) ApiServerListRequest {
 // This parameter is used for sorting by tags.
 func (r ApiServerListRequest) TorderBy(torderBy string) ApiServerListRequest {
 	r.torderBy = &torderBy
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerListRequest) Inherit(inherit string) ApiServerListRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -455,6 +472,9 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*ConfigLis
 	if r.torderBy != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_torder_by", r.torderBy, "")
 	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -522,11 +542,18 @@ type ApiServerReadRequest struct {
 	ApiService ServerAPI
 	id         string
 	fields     *string
+	inherit    *string
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiServerReadRequest) Fields(fields string) ApiServerReadRequest {
 	r.fields = &fields
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerReadRequest) Inherit(inherit string) ApiServerReadRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -577,6 +604,9 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*ConfigRea
 
 	if r.fields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_fields", r.fields, "")
+	}
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -645,10 +675,17 @@ type ApiServerUpdateRequest struct {
 	ApiService ServerAPI
 	id         string
 	body       *ConfigServer
+	inherit    *string
 }
 
 func (r ApiServerUpdateRequest) Body(body ConfigServer) ApiServerUpdateRequest {
 	r.body = &body
+	return r
+}
+
+// This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
+func (r ApiServerUpdateRequest) Inherit(inherit string) ApiServerUpdateRequest {
+	r.inherit = &inherit
 	return r
 }
 
@@ -700,6 +737,9 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Confi
 		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
 	}
 
+	if r.inherit != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inherit", r.inherit, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

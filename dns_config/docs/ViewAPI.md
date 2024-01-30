@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ViewCreate
 
-> ConfigCreateViewResponse ViewCreate(ctx).Body(body).Execute()
+> ConfigCreateViewResponse ViewCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the View object.
 
@@ -101,10 +101,11 @@ import (
 
 func main() {
     body := *openapiclient.NewConfigView("Name_example") // ConfigView | 
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewAPI.ViewCreate(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.ViewAPI.ViewCreate(context.Background()).Body(body).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ViewCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,6 +127,7 @@ Other parameters are passed through a pointer to a apiViewCreateRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**ConfigView**](ConfigView.md) |  | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -215,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## ViewList
 
-> ConfigListViewResponse ViewList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ConfigListViewResponse ViewList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Inherit(inherit).Execute()
 
 List View objects.
 
@@ -242,10 +244,11 @@ func main() {
     orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
     tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
     torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewAPI.ViewList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+    resp, r, err := apiClient.ViewAPI.ViewList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ViewList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -274,6 +277,7 @@ Name | Type | Description  | Notes
  **orderBy** | **string** |   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         | 
  **tfilter** | **string** | This parameter is used for filtering by tags. | 
  **torderBy** | **string** | This parameter is used for sorting by tags. | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -295,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## ViewRead
 
-> ConfigReadViewResponse ViewRead(ctx, id).Fields(fields).Execute()
+> ConfigReadViewResponse ViewRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Read the View object.
 
@@ -316,10 +320,11 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewAPI.ViewRead(context.Background(), id).Fields(fields).Execute()
+    resp, r, err := apiClient.ViewAPI.ViewRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ViewRead``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,6 +351,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
@@ -367,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ViewUpdate
 
-> ConfigUpdateViewResponse ViewUpdate(ctx, id).Body(body).Execute()
+> ConfigUpdateViewResponse ViewUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the View object.
 
@@ -388,10 +394,11 @@ import (
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     body := *openapiclient.NewConfigView("Name_example") // ConfigView | 
+    inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ViewAPI.ViewUpdate(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.ViewAPI.ViewUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ViewUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,6 +425,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **body** | [**ConfigView**](ConfigView.md) |  | 
+ **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
