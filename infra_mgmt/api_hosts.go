@@ -1131,14 +1131,6 @@ func (a *HostsAPIService) HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {

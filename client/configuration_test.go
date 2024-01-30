@@ -3,6 +3,7 @@ package client
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"reflect"
 	"testing"
 
@@ -70,7 +71,7 @@ func TestConfiguration_internal(t *testing.T) {
 		{
 			"DefaultTags provided",
 			fields{
-				CSPURL:     "https://csp.infoblox.com",
+				CSPURL:     "https://stage.csp.infoblox.com",
 				ClientName: "terraformv1.1#yug278872h",
 				APIKey:     "12323455",
 				DefaultTags: map[string]string{
@@ -87,7 +88,7 @@ func TestConfiguration_internal(t *testing.T) {
 				},
 				Debug:      false,
 				UserAgent:  fmt.Sprintf("bloxone-%s/%s", sdkIdentifier, version),
-				Servers:    []internal.ServerConfiguration{{URL: "https://csp.infoblox.com"}},
+				Servers:    []internal.ServerConfiguration{{URL: "https://stage.csp.infoblox.com"}},
 				HTTPClient: http.DefaultClient,
 				DefaultTags: map[string]string{
 					clientIdentifier: "terraformv1.1#yug278872h",
@@ -100,6 +101,7 @@ func TestConfiguration_internal(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			var curEnvVal string
 			c := Configuration{
 				ClientName:  tt.fields.ClientName,
 				CSPURL:      tt.fields.CSPURL,
@@ -107,6 +109,11 @@ func TestConfiguration_internal(t *testing.T) {
 				HTTPClient:  tt.fields.HTTPClient,
 				DefaultTags: tt.fields.DefaultTags,
 			}
+			if c.CSPURL != "" {
+				curEnvVal = os.Getenv(ENVBloxOneCSPURL)
+				t.Setenv(ENVBloxOneCSPURL, c.CSPURL)
+			}
+
 			got, err := c.internal(tt.args.basePath)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("internal() error = %v, wantErr %v", err, tt.wantErr)
@@ -115,6 +122,12 @@ func TestConfiguration_internal(t *testing.T) {
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("internal() got = %v, want %v", got, tt.want)
 			}
+			t.Cleanup(func() {
+				// Set it to the value prior to executing the test
+				if c.CSPURL != "" {
+					t.Setenv(ENVBloxOneCSPURL, curEnvVal)
+				}
+			})
 		})
 	}
 }
