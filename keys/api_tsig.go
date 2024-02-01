@@ -13,6 +13,7 @@ package keys
 import (
 	"bytes"
 	"context"
+	_ "github.com/infobloxopen/bloxone-go-client/dns_config"
 	"io"
 	"net/http"
 	"net/url"
