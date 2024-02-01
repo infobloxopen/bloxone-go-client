@@ -11,19 +11,18 @@ package keys
 
 import (
 	"context"
+	"github.com/infobloxopen/bloxone-go-client/client"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func Test_keys_UploadAPIService(t *testing.T) {
-
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	rq := require.New(t)
+	c, err := client.NewAPIClient(client.Configuration{ClientName: "test"})
+	rq.NoError(err)
+	apiClient := c.KeysAPI
 
 	t.Run("Test UploadAPIService UploadUpload", func(t *testing.T) {
 

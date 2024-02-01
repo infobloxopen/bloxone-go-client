@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
+
 )
 
 // checks if the KeysTSIGKey type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,7 @@ type KeysTSIGKey struct {
 	Tags map[string]interface{} `json:"tags,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	res       interface{}
 }
 
 type _KeysTSIGKey KeysTSIGKey
