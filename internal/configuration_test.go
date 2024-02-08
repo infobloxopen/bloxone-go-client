@@ -40,7 +40,6 @@ func TestConfiguration_AddDefaultTags(t *testing.T) {
 				},
 			},
 			expected: map[string]string{
-				"key1": "value1",
 				"key2": "value2",
 			},
 		},
@@ -66,7 +65,7 @@ func TestConfiguration_AddDefaultTags(t *testing.T) {
 			c := &Configuration{
 				DefaultTags: tt.fields.DefaultTags,
 			}
-			c.AddDefaultTags(tt.args.m)
+			c.DefaultTags = tt.args.m
 			if !reflect.DeepEqual(c.GetDefaultTags(), tt.expected) {
 				t.Errorf("internal() want = %v, got = %v", tt.expected, c.GetDefaultTags())
 				return

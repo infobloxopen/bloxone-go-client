@@ -62,7 +62,7 @@ func TestConfiguration_internal(t *testing.T) {
 				UserAgent:   fmt.Sprintf("bloxone-%s/%s", sdkIdentifier, version),
 				Servers:     []internal.ServerConfiguration{{URL: "https://csp.infoblox.com"}},
 				HTTPClient:  http.DefaultClient,
-				DefaultTags: map[string]string{},
+				DefaultTags: nil,
 			},
 			false,
 		},

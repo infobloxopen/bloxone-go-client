@@ -100,12 +100,6 @@ func (c *Configuration) AddDefaultHeader(key string, value string) {
 	c.DefaultHeader[key] = value
 }
 
-func (c *Configuration) AddDefaultTags(m map[string]string) {
-	for k, v := range m {
-		c.DefaultTags[k] = v
-	}
-}
-
 func (c *Configuration) GetDefaultTags() map[string]string {
 	return c.DefaultTags
 }
