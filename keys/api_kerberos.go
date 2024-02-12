@@ -22,7 +22,6 @@ import (
 )
 
 type KerberosAPI interface {
-
 	/*
 			KerberosDelete Delete the Kerberos key.
 
@@ -37,7 +36,6 @@ type KerberosAPI interface {
 
 	// KerberosDeleteExecute executes the request
 	KerberosDeleteExecute(r ApiKerberosDeleteRequest) (*http.Response, error)
-
 	/*
 			KerberosList Retrieve Kerberos keys.
 
@@ -52,7 +50,6 @@ type KerberosAPI interface {
 	// KerberosListExecute executes the request
 	//  @return KeysListKerberosKeyResponse
 	KerberosListExecute(r ApiKerberosListRequest) (*KeysListKerberosKeyResponse, *http.Response, error)
-
 	/*
 			KerberosRead Retrieve the Kerberos key.
 
@@ -68,7 +65,6 @@ type KerberosAPI interface {
 	// KerberosReadExecute executes the request
 	//  @return KeysReadKerberosKeyResponse
 	KerberosReadExecute(r ApiKerberosReadRequest) (*KeysReadKerberosKeyResponse, *http.Response, error)
-
 	/*
 			KerberosUpdate Update the Kerberos key.
 
@@ -84,7 +80,6 @@ type KerberosAPI interface {
 	// KerberosUpdateExecute executes the request
 	//  @return KeysUpdateKerberosKeyResponse
 	KerberosUpdateExecute(r ApiKerberosUpdateRequest) (*KeysUpdateKerberosKeyResponse, *http.Response, error)
-
 	/*
 		KeysKerberosPost Method for KeysKerberosPost
 
@@ -390,7 +385,6 @@ func (a *KerberosAPIService) KerberosListExecute(r ApiKerberosListRequest) (*Key
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -513,7 +507,6 @@ func (a *KerberosAPIService) KerberosReadExecute(r ApiKerberosReadRequest) (*Key
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -637,7 +630,6 @@ func (a *KerberosAPIService) KerberosUpdateExecute(r ApiKerberosUpdateRequest) (
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -754,6 +746,5 @@ func (a *KerberosAPIService) KeysKerberosPostExecute(r ApiKeysKerberosPostReques
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
