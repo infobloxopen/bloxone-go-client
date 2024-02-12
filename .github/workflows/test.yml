@@ -25,5 +25,11 @@ jobs:
       - name: Get dependencies
         run: go mod download
 
+      - name: go fmt
+        run: |
+          go fmt
+          git diff --exit-code || \
+            (echo; echo "Unexpected difference. Run 'go fmt' command and commit."; exit 1)
+
       - name: Run unit tests
         run: go test -v -cover ./...
