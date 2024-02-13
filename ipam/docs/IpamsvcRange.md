@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the range. May contain 1 to 256 characters. Can include UTF-8. | [optional] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **Protocol** | Pointer to **string** | The type of protocol (_ip4_ or _ip6_). | [optional] [readonly] 
-**Space** | **string** | The resource identifier. | 
+**Space** | Pointer to **string** | The resource identifier. | [optional] 
 **Start** | **string** | The start IP address of the range. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the range in JSON format. | [optional] 
 **Threshold** | Pointer to [**IpamsvcUtilizationThreshold**](IpamsvcUtilizationThreshold.md) |  | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewIpamsvcRange
 
-`func NewIpamsvcRange(end string, space string, start string, ) *IpamsvcRange`
+`func NewIpamsvcRange(end string, start string, ) *IpamsvcRange`
 
 NewIpamsvcRange instantiates a new IpamsvcRange object
 This constructor will assign default values to properties that have it defined,
@@ -435,6 +435,11 @@ and a boolean to check if the value has been set.
 
 SetSpace sets Space field to given value.
 
+### HasSpace
+
+`func (o *IpamsvcRange) HasSpace() bool`
+
+HasSpace returns a boolean if a field has been set.
 
 ### GetStart
 

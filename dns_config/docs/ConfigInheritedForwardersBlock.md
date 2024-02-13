@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** | Defaults to _inherit_. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable display name for the object referred to by _source_. | [optional] [readonly] 
-**Source** | Pointer to **string** | The resource identifier. | [optional] 
+**Source** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Value** | Pointer to [**ConfigForwardersBlock**](ConfigForwardersBlock.md) |  | [optional] 
 
 ## Methods
