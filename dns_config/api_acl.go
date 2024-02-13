@@ -23,13 +23,13 @@ import (
 
 type AclAPI interface {
 	/*
-			AclCreate Create the ACL object.
+		AclCreate Create the ACL object.
 
-			Use this method to create an ACL object.
-		ACL object (_dns/acl_) represents a named Access Control List.
+		Use this method to create an ACL object.
+	ACL object (_dns/acl_) represents a named Access Control List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAclCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAclCreateRequest
 	*/
 	AclCreate(ctx context.Context) ApiAclCreateRequest
 
@@ -37,27 +37,27 @@ type AclAPI interface {
 	//  @return ConfigCreateACLResponse
 	AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateACLResponse, *http.Response, error)
 	/*
-			AclDelete Move the ACL object to Recyclebin.
+		AclDelete Move the ACL object to Recyclebin.
 
-			Use this method to move an ACL object to Recyclebin.
-		ACL object (_dns/acl_) represents a named Access Control List.
+		Use this method to move an ACL object to Recyclebin.
+	ACL object (_dns/acl_) represents a named Access Control List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAclDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAclDeleteRequest
 	*/
 	AclDelete(ctx context.Context, id string) ApiAclDeleteRequest
 
 	// AclDeleteExecute executes the request
 	AclDeleteExecute(r ApiAclDeleteRequest) (*http.Response, error)
 	/*
-			AclList List ACL objects.
+		AclList List ACL objects.
 
-			Use this method to list ACL objects.
-		ACL object (_dns/acl_) represents a named Access Control List.
+		Use this method to list ACL objects.
+	ACL object (_dns/acl_) represents a named Access Control List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAclListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAclListRequest
 	*/
 	AclList(ctx context.Context) ApiAclListRequest
 
@@ -65,14 +65,14 @@ type AclAPI interface {
 	//  @return ConfigListACLResponse
 	AclListExecute(r ApiAclListRequest) (*ConfigListACLResponse, *http.Response, error)
 	/*
-			AclRead Read the ACL object.
+		AclRead Read the ACL object.
 
-			Use this method to read an ACL object.
-		ACL object (_dns/acl_) represents a named Access Control List.
+		Use this method to read an ACL object.
+	ACL object (_dns/acl_) represents a named Access Control List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAclReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAclReadRequest
 	*/
 	AclRead(ctx context.Context, id string) ApiAclReadRequest
 
@@ -80,14 +80,14 @@ type AclAPI interface {
 	//  @return ConfigReadACLResponse
 	AclReadExecute(r ApiAclReadRequest) (*ConfigReadACLResponse, *http.Response, error)
 	/*
-			AclUpdate Update the ACL object.
+		AclUpdate Update the ACL object.
 
-			Use this method to update an ACL object.
-		ACL object (_dns/acl_) represents a named Access Control List.
+		Use this method to update an ACL object.
+	ACL object (_dns/acl_) represents a named Access Control List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAclUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiAclUpdateRequest
 	*/
 	AclUpdate(ctx context.Context, id string) ApiAclUpdateRequest
 
@@ -175,7 +175,7 @@ func (a *AclAPIService) AclCreateExecute(r ApiAclCreateRequest) (*ConfigCreateAC
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}
@@ -720,7 +720,7 @@ func (a *AclAPIService) AclUpdateExecute(r ApiAclUpdateRequest) (*ConfigUpdateAC
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}

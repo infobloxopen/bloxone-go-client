@@ -23,13 +23,13 @@ import (
 
 type OptionGroupAPI interface {
 	/*
-			OptionGroupCreate Create the DHCP option group.
+		OptionGroupCreate Create the DHCP option group.
 
-			Use this method to create an __OptionGroup__ object.
-		The __OptionGroup__ object is a named collection of options.
+		Use this method to create an __OptionGroup__ object.
+	The __OptionGroup__ object is a named collection of options.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionGroupCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiOptionGroupCreateRequest
 	*/
 	OptionGroupCreate(ctx context.Context) ApiOptionGroupCreateRequest
 
@@ -37,27 +37,27 @@ type OptionGroupAPI interface {
 	//  @return IpamsvcCreateOptionGroupResponse
 	OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*IpamsvcCreateOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupDelete Move the DHCP option group to the recycle bin.
+		OptionGroupDelete Move the DHCP option group to the recycle bin.
 
-			Use this method to move an __OptionGroup__ object to the recycle bin.
-		The __OptionGroup__ object is a named collection of options.
+		Use this method to move an __OptionGroup__ object to the recycle bin.
+	The __OptionGroup__ object is a named collection of options.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionGroupDeleteRequest
 	*/
 	OptionGroupDelete(ctx context.Context, id string) ApiOptionGroupDeleteRequest
 
 	// OptionGroupDeleteExecute executes the request
 	OptionGroupDeleteExecute(r ApiOptionGroupDeleteRequest) (*http.Response, error)
 	/*
-			OptionGroupList Retrieve DHCP option groups.
+		OptionGroupList Retrieve DHCP option groups.
 
-			Use this method to retrieve __OptionGroup__ objects.
-		The __OptionGroup__ object is a named collection of options.
+		Use this method to retrieve __OptionGroup__ objects.
+	The __OptionGroup__ object is a named collection of options.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionGroupListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiOptionGroupListRequest
 	*/
 	OptionGroupList(ctx context.Context) ApiOptionGroupListRequest
 
@@ -65,14 +65,14 @@ type OptionGroupAPI interface {
 	//  @return IpamsvcListOptionGroupResponse
 	OptionGroupListExecute(r ApiOptionGroupListRequest) (*IpamsvcListOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupRead Retrieve the DHCP option group.
+		OptionGroupRead Retrieve the DHCP option group.
 
-			Use this method to retrieve an __OptionGroup__ object.
-		The __OptionGroup__ object is a named collection of options.
+		Use this method to retrieve an __OptionGroup__ object.
+	The __OptionGroup__ object is a named collection of options.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionGroupReadRequest
 	*/
 	OptionGroupRead(ctx context.Context, id string) ApiOptionGroupReadRequest
 
@@ -80,14 +80,14 @@ type OptionGroupAPI interface {
 	//  @return IpamsvcReadOptionGroupResponse
 	OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*IpamsvcReadOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupUpdate Update the DHCP option group.
+		OptionGroupUpdate Update the DHCP option group.
 
-			Use this method to update an __OptionGroup__ object.
-		The __OptionGroup__ object is a named collection of options.
+		Use this method to update an __OptionGroup__ object.
+	The __OptionGroup__ object is a named collection of options.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiOptionGroupUpdateRequest
 	*/
 	OptionGroupUpdate(ctx context.Context, id string) ApiOptionGroupUpdateRequest
 
@@ -175,7 +175,7 @@ func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateR
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}
@@ -720,7 +720,7 @@ func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateR
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}

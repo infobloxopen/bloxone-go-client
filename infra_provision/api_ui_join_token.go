@@ -23,14 +23,14 @@ import (
 
 type UIJoinTokenAPI interface {
 	/*
-			UIJoinTokenCreate User can create a join token. Join token is random character string which is used for instant validation of new hosts.
+		UIJoinTokenCreate User can create a join token. Join token is random character string which is used for instant validation of new hosts.
 
-			Validation:
-		- "name" is required and should be unique.
-		- "description" is optioanl.
+		Validation:
+	- "name" is required and should be unique.
+	- "description" is optioanl.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiUIJoinTokenCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiUIJoinTokenCreateRequest
 	*/
 	UIJoinTokenCreate(ctx context.Context) ApiUIJoinTokenCreateRequest
 
@@ -84,15 +84,15 @@ type UIJoinTokenAPI interface {
 	//  @return HostactivationReadJoinTokenResponse
 	UIJoinTokenReadExecute(r ApiUIJoinTokenReadRequest) (*HostactivationReadJoinTokenResponse, *http.Response, error)
 	/*
-			UIJoinTokenUpdate User can modify the tags or expiration time of a join token.
+		UIJoinTokenUpdate User can modify the tags or expiration time of a join token.
 
-			Validation: Following fields is needed. Provide what needs to be
-		- "expires_at"
-		- "tags"
+		Validation: Following fields is needed. Provide what needs to be
+	- "expires_at"
+	- "tags"
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiUIJoinTokenUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiUIJoinTokenUpdateRequest
 	*/
 	UIJoinTokenUpdate(ctx context.Context, id string) ApiUIJoinTokenUpdateRequest
 
@@ -181,7 +181,7 @@ func (a *UIJoinTokenAPIService) UIJoinTokenCreateExecute(r ApiUIJoinTokenCreateR
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}
@@ -818,7 +818,7 @@ func (a *UIJoinTokenAPIService) UIJoinTokenUpdateExecute(r ApiUIJoinTokenUpdateR
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}

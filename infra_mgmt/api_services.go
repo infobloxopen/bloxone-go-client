@@ -36,15 +36,15 @@ type ServicesAPI interface {
 	//  @return InfraApplicationsResponse
 	ServicesApplicationsExecute(r ApiServicesApplicationsRequest) (*InfraApplicationsResponse, *http.Response, error)
 	/*
-			ServicesCreate Create a Service resource.
+		ServicesCreate Create a Service resource.
 
-			Validation:
-		- "name" is required and should be unique.
-		- "service_type" is required.
-		- "pool_id" is required.
+		Validation:
+	- "name" is required and should be unique.
+	- "service_type" is required.
+	- "pool_id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServicesCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServicesCreateRequest
 	*/
 	ServicesCreate(ctx context.Context) ApiServicesCreateRequest
 
@@ -52,14 +52,14 @@ type ServicesAPI interface {
 	//  @return InfraCreateServiceResponse
 	ServicesCreateExecute(r ApiServicesCreateRequest) (*InfraCreateServiceResponse, *http.Response, error)
 	/*
-			ServicesDelete Delete a Service resource.
+		ServicesDelete Delete a Service resource.
 
-			Validation:
-		- "id" is required.
+		Validation:
+	- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServicesDeleteRequest
 	*/
 	ServicesDelete(ctx context.Context, id string) ApiServicesDeleteRequest
 
@@ -77,14 +77,14 @@ type ServicesAPI interface {
 	//  @return InfraListServiceResponse
 	ServicesListExecute(r ApiServicesListRequest) (*InfraListServiceResponse, *http.Response, error)
 	/*
-			ServicesRead Read a Service resource.
+		ServicesRead Read a Service resource.
 
-			Validation:
-		- "id" is required.
+		Validation:
+	- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServicesReadRequest
 	*/
 	ServicesRead(ctx context.Context, id string) ApiServicesReadRequest
 
@@ -92,17 +92,17 @@ type ServicesAPI interface {
 	//  @return InfraGetServiceResponse
 	ServicesReadExecute(r ApiServicesReadRequest) (*InfraGetServiceResponse, *http.Response, error)
 	/*
-			ServicesUpdate Update a Service resource.
+		ServicesUpdate Update a Service resource.
 
-			Validation:
-		- "id" is required.
-		- "name" is required and should be unique.
-		- "service_type" is required.
-		- "pool_id" is required.
+		Validation:
+	- "id" is required.
+	- "name" is required and should be unique.
+	- "service_type" is required.
+	- "pool_id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServicesUpdateRequest
 	*/
 	ServicesUpdate(ctx context.Context, id string) ApiServicesUpdateRequest
 
@@ -309,7 +309,7 @@ func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}
@@ -844,7 +844,7 @@ func (a *ServicesAPIService) ServicesUpdateExecute(r ApiServicesUpdateRequest) (
 	if r.body.Tags == nil {
 		r.body.Tags = make(map[string]interface{})
 	}
-	for k, v := range a.Client.Cfg.GetDefaultTags() {
+	for k, v := range a.Client.Cfg.DefaultTags {
 		if _, ok := r.body.Tags[k]; !ok {
 			r.body.Tags[k] = v
 		}
