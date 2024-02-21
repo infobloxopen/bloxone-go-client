@@ -86,7 +86,7 @@ func (c Configuration) internal(basePath string) (*internal.Configuration, error
 	return &internal.Configuration{
 		DefaultHeader:    defaultHeaders,
 		UserAgent:        userAgent,
-		Debug:            false,
+		Debug:            true,
 		OperationServers: nil,
 		Servers:          []internal.ServerConfiguration{{URL: cspURL}},
 		HTTPClient:       httpClient,
