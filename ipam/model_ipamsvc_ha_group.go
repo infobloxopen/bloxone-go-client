@@ -11,7 +11,9 @@ API version: v1
 package ipam
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -43,6 +45,8 @@ type IpamsvcHAGroup struct {
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
+
+type _IpamsvcHAGroup IpamsvcHAGroup
 
 // NewIpamsvcHAGroup instantiates a new IpamsvcHAGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -439,6 +443,44 @@ func (o IpamsvcHAGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcHAGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"hosts",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcHAGroup := _IpamsvcHAGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIpamsvcHAGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcHAGroup(varIpamsvcHAGroup)
+
+	return err
 }
 
 type NullableIpamsvcHAGroup struct {
