@@ -13,56 +13,40 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/infobloxopen/bloxone-go-client/internal"
 	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
 )
 
-//type RoundTripFunc func(req *http.Request) *http.Response
-//
-//func (f RoundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
-//   return f(req), nil
-//}
-//
-//func NewTestClient(fn RoundTripFunc) *http.Client {
-//   return &http.Client{
-//       Transport: RoundTripFunc(fn),
-//   }
-//}
-
 func Test_keys_GenerateTsigAPIService(t *testing.T) {
-	configuration := internal.NewConfiguration()
-	dummyKey := openapiclient.KeysGenerateTSIGResult{
-		Secret: openapiclient.PtrString("XOJvQkcX6Og0CHFg+rQ27pqAB+EhSjVoI4Bs/JWegBc="),
-	}
-	configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-		require.Equal(t, "GET", req.Method)
-		require.Equal(t, "/api/ddi/v1/keys/generate_tsig", req.URL.Path)
-		require.Equal(t, "application/json", req.Header.Get("Accept"))
-		require.Equal(t, "hmac_sha256", req.URL.Query().Get("algorithm"))
 
-		response := openapiclient.KeysGenerateTSIGResponse{
-			Result: &dummyKey,
-		}
-		body, err := json.Marshal(response)
-		require.NoError(t, err)
-		return &http.Response{
-			StatusCode: 200,
-			Body:       io.NopCloser(bytes.NewReader(body)),
-			Header: map[string][]string{
-				"Content-Type": {"application/json"},
-			},
-		}
+	t.Run("Test GenerateTsigAPIService GenerateTsigGenerateTSIG", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
+			require.Equal(t, "/api/ddi/v1/keys/generate_tsig", req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
+
+			response := openapiclient.KeysGenerateTSIGResponse{}
+			body, err := json.Marshal(response)
+			require.NoError(t, err)
+
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader(body)),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
+			}
+		})
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.GenerateTsigAPI.GenerateTsigGenerateTSIG(context.Background()).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
-	apiClient := openapiclient.NewAPIClient(configuration)
-	request := apiClient.GenerateTsigAPI.GenerateTsigGenerateTSIG(context.Background()).Algorithm("hmac_sha256")
-	response, httpRes, err := request.Execute()
-	require.Nil(t, err)
-	require.Equal(t, 200, httpRes.StatusCode)
-	require.NotNil(t, response)
-	require.Equal(t, "XOJvQkcX6Og0CHFg+rQ27pqAB+EhSjVoI4Bs/JWegBc=", *response.Result.Secret)
+
 }

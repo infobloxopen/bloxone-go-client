@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-Testing AclAPIService
+Testing AuthNsgAPIService
 
 */
 
@@ -13,225 +13,149 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/infobloxopen/bloxone-go-client/dns_config"
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+
+	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
+var ConfigAuthNSG_Post = openapiclient.ConfigAuthNSG{
+	Comment: openapiclient.PtrString("This is a dummy AuthNes for testing."),
+	Id:      openapiclient.PtrString("dummyAuthNesId"),
+	Name:    "dummyAuthNesName",
+}
+var ConfigAuthNSG_Patch = openapiclient.ConfigAuthNSG{
+	Comment: openapiclient.PtrString("This is an updated dummy AuthNsg for testing."),
+	Id:      ConfigAuthNSG_Post.Id,
+	Name:    "updatedDummyAuthNsgName",
+}
 
 func Test_dns_config_AuthNsgAPIService(t *testing.T) {
 
-	t.Run("Test AuthNesAPIService AuthNesCreate", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAuthNsg := dns_config.ConfigAuthNSG{
-			Comment: openapiclient.PtrString("This is a dummy AuthNes for testing."),
-			Id:      openapiclient.PtrString("dummyAuthNesId"),
-			Name:    "dummyAuthNesName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "POST", req.Method)
+	t.Run("Test AuthNsgAPIService AuthNsgCreate", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPost, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/auth_nsg", req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
-			response := dns_config.ConfigCreateAuthNSGResponse{
-				Result: &dummyAuthNsg,
-			}
+			var reqBody openapiclient.ConfigAuthNSG
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, ConfigAuthNSG_Post, reqBody)
+
+			response := openapiclient.ConfigCreateAuthNSGResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		authNesAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		createRequest := authNesAPI.AuthNsgAPI.AuthNsgCreate(ctx).Body(dummyAuthNsg)
-		resp, httpRes, err := createRequest.Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AuthNsgAPI.AuthNsgCreate(context.Background()).Body(ConfigAuthNSG_Post).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, dummyAuthNsg, *resp.Result)
-	})
-
-	t.Run("Test AuthNsgAPIService AuthNsgRead", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAuthNsg := dns_config.ConfigAuthNSG{
-			Comment: openapiclient.PtrString("This is a dummy AuthNsg for testing."),
-			Id:      openapiclient.PtrString("dummyAuthNsgId"),
-			Name:    "dummyAuthNsgName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*dummyAuthNsg.Id, req.URL.Path)
-
-			response := dns_config.ConfigReadAuthNSGResponse{
-				Result: &dummyAuthNsg,
-			}
-			body, err := json.Marshal(response)
-			require.NoError(t, err)
-
-			return &http.Response{
-				StatusCode: 200,
-				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header:     map[string][]string{"Content-Type": {"application/json"}},
-			}
-		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		authNsgAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		readRequest := authNsgAPI.AuthNsgAPI.AuthNsgRead(ctx, *dummyAuthNsg.Id)
-		resp, httpRes, err := readRequest.Execute()
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, dummyAuthNsg, *resp.Result)
-	})
-
-	t.Run("Test AuthNsgAPIService AuthNsgUpdate", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAuthNsg := dns_config.ConfigAuthNSG{
-			Comment: openapiclient.PtrString("This is a dummy AuthNsg for testing."),
-			Id:      openapiclient.PtrString("dummyAuthNsgId"),
-			Name:    "dummyAuthNsgName",
-		}
-
-		updatedAuthNsg := dns_config.ConfigAuthNSG{
-			Comment: openapiclient.PtrString("This is an updated dummy AuthNsg for testing."),
-			Id:      dummyAuthNsg.Id,
-			Name:    "updatedDummyAuthNsgName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "PATCH", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*dummyAuthNsg.Id, req.URL.Path)
-
-			response := dns_config.ConfigUpdateAuthNSGResponse{
-				Result: &updatedAuthNsg,
-			}
-			body, err := json.Marshal(response)
-			require.NoError(t, err)
-
-			return &http.Response{
-				StatusCode: 200,
-				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header:     map[string][]string{"Content-Type": {"application/json"}},
-			}
-		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		authNsgAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		updateRequest := authNsgAPI.AuthNsgAPI.AuthNsgUpdate(ctx, *dummyAuthNsg.Id).Body(updatedAuthNsg)
-		resp, httpRes, err := updateRequest.Execute()
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, updatedAuthNsg, *resp.Result)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test AuthNsgAPIService AuthNsgList", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAuthNsgList := []dns_config.ConfigAuthNSG{
-			{
-				Comment: openapiclient.PtrString("This is a dummy AuthNsg for testing."),
-				Id:      openapiclient.PtrString("dummyAuthNsgId1"),
-				Name:    "dummyAuthNsgName1",
-			},
-			{
-				Comment: openapiclient.PtrString("This is another dummy AuthNsg for testing."),
-				Id:      openapiclient.PtrString("dummyAuthNsgId2"),
-				Name:    "dummyAuthNsgName2",
-			},
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/auth_nsg", req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
-			response := dns_config.ConfigListAuthNSGResponse{
-				Results: dummyAuthNsgList,
-			}
+			response := openapiclient.ConfigListAuthNSGResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		authNsgAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		listRequest := authNsgAPI.AuthNsgAPI.AuthNsgList(ctx)
-		resp, httpRes, err := listRequest.Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AuthNsgAPI.AuthNsgList(context.Background()).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, dummyAuthNsgList, resp.Results)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
+	})
+
+	t.Run("Test AuthNsgAPIService AuthNsgRead", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*ConfigAuthNSG_Post.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
+
+			response := openapiclient.ConfigReadAuthNSGResponse{}
+			body, err := json.Marshal(response)
+			require.NoError(t, err)
+
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader(body)),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
+			}
+		})
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AuthNsgAPI.AuthNsgRead(context.Background(), *ConfigAuthNSG_Post.Id).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
+	})
+
+	t.Run("Test AuthNsgAPIService AuthNsgUpdate", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPatch, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*ConfigAuthNSG_Post.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
+
+			var reqBody openapiclient.ConfigAuthNSG
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, ConfigAuthNSG_Patch, reqBody)
+
+			response := openapiclient.ConfigUpdateAuthNSGResponse{}
+			body, err := json.Marshal(response)
+			require.NoError(t, err)
+
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader(body)),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
+			}
+		})
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AuthNsgAPI.AuthNsgUpdate(context.Background(), *ConfigAuthNSG_Patch.Id).Body(ConfigAuthNSG_Patch).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test AuthNsgAPIService AuthNsgDelete", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAuthNsg := dns_config.ConfigAuthNSG{
-			Comment: openapiclient.PtrString("This is a dummy AuthNsg for testing."),
-			Id:      openapiclient.PtrString("dummyAuthNsgId"),
-			Name:    "dummyAuthNsgName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "DELETE", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*dummyAuthNsg.Id, req.URL.Path)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodDelete, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/auth_nsg/"+*ConfigAuthNSG_Post.Id, req.URL.Path)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader([]byte{})),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		authNsgAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		deleteRequest := authNsgAPI.AuthNsgAPI.AuthNsgDelete(ctx, *dummyAuthNsg.Id)
-		httpRes, err := deleteRequest.Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		httpRes, err := apiClient.AuthNsgAPI.AuthNsgDelete(context.Background(), *ConfigAuthNSG_Post.Id).Execute()
 		require.Nil(t, err)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 }

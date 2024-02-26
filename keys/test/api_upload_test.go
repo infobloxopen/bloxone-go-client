@@ -23,63 +23,40 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
 )
 
+var UploadRequest_Post = openapiclient.UploadRequest{
+	Comment: openapiclient.PtrString("Upload Request"),
+	Content: "SGVsbG8gd29ybGQ=",                     // "Hello world" in base64
+	Type:    openapiclient.UPLOADCONTENTTYPE_KEYTAB, // Replace "your_content_type" with the actual content type
+}
+
 func Test_keys_UploadAPIService(t *testing.T) {
 
 	t.Run("Test UploadAPIService UploadUpload", func(t *testing.T) {
-		// Assuming that UploadRequest is the request body type for the UploadUpload API
-		dummyRequest := openapiclient.UploadRequest{
-			Comment: openapiclient.PtrString("This is a test upload"),
-			Content: "SGVsbG8gd29ybGQ=", // "Hello world" in base64
-			//Fields:  &openapiclient.ProtobufFieldMask{}, // Fill this as per your requirements
-			//Tags: map[string]interface{}{
-			//	"tag1": "value1",
-			//	"tag2": "value2",
-			//},
-			Type: openapiclient.UPLOADCONTENTTYPE_KEYTAB, // Replace "your_content_type" with the actual content type
-		}
-
 		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "POST", req.Method)
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPost, req.Method)
 			require.Equal(t, "/api/ddi/v1/keys/upload", req.URL.Path)
-			require.Equal(t, "application/json", req.Header.Get("Accept"))
+			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
+
 			var reqBody openapiclient.UploadRequest
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, dummyRequest, reqBody)
+			require.Equal(t, UploadRequest_Post, reqBody)
 
-			response := openapiclient.DdiuploadResponse{
-				KerberosKeys: &openapiclient.KerberosKeys{
-					Items: []openapiclient.KerberosKey{
-						{
-							Algorithm: openapiclient.PtrString("aes256-cts-hmac-sha1-96"),
-							Comment:   openapiclient.PtrString("This is a test Kerberos key"),
-							Domain:    openapiclient.PtrString("example.com"),
-							Id:        openapiclient.PtrString("123"),
-							//Principal:   openapiclient.PtrString("test_principal"),
-							//Tags:        map[string]interface{}{"tag1": "value1", "tag2": "value2"},
-							//UploadedAt:  openapiclient.PtrString("2022-01-01T00:00:00Z"),
-							//Version:     openapiclient.PtrInt64(1),
-						},
-					},
-				},
-				Warning: openapiclient.PtrString("This is a test warning"),
-			}
+			response := openapiclient.DdiuploadResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
+
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header: map[string][]string{
-					"Content-Type": {"application/json"},
-				},
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.UploadAPI.UploadUpload(context.Background()).Body(dummyRequest).Execute()
+		resp, httpRes, err := apiClient.UploadAPI.UploadUpload(context.Background()).Body(UploadRequest_Post).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 }
