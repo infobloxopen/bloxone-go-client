@@ -13,195 +13,145 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/infobloxopen/bloxone-go-client/internal"
 	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
 )
 
-//type RoundTripFunc func(req *http.Request) *http.Response
-//
-//func (f RoundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
-//    return f(req), nil
-//}
-//
-//func NewTestClient(fn RoundTripFunc) *http.Client {
-//    return &http.Client{
-//        Transport: RoundTripFunc(fn),
-//    }
-//}
+var KerberosKey_Patch = openapiclient.KerberosKey{
+	Id: openapiclient.PtrString("KerberosKeyPost"),
+}
+var KerberosKey_Post = openapiclient.KerberosKey{
+	Id: openapiclient.PtrString("KerberosKeyPatch"),
+}
 
 func Test_keys_KerberosAPIService(t *testing.T) {
 
-	t.Run("Test KerberosAPIService KerberosRead", func(t *testing.T) {
-
-		t.Skip("skip test")
-
+	t.Run("Test KerberosAPIService KerberosDelete", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
-			require.Equal(t, "/api/ddi/v1/keys/kerberos/dummyKey", req.URL.Path)
-			require.Equal(t, "application/json", req.Header.Get("Accept"))
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodDelete, req.Method)
+			require.Equal(t, "/api/ddi/v1/keys/kerberos/"+*KerberosKey_Post.Id, req.URL.Path)
 
-			response := openapiclient.KeysReadKerberosKeyResponse{
-				Result: &openapiclient.KerberosKey{
-					Algorithm: openapiclient.PtrString("aes256-cts-hmac-sha1-96"),
-					Comment:   openapiclient.PtrString("Test Kerberos Key"),
-					Id:        nil,
-				},
-			}
-			body, err := json.Marshal(response)
-			require.NoError(t, err)
 			return &http.Response{
-				StatusCode: 200,
-				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header: map[string][]string{
-					"Content-Type": {"application/json"},
-				},
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader([]byte{})),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.KerberosAPI.KerberosRead(context.Background(), "dummyKey").Execute()
-
+		httpRes, err := apiClient.KerberosAPI.KerberosDelete(context.Background(), *KerberosKey_Post.Id).Execute()
 		require.Nil(t, err)
-		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
-	t.Run("Test KerberosAPIService KerberosKeyList", func(t *testing.T) {
-
-		t.Skip("skip test")
-
+	t.Run("Test KerberosAPIService KerberosList", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
 			require.Equal(t, "/api/ddi/v1/keys/kerberos", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
-			response := openapiclient.KeysListKerberosKeyResponse{
-				Results: []openapiclient.KerberosKey{
-					{
-						Algorithm: openapiclient.PtrString("aes256-cts-hmac-sha1-96"),
-						Comment:   openapiclient.PtrString("Test Kerberos Key"),
-						Id:        nil,
-					},
-				},
-			}
+			response := openapiclient.KeysListKerberosKeyResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
+
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header: map[string][]string{
-					"Content-Type": {"application/json"},
-				},
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
 		resp, httpRes, err := apiClient.KerberosAPI.KerberosList(context.Background()).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.NotEmpty(t, resp.Results)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
+	})
+
+	t.Run("Test KerberosAPIService KerberosRead", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
+			require.Equal(t, "/api/ddi/v1/keys/kerberos/"+*KerberosKey_Post.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
+
+			response := openapiclient.KeysReadKerberosKeyResponse{}
+			body, err := json.Marshal(response)
+			require.NoError(t, err)
+
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader(body)),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
+			}
+		})
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.KerberosAPI.KerberosRead(context.Background(), *KerberosKey_Post.Id).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test KerberosAPIService KerberosUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")
-
-		dummyKey := openapiclient.KerberosKey{
-			Algorithm: openapiclient.PtrString("RFC 3961"),
-			Comment:   openapiclient.PtrString("Test Update Kerberos Key"),
-			Id:        nil,
-		}
 		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "PATCH", req.Method)
-			require.Equal(t, "/api/ddi/v1/keys/kerberos/dummyKey", req.URL.Path)
-			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPatch, req.Method)
+			require.Equal(t, "/api/ddi/v1/keys/kerberos/"+*KerberosKey_Patch.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
+
 			var reqBody openapiclient.KerberosKey
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, dummyKey, reqBody)
+			require.Equal(t, KerberosKey_Patch, reqBody)
 
-			response := openapiclient.KeysUpdateKerberosKeyResponse{
-				Result: &dummyKey,
-			}
+			response := openapiclient.KeysUpdateKerberosKeyResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
+
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header: map[string][]string{
-					"Content-Type": {"application/json"},
-				},
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		updateRequest := apiClient.KerberosAPI.KerberosUpdate(context.Background(), "dummyKey").Body(dummyKey)
-		resp, httpRes, err := updateRequest.Execute()
+		resp, httpRes, err := apiClient.KerberosAPI.KerberosUpdate(context.Background(), *KerberosKey_Patch.Id).Body(KerberosKey_Patch).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
-	t.Run("Test TsigAPIService TsigUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")
-
-		dummyKey := openapiclient.KeysTSIGKey{
-			Algorithm: openapiclient.PtrString("hmac_sha256"),
-			Name:      "dummyKey36",
-			Secret:    "XOJvQkcX6Og0CHFg+rQ27pqAB+EhSjVoI4Bs/JWegBc=",
-		}
+	t.Run("Test KerberosAPIService KeysKerberosPost", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "PATCH", req.Method)
-			require.Equal(t, "/api/ddi/v1/keys/tsig/dummyKey36", req.URL.Path)
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPost, req.Method)
+			require.Equal(t, "/api/ddi/v1/keys/kerberos", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
-			var reqBody openapiclient.KeysTSIGKey
-			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, dummyKey, reqBody)
 
-			response := openapiclient.KeysUpdateTSIGKeyResponse{
-				Result: &dummyKey,
-			}
+			var reqBody openapiclient.KerberosKey
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, KerberosKey_Post, reqBody)
+
+			response := openapiclient.KeysListKerberosKeyResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
+
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header: map[string][]string{
-					"Content-Type": {"application/json"},
-				},
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		updateRequest := apiClient.TsigAPI.TsigUpdate(context.Background(), "dummyKey36").Body(dummyKey)
-		resp, httpRes, err := updateRequest.Execute()
+		resp, httpRes, err := apiClient.KerberosAPI.KeysKerberosPost(context.Background()).Body(KerberosKey_Post).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-	})
-
-	t.Run("Test KerberosAPIService KerberosDelete", func(t *testing.T) {
-		t.Skip("skip test")
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "DELETE", req.Method)
-			require.Equal(t, "/api/ddi/v1/keys/kerberos/dummyKey36", req.URL.Path)
-			return &http.Response{
-				StatusCode: 204,
-				Body:       io.NopCloser(bytes.NewReader([]byte{})),
-				Header:     make(http.Header),
-			}
-		})
-		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.KerberosAPI.KerberosDelete(context.Background(), "dummyKey36").Execute()
-		require.Nil(t, err)
-		require.Equal(t, 204, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 }

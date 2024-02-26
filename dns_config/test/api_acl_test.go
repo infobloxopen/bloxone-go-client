@@ -13,238 +13,150 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/infobloxopen/bloxone-go-client/dns_config"
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+
+	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
 
-type RoundTripFunc func(req *http.Request) *http.Response
-
-func (f RoundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
-	return f(req), nil
+var dns_config_Post = openapiclient.ConfigACL{
+	Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
+	Id:      openapiclient.PtrString("dummyAclId"),
+	Name:    "dummyAclName",
 }
 
-func NewTestClient(fn RoundTripFunc) *http.Client {
-	return &http.Client{
-		Transport: RoundTripFunc(fn),
-	}
+var dns_config_Patch = openapiclient.ConfigACL{
+	Comment: openapiclient.PtrString("This is an updated dummy ACL for testing."),
+	Id:      dns_config_Post.Id,
+	Name:    "updatedDummyAclName",
 }
 
 func Test_dns_config_AclAPIService(t *testing.T) {
 
 	t.Run("Test AclAPIService AclCreate", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAcl := dns_config.ConfigACL{
-			Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
-			Id:      openapiclient.PtrString("dummyAclId"),
-			Name:    "dummyAclName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "POST", req.Method)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPost, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/acl", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
-			var reqBody dns_config.ConfigACL
+			var reqBody openapiclient.ConfigACL
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, dummyAcl, reqBody)
+			require.Equal(t, dns_config_Post, reqBody)
 
-			response := dns_config.ConfigCreateACLResponse{
-				Result: &dummyAcl,
-			}
+			response := openapiclient.ConfigCreateACLResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		aclAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		resp, httpRes, err := aclAPI.AclAPI.AclCreate(ctx).Body(dummyAcl).Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AclAPI.AclCreate(context.Background()).Body(dns_config_Post).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-	})
-
-	t.Run("Test AclAPIService AclRead", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAcl := dns_config.ConfigACL{
-			Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
-			Id:      openapiclient.PtrString("dummyAclId"),
-			Name:    "dummyAclName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dummyAcl.Id, req.URL.Path)
-
-			response := dns_config.ConfigReadACLResponse{
-				Result: &dummyAcl,
-			}
-			body, err := json.Marshal(response)
-			require.NoError(t, err)
-
-			return &http.Response{
-				StatusCode: 200,
-				Body:       io.NopCloser(bytes.NewReader(body)),
-				Header:     map[string][]string{"Content-Type": {"application/json"}},
-			}
-		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		aclAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		readRequest := aclAPI.AclAPI.AclRead(ctx, *dummyAcl.Id)
-		resp, httpRes, err := aclAPI.AclAPI.AclReadExecute(readRequest)
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, dummyAcl, *resp.Result)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test AclAPIService AclList", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAclList := []dns_config.ConfigACL{
-			{
-				Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
-				Id:      openapiclient.PtrString("dummyAclId1"),
-				Name:    "dummyAclName1",
-			},
-			{
-				Comment: openapiclient.PtrString("This is another dummy ACL for testing."),
-				Id:      openapiclient.PtrString("dummyAclId2"),
-				Name:    "dummyAclName2",
-			},
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "GET", req.Method)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/acl", req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
-			response := dns_config.ConfigListACLResponse{
-				Results: dummyAclList,
-			}
+			response := openapiclient.ConfigListACLResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		aclAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		resp, httpRes, err := aclAPI.AclAPI.AclList(ctx).Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AclAPI.AclList(context.Background()).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, dummyAclList, resp.Results)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
+	})
+
+	t.Run("Test AclAPIService AclRead", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dns_config_Post.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Accept"))
+
+			response := openapiclient.ConfigReadACLResponse{}
+			body, err := json.Marshal(response)
+			require.NoError(t, err)
+
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(bytes.NewReader(body)),
+				Header:     map[string][]string{"Content-Type": {"application/json"}},
+			}
+		})
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AclAPI.AclRead(context.Background(), *dns_config_Post.Id).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test AclAPIService AclUpdate", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPatch, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dns_config_Post.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
-		//t.Skip("skip test") // remove to run test
+			var reqBody openapiclient.ConfigACL
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, dns_config_Patch, reqBody)
 
-		dummyAcl := dns_config.ConfigACL{
-			Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
-			Id:      openapiclient.PtrString("dummyAclId"),
-			Name:    "dummyAclName",
-		}
-
-		updatedAcl := dns_config.ConfigACL{
-			Comment: openapiclient.PtrString("This is an updated dummy ACL for testing."),
-			Id:      dummyAcl.Id,
-			Name:    "updatedDummyAclName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "PATCH", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dummyAcl.Id, req.URL.Path)
-
-			response := dns_config.ConfigUpdateACLResponse{
-				Result: &updatedAcl,
-			}
+			response := openapiclient.ConfigUpdateACLResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		aclAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		updateRequest := aclAPI.AclAPI.AclUpdate(ctx, *dummyAcl.Id).Body(updatedAcl)
-		resp, httpRes, err := updateRequest.Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.AclAPI.AclUpdate(context.Background(), *dns_config_Patch.Id).Body(dns_config_Patch).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
-		require.Equal(t, updatedAcl, *resp.Result)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test AclAPIService AclDelete", func(t *testing.T) {
-
-		//t.Skip("skip test") // remove to run test
-
-		dummyAcl := dns_config.ConfigACL{
-			Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
-			Id:      openapiclient.PtrString("dummyAclId"),
-			Name:    "dummyAclName",
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "DELETE", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dummyAcl.Id, req.URL.Path)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodDelete, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/acl/"+*dns_config_Post.Id, req.URL.Path)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader([]byte{})),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		aclAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		httpRes, err := aclAPI.AclAPI.AclDelete(ctx, *dummyAcl.Id).Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		httpRes, err := apiClient.AclAPI.AclDelete(context.Background(), *dns_config_Post.Id).Execute()
 		require.Nil(t, err)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 }

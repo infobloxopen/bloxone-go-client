@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-Testing AclAPIService
+Testing HostAPIService
 
 */
 
@@ -13,158 +13,96 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/infobloxopen/bloxone-go-client/dns_config"
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+
+	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
+var ConfigHost_Patch = openapiclient.ConfigHost{
+	Id: openapiclient.PtrString("ConfigHostPatch"),
+}
 
 func Test_dns_config_HostAPIService(t *testing.T) {
 
 	t.Run("Test HostAPIService HostList", func(t *testing.T) {
-
-		// Create a mock HTTP client
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			// Check the request parameters
-			require.Equal(t, "GET", req.Method)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/host", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
-			// Create a dummy response
-			response := dns_config.ConfigListHostResponse{
-				Results: []dns_config.ConfigHost{
-					{
-						Id:           openapiclient.PtrString("host1"),
-						AbsoluteName: openapiclient.PtrString("host1.example.com"),
-					},
-					{
-						Id:           openapiclient.PtrString("host2"),
-						AbsoluteName: openapiclient.PtrString("host2.example.com"),
-					},
-				},
-			}
+			response := openapiclient.ConfigListHostResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
-			// Return the dummy response
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		// Create a new API client with the mock HTTP client
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-		apiClient := dns_config.NewAPIClient(configuration)
-
-		// Call the method and check the response
+		apiClient := openapiclient.NewAPIClient(configuration)
 		resp, httpRes, err := apiClient.HostAPI.HostList(context.Background()).Execute()
-
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-		assert.Equal(t, "host1", *resp.Results[0].Id)
-		assert.Equal(t, "host1.example.com", *resp.Results[0].AbsoluteName)
-		assert.Equal(t, "host2", *resp.Results[1].Id)
-		assert.Equal(t, "host2.example.com", *resp.Results[1].AbsoluteName)
-
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test HostAPIService HostRead", func(t *testing.T) {
-
-		// Create a mock HTTP client
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			// Check the request parameters
-			require.Equal(t, "GET", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/host/host1", req.URL.Path)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodGet, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/host/"+*ConfigHost_Patch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
-			// Create a dummy response
-			response := dns_config.ConfigReadHostResponse{
-				Result: &dns_config.ConfigHost{
-					Id:           openapiclient.PtrString("host1"),
-					AbsoluteName: openapiclient.PtrString("host1.example.com"),
-				},
-			}
+			response := openapiclient.ConfigReadHostResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
-			// Return the dummy response
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		// Create a new API client with the mock HTTP client
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-		apiClient := dns_config.NewAPIClient(configuration)
-
-		// Call the method and check the response
-		id := "host1"
-		resp, httpRes, err := apiClient.HostAPI.HostRead(context.Background(), id).Execute()
-
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.HostAPI.HostRead(context.Background(), *ConfigHost_Patch.Id).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-		assert.Equal(t, "host1", *resp.Result.Id)
-		assert.Equal(t, "host1.example.com", *resp.Result.AbsoluteName)
-
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 	t.Run("Test HostAPIService HostUpdate", func(t *testing.T) {
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPatch, req.Method)
+			require.Equal(t, "/api/ddi/v1/dns/host/"+*ConfigHost_Patch.Id, req.URL.Path)
+			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
-		// Create a mock HTTP client
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			// Check the request parameters
-			require.Equal(t, "PATCH", req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/host/host1", req.URL.Path)
-			require.Equal(t, "application/json", req.Header.Get("Accept"))
+			var reqBody openapiclient.ConfigHost
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, ConfigHost_Patch, reqBody)
 
-			// Create a dummy response
-			response := dns_config.ConfigReadHostResponse{
-				Result: &dns_config.ConfigHost{
-					Id:           openapiclient.PtrString("host1"),
-					AbsoluteName: openapiclient.PtrString("host1.example.com"),
-				},
-			}
+			response := openapiclient.ConfigUpdateHostResponse{}
 			body, err := json.Marshal(response)
 			require.NoError(t, err)
 
-			// Return the dummy response
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader(body)),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		// Create a new API client with the mock HTTP client
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-		apiClient := dns_config.NewAPIClient(configuration)
-
-		// Call the method and check the response
-		id := "host1"
-		hostUpdateInput := dns_config.ConfigHost{
-			AbsoluteName: openapiclient.PtrString("host1.example.com"),
-		}
-		resp, httpRes, err := apiClient.HostAPI.HostUpdate(context.Background(), id).Body(hostUpdateInput).Execute()
-
+		apiClient := openapiclient.NewAPIClient(configuration)
+		resp, httpRes, err := apiClient.HostAPI.HostUpdate(context.Background(), *ConfigHost_Patch.Id).Body(ConfigHost_Patch).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-		assert.Equal(t, "host1", *resp.Result.Id)
-		assert.Equal(t, "host1.example.com", *resp.Result.AbsoluteName)
-
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
 
 }

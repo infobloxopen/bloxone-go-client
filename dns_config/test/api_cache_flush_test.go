@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-Testing AclAPIService
+Testing CacheFlushAPIService
 
 */
 
@@ -13,53 +13,48 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/infobloxopen/bloxone-go-client/dns_config"
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
-	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
 	"testing"
+
+	"github.com/stretchr/testify/require"
+
+	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
+var ConfigCacheFlush_Post = openapiclient.ConfigCacheFlush{
+	FlushSubdomains: openapiclient.PtrBool(true),
+	Fqdn:            openapiclient.PtrString("dummyFqdn"),
+	Ophid:           openapiclient.PtrString("dummyOphid"),
+	ServiceId:       openapiclient.PtrString("dummyServiceId"),
+	Ttl:             openapiclient.PtrInt64(120),
+	ViewName:        openapiclient.PtrString("dummyViewName"),
+}
 
 func Test_dns_config_CacheFlushAPIService(t *testing.T) {
 
 	t.Run("Test CacheFlushAPIService CacheFlushCreate", func(t *testing.T) {
-		// Create a dummy CacheFlush object
-		dummyCacheFlush := dns_config.ConfigCacheFlush{
-			FlushSubdomains: openapiclient.PtrBool(true),
-			Fqdn:            openapiclient.PtrString("dummyFqdn"),
-			Ophid:           openapiclient.PtrString("dummyOphid"),
-			ServiceId:       openapiclient.PtrString("dummyServiceId"),
-			Ttl:             openapiclient.PtrInt64(120),
-			ViewName:        openapiclient.PtrString("dummyViewName"),
-		}
-
-		testClient := NewTestClient(func(req *http.Request) *http.Response {
-			require.Equal(t, "POST", req.Method)
+		configuration := internal.NewConfiguration()
+		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
+			require.Equal(t, http.MethodPost, req.Method)
 			require.Equal(t, "/api/ddi/v1/dns/cache_flush", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
-			var reqBody dns_config.ConfigCacheFlush
+			var reqBody openapiclient.ConfigCacheFlush
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, dummyCacheFlush, reqBody)
+			require.Equal(t, ConfigCacheFlush_Post, reqBody)
 
 			return &http.Response{
-				StatusCode: 200,
+				StatusCode: http.StatusOK,
 				Body:       io.NopCloser(bytes.NewReader([]byte{})),
 				Header:     map[string][]string{"Content-Type": {"application/json"}},
 			}
 		})
-
-		configuration := internal.NewConfiguration()
-		configuration.HTTPClient = testClient
-
-		cacheFlushAPI := dns_config.NewAPIClient(configuration)
-		ctx := context.Background()
-
-		_, httpRes, err := cacheFlushAPI.CacheFlushAPI.CacheFlushCreate(ctx).Body(dummyCacheFlush).Execute()
+		apiClient := openapiclient.NewAPIClient(configuration)
+		_, httpRes, err := apiClient.CacheFlushAPI.CacheFlushCreate(context.Background()).Body(ConfigCacheFlush_Post).Execute()
 		require.Nil(t, err)
-		//require.NotNil(t, resp)
-		require.Equal(t, 200, httpRes.StatusCode)
+		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
+
 }

@@ -40,6 +40,5 @@ model_keys_update_tsig_key_response.go
 model_protobuf_field_mask.go
 model_upload_content_type.go
 model_upload_request.go
-test/api_generate_tsig_test.go
 test/api_upload_test.go
 utils.go

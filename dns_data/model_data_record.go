@@ -1,7 +1,7 @@
 /*
 DNS Data API
 
-The DNS Data is a BloxOne DDI service providing primary authoritative zone support. DNS Data is authoritative for all DNS resource records and is acting as a primary DNS server. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
+The DNS Data is a BloxOne DDI service providing primary authoritative zone support. DNS Data is authoritative for all DNS resource records and is acting as a primary DNS server. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -13,6 +13,8 @@ package dns_data
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DataRecord type satisfies the MappedNullable interface at compile time
@@ -41,7 +43,7 @@ type DataRecord struct {
 	// The DNS protocol textual representation of the DNS resource record data.
 	DnsRdata *string `json:"dns_rdata,omitempty"`
 	// The resource identifier.
-	Id                 *string                `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InheritanceSources *DataRecordInheritance `json:"inheritance_sources,omitempty"`
 	// The resource identifier.
 	IpamHost *string `json:"ipam_host,omitempty"`
@@ -72,6 +74,8 @@ type DataRecord struct {
 	// The resource identifier.
 	Zone *string `json:"zone,omitempty"`
 }
+
+type _DataRecord DataRecord
 
 // NewDataRecord instantiates a new DataRecord object
 // This constructor will assign default values to properties that have it defined,
@@ -916,7 +920,7 @@ func (o *DataRecord) SetZone(v string) {
 }
 
 func (o DataRecord) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1004,6 +1008,43 @@ func (o DataRecord) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+func (o *DataRecord) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"rdata",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDataRecord := _DataRecord{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDataRecord)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DataRecord(varDataRecord)
+
+	return err
+}
+
 type NullableDataRecord struct {
 	value *DataRecord
 	isSet bool
@@ -1039,3 +1080,5 @@ func (v *NullableDataRecord) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
