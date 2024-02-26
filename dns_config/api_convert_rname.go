@@ -22,6 +22,7 @@ import (
 )
 
 type ConvertRnameAPI interface {
+
 	/*
 		ConvertRnameConvertRName Convert the object.
 
@@ -149,5 +150,6 @@ func (a *ConvertRnameAPIService) ConvertRnameConvertRNameExecute(r ApiConvertRna
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

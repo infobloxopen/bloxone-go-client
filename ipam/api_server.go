@@ -22,72 +22,77 @@ import (
 )
 
 type ServerAPI interface {
+
 	/*
-			ServerCreate Create the DHCP configuration profile.
+		ServerCreate Create the DHCP configuration profile.
 
-			Use this method to create a __Server__ object.
-		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to create a __Server__ object.
+	A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServerCreateRequest
 	*/
 	ServerCreate(ctx context.Context) ApiServerCreateRequest
 
 	// ServerCreateExecute executes the request
 	//  @return IpamsvcCreateServerResponse
 	ServerCreateExecute(r ApiServerCreateRequest) (*IpamsvcCreateServerResponse, *http.Response, error)
+
 	/*
-			ServerDelete Move the DHCP configuration profile to the recycle bin.
+		ServerDelete Move the DHCP configuration profile to the recycle bin.
 
-			Use this method to move a __Server__ object to the recycle bin.
-		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to move a __Server__ object to the recycle bin.
+	A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerDeleteRequest
 	*/
 	ServerDelete(ctx context.Context, id string) ApiServerDeleteRequest
 
 	// ServerDeleteExecute executes the request
 	ServerDeleteExecute(r ApiServerDeleteRequest) (*http.Response, error)
+
 	/*
-			ServerList Retrieve DHCP configuration profiles.
+		ServerList Retrieve DHCP configuration profiles.
 
-			Use this method to retrieve __Server__ objects.
-		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to retrieve __Server__ objects.
+	A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServerListRequest
 	*/
 	ServerList(ctx context.Context) ApiServerListRequest
 
 	// ServerListExecute executes the request
 	//  @return IpamsvcListServerResponse
 	ServerListExecute(r ApiServerListRequest) (*IpamsvcListServerResponse, *http.Response, error)
+
 	/*
-			ServerRead Retrieve the DHCP configuration profile.
+		ServerRead Retrieve the DHCP configuration profile.
 
-			Use this method to retrieve a __Server__ object.
-		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to retrieve a __Server__ object.
+	A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerReadRequest
 	*/
 	ServerRead(ctx context.Context, id string) ApiServerReadRequest
 
 	// ServerReadExecute executes the request
 	//  @return IpamsvcReadServerResponse
 	ServerReadExecute(r ApiServerReadRequest) (*IpamsvcReadServerResponse, *http.Response, error)
+
 	/*
-			ServerUpdate Update the DHCP configuration profile.
+		ServerUpdate Update the DHCP configuration profile.
 
-			Use this method to update a __Server__ object.
-		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
+		Use this method to update a __Server__ object.
+	A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServerUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiServerUpdateRequest
 	*/
 	ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest
 
@@ -182,14 +187,6 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Ipams
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -233,6 +230,7 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -535,6 +533,7 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*IpamsvcLi
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -667,6 +666,7 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*IpamsvcRe
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -757,14 +757,6 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Ipams
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -808,5 +800,6 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Ipams
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
