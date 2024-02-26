@@ -22,87 +22,93 @@ import (
 )
 
 type RecordAPI interface {
+
 	/*
-			RecordCreate Create the DNS resource record.
+		RecordCreate Create the DNS resource record.
 
-			Use this method to create a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to create a DNS __Record__ object.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRecordCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiRecordCreateRequest
 	*/
 	RecordCreate(ctx context.Context) ApiRecordCreateRequest
 
 	// RecordCreateExecute executes the request
 	//  @return DataCreateRecordResponse
 	RecordCreateExecute(r ApiRecordCreateRequest) (*DataCreateRecordResponse, *http.Response, error)
+
 	/*
-			RecordDelete Move the DNS resource record to recycle bin.
+		RecordDelete Move the DNS resource record to recycle bin.
 
-			Use this method to move a DNS __Record__ object to the recycle bin.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to move a DNS __Record__ object to the recycle bin.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRecordDeleteRequest
 	*/
 	RecordDelete(ctx context.Context, id string) ApiRecordDeleteRequest
 
 	// RecordDeleteExecute executes the request
 	RecordDeleteExecute(r ApiRecordDeleteRequest) (*http.Response, error)
+
 	/*
-			RecordList Retrieve DNS resource records.
+		RecordList Retrieve DNS resource records.
 
-			Use this method to retrieve DNS __Record__ objects.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to retrieve DNS __Record__ objects.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiRecordListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiRecordListRequest
 	*/
 	RecordList(ctx context.Context) ApiRecordListRequest
 
 	// RecordListExecute executes the request
 	//  @return DataListRecordResponse
 	RecordListExecute(r ApiRecordListRequest) (*DataListRecordResponse, *http.Response, error)
+
 	/*
-			RecordRead Retrieve the DNS resource record.
+		RecordRead Retrieve the DNS resource record.
 
-			Use this method to retrieve a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to retrieve a DNS __Record__ object.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRecordReadRequest
 	*/
 	RecordRead(ctx context.Context, id string) ApiRecordReadRequest
 
 	// RecordReadExecute executes the request
 	//  @return DataReadRecordResponse
 	RecordReadExecute(r ApiRecordReadRequest) (*DataReadRecordResponse, *http.Response, error)
+
 	/*
-			RecordSOASerialIncrement Increment serial number for the SOA record.
+		RecordSOASerialIncrement Increment serial number for the SOA record.
 
-			Use this method to increment the serial number for an SOA (Start of Authority) _Record_ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to increment the serial number for an SOA (Start of Authority) _Record_ object.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordSOASerialIncrementRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRecordSOASerialIncrementRequest
 	*/
 	RecordSOASerialIncrement(ctx context.Context, id string) ApiRecordSOASerialIncrementRequest
 
 	// RecordSOASerialIncrementExecute executes the request
 	//  @return DataSOASerialIncrementResponse
 	RecordSOASerialIncrementExecute(r ApiRecordSOASerialIncrementRequest) (*DataSOASerialIncrementResponse, *http.Response, error)
+
 	/*
-			RecordUpdate Update the DNS resource record.
+		RecordUpdate Update the DNS resource record.
 
-			Use this method to update a DNS __Record__ object.
-		A __Record__ object represents a DNS resource record in an authoritative zone.
+		Use this method to update a DNS __Record__ object.
+	A __Record__ object represents a DNS resource record in an authoritative zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiRecordUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiRecordUpdateRequest
 	*/
 	RecordUpdate(ctx context.Context, id string) ApiRecordUpdateRequest
 
@@ -197,14 +203,6 @@ func (a *RecordAPIService) RecordCreateExecute(r ApiRecordCreateRequest) (*DataC
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -248,6 +246,7 @@ func (a *RecordAPIService) RecordCreateExecute(r ApiRecordCreateRequest) (*DataC
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -550,6 +549,7 @@ func (a *RecordAPIService) RecordListExecute(r ApiRecordListRequest) (*DataListR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -682,6 +682,7 @@ func (a *RecordAPIService) RecordReadExecute(r ApiRecordReadRequest) (*DataReadR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -805,6 +806,7 @@ func (a *RecordAPIService) RecordSOASerialIncrementExecute(r ApiRecordSOASerialI
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -895,14 +897,6 @@ func (a *RecordAPIService) RecordUpdateExecute(r ApiRecordUpdateRequest) (*DataU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -946,5 +940,6 @@ func (a *RecordAPIService) RecordUpdateExecute(r ApiRecordUpdateRequest) (*DataU
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

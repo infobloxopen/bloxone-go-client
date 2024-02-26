@@ -11,7 +11,9 @@ API version: v1
 package ipam
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcCopySubnet type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type IpamsvcCopySubnet struct {
 	// The resource identifier.
 	Space string `json:"space"`
 }
+
+type _IpamsvcCopySubnet IpamsvcCopySubnet
 
 // NewIpamsvcCopySubnet instantiates a new IpamsvcCopySubnet object
 // This constructor will assign default values to properties that have it defined,
@@ -299,6 +303,43 @@ func (o IpamsvcCopySubnet) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["space"] = o.Space
 	return toSerialize, nil
+}
+
+func (o *IpamsvcCopySubnet) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"space",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcCopySubnet := _IpamsvcCopySubnet{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIpamsvcCopySubnet)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcCopySubnet(varIpamsvcCopySubnet)
+
+	return err
 }
 
 type NullableIpamsvcCopySubnet struct {

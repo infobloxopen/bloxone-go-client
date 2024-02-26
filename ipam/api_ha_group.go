@@ -22,72 +22,77 @@ import (
 )
 
 type HaGroupAPI interface {
+
 	/*
-			HaGroupCreate Create the HA group.
+		HaGroupCreate Create the HA group.
 
-			Use this method to create an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+		Use this method to create an __HAGroup__ object.
+	The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHaGroupCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiHaGroupCreateRequest
 	*/
 	HaGroupCreate(ctx context.Context) ApiHaGroupCreateRequest
 
 	// HaGroupCreateExecute executes the request
 	//  @return IpamsvcCreateHAGroupResponse
 	HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*IpamsvcCreateHAGroupResponse, *http.Response, error)
+
 	/*
-			HaGroupDelete Delete the HA group.
+		HaGroupDelete Delete the HA group.
 
-			Use this method to delete an __HAGroup__ object.
-		The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
+		Use this method to delete an __HAGroup__ object.
+	The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiHaGroupDeleteRequest
 	*/
 	HaGroupDelete(ctx context.Context, id string) ApiHaGroupDeleteRequest
 
 	// HaGroupDeleteExecute executes the request
 	HaGroupDeleteExecute(r ApiHaGroupDeleteRequest) (*http.Response, error)
+
 	/*
-			HaGroupList Retrieve HA groups.
+		HaGroupList Retrieve HA groups.
 
-			Use this method to retrieve __HAGroup__ objects.
-		The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
+		Use this method to retrieve __HAGroup__ objects.
+	The __HAGroup__ (_dhcp/ha_group_) object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHaGroupListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiHaGroupListRequest
 	*/
 	HaGroupList(ctx context.Context) ApiHaGroupListRequest
 
 	// HaGroupListExecute executes the request
 	//  @return IpamsvcListHAGroupResponse
 	HaGroupListExecute(r ApiHaGroupListRequest) (*IpamsvcListHAGroupResponse, *http.Response, error)
+
 	/*
-			HaGroupRead Retrieve the HA group.
+		HaGroupRead Retrieve the HA group.
 
-			Use this method to retrieve an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+		Use this method to retrieve an __HAGroup__ object.
+	The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiHaGroupReadRequest
 	*/
 	HaGroupRead(ctx context.Context, id string) ApiHaGroupReadRequest
 
 	// HaGroupReadExecute executes the request
 	//  @return IpamsvcReadHAGroupResponse
 	HaGroupReadExecute(r ApiHaGroupReadRequest) (*IpamsvcReadHAGroupResponse, *http.Response, error)
+
 	/*
-			HaGroupUpdate Update the HA group.
+		HaGroupUpdate Update the HA group.
 
-			Use this method to update an __HAGroup__ object.
-		The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
+		Use this method to update an __HAGroup__ object.
+	The __HAGroup__ object represents on-prem hosts that can serve the same leases for HA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHaGroupUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiHaGroupUpdateRequest
 	*/
 	HaGroupUpdate(ctx context.Context, id string) ApiHaGroupUpdateRequest
 
@@ -172,14 +177,6 @@ func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*Ip
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -223,6 +220,7 @@ func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*Ip
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -525,6 +523,7 @@ func (a *HaGroupAPIService) HaGroupListExecute(r ApiHaGroupListRequest) (*Ipamsv
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -657,6 +656,7 @@ func (a *HaGroupAPIService) HaGroupReadExecute(r ApiHaGroupReadRequest) (*Ipamsv
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -780,5 +780,6 @@ func (a *HaGroupAPIService) HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*Ip
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

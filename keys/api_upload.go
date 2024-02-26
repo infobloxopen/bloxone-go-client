@@ -21,6 +21,7 @@ import (
 )
 
 type UploadAPI interface {
+
 	/*
 		UploadUpload Upload content to the keys service.
 
@@ -111,14 +112,6 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -162,5 +155,6 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

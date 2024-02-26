@@ -22,24 +22,24 @@ Create the Cache Flush object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    body := *openapiclient.NewConfigCacheFlush() // ConfigCacheFlush | 
+	body := *openapiclient.NewConfigCacheFlush() // ConfigCacheFlush | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CacheFlushAPI.CacheFlushCreate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CacheFlushAPI.CacheFlushCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CacheFlushCreate`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CacheFlushAPI.CacheFlushCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CacheFlushAPI.CacheFlushCreate(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CacheFlushAPI.CacheFlushCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CacheFlushCreate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `CacheFlushAPI.CacheFlushCreate`: %v\n", resp)
 }
 ```
 

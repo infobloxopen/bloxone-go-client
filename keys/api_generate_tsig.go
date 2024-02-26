@@ -21,6 +21,7 @@ import (
 )
 
 type GenerateTsigAPI interface {
+
 	/*
 		GenerateTsigGenerateTSIG Generate TSIG key with a random secret.
 
@@ -153,5 +154,6 @@ func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIGExecute(r ApiGenerateTs
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -11,7 +11,9 @@ API version: v1
 package ipam
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcLeasesCommand type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type IpamsvcLeasesCommand struct {
 	// The list of subnets to execute the \"command\" on. For now it is limited to 1 subnet.
 	Subnet []IpamsvcLeaseSubnet `json:"subnet,omitempty"`
 }
+
+type _IpamsvcLeasesCommand IpamsvcLeasesCommand
 
 // NewIpamsvcLeasesCommand instantiates a new IpamsvcLeasesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -188,6 +192,43 @@ func (o IpamsvcLeasesCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["subnet"] = o.Subnet
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcLeasesCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"command",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcLeasesCommand := _IpamsvcLeasesCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIpamsvcLeasesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcLeasesCommand(varIpamsvcLeasesCommand)
+
+	return err
 }
 
 type NullableIpamsvcLeasesCommand struct {

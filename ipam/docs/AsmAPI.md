@@ -24,24 +24,24 @@ Update subnet and ranges for Automated Scope Management.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcASM("SubnetId_example") // IpamsvcASM | 
+	body := *openapiclient.NewIpamsvcASM("SubnetId_example") // IpamsvcASM | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AsmAPI.AsmCreate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AsmCreate`: IpamsvcCreateASMResponse
-    fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AsmAPI.AsmCreate(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AsmCreate`: IpamsvcCreateASMResponse
+	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmCreate`: %v\n", resp)
 }
 ```
 
@@ -90,25 +90,25 @@ Retrieve suggested updates for Automated Scope Management.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    subnetId := "subnetId_example" // string |  (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	subnetId := "subnetId_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AsmAPI.AsmList(context.Background()).Fields(fields).SubnetId(subnetId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AsmList`: IpamsvcListASMResponse
-    fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AsmAPI.AsmList(context.Background()).Fields(fields).SubnetId(subnetId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AsmList`: IpamsvcListASMResponse
+	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmList`: %v\n", resp)
 }
 ```
 
@@ -158,25 +158,25 @@ Retrieve the suggested update for Automated Scope Management.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	id := "id_example" // string | An application specific resource identity of a resource
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AsmAPI.AsmRead(context.Background(), id).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmRead``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AsmRead`: IpamsvcReadASMResponse
-    fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmRead`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AsmAPI.AsmRead(context.Background(), id).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AsmRead`: IpamsvcReadASMResponse
+	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmRead`: %v\n", resp)
 }
 ```
 
