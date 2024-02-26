@@ -18,18 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type HardwareFilterAPI interface {
 	/*
-			HardwareFilterCreate Create the hardware filter.
+	HardwareFilterCreate Create the hardware filter.
 
-			Use this method to create a __HardwareFilter__ object.
-		The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to create a __HardwareFilter__ object.
+The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHardwareFilterCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHardwareFilterCreateRequest
 	*/
 	HardwareFilterCreate(ctx context.Context) ApiHardwareFilterCreateRequest
 
@@ -37,27 +38,27 @@ type HardwareFilterAPI interface {
 	//  @return IpamsvcCreateHardwareFilterResponse
 	HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*IpamsvcCreateHardwareFilterResponse, *http.Response, error)
 	/*
-			HardwareFilterDelete Move the hardware filter to the recycle bin.
+	HardwareFilterDelete Move the hardware filter to the recycle bin.
 
-			Use this method to move a __HardwareFilter__ object to the recycle bin.
-		The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to move a __HardwareFilter__ object to the recycle bin.
+The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHardwareFilterDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHardwareFilterDeleteRequest
 	*/
 	HardwareFilterDelete(ctx context.Context, id string) ApiHardwareFilterDeleteRequest
 
 	// HardwareFilterDeleteExecute executes the request
 	HardwareFilterDeleteExecute(r ApiHardwareFilterDeleteRequest) (*http.Response, error)
 	/*
-			HardwareFilterList Retrieve hardware filters.
+	HardwareFilterList Retrieve hardware filters.
 
-			Use this method to retrieve __HardwareFilter__ objects.
-		The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to retrieve __HardwareFilter__ objects.
+The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiHardwareFilterListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHardwareFilterListRequest
 	*/
 	HardwareFilterList(ctx context.Context) ApiHardwareFilterListRequest
 
@@ -65,14 +66,14 @@ type HardwareFilterAPI interface {
 	//  @return IpamsvcListHardwareFilterResponse
 	HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*IpamsvcListHardwareFilterResponse, *http.Response, error)
 	/*
-			HardwareFilterRead Retrieve the hardware filter.
+	HardwareFilterRead Retrieve the hardware filter.
 
-			Use this method to retrieve a __HardwareFilter__ object.
-		The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to retrieve a __HardwareFilter__ object.
+The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHardwareFilterReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHardwareFilterReadRequest
 	*/
 	HardwareFilterRead(ctx context.Context, id string) ApiHardwareFilterReadRequest
 
@@ -80,14 +81,14 @@ type HardwareFilterAPI interface {
 	//  @return IpamsvcReadHardwareFilterResponse
 	HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*IpamsvcReadHardwareFilterResponse, *http.Response, error)
 	/*
-			HardwareFilterUpdate Update the hardware filter.
+	HardwareFilterUpdate Update the hardware filter.
 
-			Use this method to update a __HardwareFilter__ object.
-		The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to update a __HardwareFilter__ object.
+The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiHardwareFilterUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiHardwareFilterUpdateRequest
 	*/
 	HardwareFilterUpdate(ctx context.Context, id string) ApiHardwareFilterUpdateRequest
 
@@ -100,9 +101,9 @@ type HardwareFilterAPI interface {
 type HardwareFilterAPIService internal.Service
 
 type ApiHardwareFilterCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HardwareFilterAPI
-	body       *IpamsvcHardwareFilter
+	body *IpamsvcHardwareFilter
 }
 
 func (r ApiHardwareFilterCreateRequest) Body(body IpamsvcHardwareFilter) ApiHardwareFilterCreateRequest {
@@ -120,25 +121,24 @@ HardwareFilterCreate Create the hardware filter.
 Use this method to create a __HardwareFilter__ object.
 The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHardwareFilterCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHardwareFilterCreateRequest
 */
 func (a *HardwareFilterAPIService) HardwareFilterCreate(ctx context.Context) ApiHardwareFilterCreateRequest {
 	return ApiHardwareFilterCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateHardwareFilterResponse
+//  @return IpamsvcCreateHardwareFilterResponse
 func (a *HardwareFilterAPIService) HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*IpamsvcCreateHardwareFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateHardwareFilterResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcCreateHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterCreate")
@@ -172,16 +172,16 @@ func (a *HardwareFilterAPIService) HardwareFilterCreateExecute(r ApiHardwareFilt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -227,9 +227,9 @@ func (a *HardwareFilterAPIService) HardwareFilterCreateExecute(r ApiHardwareFilt
 }
 
 type ApiHardwareFilterDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HardwareFilterAPI
-	id         string
+	id string
 }
 
 func (r ApiHardwareFilterDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +242,24 @@ HardwareFilterDelete Move the hardware filter to the recycle bin.
 Use this method to move a __HardwareFilter__ object to the recycle bin.
 The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHardwareFilterDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHardwareFilterDeleteRequest
 */
 func (a *HardwareFilterAPIService) HardwareFilterDelete(ctx context.Context, id string) ApiHardwareFilterDeleteRequest {
 	return ApiHardwareFilterDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *HardwareFilterAPIService) HardwareFilterDeleteExecute(r ApiHardwareFilterDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterDelete")
@@ -331,49 +331,49 @@ func (a *HardwareFilterAPIService) HardwareFilterDeleteExecute(r ApiHardwareFilt
 }
 
 type ApiHardwareFilterListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HardwareFilterAPI
-	filter     *string
-	orderBy    *string
-	fields     *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	torderBy   *string
-	tfilter    *string
+	filter *string
+	orderBy *string
+	fields *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	torderBy *string
+	tfilter *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiHardwareFilterListRequest) Filter(filter string) ApiHardwareFilterListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiHardwareFilterListRequest) OrderBy(orderBy string) ApiHardwareFilterListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiHardwareFilterListRequest) Fields(fields string) ApiHardwareFilterListRequest {
 	r.fields = &fields
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiHardwareFilterListRequest) Offset(offset int32) ApiHardwareFilterListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiHardwareFilterListRequest) Limit(limit int32) ApiHardwareFilterListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiHardwareFilterListRequest) PageToken(pageToken string) ApiHardwareFilterListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -401,25 +401,24 @@ HardwareFilterList Retrieve hardware filters.
 Use this method to retrieve __HardwareFilter__ objects.
 The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHardwareFilterListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiHardwareFilterListRequest
 */
 func (a *HardwareFilterAPIService) HardwareFilterList(ctx context.Context) ApiHardwareFilterListRequest {
 	return ApiHardwareFilterListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListHardwareFilterResponse
+//  @return IpamsvcListHardwareFilterResponse
 func (a *HardwareFilterAPIService) HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*IpamsvcListHardwareFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListHardwareFilterResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcListHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterList")
@@ -519,13 +518,13 @@ func (a *HardwareFilterAPIService) HardwareFilterListExecute(r ApiHardwareFilter
 }
 
 type ApiHardwareFilterReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HardwareFilterAPI
-	id         string
-	fields     *string
+	id string
+	fields *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiHardwareFilterReadRequest) Fields(fields string) ApiHardwareFilterReadRequest {
 	r.fields = &fields
 	return r
@@ -541,27 +540,26 @@ HardwareFilterRead Retrieve the hardware filter.
 Use this method to retrieve a __HardwareFilter__ object.
 The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHardwareFilterReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHardwareFilterReadRequest
 */
 func (a *HardwareFilterAPIService) HardwareFilterRead(ctx context.Context, id string) ApiHardwareFilterReadRequest {
 	return ApiHardwareFilterReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadHardwareFilterResponse
+//  @return IpamsvcReadHardwareFilterResponse
 func (a *HardwareFilterAPIService) HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*IpamsvcReadHardwareFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadHardwareFilterResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcReadHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterRead")
@@ -641,10 +639,10 @@ func (a *HardwareFilterAPIService) HardwareFilterReadExecute(r ApiHardwareFilter
 }
 
 type ApiHardwareFilterUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService HardwareFilterAPI
-	id         string
-	body       *IpamsvcHardwareFilter
+	id string
+	body *IpamsvcHardwareFilter
 }
 
 func (r ApiHardwareFilterUpdateRequest) Body(body IpamsvcHardwareFilter) ApiHardwareFilterUpdateRequest {
@@ -662,27 +660,26 @@ HardwareFilterUpdate Update the hardware filter.
 Use this method to update a __HardwareFilter__ object.
 The __HardwareFilter__ object applies options to clients with matching hardware addresses. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiHardwareFilterUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiHardwareFilterUpdateRequest
 */
 func (a *HardwareFilterAPIService) HardwareFilterUpdate(ctx context.Context, id string) ApiHardwareFilterUpdateRequest {
 	return ApiHardwareFilterUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateHardwareFilterResponse
+//  @return IpamsvcUpdateHardwareFilterResponse
 func (a *HardwareFilterAPIService) HardwareFilterUpdateExecute(r ApiHardwareFilterUpdateRequest) (*IpamsvcUpdateHardwareFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateHardwareFilterResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcUpdateHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterUpdate")
@@ -717,16 +714,16 @@ func (a *HardwareFilterAPIService) HardwareFilterUpdateExecute(r ApiHardwareFilt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

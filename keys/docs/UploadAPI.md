@@ -22,24 +22,24 @@ Upload content to the keys service.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    body := *openapiclient.NewUploadRequest("Content_example", openapiclient.uploadContentType("UNKNOWN")) // UploadRequest | 
+	body := *openapiclient.NewUploadRequest("Content_example", openapiclient.uploadContentType("UNKNOWN")) // UploadRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UploadAPI.UploadUpload(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UploadAPI.UploadUpload``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadUpload`: DdiuploadResponse
-    fmt.Fprintf(os.Stdout, "Response from `UploadAPI.UploadUpload`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UploadAPI.UploadUpload(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UploadAPI.UploadUpload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UploadUpload`: DdiuploadResponse
+	fmt.Fprintf(os.Stdout, "Response from `UploadAPI.UploadUpload`: %v\n", resp)
 }
 ```
 

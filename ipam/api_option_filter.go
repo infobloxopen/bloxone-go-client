@@ -18,18 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type OptionFilterAPI interface {
 	/*
-			OptionFilterCreate Create the DHCP option filter.
+	OptionFilterCreate Create the DHCP option filter.
 
-			Use this method to create an __OptionFilter__ object.
-		The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to create an __OptionFilter__ object.
+The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionFilterCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOptionFilterCreateRequest
 	*/
 	OptionFilterCreate(ctx context.Context) ApiOptionFilterCreateRequest
 
@@ -37,27 +38,27 @@ type OptionFilterAPI interface {
 	//  @return IpamsvcCreateOptionFilterResponse
 	OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*IpamsvcCreateOptionFilterResponse, *http.Response, error)
 	/*
-			OptionFilterDelete Move the DHCP option filter to the recycle bin.
+	OptionFilterDelete Move the DHCP option filter to the recycle bin.
 
-			Use this method to move an __OptionFilter__ object to the recycle bin.
-		The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to move an __OptionFilter__ object to the recycle bin.
+The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionFilterDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionFilterDeleteRequest
 	*/
 	OptionFilterDelete(ctx context.Context, id string) ApiOptionFilterDeleteRequest
 
 	// OptionFilterDeleteExecute executes the request
 	OptionFilterDeleteExecute(r ApiOptionFilterDeleteRequest) (*http.Response, error)
 	/*
-			OptionFilterList Retrieve DHCP option filters.
+	OptionFilterList Retrieve DHCP option filters.
 
-			Use this method to retrieve __OptionFilter__ objects.
-		The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to retrieve __OptionFilter__ objects.
+The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionFilterListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOptionFilterListRequest
 	*/
 	OptionFilterList(ctx context.Context) ApiOptionFilterListRequest
 
@@ -65,14 +66,14 @@ type OptionFilterAPI interface {
 	//  @return IpamsvcListOptionFilterResponse
 	OptionFilterListExecute(r ApiOptionFilterListRequest) (*IpamsvcListOptionFilterResponse, *http.Response, error)
 	/*
-			OptionFilterRead Retrieve the DHCP option filter.
+	OptionFilterRead Retrieve the DHCP option filter.
 
-			Use this method to retrieve an __OptionFilter__ object.
-		The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to retrieve an __OptionFilter__ object.
+The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionFilterReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionFilterReadRequest
 	*/
 	OptionFilterRead(ctx context.Context, id string) ApiOptionFilterReadRequest
 
@@ -80,14 +81,14 @@ type OptionFilterAPI interface {
 	//  @return IpamsvcReadOptionFilterResponse
 	OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*IpamsvcReadOptionFilterResponse, *http.Response, error)
 	/*
-			OptionFilterUpdate Update the DHCP option filter.
+	OptionFilterUpdate Update the DHCP option filter.
 
-			Use this method to update an __OptionFilter__ object.
-		The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
+	Use this method to update an __OptionFilter__ object.
+The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiOptionFilterUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiOptionFilterUpdateRequest
 	*/
 	OptionFilterUpdate(ctx context.Context, id string) ApiOptionFilterUpdateRequest
 
@@ -100,9 +101,9 @@ type OptionFilterAPI interface {
 type OptionFilterAPIService internal.Service
 
 type ApiOptionFilterCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService OptionFilterAPI
-	body       *IpamsvcOptionFilter
+	body *IpamsvcOptionFilter
 }
 
 func (r ApiOptionFilterCreateRequest) Body(body IpamsvcOptionFilter) ApiOptionFilterCreateRequest {
@@ -120,25 +121,24 @@ OptionFilterCreate Create the DHCP option filter.
 Use this method to create an __OptionFilter__ object.
 The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionFilterCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOptionFilterCreateRequest
 */
 func (a *OptionFilterAPIService) OptionFilterCreate(ctx context.Context) ApiOptionFilterCreateRequest {
 	return ApiOptionFilterCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateOptionFilterResponse
+//  @return IpamsvcCreateOptionFilterResponse
 func (a *OptionFilterAPIService) OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*IpamsvcCreateOptionFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateOptionFilterResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcCreateOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterCreate")
@@ -172,16 +172,16 @@ func (a *OptionFilterAPIService) OptionFilterCreateExecute(r ApiOptionFilterCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -227,9 +227,9 @@ func (a *OptionFilterAPIService) OptionFilterCreateExecute(r ApiOptionFilterCrea
 }
 
 type ApiOptionFilterDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService OptionFilterAPI
-	id         string
+	id string
 }
 
 func (r ApiOptionFilterDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +242,24 @@ OptionFilterDelete Move the DHCP option filter to the recycle bin.
 Use this method to move an __OptionFilter__ object to the recycle bin.
 The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionFilterDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionFilterDeleteRequest
 */
 func (a *OptionFilterAPIService) OptionFilterDelete(ctx context.Context, id string) ApiOptionFilterDeleteRequest {
 	return ApiOptionFilterDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *OptionFilterAPIService) OptionFilterDeleteExecute(r ApiOptionFilterDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterDelete")
@@ -331,49 +331,49 @@ func (a *OptionFilterAPIService) OptionFilterDeleteExecute(r ApiOptionFilterDele
 }
 
 type ApiOptionFilterListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService OptionFilterAPI
-	fields     *string
-	filter     *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	orderBy    *string
-	torderBy   *string
-	tfilter    *string
+	fields *string
+	filter *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	orderBy *string
+	torderBy *string
+	tfilter *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiOptionFilterListRequest) Fields(fields string) ApiOptionFilterListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiOptionFilterListRequest) Filter(filter string) ApiOptionFilterListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiOptionFilterListRequest) Offset(offset int32) ApiOptionFilterListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiOptionFilterListRequest) Limit(limit int32) ApiOptionFilterListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiOptionFilterListRequest) PageToken(pageToken string) ApiOptionFilterListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiOptionFilterListRequest) OrderBy(orderBy string) ApiOptionFilterListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -401,25 +401,24 @@ OptionFilterList Retrieve DHCP option filters.
 Use this method to retrieve __OptionFilter__ objects.
 The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionFilterListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOptionFilterListRequest
 */
 func (a *OptionFilterAPIService) OptionFilterList(ctx context.Context) ApiOptionFilterListRequest {
 	return ApiOptionFilterListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListOptionFilterResponse
+//  @return IpamsvcListOptionFilterResponse
 func (a *OptionFilterAPIService) OptionFilterListExecute(r ApiOptionFilterListRequest) (*IpamsvcListOptionFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListOptionFilterResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcListOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterList")
@@ -519,13 +518,13 @@ func (a *OptionFilterAPIService) OptionFilterListExecute(r ApiOptionFilterListRe
 }
 
 type ApiOptionFilterReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService OptionFilterAPI
-	id         string
-	fields     *string
+	id string
+	fields *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiOptionFilterReadRequest) Fields(fields string) ApiOptionFilterReadRequest {
 	r.fields = &fields
 	return r
@@ -541,27 +540,26 @@ OptionFilterRead Retrieve the DHCP option filter.
 Use this method to retrieve an __OptionFilter__ object.
 The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionFilterReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionFilterReadRequest
 */
 func (a *OptionFilterAPIService) OptionFilterRead(ctx context.Context, id string) ApiOptionFilterReadRequest {
 	return ApiOptionFilterReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadOptionFilterResponse
+//  @return IpamsvcReadOptionFilterResponse
 func (a *OptionFilterAPIService) OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*IpamsvcReadOptionFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadOptionFilterResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcReadOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterRead")
@@ -641,10 +639,10 @@ func (a *OptionFilterAPIService) OptionFilterReadExecute(r ApiOptionFilterReadRe
 }
 
 type ApiOptionFilterUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService OptionFilterAPI
-	id         string
-	body       *IpamsvcOptionFilter
+	id string
+	body *IpamsvcOptionFilter
 }
 
 func (r ApiOptionFilterUpdateRequest) Body(body IpamsvcOptionFilter) ApiOptionFilterUpdateRequest {
@@ -662,27 +660,26 @@ OptionFilterUpdate Update the DHCP option filter.
 Use this method to update an __OptionFilter__ object.
 The __OptionFilter__ object applies options to DHCP clients with matching options. It must be configured in the _filters_ list of a scope to be effective.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiOptionFilterUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiOptionFilterUpdateRequest
 */
 func (a *OptionFilterAPIService) OptionFilterUpdate(ctx context.Context, id string) ApiOptionFilterUpdateRequest {
 	return ApiOptionFilterUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateOptionFilterResponse
+//  @return IpamsvcUpdateOptionFilterResponse
 func (a *OptionFilterAPIService) OptionFilterUpdateExecute(r ApiOptionFilterUpdateRequest) (*IpamsvcUpdateOptionFilterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateOptionFilterResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcUpdateOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterUpdate")
@@ -717,16 +714,16 @@ func (a *OptionFilterAPIService) OptionFilterUpdateExecute(r ApiOptionFilterUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

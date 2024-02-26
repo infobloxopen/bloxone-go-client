@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -17,17 +17,18 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type GenerateTsigAPI interface {
 	/*
-		GenerateTsigGenerateTSIG Generate TSIG key with a random secret.
+	GenerateTsigGenerateTSIG Generate TSIG key with a random secret.
 
-		Use this method to generate a TSIG key with a random secret using the specified algorithm.
+	Use this method to generate a TSIG key with a random secret using the specified algorithm.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiGenerateTsigGenerateTSIGRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGenerateTsigGenerateTSIGRequest
 	*/
 	GenerateTsigGenerateTSIG(ctx context.Context) ApiGenerateTsigGenerateTSIGRequest
 
@@ -40,9 +41,9 @@ type GenerateTsigAPI interface {
 type GenerateTsigAPIService internal.Service
 
 type ApiGenerateTsigGenerateTSIGRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService GenerateTsigAPI
-	algorithm  *string
+	algorithm *string
 }
 
 // The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_.
@@ -60,25 +61,24 @@ GenerateTsigGenerateTSIG Generate TSIG key with a random secret.
 
 Use this method to generate a TSIG key with a random secret using the specified algorithm.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGenerateTsigGenerateTSIGRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGenerateTsigGenerateTSIGRequest
 */
 func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIG(ctx context.Context) ApiGenerateTsigGenerateTSIGRequest {
 	return ApiGenerateTsigGenerateTSIGRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return KeysGenerateTSIGResponse
+//  @return KeysGenerateTSIGResponse
 func (a *GenerateTsigAPIService) GenerateTsigGenerateTSIGExecute(r ApiGenerateTsigGenerateTSIGRequest) (*KeysGenerateTSIGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *KeysGenerateTSIGResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *KeysGenerateTSIGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GenerateTsigAPIService.GenerateTsigGenerateTSIG")

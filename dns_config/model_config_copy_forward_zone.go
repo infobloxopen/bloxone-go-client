@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -12,6 +12,8 @@ package dns_config
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConfigCopyForwardZone type satisfies the MappedNullable interface at compile time
@@ -38,6 +40,8 @@ type ConfigCopyForwardZone struct {
 	// The resource identifier.
 	TargetView string `json:"target_view"`
 }
+
+type _ConfigCopyForwardZone ConfigCopyForwardZone
 
 // NewConfigCopyForwardZone instantiates a new ConfigCopyForwardZone object
 // This constructor will assign default values to properties that have it defined,
@@ -338,7 +342,7 @@ func (o *ConfigCopyForwardZone) SetTargetView(v string) {
 }
 
 func (o ConfigCopyForwardZone) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -373,6 +377,43 @@ func (o ConfigCopyForwardZone) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["target_view"] = o.TargetView
 	return toSerialize, nil
+}
+
+func (o *ConfigCopyForwardZone) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"target_view",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigCopyForwardZone := _ConfigCopyForwardZone{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigCopyForwardZone)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigCopyForwardZone(varConfigCopyForwardZone)
+
+	return err
 }
 
 type NullableConfigCopyForwardZone struct {
@@ -410,3 +451,5 @@ func (v *NullableConfigCopyForwardZone) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

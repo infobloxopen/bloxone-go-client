@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -13,6 +13,8 @@ package dns_config
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConfigServer type satisfies the MappedNullable interface at compile time
@@ -63,7 +65,7 @@ type ConfigServer struct {
 	// _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_.
 	GssTsigEnabled *bool `json:"gss_tsig_enabled,omitempty"`
 	// The resource identifier.
-	Id                 *string                  `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InheritanceSources *ConfigServerInheritance `json:"inheritance_sources,omitempty"`
 	// _kerberos_keys_ contains a list of keys for GSS-TSIG signed dynamic updates.  Defaults to empty.
 	KerberosKeys []ConfigKerberosKey `json:"kerberos_keys,omitempty"`
@@ -118,6 +120,8 @@ type ConfigServer struct {
 	// Optional. Ordered list of _dns/display_view_ objects served by any of _dns/host_ assigned to a particular DNS Config Profile. Automatically determined. Allows re-ordering only.
 	Views []ConfigDisplayView `json:"views,omitempty"`
 }
+
+type _ConfigServer ConfigServer
 
 // NewConfigServer instantiates a new ConfigServer object
 // This constructor will assign default values to properties that have it defined,
@@ -1698,7 +1702,7 @@ func (o *ConfigServer) SetViews(v []ConfigDisplayView) {
 }
 
 func (o ConfigServer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1855,6 +1859,43 @@ func (o ConfigServer) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+func (o *ConfigServer) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigServer := _ConfigServer{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigServer)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigServer(varConfigServer)
+
+	return err
+}
+
 type NullableConfigServer struct {
 	value *ConfigServer
 	isSet bool
@@ -1890,3 +1931,5 @@ func (v *NullableConfigServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

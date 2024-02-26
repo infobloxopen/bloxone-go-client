@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -12,6 +12,8 @@ package dns_config
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConfigBulkCopyView type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,20 @@ var _ MappedNullable = &ConfigBulkCopyView{}
 
 // ConfigBulkCopyView struct for ConfigBulkCopyView
 type ConfigBulkCopyView struct {
-	AuthZoneConfig    *ConfigAuthZoneConfig    `json:"auth_zone_config,omitempty"`
+	AuthZoneConfig *ConfigAuthZoneConfig `json:"auth_zone_config,omitempty"`
 	ForwardZoneConfig *ConfigForwardZoneConfig `json:"forward_zone_config,omitempty"`
 	// Indicates whether child objects should be copied or not.  Defaults to _false_. Reserved for future use.
 	Recursive *bool `json:"recursive,omitempty"`
 	// The resource identifier.
-	Resources           []string              `json:"resources"`
+	Resources []string `json:"resources"`
 	SecondaryZoneConfig *ConfigAuthZoneConfig `json:"secondary_zone_config,omitempty"`
 	// Indicates whether copying should skip object in case of error and continue with next, or abort copying in case of error.  Defaults to _false_.
 	SkipOnError *bool `json:"skip_on_error,omitempty"`
 	// The resource identifier.
 	Target string `json:"target"`
 }
+
+type _ConfigBulkCopyView ConfigBulkCopyView
 
 // NewConfigBulkCopyView instantiates a new ConfigBulkCopyView object
 // This constructor will assign default values to properties that have it defined,
@@ -260,7 +264,7 @@ func (o *ConfigBulkCopyView) SetTarget(v string) {
 }
 
 func (o ConfigBulkCopyView) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -287,6 +291,44 @@ func (o ConfigBulkCopyView) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["target"] = o.Target
 	return toSerialize, nil
+}
+
+func (o *ConfigBulkCopyView) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resources",
+		"target",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigBulkCopyView := _ConfigBulkCopyView{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigBulkCopyView)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigBulkCopyView(varConfigBulkCopyView)
+
+	return err
 }
 
 type NullableConfigBulkCopyView struct {
@@ -324,3 +366,5 @@ func (v *NullableConfigBulkCopyView) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -18,18 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type IpamHostAPI interface {
 	/*
-			IpamHostCreate Create the IPAM host.
+	IpamHostCreate Create the IPAM host.
 
-			Use this method to create an __IpamHost__ object.
-		The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
+	Use this method to create an __IpamHost__ object.
+The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiIpamHostCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIpamHostCreateRequest
 	*/
 	IpamHostCreate(ctx context.Context) ApiIpamHostCreateRequest
 
@@ -37,27 +38,27 @@ type IpamHostAPI interface {
 	//  @return IpamsvcCreateIpamHostResponse
 	IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*IpamsvcCreateIpamHostResponse, *http.Response, error)
 	/*
-			IpamHostDelete Move the IPAM host to the recycle bin.
+	IpamHostDelete Move the IPAM host to the recycle bin.
 
-			Use this method to move an __IpamHost__ object to the recycle bin.
-		The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
+	Use this method to move an __IpamHost__ object to the recycle bin.
+The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiIpamHostDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpamHostDeleteRequest
 	*/
 	IpamHostDelete(ctx context.Context, id string) ApiIpamHostDeleteRequest
 
 	// IpamHostDeleteExecute executes the request
 	IpamHostDeleteExecute(r ApiIpamHostDeleteRequest) (*http.Response, error)
 	/*
-			IpamHostList Retrieve the IPAM hosts.
+	IpamHostList Retrieve the IPAM hosts.
 
-			Use this method to retrieve __IpamHost__ objects.
-		The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
+	Use this method to retrieve __IpamHost__ objects.
+The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiIpamHostListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIpamHostListRequest
 	*/
 	IpamHostList(ctx context.Context) ApiIpamHostListRequest
 
@@ -65,14 +66,14 @@ type IpamHostAPI interface {
 	//  @return IpamsvcListIpamHostResponse
 	IpamHostListExecute(r ApiIpamHostListRequest) (*IpamsvcListIpamHostResponse, *http.Response, error)
 	/*
-			IpamHostRead Retrieve the IPAM host.
+	IpamHostRead Retrieve the IPAM host.
 
-			Use this method to retrieve an __IpamHost__ object.
-		The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
+	Use this method to retrieve an __IpamHost__ object.
+The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiIpamHostReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpamHostReadRequest
 	*/
 	IpamHostRead(ctx context.Context, id string) ApiIpamHostReadRequest
 
@@ -80,14 +81,14 @@ type IpamHostAPI interface {
 	//  @return IpamsvcReadIpamHostResponse
 	IpamHostReadExecute(r ApiIpamHostReadRequest) (*IpamsvcReadIpamHostResponse, *http.Response, error)
 	/*
-			IpamHostUpdate Update the IPAM host.
+	IpamHostUpdate Update the IPAM host.
 
-			Use this method to update an __IpamHost__ object.
-		The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
+	Use this method to update an __IpamHost__ object.
+The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiIpamHostUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiIpamHostUpdateRequest
 	*/
 	IpamHostUpdate(ctx context.Context, id string) ApiIpamHostUpdateRequest
 
@@ -100,9 +101,9 @@ type IpamHostAPI interface {
 type IpamHostAPIService internal.Service
 
 type ApiIpamHostCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService IpamHostAPI
-	body       *IpamsvcIpamHost
+	body *IpamsvcIpamHost
 }
 
 func (r ApiIpamHostCreateRequest) Body(body IpamsvcIpamHost) ApiIpamHostCreateRequest {
@@ -120,25 +121,24 @@ IpamHostCreate Create the IPAM host.
 Use this method to create an __IpamHost__ object.
 The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIpamHostCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiIpamHostCreateRequest
 */
 func (a *IpamHostAPIService) IpamHostCreate(ctx context.Context) ApiIpamHostCreateRequest {
 	return ApiIpamHostCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcCreateIpamHostResponse
+//  @return IpamsvcCreateIpamHostResponse
 func (a *IpamHostAPIService) IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*IpamsvcCreateIpamHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateIpamHostResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcCreateIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostCreate")
@@ -172,16 +172,16 @@ func (a *IpamHostAPIService) IpamHostCreateExecute(r ApiIpamHostCreateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -227,9 +227,9 @@ func (a *IpamHostAPIService) IpamHostCreateExecute(r ApiIpamHostCreateRequest) (
 }
 
 type ApiIpamHostDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService IpamHostAPI
-	id         string
+	id string
 }
 
 func (r ApiIpamHostDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +242,24 @@ IpamHostDelete Move the IPAM host to the recycle bin.
 Use this method to move an __IpamHost__ object to the recycle bin.
 The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpamHostDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiIpamHostDeleteRequest
 */
 func (a *IpamHostAPIService) IpamHostDelete(ctx context.Context, id string) ApiIpamHostDeleteRequest {
 	return ApiIpamHostDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IpamHostAPIService) IpamHostDeleteExecute(r ApiIpamHostDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostDelete")
@@ -331,49 +331,49 @@ func (a *IpamHostAPIService) IpamHostDeleteExecute(r ApiIpamHostDeleteRequest) (
 }
 
 type ApiIpamHostListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService IpamHostAPI
-	fields     *string
-	orderBy    *string
-	filter     *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	torderBy   *string
-	tfilter    *string
+	fields *string
+	orderBy *string
+	filter *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	torderBy *string
+	tfilter *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiIpamHostListRequest) Fields(fields string) ApiIpamHostListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiIpamHostListRequest) OrderBy(orderBy string) ApiIpamHostListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiIpamHostListRequest) Filter(filter string) ApiIpamHostListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiIpamHostListRequest) Offset(offset int32) ApiIpamHostListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiIpamHostListRequest) Limit(limit int32) ApiIpamHostListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiIpamHostListRequest) PageToken(pageToken string) ApiIpamHostListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -401,25 +401,24 @@ IpamHostList Retrieve the IPAM hosts.
 Use this method to retrieve __IpamHost__ objects.
 The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIpamHostListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiIpamHostListRequest
 */
 func (a *IpamHostAPIService) IpamHostList(ctx context.Context) ApiIpamHostListRequest {
 	return ApiIpamHostListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcListIpamHostResponse
+//  @return IpamsvcListIpamHostResponse
 func (a *IpamHostAPIService) IpamHostListExecute(r ApiIpamHostListRequest) (*IpamsvcListIpamHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListIpamHostResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcListIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostList")
@@ -519,20 +518,20 @@ func (a *IpamHostAPIService) IpamHostListExecute(r ApiIpamHostListRequest) (*Ipa
 }
 
 type ApiIpamHostReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService IpamHostAPI
-	id         string
-	orderBy    *string
-	fields     *string
+	id string
+	orderBy *string
+	fields *string
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiIpamHostReadRequest) OrderBy(orderBy string) ApiIpamHostReadRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiIpamHostReadRequest) Fields(fields string) ApiIpamHostReadRequest {
 	r.fields = &fields
 	return r
@@ -548,27 +547,26 @@ IpamHostRead Retrieve the IPAM host.
 Use this method to retrieve an __IpamHost__ object.
 The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpamHostReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiIpamHostReadRequest
 */
 func (a *IpamHostAPIService) IpamHostRead(ctx context.Context, id string) ApiIpamHostReadRequest {
 	return ApiIpamHostReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcReadIpamHostResponse
+//  @return IpamsvcReadIpamHostResponse
 func (a *IpamHostAPIService) IpamHostReadExecute(r ApiIpamHostReadRequest) (*IpamsvcReadIpamHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadIpamHostResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcReadIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostRead")
@@ -651,10 +649,10 @@ func (a *IpamHostAPIService) IpamHostReadExecute(r ApiIpamHostReadRequest) (*Ipa
 }
 
 type ApiIpamHostUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService IpamHostAPI
-	id         string
-	body       *IpamsvcIpamHost
+	id string
+	body *IpamsvcIpamHost
 }
 
 func (r ApiIpamHostUpdateRequest) Body(body IpamsvcIpamHost) ApiIpamHostUpdateRequest {
@@ -672,27 +670,26 @@ IpamHostUpdate Update the IPAM host.
 Use this method to update an __IpamHost__ object.
 The __IpamHost__ object (_ipam/host_) represents any network connected equipment that is assigned one or more IP Addresses.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiIpamHostUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiIpamHostUpdateRequest
 */
 func (a *IpamHostAPIService) IpamHostUpdate(ctx context.Context, id string) ApiIpamHostUpdateRequest {
 	return ApiIpamHostUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IpamsvcUpdateIpamHostResponse
+//  @return IpamsvcUpdateIpamHostResponse
 func (a *IpamHostAPIService) IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (*IpamsvcUpdateIpamHostResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateIpamHostResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *IpamsvcUpdateIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostUpdate")
@@ -727,16 +724,16 @@ func (a *IpamHostAPIService) IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

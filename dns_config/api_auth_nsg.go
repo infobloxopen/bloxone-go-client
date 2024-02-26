@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -18,18 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type AuthNsgAPI interface {
 	/*
-			AuthNsgCreate Create the AuthNSG object.
+	AuthNsgCreate Create the AuthNSG object.
 
-			Use this method to create an AuthNSG object.
-		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+	Use this method to create an AuthNSG object.
+The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAuthNsgCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthNsgCreateRequest
 	*/
 	AuthNsgCreate(ctx context.Context) ApiAuthNsgCreateRequest
 
@@ -37,27 +38,27 @@ type AuthNsgAPI interface {
 	//  @return ConfigCreateAuthNSGResponse
 	AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*ConfigCreateAuthNSGResponse, *http.Response, error)
 	/*
-			AuthNsgDelete Move the AuthNSG object to Recyclebin.
+	AuthNsgDelete Move the AuthNSG object to Recyclebin.
 
-			Use this method to move an AuthNSG object to Recyclebin.
-		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+	Use this method to move an AuthNSG object to Recyclebin.
+The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAuthNsgDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthNsgDeleteRequest
 	*/
 	AuthNsgDelete(ctx context.Context, id string) ApiAuthNsgDeleteRequest
 
 	// AuthNsgDeleteExecute executes the request
 	AuthNsgDeleteExecute(r ApiAuthNsgDeleteRequest) (*http.Response, error)
 	/*
-			AuthNsgList List AuthNSG objects.
+	AuthNsgList List AuthNSG objects.
 
-			Use this method to list AuthNSG objects.
-		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+	Use this method to list AuthNSG objects.
+The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAuthNsgListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthNsgListRequest
 	*/
 	AuthNsgList(ctx context.Context) ApiAuthNsgListRequest
 
@@ -65,14 +66,14 @@ type AuthNsgAPI interface {
 	//  @return ConfigListAuthNSGResponse
 	AuthNsgListExecute(r ApiAuthNsgListRequest) (*ConfigListAuthNSGResponse, *http.Response, error)
 	/*
-			AuthNsgRead Read the AuthNSG object.
+	AuthNsgRead Read the AuthNSG object.
 
-			Use this method to read an AuthNSG object.
-		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+	Use this method to read an AuthNSG object.
+The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAuthNsgReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthNsgReadRequest
 	*/
 	AuthNsgRead(ctx context.Context, id string) ApiAuthNsgReadRequest
 
@@ -80,14 +81,14 @@ type AuthNsgAPI interface {
 	//  @return ConfigReadAuthNSGResponse
 	AuthNsgReadExecute(r ApiAuthNsgReadRequest) (*ConfigReadAuthNSGResponse, *http.Response, error)
 	/*
-			AuthNsgUpdate Update the AuthNSG object.
+	AuthNsgUpdate Update the AuthNSG object.
 
-			Use this method to update an AuthNSG object.
-		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+	Use this method to update an AuthNSG object.
+The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiAuthNsgUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAuthNsgUpdateRequest
 	*/
 	AuthNsgUpdate(ctx context.Context, id string) ApiAuthNsgUpdateRequest
 
@@ -100,9 +101,9 @@ type AuthNsgAPI interface {
 type AuthNsgAPIService internal.Service
 
 type ApiAuthNsgCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService AuthNsgAPI
-	body       *ConfigAuthNSG
+	body *ConfigAuthNSG
 }
 
 func (r ApiAuthNsgCreateRequest) Body(body ConfigAuthNSG) ApiAuthNsgCreateRequest {
@@ -120,25 +121,24 @@ AuthNsgCreate Create the AuthNSG object.
 Use this method to create an AuthNSG object.
 The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthNsgCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthNsgCreateRequest
 */
 func (a *AuthNsgAPIService) AuthNsgCreate(ctx context.Context) ApiAuthNsgCreateRequest {
 	return ApiAuthNsgCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigCreateAuthNSGResponse
+//  @return ConfigCreateAuthNSGResponse
 func (a *AuthNsgAPIService) AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*ConfigCreateAuthNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigCreateAuthNSGResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigCreateAuthNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthNsgAPIService.AuthNsgCreate")
@@ -172,16 +172,16 @@ func (a *AuthNsgAPIService) AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*Co
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -227,9 +227,9 @@ func (a *AuthNsgAPIService) AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*Co
 }
 
 type ApiAuthNsgDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService AuthNsgAPI
-	id         string
+	id string
 }
 
 func (r ApiAuthNsgDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +242,24 @@ AuthNsgDelete Move the AuthNSG object to Recyclebin.
 Use this method to move an AuthNSG object to Recyclebin.
 The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthNsgDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAuthNsgDeleteRequest
 */
 func (a *AuthNsgAPIService) AuthNsgDelete(ctx context.Context, id string) ApiAuthNsgDeleteRequest {
 	return ApiAuthNsgDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AuthNsgAPIService) AuthNsgDeleteExecute(r ApiAuthNsgDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthNsgAPIService.AuthNsgDelete")
@@ -331,49 +331,49 @@ func (a *AuthNsgAPIService) AuthNsgDeleteExecute(r ApiAuthNsgDeleteRequest) (*ht
 }
 
 type ApiAuthNsgListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService AuthNsgAPI
-	fields     *string
-	filter     *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	orderBy    *string
-	tfilter    *string
-	torderBy   *string
+	fields *string
+	filter *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	orderBy *string
+	tfilter *string
+	torderBy *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiAuthNsgListRequest) Fields(fields string) ApiAuthNsgListRequest {
 	r.fields = &fields
 	return r
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiAuthNsgListRequest) Filter(filter string) ApiAuthNsgListRequest {
 	r.filter = &filter
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiAuthNsgListRequest) Offset(offset int32) ApiAuthNsgListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiAuthNsgListRequest) Limit(limit int32) ApiAuthNsgListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiAuthNsgListRequest) PageToken(pageToken string) ApiAuthNsgListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiAuthNsgListRequest) OrderBy(orderBy string) ApiAuthNsgListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -401,25 +401,24 @@ AuthNsgList List AuthNSG objects.
 Use this method to list AuthNSG objects.
 The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthNsgListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthNsgListRequest
 */
 func (a *AuthNsgAPIService) AuthNsgList(ctx context.Context) ApiAuthNsgListRequest {
 	return ApiAuthNsgListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigListAuthNSGResponse
+//  @return ConfigListAuthNSGResponse
 func (a *AuthNsgAPIService) AuthNsgListExecute(r ApiAuthNsgListRequest) (*ConfigListAuthNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigListAuthNSGResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigListAuthNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthNsgAPIService.AuthNsgList")
@@ -519,13 +518,13 @@ func (a *AuthNsgAPIService) AuthNsgListExecute(r ApiAuthNsgListRequest) (*Config
 }
 
 type ApiAuthNsgReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService AuthNsgAPI
-	id         string
-	fields     *string
+	id string
+	fields *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiAuthNsgReadRequest) Fields(fields string) ApiAuthNsgReadRequest {
 	r.fields = &fields
 	return r
@@ -541,27 +540,26 @@ AuthNsgRead Read the AuthNSG object.
 Use this method to read an AuthNSG object.
 The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthNsgReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAuthNsgReadRequest
 */
 func (a *AuthNsgAPIService) AuthNsgRead(ctx context.Context, id string) ApiAuthNsgReadRequest {
 	return ApiAuthNsgReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadAuthNSGResponse
+//  @return ConfigReadAuthNSGResponse
 func (a *AuthNsgAPIService) AuthNsgReadExecute(r ApiAuthNsgReadRequest) (*ConfigReadAuthNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigReadAuthNSGResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigReadAuthNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthNsgAPIService.AuthNsgRead")
@@ -641,10 +639,10 @@ func (a *AuthNsgAPIService) AuthNsgReadExecute(r ApiAuthNsgReadRequest) (*Config
 }
 
 type ApiAuthNsgUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService AuthNsgAPI
-	id         string
-	body       *ConfigAuthNSG
+	id string
+	body *ConfigAuthNSG
 }
 
 func (r ApiAuthNsgUpdateRequest) Body(body ConfigAuthNSG) ApiAuthNsgUpdateRequest {
@@ -662,27 +660,26 @@ AuthNsgUpdate Update the AuthNSG object.
 Use this method to update an AuthNSG object.
 The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAuthNsgUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiAuthNsgUpdateRequest
 */
 func (a *AuthNsgAPIService) AuthNsgUpdate(ctx context.Context, id string) ApiAuthNsgUpdateRequest {
 	return ApiAuthNsgUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateAuthNSGResponse
+//  @return ConfigUpdateAuthNSGResponse
 func (a *AuthNsgAPIService) AuthNsgUpdateExecute(r ApiAuthNsgUpdateRequest) (*ConfigUpdateAuthNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigUpdateAuthNSGResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigUpdateAuthNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthNsgAPIService.AuthNsgUpdate")
@@ -717,16 +714,16 @@ func (a *AuthNsgAPIService) AuthNsgUpdateExecute(r ApiAuthNsgUpdateRequest) (*Co
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

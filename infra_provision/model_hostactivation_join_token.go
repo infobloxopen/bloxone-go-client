@@ -13,6 +13,8 @@ package infra_provision
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the HostactivationJoinToken type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,21 @@ var _ MappedNullable = &HostactivationJoinToken{}
 
 // HostactivationJoinToken struct for HostactivationJoinToken
 type HostactivationJoinToken struct {
-	DeletedAt   *time.Time `json:"deleted_at,omitempty"`
-	Description *string    `json:"description,omitempty"`
-	ExpiresAt   *time.Time `json:"expires_at,omitempty"`
+	DeletedAt *time.Time `json:"deleted_at,omitempty"`
+	Description *string `json:"description,omitempty"`
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
 	// The resource identifier.
-	Id         *string                   `json:"id,omitempty"`
-	LastUsedAt *time.Time                `json:"last_used_at,omitempty"`
-	Name       string                    `json:"name"`
-	Status     *JoinTokenJoinTokenStatus `json:"status,omitempty"`
-	Tags       map[string]interface{}    `json:"tags,omitempty"`
+	Id *string `json:"id,omitempty"`
+	LastUsedAt *time.Time `json:"last_used_at,omitempty"`
+	Name string `json:"name"`
+	Status *JoinTokenJoinTokenStatus `json:"status,omitempty"`
+	Tags map[string]interface{} `json:"tags,omitempty"`
 	// first half of the token.
-	TokenId    *string `json:"token_id,omitempty"`
-	UseCounter *int64  `json:"use_counter,omitempty"`
+	TokenId *string `json:"token_id,omitempty"`
+	UseCounter *int64 `json:"use_counter,omitempty"`
 }
+
+type _HostactivationJoinToken HostactivationJoinToken
 
 // NewHostactivationJoinToken instantiates a new HostactivationJoinToken object
 // This constructor will assign default values to properties that have it defined,
@@ -369,7 +373,7 @@ func (o *HostactivationJoinToken) SetUseCounter(v int64) {
 }
 
 func (o HostactivationJoinToken) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -409,6 +413,43 @@ func (o HostactivationJoinToken) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+func (o *HostactivationJoinToken) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHostactivationJoinToken := _HostactivationJoinToken{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHostactivationJoinToken)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HostactivationJoinToken(varHostactivationJoinToken)
+
+	return err
+}
+
 type NullableHostactivationJoinToken struct {
 	value *HostactivationJoinToken
 	isSet bool
@@ -444,3 +485,5 @@ func (v *NullableHostactivationJoinToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

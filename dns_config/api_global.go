@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -18,18 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type GlobalAPI interface {
 	/*
-			GlobalRead Read the Global configuration object.
+	GlobalRead Read the Global configuration object.
 
-			Use this method to read the Global configuration object.
-		Service operates on Global singleton object that represents parent configuration settings for inheritance.
+	Use this method to read the Global configuration object.
+Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiGlobalReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGlobalReadRequest
 	*/
 	GlobalRead(ctx context.Context) ApiGlobalReadRequest
 
@@ -37,14 +38,14 @@ type GlobalAPI interface {
 	//  @return ConfigReadGlobalResponse
 	GlobalReadExecute(r ApiGlobalReadRequest) (*ConfigReadGlobalResponse, *http.Response, error)
 	/*
-			GlobalRead2 Read the Global configuration object.
+	GlobalRead2 Read the Global configuration object.
 
-			Use this method to read the Global configuration object.
-		Service operates on Global singleton object that represents parent configuration settings for inheritance.
+	Use this method to read the Global configuration object.
+Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiGlobalRead2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiGlobalRead2Request
 	*/
 	GlobalRead2(ctx context.Context, id string) ApiGlobalRead2Request
 
@@ -52,13 +53,13 @@ type GlobalAPI interface {
 	//  @return ConfigReadGlobalResponse
 	GlobalRead2Execute(r ApiGlobalRead2Request) (*ConfigReadGlobalResponse, *http.Response, error)
 	/*
-			GlobalUpdate Update the Global configuration object.
+	GlobalUpdate Update the Global configuration object.
 
-			Use this method to update the Global configuration object.
-		Service operates on Global singleton object that represents parent configuration settings for inheritance.
+	Use this method to update the Global configuration object.
+Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiGlobalUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGlobalUpdateRequest
 	*/
 	GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequest
 
@@ -66,14 +67,14 @@ type GlobalAPI interface {
 	//  @return ConfigUpdateGlobalResponse
 	GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*ConfigUpdateGlobalResponse, *http.Response, error)
 	/*
-			GlobalUpdate2 Update the Global configuration object.
+	GlobalUpdate2 Update the Global configuration object.
 
-			Use this method to update the Global configuration object.
-		Service operates on Global singleton object that represents parent configuration settings for inheritance.
+	Use this method to update the Global configuration object.
+Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiGlobalUpdate2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiGlobalUpdate2Request
 	*/
 	GlobalUpdate2(ctx context.Context, id string) ApiGlobalUpdate2Request
 
@@ -86,12 +87,12 @@ type GlobalAPI interface {
 type GlobalAPIService internal.Service
 
 type ApiGlobalReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService GlobalAPI
-	fields     *string
+	fields *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiGlobalReadRequest) Fields(fields string) ApiGlobalReadRequest {
 	r.fields = &fields
 	return r
@@ -107,25 +108,24 @@ GlobalRead Read the Global configuration object.
 Use this method to read the Global configuration object.
 Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalReadRequest
 */
 func (a *GlobalAPIService) GlobalRead(ctx context.Context) ApiGlobalReadRequest {
 	return ApiGlobalReadRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadGlobalResponse
+//  @return ConfigReadGlobalResponse
 func (a *GlobalAPIService) GlobalReadExecute(r ApiGlobalReadRequest) (*ConfigReadGlobalResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigReadGlobalResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigReadGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalRead")
@@ -204,13 +204,13 @@ func (a *GlobalAPIService) GlobalReadExecute(r ApiGlobalReadRequest) (*ConfigRea
 }
 
 type ApiGlobalRead2Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService GlobalAPI
-	id         string
-	fields     *string
+	id string
+	fields *string
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiGlobalRead2Request) Fields(fields string) ApiGlobalRead2Request {
 	r.fields = &fields
 	return r
@@ -226,27 +226,26 @@ GlobalRead2 Read the Global configuration object.
 Use this method to read the Global configuration object.
 Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiGlobalRead2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiGlobalRead2Request
 */
 func (a *GlobalAPIService) GlobalRead2(ctx context.Context, id string) ApiGlobalRead2Request {
 	return ApiGlobalRead2Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigReadGlobalResponse
+//  @return ConfigReadGlobalResponse
 func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*ConfigReadGlobalResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigReadGlobalResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigReadGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalRead2")
@@ -326,9 +325,9 @@ func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*ConfigR
 }
 
 type ApiGlobalUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService GlobalAPI
-	body       *ConfigGlobal
+	body *ConfigGlobal
 }
 
 func (r ApiGlobalUpdateRequest) Body(body ConfigGlobal) ApiGlobalUpdateRequest {
@@ -346,25 +345,24 @@ GlobalUpdate Update the Global configuration object.
 Use this method to update the Global configuration object.
 Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalUpdateRequest
 */
 func (a *GlobalAPIService) GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequest {
 	return ApiGlobalUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateGlobalResponse
+//  @return ConfigUpdateGlobalResponse
 func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*ConfigUpdateGlobalResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigUpdateGlobalResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigUpdateGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalUpdate")
@@ -398,8 +396,8 @@ func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*Confi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.body
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -445,10 +443,10 @@ func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*Confi
 }
 
 type ApiGlobalUpdate2Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService GlobalAPI
-	id         string
-	body       *ConfigGlobal
+	id string
+	body *ConfigGlobal
 }
 
 func (r ApiGlobalUpdate2Request) Body(body ConfigGlobal) ApiGlobalUpdate2Request {
@@ -466,27 +464,26 @@ GlobalUpdate2 Update the Global configuration object.
 Use this method to update the Global configuration object.
 Service operates on Global singleton object that represents parent configuration settings for inheritance.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiGlobalUpdate2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiGlobalUpdate2Request
 */
 func (a *GlobalAPIService) GlobalUpdate2(ctx context.Context, id string) ApiGlobalUpdate2Request {
 	return ApiGlobalUpdate2Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ConfigUpdateGlobalResponse
+//  @return ConfigUpdateGlobalResponse
 func (a *GlobalAPIService) GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*ConfigUpdateGlobalResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ConfigUpdateGlobalResponse
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *ConfigUpdateGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalUpdate2")
@@ -521,8 +518,8 @@ func (a *GlobalAPIService) GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*Con
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.body
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

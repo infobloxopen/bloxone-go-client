@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -13,6 +13,8 @@ package dns_config
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConfigView type satisfies the MappedNullable interface at compile time
@@ -41,8 +43,8 @@ type ConfigView struct {
 	// Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty.
 	DnssecTrustAnchors []ConfigTrustAnchor `json:"dnssec_trust_anchors,omitempty"`
 	// Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_.
-	DnssecValidateExpiry *bool            `json:"dnssec_validate_expiry,omitempty"`
-	DtcConfig            *ConfigDTCConfig `json:"dtc_config,omitempty"`
+	DnssecValidateExpiry *bool `json:"dnssec_validate_expiry,omitempty"`
+	DtcConfig *ConfigDTCConfig `json:"dtc_config,omitempty"`
 	// Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false-.
 	EcsEnabled *bool `json:"ecs_enabled,omitempty"`
 	// Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_.
@@ -66,7 +68,7 @@ type ConfigView struct {
 	// _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_.
 	GssTsigEnabled *bool `json:"gss_tsig_enabled,omitempty"`
 	// The resource identifier.
-	Id                 *string                `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InheritanceSources *ConfigViewInheritance `json:"inheritance_sources,omitempty"`
 	// The resource identifier.
 	IpSpaces []string `json:"ip_spaces,omitempty"`
@@ -111,9 +113,11 @@ type ConfigView struct {
 	// Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_.
 	UseForwardersForSubzones *bool `json:"use_forwarders_for_subzones,omitempty"`
 	// _use_root_forwarders_for_local_resolution_with_b1td_ allows DNS recursive queries sent to root forwarders for local resolution when deployed alongside BloxOne Thread Defense. Defaults to _false_.
-	UseRootForwardersForLocalResolutionWithB1td *bool                `json:"use_root_forwarders_for_local_resolution_with_b1td,omitempty"`
-	ZoneAuthority                               *ConfigZoneAuthority `json:"zone_authority,omitempty"`
+	UseRootForwardersForLocalResolutionWithB1td *bool `json:"use_root_forwarders_for_local_resolution_with_b1td,omitempty"`
+	ZoneAuthority *ConfigZoneAuthority `json:"zone_authority,omitempty"`
 }
+
+type _ConfigView ConfigView
 
 // NewConfigView instantiates a new ConfigView object
 // This constructor will assign default values to properties that have it defined,
@@ -1662,7 +1666,7 @@ func (o *ConfigView) SetZoneAuthority(v ConfigZoneAuthority) {
 }
 
 func (o ConfigView) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1816,6 +1820,43 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+func (o *ConfigView) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigView := _ConfigView{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigView)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigView(varConfigView)
+
+	return err
+}
+
 type NullableConfigView struct {
 	value *ConfigView
 	isSet bool
@@ -1851,3 +1892,5 @@ func (v *NullableConfigView) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

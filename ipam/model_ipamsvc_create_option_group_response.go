@@ -72,7 +72,7 @@ func (o *IpamsvcCreateOptionGroupResponse) SetResult(v IpamsvcOptionGroup) {
 }
 
 func (o IpamsvcCreateOptionGroupResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,3 +122,5 @@ func (v *NullableIpamsvcCreateOptionGroupResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

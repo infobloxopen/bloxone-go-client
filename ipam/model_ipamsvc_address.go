@@ -13,6 +13,8 @@ package ipam
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the IpamsvcAddress type satisfies the MappedNullable interface at compile time
@@ -25,8 +27,8 @@ type IpamsvcAddress struct {
 	// The description for the address object. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Time when the object has been created.
-	CreatedAt *time.Time       `json:"created_at,omitempty"`
-	DhcpInfo  *IpamsvcDHCPInfo `json:"dhcp_info,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DhcpInfo *IpamsvcDHCPInfo `json:"dhcp_info,omitempty"`
 	// Read only. Represent the value of the same field in the associated _dhcp/fixed_address_ object.
 	DisableDhcp *bool `json:"disable_dhcp,omitempty"`
 	// The discovery attributes for this address in JSON format.
@@ -60,6 +62,8 @@ type IpamsvcAddress struct {
 	// The usage is a combination of indicators, each tracking a specific associated use. Listed below are usage indicators with their meaning:  usage indicator        | description  ---------------------- | --------------------------------  _IPAM_                 |  Address was created by the IPAM component.  _IPAM_, _RESERVED_     |  Address was created by the API call _ipam/address_ or _ipam/host_.  _IPAM_, _NETWORK_      |  Address was automatically created by the IPAM component and is the network address of the parent subnet.  _IPAM_, _BROADCAST_    |  Address was automatically created by the IPAM component and is the broadcast address of the parent subnet.  _DHCP_                 |  Address was created by the DHCP component.  _DHCP_, _FIXEDADDRESS_ |  Address was created by the API call _dhcp/fixed_address_.  _DHCP_, _LEASED_       |  An active lease for that address was issued by a DHCP server.  _DHCP_, _DISABLED_     |  Address is disabled.  _DNS_                  |  Address is used by one or more DNS records.  _DISCOVERED_           |  Address is discovered by some network discovery probe like Network Insight or NetMRI in NIOS.
 	Usage []string `json:"usage,omitempty"`
 }
+
+type _IpamsvcAddress IpamsvcAddress
 
 // NewIpamsvcAddress instantiates a new IpamsvcAddress object
 // This constructor will assign default values to properties that have it defined,
@@ -712,7 +716,7 @@ func (o *IpamsvcAddress) SetUsage(v []string) {
 }
 
 func (o IpamsvcAddress) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -782,6 +786,43 @@ func (o IpamsvcAddress) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
+func (o *IpamsvcAddress) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"address",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcAddress := _IpamsvcAddress{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIpamsvcAddress)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcAddress(varIpamsvcAddress)
+
+	return err
+}
+
 type NullableIpamsvcAddress struct {
 	value *IpamsvcAddress
 	isSet bool
@@ -817,3 +858,5 @@ func (v *NullableIpamsvcAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

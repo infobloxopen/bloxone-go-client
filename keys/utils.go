@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -320,7 +320,7 @@ func NewNullableTime(val *time.Time) *NullableTime {
 }
 
 func (v NullableTime) MarshalJSON() ([]byte, error) {
-	return v.value.MarshalJSON()
+	return json.Marshal(v.value)
 }
 
 func (v *NullableTime) UnmarshalJSON(src []byte) error {

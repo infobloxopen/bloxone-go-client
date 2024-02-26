@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -12,6 +12,8 @@ package keys
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UploadRequest type satisfies the MappedNullable interface at compile time
@@ -22,12 +24,14 @@ type UploadRequest struct {
 	// The description for uploaded content. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Base64 encoded content.
-	Content string             `json:"content"`
-	Fields  *ProtobufFieldMask `json:"fields,omitempty"`
+	Content string `json:"content"`
+	Fields *ProtobufFieldMask `json:"fields,omitempty"`
 	// The tags for uploaded content in JSON format.
 	Tags map[string]interface{} `json:"tags,omitempty"`
-	Type UploadContentType      `json:"type"`
+	Type UploadContentType `json:"type"`
 }
+
+type _UploadRequest UploadRequest
 
 // NewUploadRequest instantiates a new UploadRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -195,7 +199,7 @@ func (o *UploadRequest) SetType(v UploadContentType) {
 }
 
 func (o UploadRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -216,6 +220,44 @@ func (o UploadRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	return toSerialize, nil
+}
+
+func (o *UploadRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"content",
+		"type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUploadRequest := _UploadRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUploadRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UploadRequest(varUploadRequest)
+
+	return err
 }
 
 type NullableUploadRequest struct {
@@ -253,3 +295,5 @@ func (v *NullableUploadRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -72,7 +72,7 @@ func (o *IpamsvcCreateOptionSpaceResponse) SetResult(v IpamsvcOptionSpace) {
 }
 
 func (o IpamsvcCreateOptionSpaceResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,3 +122,5 @@ func (v *NullableIpamsvcCreateOptionSpaceResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

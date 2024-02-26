@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
 
 API version: v1
 */
@@ -12,6 +12,8 @@ package dns_config
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConfigSortListItem type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type ConfigSortListItem struct {
 	// Must be empty if _element_ is not _ip_.
 	Source *string `json:"source,omitempty"`
 }
+
+type _ConfigSortListItem ConfigSortListItem
 
 // NewConfigSortListItem instantiates a new ConfigSortListItem object
 // This constructor will assign default values to properties that have it defined,
@@ -168,7 +172,7 @@ func (o *ConfigSortListItem) SetSource(v string) {
 }
 
 func (o ConfigSortListItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,6 +192,43 @@ func (o ConfigSortListItem) ToMap() (map[string]interface{}, error) {
 		toSerialize["source"] = o.Source
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigSortListItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"element",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigSortListItem := _ConfigSortListItem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigSortListItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigSortListItem(varConfigSortListItem)
+
+	return err
 }
 
 type NullableConfigSortListItem struct {
@@ -225,3 +266,5 @@ func (v *NullableConfigSortListItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

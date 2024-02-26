@@ -1,7 +1,7 @@
 /*
 Infrastructure Management API
 
-The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---
+The **Infrastructure Management API** provides a RESTful interface to manage Infrastructure Hosts and Services objects.  The following is a list of the different Services and their string types (the string types are to be used with the APIs for the `service_type` field):  | Service name | Service type |   | ------ | ------ |   | Access Authentication | authn |   | Anycast | anycast |   | Data Connector | cdc |   | DHCP | dhcp |   | DNS | dns |   | DNS Forwarding Proxy | dfp |   | NIOS Grid Connector | orpheus |   | MS AD Sync | msad |   | NTP | ntp |   | BGP | bgp |   | RIP | rip |   | OSPF | ospf |    ---   ### Hosts API  The Hosts API is used to manage the Infrastructure Host resources. These include various operations related to hosts such as viewing, creating, updating, replacing, disconnecting, and deleting Hosts. Management of Hosts is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.  ---   ### Services API  The Services API is used to manage the Infrastructure Service resources (a.k.a. BloxOne applications). These include various operations related to hosts such as viewing, creating, updating, starting/stopping, configuring, and deleting Services. Management of Services is done from the Cloud Services Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.  ---   ### Detail APIs  The Detail APIs are read-only APIs used to list all the Infrastructure resources (Hosts and Services). Each resource record returned also contains information about its other associated resources and the status information for itself and the associated resource(s) (i.e., Host/Service status).  ---   
 
 API version: v1
 */
@@ -18,17 +18,18 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
+"github.com/infobloxopen/bloxone-go-client/internal"
 )
+
 
 type ServicesAPI interface {
 	/*
-		ServicesApplications List applications (Service types) for a particular account.
+	ServicesApplications List applications (Service types) for a particular account.
 
-		Used in order to retrieve available applications (Service types) for a particular account.
+	Used in order to retrieve available applications (Service types) for a particular account.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiServicesApplicationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServicesApplicationsRequest
 	*/
 	ServicesApplications(ctx context.Context) ApiServicesApplicationsRequest
 
@@ -36,15 +37,15 @@ type ServicesAPI interface {
 	//  @return InfraApplicationsResponse
 	ServicesApplicationsExecute(r ApiServicesApplicationsRequest) (*InfraApplicationsResponse, *http.Response, error)
 	/*
-			ServicesCreate Create a Service resource.
+	ServicesCreate Create a Service resource.
 
-			Validation:
-		- "name" is required and should be unique.
-		- "service_type" is required.
-		- "pool_id" is required.
+	Validation:
+- "name" is required and should be unique.
+- "service_type" is required.
+- "pool_id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServicesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServicesCreateRequest
 	*/
 	ServicesCreate(ctx context.Context) ApiServicesCreateRequest
 
@@ -52,24 +53,24 @@ type ServicesAPI interface {
 	//  @return InfraCreateServiceResponse
 	ServicesCreateExecute(r ApiServicesCreateRequest) (*InfraCreateServiceResponse, *http.Response, error)
 	/*
-			ServicesDelete Delete a Service resource.
+	ServicesDelete Delete a Service resource.
 
-			Validation:
-		- "id" is required.
+	Validation:
+- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiServicesDeleteRequest
 	*/
 	ServicesDelete(ctx context.Context, id string) ApiServicesDeleteRequest
 
 	// ServicesDeleteExecute executes the request
 	ServicesDeleteExecute(r ApiServicesDeleteRequest) (*http.Response, error)
 	/*
-		ServicesList List all the Service resources for an account.
+	ServicesList List all the Service resources for an account.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiServicesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServicesListRequest
 	*/
 	ServicesList(ctx context.Context) ApiServicesListRequest
 
@@ -77,14 +78,14 @@ type ServicesAPI interface {
 	//  @return InfraListServiceResponse
 	ServicesListExecute(r ApiServicesListRequest) (*InfraListServiceResponse, *http.Response, error)
 	/*
-			ServicesRead Read a Service resource.
+	ServicesRead Read a Service resource.
 
-			Validation:
-		- "id" is required.
+	Validation:
+- "id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiServicesReadRequest
 	*/
 	ServicesRead(ctx context.Context, id string) ApiServicesReadRequest
 
@@ -92,17 +93,17 @@ type ServicesAPI interface {
 	//  @return InfraGetServiceResponse
 	ServicesReadExecute(r ApiServicesReadRequest) (*InfraGetServiceResponse, *http.Response, error)
 	/*
-			ServicesUpdate Update a Service resource.
+	ServicesUpdate Update a Service resource.
 
-			Validation:
-		- "id" is required.
-		- "name" is required and should be unique.
-		- "service_type" is required.
-		- "pool_id" is required.
+	Validation:
+- "id" is required.
+- "name" is required and should be unique.
+- "service_type" is required.
+- "pool_id" is required.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiServicesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiServicesUpdateRequest
 	*/
 	ServicesUpdate(ctx context.Context, id string) ApiServicesUpdateRequest
 
@@ -115,9 +116,9 @@ type ServicesAPI interface {
 type ServicesAPIService internal.Service
 
 type ApiServicesApplicationsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	accountId  *string
+	accountId *string
 }
 
 // Account ID.
@@ -135,25 +136,24 @@ ServicesApplications List applications (Service types) for a particular account.
 
 Used in order to retrieve available applications (Service types) for a particular account.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServicesApplicationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiServicesApplicationsRequest
 */
 func (a *ServicesAPIService) ServicesApplications(ctx context.Context) ApiServicesApplicationsRequest {
 	return ApiServicesApplicationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraApplicationsResponse
+//  @return InfraApplicationsResponse
 func (a *ServicesAPIService) ServicesApplicationsExecute(r ApiServicesApplicationsRequest) (*InfraApplicationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraApplicationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraApplicationsResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesApplications")
@@ -232,9 +232,9 @@ func (a *ServicesAPIService) ServicesApplicationsExecute(r ApiServicesApplicatio
 }
 
 type ApiServicesCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	body       *InfraService
+	body *InfraService
 }
 
 func (r ApiServicesCreateRequest) Body(body InfraService) ApiServicesCreateRequest {
@@ -254,25 +254,24 @@ Validation:
 - "service_type" is required.
 - "pool_id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServicesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiServicesCreateRequest
 */
 func (a *ServicesAPIService) ServicesCreate(ctx context.Context) ApiServicesCreateRequest {
 	return ApiServicesCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraCreateServiceResponse
+//  @return InfraCreateServiceResponse
 func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (*InfraCreateServiceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraCreateServiceResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraCreateServiceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesCreate")
@@ -306,16 +305,16 @@ func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -361,9 +360,9 @@ func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (
 }
 
 type ApiServicesDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	id         string
+	id string
 }
 
 func (r ApiServicesDeleteRequest) Execute() (*http.Response, error) {
@@ -376,24 +375,24 @@ ServicesDelete Delete a Service resource.
 Validation:
 - "id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServicesDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServicesDeleteRequest
 */
 func (a *ServicesAPIService) ServicesDelete(ctx context.Context, id string) ApiServicesDeleteRequest {
 	return ApiServicesDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ServicesAPIService) ServicesDeleteExecute(r ApiServicesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesDelete")
@@ -465,49 +464,49 @@ func (a *ServicesAPIService) ServicesDeleteExecute(r ApiServicesDeleteRequest) (
 }
 
 type ApiServicesListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	filter     *string
-	orderBy    *string
-	offset     *int32
-	limit      *int32
-	pageToken  *string
-	fields     *string
-	tfilter    *string
-	torderBy   *string
+	filter *string
+	orderBy *string
+	offset *int32
+	limit *int32
+	pageToken *string
+	fields *string
+	tfilter *string
+	torderBy *string
 }
 
-// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
+//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
 func (r ApiServicesListRequest) Filter(filter string) ApiServicesListRequest {
 	r.filter = &filter
 	return r
 }
 
-// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
+//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
 func (r ApiServicesListRequest) OrderBy(orderBy string) ApiServicesListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
+//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
 func (r ApiServicesListRequest) Offset(offset int32) ApiServicesListRequest {
 	r.offset = &offset
 	return r
 }
 
-// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
+//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
 func (r ApiServicesListRequest) Limit(limit int32) ApiServicesListRequest {
 	r.limit = &limit
 	return r
 }
 
-// The service-defined string used to identify a page of resources. A null value indicates the first page.
+//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
 func (r ApiServicesListRequest) PageToken(pageToken string) ApiServicesListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
+//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
 func (r ApiServicesListRequest) Fields(fields string) ApiServicesListRequest {
 	r.fields = &fields
 	return r
@@ -532,25 +531,24 @@ func (r ApiServicesListRequest) Execute() (*InfraListServiceResponse, *http.Resp
 /*
 ServicesList List all the Service resources for an account.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServicesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiServicesListRequest
 */
 func (a *ServicesAPIService) ServicesList(ctx context.Context) ApiServicesListRequest {
 	return ApiServicesListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraListServiceResponse
+//  @return InfraListServiceResponse
 func (a *ServicesAPIService) ServicesListExecute(r ApiServicesListRequest) (*InfraListServiceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraListServiceResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraListServiceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesList")
@@ -650,9 +648,9 @@ func (a *ServicesAPIService) ServicesListExecute(r ApiServicesListRequest) (*Inf
 }
 
 type ApiServicesReadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	id         string
+	id string
 }
 
 func (r ApiServicesReadRequest) Execute() (*InfraGetServiceResponse, *http.Response, error) {
@@ -665,27 +663,26 @@ ServicesRead Read a Service resource.
 Validation:
 - "id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServicesReadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServicesReadRequest
 */
 func (a *ServicesAPIService) ServicesRead(ctx context.Context, id string) ApiServicesReadRequest {
 	return ApiServicesReadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraGetServiceResponse
+//  @return InfraGetServiceResponse
 func (a *ServicesAPIService) ServicesReadExecute(r ApiServicesReadRequest) (*InfraGetServiceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraGetServiceResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraGetServiceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesRead")
@@ -762,10 +759,10 @@ func (a *ServicesAPIService) ServicesReadExecute(r ApiServicesReadRequest) (*Inf
 }
 
 type ApiServicesUpdateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService ServicesAPI
-	id         string
-	body       *InfraService
+	id string
+	body *InfraService
 }
 
 func (r ApiServicesUpdateRequest) Body(body InfraService) ApiServicesUpdateRequest {
@@ -786,27 +783,26 @@ Validation:
 - "service_type" is required.
 - "pool_id" is required.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiServicesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id An application specific resource identity of a resource
+ @return ApiServicesUpdateRequest
 */
 func (a *ServicesAPIService) ServicesUpdate(ctx context.Context, id string) ApiServicesUpdateRequest {
 	return ApiServicesUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return InfraUpdateServiceResponse
+//  @return InfraUpdateServiceResponse
 func (a *ServicesAPIService) ServicesUpdateExecute(r ApiServicesUpdateRequest) (*InfraUpdateServiceResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *InfraUpdateServiceResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []internal.FormFile
+		localVarReturnValue  *InfraUpdateServiceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServicesAPIService.ServicesUpdate")
@@ -841,16 +837,16 @@ func (a *ServicesAPIService) ServicesUpdateExecute(r ApiServicesUpdateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
-	// body params
-	localVarPostBody = r.body
+    if r.body.Tags == nil {
+    	r.body.Tags = make(map[string]interface{})
+    }
+    for k, v := range a.Client.Cfg.DefaultTags {
+        if _, ok := r.body.Tags[k]; !ok {
+            r.body.Tags[k] = v
+        }
+    }
+    // body params
+    localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
