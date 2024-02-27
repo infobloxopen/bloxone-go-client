@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -40,7 +40,7 @@ type ConfigAuthZone struct {
 	Id *string `json:"id,omitempty"`
 	// The list of the inheritance assigned hosts of the object.
 	InheritanceAssignedHosts []Inheritance2AssignedHost `json:"inheritance_assigned_hosts,omitempty"`
-	InheritanceSources *ConfigAuthZoneInheritance `json:"inheritance_sources,omitempty"`
+	InheritanceSources       *ConfigAuthZoneInheritance `json:"inheritance_sources,omitempty"`
 	// On-create-only. SOA serial is allowed to be set when the authoritative zone is created.
 	InitialSoaSerial *int64 `json:"initial_soa_serial,omitempty"`
 	// Optional. BloxOne DDI hosts acting as internal secondaries. Order is not significant.
@@ -74,7 +74,7 @@ type ConfigAuthZone struct {
 	// The resource identifier.
 	View *string `json:"view,omitempty"`
 	// The list of an auth zone warnings.
-	Warnings []ConfigWarning `json:"warnings,omitempty"`
+	Warnings      []ConfigWarning      `json:"warnings,omitempty"`
 	ZoneAuthority *ConfigZoneAuthority `json:"zone_authority,omitempty"`
 }
 
@@ -1024,7 +1024,7 @@ func (o *ConfigAuthZone) SetZoneAuthority(v ConfigZoneAuthority) {
 }
 
 func (o ConfigAuthZone) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1158,5 +1158,3 @@ func (v *NullableConfigAuthZone) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

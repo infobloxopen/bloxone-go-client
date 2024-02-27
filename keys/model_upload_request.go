@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -11,8 +11,8 @@ API version: v1
 package keys
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -24,11 +24,11 @@ type UploadRequest struct {
 	// The description for uploaded content. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
 	// Base64 encoded content.
-	Content string `json:"content"`
-	Fields *ProtobufFieldMask `json:"fields,omitempty"`
+	Content string             `json:"content"`
+	Fields  *ProtobufFieldMask `json:"fields,omitempty"`
 	// The tags for uploaded content in JSON format.
 	Tags map[string]interface{} `json:"tags,omitempty"`
-	Type UploadContentType `json:"type"`
+	Type UploadContentType      `json:"type"`
 }
 
 type _UploadRequest UploadRequest
@@ -199,7 +199,7 @@ func (o *UploadRequest) SetType(v UploadContentType) {
 }
 
 func (o UploadRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -236,10 +236,10 @@ func (o *UploadRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -295,5 +295,3 @@ func (v *NullableUploadRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

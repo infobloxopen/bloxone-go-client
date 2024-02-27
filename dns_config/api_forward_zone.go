@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,19 +18,18 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type ForwardZoneAPI interface {
 	/*
-	ForwardZoneCopy Copies the __ForwardZone__ object.
+			ForwardZoneCopy Copies the __ForwardZone__ object.
 
-	Use this method to copy an __ForwardZone__ object to a different __View__.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to copy an __ForwardZone__ object to a different __View__.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiForwardZoneCopyRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardZoneCopyRequest
 	*/
 	ForwardZoneCopy(ctx context.Context) ApiForwardZoneCopyRequest
 
@@ -38,13 +37,13 @@ This object (_dns/forward_zone_) represents a forwarding zone.
 	//  @return ConfigCopyForwardZoneResponse
 	ForwardZoneCopyExecute(r ApiForwardZoneCopyRequest) (*ConfigCopyForwardZoneResponse, *http.Response, error)
 	/*
-	ForwardZoneCreate Create the ForwardZone object.
+			ForwardZoneCreate Create the ForwardZone object.
 
-	Use this method to create a ForwardZone object.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to create a ForwardZone object.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiForwardZoneCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardZoneCreateRequest
 	*/
 	ForwardZoneCreate(ctx context.Context) ApiForwardZoneCreateRequest
 
@@ -52,27 +51,27 @@ This object (_dns/forward_zone_) represents a forwarding zone.
 	//  @return ConfigCreateForwardZoneResponse
 	ForwardZoneCreateExecute(r ApiForwardZoneCreateRequest) (*ConfigCreateForwardZoneResponse, *http.Response, error)
 	/*
-	ForwardZoneDelete Move the Forward Zone object to Recyclebin.
+			ForwardZoneDelete Move the Forward Zone object to Recyclebin.
 
-	Use this method to move a Forward Zone object to Recyclebin.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to move a Forward Zone object to Recyclebin.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardZoneDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardZoneDeleteRequest
 	*/
 	ForwardZoneDelete(ctx context.Context, id string) ApiForwardZoneDeleteRequest
 
 	// ForwardZoneDeleteExecute executes the request
 	ForwardZoneDeleteExecute(r ApiForwardZoneDeleteRequest) (*http.Response, error)
 	/*
-	ForwardZoneList List Forward Zone objects.
+			ForwardZoneList List Forward Zone objects.
 
-	Use this method to list Forward Zone objects.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to list Forward Zone objects.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiForwardZoneListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardZoneListRequest
 	*/
 	ForwardZoneList(ctx context.Context) ApiForwardZoneListRequest
 
@@ -80,14 +79,14 @@ This object (_dns/forward_zone_) represents a forwarding zone.
 	//  @return ConfigListForwardZoneResponse
 	ForwardZoneListExecute(r ApiForwardZoneListRequest) (*ConfigListForwardZoneResponse, *http.Response, error)
 	/*
-	ForwardZoneRead Read the Forward Zone object.
+			ForwardZoneRead Read the Forward Zone object.
 
-	Use this method to read a Forward Zone object.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to read a Forward Zone object.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardZoneReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardZoneReadRequest
 	*/
 	ForwardZoneRead(ctx context.Context, id string) ApiForwardZoneReadRequest
 
@@ -95,14 +94,14 @@ This object (_dns/forward_zone_) represents a forwarding zone.
 	//  @return ConfigReadForwardZoneResponse
 	ForwardZoneReadExecute(r ApiForwardZoneReadRequest) (*ConfigReadForwardZoneResponse, *http.Response, error)
 	/*
-	ForwardZoneUpdate Update the Forward Zone object.
+			ForwardZoneUpdate Update the Forward Zone object.
 
-	Use this method to update a Forward Zone object.
-This object (_dns/forward_zone_) represents a forwarding zone.
+			Use this method to update a Forward Zone object.
+		This object (_dns/forward_zone_) represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardZoneUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardZoneUpdateRequest
 	*/
 	ForwardZoneUpdate(ctx context.Context, id string) ApiForwardZoneUpdateRequest
 
@@ -115,9 +114,9 @@ This object (_dns/forward_zone_) represents a forwarding zone.
 type ForwardZoneAPIService internal.Service
 
 type ApiForwardZoneCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	body *ConfigCopyForwardZone
+	body       *ConfigCopyForwardZone
 }
 
 func (r ApiForwardZoneCopyRequest) Body(body ConfigCopyForwardZone) ApiForwardZoneCopyRequest {
@@ -135,24 +134,25 @@ ForwardZoneCopy Copies the __ForwardZone__ object.
 Use this method to copy an __ForwardZone__ object to a different __View__.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiForwardZoneCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiForwardZoneCopyRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneCopy(ctx context.Context) ApiForwardZoneCopyRequest {
 	return ApiForwardZoneCopyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCopyForwardZoneResponse
+//
+//	@return ConfigCopyForwardZoneResponse
 func (a *ForwardZoneAPIService) ForwardZoneCopyExecute(r ApiForwardZoneCopyRequest) (*ConfigCopyForwardZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCopyForwardZoneResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCopyForwardZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneCopy")
@@ -186,8 +186,8 @@ func (a *ForwardZoneAPIService) ForwardZoneCopyExecute(r ApiForwardZoneCopyReque
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    // body params
-    localVarPostBody = r.body
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -233,9 +233,9 @@ func (a *ForwardZoneAPIService) ForwardZoneCopyExecute(r ApiForwardZoneCopyReque
 }
 
 type ApiForwardZoneCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	body *ConfigForwardZone
+	body       *ConfigForwardZone
 }
 
 func (r ApiForwardZoneCreateRequest) Body(body ConfigForwardZone) ApiForwardZoneCreateRequest {
@@ -253,24 +253,25 @@ ForwardZoneCreate Create the ForwardZone object.
 Use this method to create a ForwardZone object.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiForwardZoneCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiForwardZoneCreateRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneCreate(ctx context.Context) ApiForwardZoneCreateRequest {
 	return ApiForwardZoneCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCreateForwardZoneResponse
+//
+//	@return ConfigCreateForwardZoneResponse
 func (a *ForwardZoneAPIService) ForwardZoneCreateExecute(r ApiForwardZoneCreateRequest) (*ConfigCreateForwardZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCreateForwardZoneResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCreateForwardZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneCreate")
@@ -304,16 +305,16 @@ func (a *ForwardZoneAPIService) ForwardZoneCreateExecute(r ApiForwardZoneCreateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -359,9 +360,9 @@ func (a *ForwardZoneAPIService) ForwardZoneCreateExecute(r ApiForwardZoneCreateR
 }
 
 type ApiForwardZoneDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	id string
+	id         string
 }
 
 func (r ApiForwardZoneDeleteRequest) Execute() (*http.Response, error) {
@@ -374,24 +375,24 @@ ForwardZoneDelete Move the Forward Zone object to Recyclebin.
 Use this method to move a Forward Zone object to Recyclebin.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardZoneDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardZoneDeleteRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneDelete(ctx context.Context, id string) ApiForwardZoneDeleteRequest {
 	return ApiForwardZoneDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ForwardZoneAPIService) ForwardZoneDeleteExecute(r ApiForwardZoneDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneDelete")
@@ -463,49 +464,49 @@ func (a *ForwardZoneAPIService) ForwardZoneDeleteExecute(r ApiForwardZoneDeleteR
 }
 
 type ApiForwardZoneListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	tfilter *string
-	torderBy *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	tfilter    *string
+	torderBy   *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiForwardZoneListRequest) Fields(fields string) ApiForwardZoneListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiForwardZoneListRequest) Filter(filter string) ApiForwardZoneListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiForwardZoneListRequest) Offset(offset int32) ApiForwardZoneListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiForwardZoneListRequest) Limit(limit int32) ApiForwardZoneListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiForwardZoneListRequest) PageToken(pageToken string) ApiForwardZoneListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiForwardZoneListRequest) OrderBy(orderBy string) ApiForwardZoneListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -533,24 +534,25 @@ ForwardZoneList List Forward Zone objects.
 Use this method to list Forward Zone objects.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiForwardZoneListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiForwardZoneListRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneList(ctx context.Context) ApiForwardZoneListRequest {
 	return ApiForwardZoneListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigListForwardZoneResponse
+//
+//	@return ConfigListForwardZoneResponse
 func (a *ForwardZoneAPIService) ForwardZoneListExecute(r ApiForwardZoneListRequest) (*ConfigListForwardZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigListForwardZoneResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigListForwardZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneList")
@@ -650,13 +652,13 @@ func (a *ForwardZoneAPIService) ForwardZoneListExecute(r ApiForwardZoneListReque
 }
 
 type ApiForwardZoneReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	id string
-	fields *string
+	id         string
+	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiForwardZoneReadRequest) Fields(fields string) ApiForwardZoneReadRequest {
 	r.fields = &fields
 	return r
@@ -672,26 +674,27 @@ ForwardZoneRead Read the Forward Zone object.
 Use this method to read a Forward Zone object.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardZoneReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardZoneReadRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneRead(ctx context.Context, id string) ApiForwardZoneReadRequest {
 	return ApiForwardZoneReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigReadForwardZoneResponse
+//
+//	@return ConfigReadForwardZoneResponse
 func (a *ForwardZoneAPIService) ForwardZoneReadExecute(r ApiForwardZoneReadRequest) (*ConfigReadForwardZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigReadForwardZoneResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigReadForwardZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneRead")
@@ -771,10 +774,10 @@ func (a *ForwardZoneAPIService) ForwardZoneReadExecute(r ApiForwardZoneReadReque
 }
 
 type ApiForwardZoneUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardZoneAPI
-	id string
-	body *ConfigForwardZone
+	id         string
+	body       *ConfigForwardZone
 }
 
 func (r ApiForwardZoneUpdateRequest) Body(body ConfigForwardZone) ApiForwardZoneUpdateRequest {
@@ -792,26 +795,27 @@ ForwardZoneUpdate Update the Forward Zone object.
 Use this method to update a Forward Zone object.
 This object (_dns/forward_zone_) represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardZoneUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardZoneUpdateRequest
 */
 func (a *ForwardZoneAPIService) ForwardZoneUpdate(ctx context.Context, id string) ApiForwardZoneUpdateRequest {
 	return ApiForwardZoneUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigUpdateForwardZoneResponse
+//
+//	@return ConfigUpdateForwardZoneResponse
 func (a *ForwardZoneAPIService) ForwardZoneUpdateExecute(r ApiForwardZoneUpdateRequest) (*ConfigUpdateForwardZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigUpdateForwardZoneResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigUpdateForwardZoneResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardZoneAPIService.ForwardZoneUpdate")
@@ -846,16 +850,16 @@ func (a *ForwardZoneAPIService) ForwardZoneUpdateExecute(r ApiForwardZoneUpdateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

@@ -24,8 +24,8 @@ type IpamsvcInheritedDDNSUpdateBlock struct {
 	// The human-readable display name for the object referred to by _source_.
 	DisplayName *string `json:"display_name,omitempty"`
 	// The resource identifier.
-	Source *string `json:"source,omitempty"`
-	Value *IpamsvcDDNSUpdateBlock `json:"value,omitempty"`
+	Source *string                 `json:"source,omitempty"`
+	Value  *IpamsvcDDNSUpdateBlock `json:"value,omitempty"`
 }
 
 // NewIpamsvcInheritedDDNSUpdateBlock instantiates a new IpamsvcInheritedDDNSUpdateBlock object
@@ -174,7 +174,7 @@ func (o *IpamsvcInheritedDDNSUpdateBlock) SetValue(v IpamsvcDDNSUpdateBlock) {
 }
 
 func (o IpamsvcInheritedDDNSUpdateBlock) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableIpamsvcInheritedDDNSUpdateBlock) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,8 +19,8 @@ var _ MappedNullable = &HostactivationCreateJoinTokenResponse{}
 
 // HostactivationCreateJoinTokenResponse struct for HostactivationCreateJoinTokenResponse
 type HostactivationCreateJoinTokenResponse struct {
-	JoinToken *string `json:"join_token,omitempty"`
-	Result *HostactivationJoinToken `json:"result,omitempty"`
+	JoinToken *string                  `json:"join_token,omitempty"`
+	Result    *HostactivationJoinToken `json:"result,omitempty"`
 }
 
 // NewHostactivationCreateJoinTokenResponse instantiates a new HostactivationCreateJoinTokenResponse object
@@ -105,7 +105,7 @@ func (o *HostactivationCreateJoinTokenResponse) SetResult(v HostactivationJoinTo
 }
 
 func (o HostactivationCreateJoinTokenResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableHostactivationCreateJoinTokenResponse) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

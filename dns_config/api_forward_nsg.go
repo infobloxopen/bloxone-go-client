@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,19 +18,18 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type ForwardNsgAPI interface {
 	/*
-	ForwardNsgCreate Create the ForwardNSG object.
+			ForwardNsgCreate Create the ForwardNSG object.
 
-	Use this method to create a ForwardNSG object.
-The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to create a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiForwardNsgCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardNsgCreateRequest
 	*/
 	ForwardNsgCreate(ctx context.Context) ApiForwardNsgCreateRequest
 
@@ -38,27 +37,27 @@ The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward z
 	//  @return ConfigCreateForwardNSGResponse
 	ForwardNsgCreateExecute(r ApiForwardNsgCreateRequest) (*ConfigCreateForwardNSGResponse, *http.Response, error)
 	/*
-	ForwardNsgDelete Move the ForwardNSG object to Recyclebin.
+			ForwardNsgDelete Move the ForwardNSG object to Recyclebin.
 
-	Use this method to move a ForwardNSG object to Recyclebin.
-The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to move a ForwardNSG object to Recyclebin.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardNsgDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgDeleteRequest
 	*/
 	ForwardNsgDelete(ctx context.Context, id string) ApiForwardNsgDeleteRequest
 
 	// ForwardNsgDeleteExecute executes the request
 	ForwardNsgDeleteExecute(r ApiForwardNsgDeleteRequest) (*http.Response, error)
 	/*
-	ForwardNsgList List ForwardNSG objects.
+			ForwardNsgList List ForwardNSG objects.
 
-	Use this method to list ForwardNSG objects.
-The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to list ForwardNSG objects.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiForwardNsgListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardNsgListRequest
 	*/
 	ForwardNsgList(ctx context.Context) ApiForwardNsgListRequest
 
@@ -66,14 +65,14 @@ The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward z
 	//  @return ConfigListForwardNSGResponse
 	ForwardNsgListExecute(r ApiForwardNsgListRequest) (*ConfigListForwardNSGResponse, *http.Response, error)
 	/*
-	ForwardNsgRead Read the ForwardNSG object.
+			ForwardNsgRead Read the ForwardNSG object.
 
-	Use this method to read a ForwardNSG object.
-The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to read a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardNsgReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgReadRequest
 	*/
 	ForwardNsgRead(ctx context.Context, id string) ApiForwardNsgReadRequest
 
@@ -81,14 +80,14 @@ The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward z
 	//  @return ConfigReadForwardNSGResponse
 	ForwardNsgReadExecute(r ApiForwardNsgReadRequest) (*ConfigReadForwardNSGResponse, *http.Response, error)
 	/*
-	ForwardNsgUpdate Update the ForwardNSG object.
+			ForwardNsgUpdate Update the ForwardNSG object.
 
-	Use this method to update a ForwardNSG object.
-The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to update a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiForwardNsgUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgUpdateRequest
 	*/
 	ForwardNsgUpdate(ctx context.Context, id string) ApiForwardNsgUpdateRequest
 
@@ -101,9 +100,9 @@ The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward z
 type ForwardNsgAPIService internal.Service
 
 type ApiForwardNsgCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardNsgAPI
-	body *ConfigForwardNSG
+	body       *ConfigForwardNSG
 }
 
 func (r ApiForwardNsgCreateRequest) Body(body ConfigForwardNSG) ApiForwardNsgCreateRequest {
@@ -121,24 +120,25 @@ ForwardNsgCreate Create the ForwardNSG object.
 Use this method to create a ForwardNSG object.
 The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiForwardNsgCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiForwardNsgCreateRequest
 */
 func (a *ForwardNsgAPIService) ForwardNsgCreate(ctx context.Context) ApiForwardNsgCreateRequest {
 	return ApiForwardNsgCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCreateForwardNSGResponse
+//
+//	@return ConfigCreateForwardNSGResponse
 func (a *ForwardNsgAPIService) ForwardNsgCreateExecute(r ApiForwardNsgCreateRequest) (*ConfigCreateForwardNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCreateForwardNSGResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCreateForwardNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardNsgAPIService.ForwardNsgCreate")
@@ -172,16 +172,16 @@ func (a *ForwardNsgAPIService) ForwardNsgCreateExecute(r ApiForwardNsgCreateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -227,9 +227,9 @@ func (a *ForwardNsgAPIService) ForwardNsgCreateExecute(r ApiForwardNsgCreateRequ
 }
 
 type ApiForwardNsgDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardNsgAPI
-	id string
+	id         string
 }
 
 func (r ApiForwardNsgDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +242,24 @@ ForwardNsgDelete Move the ForwardNSG object to Recyclebin.
 Use this method to move a ForwardNSG object to Recyclebin.
 The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardNsgDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardNsgDeleteRequest
 */
 func (a *ForwardNsgAPIService) ForwardNsgDelete(ctx context.Context, id string) ApiForwardNsgDeleteRequest {
 	return ApiForwardNsgDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ForwardNsgAPIService) ForwardNsgDeleteExecute(r ApiForwardNsgDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardNsgAPIService.ForwardNsgDelete")
@@ -331,49 +331,49 @@ func (a *ForwardNsgAPIService) ForwardNsgDeleteExecute(r ApiForwardNsgDeleteRequ
 }
 
 type ApiForwardNsgListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardNsgAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	tfilter *string
-	torderBy *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	tfilter    *string
+	torderBy   *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiForwardNsgListRequest) Fields(fields string) ApiForwardNsgListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiForwardNsgListRequest) Filter(filter string) ApiForwardNsgListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiForwardNsgListRequest) Offset(offset int32) ApiForwardNsgListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiForwardNsgListRequest) Limit(limit int32) ApiForwardNsgListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiForwardNsgListRequest) PageToken(pageToken string) ApiForwardNsgListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiForwardNsgListRequest) OrderBy(orderBy string) ApiForwardNsgListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -401,24 +401,25 @@ ForwardNsgList List ForwardNSG objects.
 Use this method to list ForwardNSG objects.
 The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiForwardNsgListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiForwardNsgListRequest
 */
 func (a *ForwardNsgAPIService) ForwardNsgList(ctx context.Context) ApiForwardNsgListRequest {
 	return ApiForwardNsgListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigListForwardNSGResponse
+//
+//	@return ConfigListForwardNSGResponse
 func (a *ForwardNsgAPIService) ForwardNsgListExecute(r ApiForwardNsgListRequest) (*ConfigListForwardNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigListForwardNSGResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigListForwardNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardNsgAPIService.ForwardNsgList")
@@ -518,13 +519,13 @@ func (a *ForwardNsgAPIService) ForwardNsgListExecute(r ApiForwardNsgListRequest)
 }
 
 type ApiForwardNsgReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardNsgAPI
-	id string
-	fields *string
+	id         string
+	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiForwardNsgReadRequest) Fields(fields string) ApiForwardNsgReadRequest {
 	r.fields = &fields
 	return r
@@ -540,26 +541,27 @@ ForwardNsgRead Read the ForwardNSG object.
 Use this method to read a ForwardNSG object.
 The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardNsgReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardNsgReadRequest
 */
 func (a *ForwardNsgAPIService) ForwardNsgRead(ctx context.Context, id string) ApiForwardNsgReadRequest {
 	return ApiForwardNsgReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigReadForwardNSGResponse
+//
+//	@return ConfigReadForwardNSGResponse
 func (a *ForwardNsgAPIService) ForwardNsgReadExecute(r ApiForwardNsgReadRequest) (*ConfigReadForwardNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigReadForwardNSGResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigReadForwardNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardNsgAPIService.ForwardNsgRead")
@@ -639,10 +641,10 @@ func (a *ForwardNsgAPIService) ForwardNsgReadExecute(r ApiForwardNsgReadRequest)
 }
 
 type ApiForwardNsgUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ForwardNsgAPI
-	id string
-	body *ConfigForwardNSG
+	id         string
+	body       *ConfigForwardNSG
 }
 
 func (r ApiForwardNsgUpdateRequest) Body(body ConfigForwardNSG) ApiForwardNsgUpdateRequest {
@@ -660,26 +662,27 @@ ForwardNsgUpdate Update the ForwardNSG object.
 Use this method to update a ForwardNSG object.
 The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiForwardNsgUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiForwardNsgUpdateRequest
 */
 func (a *ForwardNsgAPIService) ForwardNsgUpdate(ctx context.Context, id string) ApiForwardNsgUpdateRequest {
 	return ApiForwardNsgUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigUpdateForwardNSGResponse
+//
+//	@return ConfigUpdateForwardNSGResponse
 func (a *ForwardNsgAPIService) ForwardNsgUpdateExecute(r ApiForwardNsgUpdateRequest) (*ConfigUpdateForwardNSGResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigUpdateForwardNSGResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigUpdateForwardNSGResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ForwardNsgAPIService.ForwardNsgUpdate")
@@ -714,16 +717,16 @@ func (a *ForwardNsgAPIService) ForwardNsgUpdateExecute(r ApiForwardNsgUpdateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

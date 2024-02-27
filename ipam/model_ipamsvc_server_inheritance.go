@@ -19,21 +19,21 @@ var _ MappedNullable = &IpamsvcServerInheritance{}
 
 // IpamsvcServerInheritance The inheritance configuration specifies how and which fields _Server_ object (DHCP Config Profile) inherits from _Global_ parent.
 type IpamsvcServerInheritance struct {
-	DdnsBlock *IpamsvcInheritedDDNSBlock `json:"ddns_block,omitempty"`
-	DdnsClientUpdate *InheritanceInheritedString `json:"ddns_client_update,omitempty"`
-	DdnsConflictResolutionMode *InheritanceInheritedString `json:"ddns_conflict_resolution_mode,omitempty"`
-	DdnsHostnameBlock *IpamsvcInheritedDDNSHostnameBlock `json:"ddns_hostname_block,omitempty"`
-	DdnsTtlPercent *InheritanceInheritedFloat `json:"ddns_ttl_percent,omitempty"`
-	DdnsUpdateOnRenew *InheritanceInheritedBool `json:"ddns_update_on_renew,omitempty"`
-	DdnsUseConflictResolution *InheritanceInheritedBool `json:"ddns_use_conflict_resolution,omitempty"`
-	DhcpConfig *IpamsvcInheritedDHCPConfig `json:"dhcp_config,omitempty"`
-	DhcpOptions *IpamsvcInheritedDHCPOptionList `json:"dhcp_options,omitempty"`
-	DhcpOptionsV6 *IpamsvcInheritedDHCPOptionList `json:"dhcp_options_v6,omitempty"`
-	HeaderOptionFilename *InheritanceInheritedString `json:"header_option_filename,omitempty"`
-	HeaderOptionServerAddress *InheritanceInheritedString `json:"header_option_server_address,omitempty"`
-	HeaderOptionServerName *InheritanceInheritedString `json:"header_option_server_name,omitempty"`
-	HostnameRewriteBlock *IpamsvcInheritedHostnameRewriteBlock `json:"hostname_rewrite_block,omitempty"`
-	VendorSpecificOptionOptionSpace *InheritanceInheritedIdentifier `json:"vendor_specific_option_option_space,omitempty"`
+	DdnsBlock                       *IpamsvcInheritedDDNSBlock            `json:"ddns_block,omitempty"`
+	DdnsClientUpdate                *InheritanceInheritedString           `json:"ddns_client_update,omitempty"`
+	DdnsConflictResolutionMode      *InheritanceInheritedString           `json:"ddns_conflict_resolution_mode,omitempty"`
+	DdnsHostnameBlock               *IpamsvcInheritedDDNSHostnameBlock    `json:"ddns_hostname_block,omitempty"`
+	DdnsTtlPercent                  *InheritanceInheritedFloat            `json:"ddns_ttl_percent,omitempty"`
+	DdnsUpdateOnRenew               *InheritanceInheritedBool             `json:"ddns_update_on_renew,omitempty"`
+	DdnsUseConflictResolution       *InheritanceInheritedBool             `json:"ddns_use_conflict_resolution,omitempty"`
+	DhcpConfig                      *IpamsvcInheritedDHCPConfig           `json:"dhcp_config,omitempty"`
+	DhcpOptions                     *IpamsvcInheritedDHCPOptionList       `json:"dhcp_options,omitempty"`
+	DhcpOptionsV6                   *IpamsvcInheritedDHCPOptionList       `json:"dhcp_options_v6,omitempty"`
+	HeaderOptionFilename            *InheritanceInheritedString           `json:"header_option_filename,omitempty"`
+	HeaderOptionServerAddress       *InheritanceInheritedString           `json:"header_option_server_address,omitempty"`
+	HeaderOptionServerName          *InheritanceInheritedString           `json:"header_option_server_name,omitempty"`
+	HostnameRewriteBlock            *IpamsvcInheritedHostnameRewriteBlock `json:"hostname_rewrite_block,omitempty"`
+	VendorSpecificOptionOptionSpace *InheritanceInheritedIdentifier       `json:"vendor_specific_option_option_space,omitempty"`
 }
 
 // NewIpamsvcServerInheritance instantiates a new IpamsvcServerInheritance object
@@ -534,7 +534,7 @@ func (o *IpamsvcServerInheritance) SetVendorSpecificOptionOptionSpace(v Inherita
 }
 
 func (o IpamsvcServerInheritance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -626,5 +626,3 @@ func (v *NullableIpamsvcServerInheritance) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

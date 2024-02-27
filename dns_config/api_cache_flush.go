@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -17,19 +17,18 @@ import (
 	"net/http"
 	"net/url"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type CacheFlushAPI interface {
 	/*
-	CacheFlushCreate Create the Cache Flush object.
+			CacheFlushCreate Create the Cache Flush object.
 
-	Use this method to create a Cache Flush object.
-The Cache Flush object is for removing entries from the DNS cache on a host. The host must be available and running DNS for this to succeed.
+			Use this method to create a Cache Flush object.
+		The Cache Flush object is for removing entries from the DNS cache on a host. The host must be available and running DNS for this to succeed.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCacheFlushCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiCacheFlushCreateRequest
 	*/
 	CacheFlushCreate(ctx context.Context) ApiCacheFlushCreateRequest
 
@@ -42,9 +41,9 @@ The Cache Flush object is for removing entries from the DNS cache on a host. The
 type CacheFlushAPIService internal.Service
 
 type ApiCacheFlushCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService CacheFlushAPI
-	body *ConfigCacheFlush
+	body       *ConfigCacheFlush
 }
 
 func (r ApiCacheFlushCreateRequest) Body(body ConfigCacheFlush) ApiCacheFlushCreateRequest {
@@ -62,24 +61,25 @@ CacheFlushCreate Create the Cache Flush object.
 Use this method to create a Cache Flush object.
 The Cache Flush object is for removing entries from the DNS cache on a host. The host must be available and running DNS for this to succeed.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCacheFlushCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCacheFlushCreateRequest
 */
 func (a *CacheFlushAPIService) CacheFlushCreate(ctx context.Context) ApiCacheFlushCreateRequest {
 	return ApiCacheFlushCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *CacheFlushAPIService) CacheFlushCreateExecute(r ApiCacheFlushCreateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacheFlushAPIService.CacheFlushCreate")
@@ -113,8 +113,8 @@ func (a *CacheFlushAPIService) CacheFlushCreateExecute(r ApiCacheFlushCreateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    // body params
-    localVarPostBody = r.body
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

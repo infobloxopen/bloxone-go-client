@@ -21,7 +21,7 @@ var _ MappedNullable = &IpamsvcSubnet{}
 // IpamsvcSubnet A __Subnet__ object (_ipam/subnet_) is a set of contiguous IP addresses in the same IP space with no gap, expressed as an address and CIDR values. It represents a set of addresses from which addresses are assigned to network equipment interfaces.
 type IpamsvcSubnet struct {
 	// The address of the subnet in the form “a.b.c.d/n” where the “/n” may be omitted. In this case, the CIDR value must be defined in the _cidr_ field. When reading, the _address_ field is always in the form “a.b.c.d”.
-	Address *string `json:"address,omitempty"`
+	Address   *string           `json:"address,omitempty"`
 	AsmConfig *IpamsvcASMConfig `json:"asm_config,omitempty"`
 	// Set to 1 to indicate that the subnet may run out of addresses.
 	AsmScopeFlag *int64 `json:"asm_scope_flag,omitempty"`
@@ -48,12 +48,12 @@ type IpamsvcSubnet struct {
 	// Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_.
 	DdnsUpdateOnRenew *bool `json:"ddns_update_on_renew,omitempty"`
 	// When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_.
-	DdnsUseConflictResolution *bool `json:"ddns_use_conflict_resolution,omitempty"`
-	DhcpConfig *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
+	DdnsUseConflictResolution *bool              `json:"ddns_use_conflict_resolution,omitempty"`
+	DhcpConfig                *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
 	// The resource identifier.
 	DhcpHost *string `json:"dhcp_host,omitempty"`
 	// The DHCP options of the subnet. This can either be a specific option or a group of options.
-	DhcpOptions []IpamsvcOptionItem `json:"dhcp_options,omitempty"`
+	DhcpOptions     []IpamsvcOptionItem     `json:"dhcp_options,omitempty"`
 	DhcpUtilization *IpamsvcDHCPUtilization `json:"dhcp_utilization,omitempty"`
 	// Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration.  Defaults to _false_.
 	DisableDhcp *bool `json:"disable_dhcp,omitempty"`
@@ -78,7 +78,7 @@ type IpamsvcSubnet struct {
 	// The list of the inheritance assigned hosts of the object.
 	InheritanceAssignedHosts []InheritanceAssignedHost `json:"inheritance_assigned_hosts,omitempty"`
 	// The resource identifier.
-	InheritanceParent *string `json:"inheritance_parent,omitempty"`
+	InheritanceParent  *string                 `json:"inheritance_parent,omitempty"`
 	InheritanceSources *IpamsvcDHCPInheritance `json:"inheritance_sources,omitempty"`
 	// The name of the subnet. May contain 1 to 256 characters. Can include UTF-8.
 	Name *string `json:"name,omitempty"`
@@ -93,13 +93,13 @@ type IpamsvcSubnet struct {
 	// The resource identifier.
 	Space *string `json:"space,omitempty"`
 	// The tags for the subnet in JSON format.
-	Tags map[string]interface{} `json:"tags,omitempty"`
+	Tags      map[string]interface{}       `json:"tags,omitempty"`
 	Threshold *IpamsvcUtilizationThreshold `json:"threshold,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// The usage is a combination of indicators, each tracking a specific associated use. Listed below are usage indicators with their meaning:  usage indicator        | description  ---------------------- | --------------------------------  _IPAM_                 |  Subnet is managed in BloxOne DDI.  _DHCP_                 |  Subnet is served by a DHCP Host.  _DISCOVERED_           |  Subnet is discovered by some network discovery probe like Network Insight or NetMRI in NIOS.
-	Usage []string `json:"usage,omitempty"`
-	Utilization *IpamsvcUtilization `json:"utilization,omitempty"`
+	Usage         []string              `json:"usage,omitempty"`
+	Utilization   *IpamsvcUtilization   `json:"utilization,omitempty"`
 	UtilizationV6 *IpamsvcUtilizationV6 `json:"utilization_v6,omitempty"`
 }
 
@@ -1529,7 +1529,7 @@ func (o *IpamsvcSubnet) SetUtilizationV6(v IpamsvcUtilizationV6) {
 }
 
 func (o IpamsvcSubnet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1708,5 +1708,3 @@ func (v *NullableIpamsvcSubnet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

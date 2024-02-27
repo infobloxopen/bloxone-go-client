@@ -18,20 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type UIJoinTokenAPI interface {
 	/*
-	UIJoinTokenCreate User can create a join token. Join token is random character string which is used for instant validation of new hosts.
+			UIJoinTokenCreate User can create a join token. Join token is random character string which is used for instant validation of new hosts.
 
-	Validation:
-- "name" is required and should be unique.
-- "description" is optioanl.
+			Validation:
+		- "name" is required and should be unique.
+		- "description" is optioanl.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUIJoinTokenCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiUIJoinTokenCreateRequest
 	*/
 	UIJoinTokenCreate(ctx context.Context) ApiUIJoinTokenCreateRequest
 
@@ -39,33 +38,33 @@ type UIJoinTokenAPI interface {
 	//  @return HostactivationCreateJoinTokenResponse
 	UIJoinTokenCreateExecute(r ApiUIJoinTokenCreateRequest) (*HostactivationCreateJoinTokenResponse, *http.Response, error)
 	/*
-	UIJoinTokenDelete User can revoke the join token. Once revoked, it can not be used further. The join token record is preserved forever.
+		UIJoinTokenDelete User can revoke the join token. Once revoked, it can not be used further. The join token record is preserved forever.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiUIJoinTokenDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiUIJoinTokenDeleteRequest
 	*/
 	UIJoinTokenDelete(ctx context.Context, id string) ApiUIJoinTokenDeleteRequest
 
 	// UIJoinTokenDeleteExecute executes the request
 	UIJoinTokenDeleteExecute(r ApiUIJoinTokenDeleteRequest) (*http.Response, error)
 	/*
-	UIJoinTokenDeleteSet User can revoke a list of join tokens. Once revoked, join tokens can not be used further. The records are preserved forever.
+		UIJoinTokenDeleteSet User can revoke a list of join tokens. Once revoked, join tokens can not be used further. The records are preserved forever.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUIJoinTokenDeleteSetRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiUIJoinTokenDeleteSetRequest
 	*/
 	UIJoinTokenDeleteSet(ctx context.Context) ApiUIJoinTokenDeleteSetRequest
 
 	// UIJoinTokenDeleteSetExecute executes the request
 	UIJoinTokenDeleteSetExecute(r ApiUIJoinTokenDeleteSetRequest) (*http.Response, error)
 	/*
-	UIJoinTokenList User can list the join tokens for an account.
+		UIJoinTokenList User can list the join tokens for an account.
 
-	Both active and revoked join tokens are listed by default.
+		Both active and revoked join tokens are listed by default.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUIJoinTokenListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiUIJoinTokenListRequest
 	*/
 	UIJoinTokenList(ctx context.Context) ApiUIJoinTokenListRequest
 
@@ -73,11 +72,11 @@ type UIJoinTokenAPI interface {
 	//  @return HostactivationListJoinTokenResponse
 	UIJoinTokenListExecute(r ApiUIJoinTokenListRequest) (*HostactivationListJoinTokenResponse, *http.Response, error)
 	/*
-	UIJoinTokenRead User can get the join token providing its resource id in the parameter.
+		UIJoinTokenRead User can get the join token providing its resource id in the parameter.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiUIJoinTokenReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiUIJoinTokenReadRequest
 	*/
 	UIJoinTokenRead(ctx context.Context, id string) ApiUIJoinTokenReadRequest
 
@@ -85,15 +84,15 @@ type UIJoinTokenAPI interface {
 	//  @return HostactivationReadJoinTokenResponse
 	UIJoinTokenReadExecute(r ApiUIJoinTokenReadRequest) (*HostactivationReadJoinTokenResponse, *http.Response, error)
 	/*
-	UIJoinTokenUpdate User can modify the tags or expiration time of a join token.
+			UIJoinTokenUpdate User can modify the tags or expiration time of a join token.
 
-	Validation: Following fields is needed. Provide what needs to be
-- "expires_at"
-- "tags"
+			Validation: Following fields is needed. Provide what needs to be
+		- "expires_at"
+		- "tags"
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiUIJoinTokenUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiUIJoinTokenUpdateRequest
 	*/
 	UIJoinTokenUpdate(ctx context.Context, id string) ApiUIJoinTokenUpdateRequest
 
@@ -106,9 +105,9 @@ type UIJoinTokenAPI interface {
 type UIJoinTokenAPIService internal.Service
 
 type ApiUIJoinTokenCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	body *HostactivationJoinToken
+	body       *HostactivationJoinToken
 }
 
 func (r ApiUIJoinTokenCreateRequest) Body(body HostactivationJoinToken) ApiUIJoinTokenCreateRequest {
@@ -127,24 +126,25 @@ Validation:
 - "name" is required and should be unique.
 - "description" is optioanl.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUIJoinTokenCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUIJoinTokenCreateRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenCreate(ctx context.Context) ApiUIJoinTokenCreateRequest {
 	return ApiUIJoinTokenCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return HostactivationCreateJoinTokenResponse
+//
+//	@return HostactivationCreateJoinTokenResponse
 func (a *UIJoinTokenAPIService) UIJoinTokenCreateExecute(r ApiUIJoinTokenCreateRequest) (*HostactivationCreateJoinTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *HostactivationCreateJoinTokenResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *HostactivationCreateJoinTokenResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenCreate")
@@ -178,16 +178,16 @@ func (a *UIJoinTokenAPIService) UIJoinTokenCreateExecute(r ApiUIJoinTokenCreateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -233,9 +233,9 @@ func (a *UIJoinTokenAPIService) UIJoinTokenCreateExecute(r ApiUIJoinTokenCreateR
 }
 
 type ApiUIJoinTokenDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	id string
+	id         string
 }
 
 func (r ApiUIJoinTokenDeleteRequest) Execute() (*http.Response, error) {
@@ -245,24 +245,24 @@ func (r ApiUIJoinTokenDeleteRequest) Execute() (*http.Response, error) {
 /*
 UIJoinTokenDelete User can revoke the join token. Once revoked, it can not be used further. The join token record is preserved forever.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiUIJoinTokenDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiUIJoinTokenDeleteRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenDelete(ctx context.Context, id string) ApiUIJoinTokenDeleteRequest {
 	return ApiUIJoinTokenDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *UIJoinTokenAPIService) UIJoinTokenDeleteExecute(r ApiUIJoinTokenDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenDelete")
@@ -334,9 +334,9 @@ func (a *UIJoinTokenAPIService) UIJoinTokenDeleteExecute(r ApiUIJoinTokenDeleteR
 }
 
 type ApiUIJoinTokenDeleteSetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	body *HostactivationDeleteJoinTokensRequest
+	body       *HostactivationDeleteJoinTokensRequest
 }
 
 func (r ApiUIJoinTokenDeleteSetRequest) Body(body HostactivationDeleteJoinTokensRequest) ApiUIJoinTokenDeleteSetRequest {
@@ -351,22 +351,22 @@ func (r ApiUIJoinTokenDeleteSetRequest) Execute() (*http.Response, error) {
 /*
 UIJoinTokenDeleteSet User can revoke a list of join tokens. Once revoked, join tokens can not be used further. The records are preserved forever.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUIJoinTokenDeleteSetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUIJoinTokenDeleteSetRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenDeleteSet(ctx context.Context) ApiUIJoinTokenDeleteSetRequest {
 	return ApiUIJoinTokenDeleteSetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UIJoinTokenAPIService) UIJoinTokenDeleteSetExecute(r ApiUIJoinTokenDeleteSetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenDeleteSet")
@@ -400,8 +400,8 @@ func (a *UIJoinTokenAPIService) UIJoinTokenDeleteSetExecute(r ApiUIJoinTokenDele
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    // body params
-    localVarPostBody = r.body
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -442,42 +442,42 @@ func (a *UIJoinTokenAPIService) UIJoinTokenDeleteSetExecute(r ApiUIJoinTokenDele
 }
 
 type ApiUIJoinTokenListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	filter *string
-	orderBy *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	tfilter *string
-	torderBy *string
+	filter     *string
+	orderBy    *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	tfilter    *string
+	torderBy   *string
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiUIJoinTokenListRequest) Filter(filter string) ApiUIJoinTokenListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiUIJoinTokenListRequest) OrderBy(orderBy string) ApiUIJoinTokenListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiUIJoinTokenListRequest) Offset(offset int32) ApiUIJoinTokenListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiUIJoinTokenListRequest) Limit(limit int32) ApiUIJoinTokenListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiUIJoinTokenListRequest) PageToken(pageToken string) ApiUIJoinTokenListRequest {
 	r.pageToken = &pageToken
 	return r
@@ -504,24 +504,25 @@ UIJoinTokenList User can list the join tokens for an account.
 
 Both active and revoked join tokens are listed by default.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUIJoinTokenListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUIJoinTokenListRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenList(ctx context.Context) ApiUIJoinTokenListRequest {
 	return ApiUIJoinTokenListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return HostactivationListJoinTokenResponse
+//
+//	@return HostactivationListJoinTokenResponse
 func (a *UIJoinTokenAPIService) UIJoinTokenListExecute(r ApiUIJoinTokenListRequest) (*HostactivationListJoinTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *HostactivationListJoinTokenResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *HostactivationListJoinTokenResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenList")
@@ -618,13 +619,13 @@ func (a *UIJoinTokenAPIService) UIJoinTokenListExecute(r ApiUIJoinTokenListReque
 }
 
 type ApiUIJoinTokenReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	id string
-	fields *string
+	id         string
+	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiUIJoinTokenReadRequest) Fields(fields string) ApiUIJoinTokenReadRequest {
 	r.fields = &fields
 	return r
@@ -637,26 +638,27 @@ func (r ApiUIJoinTokenReadRequest) Execute() (*HostactivationReadJoinTokenRespon
 /*
 UIJoinTokenRead User can get the join token providing its resource id in the parameter.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiUIJoinTokenReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiUIJoinTokenReadRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenRead(ctx context.Context, id string) ApiUIJoinTokenReadRequest {
 	return ApiUIJoinTokenReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return HostactivationReadJoinTokenResponse
+//
+//	@return HostactivationReadJoinTokenResponse
 func (a *UIJoinTokenAPIService) UIJoinTokenReadExecute(r ApiUIJoinTokenReadRequest) (*HostactivationReadJoinTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *HostactivationReadJoinTokenResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *HostactivationReadJoinTokenResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenRead")
@@ -736,10 +738,10 @@ func (a *UIJoinTokenAPIService) UIJoinTokenReadExecute(r ApiUIJoinTokenReadReque
 }
 
 type ApiUIJoinTokenUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UIJoinTokenAPI
-	id string
-	body *HostactivationJoinToken
+	id         string
+	body       *HostactivationJoinToken
 }
 
 func (r ApiUIJoinTokenUpdateRequest) Body(body HostactivationJoinToken) ApiUIJoinTokenUpdateRequest {
@@ -758,26 +760,27 @@ Validation: Following fields is needed. Provide what needs to be
 - "expires_at"
 - "tags"
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiUIJoinTokenUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiUIJoinTokenUpdateRequest
 */
 func (a *UIJoinTokenAPIService) UIJoinTokenUpdate(ctx context.Context, id string) ApiUIJoinTokenUpdateRequest {
 	return ApiUIJoinTokenUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return HostactivationUpdateJoinTokenResponse
+//
+//	@return HostactivationUpdateJoinTokenResponse
 func (a *UIJoinTokenAPIService) UIJoinTokenUpdateExecute(r ApiUIJoinTokenUpdateRequest) (*HostactivationUpdateJoinTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *HostactivationUpdateJoinTokenResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *HostactivationUpdateJoinTokenResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UIJoinTokenAPIService.UIJoinTokenUpdate")
@@ -812,16 +815,16 @@ func (a *UIJoinTokenAPIService) UIJoinTokenUpdateExecute(r ApiUIJoinTokenUpdateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

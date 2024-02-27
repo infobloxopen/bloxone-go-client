@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -17,18 +17,17 @@ import (
 	"net/http"
 	"net/url"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type UploadAPI interface {
 	/*
-	UploadUpload Upload content to the keys service.
+		UploadUpload Upload content to the keys service.
 
-	Use this method to upload specified content type to the keys service.
+		Use this method to upload specified content type to the keys service.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUploadUploadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiUploadUploadRequest
 	*/
 	UploadUpload(ctx context.Context) ApiUploadUploadRequest
 
@@ -41,9 +40,9 @@ type UploadAPI interface {
 type UploadAPIService internal.Service
 
 type ApiUploadUploadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService UploadAPI
-	body *UploadRequest
+	body       *UploadRequest
 }
 
 func (r ApiUploadUploadRequest) Body(body UploadRequest) ApiUploadUploadRequest {
@@ -60,24 +59,25 @@ UploadUpload Upload content to the keys service.
 
 Use this method to upload specified content type to the keys service.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUploadUploadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUploadUploadRequest
 */
 func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequest {
 	return ApiUploadUploadRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return DdiuploadResponse
+//
+//	@return DdiuploadResponse
 func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*DdiuploadResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *DdiuploadResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *DdiuploadResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UploadAPIService.UploadUpload")
@@ -111,16 +111,16 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

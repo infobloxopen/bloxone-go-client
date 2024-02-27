@@ -11,10 +11,10 @@ API version: v1
 package ipam
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the IpamsvcServer type satisfies the MappedNullable interface at compile time
@@ -49,7 +49,7 @@ type IpamsvcServer struct {
 	// When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_.
 	DdnsUseConflictResolution *bool `json:"ddns_use_conflict_resolution,omitempty"`
 	// The DNS zones that DDNS updates can be sent to. There is no resolver fallback. The target zone must be explicitly configured for the update to be performed.  Updates are sent to the closest enclosing zone.  Error if _ddns_enabled_ is _true_ and the _ddns_domain_ does not have a corresponding entry in _ddns_zones_.  Error if there are items with duplicate zone in the list.  Defaults to empty list.
-	DdnsZones []IpamsvcDDNSZone `json:"ddns_zones,omitempty"`
+	DdnsZones  []IpamsvcDDNSZone  `json:"ddns_zones,omitempty"`
 	DhcpConfig *IpamsvcDHCPConfig `json:"dhcp_config,omitempty"`
 	// The list of DHCP options or group of options for IPv4. An option list is ordered and may include both option groups and specific options. Multiple occurences of the same option or group is not an error. The last occurence of an option in the list will be used.  Error if the graph of referenced groups contains cycles.  Defaults to empty list.
 	DhcpOptions []IpamsvcOptionItem `json:"dhcp_options,omitempty"`
@@ -70,7 +70,7 @@ type IpamsvcServer struct {
 	// The regex bracket expression to match valid characters.  Must begin with \"[\" and end with \"]\" and be a compilable POSIX regex.  Defaults to \"[^a-zA-Z0-9_.]\".
 	HostnameRewriteRegex *string `json:"hostname_rewrite_regex,omitempty"`
 	// The resource identifier.
-	Id *string `json:"id,omitempty"`
+	Id                 *string                   `json:"id,omitempty"`
 	InheritanceSources *IpamsvcServerInheritance `json:"inheritance_sources,omitempty"`
 	// Address of Kerberos Key Distribution Center.  Defaults to empty.
 	KerberosKdc *string `json:"kerberos_kdc,omitempty"`
@@ -1293,7 +1293,7 @@ func (o *IpamsvcServer) SetVendorSpecificOptionOptionSpace(v string) {
 }
 
 func (o IpamsvcServer) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1427,10 +1427,10 @@ func (o *IpamsvcServer) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1486,5 +1486,3 @@ func (v *NullableIpamsvcServer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

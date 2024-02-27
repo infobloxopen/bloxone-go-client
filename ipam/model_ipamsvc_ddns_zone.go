@@ -11,8 +11,8 @@ API version: v1
 package ipam
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -28,8 +28,8 @@ type IpamsvcDDNSZone struct {
 	// The Nameservers in the zone.  Each nameserver IP should be unique across the list of nameservers.
 	Nameservers []IpamsvcNameserver `json:"nameservers,omitempty"`
 	// Indicates if TSIG key should be used for the update.  Defaults to _false_.
-	TsigEnabled *bool `json:"tsig_enabled,omitempty"`
-	TsigKey *IpamsvcTSIGKey `json:"tsig_key,omitempty"`
+	TsigEnabled *bool           `json:"tsig_enabled,omitempty"`
+	TsigKey     *IpamsvcTSIGKey `json:"tsig_key,omitempty"`
 	// The resource identifier.
 	View *string `json:"view,omitempty"`
 	// The name of the view.
@@ -307,7 +307,7 @@ func (o *IpamsvcDDNSZone) SetZone(v string) {
 }
 
 func (o IpamsvcDDNSZone) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -354,10 +354,10 @@ func (o *IpamsvcDDNSZone) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -413,5 +413,3 @@ func (v *NullableIpamsvcDDNSZone) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,19 +18,18 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type ConvertRnameAPI interface {
 	/*
-	ConvertRnameConvertRName Convert the object.
+		ConvertRnameConvertRName Convert the object.
 
-	Use this method to convert email address to the master file RNAME format.
+		Use this method to convert email address to the master file RNAME format.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param emailAddress Input email address.
-	@return ApiConvertRnameConvertRNameRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param emailAddress Input email address.
+		@return ApiConvertRnameConvertRNameRequest
 	*/
 	ConvertRnameConvertRName(ctx context.Context, emailAddress string) ApiConvertRnameConvertRNameRequest
 
@@ -43,8 +42,8 @@ type ConvertRnameAPI interface {
 type ConvertRnameAPIService internal.Service
 
 type ApiConvertRnameConvertRNameRequest struct {
-	ctx context.Context
-	ApiService ConvertRnameAPI
+	ctx          context.Context
+	ApiService   ConvertRnameAPI
 	emailAddress string
 }
 
@@ -57,26 +56,27 @@ ConvertRnameConvertRName Convert the object.
 
 Use this method to convert email address to the master file RNAME format.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param emailAddress Input email address.
- @return ApiConvertRnameConvertRNameRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param emailAddress Input email address.
+	@return ApiConvertRnameConvertRNameRequest
 */
 func (a *ConvertRnameAPIService) ConvertRnameConvertRName(ctx context.Context, emailAddress string) ApiConvertRnameConvertRNameRequest {
 	return ApiConvertRnameConvertRNameRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		emailAddress: emailAddress,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigConvertRNameResponse
+//
+//	@return ConfigConvertRNameResponse
 func (a *ConvertRnameAPIService) ConvertRnameConvertRNameExecute(r ApiConvertRnameConvertRNameRequest) (*ConfigConvertRNameResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigConvertRNameResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigConvertRNameResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ConvertRnameAPIService.ConvertRnameConvertRName")

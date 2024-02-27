@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -19,35 +19,35 @@ var _ MappedNullable = &ConfigServerInheritance{}
 
 // ConfigServerInheritance Inheritance configuration specifies how and which fields _Server_ object inherits from _Global_ parent.
 type ConfigServerInheritance struct {
-	AddEdnsOptionInOutgoingQuery *Inheritance2InheritedBool `json:"add_edns_option_in_outgoing_query,omitempty"`
-	CustomRootNsBlock *ConfigInheritedCustomRootNSBlock `json:"custom_root_ns_block,omitempty"`
-	DnssecValidationBlock *ConfigInheritedDNSSECValidationBlock `json:"dnssec_validation_block,omitempty"`
-	EcsBlock *ConfigInheritedECSBlock `json:"ecs_block,omitempty"`
-	FilterAaaaAcl *ConfigInheritedACLItems `json:"filter_aaaa_acl,omitempty"`
-	FilterAaaaOnV4 *Inheritance2InheritedString `json:"filter_aaaa_on_v4,omitempty"`
-	ForwardersBlock *ConfigInheritedForwardersBlock `json:"forwarders_block,omitempty"`
-	GssTsigEnabled *Inheritance2InheritedBool `json:"gss_tsig_enabled,omitempty"`
-	KerberosKeys *ConfigInheritedKerberosKeys `json:"kerberos_keys,omitempty"`
-	LameTtl *Inheritance2InheritedUInt32 `json:"lame_ttl,omitempty"`
-	LogQueryResponse *Inheritance2InheritedBool `json:"log_query_response,omitempty"`
-	MatchRecursiveOnly *Inheritance2InheritedBool `json:"match_recursive_only,omitempty"`
-	MaxCacheTtl *Inheritance2InheritedUInt32 `json:"max_cache_ttl,omitempty"`
-	MaxNegativeTtl *Inheritance2InheritedUInt32 `json:"max_negative_ttl,omitempty"`
-	MinimalResponses *Inheritance2InheritedBool `json:"minimal_responses,omitempty"`
-	Notify *Inheritance2InheritedBool `json:"notify,omitempty"`
-	QueryAcl *ConfigInheritedACLItems `json:"query_acl,omitempty"`
-	QueryPort *Inheritance2InheritedUInt32 `json:"query_port,omitempty"`
-	RecursionAcl *ConfigInheritedACLItems `json:"recursion_acl,omitempty"`
-	RecursionEnabled *Inheritance2InheritedBool `json:"recursion_enabled,omitempty"`
-	RecursiveClients *Inheritance2InheritedUInt32 `json:"recursive_clients,omitempty"`
-	ResolverQueryTimeout *Inheritance2InheritedUInt32 `json:"resolver_query_timeout,omitempty"`
-	SecondaryAxfrQueryLimit *Inheritance2InheritedUInt32 `json:"secondary_axfr_query_limit,omitempty"`
-	SecondarySoaQueryLimit *Inheritance2InheritedUInt32 `json:"secondary_soa_query_limit,omitempty"`
-	SortList *ConfigInheritedSortListItems `json:"sort_list,omitempty"`
-	SynthesizeAddressRecordsFromHttps *Inheritance2InheritedBool `json:"synthesize_address_records_from_https,omitempty"`
-	TransferAcl *ConfigInheritedACLItems `json:"transfer_acl,omitempty"`
-	UpdateAcl *ConfigInheritedACLItems `json:"update_acl,omitempty"`
-	UseForwardersForSubzones *Inheritance2InheritedBool `json:"use_forwarders_for_subzones,omitempty"`
+	AddEdnsOptionInOutgoingQuery      *Inheritance2InheritedBool            `json:"add_edns_option_in_outgoing_query,omitempty"`
+	CustomRootNsBlock                 *ConfigInheritedCustomRootNSBlock     `json:"custom_root_ns_block,omitempty"`
+	DnssecValidationBlock             *ConfigInheritedDNSSECValidationBlock `json:"dnssec_validation_block,omitempty"`
+	EcsBlock                          *ConfigInheritedECSBlock              `json:"ecs_block,omitempty"`
+	FilterAaaaAcl                     *ConfigInheritedACLItems              `json:"filter_aaaa_acl,omitempty"`
+	FilterAaaaOnV4                    *Inheritance2InheritedString          `json:"filter_aaaa_on_v4,omitempty"`
+	ForwardersBlock                   *ConfigInheritedForwardersBlock       `json:"forwarders_block,omitempty"`
+	GssTsigEnabled                    *Inheritance2InheritedBool            `json:"gss_tsig_enabled,omitempty"`
+	KerberosKeys                      *ConfigInheritedKerberosKeys          `json:"kerberos_keys,omitempty"`
+	LameTtl                           *Inheritance2InheritedUInt32          `json:"lame_ttl,omitempty"`
+	LogQueryResponse                  *Inheritance2InheritedBool            `json:"log_query_response,omitempty"`
+	MatchRecursiveOnly                *Inheritance2InheritedBool            `json:"match_recursive_only,omitempty"`
+	MaxCacheTtl                       *Inheritance2InheritedUInt32          `json:"max_cache_ttl,omitempty"`
+	MaxNegativeTtl                    *Inheritance2InheritedUInt32          `json:"max_negative_ttl,omitempty"`
+	MinimalResponses                  *Inheritance2InheritedBool            `json:"minimal_responses,omitempty"`
+	Notify                            *Inheritance2InheritedBool            `json:"notify,omitempty"`
+	QueryAcl                          *ConfigInheritedACLItems              `json:"query_acl,omitempty"`
+	QueryPort                         *Inheritance2InheritedUInt32          `json:"query_port,omitempty"`
+	RecursionAcl                      *ConfigInheritedACLItems              `json:"recursion_acl,omitempty"`
+	RecursionEnabled                  *Inheritance2InheritedBool            `json:"recursion_enabled,omitempty"`
+	RecursiveClients                  *Inheritance2InheritedUInt32          `json:"recursive_clients,omitempty"`
+	ResolverQueryTimeout              *Inheritance2InheritedUInt32          `json:"resolver_query_timeout,omitempty"`
+	SecondaryAxfrQueryLimit           *Inheritance2InheritedUInt32          `json:"secondary_axfr_query_limit,omitempty"`
+	SecondarySoaQueryLimit            *Inheritance2InheritedUInt32          `json:"secondary_soa_query_limit,omitempty"`
+	SortList                          *ConfigInheritedSortListItems         `json:"sort_list,omitempty"`
+	SynthesizeAddressRecordsFromHttps *Inheritance2InheritedBool            `json:"synthesize_address_records_from_https,omitempty"`
+	TransferAcl                       *ConfigInheritedACLItems              `json:"transfer_acl,omitempty"`
+	UpdateAcl                         *ConfigInheritedACLItems              `json:"update_acl,omitempty"`
+	UseForwardersForSubzones          *Inheritance2InheritedBool            `json:"use_forwarders_for_subzones,omitempty"`
 }
 
 // NewConfigServerInheritance instantiates a new ConfigServerInheritance object
@@ -996,7 +996,7 @@ func (o *ConfigServerInheritance) SetUseForwardersForSubzones(v Inheritance2Inhe
 }
 
 func (o ConfigServerInheritance) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1130,5 +1130,3 @@ func (v *NullableConfigServerInheritance) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

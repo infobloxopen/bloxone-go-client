@@ -21,11 +21,11 @@ var _ MappedNullable = &IpamsvcInheritedASMConfig{}
 type IpamsvcInheritedASMConfig struct {
 	AsmEnableBlock *IpamsvcInheritedAsmEnableBlock `json:"asm_enable_block,omitempty"`
 	AsmGrowthBlock *IpamsvcInheritedAsmGrowthBlock `json:"asm_growth_block,omitempty"`
-	AsmThreshold *InheritanceInheritedUInt32 `json:"asm_threshold,omitempty"`
-	ForecastPeriod *InheritanceInheritedUInt32 `json:"forecast_period,omitempty"`
-	History *InheritanceInheritedUInt32 `json:"history,omitempty"`
-	MinTotal *InheritanceInheritedUInt32 `json:"min_total,omitempty"`
-	MinUnused *InheritanceInheritedUInt32 `json:"min_unused,omitempty"`
+	AsmThreshold   *InheritanceInheritedUInt32     `json:"asm_threshold,omitempty"`
+	ForecastPeriod *InheritanceInheritedUInt32     `json:"forecast_period,omitempty"`
+	History        *InheritanceInheritedUInt32     `json:"history,omitempty"`
+	MinTotal       *InheritanceInheritedUInt32     `json:"min_total,omitempty"`
+	MinUnused      *InheritanceInheritedUInt32     `json:"min_unused,omitempty"`
 }
 
 // NewIpamsvcInheritedASMConfig instantiates a new IpamsvcInheritedASMConfig object
@@ -270,7 +270,7 @@ func (o *IpamsvcInheritedASMConfig) SetMinUnused(v InheritanceInheritedUInt32) {
 }
 
 func (o IpamsvcInheritedASMConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,5 +338,3 @@ func (v *NullableIpamsvcInheritedASMConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

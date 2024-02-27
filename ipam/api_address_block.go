@@ -18,20 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type AddressBlockAPI interface {
 	/*
-	AddressBlockCopy Copy the address block.
+			AddressBlockCopy Copy the address block.
 
-	Use this method to copy an __AddressBlock__ object.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to copy an __AddressBlock__ object.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockCopyRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockCopyRequest
 	*/
 	AddressBlockCopy(ctx context.Context, id string) ApiAddressBlockCopyRequest
 
@@ -39,13 +38,13 @@ The __AddressBlock__ object allows a uniform representation of the address space
 	//  @return IpamsvcCopyAddressBlockResponse
 	AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*IpamsvcCopyAddressBlockResponse, *http.Response, error)
 	/*
-	AddressBlockCreate Create the address block.
+			AddressBlockCreate Create the address block.
 
-	Use this method to create an __AddressBlock__ object.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to create an __AddressBlock__ object.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAddressBlockCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiAddressBlockCreateRequest
 	*/
 	AddressBlockCreate(ctx context.Context) ApiAddressBlockCreateRequest
 
@@ -53,14 +52,14 @@ The __AddressBlock__ object allows a uniform representation of the address space
 	//  @return IpamsvcCreateAddressBlockResponse
 	AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*IpamsvcCreateAddressBlockResponse, *http.Response, error)
 	/*
-	AddressBlockCreateNextAvailableAB Create the Next Available Address Block object.
+			AddressBlockCreateNextAvailableAB Create the Next Available Address Block object.
 
-	Use this method to create a Next Available __AddressBlock__ object.
-The Next Available Address Block is a generator that allocates one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
+			Use this method to create a Next Available __AddressBlock__ object.
+		The Next Available Address Block is a generator that allocates one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockCreateNextAvailableABRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockCreateNextAvailableABRequest
 	*/
 	AddressBlockCreateNextAvailableAB(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableABRequest
 
@@ -68,14 +67,14 @@ The Next Available Address Block is a generator that allocates one or more _ipam
 	//  @return IpamsvcCreateNextAvailableABResponse
 	AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*IpamsvcCreateNextAvailableABResponse, *http.Response, error)
 	/*
-	AddressBlockCreateNextAvailableIP Allocate the next available IP address.
+			AddressBlockCreateNextAvailableIP Allocate the next available IP address.
 
-	Use this method to allocate the next available IP address.
-This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
+			Use this method to allocate the next available IP address.
+		This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockCreateNextAvailableIPRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockCreateNextAvailableIPRequest
 	*/
 	AddressBlockCreateNextAvailableIP(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableIPRequest
 
@@ -83,14 +82,14 @@ This allocates one or more __Address__ (_ipam/address_) resource from available 
 	//  @return IpamsvcCreateNextAvailableIPResponse
 	AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
 	/*
-	AddressBlockCreateNextAvailableSubnet Create the Next Available Subnet object.
+			AddressBlockCreateNextAvailableSubnet Create the Next Available Subnet object.
 
-	Use this method to create a Next Available __Subnet__ object.
-The Next Available Subnet is a generator that allocates one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
+			Use this method to create a Next Available __Subnet__ object.
+		The Next Available Subnet is a generator that allocates one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockCreateNextAvailableSubnetRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockCreateNextAvailableSubnetRequest
 	*/
 	AddressBlockCreateNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableSubnetRequest
 
@@ -98,27 +97,27 @@ The Next Available Subnet is a generator that allocates one or more _ipam/subnet
 	//  @return IpamsvcCreateNextAvailableSubnetResponse
 	AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*IpamsvcCreateNextAvailableSubnetResponse, *http.Response, error)
 	/*
-	AddressBlockDelete Move the address block to the recycle bin.
+			AddressBlockDelete Move the address block to the recycle bin.
 
-	Use this method to move an __AddressBlock__ object to the recycle bin.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to move an __AddressBlock__ object to the recycle bin.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockDeleteRequest
 	*/
 	AddressBlockDelete(ctx context.Context, id string) ApiAddressBlockDeleteRequest
 
 	// AddressBlockDeleteExecute executes the request
 	AddressBlockDeleteExecute(r ApiAddressBlockDeleteRequest) (*http.Response, error)
 	/*
-	AddressBlockList Retrieve the address blocks.
+			AddressBlockList Retrieve the address blocks.
 
-	Use this method to retrieve __AddressBlock__ objects.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to retrieve __AddressBlock__ objects.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAddressBlockListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiAddressBlockListRequest
 	*/
 	AddressBlockList(ctx context.Context) ApiAddressBlockListRequest
 
@@ -126,14 +125,14 @@ The __AddressBlock__ object allows a uniform representation of the address space
 	//  @return IpamsvcListAddressBlockResponse
 	AddressBlockListExecute(r ApiAddressBlockListRequest) (*IpamsvcListAddressBlockResponse, *http.Response, error)
 	/*
-	AddressBlockListNextAvailableAB List Next Available Address Block objects.
+			AddressBlockListNextAvailableAB List Next Available Address Block objects.
 
-	Use this method to list Next Available __AddressBlock__ objects.
-The Next Available __AddressBlock__ is a generator that returns one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
+			Use this method to list Next Available __AddressBlock__ objects.
+		The Next Available __AddressBlock__ is a generator that returns one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockListNextAvailableABRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockListNextAvailableABRequest
 	*/
 	AddressBlockListNextAvailableAB(ctx context.Context, id string) ApiAddressBlockListNextAvailableABRequest
 
@@ -141,14 +140,14 @@ The Next Available __AddressBlock__ is a generator that returns one or more _ipa
 	//  @return IpamsvcNextAvailableABResponse
 	AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*IpamsvcNextAvailableABResponse, *http.Response, error)
 	/*
-	AddressBlockListNextAvailableIP Retrieve the next available IP address.
+			AddressBlockListNextAvailableIP Retrieve the next available IP address.
 
-	Use this method to retrieve the next available IP address.
-This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
+			Use this method to retrieve the next available IP address.
+		This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockListNextAvailableIPRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockListNextAvailableIPRequest
 	*/
 	AddressBlockListNextAvailableIP(ctx context.Context, id string) ApiAddressBlockListNextAvailableIPRequest
 
@@ -156,14 +155,14 @@ This returns one or more __Address__ (_ipam/address_) resource from available ad
 	//  @return IpamsvcNextAvailableIPResponse
 	AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
 	/*
-	AddressBlockListNextAvailableSubnet List Next Available Subnet objects.
+			AddressBlockListNextAvailableSubnet List Next Available Subnet objects.
 
-	Use this method to list Next Available __Subnet__ objects.
-The Next Available Address Block is a generator that returns one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
+			Use this method to list Next Available __Subnet__ objects.
+		The Next Available Address Block is a generator that returns one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockListNextAvailableSubnetRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockListNextAvailableSubnetRequest
 	*/
 	AddressBlockListNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockListNextAvailableSubnetRequest
 
@@ -171,14 +170,14 @@ The Next Available Address Block is a generator that returns one or more _ipam/s
 	//  @return IpamsvcNextAvailableSubnetResponse
 	AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*IpamsvcNextAvailableSubnetResponse, *http.Response, error)
 	/*
-	AddressBlockRead Retrieve the address block.
+			AddressBlockRead Retrieve the address block.
 
-	Use this method to retrieve an __AddressBlock__ object.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to retrieve an __AddressBlock__ object.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockReadRequest
 	*/
 	AddressBlockRead(ctx context.Context, id string) ApiAddressBlockReadRequest
 
@@ -186,14 +185,14 @@ The __AddressBlock__ object allows a uniform representation of the address space
 	//  @return IpamsvcReadAddressBlockResponse
 	AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*IpamsvcReadAddressBlockResponse, *http.Response, error)
 	/*
-	AddressBlockUpdate Update the address block.
+			AddressBlockUpdate Update the address block.
 
-	Use this method to update an __AddressBlock__ object.
-The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+			Use this method to update an __AddressBlock__ object.
+		The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiAddressBlockUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAddressBlockUpdateRequest
 	*/
 	AddressBlockUpdate(ctx context.Context, id string) ApiAddressBlockUpdateRequest
 
@@ -206,10 +205,10 @@ The __AddressBlock__ object allows a uniform representation of the address space
 type AddressBlockAPIService internal.Service
 
 type ApiAddressBlockCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	body *IpamsvcCopyAddressBlock
+	id         string
+	body       *IpamsvcCopyAddressBlock
 }
 
 func (r ApiAddressBlockCopyRequest) Body(body IpamsvcCopyAddressBlock) ApiAddressBlockCopyRequest {
@@ -227,26 +226,27 @@ AddressBlockCopy Copy the address block.
 Use this method to copy an __AddressBlock__ object.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockCopyRequest
 */
 func (a *AddressBlockAPIService) AddressBlockCopy(ctx context.Context, id string) ApiAddressBlockCopyRequest {
 	return ApiAddressBlockCopyRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCopyAddressBlockResponse
+//
+//	@return IpamsvcCopyAddressBlockResponse
 func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*IpamsvcCopyAddressBlockResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCopyAddressBlockResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCopyAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCopy")
@@ -281,8 +281,8 @@ func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    // body params
-    localVarPostBody = r.body
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -328,10 +328,10 @@ func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRe
 }
 
 type ApiAddressBlockCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	body *IpamsvcAddressBlock
-	inherit *string
+	body       *IpamsvcAddressBlock
+	inherit    *string
 }
 
 func (r ApiAddressBlockCreateRequest) Body(body IpamsvcAddressBlock) ApiAddressBlockCreateRequest {
@@ -355,24 +355,25 @@ AddressBlockCreate Create the address block.
 Use this method to create an __AddressBlock__ object.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAddressBlockCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAddressBlockCreateRequest
 */
 func (a *AddressBlockAPIService) AddressBlockCreate(ctx context.Context) ApiAddressBlockCreateRequest {
 	return ApiAddressBlockCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateAddressBlockResponse
+//
+//	@return IpamsvcCreateAddressBlockResponse
 func (a *AddressBlockAPIService) AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*IpamsvcCreateAddressBlockResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateAddressBlockResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreate")
@@ -409,16 +410,16 @@ func (a *AddressBlockAPIService) AddressBlockCreateExecute(r ApiAddressBlockCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -464,13 +465,13 @@ func (a *AddressBlockAPIService) AddressBlockCreateExecute(r ApiAddressBlockCrea
 }
 
 type ApiAddressBlockCreateNextAvailableABRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	cidr *int32
-	count *int32
-	name *string
-	comment *string
+	id         string
+	cidr       *int32
+	count      *int32
+	name       *string
+	comment    *string
 }
 
 // The cidr value of address blocks to be created.
@@ -507,26 +508,27 @@ AddressBlockCreateNextAvailableAB Create the Next Available Address Block object
 Use this method to create a Next Available __AddressBlock__ object.
 The Next Available Address Block is a generator that allocates one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockCreateNextAvailableABRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockCreateNextAvailableABRequest
 */
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableAB(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableABRequest {
 	return ApiAddressBlockCreateNextAvailableABRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateNextAvailableABResponse
+//
+//	@return IpamsvcCreateNextAvailableABResponse
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*IpamsvcCreateNextAvailableABResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateNextAvailableABResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateNextAvailableABResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableAB")
@@ -619,11 +621,11 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableABExecute(r ApiA
 }
 
 type ApiAddressBlockCreateNextAvailableIPRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
+	id         string
 	contiguous *bool
-	count *int32
+	count      *int32
 }
 
 // Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_.
@@ -648,26 +650,27 @@ AddressBlockCreateNextAvailableIP Allocate the next available IP address.
 Use this method to allocate the next available IP address.
 This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockCreateNextAvailableIPRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockCreateNextAvailableIPRequest
 */
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIP(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableIPRequest {
 	return ApiAddressBlockCreateNextAvailableIPRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateNextAvailableIPResponse
+//
+//	@return IpamsvcCreateNextAvailableIPResponse
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateNextAvailableIPResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateNextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableIP")
@@ -756,14 +759,14 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIPExecute(r ApiA
 }
 
 type ApiAddressBlockCreateNextAvailableSubnetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	cidr *int32
-	count *int32
-	name *string
-	comment *string
-	dhcpHost *string
+	id         string
+	cidr       *int32
+	count      *int32
+	name       *string
+	comment    *string
+	dhcpHost   *string
 }
 
 // The cidr value of subnets to be created.
@@ -806,26 +809,27 @@ AddressBlockCreateNextAvailableSubnet Create the Next Available Subnet object.
 Use this method to create a Next Available __Subnet__ object.
 The Next Available Subnet is a generator that allocates one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockCreateNextAvailableSubnetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockCreateNextAvailableSubnetRequest
 */
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableSubnetRequest {
 	return ApiAddressBlockCreateNextAvailableSubnetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcCreateNextAvailableSubnetResponse
+//
+//	@return IpamsvcCreateNextAvailableSubnetResponse
 func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*IpamsvcCreateNextAvailableSubnetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcCreateNextAvailableSubnetResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcCreateNextAvailableSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableSubnet")
@@ -921,9 +925,9 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnetExecute(r 
 }
 
 type ApiAddressBlockDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
+	id         string
 }
 
 func (r ApiAddressBlockDeleteRequest) Execute() (*http.Response, error) {
@@ -936,24 +940,24 @@ AddressBlockDelete Move the address block to the recycle bin.
 Use this method to move an __AddressBlock__ object to the recycle bin.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockDeleteRequest
 */
 func (a *AddressBlockAPIService) AddressBlockDelete(ctx context.Context, id string) ApiAddressBlockDeleteRequest {
 	return ApiAddressBlockDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *AddressBlockAPIService) AddressBlockDeleteExecute(r ApiAddressBlockDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockDelete")
@@ -1025,50 +1029,50 @@ func (a *AddressBlockAPIService) AddressBlockDeleteExecute(r ApiAddressBlockDele
 }
 
 type ApiAddressBlockListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	torderBy *string
-	tfilter *string
-	inherit *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	torderBy   *string
+	tfilter    *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAddressBlockListRequest) Fields(fields string) ApiAddressBlockListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiAddressBlockListRequest) Filter(filter string) ApiAddressBlockListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiAddressBlockListRequest) Offset(offset int32) ApiAddressBlockListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiAddressBlockListRequest) Limit(limit int32) ApiAddressBlockListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiAddressBlockListRequest) PageToken(pageToken string) ApiAddressBlockListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiAddressBlockListRequest) OrderBy(orderBy string) ApiAddressBlockListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -1102,24 +1106,25 @@ AddressBlockList Retrieve the address blocks.
 Use this method to retrieve __AddressBlock__ objects.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAddressBlockListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAddressBlockListRequest
 */
 func (a *AddressBlockAPIService) AddressBlockList(ctx context.Context) ApiAddressBlockListRequest {
 	return ApiAddressBlockListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcListAddressBlockResponse
+//
+//	@return IpamsvcListAddressBlockResponse
 func (a *AddressBlockAPIService) AddressBlockListExecute(r ApiAddressBlockListRequest) (*IpamsvcListAddressBlockResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcListAddressBlockResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcListAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockList")
@@ -1222,13 +1227,13 @@ func (a *AddressBlockAPIService) AddressBlockListExecute(r ApiAddressBlockListRe
 }
 
 type ApiAddressBlockListNextAvailableABRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	cidr *int32
-	count *int32
-	name *string
-	comment *string
+	id         string
+	cidr       *int32
+	count      *int32
+	name       *string
+	comment    *string
 }
 
 // The cidr value of address blocks to be created.
@@ -1265,26 +1270,27 @@ AddressBlockListNextAvailableAB List Next Available Address Block objects.
 Use this method to list Next Available __AddressBlock__ objects.
 The Next Available __AddressBlock__ is a generator that returns one or more _ipam/address_block_ resource from available address blocks when the network address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockListNextAvailableABRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockListNextAvailableABRequest
 */
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableAB(ctx context.Context, id string) ApiAddressBlockListNextAvailableABRequest {
 	return ApiAddressBlockListNextAvailableABRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcNextAvailableABResponse
+//
+//	@return IpamsvcNextAvailableABResponse
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*IpamsvcNextAvailableABResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcNextAvailableABResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcNextAvailableABResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableAB")
@@ -1373,11 +1379,11 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableABExecute(r ApiAdd
 }
 
 type ApiAddressBlockListNextAvailableIPRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
+	id         string
 	contiguous *bool
-	count *int32
+	count      *int32
 }
 
 // Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_.
@@ -1402,26 +1408,27 @@ AddressBlockListNextAvailableIP Retrieve the next available IP address.
 Use this method to retrieve the next available IP address.
 This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockListNextAvailableIPRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockListNextAvailableIPRequest
 */
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableIP(ctx context.Context, id string) ApiAddressBlockListNextAvailableIPRequest {
 	return ApiAddressBlockListNextAvailableIPRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcNextAvailableIPResponse
+//
+//	@return IpamsvcNextAvailableIPResponse
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcNextAvailableIPResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcNextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableIP")
@@ -1504,14 +1511,14 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableIPExecute(r ApiAdd
 }
 
 type ApiAddressBlockListNextAvailableSubnetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	cidr *int32
-	count *int32
-	name *string
-	comment *string
-	dhcpHost *string
+	id         string
+	cidr       *int32
+	count      *int32
+	name       *string
+	comment    *string
+	dhcpHost   *string
 }
 
 // The cidr value of subnets to be created.
@@ -1554,26 +1561,27 @@ AddressBlockListNextAvailableSubnet List Next Available Subnet objects.
 Use this method to list Next Available __Subnet__ objects.
 The Next Available Address Block is a generator that returns one or more _ipam/subnet_ resource from available subnets when the network address is not known prior to allocation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockListNextAvailableSubnetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockListNextAvailableSubnetRequest
 */
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockListNextAvailableSubnetRequest {
 	return ApiAddressBlockListNextAvailableSubnetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcNextAvailableSubnetResponse
+//
+//	@return IpamsvcNextAvailableSubnetResponse
 func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*IpamsvcNextAvailableSubnetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcNextAvailableSubnetResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcNextAvailableSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableSubnet")
@@ -1665,14 +1673,14 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnetExecute(r Ap
 }
 
 type ApiAddressBlockReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	fields *string
-	inherit *string
+	id         string
+	fields     *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiAddressBlockReadRequest) Fields(fields string) ApiAddressBlockReadRequest {
 	r.fields = &fields
 	return r
@@ -1694,26 +1702,27 @@ AddressBlockRead Retrieve the address block.
 Use this method to retrieve an __AddressBlock__ object.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockReadRequest
 */
 func (a *AddressBlockAPIService) AddressBlockRead(ctx context.Context, id string) ApiAddressBlockReadRequest {
 	return ApiAddressBlockReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcReadAddressBlockResponse
+//
+//	@return IpamsvcReadAddressBlockResponse
 func (a *AddressBlockAPIService) AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*IpamsvcReadAddressBlockResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcReadAddressBlockResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcReadAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockRead")
@@ -1796,11 +1805,11 @@ func (a *AddressBlockAPIService) AddressBlockReadExecute(r ApiAddressBlockReadRe
 }
 
 type ApiAddressBlockUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AddressBlockAPI
-	id string
-	body *IpamsvcAddressBlock
-	inherit *string
+	id         string
+	body       *IpamsvcAddressBlock
+	inherit    *string
 }
 
 func (r ApiAddressBlockUpdateRequest) Body(body IpamsvcAddressBlock) ApiAddressBlockUpdateRequest {
@@ -1824,26 +1833,27 @@ AddressBlockUpdate Update the address block.
 Use this method to update an __AddressBlock__ object.
 The __AddressBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiAddressBlockUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiAddressBlockUpdateRequest
 */
 func (a *AddressBlockAPIService) AddressBlockUpdate(ctx context.Context, id string) ApiAddressBlockUpdateRequest {
 	return ApiAddressBlockUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return IpamsvcUpdateAddressBlockResponse
+//
+//	@return IpamsvcUpdateAddressBlockResponse
 func (a *AddressBlockAPIService) AddressBlockUpdateExecute(r ApiAddressBlockUpdateRequest) (*IpamsvcUpdateAddressBlockResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *IpamsvcUpdateAddressBlockResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *IpamsvcUpdateAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockUpdate")
@@ -1881,16 +1891,16 @@ func (a *AddressBlockAPIService) AddressBlockUpdateExecute(r ApiAddressBlockUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

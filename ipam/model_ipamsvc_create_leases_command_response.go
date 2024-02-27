@@ -72,7 +72,7 @@ func (o *IpamsvcCreateLeasesCommandResponse) SetSuccess(v string) {
 }
 
 func (o IpamsvcCreateLeasesCommandResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,5 +122,3 @@ func (v *NullableIpamsvcCreateLeasesCommandResponse) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

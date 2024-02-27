@@ -21,7 +21,7 @@ var _ MappedNullable = &HostactivationRevokeCertRequest{}
 type HostactivationRevokeCertRequest struct {
 	CertSerial *string `json:"cert_serial,omitempty"`
 	// On-prem host ID which can be obtained either from on-prem or BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem > click on 3 dots on top right side > General Information > Ophid) .
-	Ophid *string `json:"ophid,omitempty"`
+	Ophid        *string `json:"ophid,omitempty"`
 	RevokeReason *string `json:"revoke_reason,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (o *HostactivationRevokeCertRequest) SetRevokeReason(v string) {
 }
 
 func (o HostactivationRevokeCertRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,5 +195,3 @@ func (v *NullableHostactivationRevokeCertRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,16 +11,16 @@ API version: v1
 package ipam
 
 import (
-	"encoding/json"
-	"time"
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the IpamsvcRange type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IpamsvcRange{}
 
-// IpamsvcRange A __Range__ object (_ipam/range_) represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries. 
+// IpamsvcRange A __Range__ object (_ipam/range_) represents a set of contiguous IP addresses in the same IP space with no gap, expressed as a (start, end) pair within a given subnet that are grouped together for administrative purpose and protocol management. The start and end values are not required to align with CIDR boundaries.
 type IpamsvcRange struct {
 	// The description for the range. May contain 0 to 1024 characters. Can include UTF-8.
 	Comment *string `json:"comment,omitempty"`
@@ -43,7 +43,7 @@ type IpamsvcRange struct {
 	// The list of the inheritance assigned hosts of the object.
 	InheritanceAssignedHosts []InheritanceAssignedHost `json:"inheritance_assigned_hosts,omitempty"`
 	// The resource identifier.
-	InheritanceParent *string `json:"inheritance_parent,omitempty"`
+	InheritanceParent  *string                        `json:"inheritance_parent,omitempty"`
 	InheritanceSources *IpamsvcDHCPOptionsInheritance `json:"inheritance_sources,omitempty"`
 	// The name of the range. May contain 1 to 256 characters. Can include UTF-8.
 	Name *string `json:"name,omitempty"`
@@ -56,11 +56,11 @@ type IpamsvcRange struct {
 	// The start IP address of the range.
 	Start string `json:"start"`
 	// The tags for the range in JSON format.
-	Tags map[string]interface{} `json:"tags,omitempty"`
+	Tags      map[string]interface{}       `json:"tags,omitempty"`
 	Threshold *IpamsvcUtilizationThreshold `json:"threshold,omitempty"`
 	// Time when the object has been updated. Equals to _created_at_ if not updated after creation.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Utilization *IpamsvcUtilization `json:"utilization,omitempty"`
+	UpdatedAt     *time.Time            `json:"updated_at,omitempty"`
+	Utilization   *IpamsvcUtilization   `json:"utilization,omitempty"`
 	UtilizationV6 *IpamsvcUtilizationV6 `json:"utilization_v6,omitempty"`
 }
 
@@ -774,7 +774,7 @@ func (o *IpamsvcRange) SetUtilizationV6(v IpamsvcUtilizationV6) {
 }
 
 func (o IpamsvcRange) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -862,10 +862,10 @@ func (o *IpamsvcRange) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -921,5 +921,3 @@ func (v *NullableIpamsvcRange) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

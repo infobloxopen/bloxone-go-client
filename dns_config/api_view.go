@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,20 +18,19 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
-
 
 type ViewAPI interface {
 	/*
-	ViewBulkCopy Copies the specified __AuthZone__ and __ForwardZone__ objects in the __View__.
+			ViewBulkCopy Copies the specified __AuthZone__ and __ForwardZone__ objects in the __View__.
 
-	Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one __View__ object to another __View__ object.
-The __AuthZone__ object represents an authoritative zone.
-The __ForwardZone__ object represents a forwarding zone.
+			Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one __View__ object to another __View__ object.
+		The __AuthZone__ object represents an authoritative zone.
+		The __ForwardZone__ object represents a forwarding zone.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewBulkCopyRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewBulkCopyRequest
 	*/
 	ViewBulkCopy(ctx context.Context) ApiViewBulkCopyRequest
 
@@ -39,13 +38,13 @@ The __ForwardZone__ object represents a forwarding zone.
 	//  @return ConfigBulkCopyResponse
 	ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigBulkCopyResponse, *http.Response, error)
 	/*
-	ViewCreate Create the View object.
+			ViewCreate Create the View object.
 
-	Use this method to create a View object.
-Named collection of DNS View settings.
+			Use this method to create a View object.
+		Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewCreateRequest
 	*/
 	ViewCreate(ctx context.Context) ApiViewCreateRequest
 
@@ -53,27 +52,27 @@ Named collection of DNS View settings.
 	//  @return ConfigCreateViewResponse
 	ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreateViewResponse, *http.Response, error)
 	/*
-	ViewDelete Move the View object to Recyclebin.
+			ViewDelete Move the View object to Recyclebin.
 
-	Use this method to move a View object to Recyclebin.
-Named collection of DNS View settings.
+			Use this method to move a View object to Recyclebin.
+		Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewDeleteRequest
 	*/
 	ViewDelete(ctx context.Context, id string) ApiViewDeleteRequest
 
 	// ViewDeleteExecute executes the request
 	ViewDeleteExecute(r ApiViewDeleteRequest) (*http.Response, error)
 	/*
-	ViewList List View objects.
+			ViewList List View objects.
 
-	Use this method to list View objects.
-Named collection of DNS View settings.
+			Use this method to list View objects.
+		Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiViewListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewListRequest
 	*/
 	ViewList(ctx context.Context) ApiViewListRequest
 
@@ -81,14 +80,14 @@ Named collection of DNS View settings.
 	//  @return ConfigListViewResponse
 	ViewListExecute(r ApiViewListRequest) (*ConfigListViewResponse, *http.Response, error)
 	/*
-	ViewRead Read the View object.
+			ViewRead Read the View object.
 
-	Use this method to read a View object.
-Named collection of DNS View settings.
+			Use this method to read a View object.
+		Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewReadRequest
 	*/
 	ViewRead(ctx context.Context, id string) ApiViewReadRequest
 
@@ -96,14 +95,14 @@ Named collection of DNS View settings.
 	//  @return ConfigReadViewResponse
 	ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewResponse, *http.Response, error)
 	/*
-	ViewUpdate Update the View object.
+			ViewUpdate Update the View object.
 
-	Use this method to update a View object.
-Named collection of DNS View settings.
+			Use this method to update a View object.
+		Named collection of DNS View settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiViewUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewUpdateRequest
 	*/
 	ViewUpdate(ctx context.Context, id string) ApiViewUpdateRequest
 
@@ -116,9 +115,9 @@ Named collection of DNS View settings.
 type ViewAPIService internal.Service
 
 type ApiViewBulkCopyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	body *ConfigBulkCopyView
+	body       *ConfigBulkCopyView
 }
 
 func (r ApiViewBulkCopyRequest) Body(body ConfigBulkCopyView) ApiViewBulkCopyRequest {
@@ -137,24 +136,25 @@ Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one _
 The __AuthZone__ object represents an authoritative zone.
 The __ForwardZone__ object represents a forwarding zone.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiViewBulkCopyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiViewBulkCopyRequest
 */
 func (a *ViewAPIService) ViewBulkCopy(ctx context.Context) ApiViewBulkCopyRequest {
 	return ApiViewBulkCopyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigBulkCopyResponse
+//
+//	@return ConfigBulkCopyResponse
 func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigBulkCopyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigBulkCopyResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigBulkCopyResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewBulkCopy")
@@ -188,8 +188,8 @@ func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigB
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    // body params
-    localVarPostBody = r.body
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -235,10 +235,10 @@ func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigB
 }
 
 type ApiViewCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	body *ConfigView
-	inherit *string
+	body       *ConfigView
+	inherit    *string
 }
 
 func (r ApiViewCreateRequest) Body(body ConfigView) ApiViewCreateRequest {
@@ -262,24 +262,25 @@ ViewCreate Create the View object.
 Use this method to create a View object.
 Named collection of DNS View settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiViewCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiViewCreateRequest
 */
 func (a *ViewAPIService) ViewCreate(ctx context.Context) ApiViewCreateRequest {
 	return ApiViewCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigCreateViewResponse
+//
+//	@return ConfigCreateViewResponse
 func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreateViewResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigCreateViewResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigCreateViewResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewCreate")
@@ -316,16 +317,16 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {
@@ -371,9 +372,9 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 }
 
 type ApiViewDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	id string
+	id         string
 }
 
 func (r ApiViewDeleteRequest) Execute() (*http.Response, error) {
@@ -386,24 +387,24 @@ ViewDelete Move the View object to Recyclebin.
 Use this method to move a View object to Recyclebin.
 Named collection of DNS View settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiViewDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiViewDeleteRequest
 */
 func (a *ViewAPIService) ViewDelete(ctx context.Context, id string) ApiViewDeleteRequest {
 	return ApiViewDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ViewAPIService) ViewDeleteExecute(r ApiViewDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewDelete")
@@ -475,50 +476,50 @@ func (a *ViewAPIService) ViewDeleteExecute(r ApiViewDeleteRequest) (*http.Respon
 }
 
 type ApiViewListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	tfilter *string
-	torderBy *string
-	inherit *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	tfilter    *string
+	torderBy   *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiViewListRequest) Fields(fields string) ApiViewListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiViewListRequest) Filter(filter string) ApiViewListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiViewListRequest) Offset(offset int32) ApiViewListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiViewListRequest) Limit(limit int32) ApiViewListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiViewListRequest) PageToken(pageToken string) ApiViewListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiViewListRequest) OrderBy(orderBy string) ApiViewListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -552,24 +553,25 @@ ViewList List View objects.
 Use this method to list View objects.
 Named collection of DNS View settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiViewListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiViewListRequest
 */
 func (a *ViewAPIService) ViewList(ctx context.Context) ApiViewListRequest {
 	return ApiViewListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigListViewResponse
+//
+//	@return ConfigListViewResponse
 func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigListViewResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigListViewResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewList")
@@ -672,14 +674,14 @@ func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewR
 }
 
 type ApiViewReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	id string
-	fields *string
-	inherit *string
+	id         string
+	fields     *string
+	inherit    *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiViewReadRequest) Fields(fields string) ApiViewReadRequest {
 	r.fields = &fields
 	return r
@@ -701,26 +703,27 @@ ViewRead Read the View object.
 Use this method to read a View object.
 Named collection of DNS View settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiViewReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiViewReadRequest
 */
 func (a *ViewAPIService) ViewRead(ctx context.Context, id string) ApiViewReadRequest {
 	return ApiViewReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigReadViewResponse
+//
+//	@return ConfigReadViewResponse
 func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigReadViewResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigReadViewResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewRead")
@@ -803,11 +806,11 @@ func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewR
 }
 
 type ApiViewUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ViewAPI
-	id string
-	body *ConfigView
-	inherit *string
+	id         string
+	body       *ConfigView
+	inherit    *string
 }
 
 func (r ApiViewUpdateRequest) Body(body ConfigView) ApiViewUpdateRequest {
@@ -831,26 +834,27 @@ ViewUpdate Update the View object.
 Use this method to update a View object.
 Named collection of DNS View settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiViewUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiViewUpdateRequest
 */
 func (a *ViewAPIService) ViewUpdate(ctx context.Context, id string) ApiViewUpdateRequest {
 	return ApiViewUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigUpdateViewResponse
+//
+//	@return ConfigUpdateViewResponse
 func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdateViewResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *ConfigUpdateViewResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ConfigUpdateViewResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ViewUpdate")
@@ -888,16 +892,16 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-    if r.body.Tags == nil {
-    	r.body.Tags = make(map[string]interface{})
-    }
-    for k, v := range a.Client.Cfg.DefaultTags {
-        if _, ok := r.body.Tags[k]; !ok {
-            r.body.Tags[k] = v
-        }
-    }
-    // body params
-    localVarPostBody = r.body
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(internal.ContextAPIKeys).(map[string]internal.APIKey); ok {

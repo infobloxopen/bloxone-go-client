@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -19,14 +19,14 @@ var _ MappedNullable = &ConfigInheritedZoneAuthority{}
 
 // ConfigInheritedZoneAuthority Inheritance configuration for a field of type _ZoneAuthority_.
 type ConfigInheritedZoneAuthority struct {
-	DefaultTtl *Inheritance2InheritedUInt32 `json:"default_ttl,omitempty"`
-	Expire *Inheritance2InheritedUInt32 `json:"expire,omitempty"`
-	MnameBlock *ConfigInheritedZoneAuthorityMNameBlock `json:"mname_block,omitempty"`
-	NegativeTtl *Inheritance2InheritedUInt32 `json:"negative_ttl,omitempty"`
-	ProtocolRname *Inheritance2InheritedString `json:"protocol_rname,omitempty"`
-	Refresh *Inheritance2InheritedUInt32 `json:"refresh,omitempty"`
-	Retry *Inheritance2InheritedUInt32 `json:"retry,omitempty"`
-	Rname *Inheritance2InheritedString `json:"rname,omitempty"`
+	DefaultTtl    *Inheritance2InheritedUInt32            `json:"default_ttl,omitempty"`
+	Expire        *Inheritance2InheritedUInt32            `json:"expire,omitempty"`
+	MnameBlock    *ConfigInheritedZoneAuthorityMNameBlock `json:"mname_block,omitempty"`
+	NegativeTtl   *Inheritance2InheritedUInt32            `json:"negative_ttl,omitempty"`
+	ProtocolRname *Inheritance2InheritedString            `json:"protocol_rname,omitempty"`
+	Refresh       *Inheritance2InheritedUInt32            `json:"refresh,omitempty"`
+	Retry         *Inheritance2InheritedUInt32            `json:"retry,omitempty"`
+	Rname         *Inheritance2InheritedString            `json:"rname,omitempty"`
 }
 
 // NewConfigInheritedZoneAuthority instantiates a new ConfigInheritedZoneAuthority object
@@ -303,7 +303,7 @@ func (o *ConfigInheritedZoneAuthority) SetRname(v Inheritance2InheritedString) {
 }
 
 func (o ConfigInheritedZoneAuthority) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -374,5 +374,3 @@ func (v *NullableConfigInheritedZoneAuthority) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

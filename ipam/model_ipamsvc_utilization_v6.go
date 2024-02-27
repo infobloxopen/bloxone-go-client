@@ -20,10 +20,10 @@ var _ MappedNullable = &IpamsvcUtilizationV6{}
 // IpamsvcUtilizationV6 The __UtilizationV6__ object represents IPV6 address usage statistics for an object.
 type IpamsvcUtilizationV6 struct {
 	Abandoned *string `json:"abandoned,omitempty"`
-	Dynamic *string `json:"dynamic,omitempty"`
-	Static *string `json:"static,omitempty"`
-	Total *string `json:"total,omitempty"`
-	Used *string `json:"used,omitempty"`
+	Dynamic   *string `json:"dynamic,omitempty"`
+	Static    *string `json:"static,omitempty"`
+	Total     *string `json:"total,omitempty"`
+	Used      *string `json:"used,omitempty"`
 }
 
 // NewIpamsvcUtilizationV6 instantiates a new IpamsvcUtilizationV6 object
@@ -204,7 +204,7 @@ func (o *IpamsvcUtilizationV6) SetUsed(v string) {
 }
 
 func (o IpamsvcUtilizationV6) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,5 +266,3 @@ func (v *NullableIpamsvcUtilizationV6) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

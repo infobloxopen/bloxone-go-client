@@ -24,8 +24,8 @@ type IpamsvcInheritedHostnameRewriteBlock struct {
 	// The human-readable display name for the object referred to by _source_.
 	DisplayName *string `json:"display_name,omitempty"`
 	// The resource identifier.
-	Source *string `json:"source,omitempty"`
-	Value *IpamsvcHostnameRewriteBlock `json:"value,omitempty"`
+	Source *string                      `json:"source,omitempty"`
+	Value  *IpamsvcHostnameRewriteBlock `json:"value,omitempty"`
 }
 
 // NewIpamsvcInheritedHostnameRewriteBlock instantiates a new IpamsvcInheritedHostnameRewriteBlock object
@@ -174,7 +174,7 @@ func (o *IpamsvcInheritedHostnameRewriteBlock) SetValue(v IpamsvcHostnameRewrite
 }
 
 func (o IpamsvcInheritedHostnameRewriteBlock) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableIpamsvcInheritedHostnameRewriteBlock) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

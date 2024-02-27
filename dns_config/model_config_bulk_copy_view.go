@@ -1,7 +1,7 @@
 /*
 DNS Configuration API
 
-The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.   
+The DNS application is a BloxOne DDI service that provides cloud-based DNS configuration with on-prem host serving DNS protocol. It is part of the full-featured BloxOne DDI solution that enables customers the ability to deploy large numbers of protocol servers in the delivery of DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -11,8 +11,8 @@ API version: v1
 package dns_config
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &ConfigBulkCopyView{}
 
 // ConfigBulkCopyView struct for ConfigBulkCopyView
 type ConfigBulkCopyView struct {
-	AuthZoneConfig *ConfigAuthZoneConfig `json:"auth_zone_config,omitempty"`
+	AuthZoneConfig    *ConfigAuthZoneConfig    `json:"auth_zone_config,omitempty"`
 	ForwardZoneConfig *ConfigForwardZoneConfig `json:"forward_zone_config,omitempty"`
 	// Indicates whether child objects should be copied or not.  Defaults to _false_. Reserved for future use.
 	Recursive *bool `json:"recursive,omitempty"`
 	// The resource identifier.
-	Resources []string `json:"resources"`
+	Resources           []string              `json:"resources"`
 	SecondaryZoneConfig *ConfigAuthZoneConfig `json:"secondary_zone_config,omitempty"`
 	// Indicates whether copying should skip object in case of error and continue with next, or abort copying in case of error.  Defaults to _false_.
 	SkipOnError *bool `json:"skip_on_error,omitempty"`
@@ -264,7 +264,7 @@ func (o *ConfigBulkCopyView) SetTarget(v string) {
 }
 
 func (o ConfigBulkCopyView) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,10 +307,10 @@ func (o *ConfigBulkCopyView) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -366,5 +366,3 @@ func (v *NullableConfigBulkCopyView) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
