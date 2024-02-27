@@ -11,7 +11,9 @@ API version: v1
 package infra_provision
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -33,6 +35,8 @@ type HostactivationJoinToken struct {
 	TokenId    *string `json:"token_id,omitempty"`
 	UseCounter *int64  `json:"use_counter,omitempty"`
 }
+
+type _HostactivationJoinToken HostactivationJoinToken
 
 // NewHostactivationJoinToken instantiates a new HostactivationJoinToken object
 // This constructor will assign default values to properties that have it defined,
@@ -407,6 +411,43 @@ func (o HostactivationJoinToken) ToMap() (map[string]interface{}, error) {
 		toSerialize["use_counter"] = o.UseCounter
 	}
 	return toSerialize, nil
+}
+
+func (o *HostactivationJoinToken) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHostactivationJoinToken := _HostactivationJoinToken{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHostactivationJoinToken)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HostactivationJoinToken(varHostactivationJoinToken)
+
+	return err
 }
 
 type NullableHostactivationJoinToken struct {

@@ -22,24 +22,24 @@ Convert the object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    domainName := "domainName_example" // string | Input domain name in either of IDN or punycode representations.
+	domainName := "domainName_example" // string | Input domain name in either of IDN or punycode representations.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConvertDomainNameAPI.ConvertDomainNameConvert(context.Background(), domainName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConvertDomainNameAPI.ConvertDomainNameConvert``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ConvertDomainNameConvert`: ConfigConvertDomainNameResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConvertDomainNameAPI.ConvertDomainNameConvert`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConvertDomainNameAPI.ConvertDomainNameConvert(context.Background(), domainName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConvertDomainNameAPI.ConvertDomainNameConvert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ConvertDomainNameConvert`: ConfigConvertDomainNameResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConvertDomainNameAPI.ConvertDomainNameConvert`: %v\n", resp)
 }
 ```
 

@@ -11,7 +11,9 @@ API version: v1
 package ipam
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IpamsvcASM type satisfies the MappedNullable interface at compile time
@@ -68,6 +70,8 @@ type IpamsvcASM struct {
 	// The utilization of DHCP addresses in the subnet.
 	Utilization *int64 `json:"utilization,omitempty"`
 }
+
+type _IpamsvcASM IpamsvcASM
 
 // NewIpamsvcASM instantiates a new IpamsvcASM object
 // This constructor will assign default values to properties that have it defined,
@@ -928,6 +932,43 @@ func (o IpamsvcASM) ToMap() (map[string]interface{}, error) {
 		toSerialize["utilization"] = o.Utilization
 	}
 	return toSerialize, nil
+}
+
+func (o *IpamsvcASM) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"subnet_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIpamsvcASM := _IpamsvcASM{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIpamsvcASM)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpamsvcASM(varIpamsvcASM)
+
+	return err
 }
 
 type NullableIpamsvcASM struct {

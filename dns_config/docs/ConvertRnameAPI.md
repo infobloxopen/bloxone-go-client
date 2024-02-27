@@ -22,24 +22,24 @@ Convert the object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/infobloxopen/bloxone-go-client"
 )
 
 func main() {
-    emailAddress := "emailAddress_example" // string | Input email address.
+	emailAddress := "emailAddress_example" // string | Input email address.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConvertRnameAPI.ConvertRnameConvertRName(context.Background(), emailAddress).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConvertRnameAPI.ConvertRnameConvertRName``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ConvertRnameConvertRName`: ConfigConvertRNameResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConvertRnameAPI.ConvertRnameConvertRName`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConvertRnameAPI.ConvertRnameConvertRName(context.Background(), emailAddress).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConvertRnameAPI.ConvertRnameConvertRName``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ConvertRnameConvertRName`: ConfigConvertRNameResponse
+	fmt.Fprintf(os.Stdout, "Response from `ConvertRnameAPI.ConvertRnameConvertRName`: %v\n", resp)
 }
 ```
 
