@@ -22,86 +22,92 @@ import (
 )
 
 type ForwardZoneAPI interface {
+
 	/*
-			ForwardZoneCopy Copies the __ForwardZone__ object.
+		ForwardZoneCopy Copies the __ForwardZone__ object.
 
-			Use this method to copy an __ForwardZone__ object to a different __View__.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to copy an __ForwardZone__ object to a different __View__.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiForwardZoneCopyRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiForwardZoneCopyRequest
 	*/
 	ForwardZoneCopy(ctx context.Context) ApiForwardZoneCopyRequest
 
 	// ForwardZoneCopyExecute executes the request
 	//  @return ConfigCopyForwardZoneResponse
 	ForwardZoneCopyExecute(r ApiForwardZoneCopyRequest) (*ConfigCopyForwardZoneResponse, *http.Response, error)
+
 	/*
-			ForwardZoneCreate Create the ForwardZone object.
+		ForwardZoneCreate Create the ForwardZone object.
 
-			Use this method to create a ForwardZone object.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to create a ForwardZone object.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiForwardZoneCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiForwardZoneCreateRequest
 	*/
 	ForwardZoneCreate(ctx context.Context) ApiForwardZoneCreateRequest
 
 	// ForwardZoneCreateExecute executes the request
 	//  @return ConfigCreateForwardZoneResponse
 	ForwardZoneCreateExecute(r ApiForwardZoneCreateRequest) (*ConfigCreateForwardZoneResponse, *http.Response, error)
+
 	/*
-			ForwardZoneDelete Move the Forward Zone object to Recyclebin.
+		ForwardZoneDelete Move the Forward Zone object to Recyclebin.
 
-			Use this method to move a Forward Zone object to Recyclebin.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to move a Forward Zone object to Recyclebin.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiForwardZoneDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiForwardZoneDeleteRequest
 	*/
 	ForwardZoneDelete(ctx context.Context, id string) ApiForwardZoneDeleteRequest
 
 	// ForwardZoneDeleteExecute executes the request
 	ForwardZoneDeleteExecute(r ApiForwardZoneDeleteRequest) (*http.Response, error)
+
 	/*
-			ForwardZoneList List Forward Zone objects.
+		ForwardZoneList List Forward Zone objects.
 
-			Use this method to list Forward Zone objects.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to list Forward Zone objects.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiForwardZoneListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiForwardZoneListRequest
 	*/
 	ForwardZoneList(ctx context.Context) ApiForwardZoneListRequest
 
 	// ForwardZoneListExecute executes the request
 	//  @return ConfigListForwardZoneResponse
 	ForwardZoneListExecute(r ApiForwardZoneListRequest) (*ConfigListForwardZoneResponse, *http.Response, error)
+
 	/*
-			ForwardZoneRead Read the Forward Zone object.
+		ForwardZoneRead Read the Forward Zone object.
 
-			Use this method to read a Forward Zone object.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to read a Forward Zone object.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiForwardZoneReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiForwardZoneReadRequest
 	*/
 	ForwardZoneRead(ctx context.Context, id string) ApiForwardZoneReadRequest
 
 	// ForwardZoneReadExecute executes the request
 	//  @return ConfigReadForwardZoneResponse
 	ForwardZoneReadExecute(r ApiForwardZoneReadRequest) (*ConfigReadForwardZoneResponse, *http.Response, error)
+
 	/*
-			ForwardZoneUpdate Update the Forward Zone object.
+		ForwardZoneUpdate Update the Forward Zone object.
 
-			Use this method to update a Forward Zone object.
-		This object (_dns/forward_zone_) represents a forwarding zone.
+		Use this method to update a Forward Zone object.
+	This object (_dns/forward_zone_) represents a forwarding zone.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiForwardZoneUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiForwardZoneUpdateRequest
 	*/
 	ForwardZoneUpdate(ctx context.Context, id string) ApiForwardZoneUpdateRequest
 
@@ -229,6 +235,7 @@ func (a *ForwardZoneAPIService) ForwardZoneCopyExecute(r ApiForwardZoneCopyReque
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -305,14 +312,6 @@ func (a *ForwardZoneAPIService) ForwardZoneCreateExecute(r ApiForwardZoneCreateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -356,6 +355,7 @@ func (a *ForwardZoneAPIService) ForwardZoneCreateExecute(r ApiForwardZoneCreateR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -648,6 +648,7 @@ func (a *ForwardZoneAPIService) ForwardZoneListExecute(r ApiForwardZoneListReque
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -770,6 +771,7 @@ func (a *ForwardZoneAPIService) ForwardZoneReadExecute(r ApiForwardZoneReadReque
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -850,14 +852,6 @@ func (a *ForwardZoneAPIService) ForwardZoneUpdateExecute(r ApiForwardZoneUpdateR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -901,5 +895,6 @@ func (a *ForwardZoneAPIService) ForwardZoneUpdateExecute(r ApiForwardZoneUpdateR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -22,64 +22,69 @@ import (
 )
 
 type KerberosAPI interface {
+
 	/*
-			KerberosDelete Delete the Kerberos key.
+		KerberosDelete Delete the Kerberos key.
 
-			Use this method to delete a __KerberosKey__ object.
-		A __KerberosKey__ object represents a Kerberos key.
+		Use this method to delete a __KerberosKey__ object.
+	A __KerberosKey__ object represents a Kerberos key.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiKerberosDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiKerberosDeleteRequest
 	*/
 	KerberosDelete(ctx context.Context, id string) ApiKerberosDeleteRequest
 
 	// KerberosDeleteExecute executes the request
 	KerberosDeleteExecute(r ApiKerberosDeleteRequest) (*http.Response, error)
+
 	/*
-			KerberosList Retrieve Kerberos keys.
+		KerberosList Retrieve Kerberos keys.
 
-			Use this method to retrieve __KerberosKey__ objects.
-		A __KerberosKey__ object represents a Kerberos key.
+		Use this method to retrieve __KerberosKey__ objects.
+	A __KerberosKey__ object represents a Kerberos key.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiKerberosListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiKerberosListRequest
 	*/
 	KerberosList(ctx context.Context) ApiKerberosListRequest
 
 	// KerberosListExecute executes the request
 	//  @return KeysListKerberosKeyResponse
 	KerberosListExecute(r ApiKerberosListRequest) (*KeysListKerberosKeyResponse, *http.Response, error)
+
 	/*
-			KerberosRead Retrieve the Kerberos key.
+		KerberosRead Retrieve the Kerberos key.
 
-			Use this method to retrieve a __KerberosKey__ object.
-		A __KerberosKey__ object represents a Kerberos key.
+		Use this method to retrieve a __KerberosKey__ object.
+	A __KerberosKey__ object represents a Kerberos key.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiKerberosReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiKerberosReadRequest
 	*/
 	KerberosRead(ctx context.Context, id string) ApiKerberosReadRequest
 
 	// KerberosReadExecute executes the request
 	//  @return KeysReadKerberosKeyResponse
 	KerberosReadExecute(r ApiKerberosReadRequest) (*KeysReadKerberosKeyResponse, *http.Response, error)
+
 	/*
-			KerberosUpdate Update the Kerberos key.
+		KerberosUpdate Update the Kerberos key.
 
-			Use this method to update a __KerberosKey__ object.
-		A __KerberosKey__ object represents a Kerberos key.
+		Use this method to update a __KerberosKey__ object.
+	A __KerberosKey__ object represents a Kerberos key.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiKerberosUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiKerberosUpdateRequest
 	*/
 	KerberosUpdate(ctx context.Context, id string) ApiKerberosUpdateRequest
 
 	// KerberosUpdateExecute executes the request
 	//  @return KeysUpdateKerberosKeyResponse
 	KerberosUpdateExecute(r ApiKerberosUpdateRequest) (*KeysUpdateKerberosKeyResponse, *http.Response, error)
+
 	/*
 		KeysKerberosPost Method for KeysKerberosPost
 
@@ -385,6 +390,7 @@ func (a *KerberosAPIService) KerberosListExecute(r ApiKerberosListRequest) (*Key
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -507,6 +513,7 @@ func (a *KerberosAPIService) KerberosReadExecute(r ApiKerberosReadRequest) (*Key
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -630,6 +637,7 @@ func (a *KerberosAPIService) KerberosUpdateExecute(r ApiKerberosUpdateRequest) (
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -746,5 +754,6 @@ func (a *KerberosAPIService) KeysKerberosPostExecute(r ApiKeysKerberosPostReques
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

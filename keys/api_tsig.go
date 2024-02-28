@@ -1,7 +1,7 @@
 /*
 DDI Keys API
 
-The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.   
+The DDI Keys application is a BloxOne DDI service for managing TSIG keys and GSS-TSIG (Kerberos) keys which are used by other BloxOne DDI applications. It is part of the full-featured, DDI cloud solution that enables customers to deploy large numbers of protocol servers to deliver DNS and DHCP throughout their enterprise network.
 
 API version: v1
 */
@@ -18,77 +18,81 @@ import (
 	"net/url"
 	"strings"
 
-"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 )
 
-
 type TsigAPI interface {
+
 	/*
-	TsigCreate Create the TSIG key.
+		TsigCreate Create the TSIG key.
 
-	Use this method to create a __TSIGKey__ object.
-A __TSIGKey__ object represents a TSIG key.
+		Use this method to create a __TSIGKey__ object.
+	A __TSIGKey__ object represents a TSIG key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTsigCreateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiTsigCreateRequest
 	*/
 	TsigCreate(ctx context.Context) ApiTsigCreateRequest
 
 	// TsigCreateExecute executes the request
 	//  @return KeysCreateTSIGKeyResponse
 	TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateTSIGKeyResponse, *http.Response, error)
+
 	/*
-	TsigDelete Delete the TSIG key.
+		TsigDelete Delete the TSIG key.
 
-	Use this method to delete a __TSIGKey__ object.
-A __TSIGKey__ object represents a TSIG key.
+		Use this method to delete a __TSIGKey__ object.
+	A __TSIGKey__ object represents a TSIG key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiTsigDeleteRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiTsigDeleteRequest
 	*/
 	TsigDelete(ctx context.Context, id string) ApiTsigDeleteRequest
 
 	// TsigDeleteExecute executes the request
 	TsigDeleteExecute(r ApiTsigDeleteRequest) (*http.Response, error)
+
 	/*
-	TsigList Retrieve TSIG keys.
+		TsigList Retrieve TSIG keys.
 
-	Use this method to retrieve __TSIGKey__ objects.
-A __TSIGKey__ object represents a TSIG key.
+		Use this method to retrieve __TSIGKey__ objects.
+	A __TSIGKey__ object represents a TSIG key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTsigListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiTsigListRequest
 	*/
 	TsigList(ctx context.Context) ApiTsigListRequest
 
 	// TsigListExecute executes the request
 	//  @return KeysListTSIGKeyResponse
 	TsigListExecute(r ApiTsigListRequest) (*KeysListTSIGKeyResponse, *http.Response, error)
+
 	/*
-	TsigRead Retrieve the TSIG key.
+		TsigRead Retrieve the TSIG key.
 
-	Use this method to retrieve a __TSIGKey__ object.
-A __TSIGKey__ object represents a TSIG key.
+		Use this method to retrieve a __TSIGKey__ object.
+	A __TSIGKey__ object represents a TSIG key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiTsigReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiTsigReadRequest
 	*/
 	TsigRead(ctx context.Context, id string) ApiTsigReadRequest
 
 	// TsigReadExecute executes the request
 	//  @return KeysReadTSIGKeyResponse
 	TsigReadExecute(r ApiTsigReadRequest) (*KeysReadTSIGKeyResponse, *http.Response, error)
+
 	/*
-	TsigUpdate Update the TSIG key.
+		TsigUpdate Update the TSIG key.
 
-	Use this method to update a __TSIGKey__ object.
-A __TSIGKey__ object represents a TSIG key.
+		Use this method to update a __TSIGKey__ object.
+	A __TSIGKey__ object represents a TSIG key.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id An application specific resource identity of a resource
-	@return ApiTsigUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiTsigUpdateRequest
 	*/
 	TsigUpdate(ctx context.Context, id string) ApiTsigUpdateRequest
 
@@ -101,9 +105,9 @@ A __TSIGKey__ object represents a TSIG key.
 type TsigAPIService internal.Service
 
 type ApiTsigCreateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService TsigAPI
-	body *KeysTSIGKey
+	body       *KeysTSIGKey
 }
 
 func (r ApiTsigCreateRequest) Body(body KeysTSIGKey) ApiTsigCreateRequest {
@@ -121,24 +125,25 @@ TsigCreate Create the TSIG key.
 Use this method to create a __TSIGKey__ object.
 A __TSIGKey__ object represents a TSIG key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTsigCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiTsigCreateRequest
 */
 func (a *TsigAPIService) TsigCreate(ctx context.Context) ApiTsigCreateRequest {
 	return ApiTsigCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KeysCreateTSIGKeyResponse
+//
+//	@return KeysCreateTSIGKeyResponse
 func (a *TsigAPIService) TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateTSIGKeyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *KeysCreateTSIGKeyResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *KeysCreateTSIGKeyResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TsigAPIService.TsigCreate")
@@ -171,14 +176,6 @@ func (a *TsigAPIService) TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateT
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -223,13 +220,14 @@ func (a *TsigAPIService) TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateT
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiTsigDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService TsigAPI
-	id string
+	id         string
 }
 
 func (r ApiTsigDeleteRequest) Execute() (*http.Response, error) {
@@ -242,24 +240,24 @@ TsigDelete Delete the TSIG key.
 Use this method to delete a __TSIGKey__ object.
 A __TSIGKey__ object represents a TSIG key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiTsigDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiTsigDeleteRequest
 */
 func (a *TsigAPIService) TsigDelete(ctx context.Context, id string) ApiTsigDeleteRequest {
 	return ApiTsigDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *TsigAPIService) TsigDeleteExecute(r ApiTsigDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TsigAPIService.TsigDelete")
@@ -331,49 +329,49 @@ func (a *TsigAPIService) TsigDeleteExecute(r ApiTsigDeleteRequest) (*http.Respon
 }
 
 type ApiTsigListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService TsigAPI
-	fields *string
-	filter *string
-	offset *int32
-	limit *int32
-	pageToken *string
-	orderBy *string
-	tfilter *string
-	torderBy *string
+	fields     *string
+	filter     *string
+	offset     *int32
+	limit      *int32
+	pageToken  *string
+	orderBy    *string
+	tfilter    *string
+	torderBy   *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiTsigListRequest) Fields(fields string) ApiTsigListRequest {
 	r.fields = &fields
 	return r
 }
 
-//   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |        
+// A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
 func (r ApiTsigListRequest) Filter(filter string) ApiTsigListRequest {
 	r.filter = &filter
 	return r
 }
 
-//   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.         
+// The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
 func (r ApiTsigListRequest) Offset(offset int32) ApiTsigListRequest {
 	r.offset = &offset
 	return r
 }
 
-//   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.         
+// The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
 func (r ApiTsigListRequest) Limit(limit int32) ApiTsigListRequest {
 	r.limit = &limit
 	return r
 }
 
-//   The service-defined string used to identify a page of resources. A null value indicates the first page.         
+// The service-defined string used to identify a page of resources. A null value indicates the first page.
 func (r ApiTsigListRequest) PageToken(pageToken string) ApiTsigListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
-//   A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.        
+// A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
 func (r ApiTsigListRequest) OrderBy(orderBy string) ApiTsigListRequest {
 	r.orderBy = &orderBy
 	return r
@@ -401,24 +399,25 @@ TsigList Retrieve TSIG keys.
 Use this method to retrieve __TSIGKey__ objects.
 A __TSIGKey__ object represents a TSIG key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTsigListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiTsigListRequest
 */
 func (a *TsigAPIService) TsigList(ctx context.Context) ApiTsigListRequest {
 	return ApiTsigListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KeysListTSIGKeyResponse
+//
+//	@return KeysListTSIGKeyResponse
 func (a *TsigAPIService) TsigListExecute(r ApiTsigListRequest) (*KeysListTSIGKeyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *KeysListTSIGKeyResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *KeysListTSIGKeyResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TsigAPIService.TsigList")
@@ -514,17 +513,18 @@ func (a *TsigAPIService) TsigListExecute(r ApiTsigListRequest) (*KeysListTSIGKey
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiTsigReadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService TsigAPI
-	id string
-	fields *string
+	id         string
+	fields     *string
 }
 
-//   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.        
+// A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
 func (r ApiTsigReadRequest) Fields(fields string) ApiTsigReadRequest {
 	r.fields = &fields
 	return r
@@ -540,26 +540,27 @@ TsigRead Retrieve the TSIG key.
 Use this method to retrieve a __TSIGKey__ object.
 A __TSIGKey__ object represents a TSIG key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiTsigReadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiTsigReadRequest
 */
 func (a *TsigAPIService) TsigRead(ctx context.Context, id string) ApiTsigReadRequest {
 	return ApiTsigReadRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return KeysReadTSIGKeyResponse
+//
+//	@return KeysReadTSIGKeyResponse
 func (a *TsigAPIService) TsigReadExecute(r ApiTsigReadRequest) (*KeysReadTSIGKeyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *KeysReadTSIGKeyResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *KeysReadTSIGKeyResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TsigAPIService.TsigRead")
@@ -635,14 +636,15 @@ func (a *TsigAPIService) TsigReadExecute(r ApiTsigReadRequest) (*KeysReadTSIGKey
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiTsigUpdateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService TsigAPI
-	id string
-	body *KeysTSIGKey
+	id         string
+	body       *KeysTSIGKey
 }
 
 func (r ApiTsigUpdateRequest) Body(body KeysTSIGKey) ApiTsigUpdateRequest {
@@ -660,26 +662,27 @@ TsigUpdate Update the TSIG key.
 Use this method to update a __TSIGKey__ object.
 A __TSIGKey__ object represents a TSIG key.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id An application specific resource identity of a resource
- @return ApiTsigUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id An application specific resource identity of a resource
+	@return ApiTsigUpdateRequest
 */
 func (a *TsigAPIService) TsigUpdate(ctx context.Context, id string) ApiTsigUpdateRequest {
 	return ApiTsigUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return KeysUpdateTSIGKeyResponse
+//
+//	@return KeysUpdateTSIGKeyResponse
 func (a *TsigAPIService) TsigUpdateExecute(r ApiTsigUpdateRequest) (*KeysUpdateTSIGKeyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []internal.FormFile
-		localVarReturnValue  *KeysUpdateTSIGKeyResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *KeysUpdateTSIGKeyResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TsigAPIService.TsigUpdate")
@@ -713,14 +716,6 @@ func (a *TsigAPIService) TsigUpdateExecute(r ApiTsigUpdateRequest) (*KeysUpdateT
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -765,5 +760,6 @@ func (a *TsigAPIService) TsigUpdateExecute(r ApiTsigUpdateRequest) (*KeysUpdateT
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

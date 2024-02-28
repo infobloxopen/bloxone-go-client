@@ -22,6 +22,7 @@ import (
 )
 
 type ConvertDomainNameAPI interface {
+
 	/*
 		ConvertDomainNameConvert Convert the object.
 
@@ -149,5 +150,6 @@ func (a *ConvertDomainNameAPIService) ConvertDomainNameConvertExecute(r ApiConve
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -22,20 +22,22 @@ import (
 )
 
 type DhcpHostAPI interface {
+
 	/*
-			DhcpHostList Retrieve DHCP hosts.
+		DhcpHostList Retrieve DHCP hosts.
 
-			Use this method to retrieve DHCP __Host__ objects.
-		A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
+		Use this method to retrieve DHCP __Host__ objects.
+	A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiDhcpHostListRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiDhcpHostListRequest
 	*/
 	DhcpHostList(ctx context.Context) ApiDhcpHostListRequest
 
 	// DhcpHostListExecute executes the request
 	//  @return IpamsvcListHostResponse
 	DhcpHostListExecute(r ApiDhcpHostListRequest) (*IpamsvcListHostResponse, *http.Response, error)
+
 	/*
 		DhcpHostListAssociations Retrieve DHCP host associations.
 
@@ -50,30 +52,32 @@ type DhcpHostAPI interface {
 	// DhcpHostListAssociationsExecute executes the request
 	//  @return IpamsvcHostAssociationsResponse
 	DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*IpamsvcHostAssociationsResponse, *http.Response, error)
+
 	/*
-			DhcpHostRead Retrieve the DHCP host.
+		DhcpHostRead Retrieve the DHCP host.
 
-			Use this method to retrieve a DHCP Host object.
-		A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
+		Use this method to retrieve a DHCP Host object.
+	A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiDhcpHostReadRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiDhcpHostReadRequest
 	*/
 	DhcpHostRead(ctx context.Context, id string) ApiDhcpHostReadRequest
 
 	// DhcpHostReadExecute executes the request
 	//  @return IpamsvcReadHostResponse
 	DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*IpamsvcReadHostResponse, *http.Response, error)
+
 	/*
-			DhcpHostUpdate Update the DHCP hosts.
+		DhcpHostUpdate Update the DHCP hosts.
 
-			Use this method to update a DHCP __Host__ object.
-		A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
+		Use this method to update a DHCP __Host__ object.
+	A DHCP __Host__ object associates a __DHCPConfigProfile__ object with an on-prem host.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param id An application specific resource identity of a resource
-			@return ApiDhcpHostUpdateRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param id An application specific resource identity of a resource
+		@return ApiDhcpHostUpdateRequest
 	*/
 	DhcpHostUpdate(ctx context.Context, id string) ApiDhcpHostUpdateRequest
 
@@ -270,6 +274,7 @@ func (a *DhcpHostAPIService) DhcpHostListExecute(r ApiDhcpHostListRequest) (*Ipa
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -381,6 +386,7 @@ func (a *DhcpHostAPIService) DhcpHostListAssociationsExecute(r ApiDhcpHostListAs
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -503,6 +509,7 @@ func (a *DhcpHostAPIService) DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*Ipa
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -583,14 +590,6 @@ func (a *DhcpHostAPIService) DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.body.Tags == nil {
-		r.body.Tags = make(map[string]interface{})
-	}
-	for k, v := range a.Client.Cfg.DefaultTags {
-		if _, ok := r.body.Tags[k]; !ok {
-			r.body.Tags[k] = v
-		}
-	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -634,5 +633,6 @@ func (a *DhcpHostAPIService) DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
+
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

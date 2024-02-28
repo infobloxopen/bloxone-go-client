@@ -24,7 +24,7 @@ type ConfigForwarder struct {
 	// Server IP address.
 	Address string `json:"address"`
 	// Server FQDN.
-	Fqdn *string `json:"fqdn,omitempty"`
+	Fqdn string `json:"fqdn"`
 	// Server FQDN in punycode.
 	ProtocolFqdn *string `json:"protocol_fqdn,omitempty"`
 }
@@ -35,9 +35,10 @@ type _ConfigForwarder ConfigForwarder
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfigForwarder(address string) *ConfigForwarder {
+func NewConfigForwarder(address string, fqdn string) *ConfigForwarder {
 	this := ConfigForwarder{}
 	this.Address = address
+	this.Fqdn = fqdn
 	return &this
 }
 
@@ -73,36 +74,28 @@ func (o *ConfigForwarder) SetAddress(v string) {
 	o.Address = v
 }
 
-// GetFqdn returns the Fqdn field value if set, zero value otherwise.
+// GetFqdn returns the Fqdn field value
 func (o *ConfigForwarder) GetFqdn() string {
-	if o == nil || IsNil(o.Fqdn) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Fqdn
+
+	return o.Fqdn
 }
 
-// GetFqdnOk returns a tuple with the Fqdn field value if set, nil otherwise
+// GetFqdnOk returns a tuple with the Fqdn field value
 // and a boolean to check if the value has been set.
 func (o *ConfigForwarder) GetFqdnOk() (*string, bool) {
-	if o == nil || IsNil(o.Fqdn) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Fqdn, true
+	return &o.Fqdn, true
 }
 
-// HasFqdn returns a boolean if a field has been set.
-func (o *ConfigForwarder) HasFqdn() bool {
-	if o != nil && !IsNil(o.Fqdn) {
-		return true
-	}
-
-	return false
-}
-
-// SetFqdn gets a reference to the given string and assigns it to the Fqdn field.
+// SetFqdn sets field value
 func (o *ConfigForwarder) SetFqdn(v string) {
-	o.Fqdn = &v
+	o.Fqdn = v
 }
 
 // GetProtocolFqdn returns the ProtocolFqdn field value if set, zero value otherwise.
@@ -148,9 +141,7 @@ func (o ConfigForwarder) MarshalJSON() ([]byte, error) {
 func (o ConfigForwarder) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["address"] = o.Address
-	if !IsNil(o.Fqdn) {
-		toSerialize["fqdn"] = o.Fqdn
-	}
+	toSerialize["fqdn"] = o.Fqdn
 	if !IsNil(o.ProtocolFqdn) {
 		toSerialize["protocol_fqdn"] = o.ProtocolFqdn
 	}
@@ -163,6 +154,7 @@ func (o *ConfigForwarder) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"address",
+		"fqdn",
 	}
 
 	allProperties := make(map[string]interface{})

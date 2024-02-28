@@ -22,5 +22,4 @@ model_data_soa_serial_increment_response.go
 model_data_update_record_response.go
 model_inheritance2_inherited_u_int32.go
 model_protobuf_field_mask.go
-test/api_record_test.go
 utils.go
