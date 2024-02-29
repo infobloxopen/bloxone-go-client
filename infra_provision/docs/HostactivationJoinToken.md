@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ExpiresAt** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **LastUsedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Name** | **string** |  | 
+**Name** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**JoinTokenJoinTokenStatus**](JoinTokenJoinTokenStatus.md) |  | [optional] [default to JOINTOKENJOINTOKENSTATUS_UNKNOWN]
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 **TokenId** | Pointer to **string** | first half of the token. | [optional] [readonly] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewHostactivationJoinToken
 
-`func NewHostactivationJoinToken(name string, ) *HostactivationJoinToken`
+`func NewHostactivationJoinToken() *HostactivationJoinToken`
 
 NewHostactivationJoinToken instantiates a new HostactivationJoinToken object
 This constructor will assign default values to properties that have it defined,
@@ -178,6 +178,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *HostactivationJoinToken) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetStatus
 
