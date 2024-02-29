@@ -154,7 +154,6 @@ func (o *ConfigForwarder) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"address",
-		"fqdn",
 	}
 
 	allProperties := make(map[string]interface{})
