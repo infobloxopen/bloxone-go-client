@@ -24,7 +24,8 @@ import (
 )
 
 var ConfigHost_Patch = openapiclient.ConfigHost{
-	Id: openapiclient.PtrString("ConfigHostPatch"),
+	Id:   openapiclient.PtrString("ConfigHostPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_dns_config_HostAPIService(t *testing.T) {

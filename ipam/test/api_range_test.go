@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcRange_Post = openapiclient.IpamsvcRange{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcRange_Patch = openapiclient.IpamsvcRange{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_RangeAPIService(t *testing.T) {

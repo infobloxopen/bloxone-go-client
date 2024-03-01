@@ -32,7 +32,7 @@ var ConfigForwardNSG_Post = openapiclient.ConfigForwardNSG{
 	InternalForwarders: nil,
 	Name:               "",
 	Nsgs:               nil,
-	Tags:               nil,
+	Tags:               make(map[string]interface{}),
 }
 var ConfigForwardNSG_Patch = openapiclient.ConfigForwardNSG{
 	Id:                 openapiclient.PtrString("ConfigForwardNSGPatch"),
@@ -43,7 +43,7 @@ var ConfigForwardNSG_Patch = openapiclient.ConfigForwardNSG{
 	InternalForwarders: nil,
 	Name:               "",
 	Nsgs:               nil,
-	Tags:               nil,
+	Tags:               make(map[string]interface{}),
 }
 
 func Test_dns_config_ForwardNsgAPIService(t *testing.T) {

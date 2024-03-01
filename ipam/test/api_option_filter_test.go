@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcOptionFilter_Post = openapiclient.IpamsvcOptionFilter{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcOptionFilter_Patch = openapiclient.IpamsvcOptionFilter{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_OptionFilterAPIService(t *testing.T) {

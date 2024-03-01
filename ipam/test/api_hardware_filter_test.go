@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcHardwareFilter_Post = openapiclient.IpamsvcHardwareFilter{
-	Id: openapiclient.PtrString("Test Create"),
+	Id:   openapiclient.PtrString("Test Create"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcHardwareFilter_Patch = openapiclient.IpamsvcHardwareFilter{
-	Id: openapiclient.PtrString("Test Update"),
+	Id:   openapiclient.PtrString("Test Update"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_HardwareFilterAPIService(t *testing.T) {

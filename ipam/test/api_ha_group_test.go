@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcHAGroup_Post = openapiclient.IpamsvcHAGroup{
-	Id: openapiclient.PtrString("Test Create"),
+	Id:   openapiclient.PtrString("Test Create"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcHAGroup_Patch = openapiclient.IpamsvcHAGroup{
-	Id: openapiclient.PtrString("Test Update"),
+	Id:   openapiclient.PtrString("Test Update"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_HaGroupAPIService(t *testing.T) {

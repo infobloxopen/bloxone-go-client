@@ -24,13 +24,15 @@ import (
 )
 
 var DataRecord_Post = openapiclient.DataRecord{
-	Id: openapiclient.PtrString("DataRecordPost"),
+	Id:   openapiclient.PtrString("DataRecordPost"),
+	Tags: make(map[string]interface{}),
 }
 var DataSOASerialIncrementRequest_Post = openapiclient.DataSOASerialIncrementRequest{
 	Id: openapiclient.PtrString("IncrementRequest"),
 }
 var DataRecord_Patch = openapiclient.DataRecord{
-	Id: openapiclient.PtrString("DataRecordPatch"),
+	Id:   openapiclient.PtrString("DataRecordPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_dns_data_RecordAPIService(t *testing.T) {
@@ -44,7 +46,8 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 
 			var reqBody openapiclient.DataRecord
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, DataRecord_Post, reqBody)
+			require.Equal(t, DataRecord_Post.Id, reqBody.Id)
+			require.Equal(t, DataRecord_Post.Tags, reqBody.Tags)
 
 			response := openapiclient.DataCreateRecordResponse{}
 			body, err := json.Marshal(response)
@@ -161,7 +164,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecord_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecord_Post.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.DataRecord
@@ -179,7 +182,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RecordAPI.RecordUpdate(context.Background(), *DataRecord_Patch.Id).Body(DataRecord_Patch).Execute()
+		resp, httpRes, err := apiClient.RecordAPI.RecordUpdate(context.Background(), *DataRecord_Post.Id).Body(DataRecord_Patch).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

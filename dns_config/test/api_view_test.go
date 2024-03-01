@@ -33,10 +33,12 @@ var ConfigBulkCopyView_Post = openapiclient.ConfigBulkCopyView{
 	Target:              "TargetPost",
 }
 var ConfigView_Post = openapiclient.ConfigView{
-	Id: openapiclient.PtrString("ConfigViewPost"),
+	Id:   openapiclient.PtrString("ConfigViewPost"),
+	Tags: make(map[string]interface{}),
 }
 var ConfigView_Patch = openapiclient.ConfigView{
-	Id: openapiclient.PtrString("ConfigViewPatch"),
+	Id:   openapiclient.PtrString("ConfigViewPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_dns_config_ViewAPIService(t *testing.T) {

@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcAddress_Post = openapiclient.IpamsvcAddress{
-	Id: openapiclient.PtrString("Test Create"),
+	Id:   openapiclient.PtrString("Test Create"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcAddress_Patch = openapiclient.IpamsvcAddress{
-	Id: openapiclient.PtrString("Test Update"),
+	Id:   openapiclient.PtrString("Test Update"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_AddressAPIService(t *testing.T) {

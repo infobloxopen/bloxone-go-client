@@ -25,7 +25,8 @@ import (
 )
 
 var IpamsvcHost_Patch = openapiclient.IpamsvcHost{
-	Id: openapiclient.PtrString("Test"),
+	Id:   openapiclient.PtrString("Test"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_DhcpHostAPIService(t *testing.T) {

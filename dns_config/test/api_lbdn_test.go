@@ -24,10 +24,12 @@ import (
 )
 
 var ConfigLBDN_Post = openapiclient.ConfigLBDN{
-	Id: openapiclient.PtrString("ConfigLBDNPost"),
+	Id:   openapiclient.PtrString("ConfigLBDNPost"),
+	Tags: make(map[string]interface{}),
 }
 var ConfigLBDN_Patch = openapiclient.ConfigLBDN{
-	Id: openapiclient.PtrString("ConfigLBDNPatch"),
+	Id:   openapiclient.PtrString("ConfigLBDNPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_dns_config_LbdnAPIService(t *testing.T) {

@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcOptionGroup_Post = openapiclient.IpamsvcOptionGroup{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcOptionGroup_Patch = openapiclient.IpamsvcOptionGroup{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_OptionGroupAPIService(t *testing.T) {

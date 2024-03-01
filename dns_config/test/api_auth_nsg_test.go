@@ -27,11 +27,13 @@ var ConfigAuthNSG_Post = openapiclient.ConfigAuthNSG{
 	Comment: openapiclient.PtrString("This is a dummy AuthNes for testing."),
 	Id:      openapiclient.PtrString("dummyAuthNesId"),
 	Name:    "dummyAuthNesName",
+	Tags:    make(map[string]interface{}),
 }
 var ConfigAuthNSG_Patch = openapiclient.ConfigAuthNSG{
 	Comment: openapiclient.PtrString("This is an updated dummy AuthNsg for testing."),
 	Id:      ConfigAuthNSG_Post.Id,
 	Name:    "updatedDummyAuthNsgName",
+	Tags:    make(map[string]interface{}),
 }
 
 func Test_dns_config_AuthNsgAPIService(t *testing.T) {

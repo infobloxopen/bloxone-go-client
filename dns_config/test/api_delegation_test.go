@@ -31,7 +31,7 @@ var ConfigDelegation_Post = openapiclient.ConfigDelegation{
 	Fqdn:              nil,
 	Parent:            nil,
 	ProtocolFqdn:      nil,
-	Tags:              nil,
+	Tags:              make(map[string]interface{}),
 	View:              nil,
 }
 var ConfigDelegation_Patch = openapiclient.ConfigDelegation{
@@ -42,7 +42,7 @@ var ConfigDelegation_Patch = openapiclient.ConfigDelegation{
 	Fqdn:              nil,
 	Parent:            nil,
 	ProtocolFqdn:      nil,
-	Tags:              nil,
+	Tags:              make(map[string]interface{}),
 	View:              nil,
 }
 

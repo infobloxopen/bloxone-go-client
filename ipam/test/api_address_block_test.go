@@ -32,10 +32,12 @@ var IpamsvcCopyAddressBlock_Post = openapiclient.IpamsvcCopyAddressBlock{
 var IpamsvcAddressBlock_Post = openapiclient.IpamsvcAddressBlock{
 	Id:   openapiclient.PtrString("Test Create"),
 	Cidr: &cidrValue,
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcAddressBlock_Patch = openapiclient.IpamsvcAddressBlock{
 	Id:   openapiclient.PtrString("Test Update"),
 	Cidr: &cidrValue,
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_AddressBlockAPIService(t *testing.T) {

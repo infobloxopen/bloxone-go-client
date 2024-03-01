@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcServer_Post = openapiclient.IpamsvcServer{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcServer_Patch = openapiclient.IpamsvcServer{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_ServerAPIService(t *testing.T) {

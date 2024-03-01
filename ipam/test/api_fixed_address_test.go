@@ -25,10 +25,12 @@ import (
 )
 
 var IpamsvcFixedAddress_Post = openapiclient.IpamsvcFixedAddress{
-	Id: openapiclient.PtrString("Test Create"),
+	Id:   openapiclient.PtrString("Test Create"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcFixedAddress_Patch = openapiclient.IpamsvcFixedAddress{
-	Id: openapiclient.PtrString("Test Update"),
+	Id:   openapiclient.PtrString("Test Update"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_FixedAddressAPIService(t *testing.T) {

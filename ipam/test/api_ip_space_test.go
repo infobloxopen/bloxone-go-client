@@ -29,10 +29,12 @@ var IpamsvcCopyIPSpace_Post = openapiclient.IpamsvcCopyIPSpace{
 	Id: openapiclient.PtrString("Test Copy Post"),
 }
 var IpamsvcIPSpace_Post = openapiclient.IpamsvcIPSpace{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcIPSpace_Patch = openapiclient.IpamsvcIPSpace{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_IpSpaceAPIService(t *testing.T) {

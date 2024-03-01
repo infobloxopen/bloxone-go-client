@@ -27,6 +27,7 @@ var UploadRequest_Post = openapiclient.UploadRequest{
 	Comment: openapiclient.PtrString("Upload Request"),
 	Content: "SGVsbG8gd29ybGQ=",                     // "Hello world" in base64
 	Type:    openapiclient.UPLOADCONTENTTYPE_KEYTAB, // Replace "your_content_type" with the actual content type
+	Tags:    make(map[string]interface{}),
 }
 
 func Test_keys_UploadAPIService(t *testing.T) {

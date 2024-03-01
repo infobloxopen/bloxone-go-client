@@ -28,10 +28,12 @@ var IpamsvcCopySubnet_Post = openapiclient.IpamsvcCopySubnet{
 	Id: openapiclient.PtrString("Test Copy"),
 }
 var IpamsvcSubnet_Post = openapiclient.IpamsvcSubnet{
-	Id: openapiclient.PtrString("Test Post"),
+	Id:   openapiclient.PtrString("Test Post"),
+	Tags: make(map[string]interface{}),
 }
 var IpamsvcSubnet_Patch = openapiclient.IpamsvcSubnet{
-	Id: openapiclient.PtrString("Test Patch"),
+	Id:   openapiclient.PtrString("Test Patch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_ipam_SubnetAPIService(t *testing.T) {

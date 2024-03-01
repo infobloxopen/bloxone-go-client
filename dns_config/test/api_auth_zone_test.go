@@ -30,10 +30,12 @@ var ConfigCopyAuthZone_Post = openapiclient.ConfigCopyAuthZone{
 var ConfigAuthZone_Post = openapiclient.ConfigAuthZone{
 	Comment: openapiclient.PtrString("This is a dummy AuthZone for testing."),
 	Id:      openapiclient.PtrString("dummyAuthZoneId"),
+	Tags:    make(map[string]interface{}),
 }
 var ConfigAuthZone_Patch = openapiclient.ConfigAuthZone{
 	Comment: openapiclient.PtrString("This is an updated dummy AuthZone for testing."),
 	Id:      ConfigAuthZone_Post.Id,
+	Tags:    make(map[string]interface{}),
 }
 
 func Test_dns_config_AuthZoneAPIService(t *testing.T) {

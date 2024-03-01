@@ -24,10 +24,12 @@ import (
 )
 
 var ConfigServer_Post = openapiclient.ConfigServer{
-	Id: openapiclient.PtrString("ConfigServerPost"),
+	Id:   openapiclient.PtrString("ConfigServerPost"),
+	Tags: make(map[string]interface{}),
 }
 var ConfigServer_Patch = openapiclient.ConfigServer{
-	Id: openapiclient.PtrString("ConfigServerPatch"),
+	Id:   openapiclient.PtrString("ConfigServerPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_dns_config_ServerAPIService(t *testing.T) {

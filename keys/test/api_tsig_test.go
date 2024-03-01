@@ -24,10 +24,12 @@ import (
 )
 
 var KeysTSIGKey_Post = openapiclient.KeysTSIGKey{
-	Id: openapiclient.PtrString("KeysTsigPost"),
+	Id:   openapiclient.PtrString("KeysTsigPost"),
+	Tags: make(map[string]interface{}),
 }
 var KeysTSIGKey_Patch = openapiclient.KeysTSIGKey{
-	Id: openapiclient.PtrString("KeysTsigPatch"),
+	Id:   openapiclient.PtrString("KeysTsigPatch"),
+	Tags: make(map[string]interface{}),
 }
 
 func Test_keys_TsigAPIService(t *testing.T) {

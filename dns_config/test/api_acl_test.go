@@ -27,12 +27,14 @@ var dns_config_Post = openapiclient.ConfigACL{
 	Comment: openapiclient.PtrString("This is a dummy ACL for testing."),
 	Id:      openapiclient.PtrString("dummyAclId"),
 	Name:    "dummyAclName",
+	Tags:    make(map[string]interface{}),
 }
 
 var dns_config_Patch = openapiclient.ConfigACL{
 	Comment: openapiclient.PtrString("This is an updated dummy ACL for testing."),
 	Id:      dns_config_Post.Id,
 	Name:    "updatedDummyAclName",
+	Tags:    make(map[string]interface{}),
 }
 
 func Test_dns_config_AclAPIService(t *testing.T) {
