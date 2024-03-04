@@ -24,9 +24,9 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcLeasesCommand_Post = openapiclient.IpamsvcLeasesCommand{}
+var IpamsvcLeasesCommandPost = openapiclient.IpamsvcLeasesCommand{}
 
-func Test_ipam_LeasesCommandAPIService(t *testing.T) {
+func TestLeasesCommandAPIService(t *testing.T) {
 
 	t.Run("Test LeasesCommandAPIService LeasesCommandCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -37,7 +37,7 @@ func Test_ipam_LeasesCommandAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcLeasesCommand
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcLeasesCommand_Post, reqBody)
+			assert.Equal(t, IpamsvcLeasesCommandPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateLeasesCommandResponse{}
 			body, err := json.Marshal(response)
@@ -50,7 +50,7 @@ func Test_ipam_LeasesCommandAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(IpamsvcLeasesCommand_Post).Execute()
+		resp, httpRes, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(IpamsvcLeasesCommandPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

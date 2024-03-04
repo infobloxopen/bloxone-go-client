@@ -24,20 +24,20 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcBulkCopyIPSpace_Post = openapiclient.IpamsvcBulkCopyIPSpace{}
-var IpamsvcCopyIPSpace_Post = openapiclient.IpamsvcCopyIPSpace{
+var IpamsvcBulkCopyIPSpacePost = openapiclient.IpamsvcBulkCopyIPSpace{}
+var IpamsvcCopyIPSpacePost = openapiclient.IpamsvcCopyIPSpace{
 	Id: openapiclient.PtrString("Test Copy Post"),
 }
-var IpamsvcIPSpace_Post = openapiclient.IpamsvcIPSpace{
+var IpamsvcIPSpacePost = openapiclient.IpamsvcIPSpace{
 	Id:   openapiclient.PtrString("Test Post"),
 	Tags: make(map[string]interface{}),
 }
-var IpamsvcIPSpace_Patch = openapiclient.IpamsvcIPSpace{
+var IpamsvcIPSpacePatch = openapiclient.IpamsvcIPSpace{
 	Id:   openapiclient.PtrString("Test Patch"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_IpSpaceAPIService(t *testing.T) {
+func TestIpSpaceAPIService(t *testing.T) {
 
 	t.Run("Test IpSpaceAPIService IpSpaceBulkCopy", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -48,7 +48,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcBulkCopyIPSpace
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcBulkCopyIPSpace_Post, reqBody)
+			assert.Equal(t, IpamsvcBulkCopyIPSpacePost, reqBody)
 
 			response := openapiclient.IpamsvcBulkCopyIPSpaceResponse{}
 			body, err := json.Marshal(response)
@@ -61,7 +61,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceBulkCopy(context.Background()).Body(IpamsvcBulkCopyIPSpace_Post).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceBulkCopy(context.Background()).Body(IpamsvcBulkCopyIPSpacePost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -71,12 +71,12 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPost, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcCopyIPSpace_Post.Id+"/copy", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcCopyIPSpacePost.Id+"/copy", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcCopyIPSpace
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcCopyIPSpace_Post, reqBody)
+			assert.Equal(t, IpamsvcCopyIPSpacePost, reqBody)
 
 			response := openapiclient.IpamsvcCopyIPSpaceResponse{}
 			body, err := json.Marshal(response)
@@ -89,7 +89,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCopy(context.Background(), *IpamsvcCopyIPSpace_Post.Id).Body(IpamsvcCopyIPSpace_Post).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCopy(context.Background(), *IpamsvcCopyIPSpacePost.Id).Body(IpamsvcCopyIPSpacePost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -104,7 +104,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcIPSpace
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcIPSpace_Post, reqBody)
+			assert.Equal(t, IpamsvcIPSpacePost, reqBody)
 
 			response := openapiclient.IpamsvcCreateIPSpaceResponse{}
 			body, err := json.Marshal(response)
@@ -117,7 +117,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCreate(context.Background()).Body(IpamsvcIPSpace_Post).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCreate(context.Background()).Body(IpamsvcIPSpacePost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -127,7 +127,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpace_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpacePost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -136,7 +136,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.IpSpaceAPI.IpSpaceDelete(context.Background(), *IpamsvcIPSpace_Post.Id).Execute()
+		httpRes, err := apiClient.IpSpaceAPI.IpSpaceDelete(context.Background(), *IpamsvcIPSpacePost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -169,7 +169,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpace_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpacePost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadIPSpaceResponse{}
@@ -183,7 +183,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceRead(context.Background(), *IpamsvcIPSpace_Post.Id).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceRead(context.Background(), *IpamsvcIPSpacePost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -193,12 +193,12 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpace_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/ip_space/"+*IpamsvcIPSpacePatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcIPSpace
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcIPSpace_Patch, reqBody)
+			assert.Equal(t, IpamsvcIPSpacePatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateIPSpaceResponse{}
 			body, err := json.Marshal(response)
@@ -211,7 +211,7 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceUpdate(context.Background(), *IpamsvcIPSpace_Patch.Id).Body(IpamsvcIPSpace_Patch).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceUpdate(context.Background(), *IpamsvcIPSpacePatch.Id).Body(IpamsvcIPSpacePatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

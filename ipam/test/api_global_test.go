@@ -24,14 +24,14 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcGlobal_Patch1 = openapiclient.IpamsvcGlobal{
+var IpamsvcGlobalPatch1 = openapiclient.IpamsvcGlobal{
 	Id: openapiclient.PtrString("Test 1"),
 }
-var IpamsvcGlobal_Patch2 = openapiclient.IpamsvcGlobal{
+var IpamsvcGlobalPatch2 = openapiclient.IpamsvcGlobal{
 	Id: openapiclient.PtrString("Test 2"),
 }
 
-func Test_ipam_GlobalAPIService(t *testing.T) {
+func TestGlobalAPIService(t *testing.T) {
 
 	t.Run("Test GlobalAPIService GlobalRead", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -61,7 +61,7 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/global/"+*IpamsvcGlobal_Patch2.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/global/"+*IpamsvcGlobalPatch2.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadGlobalResponse{}
@@ -75,7 +75,7 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), *IpamsvcGlobal_Patch2.Id).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), *IpamsvcGlobalPatch2.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -89,7 +89,7 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcGlobal
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcGlobal_Patch1, reqBody)
+			assert.Equal(t, IpamsvcGlobalPatch1, reqBody)
 
 			response := openapiclient.IpamsvcUpdateGlobalResponse{}
 			body, err := json.Marshal(response)
@@ -102,7 +102,7 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(IpamsvcGlobal_Patch1).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(IpamsvcGlobalPatch1).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -112,12 +112,12 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/global/"+*IpamsvcGlobal_Patch2.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/global/"+*IpamsvcGlobalPatch2.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcGlobal
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcGlobal_Patch2, reqBody)
+			assert.Equal(t, IpamsvcGlobalPatch2, reqBody)
 
 			response := openapiclient.IpamsvcUpdateGlobalResponse{}
 			body, err := json.Marshal(response)
@@ -130,7 +130,7 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), *IpamsvcGlobal_Patch2.Id).Body(IpamsvcGlobal_Patch2).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), *IpamsvcGlobalPatch2.Id).Body(IpamsvcGlobalPatch2).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

@@ -24,16 +24,16 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcFixedAddress_Post = openapiclient.IpamsvcFixedAddress{
+var IpamsvcFixedAddressPost = openapiclient.IpamsvcFixedAddress{
 	Id:   openapiclient.PtrString("Test Create"),
 	Tags: make(map[string]interface{}),
 }
-var IpamsvcFixedAddress_Patch = openapiclient.IpamsvcFixedAddress{
+var IpamsvcFixedAddressPatch = openapiclient.IpamsvcFixedAddress{
 	Id:   openapiclient.PtrString("Test Update"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_FixedAddressAPIService(t *testing.T) {
+func TestFixedAddressAPIService(t *testing.T) {
 
 	t.Run("Test FixedAddressAPIService FixedAddressCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -44,7 +44,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcFixedAddress
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcFixedAddress_Post, reqBody)
+			assert.Equal(t, IpamsvcFixedAddressPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateFixedAddressResponse{}
 			body, err := json.Marshal(response)
@@ -57,7 +57,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Body(IpamsvcFixedAddress_Post).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Body(IpamsvcFixedAddressPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -67,7 +67,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddress_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddressPost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -76,7 +76,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.FixedAddressAPI.FixedAddressDelete(context.Background(), *IpamsvcFixedAddress_Post.Id).Execute()
+		httpRes, err := apiClient.FixedAddressAPI.FixedAddressDelete(context.Background(), *IpamsvcFixedAddressPost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -109,7 +109,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddress_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddressPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadFixedAddressResponse{}
@@ -123,7 +123,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), *IpamsvcFixedAddress_Post.Id).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), *IpamsvcFixedAddressPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -133,12 +133,12 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddress_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/fixed_address/"+*IpamsvcFixedAddressPatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcFixedAddress
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcFixedAddress_Patch, reqBody)
+			assert.Equal(t, IpamsvcFixedAddressPatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateFixedAddressResponse{}
 			body, err := json.Marshal(response)
@@ -151,7 +151,7 @@ func Test_ipam_FixedAddressAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), *IpamsvcAddress_Patch.Id).Body(IpamsvcFixedAddress_Patch).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), *IpamsvcAddressPatch.Id).Body(IpamsvcFixedAddressPatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

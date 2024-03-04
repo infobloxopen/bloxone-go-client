@@ -24,16 +24,16 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcHAGroup_Post = openapiclient.IpamsvcHAGroup{
+var IpamsvcHAGroupPost = openapiclient.IpamsvcHAGroup{
 	Id:   openapiclient.PtrString("Test Create"),
 	Tags: make(map[string]interface{}),
 }
-var IpamsvcHAGroup_Patch = openapiclient.IpamsvcHAGroup{
+var IpamsvcHAGroupPatch = openapiclient.IpamsvcHAGroup{
 	Id:   openapiclient.PtrString("Test Update"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_HaGroupAPIService(t *testing.T) {
+func TestHaGroupAPIService(t *testing.T) {
 
 	t.Run("Test HaGroupAPIService HaGroupCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -44,7 +44,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcHAGroup
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcHAGroup_Post, reqBody)
+			assert.Equal(t, IpamsvcHAGroupPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateHAGroupResponse{}
 			body, err := json.Marshal(response)
@@ -57,7 +57,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupCreate(context.Background()).Body(IpamsvcHAGroup_Post).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupCreate(context.Background()).Body(IpamsvcHAGroupPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -67,7 +67,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroup_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroupPost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -76,7 +76,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.HaGroupAPI.HaGroupDelete(context.Background(), *IpamsvcHAGroup_Post.Id).Execute()
+		httpRes, err := apiClient.HaGroupAPI.HaGroupDelete(context.Background(), *IpamsvcHAGroupPost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -109,7 +109,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroup_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroupPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadHAGroupResponse{}
@@ -123,7 +123,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupRead(context.Background(), *IpamsvcHAGroup_Post.Id).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupRead(context.Background(), *IpamsvcHAGroupPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -133,12 +133,12 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroup_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/ha_group/"+*IpamsvcHAGroupPatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcHAGroup
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcHAGroup_Patch, reqBody)
+			assert.Equal(t, IpamsvcHAGroupPatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateHAGroupResponse{}
 			body, err := json.Marshal(response)
@@ -151,7 +151,7 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupUpdate(context.Background(), *IpamsvcHAGroup_Patch.Id).Body(IpamsvcHAGroup_Patch).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupUpdate(context.Background(), *IpamsvcHAGroupPatch.Id).Body(IpamsvcHAGroupPatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

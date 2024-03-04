@@ -28,7 +28,7 @@ var IpamsvcDNSUsage = openapiclient.IpamsvcDNSUsage{
 	Id: openapiclient.PtrString("Test"),
 }
 
-func Test_ipam_DnsUsageAPIService(t *testing.T) {
+func TestDnsUsageAPIService(t *testing.T) {
 
 	t.Run("Test DnsUsageAPIService DnsUsageList", func(t *testing.T) {
 		configuration := internal.NewConfiguration()

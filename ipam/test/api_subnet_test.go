@@ -24,30 +24,30 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcCopySubnet_Post = openapiclient.IpamsvcCopySubnet{
+var IpamsvcCopySubnetPost = openapiclient.IpamsvcCopySubnet{
 	Id: openapiclient.PtrString("Test Copy"),
 }
-var IpamsvcSubnet_Post = openapiclient.IpamsvcSubnet{
+var IpamsvcSubnetPost = openapiclient.IpamsvcSubnet{
 	Id:   openapiclient.PtrString("Test Post"),
 	Tags: make(map[string]interface{}),
 }
-var IpamsvcSubnet_Patch = openapiclient.IpamsvcSubnet{
+var IpamsvcSubnetPatch = openapiclient.IpamsvcSubnet{
 	Id:   openapiclient.PtrString("Test Patch"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_SubnetAPIService(t *testing.T) {
+func TestSubnetAPIService(t *testing.T) {
 
 	t.Run("Test SubnetAPIService SubnetCopy", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPost, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcCopySubnet_Post.Id+"/copy", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcCopySubnetPost.Id+"/copy", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcCopySubnet
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcCopySubnet_Post, reqBody)
+			assert.Equal(t, IpamsvcCopySubnetPost, reqBody)
 
 			response := openapiclient.IpamsvcCopySubnetResponse{}
 			body, err := json.Marshal(response)
@@ -60,7 +60,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCopy(context.Background(), *IpamsvcCopySubnet_Post.Id).Body(IpamsvcCopySubnet_Post).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetCopy(context.Background(), *IpamsvcCopySubnetPost.Id).Body(IpamsvcCopySubnetPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -75,7 +75,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcSubnet
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcSubnet_Post, reqBody)
+			assert.Equal(t, IpamsvcSubnetPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateSubnetResponse{}
 			body, err := json.Marshal(response)
@@ -88,7 +88,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreate(context.Background()).Body(IpamsvcSubnet_Post).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreate(context.Background()).Body(IpamsvcSubnetPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -98,7 +98,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPost, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnet_Post.Id+"/nextavailableip", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnetPost.Id+"/nextavailableip", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcCreateNextAvailableIPResponse{}
@@ -112,7 +112,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), *IpamsvcSubnet_Post.Id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), *IpamsvcSubnetPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -122,7 +122,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnet_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnetPost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -131,7 +131,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.SubnetAPI.SubnetDelete(context.Background(), *IpamsvcSubnet_Post.Id).Execute()
+		httpRes, err := apiClient.SubnetAPI.SubnetDelete(context.Background(), *IpamsvcSubnetPost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -164,7 +164,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnet_Post.Id+"/nextavailableip", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnetPost.Id+"/nextavailableip", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcNextAvailableIPResponse{}
@@ -178,7 +178,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetListNextAvailableIP(context.Background(), *IpamsvcSubnet_Post.Id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetListNextAvailableIP(context.Background(), *IpamsvcSubnetPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -188,7 +188,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnet_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnetPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadSubnetResponse{}
@@ -202,7 +202,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetRead(context.Background(), *IpamsvcSubnet_Post.Id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetRead(context.Background(), *IpamsvcSubnetPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -212,12 +212,12 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnet_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/subnet/"+*IpamsvcSubnetPatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcSubnet
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcSubnet_Patch, reqBody)
+			assert.Equal(t, IpamsvcSubnetPatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateSubnetResponse{}
 			body, err := json.Marshal(response)
@@ -230,7 +230,7 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetUpdate(context.Background(), *IpamsvcSubnet_Patch.Id).Body(IpamsvcSubnet_Patch).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.SubnetUpdate(context.Background(), *IpamsvcSubnetPatch.Id).Body(IpamsvcSubnetPatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

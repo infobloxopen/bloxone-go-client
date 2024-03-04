@@ -23,19 +23,19 @@ import (
 	"github.com/infobloxopen/bloxone-go-client/internal"
 )
 
-var DataRecord_Post = openapiclient.DataRecord{
+var DataRecordPost = openapiclient.DataRecord{
 	Id:   openapiclient.PtrString("DataRecordPost"),
 	Tags: make(map[string]interface{}),
 }
-var DataSOASerialIncrementRequest_Post = openapiclient.DataSOASerialIncrementRequest{
+var DataSOASerialIncrementRequestPost = openapiclient.DataSOASerialIncrementRequest{
 	Id: openapiclient.PtrString("IncrementRequest"),
 }
-var DataRecord_Patch = openapiclient.DataRecord{
+var DataRecordPatch = openapiclient.DataRecord{
 	Id:   openapiclient.PtrString("DataRecordPatch"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_dns_data_RecordAPIService(t *testing.T) {
+func TestRecordAPIService(t *testing.T) {
 
 	t.Run("Test RecordAPIService RecordCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -46,8 +46,8 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 
 			var reqBody openapiclient.DataRecord
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, DataRecord_Post.Id, reqBody.Id)
-			require.Equal(t, DataRecord_Post.Tags, reqBody.Tags)
+			require.Equal(t, DataRecordPost.Id, reqBody.Id)
+			require.Equal(t, DataRecordPost.Tags, reqBody.Tags)
 
 			response := openapiclient.DataCreateRecordResponse{}
 			body, err := json.Marshal(response)
@@ -60,7 +60,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RecordAPI.RecordCreate(context.Background()).Body(DataRecord_Post).Execute()
+		resp, httpRes, err := apiClient.RecordAPI.RecordCreate(context.Background()).Body(DataRecordPost).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -70,7 +70,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecord_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecordPost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -79,7 +79,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.RecordAPI.RecordDelete(context.Background(), *DataRecord_Post.Id).Execute()
+		httpRes, err := apiClient.RecordAPI.RecordDelete(context.Background(), *DataRecordPost.Id).Execute()
 		require.Nil(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -112,7 +112,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecord_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecordPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.DataReadRecordResponse{}
@@ -126,7 +126,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RecordAPI.RecordRead(context.Background(), *DataRecord_Post.Id).Execute()
+		resp, httpRes, err := apiClient.RecordAPI.RecordRead(context.Background(), *DataRecordPost.Id).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -136,12 +136,12 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPost, req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataSOASerialIncrementRequest_Post.Id+"/serial_increment", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataSOASerialIncrementRequestPost.Id+"/serial_increment", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.DataSOASerialIncrementRequest
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, DataSOASerialIncrementRequest_Post, reqBody)
+			require.Equal(t, DataSOASerialIncrementRequestPost, reqBody)
 
 			response := openapiclient.DataSOASerialIncrementResponse{}
 			body, err := json.Marshal(response)
@@ -154,7 +154,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RecordAPI.RecordSOASerialIncrement(context.Background(), *DataSOASerialIncrementRequest_Post.Id).Body(DataSOASerialIncrementRequest_Post).Execute()
+		resp, httpRes, err := apiClient.RecordAPI.RecordSOASerialIncrement(context.Background(), *DataSOASerialIncrementRequestPost.Id).Body(DataSOASerialIncrementRequestPost).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -164,12 +164,12 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecord_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dns/record/"+*DataRecordPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.DataRecord
 			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			require.Equal(t, DataRecord_Patch, reqBody)
+			require.Equal(t, DataRecordPatch, reqBody)
 
 			response := openapiclient.DataUpdateRecordResponse{}
 			body, err := json.Marshal(response)
@@ -182,7 +182,7 @@ func Test_dns_data_RecordAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RecordAPI.RecordUpdate(context.Background(), *DataRecord_Post.Id).Body(DataRecord_Patch).Execute()
+		resp, httpRes, err := apiClient.RecordAPI.RecordUpdate(context.Background(), *DataRecordPost.Id).Body(DataRecordPatch).Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

@@ -24,11 +24,11 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcASM_Post = openapiclient.IpamsvcASM{
+var IpamsvcASMPost = openapiclient.IpamsvcASM{
 	Id: openapiclient.PtrString("Test Create"),
 }
 
-func Test_ipam_AsmAPIService(t *testing.T) {
+func TestAsmAPIService(t *testing.T) {
 
 	t.Run("Test AsmAPIService AsmCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -39,7 +39,7 @@ func Test_ipam_AsmAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcASM
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcASM_Post, reqBody)
+			assert.Equal(t, IpamsvcASMPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateASMResponse{}
 			body, err := json.Marshal(response)
@@ -52,7 +52,7 @@ func Test_ipam_AsmAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.AsmAPI.AsmCreate(context.Background()).Body(IpamsvcASM_Post).Execute()
+		resp, httpRes, err := apiClient.AsmAPI.AsmCreate(context.Background()).Body(IpamsvcASMPost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -84,7 +84,7 @@ func Test_ipam_AsmAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/asm/"+*IpamsvcASM_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/asm/"+*IpamsvcASMPost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadASMResponse{}
@@ -98,7 +98,7 @@ func Test_ipam_AsmAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.AsmAPI.AsmRead(context.Background(), *IpamsvcASM_Post.Id).Execute()
+		resp, httpRes, err := apiClient.AsmAPI.AsmRead(context.Background(), *IpamsvcASMPost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

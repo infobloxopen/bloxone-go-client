@@ -24,16 +24,16 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcRange_Post = openapiclient.IpamsvcRange{
+var IpamsvcRangePost = openapiclient.IpamsvcRange{
 	Id:   openapiclient.PtrString("Test Post"),
 	Tags: make(map[string]interface{}),
 }
-var IpamsvcRange_Patch = openapiclient.IpamsvcRange{
+var IpamsvcRangePatch = openapiclient.IpamsvcRange{
 	Id:   openapiclient.PtrString("Test Patch"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_RangeAPIService(t *testing.T) {
+func TestRangeAPIService(t *testing.T) {
 
 	t.Run("Test RangeAPIService RangeCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -44,7 +44,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcRange
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcRange_Post, reqBody)
+			assert.Equal(t, IpamsvcRangePost, reqBody)
 
 			response := openapiclient.IpamsvcCreateRangeResponse{}
 			body, err := json.Marshal(response)
@@ -57,7 +57,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RangeAPI.RangeCreate(context.Background()).Body(IpamsvcRange_Post).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.RangeCreate(context.Background()).Body(IpamsvcRangePost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -67,7 +67,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPost, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRange_Post.Id+"/nextavailableip", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRangePost.Id+"/nextavailableip", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcCreateNextAvailableIPResponse{}
@@ -81,7 +81,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RangeAPI.RangeCreateNextAvailableIP(context.Background(), *IpamsvcRange_Post.Id).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.RangeCreateNextAvailableIP(context.Background(), *IpamsvcRangePost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -91,7 +91,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRange_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRangePost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -101,7 +101,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		})
 
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.RangeAPI.RangeDelete(context.Background(), *IpamsvcRange_Post.Id).Execute()
+		httpRes, err := apiClient.RangeAPI.RangeDelete(context.Background(), *IpamsvcRangePost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -134,7 +134,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRange_Post.Id+"/nextavailableip", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRangePost.Id+"/nextavailableip", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcNextAvailableIPResponse{}
@@ -148,7 +148,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RangeAPI.RangeListNextAvailableIP(context.Background(), *IpamsvcRange_Post.Id).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.RangeListNextAvailableIP(context.Background(), *IpamsvcRangePost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -158,7 +158,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRange_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRangePost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadRangeResponse{}
@@ -172,7 +172,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RangeAPI.RangeRead(context.Background(), *IpamsvcRange_Post.Id).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.RangeRead(context.Background(), *IpamsvcRangePost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -182,12 +182,12 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRange_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/ipam/range/"+*IpamsvcRangePatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcRange
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcRange_Patch, reqBody)
+			assert.Equal(t, IpamsvcRangePatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateRangeResponse{}
 			body, err := json.Marshal(response)
@@ -200,7 +200,7 @@ func Test_ipam_RangeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.RangeAPI.RangeUpdate(context.Background(), *IpamsvcRange_Patch.Id).Body(IpamsvcRange_Patch).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.RangeUpdate(context.Background(), *IpamsvcRangePatch.Id).Body(IpamsvcRangePatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

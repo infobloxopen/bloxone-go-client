@@ -24,12 +24,7 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcFilter_Post = openapiclient.IpamsvcFilter{
-
-	Id: openapiclient.PtrString("Test"),
-}
-
-func Test_ipam_FilterAPIService(t *testing.T) {
+func TestFilterAPIService(t *testing.T) {
 
 	t.Run("Test FilterAPIService FilterList", func(t *testing.T) {
 		configuration := internal.NewConfiguration()

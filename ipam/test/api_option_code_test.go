@@ -24,14 +24,14 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcOptionCode_Post = openapiclient.IpamsvcOptionCode{
+var IpamsvcOptionCodePost = openapiclient.IpamsvcOptionCode{
 	Id: openapiclient.PtrString("Test Post"),
 }
-var IpamsvcOptionCode_Patch = openapiclient.IpamsvcOptionCode{
+var IpamsvcOptionCodePatch = openapiclient.IpamsvcOptionCode{
 	Id: openapiclient.PtrString("Test Patch"),
 }
 
-func Test_ipam_OptionCodeAPIService(t *testing.T) {
+func TestOptionCodeAPIService(t *testing.T) {
 
 	t.Run("Test OptionCodeAPIService OptionCodeCreate", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -42,7 +42,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 
 			var reqBody openapiclient.IpamsvcOptionCode
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcOptionCode_Post, reqBody)
+			assert.Equal(t, IpamsvcOptionCodePost, reqBody)
 
 			response := openapiclient.IpamsvcCreateOptionCodeResponse{}
 			body, err := json.Marshal(response)
@@ -55,7 +55,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeCreate(context.Background()).Body(IpamsvcOptionCode_Post).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeCreate(context.Background()).Body(IpamsvcOptionCodePost).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -65,7 +65,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodDelete, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCode_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCodePost.Id, req.URL.Path)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -75,7 +75,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 		})
 
 		apiClient := openapiclient.NewAPIClient(configuration)
-		httpRes, err := apiClient.OptionCodeAPI.OptionCodeDelete(context.Background(), *IpamsvcOptionCode_Post.Id).Execute()
+		httpRes, err := apiClient.OptionCodeAPI.OptionCodeDelete(context.Background(), *IpamsvcOptionCodePost.Id).Execute()
 		require.NoError(t, err)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
 	})
@@ -108,7 +108,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCode_Post.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCodePost.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadOptionCodeResponse{}
@@ -122,7 +122,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeRead(context.Background(), *IpamsvcOptionCode_Post.Id).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeRead(context.Background(), *IpamsvcOptionCodePost.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -132,12 +132,12 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCode_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/option_code/"+*IpamsvcOptionCodePatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcOptionCode
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcOptionCode_Patch, reqBody)
+			assert.Equal(t, IpamsvcOptionCodePatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateOptionCodeResponse{}
 			body, err := json.Marshal(response)
@@ -150,7 +150,7 @@ func Test_ipam_OptionCodeAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeUpdate(context.Background(), *IpamsvcOptionCode_Patch.Id).Body(IpamsvcOptionCode_Patch).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeUpdate(context.Background(), *IpamsvcOptionCodePatch.Id).Body(IpamsvcOptionCodePatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)

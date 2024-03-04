@@ -24,12 +24,12 @@ import (
 	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-var IpamsvcHost_Patch = openapiclient.IpamsvcHost{
+var IpamsvcHostPatch = openapiclient.IpamsvcHost{
 	Id:   openapiclient.PtrString("Test"),
 	Tags: make(map[string]interface{}),
 }
 
-func Test_ipam_DhcpHostAPIService(t *testing.T) {
+func TestDhcpHostAPIService(t *testing.T) {
 
 	t.Run("Test DhcpHostAPIService DhcpHostList", func(t *testing.T) {
 		configuration := internal.NewConfiguration()
@@ -59,7 +59,7 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHost_Patch.Id+"/associations", req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHostPatch.Id+"/associations", req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcHostAssociationsResponse{}
@@ -73,7 +73,7 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostListAssociations(context.Background(), *IpamsvcHost_Patch.Id).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostListAssociations(context.Background(), *IpamsvcHostPatch.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -83,7 +83,7 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodGet, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHost_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHostPatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Accept"))
 
 			response := openapiclient.IpamsvcReadHostResponse{}
@@ -97,7 +97,7 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostRead(context.Background(), *IpamsvcHost_Patch.Id).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostRead(context.Background(), *IpamsvcHostPatch.Id).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
@@ -107,12 +107,12 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 		configuration := internal.NewConfiguration()
 		configuration.HTTPClient = internal.NewTestClient(func(req *http.Request) *http.Response {
 			require.Equal(t, http.MethodPatch, req.Method)
-			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHost_Patch.Id, req.URL.Path)
+			require.Equal(t, "/api/ddi/v1/dhcp/host/"+*IpamsvcHostPatch.Id, req.URL.Path)
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcHost
 			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcHost_Patch, reqBody)
+			assert.Equal(t, IpamsvcHostPatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateHostResponse{}
 			body, err := json.Marshal(response)
@@ -125,7 +125,7 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 			}
 		})
 		apiClient := openapiclient.NewAPIClient(configuration)
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostUpdate(context.Background(), *IpamsvcHost_Patch.Id).Body(IpamsvcHost_Patch).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostUpdate(context.Background(), *IpamsvcHostPatch.Id).Body(IpamsvcHostPatch).Execute()
 		require.NoError(t, err)
 		require.NotNil(t, resp)
 		require.Equal(t, http.StatusOK, httpRes.StatusCode)
