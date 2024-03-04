@@ -22,7 +22,7 @@ import (
 )
 
 var ConfigCopyAuthZonePost = openapiclient.ConfigCopyAuthZone{
-	Comment: openapiclient.PtrString("This is a copyping AuthZone for testing."),
+	Comment: openapiclient.PtrString("This is a copy AuthZone for testing."),
 	Id:      openapiclient.PtrString("dummyAuthZoneId"),
 }
 var ConfigAuthZonePost = openapiclient.ConfigAuthZone{

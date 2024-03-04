@@ -13,7 +13,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"net/http"
 	"testing"
@@ -43,12 +42,12 @@ func TestIpamHostAPIService(t *testing.T) {
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcIpamHost
-			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcIpamHostPost, reqBody)
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, IpamsvcIpamHostPost, reqBody)
 
 			response := openapiclient.IpamsvcCreateIpamHostResponse{}
 			body, err := json.Marshal(response)
-			assert.NoError(t, err)
+			require.NoError(t, err)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -90,7 +89,7 @@ func TestIpamHostAPIService(t *testing.T) {
 
 			response := openapiclient.IpamsvcListIpamHostResponse{}
 			body, err := json.Marshal(response)
-			assert.NoError(t, err)
+			require.NoError(t, err)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -114,7 +113,7 @@ func TestIpamHostAPIService(t *testing.T) {
 
 			response := openapiclient.IpamsvcReadIpamHostResponse{}
 			body, err := json.Marshal(response)
-			assert.NoError(t, err)
+			require.NoError(t, err)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
@@ -137,12 +136,12 @@ func TestIpamHostAPIService(t *testing.T) {
 			require.Equal(t, "application/json", req.Header.Get("Content-Type"))
 
 			var reqBody openapiclient.IpamsvcIpamHost
-			assert.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
-			assert.Equal(t, IpamsvcIpamHostPatch, reqBody)
+			require.NoError(t, json.NewDecoder(req.Body).Decode(&reqBody))
+			require.Equal(t, IpamsvcIpamHostPatch, reqBody)
 
 			response := openapiclient.IpamsvcUpdateIpamHostResponse{}
 			body, err := json.Marshal(response)
-			assert.NoError(t, err)
+			require.NoError(t, err)
 
 			return &http.Response{
 				StatusCode: http.StatusOK,
