@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AbandonedReclaimTimeV6** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
 **AllowUnknown** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
 **AllowUnknownV6** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
+**EchoClientId** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
 **Filters** | Pointer to [**InheritedDHCPConfigFilterList**](InheritedDHCPConfigFilterList.md) |  | [optional] 
 **FiltersV6** | Pointer to [**InheritedDHCPConfigFilterList**](InheritedDHCPConfigFilterList.md) |  | [optional] 
 **IgnoreClientUid** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
@@ -133,6 +134,31 @@ SetAllowUnknownV6 sets AllowUnknownV6 field to given value.
 `func (o *IpamsvcInheritedDHCPConfig) HasAllowUnknownV6() bool`
 
 HasAllowUnknownV6 returns a boolean if a field has been set.
+
+### GetEchoClientId
+
+`func (o *IpamsvcInheritedDHCPConfig) GetEchoClientId() InheritanceInheritedBool`
+
+GetEchoClientId returns the EchoClientId field if non-nil, zero value otherwise.
+
+### GetEchoClientIdOk
+
+`func (o *IpamsvcInheritedDHCPConfig) GetEchoClientIdOk() (*InheritanceInheritedBool, bool)`
+
+GetEchoClientIdOk returns a tuple with the EchoClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEchoClientId
+
+`func (o *IpamsvcInheritedDHCPConfig) SetEchoClientId(v InheritanceInheritedBool)`
+
+SetEchoClientId sets EchoClientId field to given value.
+
+### HasEchoClientId
+
+`func (o *IpamsvcInheritedDHCPConfig) HasEchoClientId() bool`
+
+HasEchoClientId returns a boolean if a field has been set.
 
 ### GetFilters
 
