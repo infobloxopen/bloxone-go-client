@@ -22,93 +22,87 @@ import (
 )
 
 type ViewAPI interface {
-
 	/*
-		ViewBulkCopy Copies the specified __AuthZone__ and __ForwardZone__ objects in the __View__.
+			ViewBulkCopy Copies the specified __AuthZone__ and __ForwardZone__ objects in the __View__.
 
-		Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one __View__ object to another __View__ object.
-	The __AuthZone__ object represents an authoritative zone.
-	The __ForwardZone__ object represents a forwarding zone.
+			Use this method to bulk copy __AuthZone__ and __ForwardZone__ objects from one __View__ object to another __View__ object.
+		The __AuthZone__ object represents an authoritative zone.
+		The __ForwardZone__ object represents a forwarding zone.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiViewBulkCopyRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewBulkCopyRequest
 	*/
 	ViewBulkCopy(ctx context.Context) ApiViewBulkCopyRequest
 
 	// ViewBulkCopyExecute executes the request
 	//  @return ConfigBulkCopyResponse
 	ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigBulkCopyResponse, *http.Response, error)
-
 	/*
-		ViewCreate Create the View object.
+			ViewCreate Create the View object.
 
-		Use this method to create a View object.
-	Named collection of DNS View settings.
+			Use this method to create a View object.
+		Named collection of DNS View settings.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiViewCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewCreateRequest
 	*/
 	ViewCreate(ctx context.Context) ApiViewCreateRequest
 
 	// ViewCreateExecute executes the request
 	//  @return ConfigCreateViewResponse
 	ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreateViewResponse, *http.Response, error)
-
 	/*
-		ViewDelete Move the View object to Recyclebin.
+			ViewDelete Move the View object to Recyclebin.
 
-		Use this method to move a View object to Recyclebin.
-	Named collection of DNS View settings.
+			Use this method to move a View object to Recyclebin.
+		Named collection of DNS View settings.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiViewDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewDeleteRequest
 	*/
 	ViewDelete(ctx context.Context, id string) ApiViewDeleteRequest
 
 	// ViewDeleteExecute executes the request
 	ViewDeleteExecute(r ApiViewDeleteRequest) (*http.Response, error)
-
 	/*
-		ViewList List View objects.
+			ViewList List View objects.
 
-		Use this method to list View objects.
-	Named collection of DNS View settings.
+			Use this method to list View objects.
+		Named collection of DNS View settings.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiViewListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiViewListRequest
 	*/
 	ViewList(ctx context.Context) ApiViewListRequest
 
 	// ViewListExecute executes the request
 	//  @return ConfigListViewResponse
 	ViewListExecute(r ApiViewListRequest) (*ConfigListViewResponse, *http.Response, error)
-
 	/*
-		ViewRead Read the View object.
+			ViewRead Read the View object.
 
-		Use this method to read a View object.
-	Named collection of DNS View settings.
+			Use this method to read a View object.
+		Named collection of DNS View settings.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiViewReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewReadRequest
 	*/
 	ViewRead(ctx context.Context, id string) ApiViewReadRequest
 
 	// ViewReadExecute executes the request
 	//  @return ConfigReadViewResponse
 	ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewResponse, *http.Response, error)
-
 	/*
-		ViewUpdate Update the View object.
+			ViewUpdate Update the View object.
 
-		Use this method to update a View object.
-	Named collection of DNS View settings.
+			Use this method to update a View object.
+		Named collection of DNS View settings.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiViewUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiViewUpdateRequest
 	*/
 	ViewUpdate(ctx context.Context, id string) ApiViewUpdateRequest
 
@@ -237,7 +231,6 @@ func (a *ViewAPIService) ViewBulkCopyExecute(r ApiViewBulkCopyRequest) (*ConfigB
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -324,6 +317,14 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -367,7 +368,6 @@ func (a *ViewAPIService) ViewCreateExecute(r ApiViewCreateRequest) (*ConfigCreat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -670,7 +670,6 @@ func (a *ViewAPIService) ViewListExecute(r ApiViewListRequest) (*ConfigListViewR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -803,7 +802,6 @@ func (a *ViewAPIService) ViewReadExecute(r ApiViewReadRequest) (*ConfigReadViewR
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -894,6 +892,14 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -937,6 +943,5 @@ func (a *ViewAPIService) ViewUpdateExecute(r ApiViewUpdateRequest) (*ConfigUpdat
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

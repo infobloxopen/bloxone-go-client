@@ -21,15 +21,14 @@ import (
 )
 
 type LeasesCommandAPI interface {
-
 	/*
-		LeasesCommandCreate Perform actions like clearing DHCP lease(s).
+			LeasesCommandCreate Perform actions like clearing DHCP lease(s).
 
-		Use this method to create a __LeasesCommand__ object.
-	The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
+			Use this method to create a __LeasesCommand__ object.
+		The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiLeasesCommandCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiLeasesCommandCreateRequest
 	*/
 	LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest
 
@@ -157,6 +156,5 @@ func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandC
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Server IP address. | 
-**Fqdn** | **string** | Server FQDN. | 
+**Fqdn** | Pointer to **string** | Server FQDN. | [optional] 
 **ProtocolFqdn** | Pointer to **string** | Server FQDN in punycode. | [optional] [readonly] 
 
 ## Methods
 
 ### NewConfigForwarder
 
-`func NewConfigForwarder(address string, fqdn string, ) *ConfigForwarder`
+`func NewConfigForwarder(address string, ) *ConfigForwarder`
 
 NewConfigForwarder instantiates a new ConfigForwarder object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +66,11 @@ and a boolean to check if the value has been set.
 
 SetFqdn sets Fqdn field to given value.
 
+### HasFqdn
+
+`func (o *ConfigForwarder) HasFqdn() bool`
+
+HasFqdn returns a boolean if a field has been set.
 
 ### GetProtocolFqdn
 

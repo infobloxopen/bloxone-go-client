@@ -22,53 +22,49 @@ import (
 )
 
 type HostsAPI interface {
-
 	/*
-		HostsAssignTags Assign tags for list of hosts.
+			HostsAssignTags Assign tags for list of hosts.
 
-		Validation:
-	- "ids" is required.
-	- "tags" is required.
+			Validation:
+		- "ids" is required.
+		- "tags" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiHostsAssignTagsRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiHostsAssignTagsRequest
 	*/
 	HostsAssignTags(ctx context.Context) ApiHostsAssignTagsRequest
 
 	// HostsAssignTagsExecute executes the request
 	//  @return map[string]interface{}
 	HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
-		HostsCreate Create a Host resource.
+			HostsCreate Create a Host resource.
 
-		Validation:
-	- "display_name" is required and should be unique.
+			Validation:
+		- "display_name" is required and should be unique.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiHostsCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiHostsCreateRequest
 	*/
 	HostsCreate(ctx context.Context) ApiHostsCreateRequest
 
 	// HostsCreateExecute executes the request
 	//  @return InfraCreateHostResponse
 	HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCreateHostResponse, *http.Response, error)
-
 	/*
-		HostsDelete Delete a Host resource.
+			HostsDelete Delete a Host resource.
 
-		Validation:
-	- "id" is required.
+			Validation:
+		- "id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiHostsDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiHostsDeleteRequest
 	*/
 	HostsDelete(ctx context.Context, id string) ApiHostsDeleteRequest
 
 	// HostsDeleteExecute executes the request
 	HostsDeleteExecute(r ApiHostsDeleteRequest) (*http.Response, error)
-
 	/*
 		HostsDisconnect Disconnect a Host by resource ID.
 
@@ -83,7 +79,6 @@ type HostsAPI interface {
 	// HostsDisconnectExecute executes the request
 	//  @return map[string]interface{}
 	HostsDisconnectExecute(r ApiHostsDisconnectRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
 		HostsList List all the Host resources for an account.
 
@@ -95,23 +90,21 @@ type HostsAPI interface {
 	// HostsListExecute executes the request
 	//  @return InfraListHostResponse
 	HostsListExecute(r ApiHostsListRequest) (*InfraListHostResponse, *http.Response, error)
-
 	/*
-		HostsRead Get a Host resource.
+			HostsRead Get a Host resource.
 
-		Validation:
-	- "id" is required.
+			Validation:
+		- "id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiHostsReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiHostsReadRequest
 	*/
 	HostsRead(ctx context.Context, id string) ApiHostsReadRequest
 
 	// HostsReadExecute executes the request
 	//  @return InfraGetHostResponse
 	HostsReadExecute(r ApiHostsReadRequest) (*InfraGetHostResponse, *http.Response, error)
-
 	/*
 		HostsReplace Migrate a Host's configuration from one to another.
 
@@ -125,34 +118,32 @@ type HostsAPI interface {
 	// HostsReplaceExecute executes the request
 	//  @return map[string]interface{}
 	HostsReplaceExecute(r ApiHostsReplaceRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
-		HostsUnassignTags Unassign tag for the list hosts.
+			HostsUnassignTags Unassign tag for the list hosts.
 
-		Validation:
-	- "ids" is required.
-	- "keys" is required.
+			Validation:
+		- "ids" is required.
+		- "keys" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiHostsUnassignTagsRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiHostsUnassignTagsRequest
 	*/
 	HostsUnassignTags(ctx context.Context) ApiHostsUnassignTagsRequest
 
 	// HostsUnassignTagsExecute executes the request
 	//  @return map[string]interface{}
 	HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest) (map[string]interface{}, *http.Response, error)
-
 	/*
-		HostsUpdate Update a Host resource.
+			HostsUpdate Update a Host resource.
 
-		Validation:
-	- "id" is required.
-	- "display_name" is required and should be unique.
-	- "pool_id" is required.
+			Validation:
+		- "id" is required.
+		- "display_name" is required and should be unique.
+		- "pool_id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiHostsUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiHostsUpdateRequest
 	*/
 	HostsUpdate(ctx context.Context, id string) ApiHostsUpdateRequest
 
@@ -238,6 +229,14 @@ func (a *HostsAPIService) HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (m
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -281,7 +280,6 @@ func (a *HostsAPIService) HostsAssignTagsExecute(r ApiHostsAssignTagsRequest) (m
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -358,6 +356,14 @@ func (a *HostsAPIService) HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCre
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -401,7 +407,6 @@ func (a *HostsAPIService) HostsCreateExecute(r ApiHostsCreateRequest) (*InfraCre
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -628,7 +633,6 @@ func (a *HostsAPIService) HostsDisconnectExecute(r ApiHostsDisconnectRequest) (m
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -814,7 +818,6 @@ func (a *HostsAPIService) HostsListExecute(r ApiHostsListRequest) (*InfraListHos
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -927,7 +930,6 @@ func (a *HostsAPIService) HostsReadExecute(r ApiHostsReadRequest) (*InfraGetHost
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -1052,7 +1054,6 @@ func (a *HostsAPIService) HostsReplaceExecute(r ApiHostsReplaceRequest) (map[str
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -1173,7 +1174,6 @@ func (a *HostsAPIService) HostsUnassignTagsExecute(r ApiHostsUnassignTagsRequest
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -1256,6 +1256,14 @@ func (a *HostsAPIService) HostsUpdateExecute(r ApiHostsUpdateRequest) (*InfraUpd
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -1299,6 +1307,5 @@ func (a *HostsAPIService) HostsUpdateExecute(r ApiHostsUpdateRequest) (*InfraUpd
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

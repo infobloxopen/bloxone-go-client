@@ -22,77 +22,72 @@ import (
 )
 
 type AuthNsgAPI interface {
-
 	/*
-		AuthNsgCreate Create the AuthNSG object.
+			AuthNsgCreate Create the AuthNSG object.
 
-		Use this method to create an AuthNSG object.
-	The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+			Use this method to create an AuthNSG object.
+		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiAuthNsgCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiAuthNsgCreateRequest
 	*/
 	AuthNsgCreate(ctx context.Context) ApiAuthNsgCreateRequest
 
 	// AuthNsgCreateExecute executes the request
 	//  @return ConfigCreateAuthNSGResponse
 	AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*ConfigCreateAuthNSGResponse, *http.Response, error)
-
 	/*
-		AuthNsgDelete Move the AuthNSG object to Recyclebin.
+			AuthNsgDelete Move the AuthNSG object to Recyclebin.
 
-		Use this method to move an AuthNSG object to Recyclebin.
-	The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+			Use this method to move an AuthNSG object to Recyclebin.
+		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiAuthNsgDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAuthNsgDeleteRequest
 	*/
 	AuthNsgDelete(ctx context.Context, id string) ApiAuthNsgDeleteRequest
 
 	// AuthNsgDeleteExecute executes the request
 	AuthNsgDeleteExecute(r ApiAuthNsgDeleteRequest) (*http.Response, error)
-
 	/*
-		AuthNsgList List AuthNSG objects.
+			AuthNsgList List AuthNSG objects.
 
-		Use this method to list AuthNSG objects.
-	The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+			Use this method to list AuthNSG objects.
+		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiAuthNsgListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiAuthNsgListRequest
 	*/
 	AuthNsgList(ctx context.Context) ApiAuthNsgListRequest
 
 	// AuthNsgListExecute executes the request
 	//  @return ConfigListAuthNSGResponse
 	AuthNsgListExecute(r ApiAuthNsgListRequest) (*ConfigListAuthNSGResponse, *http.Response, error)
-
 	/*
-		AuthNsgRead Read the AuthNSG object.
+			AuthNsgRead Read the AuthNSG object.
 
-		Use this method to read an AuthNSG object.
-	The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+			Use this method to read an AuthNSG object.
+		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiAuthNsgReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAuthNsgReadRequest
 	*/
 	AuthNsgRead(ctx context.Context, id string) ApiAuthNsgReadRequest
 
 	// AuthNsgReadExecute executes the request
 	//  @return ConfigReadAuthNSGResponse
 	AuthNsgReadExecute(r ApiAuthNsgReadRequest) (*ConfigReadAuthNSGResponse, *http.Response, error)
-
 	/*
-		AuthNsgUpdate Update the AuthNSG object.
+			AuthNsgUpdate Update the AuthNSG object.
 
-		Use this method to update an AuthNSG object.
-	The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
+			Use this method to update an AuthNSG object.
+		The _dns/auth_nsg_ object represents an Authoritative DNS Server Group for authoritative zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiAuthNsgUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiAuthNsgUpdateRequest
 	*/
 	AuthNsgUpdate(ctx context.Context, id string) ApiAuthNsgUpdateRequest
 
@@ -177,6 +172,14 @@ func (a *AuthNsgAPIService) AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*Co
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -220,7 +223,6 @@ func (a *AuthNsgAPIService) AuthNsgCreateExecute(r ApiAuthNsgCreateRequest) (*Co
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -513,7 +515,6 @@ func (a *AuthNsgAPIService) AuthNsgListExecute(r ApiAuthNsgListRequest) (*Config
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -636,7 +637,6 @@ func (a *AuthNsgAPIService) AuthNsgReadExecute(r ApiAuthNsgReadRequest) (*Config
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -717,6 +717,14 @@ func (a *AuthNsgAPIService) AuthNsgUpdateExecute(r ApiAuthNsgUpdateRequest) (*Co
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -760,6 +768,5 @@ func (a *AuthNsgAPIService) AuthNsgUpdateExecute(r ApiAuthNsgUpdateRequest) (*Co
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -22,77 +22,72 @@ import (
 )
 
 type ForwardNsgAPI interface {
-
 	/*
-		ForwardNsgCreate Create the ForwardNSG object.
+			ForwardNsgCreate Create the ForwardNSG object.
 
-		Use this method to create a ForwardNSG object.
-	The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to create a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiForwardNsgCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardNsgCreateRequest
 	*/
 	ForwardNsgCreate(ctx context.Context) ApiForwardNsgCreateRequest
 
 	// ForwardNsgCreateExecute executes the request
 	//  @return ConfigCreateForwardNSGResponse
 	ForwardNsgCreateExecute(r ApiForwardNsgCreateRequest) (*ConfigCreateForwardNSGResponse, *http.Response, error)
-
 	/*
-		ForwardNsgDelete Move the ForwardNSG object to Recyclebin.
+			ForwardNsgDelete Move the ForwardNSG object to Recyclebin.
 
-		Use this method to move a ForwardNSG object to Recyclebin.
-	The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to move a ForwardNSG object to Recyclebin.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiForwardNsgDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgDeleteRequest
 	*/
 	ForwardNsgDelete(ctx context.Context, id string) ApiForwardNsgDeleteRequest
 
 	// ForwardNsgDeleteExecute executes the request
 	ForwardNsgDeleteExecute(r ApiForwardNsgDeleteRequest) (*http.Response, error)
-
 	/*
-		ForwardNsgList List ForwardNSG objects.
+			ForwardNsgList List ForwardNSG objects.
 
-		Use this method to list ForwardNSG objects.
-	The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to list ForwardNSG objects.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiForwardNsgListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiForwardNsgListRequest
 	*/
 	ForwardNsgList(ctx context.Context) ApiForwardNsgListRequest
 
 	// ForwardNsgListExecute executes the request
 	//  @return ConfigListForwardNSGResponse
 	ForwardNsgListExecute(r ApiForwardNsgListRequest) (*ConfigListForwardNSGResponse, *http.Response, error)
-
 	/*
-		ForwardNsgRead Read the ForwardNSG object.
+			ForwardNsgRead Read the ForwardNSG object.
 
-		Use this method to read a ForwardNSG object.
-	The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to read a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiForwardNsgReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgReadRequest
 	*/
 	ForwardNsgRead(ctx context.Context, id string) ApiForwardNsgReadRequest
 
 	// ForwardNsgReadExecute executes the request
 	//  @return ConfigReadForwardNSGResponse
 	ForwardNsgReadExecute(r ApiForwardNsgReadRequest) (*ConfigReadForwardNSGResponse, *http.Response, error)
-
 	/*
-		ForwardNsgUpdate Update the ForwardNSG object.
+			ForwardNsgUpdate Update the ForwardNSG object.
 
-		Use this method to update a ForwardNSG object.
-	The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
+			Use this method to update a ForwardNSG object.
+		The _dns/forward_nsg_ object represents a Forward DNS Server Group for forward zones.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiForwardNsgUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiForwardNsgUpdateRequest
 	*/
 	ForwardNsgUpdate(ctx context.Context, id string) ApiForwardNsgUpdateRequest
 
@@ -177,6 +172,14 @@ func (a *ForwardNsgAPIService) ForwardNsgCreateExecute(r ApiForwardNsgCreateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -220,7 +223,6 @@ func (a *ForwardNsgAPIService) ForwardNsgCreateExecute(r ApiForwardNsgCreateRequ
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -513,7 +515,6 @@ func (a *ForwardNsgAPIService) ForwardNsgListExecute(r ApiForwardNsgListRequest)
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -636,7 +637,6 @@ func (a *ForwardNsgAPIService) ForwardNsgReadExecute(r ApiForwardNsgReadRequest)
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -717,6 +717,14 @@ func (a *ForwardNsgAPIService) ForwardNsgUpdateExecute(r ApiForwardNsgUpdateRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -760,6 +768,5 @@ func (a *ForwardNsgAPIService) ForwardNsgUpdateExecute(r ApiForwardNsgUpdateRequ
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

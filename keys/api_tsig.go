@@ -22,77 +22,72 @@ import (
 )
 
 type TsigAPI interface {
-
 	/*
-		TsigCreate Create the TSIG key.
+			TsigCreate Create the TSIG key.
 
-		Use this method to create a __TSIGKey__ object.
-	A __TSIGKey__ object represents a TSIG key.
+			Use this method to create a __TSIGKey__ object.
+		A __TSIGKey__ object represents a TSIG key.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiTsigCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiTsigCreateRequest
 	*/
 	TsigCreate(ctx context.Context) ApiTsigCreateRequest
 
 	// TsigCreateExecute executes the request
 	//  @return KeysCreateTSIGKeyResponse
 	TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateTSIGKeyResponse, *http.Response, error)
-
 	/*
-		TsigDelete Delete the TSIG key.
+			TsigDelete Delete the TSIG key.
 
-		Use this method to delete a __TSIGKey__ object.
-	A __TSIGKey__ object represents a TSIG key.
+			Use this method to delete a __TSIGKey__ object.
+		A __TSIGKey__ object represents a TSIG key.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiTsigDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiTsigDeleteRequest
 	*/
 	TsigDelete(ctx context.Context, id string) ApiTsigDeleteRequest
 
 	// TsigDeleteExecute executes the request
 	TsigDeleteExecute(r ApiTsigDeleteRequest) (*http.Response, error)
-
 	/*
-		TsigList Retrieve TSIG keys.
+			TsigList Retrieve TSIG keys.
 
-		Use this method to retrieve __TSIGKey__ objects.
-	A __TSIGKey__ object represents a TSIG key.
+			Use this method to retrieve __TSIGKey__ objects.
+		A __TSIGKey__ object represents a TSIG key.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiTsigListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiTsigListRequest
 	*/
 	TsigList(ctx context.Context) ApiTsigListRequest
 
 	// TsigListExecute executes the request
 	//  @return KeysListTSIGKeyResponse
 	TsigListExecute(r ApiTsigListRequest) (*KeysListTSIGKeyResponse, *http.Response, error)
-
 	/*
-		TsigRead Retrieve the TSIG key.
+			TsigRead Retrieve the TSIG key.
 
-		Use this method to retrieve a __TSIGKey__ object.
-	A __TSIGKey__ object represents a TSIG key.
+			Use this method to retrieve a __TSIGKey__ object.
+		A __TSIGKey__ object represents a TSIG key.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiTsigReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiTsigReadRequest
 	*/
 	TsigRead(ctx context.Context, id string) ApiTsigReadRequest
 
 	// TsigReadExecute executes the request
 	//  @return KeysReadTSIGKeyResponse
 	TsigReadExecute(r ApiTsigReadRequest) (*KeysReadTSIGKeyResponse, *http.Response, error)
-
 	/*
-		TsigUpdate Update the TSIG key.
+			TsigUpdate Update the TSIG key.
 
-		Use this method to update a __TSIGKey__ object.
-	A __TSIGKey__ object represents a TSIG key.
+			Use this method to update a __TSIGKey__ object.
+		A __TSIGKey__ object represents a TSIG key.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiTsigUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiTsigUpdateRequest
 	*/
 	TsigUpdate(ctx context.Context, id string) ApiTsigUpdateRequest
 
@@ -177,6 +172,14 @@ func (a *TsigAPIService) TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateT
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -220,7 +223,6 @@ func (a *TsigAPIService) TsigCreateExecute(r ApiTsigCreateRequest) (*KeysCreateT
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -513,7 +515,6 @@ func (a *TsigAPIService) TsigListExecute(r ApiTsigListRequest) (*KeysListTSIGKey
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -636,7 +637,6 @@ func (a *TsigAPIService) TsigReadExecute(r ApiTsigReadRequest) (*KeysReadTSIGKey
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -717,6 +717,14 @@ func (a *TsigAPIService) TsigUpdateExecute(r ApiTsigUpdateRequest) (*KeysUpdateT
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -760,6 +768,5 @@ func (a *TsigAPIService) TsigUpdateExecute(r ApiTsigUpdateRequest) (*KeysUpdateT
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

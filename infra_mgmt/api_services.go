@@ -22,7 +22,6 @@ import (
 )
 
 type ServicesAPI interface {
-
 	/*
 		ServicesApplications List applications (Service types) for a particular account.
 
@@ -36,39 +35,36 @@ type ServicesAPI interface {
 	// ServicesApplicationsExecute executes the request
 	//  @return InfraApplicationsResponse
 	ServicesApplicationsExecute(r ApiServicesApplicationsRequest) (*InfraApplicationsResponse, *http.Response, error)
-
 	/*
-		ServicesCreate Create a Service resource.
+			ServicesCreate Create a Service resource.
 
-		Validation:
-	- "name" is required and should be unique.
-	- "service_type" is required.
-	- "pool_id" is required.
+			Validation:
+		- "name" is required and should be unique.
+		- "service_type" is required.
+		- "pool_id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiServicesCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiServicesCreateRequest
 	*/
 	ServicesCreate(ctx context.Context) ApiServicesCreateRequest
 
 	// ServicesCreateExecute executes the request
 	//  @return InfraCreateServiceResponse
 	ServicesCreateExecute(r ApiServicesCreateRequest) (*InfraCreateServiceResponse, *http.Response, error)
-
 	/*
-		ServicesDelete Delete a Service resource.
+			ServicesDelete Delete a Service resource.
 
-		Validation:
-	- "id" is required.
+			Validation:
+		- "id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiServicesDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiServicesDeleteRequest
 	*/
 	ServicesDelete(ctx context.Context, id string) ApiServicesDeleteRequest
 
 	// ServicesDeleteExecute executes the request
 	ServicesDeleteExecute(r ApiServicesDeleteRequest) (*http.Response, error)
-
 	/*
 		ServicesList List all the Service resources for an account.
 
@@ -80,35 +76,33 @@ type ServicesAPI interface {
 	// ServicesListExecute executes the request
 	//  @return InfraListServiceResponse
 	ServicesListExecute(r ApiServicesListRequest) (*InfraListServiceResponse, *http.Response, error)
-
 	/*
-		ServicesRead Read a Service resource.
+			ServicesRead Read a Service resource.
 
-		Validation:
-	- "id" is required.
+			Validation:
+		- "id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiServicesReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiServicesReadRequest
 	*/
 	ServicesRead(ctx context.Context, id string) ApiServicesReadRequest
 
 	// ServicesReadExecute executes the request
 	//  @return InfraGetServiceResponse
 	ServicesReadExecute(r ApiServicesReadRequest) (*InfraGetServiceResponse, *http.Response, error)
-
 	/*
-		ServicesUpdate Update a Service resource.
+			ServicesUpdate Update a Service resource.
 
-		Validation:
-	- "id" is required.
-	- "name" is required and should be unique.
-	- "service_type" is required.
-	- "pool_id" is required.
+			Validation:
+		- "id" is required.
+		- "name" is required and should be unique.
+		- "service_type" is required.
+		- "pool_id" is required.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiServicesUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiServicesUpdateRequest
 	*/
 	ServicesUpdate(ctx context.Context, id string) ApiServicesUpdateRequest
 
@@ -234,7 +228,6 @@ func (a *ServicesAPIService) ServicesApplicationsExecute(r ApiServicesApplicatio
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -313,6 +306,14 @@ func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -356,7 +357,6 @@ func (a *ServicesAPIService) ServicesCreateExecute(r ApiServicesCreateRequest) (
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -646,7 +646,6 @@ func (a *ServicesAPIService) ServicesListExecute(r ApiServicesListRequest) (*Inf
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -759,7 +758,6 @@ func (a *ServicesAPIService) ServicesReadExecute(r ApiServicesReadRequest) (*Inf
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -843,6 +841,14 @@ func (a *ServicesAPIService) ServicesUpdateExecute(r ApiServicesUpdateRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -886,6 +892,5 @@ func (a *ServicesAPIService) ServicesUpdateExecute(r ApiServicesUpdateRequest) (
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -22,77 +22,72 @@ import (
 )
 
 type FixedAddressAPI interface {
-
 	/*
-		FixedAddressCreate Create the fixed address.
+			FixedAddressCreate Create the fixed address.
 
-		Use this method to create a __FixedAddress__ object.
-	The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
+			Use this method to create a __FixedAddress__ object.
+		The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiFixedAddressCreateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiFixedAddressCreateRequest
 	*/
 	FixedAddressCreate(ctx context.Context) ApiFixedAddressCreateRequest
 
 	// FixedAddressCreateExecute executes the request
 	//  @return IpamsvcCreateFixedAddressResponse
 	FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*IpamsvcCreateFixedAddressResponse, *http.Response, error)
-
 	/*
-		FixedAddressDelete Move the fixed address to the recycle bin.
+			FixedAddressDelete Move the fixed address to the recycle bin.
 
-		Use this method to move a __FixedAddress__ object to the recycle bin.
-	The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
+			Use this method to move a __FixedAddress__ object to the recycle bin.
+		The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiFixedAddressDeleteRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiFixedAddressDeleteRequest
 	*/
 	FixedAddressDelete(ctx context.Context, id string) ApiFixedAddressDeleteRequest
 
 	// FixedAddressDeleteExecute executes the request
 	FixedAddressDeleteExecute(r ApiFixedAddressDeleteRequest) (*http.Response, error)
-
 	/*
-		FixedAddressList Retrieve fixed addresses.
+			FixedAddressList Retrieve fixed addresses.
 
-		Use this method to retrieve __FixedAddress__ objects.
-	The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
+			Use this method to retrieve __FixedAddress__ objects.
+		The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiFixedAddressListRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiFixedAddressListRequest
 	*/
 	FixedAddressList(ctx context.Context) ApiFixedAddressListRequest
 
 	// FixedAddressListExecute executes the request
 	//  @return IpamsvcListFixedAddressResponse
 	FixedAddressListExecute(r ApiFixedAddressListRequest) (*IpamsvcListFixedAddressResponse, *http.Response, error)
-
 	/*
-		FixedAddressRead Retrieve the fixed address.
+			FixedAddressRead Retrieve the fixed address.
 
-		Use this method to retrieve a __FixedAddress__ object.
-	The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
+			Use this method to retrieve a __FixedAddress__ object.
+		The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiFixedAddressReadRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiFixedAddressReadRequest
 	*/
 	FixedAddressRead(ctx context.Context, id string) ApiFixedAddressReadRequest
 
 	// FixedAddressReadExecute executes the request
 	//  @return IpamsvcReadFixedAddressResponse
 	FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*IpamsvcReadFixedAddressResponse, *http.Response, error)
-
 	/*
-		FixedAddressUpdate Update the fixed address.
+			FixedAddressUpdate Update the fixed address.
 
-		Use this method to update a __FixedAddress__ object.
-	The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
+			Use this method to update a __FixedAddress__ object.
+		The __FixedAddress__ object reserves an address for a specific client. It must have a _match_type_ and a valid corresponding _match_value_ so that it can match that client.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param id An application specific resource identity of a resource
-		@return ApiFixedAddressUpdateRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param id An application specific resource identity of a resource
+			@return ApiFixedAddressUpdateRequest
 	*/
 	FixedAddressUpdate(ctx context.Context, id string) ApiFixedAddressUpdateRequest
 
@@ -187,6 +182,14 @@ func (a *FixedAddressAPIService) FixedAddressCreateExecute(r ApiFixedAddressCrea
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -230,7 +233,6 @@ func (a *FixedAddressAPIService) FixedAddressCreateExecute(r ApiFixedAddressCrea
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -533,7 +535,6 @@ func (a *FixedAddressAPIService) FixedAddressListExecute(r ApiFixedAddressListRe
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -666,7 +667,6 @@ func (a *FixedAddressAPIService) FixedAddressReadExecute(r ApiFixedAddressReadRe
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
@@ -757,6 +757,14 @@ func (a *FixedAddressAPIService) FixedAddressUpdateExecute(r ApiFixedAddressUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.body.Tags == nil {
+		r.body.Tags = make(map[string]interface{})
+	}
+	for k, v := range a.Client.Cfg.DefaultTags {
+		if _, ok := r.body.Tags[k]; !ok {
+			r.body.Tags[k] = v
+		}
+	}
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {
@@ -800,6 +808,5 @@ func (a *FixedAddressAPIService) FixedAddressUpdateExecute(r ApiFixedAddressUpda
 		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
-
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
