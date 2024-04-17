@@ -11,7 +11,7 @@ package dfp
 
 import (
 	"context"
-	"github.com/infobloxopen/bloxone-go-client/client"
+	"github.com/infobloxopen/bloxone-go-client/internal"
 	"github.com/infobloxopen/bloxone-go-client/ipam"
 	"testing"
 
@@ -23,18 +23,12 @@ import (
 
 func Test_dfp_DfpAPIService(t *testing.T) {
 
-	configuration := client.Configuration{
-		ClientName: "acceptance-test",
-	}
-	c, err := client.NewAPIClient(configuration)
-	require.Nil(t, err)
-	apiClient := c.DNSForwardingProxyAPI
+	configuration := internal.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test DfpAPIService DfpCreateOrUpdateDfp", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
-
-		//var id int32
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), 1310452).Body(openapiclient.AtcdfpDfpCreateOrUpdatePayload{
 			DefaultResolvers:    nil,
