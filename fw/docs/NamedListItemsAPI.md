@@ -24,23 +24,23 @@ Delete Named List Items.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Named List object identifier.
-    body := *openapiclient.NewAtcfwNamedListItemsDeleteRequest() // AtcfwNamedListItemsDeleteRequest | 
+	id := int32(56) // int32 | The Named List object identifier.
+	body := *fw.NewAtcfwNamedListItemsDeleteRequest() // AtcfwNamedListItemsDeleteRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NamedListItemsAPI.NamedListItemsDeleteNamedListItems(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsDeleteNamedListItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := fw.NewAPIClient()
+	r, err := apiClient.NamedListItemsAPI.NamedListItemsDeleteNamedListItems(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsDeleteNamedListItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,25 +94,25 @@ Insert Named List Items.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Named List object identifier.
-    body := *openapiclient.NewAtcfwNamedListItemsInsertOrUpdate() // AtcfwNamedListItemsInsertOrUpdate | NamedListItemsInsertOrUpdate object
+	id := int32(56) // int32 | The Named List object identifier.
+	body := *fw.NewAtcfwNamedListItemsInsertOrUpdate() // AtcfwNamedListItemsInsertOrUpdate | NamedListItemsInsertOrUpdate object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `NamedListItemsInsertOrReplaceNamedListItems`: AtcfwNamedListItemsInsertOrUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `NamedListItemsInsertOrReplaceNamedListItems`: AtcfwNamedListItemsInsertOrUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems`: %v\n", resp)
 }
 ```
 
@@ -166,25 +166,25 @@ Partial Update Named List Items.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Named List object identifier.
-    body := *openapiclient.NewAtcfwNamedListItemsPartialUpdate() // AtcfwNamedListItemsPartialUpdate | NamedListItemsPartialUpdate object
+	id := int32(56) // int32 | The Named List object identifier.
+	body := *fw.NewAtcfwNamedListItemsPartialUpdate() // AtcfwNamedListItemsPartialUpdate | NamedListItemsPartialUpdate object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `NamedListItemsNamedListItemsPartialUpdate`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `NamedListItemsNamedListItemsPartialUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate`: %v\n", resp)
 }
 ```
 

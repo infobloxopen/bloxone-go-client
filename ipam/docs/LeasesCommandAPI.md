@@ -22,24 +22,24 @@ Perform actions like clearing DHCP lease(s).
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcLeasesCommand("Command_example") // IpamsvcLeasesCommand | 
+	body := *ipam.NewIpamsvcLeasesCommand("Command_example") // IpamsvcLeasesCommand | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LeasesCommandAPI.LeasesCommandCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `LeasesCommandCreate`: IpamsvcCreateLeasesCommandResponse
-    fmt.Fprintf(os.Stdout, "Response from `LeasesCommandAPI.LeasesCommandCreate`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LeasesCommandAPI.LeasesCommandCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LeasesCommandCreate`: IpamsvcCreateLeasesCommandResponse
+	fmt.Fprintf(os.Stdout, "Response from `LeasesCommandAPI.LeasesCommandCreate`: %v\n", resp)
 }
 ```
 

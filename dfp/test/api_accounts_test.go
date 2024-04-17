@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/dfp"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
-func Test_dfp_AccountsAPIService(t *testing.T) {
+func TestAccountsAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := dfp.NewAPIClient()
 
 	t.Run("Test AccountsAPIService AccountsCheckConfig", func(t *testing.T) {
 

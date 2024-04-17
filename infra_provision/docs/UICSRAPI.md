@@ -24,25 +24,25 @@ Marks the certificate signing request as approved. The host activation service w
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
-    activationCode := "activationCode_example" // string | activation code is used by the clients to track the approval of the CSR
-    body := *openapiclient.NewHostactivationApproveCSRRequest() // HostactivationApproveCSRRequest | 
+	activationCode := "activationCode_example" // string | activation code is used by the clients to track the approval of the CSR
+	body := *infra_provision.NewHostactivationApproveCSRRequest() // HostactivationApproveCSRRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UICSRAPI.UICSRApprove(context.Background(), activationCode).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRApprove``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UICSRApprove`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRApprove`: %v\n", resp)
+	apiClient := infra_provision.NewAPIClient()
+	resp, r, err := apiClient.UICSRAPI.UICSRApprove(context.Background(), activationCode).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRApprove``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UICSRApprove`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRApprove`: %v\n", resp)
 }
 ```
 
@@ -94,25 +94,25 @@ Marks the certificate signing request as denied.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
-    activationCode := "activationCode_example" // string | activation code is used by the clients to track the approval of the CSR
-    body := *openapiclient.NewHostactivationDenyCSRRequest() // HostactivationDenyCSRRequest | 
+	activationCode := "activationCode_example" // string | activation code is used by the clients to track the approval of the CSR
+	body := *infra_provision.NewHostactivationDenyCSRRequest() // HostactivationDenyCSRRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UICSRAPI.UICSRDeny(context.Background(), activationCode).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRDeny``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UICSRDeny`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRDeny`: %v\n", resp)
+	apiClient := infra_provision.NewAPIClient()
+	resp, r, err := apiClient.UICSRAPI.UICSRDeny(context.Background(), activationCode).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRDeny``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UICSRDeny`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRDeny`: %v\n", resp)
 }
 ```
 
@@ -164,30 +164,30 @@ User can list the certificate signing requests for an account.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
-    filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
-    orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
-    tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
-    torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
+	filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
+	orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
+	torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UICSRAPI.UICSRList(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UICSRList`: HostactivationListCSRsResponse
-    fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRList`: %v\n", resp)
+	apiClient := infra_provision.NewAPIClient()
+	resp, r, err := apiClient.UICSRAPI.UICSRList(context.Background()).Filter(filter).OrderBy(orderBy).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UICSRList`: HostactivationListCSRsResponse
+	fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRList`: %v\n", resp)
 }
 ```
 
@@ -242,25 +242,25 @@ Invalidates a certificate by adding it to a certificate revocation list.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
-    certSerial := "certSerial_example" // string | x509 serial number of the certificate. This can be obtained by parsing the client certificate file on the onprem. Either cert_serial or ophid is required
-    body := *openapiclient.NewHostactivationRevokeCertRequest() // HostactivationRevokeCertRequest | 
+	certSerial := "certSerial_example" // string | x509 serial number of the certificate. This can be obtained by parsing the client certificate file on the onprem. Either cert_serial or ophid is required
+	body := *infra_provision.NewHostactivationRevokeCertRequest() // HostactivationRevokeCertRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UICSRAPI.UICSRRevoke(context.Background(), certSerial).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRRevoke``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UICSRRevoke`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRRevoke`: %v\n", resp)
+	apiClient := infra_provision.NewAPIClient()
+	resp, r, err := apiClient.UICSRAPI.UICSRRevoke(context.Background(), certSerial).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRRevoke``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UICSRRevoke`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRRevoke`: %v\n", resp)
 }
 ```
 
@@ -314,25 +314,25 @@ Invalidates a certificate by adding it to a certificate revocation list.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
-    ophid := "ophid_example" // string | On-prem host ID which can be obtained either from on-prem or BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem > click on 3 dots on top right side > General Information > Ophid) .
-    body := *openapiclient.NewHostactivationRevokeCertRequest() // HostactivationRevokeCertRequest | 
+	ophid := "ophid_example" // string | On-prem host ID which can be obtained either from on-prem or BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem > click on 3 dots on top right side > General Information > Ophid) .
+	body := *infra_provision.NewHostactivationRevokeCertRequest() // HostactivationRevokeCertRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UICSRAPI.UICSRRevoke2(context.Background(), ophid).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRRevoke2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UICSRRevoke2`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRRevoke2`: %v\n", resp)
+	apiClient := infra_provision.NewAPIClient()
+	resp, r, err := apiClient.UICSRAPI.UICSRRevoke2(context.Background(), ophid).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UICSRAPI.UICSRRevoke2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UICSRRevoke2`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `UICSRAPI.UICSRRevoke2`: %v\n", resp)
 }
 ```
 

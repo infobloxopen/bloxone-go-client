@@ -28,24 +28,24 @@ Create Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
+	body := *fw.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsCreateInternalDomains(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InternalDomainListsCreateInternalDomains`: AtcfwInternalDomainsCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsCreateInternalDomains(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InternalDomainListsCreateInternalDomains`: AtcfwInternalDomainsCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -94,22 +94,22 @@ Delete Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwInternalDomainsDeleteRequest() // AtcfwInternalDomainsDeleteRequest | 
+	body := *fw.NewAtcfwInternalDomainsDeleteRequest() // AtcfwInternalDomainsDeleteRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := fw.NewAPIClient()
+	r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -158,22 +158,22 @@ Delete Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Internal Domains object identifiers.
+	id := int32(56) // int32 | The Internal Domains object identifiers.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := fw.NewAPIClient()
+	r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -226,25 +226,25 @@ Patch Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Internal Domain List object identifier.
-    body := *openapiclient.NewAtcfwInternalDomainsItems() // AtcfwInternalDomainsItems | The Internal Domains Items Patch object.
+	id := int32(56) // int32 | The Internal Domain List object identifier.
+	body := *fw.NewAtcfwInternalDomainsItems() // AtcfwInternalDomainsItems | The Internal Domains Items Patch object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InternalDomainListsInternalDomainsItemsPartialUpdate`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InternalDomainListsInternalDomainsItemsPartialUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -298,30 +298,30 @@ List Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name               | type   | Supported Op                | | ------------------ | ------ | --------------------------- | | id                 | int32  | !=, ==, >, <, <=, >=        | | name               | string | !=, ==, ~, !~, >, <, <=, >= | | description        | string | !=, ==, ~, !~, >, <, <=, >= | | items              | string | ~, !~                       | | is_default         | bool   | !=, ==                      |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Grouping Operators  |  Example: ``` ?_filter=\"((name=='internal_dom_a')or(name~'internal_dom_b'))\" ```  (optional)
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
-    tfilter := "tfilter_example" // string | Filtering by tags. (optional)
-    torderBy := "torderBy_example" // string | Sorting by tags. (optional)
+	filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name               | type   | Supported Op                | | ------------------ | ------ | --------------------------- | | id                 | int32  | !=, ==, >, <, <=, >=        | | name               | string | !=, ==, ~, !~, >, <, <=, >= | | description        | string | !=, ==, ~, !~, >, <, <=, >= | | items              | string | ~, !~                       | | is_default         | bool   | !=, ==                      |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Grouping Operators  |  Example: ``` ?_filter=\"((name=='internal_dom_a')or(name~'internal_dom_b'))\" ```  (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	tfilter := "tfilter_example" // string | Filtering by tags. (optional)
+	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsListInternalDomains(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsListInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InternalDomainListsListInternalDomains`: AtcfwInternalDomainsMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsListInternalDomains`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsListInternalDomains(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsListInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InternalDomainListsListInternalDomains`: AtcfwInternalDomainsMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsListInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -376,29 +376,29 @@ Read Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Internal Domains object identifier.
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    name := "name_example" // string | The name of InternalDomains object. Used if id==0. (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	id := int32(56) // int32 | The Internal Domains object identifier.
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	name := "name_example" // string | The name of InternalDomains object. Used if id==0. (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsReadInternalDomains(context.Background(), id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsReadInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InternalDomainListsReadInternalDomains`: AtcfwInternalDomainsReadResponse
-    fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsReadInternalDomains`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsReadInternalDomains(context.Background(), id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsReadInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InternalDomainListsReadInternalDomains`: AtcfwInternalDomainsReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsReadInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -456,25 +456,25 @@ Update Internal Domains.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Internal Domain object identifier.
-    body := *openapiclient.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
+	id := int32(56) // int32 | The Internal Domain object identifier.
+	body := *fw.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InternalDomainListsUpdateInternalDomains`: AtcfwInternalDomainsUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InternalDomainListsUpdateInternalDomains`: AtcfwInternalDomainsUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains`: %v\n", resp)
 }
 ```
 

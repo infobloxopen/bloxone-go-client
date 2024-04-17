@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_data"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
-func Test_dns_data_RecordAPIService(t *testing.T) {
+func TestRecordAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := dns_data.NewAPIClient()
 
 	t.Run("Test RecordAPIService RecordCreate", func(t *testing.T) {
 

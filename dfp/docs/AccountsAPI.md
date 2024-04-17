@@ -22,24 +22,24 @@ Check Config.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
-    body := *openapiclient.NewTypesConfigCheckRequest() // TypesConfigCheckRequest | 
+	body := *dfp.NewTypesConfigCheckRequest() // TypesConfigCheckRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.AccountsCheckConfig(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.AccountsCheckConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AccountsCheckConfig`: TypesConfigCheckResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.AccountsCheckConfig`: %v\n", resp)
+	apiClient := dfp.NewAPIClient()
+	resp, r, err := apiClient.AccountsAPI.AccountsCheckConfig(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.AccountsCheckConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountsCheckConfig`: TypesConfigCheckResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.AccountsCheckConfig`: %v\n", resp)
 }
 ```
 

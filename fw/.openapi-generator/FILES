@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api_access_codes.go
 api_app_approvals.go
@@ -337,17 +336,4 @@ model_security_policies_create_security_policy_409_response_error.go
 model_security_policies_read_security_policy_404_response.go
 model_security_policies_read_security_policy_404_response_error.go
 model_threat_feed_source.go
-test/api_access_codes_test.go
-test/api_app_approvals_test.go
-test/api_application_filters_test.go
-test/api_category_filters_test.go
-test/api_content_categories_test.go
-test/api_internal_domain_lists_test.go
-test/api_named_list_items_test.go
-test/api_named_lists_test.go
-test/api_network_lists_test.go
-test/api_pop_regions_test.go
-test/api_security_policies_test.go
-test/api_security_policy_rules_test.go
-test/api_threat_feeds_test.go
 utils.go

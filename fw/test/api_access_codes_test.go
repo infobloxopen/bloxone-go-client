@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_AccessCodesAPIService(t *testing.T) {
+func TestAccessCodesAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
 	t.Run("Test AccessCodesAPIService AccessCodesCreateAccessCode", func(t *testing.T) {
 

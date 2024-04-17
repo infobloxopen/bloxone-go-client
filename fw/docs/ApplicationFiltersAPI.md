@@ -27,24 +27,24 @@ Create Application Filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
+	body := *fw.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApplicationFiltersCreateApplicationFilter`: AtcfwApplicationFilterCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApplicationFiltersCreateApplicationFilter`: AtcfwApplicationFilterCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter`: %v\n", resp)
 }
 ```
 
@@ -93,22 +93,22 @@ Delete Application Filters.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwApplicationFiltersDeleteRequest() // AtcfwApplicationFiltersDeleteRequest | 
+	body := *fw.NewAtcfwApplicationFiltersDeleteRequest() // AtcfwApplicationFiltersDeleteRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := fw.NewAPIClient()
+	r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -157,22 +157,22 @@ Delete Application Filter Object by ID.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Application Filter object identifier.
+	id := int32(56) // int32 | The Application Filter object identifier.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := fw.NewAPIClient()
+	r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -225,30 +225,30 @@ List Application Filters.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name                    | type   | Supported Op                | | ----------------------- | ------ | --------------------------- | | name                    | string | !=, ==, ~, !~, >, <, <=, >= |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Allowed sets of parameters that can be groupped in one query:  - name  Example: ``` ?_filter=\"((name=='app_list1')or(name~'app_list2'))\" ```  (optional)
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
-    tfilter := "tfilter_example" // string | Filtering by tags. (optional)
-    torderBy := "torderBy_example" // string | Sorting by tags. (optional)
+	filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name                    | type   | Supported Op                | | ----------------------- | ------ | --------------------------- | | name                    | string | !=, ==, ~, !~, >, <, <=, >= |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Allowed sets of parameters that can be groupped in one query:  - name  Example: ``` ?_filter=\"((name=='app_list1')or(name~'app_list2'))\" ```  (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	tfilter := "tfilter_example" // string | Filtering by tags. (optional)
+	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApplicationFiltersListApplicationFilters`: AtcfwApplicationFilterMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApplicationFiltersListApplicationFilters`: AtcfwApplicationFilterMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters`: %v\n", resp)
 }
 ```
 
@@ -303,26 +303,26 @@ Read Application Filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Application Filter object identifier.
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    name := "name_example" // string | The name of the application filter. (optional)
+	id := int32(56) // int32 | The Application Filter object identifier.
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	name := "name_example" // string | The name of the application filter. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter(context.Background(), id).Fields(fields).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApplicationFiltersReadApplicationFilter`: AtcfwApplicationFilterReadResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter(context.Background(), id).Fields(fields).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApplicationFiltersReadApplicationFilter`: AtcfwApplicationFilterReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter`: %v\n", resp)
 }
 ```
 
@@ -377,25 +377,25 @@ Update Application Filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    id := int32(56) // int32 | The Application Filter object identifier.
-    body := *openapiclient.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
+	id := int32(56) // int32 | The Application Filter object identifier.
+	body := *fw.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApplicationFiltersUpdateApplicationFilter`: AtcfwApplicationFilterUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApplicationFiltersUpdateApplicationFilter`: AtcfwApplicationFilterUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter`: %v\n", resp)
 }
 ```
 

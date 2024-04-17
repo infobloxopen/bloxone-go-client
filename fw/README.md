@@ -26,7 +26,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import fw "github.com/infobloxopen/bloxone-go-client"
+import fw "github.com/infobloxopen/bloxone-go-client/fw"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

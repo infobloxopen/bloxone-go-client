@@ -22,24 +22,24 @@ Generate TSIG key with a random secret.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	keys "github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {
-    algorithm := "algorithm_example" // string | The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_. (optional)
+	algorithm := "algorithm_example" // string | The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GenerateTsigAPI.GenerateTsigGenerateTSIG(context.Background()).Algorithm(algorithm).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GenerateTsigAPI.GenerateTsigGenerateTSIG``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GenerateTsigGenerateTSIG`: KeysGenerateTSIGResponse
-    fmt.Fprintf(os.Stdout, "Response from `GenerateTsigAPI.GenerateTsigGenerateTSIG`: %v\n", resp)
+	apiClient := keys.NewAPIClient()
+	resp, r, err := apiClient.GenerateTsigAPI.GenerateTsigGenerateTSIG(context.Background()).Algorithm(algorithm).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GenerateTsigAPI.GenerateTsigGenerateTSIG``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateTsigGenerateTSIG`: KeysGenerateTSIGResponse
+	fmt.Fprintf(os.Stdout, "Response from `GenerateTsigAPI.GenerateTsigGenerateTSIG`: %v\n", resp)
 }
 ```
 

@@ -22,24 +22,24 @@ List Content Categories.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContentCategoriesAPI.ContentCategoriesListContentCategories(context.Background()).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContentCategoriesAPI.ContentCategoriesListContentCategories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ContentCategoriesListContentCategories`: AtcfwContentCategoryMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `ContentCategoriesAPI.ContentCategoriesListContentCategories`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.ContentCategoriesAPI.ContentCategoriesListContentCategories(context.Background()).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContentCategoriesAPI.ContentCategoriesListContentCategories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ContentCategoriesListContentCategories`: AtcfwContentCategoryMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `ContentCategoriesAPI.ContentCategoriesListContentCategories`: %v\n", resp)
 }
 ```
 

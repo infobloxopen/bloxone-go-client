@@ -11,43 +11,29 @@ package dfp
 
 import (
 	"context"
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	"github.com/infobloxopen/bloxone-go-client/ipam"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/dfp"
+	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
-func Test_dfp_DfpAPIService(t *testing.T) {
+func TestDfpAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := dfp.NewAPIClient()
 
 	t.Run("Test DfpAPIService DfpCreateOrUpdateDfp", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), 1310452).Body(openapiclient.AtcdfpDfpCreateOrUpdatePayload{
-			DefaultResolvers:    nil,
-			ForwardingPolicy:    nil,
-			Host:                nil,
-			Id:                  ipam.PtrInt32(1310452),
-			InternalDomainLists: nil,
-			Name:                nil,
-			PopRegionId:         ipam.PtrInt32(1),
-			Resolvers:           nil,
-			ResolversAll:        nil,
-			ServiceId:           nil,
-			ServiceName:         nil,
-			SiteId:              nil,
-		}).Execute()
+		var id int32
+
+		resp, httpRes, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 201, httpRes.StatusCode)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 

@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/dns_config"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
-func Test_dns_config_ForwardNsgAPIService(t *testing.T) {
+func TestForwardNsgAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := dns_config.NewAPIClient()
 
 	t.Run("Test ForwardNsgAPIService ForwardNsgCreate", func(t *testing.T) {
 

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import dns_data "github.com/infobloxopen/bloxone-go-client"
+import dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

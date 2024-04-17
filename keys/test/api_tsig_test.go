@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
-func Test_keys_TsigAPIService(t *testing.T) {
+func TestTsigAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := keys.NewAPIClient()
 
 	t.Run("Test TsigAPIService TsigCreate", func(t *testing.T) {
 

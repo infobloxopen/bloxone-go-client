@@ -12,9 +12,10 @@ package keys
 
 import (
 	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/option"
 )
 
-var ServiceBasePath = "/api/ddi/v1"
+const serviceBasePath = "/api/ddi/v1"
 
 // APIClient manages communication with the DDI Keys API API vv1
 // In most cases there should be only one, shared, APIClient.
@@ -28,11 +29,15 @@ type APIClient struct {
 	UploadAPI       UploadAPI
 }
 
-// NewAPIClient creates a new API client. Requires a userAgent string describing your application.
-// optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *internal.Configuration) *APIClient {
+// NewAPIClient creates a new API client.
+func NewAPIClient(options ...option.ClientOption) *APIClient {
+	cfg := internal.NewConfiguration()
+	for _, o := range options {
+		o(cfg)
+	}
+
 	c := &APIClient{}
-	c.APIClient = internal.NewAPIClient(cfg)
+	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)
 
 	// API Services
 	c.GenerateTsigAPI = (*GenerateTsigAPIService)(&c.Common)

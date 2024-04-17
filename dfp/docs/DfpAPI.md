@@ -24,25 +24,25 @@ Update DNS Forwarding Proxy resolvers.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
-    id := int32(56) // int32 | The DNS Forwarding Proxy object identifier.
-    body := *openapiclient.NewAtcdfpDfpCreateOrUpdatePayload() // AtcdfpDfpCreateOrUpdatePayload | The DNS Forwarding Proxy object.
+	id := int32(56) // int32 | The DNS Forwarding Proxy object identifier.
+	body := *dfp.NewAtcdfpDfpCreateOrUpdatePayload() // AtcdfpDfpCreateOrUpdatePayload | The DNS Forwarding Proxy object.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpCreateOrUpdateDfp``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DfpCreateOrUpdateDfp`: AtcdfpDfpCreateOrUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpCreateOrUpdateDfp`: %v\n", resp)
+	apiClient := dfp.NewAPIClient()
+	resp, r, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpCreateOrUpdateDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DfpCreateOrUpdateDfp`: AtcdfpDfpCreateOrUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpCreateOrUpdateDfp`: %v\n", resp)
 }
 ```
 
@@ -96,28 +96,28 @@ List DNS Forwarding Proxies.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
-    filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name                    | type   | Supported Op                | | ----------------------- | ------ | --------------------------- | | name                    | string | !=, ==, ~, !~, >, <, <=, >= | | site_id                 | string | !=, ==, ~, !~, >, <, <=, >= | | ophid                   | string | !=, ==, ~, !~, >, <, <=, >= | | policy_id               | int32  | !=, ==, >, <, <=, >=        | | default_security_policy | bool   | !=, ==                      |  In addition groupping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Example: ``` ?_filter=\"((name=='dfp1')or(ophid~'oph'))and(default_security_policy!='true')\" ```  (optional)
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name                    | type   | Supported Op                | | ----------------------- | ------ | --------------------------- | | name                    | string | !=, ==, ~, !~, >, <, <=, >= | | site_id                 | string | !=, ==, ~, !~, >, <, <=, >= | | ophid                   | string | !=, ==, ~, !~, >, <, <=, >= | | policy_id               | int32  | !=, ==, >, <, <=, >=        | | default_security_policy | bool   | !=, ==                      |  In addition groupping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Example: ``` ?_filter=\"((name=='dfp1')or(ophid~'oph'))and(default_security_policy!='true')\" ```  (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DfpAPI.DfpListDfp(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpListDfp``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DfpListDfp`: AtcdfpDfpListResponse
-    fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpListDfp`: %v\n", resp)
+	apiClient := dfp.NewAPIClient()
+	resp, r, err := apiClient.DfpAPI.DfpListDfp(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpListDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DfpListDfp`: AtcdfpDfpListResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpListDfp`: %v\n", resp)
 }
 ```
 
@@ -170,27 +170,27 @@ Read DNS Forwarding Proxy.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
-    id := int32(56) // int32 | The DNS Forwarding Proxy object identifier.
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    name := "name_example" // string | The name of the DNS Forwarding Proxy. Used only if the 'id' field is empty. (optional)
-    serviceId := "serviceId_example" // string | The On-Prem Application Service identifier. For internal Use only. (optional)
+	id := int32(56) // int32 | The DNS Forwarding Proxy object identifier.
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	name := "name_example" // string | The name of the DNS Forwarding Proxy. Used only if the 'id' field is empty. (optional)
+	serviceId := "serviceId_example" // string | The On-Prem Application Service identifier. For internal Use only. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DfpAPI.DfpReadDfp(context.Background(), id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpReadDfp``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DfpReadDfp`: AtcdfpDfpReadResponse
-    fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpReadDfp`: %v\n", resp)
+	apiClient := dfp.NewAPIClient()
+	resp, r, err := apiClient.DfpAPI.DfpReadDfp(context.Background(), id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpReadDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DfpReadDfp`: AtcdfpDfpReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpReadDfp`: %v\n", resp)
 }
 ```
 

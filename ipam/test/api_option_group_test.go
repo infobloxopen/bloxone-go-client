@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_OptionGroupAPIService(t *testing.T) {
+func TestOptionGroupAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
 	t.Run("Test OptionGroupAPIService OptionGroupCreate", func(t *testing.T) {
 

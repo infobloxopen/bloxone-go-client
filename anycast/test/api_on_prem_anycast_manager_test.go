@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/anycast"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
-func Test_anycast_OnPremAnycastManagerAPIService(t *testing.T) {
+func TestOnPremAnycastManagerAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := anycast.NewAPIClient()
 
 	t.Run("Test OnPremAnycastManagerAPIService OnPremAnycastManagerCreateAnycastConfig", func(t *testing.T) {
 

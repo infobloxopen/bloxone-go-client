@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/infra_provision"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
-func Test_infra_provision_UICSRAPIService(t *testing.T) {
+func TestUICSRAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := infra_provision.NewAPIClient()
 
 	t.Run("Test UICSRAPIService UICSRApprove", func(t *testing.T) {
 

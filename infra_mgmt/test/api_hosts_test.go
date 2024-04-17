@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/infra_mgmt"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/infra_mgmt"
 )
 
-func Test_infra_mgmt_HostsAPIService(t *testing.T) {
+func TestHostsAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := infra_mgmt.NewAPIClient()
 
 	t.Run("Test HostsAPIService HostsAssignTags", func(t *testing.T) {
 

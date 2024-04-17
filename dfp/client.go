@@ -12,9 +12,10 @@ package dfp
 
 import (
 	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/option"
 )
 
-var ServiceBasePath = "/api/atcdfp/v1"
+const serviceBasePath = "/api/atcdfp/v1"
 
 // APIClient manages communication with the DFP API API vv1
 // In most cases there should be only one, shared, APIClient.
@@ -26,11 +27,15 @@ type APIClient struct {
 	DfpAPI      DfpAPI
 }
 
-// NewAPIClient creates a new API client. Requires a userAgent string describing your application.
-// optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *internal.Configuration) *APIClient {
+// NewAPIClient creates a new API client.
+func NewAPIClient(options ...option.ClientOption) *APIClient {
+	cfg := internal.NewConfiguration()
+	for _, o := range options {
+		o(cfg)
+	}
+
 	c := &APIClient{}
-	c.APIClient = internal.NewAPIClient(cfg)
+	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)
 
 	// API Services
 	c.AccountsAPI = (*AccountsAPIService)(&c.Common)

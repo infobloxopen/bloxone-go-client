@@ -22,24 +22,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
+	filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsListAppApprovals(context.Background()).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsListAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsListAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsListAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsListAppApprovals(context.Background()).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsListAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AppApprovalsListAppApprovals`: AtcfwAppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsListAppApprovals`: %v\n", resp)
 }
 ```
 
@@ -88,24 +88,24 @@ Update Application Approval.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwAppApprovalsReplaceRequest() // AtcfwAppApprovalsReplaceRequest | 
+	body := *fw.NewAtcfwAppApprovalsReplaceRequest() // AtcfwAppApprovalsReplaceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsReplaceAppApprovals(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsReplaceAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsReplaceAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsReplaceAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsReplaceAppApprovals(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsReplaceAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AppApprovalsReplaceAppApprovals`: AtcfwAppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsReplaceAppApprovals`: %v\n", resp)
 }
 ```
 
@@ -152,24 +152,24 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	fw "github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwAppApprovalsUpdateRequest() // AtcfwAppApprovalsUpdateRequest | 
+	body := *fw.NewAtcfwAppApprovalsUpdateRequest() // AtcfwAppApprovalsUpdateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsUpdateAppApprovals(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsUpdateAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsUpdateAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsUpdateAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsUpdateAppApprovals(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsUpdateAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AppApprovalsUpdateAppApprovals`: AtcfwAppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsUpdateAppApprovals`: %v\n", resp)
 }
 ```
 

@@ -16,14 +16,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_PopRegionsAPIService(t *testing.T) {
+func TestPopRegionsAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
 	t.Run("Test PopRegionsAPIService PopRegionsListPoPRegions", func(t *testing.T) {
 

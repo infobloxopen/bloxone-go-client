@@ -25,24 +25,24 @@ Read the Global configuration object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalRead(context.Background()).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalRead`: ConfigReadGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead`: %v\n", resp)
+	apiClient := dns_config.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.GlobalRead(context.Background()).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GlobalRead`: ConfigReadGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead`: %v\n", resp)
 }
 ```
 
@@ -91,25 +91,25 @@ Read the Global configuration object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	id := "id_example" // string | An application specific resource identity of a resource
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), id).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalRead2`: ConfigReadGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead2`: %v\n", resp)
+	apiClient := dns_config.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), id).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GlobalRead2`: ConfigReadGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead2`: %v\n", resp)
 }
 ```
 
@@ -163,24 +163,24 @@ Update the Global configuration object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
-    body := *openapiclient.NewConfigGlobal("Id_example") // ConfigGlobal | 
+	body := *dns_config.NewConfigGlobal("Id_example") // ConfigGlobal | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalUpdate`: ConfigUpdateGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate`: %v\n", resp)
+	apiClient := dns_config.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GlobalUpdate`: ConfigUpdateGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate`: %v\n", resp)
 }
 ```
 
@@ -229,25 +229,25 @@ Update the Global configuration object.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigGlobal("Id_example") // ConfigGlobal | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *dns_config.NewConfigGlobal("Id_example") // ConfigGlobal | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalUpdate2`: ConfigUpdateGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate2`: %v\n", resp)
+	apiClient := dns_config.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GlobalUpdate2`: ConfigUpdateGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate2`: %v\n", resp)
 }
 ```
 
