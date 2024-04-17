@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] [readonly] 
+**Id** | Pointer to **int64** |  | [optional] 
 **IpAddress** | Pointer to **string** | IPv4 address of the host in string format | [optional] 
 **Ipv6Address** | Pointer to **string** | IPv6 address of the host in string format | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
