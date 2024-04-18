@@ -1,4 +1,4 @@
-# \RecordAPI
+# RecordAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
@@ -31,7 +31,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {
@@ -99,7 +99,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {
@@ -167,7 +167,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {
@@ -249,7 +249,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {
@@ -323,7 +323,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {
@@ -395,7 +395,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_data "github.com/infobloxopen/bloxone-go-client/dns_data"
+	"github.com/infobloxopen/bloxone-go-client/dns_data"
 )
 
 func main() {

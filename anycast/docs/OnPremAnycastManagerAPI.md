@@ -1,6 +1,6 @@
-# \OnPremAnycastManagerAPI
+# OnPremAnycastManagerAPI
 
-All URIs are relative to *http://localhost/api/anycast/v1*
+All URIs are relative to *http://csp.infoblox.com/api/anycast/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -108,7 +108,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -178,7 +178,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -248,7 +248,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -318,7 +318,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -388,7 +388,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -458,7 +458,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -536,7 +536,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -606,7 +606,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -683,7 +683,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -760,7 +760,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -830,7 +830,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -900,7 +900,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -970,7 +970,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -1048,7 +1048,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -1118,7 +1118,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
@@ -1190,7 +1190,7 @@ import (
 	"fmt"
 	"os"
 
-	anycast "github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {

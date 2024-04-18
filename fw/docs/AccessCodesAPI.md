@@ -1,6 +1,6 @@
-# \AccessCodesAPI
+# AccessCodesAPI
 
-All URIs are relative to *http://localhost/api/atcfw/v1*
+All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
@@ -97,7 +97,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
@@ -161,7 +161,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
@@ -229,7 +229,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
@@ -301,7 +301,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
@@ -373,7 +373,7 @@ import (
 	"fmt"
 	"os"
 
-	fw "github.com/infobloxopen/bloxone-go-client/fw"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {

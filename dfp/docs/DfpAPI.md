@@ -1,4 +1,4 @@
-# \DfpAPI
+# DfpAPI
 
 All URIs are relative to *https://csp.infoblox.com/api/atcdfp/v1*
 
@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
+	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
@@ -100,7 +100,7 @@ import (
 	"fmt"
 	"os"
 
-	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
+	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {
@@ -174,7 +174,7 @@ import (
 	"fmt"
 	"os"
 
-	dfp "github.com/infobloxopen/bloxone-go-client/dfp"
+	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
 func main() {

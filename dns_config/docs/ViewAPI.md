@@ -1,4 +1,4 @@
-# \ViewAPI
+# ViewAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
@@ -31,7 +31,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
@@ -97,7 +97,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
@@ -165,7 +165,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
@@ -233,7 +233,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
@@ -315,7 +315,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {
@@ -389,7 +389,7 @@ import (
 	"fmt"
 	"os"
 
-	dns_config "github.com/infobloxopen/bloxone-go-client/dns_config"
+	"github.com/infobloxopen/bloxone-go-client/dns_config"
 )
 
 func main() {

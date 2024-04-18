@@ -1,4 +1,4 @@
-# \SubnetAPI
+# SubnetAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
@@ -33,7 +33,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -105,7 +105,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -173,7 +173,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -247,7 +247,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -315,7 +315,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -397,7 +397,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -471,7 +471,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
@@ -545,7 +545,7 @@ import (
 	"fmt"
 	"os"
 
-	ipam "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {

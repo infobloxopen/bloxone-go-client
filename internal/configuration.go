@@ -19,6 +19,10 @@ func (c contextKey) String() string {
 }
 
 var (
+	// The following context keys can be used to modify the server URL used by the client.
+	// However, we only support a single server configuration at the moment.
+	// This needs to be exposed to the user in the future when we support multiple server configurations.
+
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
 
@@ -63,7 +67,12 @@ type Configuration struct {
 	DefaultTags      map[string]string
 }
 
-// NewConfiguration returns a new Configuration object
+// NewConfiguration returns a new Configuration object.
+// The following default values are set:
+// - ClientName: "bloxone-go-client"
+// - CSPURL: "https://csp.infoblox.com"
+// - UserAgent: "bloxone-go-client/version"
+// - Debug: false
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		ClientName:       "bloxone-go-client",

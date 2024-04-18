@@ -11,7 +11,9 @@ API version: v1
 package dns_config
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -114,6 +116,8 @@ type ConfigView struct {
 	UseRootForwardersForLocalResolutionWithB1td *bool                `json:"use_root_forwarders_for_local_resolution_with_b1td,omitempty"`
 	ZoneAuthority                               *ConfigZoneAuthority `json:"zone_authority,omitempty"`
 }
+
+type _ConfigView ConfigView
 
 // NewConfigView instantiates a new ConfigView object
 // This constructor will assign default values to properties that have it defined,
@@ -1814,6 +1818,43 @@ func (o ConfigView) ToMap() (map[string]interface{}, error) {
 		toSerialize["zone_authority"] = o.ZoneAuthority
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigView) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigView := _ConfigView{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigView)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigView(varConfigView)
+
+	return err
 }
 
 type NullableConfigView struct {

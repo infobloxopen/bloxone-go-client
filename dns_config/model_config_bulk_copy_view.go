@@ -11,7 +11,9 @@ API version: v1
 package dns_config
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConfigBulkCopyView type satisfies the MappedNullable interface at compile time
@@ -31,6 +33,8 @@ type ConfigBulkCopyView struct {
 	// The resource identifier.
 	Target string `json:"target"`
 }
+
+type _ConfigBulkCopyView ConfigBulkCopyView
 
 // NewConfigBulkCopyView instantiates a new ConfigBulkCopyView object
 // This constructor will assign default values to properties that have it defined,
@@ -287,6 +291,44 @@ func (o ConfigBulkCopyView) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["target"] = o.Target
 	return toSerialize, nil
+}
+
+func (o *ConfigBulkCopyView) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resources",
+		"target",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigBulkCopyView := _ConfigBulkCopyView{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigBulkCopyView)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigBulkCopyView(varConfigBulkCopyView)
+
+	return err
 }
 
 type NullableConfigBulkCopyView struct {

@@ -11,7 +11,9 @@ API version: v1
 package dns_config
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ConfigACLItem type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type ConfigACLItem struct {
 	Element string         `json:"element"`
 	TsigKey *ConfigTSIGKey `json:"tsig_key,omitempty"`
 }
+
+type _ConfigACLItem ConfigACLItem
 
 // NewConfigACLItem instantiates a new ConfigACLItem object
 // This constructor will assign default values to properties that have it defined,
@@ -215,6 +219,44 @@ func (o ConfigACLItem) ToMap() (map[string]interface{}, error) {
 		toSerialize["tsig_key"] = o.TsigKey
 	}
 	return toSerialize, nil
+}
+
+func (o *ConfigACLItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"access",
+		"element",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfigACLItem := _ConfigACLItem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfigACLItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigACLItem(varConfigACLItem)
+
+	return err
 }
 
 type NullableConfigACLItem struct {

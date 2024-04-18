@@ -1,4 +1,4 @@
-# \UIJoinTokenAPI
+# UIJoinTokenAPI
 
 All URIs are relative to *http://csp.infoblox.com/host-activation/v1*
 
@@ -31,7 +31,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
@@ -95,7 +95,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
@@ -161,7 +161,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
@@ -225,7 +225,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
@@ -301,7 +301,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {
@@ -373,7 +373,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_provision "github.com/infobloxopen/bloxone-go-client/infra_provision"
+	"github.com/infobloxopen/bloxone-go-client/infra_provision"
 )
 
 func main() {

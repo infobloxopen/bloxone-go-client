@@ -1,6 +1,6 @@
-# \TsigAPI
+# TsigAPI
 
-All URIs are relative to *http://localhost/api/ddi/v1*
+All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"os"
 
-	keys "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {
@@ -96,7 +96,7 @@ import (
 	"fmt"
 	"os"
 
-	keys "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {
@@ -164,7 +164,7 @@ import (
 	"fmt"
 	"os"
 
-	keys "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
 	"fmt"
 	"os"
 
-	keys "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {
@@ -316,7 +316,7 @@ import (
 	"fmt"
 	"os"
 
-	keys "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
 func main() {

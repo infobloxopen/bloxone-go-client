@@ -17,7 +17,7 @@ import (
 
 const serviceBasePath = "/host-activation/v1"
 
-// APIClient manages communication with the Host Activation Service API vv1
+// APIClient manages communication with the Host Activation Service v1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	*internal.APIClient

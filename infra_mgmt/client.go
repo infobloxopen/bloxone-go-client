@@ -17,7 +17,7 @@ import (
 
 const serviceBasePath = "/api/infra/v1"
 
-// APIClient manages communication with the Infrastructure Management API API vv1
+// APIClient manages communication with the Infrastructure Management API v1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	*internal.APIClient

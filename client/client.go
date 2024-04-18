@@ -1,4 +1,3 @@
-// Package client provides useful primitives for working with BloxOne DDI APIs
 package client
 
 import (
@@ -28,7 +27,8 @@ type APIClient struct {
 }
 
 // NewAPIClient creates a new BloxOne API Client.
-func NewAPIClient(name string, options ...option.ClientOption) (*APIClient, error) {
+// This is an aggregation of different BloxOne API clients.
+func NewAPIClient(options ...option.ClientOption) *APIClient {
 	return &APIClient{
 		IPAddressManagementAPI: ipam.NewAPIClient(options...),
 		DNSConfigurationAPI:    dns_config.NewAPIClient(options...),
@@ -39,5 +39,5 @@ func NewAPIClient(name string, options ...option.ClientOption) (*APIClient, erro
 		DNSForwardingProxyAPI:  dfp.NewAPIClient(options...),
 		FWAPI:                  fw.NewAPIClient(options...),
 		AnycastAPI:             anycast.NewAPIClient(options...),
-	}, nil
+	}
 }

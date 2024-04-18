@@ -17,7 +17,7 @@ import (
 
 const serviceBasePath = "/api/anycast/v1"
 
-// APIClient manages communication with the BloxOne Anycast API API vv1
+// APIClient manages communication with the BloxOne Anycast API v1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	*internal.APIClient

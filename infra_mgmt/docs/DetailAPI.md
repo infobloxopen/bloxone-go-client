@@ -1,4 +1,4 @@
-# \DetailAPI
+# DetailAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/infra/v1*
 
@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_mgmt "github.com/infobloxopen/bloxone-go-client/infra_mgmt"
+	"github.com/infobloxopen/bloxone-go-client/infra_mgmt"
 )
 
 func main() {
@@ -103,7 +103,7 @@ import (
 	"fmt"
 	"os"
 
-	infra_mgmt "github.com/infobloxopen/bloxone-go-client/infra_mgmt"
+	"github.com/infobloxopen/bloxone-go-client/infra_mgmt"
 )
 
 func main() {

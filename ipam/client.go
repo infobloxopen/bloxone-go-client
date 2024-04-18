@@ -17,7 +17,7 @@ import (
 
 const serviceBasePath = "/api/ddi/v1"
 
-// APIClient manages communication with the IP Address Management API API vv1
+// APIClient manages communication with the IP Address Management API v1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	*internal.APIClient
