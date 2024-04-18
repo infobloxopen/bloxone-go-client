@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigBulkCopyView([]string{"Resources_example"}, "Target_example") // ConfigBulkCopyView | 
+    body := *openapiclient.NewConfigBulkCopyView([]string{"dnsServerforwarders"}, "Target_example") // ConfigBulkCopyView | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

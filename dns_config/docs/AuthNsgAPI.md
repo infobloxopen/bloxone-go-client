@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigAuthNSG("Name_example") // ConfigAuthNSG | 
+    body := *openapiclient.NewConfigAuthNSG("AuthoritativeDNSServerGroup") // ConfigAuthNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -320,7 +320,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigAuthNSG("Name_example") // ConfigAuthNSG | 
+    body := *openapiclient.NewConfigAuthNSG("AuthoritativeDNSServerGroup") // ConfigAuthNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

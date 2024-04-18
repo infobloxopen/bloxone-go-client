@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigServer("Name_example") // ConfigServer | 
+    body := *openapiclient.NewConfigServer("PrimaryHostsDNSProfile") // ConfigServer | 
     inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -326,7 +326,7 @@ import (
 
 func main() {
     id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigServer("Name_example") // ConfigServer | 
+    body := *openapiclient.NewConfigServer("PrimaryHostsDNSProfile") // ConfigServer | 
     inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
     configuration := openapiclient.NewConfiguration()
