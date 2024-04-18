@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigForwardNSG("Name_example") // ConfigForwardNSG | 
+	body := *openapiclient.NewConfigForwardNSG("NetworkSecurityGroup") // ConfigForwardNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -319,8 +319,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigForwardNSG("Name_example") // ConfigForwardNSG | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *openapiclient.NewConfigForwardNSG("NetworkSecurityGroup") // ConfigForwardNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

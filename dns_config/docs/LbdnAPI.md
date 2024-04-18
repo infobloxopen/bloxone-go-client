@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigLBDN("Name_example", "View_example") // ConfigLBDN | 
+	body := *openapiclient.NewConfigLBDN("example.com", "default") // ConfigLBDN | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -319,8 +319,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigLBDN("Name_example", "View_example") // ConfigLBDN | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *openapiclient.NewConfigLBDN("example.com", "default") // ConfigLBDN | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

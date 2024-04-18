@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigCopyAuthZone("TargetView_example") // ConfigCopyAuthZone | 
+	body := *openapiclient.NewConfigCopyAuthZone("backup_dns_view") // ConfigCopyAuthZone | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

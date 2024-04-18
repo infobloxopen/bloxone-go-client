@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    body := *openapiclient.NewConfigAuthNSG("Name_example") // ConfigAuthNSG | 
+	body := *openapiclient.NewConfigAuthNSG("AuthoritativeDNSServerGroup") // ConfigAuthNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,15 +250,15 @@ func main() {
     id := "id_example" // string | An application specific resource identity of a resource
     fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthNsgAPI.AuthNsgRead(context.Background(), id).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthNsgAPI.AuthNsgRead``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthNsgRead`: ConfigReadAuthNSGResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthNsgAPI.AuthNsgRead`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthNsgAPI.AuthNsgRead(context.Background(), id).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthNsgAPI.AuthNsgRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthNsgRead`: ConfigReadAuthNSGResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthNsgAPI.AuthNsgRead`: %v\n", resp)
 }
 ```
 
@@ -319,8 +319,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewConfigAuthNSG("Name_example") // ConfigAuthNSG | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *openapiclient.NewConfigAuthNSG("AuthoritativeDNSServerGroup") // ConfigAuthNSG | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
