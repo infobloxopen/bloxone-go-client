@@ -35,8 +35,8 @@ type AsmAPI interface {
 	AsmCreate(ctx context.Context) ApiAsmCreateRequest
 
 	// AsmCreateExecute executes the request
-	//  @return IpamsvcCreateASMResponse
-	AsmCreateExecute(r ApiAsmCreateRequest) (*IpamsvcCreateASMResponse, *http.Response, error)
+	//  @return CreateASMResponse
+	AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMResponse, *http.Response, error)
 	/*
 			AsmList Retrieve suggested updates for Automated Scope Management.
 
@@ -49,8 +49,8 @@ type AsmAPI interface {
 	AsmList(ctx context.Context) ApiAsmListRequest
 
 	// AsmListExecute executes the request
-	//  @return IpamsvcListASMResponse
-	AsmListExecute(r ApiAsmListRequest) (*IpamsvcListASMResponse, *http.Response, error)
+	//  @return ListASMResponse
+	AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *http.Response, error)
 	/*
 			AsmRead Retrieve the suggested update for Automated Scope Management.
 
@@ -64,8 +64,8 @@ type AsmAPI interface {
 	AsmRead(ctx context.Context, id string) ApiAsmReadRequest
 
 	// AsmReadExecute executes the request
-	//  @return IpamsvcReadASMResponse
-	AsmReadExecute(r ApiAsmReadRequest) (*IpamsvcReadASMResponse, *http.Response, error)
+	//  @return ReadASMResponse
+	AsmReadExecute(r ApiAsmReadRequest) (*ReadASMResponse, *http.Response, error)
 }
 
 // AsmAPIService AsmAPI service
@@ -74,15 +74,15 @@ type AsmAPIService internal.Service
 type ApiAsmCreateRequest struct {
 	ctx        context.Context
 	ApiService AsmAPI
-	body       *IpamsvcASM
+	body       *ASM
 }
 
-func (r ApiAsmCreateRequest) Body(body IpamsvcASM) ApiAsmCreateRequest {
+func (r ApiAsmCreateRequest) Body(body ASM) ApiAsmCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAsmCreateRequest) Execute() (*IpamsvcCreateASMResponse, *http.Response, error) {
+func (r ApiAsmCreateRequest) Execute() (*CreateASMResponse, *http.Response, error) {
 	return r.ApiService.AsmCreateExecute(r)
 }
 
@@ -105,13 +105,13 @@ func (a *AsmAPIService) AsmCreate(ctx context.Context) ApiAsmCreateRequest {
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateASMResponse
-func (a *AsmAPIService) AsmCreateExecute(r ApiAsmCreateRequest) (*IpamsvcCreateASMResponse, *http.Response, error) {
+//	@return CreateASMResponse
+func (a *AsmAPIService) AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateASMResponse
+		localVarReturnValue *CreateASMResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmCreate")
@@ -195,7 +195,7 @@ func (r ApiAsmListRequest) SubnetId(subnetId string) ApiAsmListRequest {
 	return r
 }
 
-func (r ApiAsmListRequest) Execute() (*IpamsvcListASMResponse, *http.Response, error) {
+func (r ApiAsmListRequest) Execute() (*ListASMResponse, *http.Response, error) {
 	return r.ApiService.AsmListExecute(r)
 }
 
@@ -217,13 +217,13 @@ func (a *AsmAPIService) AsmList(ctx context.Context) ApiAsmListRequest {
 
 // Execute executes the request
 //
-//	@return IpamsvcListASMResponse
-func (a *AsmAPIService) AsmListExecute(r ApiAsmListRequest) (*IpamsvcListASMResponse, *http.Response, error) {
+//	@return ListASMResponse
+func (a *AsmAPIService) AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListASMResponse
+		localVarReturnValue *ListASMResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmList")
@@ -303,7 +303,7 @@ func (r ApiAsmReadRequest) Fields(fields string) ApiAsmReadRequest {
 	return r
 }
 
-func (r ApiAsmReadRequest) Execute() (*IpamsvcReadASMResponse, *http.Response, error) {
+func (r ApiAsmReadRequest) Execute() (*ReadASMResponse, *http.Response, error) {
 	return r.ApiService.AsmReadExecute(r)
 }
 
@@ -327,13 +327,13 @@ func (a *AsmAPIService) AsmRead(ctx context.Context, id string) ApiAsmReadReques
 
 // Execute executes the request
 //
-//	@return IpamsvcReadASMResponse
-func (a *AsmAPIService) AsmReadExecute(r ApiAsmReadRequest) (*IpamsvcReadASMResponse, *http.Response, error) {
+//	@return ReadASMResponse
+func (a *AsmAPIService) AsmReadExecute(r ApiAsmReadRequest) (*ReadASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadASMResponse
+		localVarReturnValue *ReadASMResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmRead")

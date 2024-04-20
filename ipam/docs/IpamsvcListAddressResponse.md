@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]IpamsvcAddress**](IpamsvcAddress.md) | The list of Address objects. | [optional] 
+**Results** | Pointer to [**[]Address**](Address.md) | The list of Address objects. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *IpamsvcListAddressResponse) GetResults() []IpamsvcAddress`
+`func (o *IpamsvcListAddressResponse) GetResults() []Address`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *IpamsvcListAddressResponse) GetResultsOk() (*[]IpamsvcAddress, bool)`
+`func (o *IpamsvcListAddressResponse) GetResultsOk() (*[]Address, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *IpamsvcListAddressResponse) SetResults(v []IpamsvcAddress)`
+`func (o *IpamsvcListAddressResponse) SetResults(v []Address)`
 
 SetResults sets Results field to given value.
 

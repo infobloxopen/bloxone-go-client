@@ -34,8 +34,8 @@ type HaGroupAPI interface {
 	HaGroupCreate(ctx context.Context) ApiHaGroupCreateRequest
 
 	// HaGroupCreateExecute executes the request
-	//  @return IpamsvcCreateHAGroupResponse
-	HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*IpamsvcCreateHAGroupResponse, *http.Response, error)
+	//  @return CreateHAGroupResponse
+	HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*CreateHAGroupResponse, *http.Response, error)
 	/*
 			HaGroupDelete Delete the HA group.
 
@@ -62,8 +62,8 @@ type HaGroupAPI interface {
 	HaGroupList(ctx context.Context) ApiHaGroupListRequest
 
 	// HaGroupListExecute executes the request
-	//  @return IpamsvcListHAGroupResponse
-	HaGroupListExecute(r ApiHaGroupListRequest) (*IpamsvcListHAGroupResponse, *http.Response, error)
+	//  @return ListHAGroupResponse
+	HaGroupListExecute(r ApiHaGroupListRequest) (*ListHAGroupResponse, *http.Response, error)
 	/*
 			HaGroupRead Retrieve the HA group.
 
@@ -77,8 +77,8 @@ type HaGroupAPI interface {
 	HaGroupRead(ctx context.Context, id string) ApiHaGroupReadRequest
 
 	// HaGroupReadExecute executes the request
-	//  @return IpamsvcReadHAGroupResponse
-	HaGroupReadExecute(r ApiHaGroupReadRequest) (*IpamsvcReadHAGroupResponse, *http.Response, error)
+	//  @return ReadHAGroupResponse
+	HaGroupReadExecute(r ApiHaGroupReadRequest) (*ReadHAGroupResponse, *http.Response, error)
 	/*
 			HaGroupUpdate Update the HA group.
 
@@ -92,8 +92,8 @@ type HaGroupAPI interface {
 	HaGroupUpdate(ctx context.Context, id string) ApiHaGroupUpdateRequest
 
 	// HaGroupUpdateExecute executes the request
-	//  @return IpamsvcUpdateHAGroupResponse
-	HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*IpamsvcUpdateHAGroupResponse, *http.Response, error)
+	//  @return UpdateHAGroupResponse
+	HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*UpdateHAGroupResponse, *http.Response, error)
 }
 
 // HaGroupAPIService HaGroupAPI service
@@ -102,15 +102,15 @@ type HaGroupAPIService internal.Service
 type ApiHaGroupCreateRequest struct {
 	ctx        context.Context
 	ApiService HaGroupAPI
-	body       *IpamsvcHAGroup
+	body       *HAGroup
 }
 
-func (r ApiHaGroupCreateRequest) Body(body IpamsvcHAGroup) ApiHaGroupCreateRequest {
+func (r ApiHaGroupCreateRequest) Body(body HAGroup) ApiHaGroupCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiHaGroupCreateRequest) Execute() (*IpamsvcCreateHAGroupResponse, *http.Response, error) {
+func (r ApiHaGroupCreateRequest) Execute() (*CreateHAGroupResponse, *http.Response, error) {
 	return r.ApiService.HaGroupCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *HaGroupAPIService) HaGroupCreate(ctx context.Context) ApiHaGroupCreateR
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateHAGroupResponse
-func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*IpamsvcCreateHAGroupResponse, *http.Response, error) {
+//	@return CreateHAGroupResponse
+func (a *HaGroupAPIService) HaGroupCreateExecute(r ApiHaGroupCreateRequest) (*CreateHAGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateHAGroupResponse
+		localVarReturnValue *CreateHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupCreate")
@@ -372,7 +372,7 @@ func (r ApiHaGroupListRequest) CollectStats(collectStats bool) ApiHaGroupListReq
 	return r
 }
 
-func (r ApiHaGroupListRequest) Execute() (*IpamsvcListHAGroupResponse, *http.Response, error) {
+func (r ApiHaGroupListRequest) Execute() (*ListHAGroupResponse, *http.Response, error) {
 	return r.ApiService.HaGroupListExecute(r)
 }
 
@@ -394,13 +394,13 @@ func (a *HaGroupAPIService) HaGroupList(ctx context.Context) ApiHaGroupListReque
 
 // Execute executes the request
 //
-//	@return IpamsvcListHAGroupResponse
-func (a *HaGroupAPIService) HaGroupListExecute(r ApiHaGroupListRequest) (*IpamsvcListHAGroupResponse, *http.Response, error) {
+//	@return ListHAGroupResponse
+func (a *HaGroupAPIService) HaGroupListExecute(r ApiHaGroupListRequest) (*ListHAGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListHAGroupResponse
+		localVarReturnValue *ListHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupList")
@@ -508,7 +508,7 @@ func (r ApiHaGroupReadRequest) CollectStats(collectStats bool) ApiHaGroupReadReq
 	return r
 }
 
-func (r ApiHaGroupReadRequest) Execute() (*IpamsvcReadHAGroupResponse, *http.Response, error) {
+func (r ApiHaGroupReadRequest) Execute() (*ReadHAGroupResponse, *http.Response, error) {
 	return r.ApiService.HaGroupReadExecute(r)
 }
 
@@ -532,13 +532,13 @@ func (a *HaGroupAPIService) HaGroupRead(ctx context.Context, id string) ApiHaGro
 
 // Execute executes the request
 //
-//	@return IpamsvcReadHAGroupResponse
-func (a *HaGroupAPIService) HaGroupReadExecute(r ApiHaGroupReadRequest) (*IpamsvcReadHAGroupResponse, *http.Response, error) {
+//	@return ReadHAGroupResponse
+func (a *HaGroupAPIService) HaGroupReadExecute(r ApiHaGroupReadRequest) (*ReadHAGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadHAGroupResponse
+		localVarReturnValue *ReadHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupRead")
@@ -610,15 +610,15 @@ type ApiHaGroupUpdateRequest struct {
 	ctx        context.Context
 	ApiService HaGroupAPI
 	id         string
-	body       *IpamsvcHAGroup
+	body       *HAGroup
 }
 
-func (r ApiHaGroupUpdateRequest) Body(body IpamsvcHAGroup) ApiHaGroupUpdateRequest {
+func (r ApiHaGroupUpdateRequest) Body(body HAGroup) ApiHaGroupUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiHaGroupUpdateRequest) Execute() (*IpamsvcUpdateHAGroupResponse, *http.Response, error) {
+func (r ApiHaGroupUpdateRequest) Execute() (*UpdateHAGroupResponse, *http.Response, error) {
 	return r.ApiService.HaGroupUpdateExecute(r)
 }
 
@@ -642,13 +642,13 @@ func (a *HaGroupAPIService) HaGroupUpdate(ctx context.Context, id string) ApiHaG
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateHAGroupResponse
-func (a *HaGroupAPIService) HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*IpamsvcUpdateHAGroupResponse, *http.Response, error) {
+//	@return UpdateHAGroupResponse
+func (a *HaGroupAPIService) HaGroupUpdateExecute(r ApiHaGroupUpdateRequest) (*UpdateHAGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateHAGroupResponse
+		localVarReturnValue *UpdateHAGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HaGroupAPIService.HaGroupUpdate")

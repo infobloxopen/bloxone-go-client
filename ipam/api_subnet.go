@@ -35,8 +35,8 @@ type SubnetAPI interface {
 	SubnetCopy(ctx context.Context, id string) ApiSubnetCopyRequest
 
 	// SubnetCopyExecute executes the request
-	//  @return IpamsvcCopySubnetResponse
-	SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCopySubnetResponse, *http.Response, error)
+	//  @return CopySubnetResponse
+	SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubnetResponse, *http.Response, error)
 	/*
 			SubnetCreate Create the subnet.
 
@@ -49,8 +49,8 @@ type SubnetAPI interface {
 	SubnetCreate(ctx context.Context) ApiSubnetCreateRequest
 
 	// SubnetCreateExecute executes the request
-	//  @return IpamsvcCreateSubnetResponse
-	SubnetCreateExecute(r ApiSubnetCreateRequest) (*IpamsvcCreateSubnetResponse, *http.Response, error)
+	//  @return CreateSubnetResponse
+	SubnetCreateExecute(r ApiSubnetCreateRequest) (*CreateSubnetResponse, *http.Response, error)
 	/*
 			SubnetCreateNextAvailableIP Allocate the next available IP address.
 
@@ -64,8 +64,8 @@ type SubnetAPI interface {
 	SubnetCreateNextAvailableIP(ctx context.Context, id string) ApiSubnetCreateNextAvailableIPRequest
 
 	// SubnetCreateNextAvailableIPExecute executes the request
-	//  @return IpamsvcCreateNextAvailableIPResponse
-	SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
+	//  @return CreateNextAvailableIPResponse
+	SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error)
 	/*
 			SubnetDelete Move the subnet to the recycle bin.
 
@@ -92,8 +92,8 @@ type SubnetAPI interface {
 	SubnetList(ctx context.Context) ApiSubnetListRequest
 
 	// SubnetListExecute executes the request
-	//  @return IpamsvcListSubnetResponse
-	SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcListSubnetResponse, *http.Response, error)
+	//  @return ListSubnetResponse
+	SubnetListExecute(r ApiSubnetListRequest) (*ListSubnetResponse, *http.Response, error)
 	/*
 			SubnetListNextAvailableIP Retrieve the next available IP address.
 
@@ -107,8 +107,8 @@ type SubnetAPI interface {
 	SubnetListNextAvailableIP(ctx context.Context, id string) ApiSubnetListNextAvailableIPRequest
 
 	// SubnetListNextAvailableIPExecute executes the request
-	//  @return IpamsvcNextAvailableIPResponse
-	SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
+	//  @return NextAvailableIPResponse
+	SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error)
 	/*
 			SubnetRead Retrieve the subnet.
 
@@ -122,8 +122,8 @@ type SubnetAPI interface {
 	SubnetRead(ctx context.Context, id string) ApiSubnetReadRequest
 
 	// SubnetReadExecute executes the request
-	//  @return IpamsvcReadSubnetResponse
-	SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcReadSubnetResponse, *http.Response, error)
+	//  @return ReadSubnetResponse
+	SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubnetResponse, *http.Response, error)
 	/*
 			SubnetUpdate Update the subnet.
 
@@ -137,8 +137,8 @@ type SubnetAPI interface {
 	SubnetUpdate(ctx context.Context, id string) ApiSubnetUpdateRequest
 
 	// SubnetUpdateExecute executes the request
-	//  @return IpamsvcUpdateSubnetResponse
-	SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*IpamsvcUpdateSubnetResponse, *http.Response, error)
+	//  @return UpdateSubnetResponse
+	SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*UpdateSubnetResponse, *http.Response, error)
 }
 
 // SubnetAPIService SubnetAPI service
@@ -148,15 +148,15 @@ type ApiSubnetCopyRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
-	body       *IpamsvcCopySubnet
+	body       *CopySubnet
 }
 
-func (r ApiSubnetCopyRequest) Body(body IpamsvcCopySubnet) ApiSubnetCopyRequest {
+func (r ApiSubnetCopyRequest) Body(body CopySubnet) ApiSubnetCopyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSubnetCopyRequest) Execute() (*IpamsvcCopySubnetResponse, *http.Response, error) {
+func (r ApiSubnetCopyRequest) Execute() (*CopySubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetCopyExecute(r)
 }
 
@@ -180,13 +180,13 @@ func (a *SubnetAPIService) SubnetCopy(ctx context.Context, id string) ApiSubnetC
 
 // Execute executes the request
 //
-//	@return IpamsvcCopySubnetResponse
-func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCopySubnetResponse, *http.Response, error) {
+//	@return CopySubnetResponse
+func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCopySubnetResponse
+		localVarReturnValue *CopySubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCopy")
@@ -256,11 +256,11 @@ func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*IpamsvcCo
 type ApiSubnetCreateRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
-	body       *IpamsvcSubnet
+	body       *Subnet
 	inherit    *string
 }
 
-func (r ApiSubnetCreateRequest) Body(body IpamsvcSubnet) ApiSubnetCreateRequest {
+func (r ApiSubnetCreateRequest) Body(body Subnet) ApiSubnetCreateRequest {
 	r.body = &body
 	return r
 }
@@ -271,7 +271,7 @@ func (r ApiSubnetCreateRequest) Inherit(inherit string) ApiSubnetCreateRequest {
 	return r
 }
 
-func (r ApiSubnetCreateRequest) Execute() (*IpamsvcCreateSubnetResponse, *http.Response, error) {
+func (r ApiSubnetCreateRequest) Execute() (*CreateSubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetCreateExecute(r)
 }
 
@@ -293,13 +293,13 @@ func (a *SubnetAPIService) SubnetCreate(ctx context.Context) ApiSubnetCreateRequ
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateSubnetResponse
-func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*IpamsvcCreateSubnetResponse, *http.Response, error) {
+//	@return CreateSubnetResponse
+func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*CreateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateSubnetResponse
+		localVarReturnValue *CreateSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCreate")
@@ -398,7 +398,7 @@ func (r ApiSubnetCreateNextAvailableIPRequest) Count(count int32) ApiSubnetCreat
 	return r
 }
 
-func (r ApiSubnetCreateNextAvailableIPRequest) Execute() (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+func (r ApiSubnetCreateNextAvailableIPRequest) Execute() (*CreateNextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.SubnetCreateNextAvailableIPExecute(r)
 }
 
@@ -422,13 +422,13 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIP(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateNextAvailableIPResponse
-func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+//	@return CreateNextAvailableIPResponse
+func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateNextAvailableIPResponse
+		localVarReturnValue *CreateNextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCreateNextAvailableIP")
@@ -660,7 +660,7 @@ func (r ApiSubnetListRequest) Inherit(inherit string) ApiSubnetListRequest {
 	return r
 }
 
-func (r ApiSubnetListRequest) Execute() (*IpamsvcListSubnetResponse, *http.Response, error) {
+func (r ApiSubnetListRequest) Execute() (*ListSubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetListExecute(r)
 }
 
@@ -682,13 +682,13 @@ func (a *SubnetAPIService) SubnetList(ctx context.Context) ApiSubnetListRequest 
 
 // Execute executes the request
 //
-//	@return IpamsvcListSubnetResponse
-func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*IpamsvcListSubnetResponse, *http.Response, error) {
+//	@return ListSubnetResponse
+func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*ListSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListSubnetResponse
+		localVarReturnValue *ListSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetList")
@@ -796,7 +796,7 @@ func (r ApiSubnetListNextAvailableIPRequest) Count(count int32) ApiSubnetListNex
 	return r
 }
 
-func (r ApiSubnetListNextAvailableIPRequest) Execute() (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+func (r ApiSubnetListNextAvailableIPRequest) Execute() (*NextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.SubnetListNextAvailableIPExecute(r)
 }
 
@@ -820,13 +820,13 @@ func (a *SubnetAPIService) SubnetListNextAvailableIP(ctx context.Context, id str
 
 // Execute executes the request
 //
-//	@return IpamsvcNextAvailableIPResponse
-func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+//	@return NextAvailableIPResponse
+func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcNextAvailableIPResponse
+		localVarReturnValue *NextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetListNextAvailableIP")
@@ -914,7 +914,7 @@ func (r ApiSubnetReadRequest) Inherit(inherit string) ApiSubnetReadRequest {
 	return r
 }
 
-func (r ApiSubnetReadRequest) Execute() (*IpamsvcReadSubnetResponse, *http.Response, error) {
+func (r ApiSubnetReadRequest) Execute() (*ReadSubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetReadExecute(r)
 }
 
@@ -938,13 +938,13 @@ func (a *SubnetAPIService) SubnetRead(ctx context.Context, id string) ApiSubnetR
 
 // Execute executes the request
 //
-//	@return IpamsvcReadSubnetResponse
-func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*IpamsvcReadSubnetResponse, *http.Response, error) {
+//	@return ReadSubnetResponse
+func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadSubnetResponse
+		localVarReturnValue *ReadSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetRead")
@@ -1016,11 +1016,11 @@ type ApiSubnetUpdateRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
-	body       *IpamsvcSubnet
+	body       *Subnet
 	inherit    *string
 }
 
-func (r ApiSubnetUpdateRequest) Body(body IpamsvcSubnet) ApiSubnetUpdateRequest {
+func (r ApiSubnetUpdateRequest) Body(body Subnet) ApiSubnetUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -1031,7 +1031,7 @@ func (r ApiSubnetUpdateRequest) Inherit(inherit string) ApiSubnetUpdateRequest {
 	return r
 }
 
-func (r ApiSubnetUpdateRequest) Execute() (*IpamsvcUpdateSubnetResponse, *http.Response, error) {
+func (r ApiSubnetUpdateRequest) Execute() (*UpdateSubnetResponse, *http.Response, error) {
 	return r.ApiService.SubnetUpdateExecute(r)
 }
 
@@ -1055,13 +1055,13 @@ func (a *SubnetAPIService) SubnetUpdate(ctx context.Context, id string) ApiSubne
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateSubnetResponse
-func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*IpamsvcUpdateSubnetResponse, *http.Response, error) {
+//	@return UpdateSubnetResponse
+func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*UpdateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateSubnetResponse
+		localVarReturnValue *UpdateSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetUpdate")

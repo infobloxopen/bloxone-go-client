@@ -20,7 +20,7 @@ var _ MappedNullable = &IpamsvcListAddressResponse{}
 // IpamsvcListAddressResponse The response format to retrieve __Address__ objects.
 type IpamsvcListAddressResponse struct {
 	// The list of Address objects.
-	Results []IpamsvcAddress `json:"results,omitempty"`
+	Results []Address `json:"results,omitempty"`
 }
 
 // NewIpamsvcListAddressResponse instantiates a new IpamsvcListAddressResponse object
@@ -41,9 +41,9 @@ func NewIpamsvcListAddressResponseWithDefaults() *IpamsvcListAddressResponse {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *IpamsvcListAddressResponse) GetResults() []IpamsvcAddress {
+func (o *IpamsvcListAddressResponse) GetResults() []Address {
 	if o == nil || IsNil(o.Results) {
-		var ret []IpamsvcAddress
+		var ret []Address
 		return ret
 	}
 	return o.Results
@@ -51,7 +51,7 @@ func (o *IpamsvcListAddressResponse) GetResults() []IpamsvcAddress {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcListAddressResponse) GetResultsOk() ([]IpamsvcAddress, bool) {
+func (o *IpamsvcListAddressResponse) GetResultsOk() ([]Address, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *IpamsvcListAddressResponse) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []IpamsvcAddress and assigns it to the Results field.
-func (o *IpamsvcListAddressResponse) SetResults(v []IpamsvcAddress) {
+// SetResults gets a reference to the given []Address and assigns it to the Results field.
+func (o *IpamsvcListAddressResponse) SetResults(v []Address) {
 	o.Results = v
 }
 

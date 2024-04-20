@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## AddressCreate
 
-> IpamsvcCreateAddressResponse AddressCreate(ctx).Body(body).Execute()
+> CreateAddressResponse AddressCreate(ctx).Body(body).Execute()
 
 Create the IP address.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcAddress("Address_example") // IpamsvcAddress | 
+	body := *ipam.NewAddress("Address_example") // Address | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressAPI.AddressCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressCreate`: IpamsvcCreateAddressResponse
+	// response from `AddressCreate`: CreateAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiAddressCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcAddress**](IpamsvcAddress.md) |  | 
+ **body** | [**Address**](Address.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateAddressResponse**](IpamsvcCreateAddressResponse.md)
+[**CreateAddressResponse**](CreateAddressResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## AddressList
 
-> IpamsvcListAddressResponse AddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListAddressResponse AddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve IP addresses.
 
@@ -185,7 +185,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressList`: IpamsvcListAddressResponse
+	// response from `AddressList`: ListAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressList`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListAddressResponse**](IpamsvcListAddressResponse.md)
+[**ListAddressResponse**](ListAddressResponse.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## AddressRead
 
-> IpamsvcReadAddressResponse AddressRead(ctx, id).Fields(fields).Execute()
+> ReadAddressResponse AddressRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the IP address.
 
@@ -261,7 +261,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressRead`: IpamsvcReadAddressResponse
+	// response from `AddressRead`: ReadAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressRead`: %v\n", resp)
 }
 ```
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadAddressResponse**](IpamsvcReadAddressResponse.md)
+[**ReadAddressResponse**](ReadAddressResponse.md)
 
 ### Authorization
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## AddressUpdate
 
-> IpamsvcUpdateAddressResponse AddressUpdate(ctx, id).Body(body).Execute()
+> UpdateAddressResponse AddressUpdate(ctx, id).Body(body).Execute()
 
 Update the IP address.
 
@@ -325,7 +325,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcAddress("Address_example") // IpamsvcAddress | 
+	body := *ipam.NewAddress("Address_example") // Address | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressAPI.AddressUpdate(context.Background(), id).Body(body).Execute()
@@ -333,7 +333,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressUpdate`: IpamsvcUpdateAddressResponse
+	// response from `AddressUpdate`: UpdateAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressUpdate`: %v\n", resp)
 }
 ```
@@ -354,11 +354,11 @@ Other parameters are passed through a pointer to a apiAddressUpdateRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcAddress**](IpamsvcAddress.md) |  | 
+ **body** | [**Address**](Address.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateAddressResponse**](IpamsvcUpdateAddressResponse.md)
+[**UpdateAddressResponse**](UpdateAddressResponse.md)
 
 ### Authorization
 

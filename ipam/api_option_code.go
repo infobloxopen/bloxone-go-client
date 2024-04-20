@@ -34,8 +34,8 @@ type OptionCodeAPI interface {
 	OptionCodeCreate(ctx context.Context) ApiOptionCodeCreateRequest
 
 	// OptionCodeCreateExecute executes the request
-	//  @return IpamsvcCreateOptionCodeResponse
-	OptionCodeCreateExecute(r ApiOptionCodeCreateRequest) (*IpamsvcCreateOptionCodeResponse, *http.Response, error)
+	//  @return CreateOptionCodeResponse
+	OptionCodeCreateExecute(r ApiOptionCodeCreateRequest) (*CreateOptionCodeResponse, *http.Response, error)
 	/*
 			OptionCodeDelete Delete the DHCP option code.
 
@@ -62,8 +62,8 @@ type OptionCodeAPI interface {
 	OptionCodeList(ctx context.Context) ApiOptionCodeListRequest
 
 	// OptionCodeListExecute executes the request
-	//  @return IpamsvcListOptionCodeResponse
-	OptionCodeListExecute(r ApiOptionCodeListRequest) (*IpamsvcListOptionCodeResponse, *http.Response, error)
+	//  @return ListOptionCodeResponse
+	OptionCodeListExecute(r ApiOptionCodeListRequest) (*ListOptionCodeResponse, *http.Response, error)
 	/*
 			OptionCodeRead Retrieve the DHCP option code.
 
@@ -77,8 +77,8 @@ type OptionCodeAPI interface {
 	OptionCodeRead(ctx context.Context, id string) ApiOptionCodeReadRequest
 
 	// OptionCodeReadExecute executes the request
-	//  @return IpamsvcReadOptionCodeResponse
-	OptionCodeReadExecute(r ApiOptionCodeReadRequest) (*IpamsvcReadOptionCodeResponse, *http.Response, error)
+	//  @return ReadOptionCodeResponse
+	OptionCodeReadExecute(r ApiOptionCodeReadRequest) (*ReadOptionCodeResponse, *http.Response, error)
 	/*
 			OptionCodeUpdate Update the DHCP option code.
 
@@ -92,8 +92,8 @@ type OptionCodeAPI interface {
 	OptionCodeUpdate(ctx context.Context, id string) ApiOptionCodeUpdateRequest
 
 	// OptionCodeUpdateExecute executes the request
-	//  @return IpamsvcUpdateOptionCodeResponse
-	OptionCodeUpdateExecute(r ApiOptionCodeUpdateRequest) (*IpamsvcUpdateOptionCodeResponse, *http.Response, error)
+	//  @return UpdateOptionCodeResponse
+	OptionCodeUpdateExecute(r ApiOptionCodeUpdateRequest) (*UpdateOptionCodeResponse, *http.Response, error)
 }
 
 // OptionCodeAPIService OptionCodeAPI service
@@ -102,15 +102,15 @@ type OptionCodeAPIService internal.Service
 type ApiOptionCodeCreateRequest struct {
 	ctx        context.Context
 	ApiService OptionCodeAPI
-	body       *IpamsvcOptionCode
+	body       *OptionCode
 }
 
-func (r ApiOptionCodeCreateRequest) Body(body IpamsvcOptionCode) ApiOptionCodeCreateRequest {
+func (r ApiOptionCodeCreateRequest) Body(body OptionCode) ApiOptionCodeCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionCodeCreateRequest) Execute() (*IpamsvcCreateOptionCodeResponse, *http.Response, error) {
+func (r ApiOptionCodeCreateRequest) Execute() (*CreateOptionCodeResponse, *http.Response, error) {
 	return r.ApiService.OptionCodeCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *OptionCodeAPIService) OptionCodeCreate(ctx context.Context) ApiOptionCo
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateOptionCodeResponse
-func (a *OptionCodeAPIService) OptionCodeCreateExecute(r ApiOptionCodeCreateRequest) (*IpamsvcCreateOptionCodeResponse, *http.Response, error) {
+//	@return CreateOptionCodeResponse
+func (a *OptionCodeAPIService) OptionCodeCreateExecute(r ApiOptionCodeCreateRequest) (*CreateOptionCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateOptionCodeResponse
+		localVarReturnValue *CreateOptionCodeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionCodeAPIService.OptionCodeCreate")
@@ -341,7 +341,7 @@ func (r ApiOptionCodeListRequest) OrderBy(orderBy string) ApiOptionCodeListReque
 	return r
 }
 
-func (r ApiOptionCodeListRequest) Execute() (*IpamsvcListOptionCodeResponse, *http.Response, error) {
+func (r ApiOptionCodeListRequest) Execute() (*ListOptionCodeResponse, *http.Response, error) {
 	return r.ApiService.OptionCodeListExecute(r)
 }
 
@@ -363,13 +363,13 @@ func (a *OptionCodeAPIService) OptionCodeList(ctx context.Context) ApiOptionCode
 
 // Execute executes the request
 //
-//	@return IpamsvcListOptionCodeResponse
-func (a *OptionCodeAPIService) OptionCodeListExecute(r ApiOptionCodeListRequest) (*IpamsvcListOptionCodeResponse, *http.Response, error) {
+//	@return ListOptionCodeResponse
+func (a *OptionCodeAPIService) OptionCodeListExecute(r ApiOptionCodeListRequest) (*ListOptionCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListOptionCodeResponse
+		localVarReturnValue *ListOptionCodeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionCodeAPIService.OptionCodeList")
@@ -461,7 +461,7 @@ func (r ApiOptionCodeReadRequest) Fields(fields string) ApiOptionCodeReadRequest
 	return r
 }
 
-func (r ApiOptionCodeReadRequest) Execute() (*IpamsvcReadOptionCodeResponse, *http.Response, error) {
+func (r ApiOptionCodeReadRequest) Execute() (*ReadOptionCodeResponse, *http.Response, error) {
 	return r.ApiService.OptionCodeReadExecute(r)
 }
 
@@ -485,13 +485,13 @@ func (a *OptionCodeAPIService) OptionCodeRead(ctx context.Context, id string) Ap
 
 // Execute executes the request
 //
-//	@return IpamsvcReadOptionCodeResponse
-func (a *OptionCodeAPIService) OptionCodeReadExecute(r ApiOptionCodeReadRequest) (*IpamsvcReadOptionCodeResponse, *http.Response, error) {
+//	@return ReadOptionCodeResponse
+func (a *OptionCodeAPIService) OptionCodeReadExecute(r ApiOptionCodeReadRequest) (*ReadOptionCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadOptionCodeResponse
+		localVarReturnValue *ReadOptionCodeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionCodeAPIService.OptionCodeRead")
@@ -560,15 +560,15 @@ type ApiOptionCodeUpdateRequest struct {
 	ctx        context.Context
 	ApiService OptionCodeAPI
 	id         string
-	body       *IpamsvcOptionCode
+	body       *OptionCode
 }
 
-func (r ApiOptionCodeUpdateRequest) Body(body IpamsvcOptionCode) ApiOptionCodeUpdateRequest {
+func (r ApiOptionCodeUpdateRequest) Body(body OptionCode) ApiOptionCodeUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionCodeUpdateRequest) Execute() (*IpamsvcUpdateOptionCodeResponse, *http.Response, error) {
+func (r ApiOptionCodeUpdateRequest) Execute() (*UpdateOptionCodeResponse, *http.Response, error) {
 	return r.ApiService.OptionCodeUpdateExecute(r)
 }
 
@@ -592,13 +592,13 @@ func (a *OptionCodeAPIService) OptionCodeUpdate(ctx context.Context, id string) 
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateOptionCodeResponse
-func (a *OptionCodeAPIService) OptionCodeUpdateExecute(r ApiOptionCodeUpdateRequest) (*IpamsvcUpdateOptionCodeResponse, *http.Response, error) {
+//	@return UpdateOptionCodeResponse
+func (a *OptionCodeAPIService) OptionCodeUpdateExecute(r ApiOptionCodeUpdateRequest) (*UpdateOptionCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateOptionCodeResponse
+		localVarReturnValue *UpdateOptionCodeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionCodeAPIService.OptionCodeUpdate")

@@ -34,8 +34,8 @@ type HardwareFilterAPI interface {
 	HardwareFilterCreate(ctx context.Context) ApiHardwareFilterCreateRequest
 
 	// HardwareFilterCreateExecute executes the request
-	//  @return IpamsvcCreateHardwareFilterResponse
-	HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*IpamsvcCreateHardwareFilterResponse, *http.Response, error)
+	//  @return CreateHardwareFilterResponse
+	HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*CreateHardwareFilterResponse, *http.Response, error)
 	/*
 			HardwareFilterDelete Move the hardware filter to the recycle bin.
 
@@ -62,8 +62,8 @@ type HardwareFilterAPI interface {
 	HardwareFilterList(ctx context.Context) ApiHardwareFilterListRequest
 
 	// HardwareFilterListExecute executes the request
-	//  @return IpamsvcListHardwareFilterResponse
-	HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*IpamsvcListHardwareFilterResponse, *http.Response, error)
+	//  @return ListHardwareFilterResponse
+	HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*ListHardwareFilterResponse, *http.Response, error)
 	/*
 			HardwareFilterRead Retrieve the hardware filter.
 
@@ -77,8 +77,8 @@ type HardwareFilterAPI interface {
 	HardwareFilterRead(ctx context.Context, id string) ApiHardwareFilterReadRequest
 
 	// HardwareFilterReadExecute executes the request
-	//  @return IpamsvcReadHardwareFilterResponse
-	HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*IpamsvcReadHardwareFilterResponse, *http.Response, error)
+	//  @return ReadHardwareFilterResponse
+	HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*ReadHardwareFilterResponse, *http.Response, error)
 	/*
 			HardwareFilterUpdate Update the hardware filter.
 
@@ -92,8 +92,8 @@ type HardwareFilterAPI interface {
 	HardwareFilterUpdate(ctx context.Context, id string) ApiHardwareFilterUpdateRequest
 
 	// HardwareFilterUpdateExecute executes the request
-	//  @return IpamsvcUpdateHardwareFilterResponse
-	HardwareFilterUpdateExecute(r ApiHardwareFilterUpdateRequest) (*IpamsvcUpdateHardwareFilterResponse, *http.Response, error)
+	//  @return UpdateHardwareFilterResponse
+	HardwareFilterUpdateExecute(r ApiHardwareFilterUpdateRequest) (*UpdateHardwareFilterResponse, *http.Response, error)
 }
 
 // HardwareFilterAPIService HardwareFilterAPI service
@@ -102,15 +102,15 @@ type HardwareFilterAPIService internal.Service
 type ApiHardwareFilterCreateRequest struct {
 	ctx        context.Context
 	ApiService HardwareFilterAPI
-	body       *IpamsvcHardwareFilter
+	body       *HardwareFilter
 }
 
-func (r ApiHardwareFilterCreateRequest) Body(body IpamsvcHardwareFilter) ApiHardwareFilterCreateRequest {
+func (r ApiHardwareFilterCreateRequest) Body(body HardwareFilter) ApiHardwareFilterCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiHardwareFilterCreateRequest) Execute() (*IpamsvcCreateHardwareFilterResponse, *http.Response, error) {
+func (r ApiHardwareFilterCreateRequest) Execute() (*CreateHardwareFilterResponse, *http.Response, error) {
 	return r.ApiService.HardwareFilterCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *HardwareFilterAPIService) HardwareFilterCreate(ctx context.Context) Api
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateHardwareFilterResponse
-func (a *HardwareFilterAPIService) HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*IpamsvcCreateHardwareFilterResponse, *http.Response, error) {
+//	@return CreateHardwareFilterResponse
+func (a *HardwareFilterAPIService) HardwareFilterCreateExecute(r ApiHardwareFilterCreateRequest) (*CreateHardwareFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateHardwareFilterResponse
+		localVarReturnValue *CreateHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterCreate")
@@ -365,7 +365,7 @@ func (r ApiHardwareFilterListRequest) Tfilter(tfilter string) ApiHardwareFilterL
 	return r
 }
 
-func (r ApiHardwareFilterListRequest) Execute() (*IpamsvcListHardwareFilterResponse, *http.Response, error) {
+func (r ApiHardwareFilterListRequest) Execute() (*ListHardwareFilterResponse, *http.Response, error) {
 	return r.ApiService.HardwareFilterListExecute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *HardwareFilterAPIService) HardwareFilterList(ctx context.Context) ApiHa
 
 // Execute executes the request
 //
-//	@return IpamsvcListHardwareFilterResponse
-func (a *HardwareFilterAPIService) HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*IpamsvcListHardwareFilterResponse, *http.Response, error) {
+//	@return ListHardwareFilterResponse
+func (a *HardwareFilterAPIService) HardwareFilterListExecute(r ApiHardwareFilterListRequest) (*ListHardwareFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListHardwareFilterResponse
+		localVarReturnValue *ListHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterList")
@@ -491,7 +491,7 @@ func (r ApiHardwareFilterReadRequest) Fields(fields string) ApiHardwareFilterRea
 	return r
 }
 
-func (r ApiHardwareFilterReadRequest) Execute() (*IpamsvcReadHardwareFilterResponse, *http.Response, error) {
+func (r ApiHardwareFilterReadRequest) Execute() (*ReadHardwareFilterResponse, *http.Response, error) {
 	return r.ApiService.HardwareFilterReadExecute(r)
 }
 
@@ -515,13 +515,13 @@ func (a *HardwareFilterAPIService) HardwareFilterRead(ctx context.Context, id st
 
 // Execute executes the request
 //
-//	@return IpamsvcReadHardwareFilterResponse
-func (a *HardwareFilterAPIService) HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*IpamsvcReadHardwareFilterResponse, *http.Response, error) {
+//	@return ReadHardwareFilterResponse
+func (a *HardwareFilterAPIService) HardwareFilterReadExecute(r ApiHardwareFilterReadRequest) (*ReadHardwareFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadHardwareFilterResponse
+		localVarReturnValue *ReadHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterRead")
@@ -590,15 +590,15 @@ type ApiHardwareFilterUpdateRequest struct {
 	ctx        context.Context
 	ApiService HardwareFilterAPI
 	id         string
-	body       *IpamsvcHardwareFilter
+	body       *HardwareFilter
 }
 
-func (r ApiHardwareFilterUpdateRequest) Body(body IpamsvcHardwareFilter) ApiHardwareFilterUpdateRequest {
+func (r ApiHardwareFilterUpdateRequest) Body(body HardwareFilter) ApiHardwareFilterUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiHardwareFilterUpdateRequest) Execute() (*IpamsvcUpdateHardwareFilterResponse, *http.Response, error) {
+func (r ApiHardwareFilterUpdateRequest) Execute() (*UpdateHardwareFilterResponse, *http.Response, error) {
 	return r.ApiService.HardwareFilterUpdateExecute(r)
 }
 
@@ -622,13 +622,13 @@ func (a *HardwareFilterAPIService) HardwareFilterUpdate(ctx context.Context, id 
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateHardwareFilterResponse
-func (a *HardwareFilterAPIService) HardwareFilterUpdateExecute(r ApiHardwareFilterUpdateRequest) (*IpamsvcUpdateHardwareFilterResponse, *http.Response, error) {
+//	@return UpdateHardwareFilterResponse
+func (a *HardwareFilterAPIService) HardwareFilterUpdateExecute(r ApiHardwareFilterUpdateRequest) (*UpdateHardwareFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateHardwareFilterResponse
+		localVarReturnValue *UpdateHardwareFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HardwareFilterAPIService.HardwareFilterUpdate")

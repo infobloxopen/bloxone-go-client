@@ -34,8 +34,8 @@ type IpamHostAPI interface {
 	IpamHostCreate(ctx context.Context) ApiIpamHostCreateRequest
 
 	// IpamHostCreateExecute executes the request
-	//  @return IpamsvcCreateIpamHostResponse
-	IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*IpamsvcCreateIpamHostResponse, *http.Response, error)
+	//  @return CreateIpamHostResponse
+	IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*CreateIpamHostResponse, *http.Response, error)
 	/*
 			IpamHostDelete Move the IPAM host to the recycle bin.
 
@@ -62,8 +62,8 @@ type IpamHostAPI interface {
 	IpamHostList(ctx context.Context) ApiIpamHostListRequest
 
 	// IpamHostListExecute executes the request
-	//  @return IpamsvcListIpamHostResponse
-	IpamHostListExecute(r ApiIpamHostListRequest) (*IpamsvcListIpamHostResponse, *http.Response, error)
+	//  @return ListIpamHostResponse
+	IpamHostListExecute(r ApiIpamHostListRequest) (*ListIpamHostResponse, *http.Response, error)
 	/*
 			IpamHostRead Retrieve the IPAM host.
 
@@ -77,8 +77,8 @@ type IpamHostAPI interface {
 	IpamHostRead(ctx context.Context, id string) ApiIpamHostReadRequest
 
 	// IpamHostReadExecute executes the request
-	//  @return IpamsvcReadIpamHostResponse
-	IpamHostReadExecute(r ApiIpamHostReadRequest) (*IpamsvcReadIpamHostResponse, *http.Response, error)
+	//  @return ReadIpamHostResponse
+	IpamHostReadExecute(r ApiIpamHostReadRequest) (*ReadIpamHostResponse, *http.Response, error)
 	/*
 			IpamHostUpdate Update the IPAM host.
 
@@ -92,8 +92,8 @@ type IpamHostAPI interface {
 	IpamHostUpdate(ctx context.Context, id string) ApiIpamHostUpdateRequest
 
 	// IpamHostUpdateExecute executes the request
-	//  @return IpamsvcUpdateIpamHostResponse
-	IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (*IpamsvcUpdateIpamHostResponse, *http.Response, error)
+	//  @return UpdateIpamHostResponse
+	IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (*UpdateIpamHostResponse, *http.Response, error)
 }
 
 // IpamHostAPIService IpamHostAPI service
@@ -102,15 +102,15 @@ type IpamHostAPIService internal.Service
 type ApiIpamHostCreateRequest struct {
 	ctx        context.Context
 	ApiService IpamHostAPI
-	body       *IpamsvcIpamHost
+	body       *IpamHost
 }
 
-func (r ApiIpamHostCreateRequest) Body(body IpamsvcIpamHost) ApiIpamHostCreateRequest {
+func (r ApiIpamHostCreateRequest) Body(body IpamHost) ApiIpamHostCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIpamHostCreateRequest) Execute() (*IpamsvcCreateIpamHostResponse, *http.Response, error) {
+func (r ApiIpamHostCreateRequest) Execute() (*CreateIpamHostResponse, *http.Response, error) {
 	return r.ApiService.IpamHostCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *IpamHostAPIService) IpamHostCreate(ctx context.Context) ApiIpamHostCrea
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateIpamHostResponse
-func (a *IpamHostAPIService) IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*IpamsvcCreateIpamHostResponse, *http.Response, error) {
+//	@return CreateIpamHostResponse
+func (a *IpamHostAPIService) IpamHostCreateExecute(r ApiIpamHostCreateRequest) (*CreateIpamHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateIpamHostResponse
+		localVarReturnValue *CreateIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostCreate")
@@ -365,7 +365,7 @@ func (r ApiIpamHostListRequest) Tfilter(tfilter string) ApiIpamHostListRequest {
 	return r
 }
 
-func (r ApiIpamHostListRequest) Execute() (*IpamsvcListIpamHostResponse, *http.Response, error) {
+func (r ApiIpamHostListRequest) Execute() (*ListIpamHostResponse, *http.Response, error) {
 	return r.ApiService.IpamHostListExecute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *IpamHostAPIService) IpamHostList(ctx context.Context) ApiIpamHostListRe
 
 // Execute executes the request
 //
-//	@return IpamsvcListIpamHostResponse
-func (a *IpamHostAPIService) IpamHostListExecute(r ApiIpamHostListRequest) (*IpamsvcListIpamHostResponse, *http.Response, error) {
+//	@return ListIpamHostResponse
+func (a *IpamHostAPIService) IpamHostListExecute(r ApiIpamHostListRequest) (*ListIpamHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListIpamHostResponse
+		localVarReturnValue *ListIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostList")
@@ -498,7 +498,7 @@ func (r ApiIpamHostReadRequest) Fields(fields string) ApiIpamHostReadRequest {
 	return r
 }
 
-func (r ApiIpamHostReadRequest) Execute() (*IpamsvcReadIpamHostResponse, *http.Response, error) {
+func (r ApiIpamHostReadRequest) Execute() (*ReadIpamHostResponse, *http.Response, error) {
 	return r.ApiService.IpamHostReadExecute(r)
 }
 
@@ -522,13 +522,13 @@ func (a *IpamHostAPIService) IpamHostRead(ctx context.Context, id string) ApiIpa
 
 // Execute executes the request
 //
-//	@return IpamsvcReadIpamHostResponse
-func (a *IpamHostAPIService) IpamHostReadExecute(r ApiIpamHostReadRequest) (*IpamsvcReadIpamHostResponse, *http.Response, error) {
+//	@return ReadIpamHostResponse
+func (a *IpamHostAPIService) IpamHostReadExecute(r ApiIpamHostReadRequest) (*ReadIpamHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadIpamHostResponse
+		localVarReturnValue *ReadIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostRead")
@@ -600,15 +600,15 @@ type ApiIpamHostUpdateRequest struct {
 	ctx        context.Context
 	ApiService IpamHostAPI
 	id         string
-	body       *IpamsvcIpamHost
+	body       *IpamHost
 }
 
-func (r ApiIpamHostUpdateRequest) Body(body IpamsvcIpamHost) ApiIpamHostUpdateRequest {
+func (r ApiIpamHostUpdateRequest) Body(body IpamHost) ApiIpamHostUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIpamHostUpdateRequest) Execute() (*IpamsvcUpdateIpamHostResponse, *http.Response, error) {
+func (r ApiIpamHostUpdateRequest) Execute() (*UpdateIpamHostResponse, *http.Response, error) {
 	return r.ApiService.IpamHostUpdateExecute(r)
 }
 
@@ -632,13 +632,13 @@ func (a *IpamHostAPIService) IpamHostUpdate(ctx context.Context, id string) ApiI
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateIpamHostResponse
-func (a *IpamHostAPIService) IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (*IpamsvcUpdateIpamHostResponse, *http.Response, error) {
+//	@return UpdateIpamHostResponse
+func (a *IpamHostAPIService) IpamHostUpdateExecute(r ApiIpamHostUpdateRequest) (*UpdateIpamHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateIpamHostResponse
+		localVarReturnValue *UpdateIpamHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamHostAPIService.IpamHostUpdate")

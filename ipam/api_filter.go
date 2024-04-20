@@ -32,8 +32,8 @@ type FilterAPI interface {
 	FilterList(ctx context.Context) ApiFilterListRequest
 
 	// FilterListExecute executes the request
-	//  @return IpamsvcListFilterResponse
-	FilterListExecute(r ApiFilterListRequest) (*IpamsvcListFilterResponse, *http.Response, error)
+	//  @return ListFilterResponse
+	FilterListExecute(r ApiFilterListRequest) (*ListFilterResponse, *http.Response, error)
 }
 
 // FilterAPIService FilterAPI service
@@ -100,7 +100,7 @@ func (r ApiFilterListRequest) Tfilter(tfilter string) ApiFilterListRequest {
 	return r
 }
 
-func (r ApiFilterListRequest) Execute() (*IpamsvcListFilterResponse, *http.Response, error) {
+func (r ApiFilterListRequest) Execute() (*ListFilterResponse, *http.Response, error) {
 	return r.ApiService.FilterListExecute(r)
 }
 
@@ -121,13 +121,13 @@ func (a *FilterAPIService) FilterList(ctx context.Context) ApiFilterListRequest 
 
 // Execute executes the request
 //
-//	@return IpamsvcListFilterResponse
-func (a *FilterAPIService) FilterListExecute(r ApiFilterListRequest) (*IpamsvcListFilterResponse, *http.Response, error) {
+//	@return ListFilterResponse
+func (a *FilterAPIService) FilterListExecute(r ApiFilterListRequest) (*ListFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListFilterResponse
+		localVarReturnValue *ListFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterAPIService.FilterList")

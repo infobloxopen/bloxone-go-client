@@ -34,8 +34,8 @@ type AddressAPI interface {
 	AddressCreate(ctx context.Context) ApiAddressCreateRequest
 
 	// AddressCreateExecute executes the request
-	//  @return IpamsvcCreateAddressResponse
-	AddressCreateExecute(r ApiAddressCreateRequest) (*IpamsvcCreateAddressResponse, *http.Response, error)
+	//  @return CreateAddressResponse
+	AddressCreateExecute(r ApiAddressCreateRequest) (*CreateAddressResponse, *http.Response, error)
 	/*
 			AddressDelete Move the IP address to the recycle bin.
 
@@ -62,8 +62,8 @@ type AddressAPI interface {
 	AddressList(ctx context.Context) ApiAddressListRequest
 
 	// AddressListExecute executes the request
-	//  @return IpamsvcListAddressResponse
-	AddressListExecute(r ApiAddressListRequest) (*IpamsvcListAddressResponse, *http.Response, error)
+	//  @return ListAddressResponse
+	AddressListExecute(r ApiAddressListRequest) (*ListAddressResponse, *http.Response, error)
 	/*
 			AddressRead Retrieve the IP address.
 
@@ -77,8 +77,8 @@ type AddressAPI interface {
 	AddressRead(ctx context.Context, id string) ApiAddressReadRequest
 
 	// AddressReadExecute executes the request
-	//  @return IpamsvcReadAddressResponse
-	AddressReadExecute(r ApiAddressReadRequest) (*IpamsvcReadAddressResponse, *http.Response, error)
+	//  @return ReadAddressResponse
+	AddressReadExecute(r ApiAddressReadRequest) (*ReadAddressResponse, *http.Response, error)
 	/*
 			AddressUpdate Update the IP address.
 
@@ -92,8 +92,8 @@ type AddressAPI interface {
 	AddressUpdate(ctx context.Context, id string) ApiAddressUpdateRequest
 
 	// AddressUpdateExecute executes the request
-	//  @return IpamsvcUpdateAddressResponse
-	AddressUpdateExecute(r ApiAddressUpdateRequest) (*IpamsvcUpdateAddressResponse, *http.Response, error)
+	//  @return UpdateAddressResponse
+	AddressUpdateExecute(r ApiAddressUpdateRequest) (*UpdateAddressResponse, *http.Response, error)
 }
 
 // AddressAPIService AddressAPI service
@@ -102,15 +102,15 @@ type AddressAPIService internal.Service
 type ApiAddressCreateRequest struct {
 	ctx        context.Context
 	ApiService AddressAPI
-	body       *IpamsvcAddress
+	body       *Address
 }
 
-func (r ApiAddressCreateRequest) Body(body IpamsvcAddress) ApiAddressCreateRequest {
+func (r ApiAddressCreateRequest) Body(body Address) ApiAddressCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAddressCreateRequest) Execute() (*IpamsvcCreateAddressResponse, *http.Response, error) {
+func (r ApiAddressCreateRequest) Execute() (*CreateAddressResponse, *http.Response, error) {
 	return r.ApiService.AddressCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *AddressAPIService) AddressCreate(ctx context.Context) ApiAddressCreateR
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateAddressResponse
-func (a *AddressAPIService) AddressCreateExecute(r ApiAddressCreateRequest) (*IpamsvcCreateAddressResponse, *http.Response, error) {
+//	@return CreateAddressResponse
+func (a *AddressAPIService) AddressCreateExecute(r ApiAddressCreateRequest) (*CreateAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateAddressResponse
+		localVarReturnValue *CreateAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressAPIService.AddressCreate")
@@ -377,7 +377,7 @@ func (r ApiAddressListRequest) Tfilter(tfilter string) ApiAddressListRequest {
 	return r
 }
 
-func (r ApiAddressListRequest) Execute() (*IpamsvcListAddressResponse, *http.Response, error) {
+func (r ApiAddressListRequest) Execute() (*ListAddressResponse, *http.Response, error) {
 	return r.ApiService.AddressListExecute(r)
 }
 
@@ -399,13 +399,13 @@ func (a *AddressAPIService) AddressList(ctx context.Context) ApiAddressListReque
 
 // Execute executes the request
 //
-//	@return IpamsvcListAddressResponse
-func (a *AddressAPIService) AddressListExecute(r ApiAddressListRequest) (*IpamsvcListAddressResponse, *http.Response, error) {
+//	@return ListAddressResponse
+func (a *AddressAPIService) AddressListExecute(r ApiAddressListRequest) (*ListAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListAddressResponse
+		localVarReturnValue *ListAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressAPIService.AddressList")
@@ -509,7 +509,7 @@ func (r ApiAddressReadRequest) Fields(fields string) ApiAddressReadRequest {
 	return r
 }
 
-func (r ApiAddressReadRequest) Execute() (*IpamsvcReadAddressResponse, *http.Response, error) {
+func (r ApiAddressReadRequest) Execute() (*ReadAddressResponse, *http.Response, error) {
 	return r.ApiService.AddressReadExecute(r)
 }
 
@@ -533,13 +533,13 @@ func (a *AddressAPIService) AddressRead(ctx context.Context, id string) ApiAddre
 
 // Execute executes the request
 //
-//	@return IpamsvcReadAddressResponse
-func (a *AddressAPIService) AddressReadExecute(r ApiAddressReadRequest) (*IpamsvcReadAddressResponse, *http.Response, error) {
+//	@return ReadAddressResponse
+func (a *AddressAPIService) AddressReadExecute(r ApiAddressReadRequest) (*ReadAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadAddressResponse
+		localVarReturnValue *ReadAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressAPIService.AddressRead")
@@ -608,15 +608,15 @@ type ApiAddressUpdateRequest struct {
 	ctx        context.Context
 	ApiService AddressAPI
 	id         string
-	body       *IpamsvcAddress
+	body       *Address
 }
 
-func (r ApiAddressUpdateRequest) Body(body IpamsvcAddress) ApiAddressUpdateRequest {
+func (r ApiAddressUpdateRequest) Body(body Address) ApiAddressUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAddressUpdateRequest) Execute() (*IpamsvcUpdateAddressResponse, *http.Response, error) {
+func (r ApiAddressUpdateRequest) Execute() (*UpdateAddressResponse, *http.Response, error) {
 	return r.ApiService.AddressUpdateExecute(r)
 }
 
@@ -640,13 +640,13 @@ func (a *AddressAPIService) AddressUpdate(ctx context.Context, id string) ApiAdd
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateAddressResponse
-func (a *AddressAPIService) AddressUpdateExecute(r ApiAddressUpdateRequest) (*IpamsvcUpdateAddressResponse, *http.Response, error) {
+//	@return UpdateAddressResponse
+func (a *AddressAPIService) AddressUpdateExecute(r ApiAddressUpdateRequest) (*UpdateAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateAddressResponse
+		localVarReturnValue *UpdateAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressAPIService.AddressUpdate")

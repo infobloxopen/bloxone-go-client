@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## IpamHostCreate
 
-> IpamsvcCreateIpamHostResponse IpamHostCreate(ctx).Body(body).Execute()
+> CreateIpamHostResponse IpamHostCreate(ctx).Body(body).Execute()
 
 Create the IPAM host.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcIpamHost("Name_example") // IpamsvcIpamHost | 
+	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpamHostAPI.IpamHostCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostCreate`: IpamsvcCreateIpamHostResponse
+	// response from `IpamHostCreate`: CreateIpamHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiIpamHostCreateRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcIpamHost**](IpamsvcIpamHost.md) |  | 
+ **body** | [**IpamHost**](IpamHost.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateIpamHostResponse**](IpamsvcCreateIpamHostResponse.md)
+[**CreateIpamHostResponse**](CreateIpamHostResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## IpamHostList
 
-> IpamsvcListIpamHostResponse IpamHostList(ctx).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListIpamHostResponse IpamHostList(ctx).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the IPAM hosts.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostList`: IpamsvcListIpamHostResponse
+	// response from `IpamHostList`: ListIpamHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListIpamHostResponse**](IpamsvcListIpamHostResponse.md)
+[**ListIpamHostResponse**](ListIpamHostResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## IpamHostRead
 
-> IpamsvcReadIpamHostResponse IpamHostRead(ctx, id).OrderBy(orderBy).Fields(fields).Execute()
+> ReadIpamHostResponse IpamHostRead(ctx, id).OrderBy(orderBy).Fields(fields).Execute()
 
 Retrieve the IPAM host.
 
@@ -258,7 +258,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostRead`: IpamsvcReadIpamHostResponse
+	// response from `IpamHostRead`: ReadIpamHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostRead`: %v\n", resp)
 }
 ```
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadIpamHostResponse**](IpamsvcReadIpamHostResponse.md)
+[**ReadIpamHostResponse**](ReadIpamHostResponse.md)
 
 ### Authorization
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## IpamHostUpdate
 
-> IpamsvcUpdateIpamHostResponse IpamHostUpdate(ctx, id).Body(body).Execute()
+> UpdateIpamHostResponse IpamHostUpdate(ctx, id).Body(body).Execute()
 
 Update the IPAM host.
 
@@ -323,7 +323,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcIpamHost("Name_example") // IpamsvcIpamHost | 
+	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpamHostAPI.IpamHostUpdate(context.Background(), id).Body(body).Execute()
@@ -331,7 +331,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostUpdate`: IpamsvcUpdateIpamHostResponse
+	// response from `IpamHostUpdate`: UpdateIpamHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostUpdate`: %v\n", resp)
 }
 ```
@@ -352,11 +352,11 @@ Other parameters are passed through a pointer to a apiIpamHostUpdateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcIpamHost**](IpamsvcIpamHost.md) |  | 
+ **body** | [**IpamHost**](IpamHost.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateIpamHostResponse**](IpamsvcUpdateIpamHostResponse.md)
+[**UpdateIpamHostResponse**](UpdateIpamHostResponse.md)
 
 ### Authorization
 

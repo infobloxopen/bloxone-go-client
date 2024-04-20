@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ServerCreate
 
-> IpamsvcCreateServerResponse ServerCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateServerResponse ServerCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the DHCP configuration profile.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcServer("Name_example") // IpamsvcServer | 
+	body := *ipam.NewServer("Name_example") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerCreate`: IpamsvcCreateServerResponse
+	// response from `ServerCreate`: CreateServerResponse
 	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerCreate`: %v\n", resp)
 }
 ```
@@ -59,12 +59,12 @@ Other parameters are passed through a pointer to a apiServerCreateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcServer**](IpamsvcServer.md) |  | 
+ **body** | [**Server**](Server.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateServerResponse**](IpamsvcCreateServerResponse.md)
+[**CreateServerResponse**](CreateServerResponse.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## ServerList
 
-> IpamsvcListServerResponse ServerList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListServerResponse ServerList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve DHCP configuration profiles.
 
@@ -186,7 +186,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerList`: IpamsvcListServerResponse
+	// response from `ServerList`: ListServerResponse
 	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerList`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListServerResponse**](IpamsvcListServerResponse.md)
+[**ListServerResponse**](ListServerResponse.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## ServerRead
 
-> IpamsvcReadServerResponse ServerRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadServerResponse ServerRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the DHCP configuration profile.
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerRead`: IpamsvcReadServerResponse
+	// response from `ServerRead`: ReadServerResponse
 	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerRead`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadServerResponse**](IpamsvcReadServerResponse.md)
+[**ReadServerResponse**](ReadServerResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## ServerUpdate
 
-> IpamsvcUpdateServerResponse ServerUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateServerResponse ServerUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the DHCP configuration profile.
 
@@ -327,7 +327,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcServer("Name_example") // IpamsvcServer | 
+	body := *ipam.NewServer("Name_example") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -336,7 +336,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerUpdate`: IpamsvcUpdateServerResponse
+	// response from `ServerUpdate`: UpdateServerResponse
 	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerUpdate`: %v\n", resp)
 }
 ```
@@ -357,12 +357,12 @@ Other parameters are passed through a pointer to a apiServerUpdateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcServer**](IpamsvcServer.md) |  | 
+ **body** | [**Server**](Server.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateServerResponse**](IpamsvcUpdateServerResponse.md)
+[**UpdateServerResponse**](UpdateServerResponse.md)
 
 ### Authorization
 

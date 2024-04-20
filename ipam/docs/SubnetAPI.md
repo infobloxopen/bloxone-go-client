@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## SubnetCopy
 
-> IpamsvcCopySubnetResponse SubnetCopy(ctx, id).Body(body).Execute()
+> CopySubnetResponse SubnetCopy(ctx, id).Body(body).Execute()
 
 Copy the subnet.
 
@@ -38,7 +38,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcCopySubnet("Space_example") // IpamsvcCopySubnet | 
+	body := *ipam.NewCopySubnet("Space_example") // CopySubnet | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.SubnetAPI.SubnetCopy(context.Background(), id).Body(body).Execute()
@@ -46,7 +46,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCopy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCopy`: IpamsvcCopySubnetResponse
+	// response from `SubnetCopy`: CopySubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCopy`: %v\n", resp)
 }
 ```
@@ -67,11 +67,11 @@ Other parameters are passed through a pointer to a apiSubnetCopyRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcCopySubnet**](IpamsvcCopySubnet.md) |  | 
+ **body** | [**CopySubnet**](CopySubnet.md) |  | 
 
 ### Return type
 
-[**IpamsvcCopySubnetResponse**](IpamsvcCopySubnetResponse.md)
+[**CopySubnetResponse**](CopySubnetResponse.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## SubnetCreate
 
-> IpamsvcCreateSubnetResponse SubnetCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateSubnetResponse SubnetCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the subnet.
 
@@ -109,7 +109,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcSubnet() // IpamsvcSubnet | 
+	body := *ipam.NewSubnet() // Subnet | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -118,7 +118,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCreate`: IpamsvcCreateSubnetResponse
+	// response from `SubnetCreate`: CreateSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCreate`: %v\n", resp)
 }
 ```
@@ -134,12 +134,12 @@ Other parameters are passed through a pointer to a apiSubnetCreateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcSubnet**](IpamsvcSubnet.md) |  | 
+ **body** | [**Subnet**](Subnet.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateSubnetResponse**](IpamsvcCreateSubnetResponse.md)
+[**CreateSubnetResponse**](CreateSubnetResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## SubnetCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse SubnetCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> CreateNextAvailableIPResponse SubnetCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -187,7 +187,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCreateNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCreateNextAvailableIP`: IpamsvcCreateNextAvailableIPResponse
+	// response from `SubnetCreateNextAvailableIP`: CreateNextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCreateNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcCreateNextAvailableIPResponse**](IpamsvcCreateNextAvailableIPResponse.md)
+[**CreateNextAvailableIPResponse**](CreateNextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## SubnetList
 
-> IpamsvcListSubnetResponse SubnetList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListSubnetResponse SubnetList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve subnets.
 
@@ -335,7 +335,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetList`: IpamsvcListSubnetResponse
+	// response from `SubnetList`: ListSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetList`: %v\n", resp)
 }
 ```
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListSubnetResponse**](IpamsvcListSubnetResponse.md)
+[**ListSubnetResponse**](ListSubnetResponse.md)
 
 ### Authorization
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## SubnetListNextAvailableIP
 
-> IpamsvcNextAvailableIPResponse SubnetListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> NextAvailableIPResponse SubnetListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Retrieve the next available IP address.
 
@@ -411,7 +411,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetListNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetListNextAvailableIP`: IpamsvcNextAvailableIPResponse
+	// response from `SubnetListNextAvailableIP`: NextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetListNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcNextAvailableIPResponse**](IpamsvcNextAvailableIPResponse.md)
+[**NextAvailableIPResponse**](NextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ## SubnetRead
 
-> IpamsvcReadSubnetResponse SubnetRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadSubnetResponse SubnetRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the subnet.
 
@@ -485,7 +485,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetRead`: IpamsvcReadSubnetResponse
+	// response from `SubnetRead`: ReadSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetRead`: %v\n", resp)
 }
 ```
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadSubnetResponse**](IpamsvcReadSubnetResponse.md)
+[**ReadSubnetResponse**](ReadSubnetResponse.md)
 
 ### Authorization
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 
 ## SubnetUpdate
 
-> IpamsvcUpdateSubnetResponse SubnetUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateSubnetResponse SubnetUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the subnet.
 
@@ -550,7 +550,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcSubnet() // IpamsvcSubnet | 
+	body := *ipam.NewSubnet() // Subnet | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -559,7 +559,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetUpdate`: IpamsvcUpdateSubnetResponse
+	// response from `SubnetUpdate`: UpdateSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetUpdate`: %v\n", resp)
 }
 ```
@@ -580,12 +580,12 @@ Other parameters are passed through a pointer to a apiSubnetUpdateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcSubnet**](IpamsvcSubnet.md) |  | 
+ **body** | [**Subnet**](Subnet.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateSubnetResponse**](IpamsvcUpdateSubnetResponse.md)
+[**UpdateSubnetResponse**](UpdateSubnetResponse.md)
 
 ### Authorization
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## FilterList
 
-> IpamsvcListFilterResponse FilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListFilterResponse FilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP filters.
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FilterAPI.FilterList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FilterList`: IpamsvcListFilterResponse
+	// response from `FilterList`: ListFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `FilterAPI.FilterList`: %v\n", resp)
 }
 ```
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListFilterResponse**](IpamsvcListFilterResponse.md)
+[**ListFilterResponse**](ListFilterResponse.md)
 
 ### Authorization
 

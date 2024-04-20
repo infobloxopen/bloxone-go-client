@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## GlobalRead
 
-> IpamsvcReadGlobalResponse GlobalRead(ctx).Fields(fields).Execute()
+> ReadGlobalResponse GlobalRead(ctx).Fields(fields).Execute()
 
 Retrieve the global configuration.
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GlobalRead`: IpamsvcReadGlobalResponse
+	// response from `GlobalRead`: ReadGlobalResponse
 	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead`: %v\n", resp)
 }
 ```
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadGlobalResponse**](IpamsvcReadGlobalResponse.md)
+[**ReadGlobalResponse**](ReadGlobalResponse.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## GlobalRead2
 
-> IpamsvcReadGlobalResponse GlobalRead2(ctx, id).Fields(fields).Execute()
+> ReadGlobalResponse GlobalRead2(ctx, id).Fields(fields).Execute()
 
 Retrieve the global configuration.
 
@@ -108,7 +108,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GlobalRead2`: IpamsvcReadGlobalResponse
+	// response from `GlobalRead2`: ReadGlobalResponse
 	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead2`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadGlobalResponse**](IpamsvcReadGlobalResponse.md)
+[**ReadGlobalResponse**](ReadGlobalResponse.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## GlobalUpdate
 
-> IpamsvcUpdateGlobalResponse GlobalUpdate(ctx).Body(body).Execute()
+> UpdateGlobalResponse GlobalUpdate(ctx).Body(body).Execute()
 
 Update the global configuration.
 
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcGlobal() // IpamsvcGlobal | 
+	body := *ipam.NewGlobal() // Global | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(body).Execute()
@@ -179,7 +179,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GlobalUpdate`: IpamsvcUpdateGlobalResponse
+	// response from `GlobalUpdate`: UpdateGlobalResponse
 	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate`: %v\n", resp)
 }
 ```
@@ -195,11 +195,11 @@ Other parameters are passed through a pointer to a apiGlobalUpdateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcGlobal**](IpamsvcGlobal.md) |  | 
+ **body** | [**Global**](Global.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateGlobalResponse**](IpamsvcUpdateGlobalResponse.md)
+[**UpdateGlobalResponse**](UpdateGlobalResponse.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## GlobalUpdate2
 
-> IpamsvcUpdateGlobalResponse GlobalUpdate2(ctx, id).Body(body).Execute()
+> UpdateGlobalResponse GlobalUpdate2(ctx, id).Body(body).Execute()
 
 Update the global configuration.
 
@@ -238,7 +238,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcGlobal() // IpamsvcGlobal | 
+	body := *ipam.NewGlobal() // Global | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), id).Body(body).Execute()
@@ -246,7 +246,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GlobalUpdate2`: IpamsvcUpdateGlobalResponse
+	// response from `GlobalUpdate2`: UpdateGlobalResponse
 	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate2`: %v\n", resp)
 }
 ```
@@ -267,11 +267,11 @@ Other parameters are passed through a pointer to a apiGlobalUpdate2Request struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcGlobal**](IpamsvcGlobal.md) |  | 
+ **body** | [**Global**](Global.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateGlobalResponse**](IpamsvcUpdateGlobalResponse.md)
+[**UpdateGlobalResponse**](UpdateGlobalResponse.md)
 
 ### Authorization
 

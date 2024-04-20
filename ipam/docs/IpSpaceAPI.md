@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## IpSpaceBulkCopy
 
-> IpamsvcBulkCopyIPSpaceResponse IpSpaceBulkCopy(ctx).Body(body).Execute()
+> BulkCopyIPSpaceResponse IpSpaceBulkCopy(ctx).Body(body).Execute()
 
 Copy the specified address block and subnets in the IP space.
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcBulkCopyIPSpace([]string{"CopyObjects_example"}, "Target_example") // IpamsvcBulkCopyIPSpace | 
+	body := *ipam.NewBulkCopyIPSpace([]string{"CopyObjects_example"}, "Target_example") // BulkCopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpSpaceAPI.IpSpaceBulkCopy(context.Background()).Body(body).Execute()
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceBulkCopy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceBulkCopy`: IpamsvcBulkCopyIPSpaceResponse
+	// response from `IpSpaceBulkCopy`: BulkCopyIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceBulkCopy`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiIpSpaceBulkCopyRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcBulkCopyIPSpace**](IpamsvcBulkCopyIPSpace.md) |  | 
+ **body** | [**BulkCopyIPSpace**](BulkCopyIPSpace.md) |  | 
 
 ### Return type
 
-[**IpamsvcBulkCopyIPSpaceResponse**](IpamsvcBulkCopyIPSpaceResponse.md)
+[**BulkCopyIPSpaceResponse**](BulkCopyIPSpaceResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## IpSpaceCopy
 
-> IpamsvcCopyIPSpaceResponse IpSpaceCopy(ctx, id).Body(body).Execute()
+> CopyIPSpaceResponse IpSpaceCopy(ctx, id).Body(body).Execute()
 
 Copy the IP space.
 
@@ -103,7 +103,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcCopyIPSpace("Name_example") // IpamsvcCopyIPSpace | 
+	body := *ipam.NewCopyIPSpace("Name_example") // CopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpSpaceAPI.IpSpaceCopy(context.Background(), id).Body(body).Execute()
@@ -111,7 +111,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceCopy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceCopy`: IpamsvcCopyIPSpaceResponse
+	// response from `IpSpaceCopy`: CopyIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceCopy`: %v\n", resp)
 }
 ```
@@ -132,11 +132,11 @@ Other parameters are passed through a pointer to a apiIpSpaceCopyRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcCopyIPSpace**](IpamsvcCopyIPSpace.md) |  | 
+ **body** | [**CopyIPSpace**](CopyIPSpace.md) |  | 
 
 ### Return type
 
-[**IpamsvcCopyIPSpaceResponse**](IpamsvcCopyIPSpaceResponse.md)
+[**CopyIPSpaceResponse**](CopyIPSpaceResponse.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## IpSpaceCreate
 
-> IpamsvcCreateIPSpaceResponse IpSpaceCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateIPSpaceResponse IpSpaceCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the IP space.
 
@@ -174,7 +174,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcIPSpace("Name_example") // IpamsvcIPSpace | 
+	body := *ipam.NewIPSpace("Name_example") // IPSpace | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceCreate`: IpamsvcCreateIPSpaceResponse
+	// response from `IpSpaceCreate`: CreateIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceCreate`: %v\n", resp)
 }
 ```
@@ -199,12 +199,12 @@ Other parameters are passed through a pointer to a apiIpSpaceCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcIPSpace**](IpamsvcIPSpace.md) |  | 
+ **body** | [**IPSpace**](IPSpace.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateIPSpaceResponse**](IpamsvcCreateIPSpaceResponse.md)
+[**CreateIPSpaceResponse**](CreateIPSpaceResponse.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## IpSpaceList
 
-> IpamsvcListIPSpaceResponse IpSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListIPSpaceResponse IpSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve IP spaces.
 
@@ -326,7 +326,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceList`: IpamsvcListIPSpaceResponse
+	// response from `IpSpaceList`: ListIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceList`: %v\n", resp)
 }
 ```
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListIPSpaceResponse**](IpamsvcListIPSpaceResponse.md)
+[**ListIPSpaceResponse**](ListIPSpaceResponse.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## IpSpaceRead
 
-> IpamsvcReadIPSpaceResponse IpSpaceRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadIPSpaceResponse IpSpaceRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the IP space.
 
@@ -402,7 +402,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceRead`: IpamsvcReadIPSpaceResponse
+	// response from `IpSpaceRead`: ReadIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceRead`: %v\n", resp)
 }
 ```
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadIPSpaceResponse**](IpamsvcReadIPSpaceResponse.md)
+[**ReadIPSpaceResponse**](ReadIPSpaceResponse.md)
 
 ### Authorization
 
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ## IpSpaceUpdate
 
-> IpamsvcUpdateIPSpaceResponse IpSpaceUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateIPSpaceResponse IpSpaceUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the IP space.
 
@@ -467,7 +467,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcIPSpace("Name_example") // IpamsvcIPSpace | 
+	body := *ipam.NewIPSpace("Name_example") // IPSpace | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -476,7 +476,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceUpdate`: IpamsvcUpdateIPSpaceResponse
+	// response from `IpSpaceUpdate`: UpdateIPSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceUpdate`: %v\n", resp)
 }
 ```
@@ -497,12 +497,12 @@ Other parameters are passed through a pointer to a apiIpSpaceUpdateRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcIPSpace**](IpamsvcIPSpace.md) |  | 
+ **body** | [**IPSpace**](IPSpace.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateIPSpaceResponse**](IpamsvcUpdateIPSpaceResponse.md)
+[**UpdateIPSpaceResponse**](UpdateIPSpaceResponse.md)
 
 ### Authorization
 

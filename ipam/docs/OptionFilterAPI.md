@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## OptionFilterCreate
 
-> IpamsvcCreateOptionFilterResponse OptionFilterCreate(ctx).Body(body).Execute()
+> CreateOptionFilterResponse OptionFilterCreate(ctx).Body(body).Execute()
 
 Create the DHCP option filter.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcOptionFilter("Name_example", *ipam.NewIpamsvcOptionFilterRuleList()) // IpamsvcOptionFilter | 
+	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionFilterAPI.OptionFilterCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterCreate`: IpamsvcCreateOptionFilterResponse
+	// response from `OptionFilterCreate`: CreateOptionFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiOptionFilterCreateRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcOptionFilter**](IpamsvcOptionFilter.md) |  | 
+ **body** | [**OptionFilter**](OptionFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateOptionFilterResponse**](IpamsvcCreateOptionFilterResponse.md)
+[**CreateOptionFilterResponse**](CreateOptionFilterResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## OptionFilterList
 
-> IpamsvcListOptionFilterResponse OptionFilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionFilterResponse OptionFilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option filters.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterList`: IpamsvcListOptionFilterResponse
+	// response from `OptionFilterList`: ListOptionFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListOptionFilterResponse**](IpamsvcListOptionFilterResponse.md)
+[**ListOptionFilterResponse**](ListOptionFilterResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## OptionFilterRead
 
-> IpamsvcReadOptionFilterResponse OptionFilterRead(ctx, id).Fields(fields).Execute()
+> ReadOptionFilterResponse OptionFilterRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option filter.
 
@@ -257,7 +257,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterRead`: IpamsvcReadOptionFilterResponse
+	// response from `OptionFilterRead`: ReadOptionFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterRead`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadOptionFilterResponse**](IpamsvcReadOptionFilterResponse.md)
+[**ReadOptionFilterResponse**](ReadOptionFilterResponse.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## OptionFilterUpdate
 
-> IpamsvcUpdateOptionFilterResponse OptionFilterUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionFilterResponse OptionFilterUpdate(ctx, id).Body(body).Execute()
 
 Update the DHCP option filter.
 
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcOptionFilter("Name_example", *ipam.NewIpamsvcOptionFilterRuleList()) // IpamsvcOptionFilter | 
+	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionFilterAPI.OptionFilterUpdate(context.Background(), id).Body(body).Execute()
@@ -329,7 +329,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterUpdate`: IpamsvcUpdateOptionFilterResponse
+	// response from `OptionFilterUpdate`: UpdateOptionFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterUpdate`: %v\n", resp)
 }
 ```
@@ -350,11 +350,11 @@ Other parameters are passed through a pointer to a apiOptionFilterUpdateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcOptionFilter**](IpamsvcOptionFilter.md) |  | 
+ **body** | [**OptionFilter**](OptionFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateOptionFilterResponse**](IpamsvcUpdateOptionFilterResponse.md)
+[**UpdateOptionFilterResponse**](UpdateOptionFilterResponse.md)
 
 ### Authorization
 

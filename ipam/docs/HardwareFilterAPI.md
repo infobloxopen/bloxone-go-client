@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## HardwareFilterCreate
 
-> IpamsvcCreateHardwareFilterResponse HardwareFilterCreate(ctx).Body(body).Execute()
+> CreateHardwareFilterResponse HardwareFilterCreate(ctx).Body(body).Execute()
 
 Create the hardware filter.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcHardwareFilter("Name_example") // IpamsvcHardwareFilter | 
+	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterCreate`: IpamsvcCreateHardwareFilterResponse
+	// response from `HardwareFilterCreate`: CreateHardwareFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiHardwareFilterCreateReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcHardwareFilter**](IpamsvcHardwareFilter.md) |  | 
+ **body** | [**HardwareFilter**](HardwareFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateHardwareFilterResponse**](IpamsvcCreateHardwareFilterResponse.md)
+[**CreateHardwareFilterResponse**](CreateHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## HardwareFilterList
 
-> IpamsvcListHardwareFilterResponse HardwareFilterList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListHardwareFilterResponse HardwareFilterList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve hardware filters.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterList`: IpamsvcListHardwareFilterResponse
+	// response from `HardwareFilterList`: ListHardwareFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListHardwareFilterResponse**](IpamsvcListHardwareFilterResponse.md)
+[**ListHardwareFilterResponse**](ListHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## HardwareFilterRead
 
-> IpamsvcReadHardwareFilterResponse HardwareFilterRead(ctx, id).Fields(fields).Execute()
+> ReadHardwareFilterResponse HardwareFilterRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the hardware filter.
 
@@ -257,7 +257,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterRead`: IpamsvcReadHardwareFilterResponse
+	// response from `HardwareFilterRead`: ReadHardwareFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterRead`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadHardwareFilterResponse**](IpamsvcReadHardwareFilterResponse.md)
+[**ReadHardwareFilterResponse**](ReadHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## HardwareFilterUpdate
 
-> IpamsvcUpdateHardwareFilterResponse HardwareFilterUpdate(ctx, id).Body(body).Execute()
+> UpdateHardwareFilterResponse HardwareFilterUpdate(ctx, id).Body(body).Execute()
 
 Update the hardware filter.
 
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcHardwareFilter("Name_example") // IpamsvcHardwareFilter | 
+	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterUpdate(context.Background(), id).Body(body).Execute()
@@ -329,7 +329,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterUpdate`: IpamsvcUpdateHardwareFilterResponse
+	// response from `HardwareFilterUpdate`: UpdateHardwareFilterResponse
 	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterUpdate`: %v\n", resp)
 }
 ```
@@ -350,11 +350,11 @@ Other parameters are passed through a pointer to a apiHardwareFilterUpdateReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcHardwareFilter**](IpamsvcHardwareFilter.md) |  | 
+ **body** | [**HardwareFilter**](HardwareFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateHardwareFilterResponse**](IpamsvcUpdateHardwareFilterResponse.md)
+[**UpdateHardwareFilterResponse**](UpdateHardwareFilterResponse.md)
 
 ### Authorization
 

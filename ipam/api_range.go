@@ -34,8 +34,8 @@ type RangeAPI interface {
 	RangeCreate(ctx context.Context) ApiRangeCreateRequest
 
 	// RangeCreateExecute executes the request
-	//  @return IpamsvcCreateRangeResponse
-	RangeCreateExecute(r ApiRangeCreateRequest) (*IpamsvcCreateRangeResponse, *http.Response, error)
+	//  @return CreateRangeResponse
+	RangeCreateExecute(r ApiRangeCreateRequest) (*CreateRangeResponse, *http.Response, error)
 	/*
 			RangeCreateNextAvailableIP Allocate the next available IP address.
 
@@ -49,8 +49,8 @@ type RangeAPI interface {
 	RangeCreateNextAvailableIP(ctx context.Context, id string) ApiRangeCreateNextAvailableIPRequest
 
 	// RangeCreateNextAvailableIPExecute executes the request
-	//  @return IpamsvcCreateNextAvailableIPResponse
-	RangeCreateNextAvailableIPExecute(r ApiRangeCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
+	//  @return CreateNextAvailableIPResponse
+	RangeCreateNextAvailableIPExecute(r ApiRangeCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error)
 	/*
 			RangeDelete Move the range to the recycle bin.
 
@@ -77,8 +77,8 @@ type RangeAPI interface {
 	RangeList(ctx context.Context) ApiRangeListRequest
 
 	// RangeListExecute executes the request
-	//  @return IpamsvcListRangeResponse
-	RangeListExecute(r ApiRangeListRequest) (*IpamsvcListRangeResponse, *http.Response, error)
+	//  @return ListRangeResponse
+	RangeListExecute(r ApiRangeListRequest) (*ListRangeResponse, *http.Response, error)
 	/*
 			RangeListNextAvailableIP Retrieve the next available IP address.
 
@@ -92,8 +92,8 @@ type RangeAPI interface {
 	RangeListNextAvailableIP(ctx context.Context, id string) ApiRangeListNextAvailableIPRequest
 
 	// RangeListNextAvailableIPExecute executes the request
-	//  @return IpamsvcNextAvailableIPResponse
-	RangeListNextAvailableIPExecute(r ApiRangeListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
+	//  @return NextAvailableIPResponse
+	RangeListNextAvailableIPExecute(r ApiRangeListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error)
 	/*
 			RangeRead Retrieve the range.
 
@@ -107,8 +107,8 @@ type RangeAPI interface {
 	RangeRead(ctx context.Context, id string) ApiRangeReadRequest
 
 	// RangeReadExecute executes the request
-	//  @return IpamsvcReadRangeResponse
-	RangeReadExecute(r ApiRangeReadRequest) (*IpamsvcReadRangeResponse, *http.Response, error)
+	//  @return ReadRangeResponse
+	RangeReadExecute(r ApiRangeReadRequest) (*ReadRangeResponse, *http.Response, error)
 	/*
 			RangeUpdate Update the range.
 
@@ -122,8 +122,8 @@ type RangeAPI interface {
 	RangeUpdate(ctx context.Context, id string) ApiRangeUpdateRequest
 
 	// RangeUpdateExecute executes the request
-	//  @return IpamsvcUpdateRangeResponse
-	RangeUpdateExecute(r ApiRangeUpdateRequest) (*IpamsvcUpdateRangeResponse, *http.Response, error)
+	//  @return UpdateRangeResponse
+	RangeUpdateExecute(r ApiRangeUpdateRequest) (*UpdateRangeResponse, *http.Response, error)
 }
 
 // RangeAPIService RangeAPI service
@@ -132,11 +132,11 @@ type RangeAPIService internal.Service
 type ApiRangeCreateRequest struct {
 	ctx        context.Context
 	ApiService RangeAPI
-	body       *IpamsvcRange
+	body       *Range
 	inherit    *string
 }
 
-func (r ApiRangeCreateRequest) Body(body IpamsvcRange) ApiRangeCreateRequest {
+func (r ApiRangeCreateRequest) Body(body Range) ApiRangeCreateRequest {
 	r.body = &body
 	return r
 }
@@ -147,7 +147,7 @@ func (r ApiRangeCreateRequest) Inherit(inherit string) ApiRangeCreateRequest {
 	return r
 }
 
-func (r ApiRangeCreateRequest) Execute() (*IpamsvcCreateRangeResponse, *http.Response, error) {
+func (r ApiRangeCreateRequest) Execute() (*CreateRangeResponse, *http.Response, error) {
 	return r.ApiService.RangeCreateExecute(r)
 }
 
@@ -169,13 +169,13 @@ func (a *RangeAPIService) RangeCreate(ctx context.Context) ApiRangeCreateRequest
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateRangeResponse
-func (a *RangeAPIService) RangeCreateExecute(r ApiRangeCreateRequest) (*IpamsvcCreateRangeResponse, *http.Response, error) {
+//	@return CreateRangeResponse
+func (a *RangeAPIService) RangeCreateExecute(r ApiRangeCreateRequest) (*CreateRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateRangeResponse
+		localVarReturnValue *CreateRangeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeCreate")
@@ -274,7 +274,7 @@ func (r ApiRangeCreateNextAvailableIPRequest) Count(count int32) ApiRangeCreateN
 	return r
 }
 
-func (r ApiRangeCreateNextAvailableIPRequest) Execute() (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+func (r ApiRangeCreateNextAvailableIPRequest) Execute() (*CreateNextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.RangeCreateNextAvailableIPExecute(r)
 }
 
@@ -298,13 +298,13 @@ func (a *RangeAPIService) RangeCreateNextAvailableIP(ctx context.Context, id str
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateNextAvailableIPResponse
-func (a *RangeAPIService) RangeCreateNextAvailableIPExecute(r ApiRangeCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+//	@return CreateNextAvailableIPResponse
+func (a *RangeAPIService) RangeCreateNextAvailableIPExecute(r ApiRangeCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateNextAvailableIPResponse
+		localVarReturnValue *CreateNextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeCreateNextAvailableIP")
@@ -536,7 +536,7 @@ func (r ApiRangeListRequest) Inherit(inherit string) ApiRangeListRequest {
 	return r
 }
 
-func (r ApiRangeListRequest) Execute() (*IpamsvcListRangeResponse, *http.Response, error) {
+func (r ApiRangeListRequest) Execute() (*ListRangeResponse, *http.Response, error) {
 	return r.ApiService.RangeListExecute(r)
 }
 
@@ -558,13 +558,13 @@ func (a *RangeAPIService) RangeList(ctx context.Context) ApiRangeListRequest {
 
 // Execute executes the request
 //
-//	@return IpamsvcListRangeResponse
-func (a *RangeAPIService) RangeListExecute(r ApiRangeListRequest) (*IpamsvcListRangeResponse, *http.Response, error) {
+//	@return ListRangeResponse
+func (a *RangeAPIService) RangeListExecute(r ApiRangeListRequest) (*ListRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListRangeResponse
+		localVarReturnValue *ListRangeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeList")
@@ -672,7 +672,7 @@ func (r ApiRangeListNextAvailableIPRequest) Count(count int32) ApiRangeListNextA
 	return r
 }
 
-func (r ApiRangeListNextAvailableIPRequest) Execute() (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+func (r ApiRangeListNextAvailableIPRequest) Execute() (*NextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.RangeListNextAvailableIPExecute(r)
 }
 
@@ -696,13 +696,13 @@ func (a *RangeAPIService) RangeListNextAvailableIP(ctx context.Context, id strin
 
 // Execute executes the request
 //
-//	@return IpamsvcNextAvailableIPResponse
-func (a *RangeAPIService) RangeListNextAvailableIPExecute(r ApiRangeListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+//	@return NextAvailableIPResponse
+func (a *RangeAPIService) RangeListNextAvailableIPExecute(r ApiRangeListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcNextAvailableIPResponse
+		localVarReturnValue *NextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeListNextAvailableIP")
@@ -790,7 +790,7 @@ func (r ApiRangeReadRequest) Inherit(inherit string) ApiRangeReadRequest {
 	return r
 }
 
-func (r ApiRangeReadRequest) Execute() (*IpamsvcReadRangeResponse, *http.Response, error) {
+func (r ApiRangeReadRequest) Execute() (*ReadRangeResponse, *http.Response, error) {
 	return r.ApiService.RangeReadExecute(r)
 }
 
@@ -814,13 +814,13 @@ func (a *RangeAPIService) RangeRead(ctx context.Context, id string) ApiRangeRead
 
 // Execute executes the request
 //
-//	@return IpamsvcReadRangeResponse
-func (a *RangeAPIService) RangeReadExecute(r ApiRangeReadRequest) (*IpamsvcReadRangeResponse, *http.Response, error) {
+//	@return ReadRangeResponse
+func (a *RangeAPIService) RangeReadExecute(r ApiRangeReadRequest) (*ReadRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadRangeResponse
+		localVarReturnValue *ReadRangeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeRead")
@@ -892,11 +892,11 @@ type ApiRangeUpdateRequest struct {
 	ctx        context.Context
 	ApiService RangeAPI
 	id         string
-	body       *IpamsvcRange
+	body       *Range
 	inherit    *string
 }
 
-func (r ApiRangeUpdateRequest) Body(body IpamsvcRange) ApiRangeUpdateRequest {
+func (r ApiRangeUpdateRequest) Body(body Range) ApiRangeUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -907,7 +907,7 @@ func (r ApiRangeUpdateRequest) Inherit(inherit string) ApiRangeUpdateRequest {
 	return r
 }
 
-func (r ApiRangeUpdateRequest) Execute() (*IpamsvcUpdateRangeResponse, *http.Response, error) {
+func (r ApiRangeUpdateRequest) Execute() (*UpdateRangeResponse, *http.Response, error) {
 	return r.ApiService.RangeUpdateExecute(r)
 }
 
@@ -931,13 +931,13 @@ func (a *RangeAPIService) RangeUpdate(ctx context.Context, id string) ApiRangeUp
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateRangeResponse
-func (a *RangeAPIService) RangeUpdateExecute(r ApiRangeUpdateRequest) (*IpamsvcUpdateRangeResponse, *http.Response, error) {
+//	@return UpdateRangeResponse
+func (a *RangeAPIService) RangeUpdateExecute(r ApiRangeUpdateRequest) (*UpdateRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateRangeResponse
+		localVarReturnValue *UpdateRangeResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.RangeUpdate")

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## AddressBlockCopy
 
-> IpamsvcCopyAddressBlockResponse AddressBlockCopy(ctx, id).Body(body).Execute()
+> CopyAddressBlockResponse AddressBlockCopy(ctx, id).Body(body).Execute()
 
 Copy the address block.
 
@@ -42,7 +42,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcCopyAddressBlock("Space_example") // IpamsvcCopyAddressBlock | 
+	body := *ipam.NewCopyAddressBlock("Space_example") // CopyAddressBlock | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressBlockAPI.AddressBlockCopy(context.Background(), id).Body(body).Execute()
@@ -50,7 +50,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCopy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockCopy`: IpamsvcCopyAddressBlockResponse
+	// response from `AddressBlockCopy`: CopyAddressBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockCopy`: %v\n", resp)
 }
 ```
@@ -71,11 +71,11 @@ Other parameters are passed through a pointer to a apiAddressBlockCopyRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcCopyAddressBlock**](IpamsvcCopyAddressBlock.md) |  | 
+ **body** | [**CopyAddressBlock**](CopyAddressBlock.md) |  | 
 
 ### Return type
 
-[**IpamsvcCopyAddressBlockResponse**](IpamsvcCopyAddressBlockResponse.md)
+[**CopyAddressBlockResponse**](CopyAddressBlockResponse.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreate
 
-> IpamsvcCreateAddressBlockResponse AddressBlockCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateAddressBlockResponse AddressBlockCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the address block.
 
@@ -113,7 +113,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcAddressBlock() // IpamsvcAddressBlock | 
+	body := *ipam.NewAddressBlock() // AddressBlock | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -122,7 +122,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockCreate`: IpamsvcCreateAddressBlockResponse
+	// response from `AddressBlockCreate`: CreateAddressBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockCreate`: %v\n", resp)
 }
 ```
@@ -138,12 +138,12 @@ Other parameters are passed through a pointer to a apiAddressBlockCreateRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcAddressBlock**](IpamsvcAddressBlock.md) |  | 
+ **body** | [**AddressBlock**](AddressBlock.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateAddressBlockResponse**](IpamsvcCreateAddressBlockResponse.md)
+[**CreateAddressBlockResponse**](CreateAddressBlockResponse.md)
 
 ### Authorization
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableAB
 
-> IpamsvcCreateNextAvailableABResponse AddressBlockCreateNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
+> CreateNextAvailableABResponse AddressBlockCreateNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
 
 Create the Next Available Address Block object.
 
@@ -193,7 +193,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableAB``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockCreateNextAvailableAB`: IpamsvcCreateNextAvailableABResponse
+	// response from `AddressBlockCreateNextAvailableAB`: CreateNextAvailableABResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockCreateNextAvailableAB`: %v\n", resp)
 }
 ```
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcCreateNextAvailableABResponse**](IpamsvcCreateNextAvailableABResponse.md)
+[**CreateNextAvailableABResponse**](CreateNextAvailableABResponse.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse AddressBlockCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> CreateNextAvailableIPResponse AddressBlockCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -269,7 +269,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockCreateNextAvailableIP`: IpamsvcCreateNextAvailableIPResponse
+	// response from `AddressBlockCreateNextAvailableIP`: CreateNextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockCreateNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcCreateNextAvailableIPResponse**](IpamsvcCreateNextAvailableIPResponse.md)
+[**CreateNextAvailableIPResponse**](CreateNextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockCreateNextAvailableSubnet
 
-> IpamsvcCreateNextAvailableSubnetResponse AddressBlockCreateNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
+> CreateNextAvailableSubnetResponse AddressBlockCreateNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
 
 Create the Next Available Subnet object.
 
@@ -346,7 +346,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockCreateNextAvailableSubnet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockCreateNextAvailableSubnet`: IpamsvcCreateNextAvailableSubnetResponse
+	// response from `AddressBlockCreateNextAvailableSubnet`: CreateNextAvailableSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockCreateNextAvailableSubnet`: %v\n", resp)
 }
 ```
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcCreateNextAvailableSubnetResponse**](IpamsvcCreateNextAvailableSubnetResponse.md)
+[**CreateNextAvailableSubnetResponse**](CreateNextAvailableSubnetResponse.md)
 
 ### Authorization
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockList
 
-> IpamsvcListAddressBlockResponse AddressBlockList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListAddressBlockResponse AddressBlockList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve the address blocks.
 
@@ -497,7 +497,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockList`: IpamsvcListAddressBlockResponse
+	// response from `AddressBlockList`: ListAddressBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockList`: %v\n", resp)
 }
 ```
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListAddressBlockResponse**](IpamsvcListAddressBlockResponse.md)
+[**ListAddressBlockResponse**](ListAddressBlockResponse.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockListNextAvailableAB
 
-> IpamsvcNextAvailableABResponse AddressBlockListNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
+> NextAvailableABResponse AddressBlockListNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
 
 List Next Available Address Block objects.
 
@@ -575,7 +575,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockListNextAvailableAB``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockListNextAvailableAB`: IpamsvcNextAvailableABResponse
+	// response from `AddressBlockListNextAvailableAB`: NextAvailableABResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockListNextAvailableAB`: %v\n", resp)
 }
 ```
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcNextAvailableABResponse**](IpamsvcNextAvailableABResponse.md)
+[**NextAvailableABResponse**](NextAvailableABResponse.md)
 
 ### Authorization
 
@@ -621,7 +621,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockListNextAvailableIP
 
-> IpamsvcNextAvailableIPResponse AddressBlockListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> NextAvailableIPResponse AddressBlockListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Retrieve the next available IP address.
 
@@ -651,7 +651,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockListNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockListNextAvailableIP`: IpamsvcNextAvailableIPResponse
+	// response from `AddressBlockListNextAvailableIP`: NextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockListNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcNextAvailableIPResponse**](IpamsvcNextAvailableIPResponse.md)
+[**NextAvailableIPResponse**](NextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockListNextAvailableSubnet
 
-> IpamsvcNextAvailableSubnetResponse AddressBlockListNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
+> NextAvailableSubnetResponse AddressBlockListNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
 
 List Next Available Subnet objects.
 
@@ -728,7 +728,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockListNextAvailableSubnet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockListNextAvailableSubnet`: IpamsvcNextAvailableSubnetResponse
+	// response from `AddressBlockListNextAvailableSubnet`: NextAvailableSubnetResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockListNextAvailableSubnet`: %v\n", resp)
 }
 ```
@@ -757,7 +757,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcNextAvailableSubnetResponse**](IpamsvcNextAvailableSubnetResponse.md)
+[**NextAvailableSubnetResponse**](NextAvailableSubnetResponse.md)
 
 ### Authorization
 
@@ -775,7 +775,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockRead
 
-> IpamsvcReadAddressBlockResponse AddressBlockRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadAddressBlockResponse AddressBlockRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the address block.
 
@@ -805,7 +805,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockRead`: IpamsvcReadAddressBlockResponse
+	// response from `AddressBlockRead`: ReadAddressBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockRead`: %v\n", resp)
 }
 ```
@@ -831,7 +831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadAddressBlockResponse**](IpamsvcReadAddressBlockResponse.md)
+[**ReadAddressBlockResponse**](ReadAddressBlockResponse.md)
 
 ### Authorization
 
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 
 ## AddressBlockUpdate
 
-> IpamsvcUpdateAddressBlockResponse AddressBlockUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateAddressBlockResponse AddressBlockUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the address block.
 
@@ -870,7 +870,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcAddressBlock() // IpamsvcAddressBlock | 
+	body := *ipam.NewAddressBlock() // AddressBlock | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -879,7 +879,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.AddressBlockUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressBlockUpdate`: IpamsvcUpdateAddressBlockResponse
+	// response from `AddressBlockUpdate`: UpdateAddressBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.AddressBlockUpdate`: %v\n", resp)
 }
 ```
@@ -900,12 +900,12 @@ Other parameters are passed through a pointer to a apiAddressBlockUpdateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcAddressBlock**](IpamsvcAddressBlock.md) |  | 
+ **body** | [**AddressBlock**](AddressBlock.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateAddressBlockResponse**](IpamsvcUpdateAddressBlockResponse.md)
+[**UpdateAddressBlockResponse**](UpdateAddressBlockResponse.md)
 
 ### Authorization
 

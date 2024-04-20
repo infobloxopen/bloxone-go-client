@@ -34,8 +34,8 @@ type OptionGroupAPI interface {
 	OptionGroupCreate(ctx context.Context) ApiOptionGroupCreateRequest
 
 	// OptionGroupCreateExecute executes the request
-	//  @return IpamsvcCreateOptionGroupResponse
-	OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*IpamsvcCreateOptionGroupResponse, *http.Response, error)
+	//  @return CreateOptionGroupResponse
+	OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*CreateOptionGroupResponse, *http.Response, error)
 	/*
 			OptionGroupDelete Move the DHCP option group to the recycle bin.
 
@@ -62,8 +62,8 @@ type OptionGroupAPI interface {
 	OptionGroupList(ctx context.Context) ApiOptionGroupListRequest
 
 	// OptionGroupListExecute executes the request
-	//  @return IpamsvcListOptionGroupResponse
-	OptionGroupListExecute(r ApiOptionGroupListRequest) (*IpamsvcListOptionGroupResponse, *http.Response, error)
+	//  @return ListOptionGroupResponse
+	OptionGroupListExecute(r ApiOptionGroupListRequest) (*ListOptionGroupResponse, *http.Response, error)
 	/*
 			OptionGroupRead Retrieve the DHCP option group.
 
@@ -77,8 +77,8 @@ type OptionGroupAPI interface {
 	OptionGroupRead(ctx context.Context, id string) ApiOptionGroupReadRequest
 
 	// OptionGroupReadExecute executes the request
-	//  @return IpamsvcReadOptionGroupResponse
-	OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*IpamsvcReadOptionGroupResponse, *http.Response, error)
+	//  @return ReadOptionGroupResponse
+	OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*ReadOptionGroupResponse, *http.Response, error)
 	/*
 			OptionGroupUpdate Update the DHCP option group.
 
@@ -92,8 +92,8 @@ type OptionGroupAPI interface {
 	OptionGroupUpdate(ctx context.Context, id string) ApiOptionGroupUpdateRequest
 
 	// OptionGroupUpdateExecute executes the request
-	//  @return IpamsvcUpdateOptionGroupResponse
-	OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*IpamsvcUpdateOptionGroupResponse, *http.Response, error)
+	//  @return UpdateOptionGroupResponse
+	OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error)
 }
 
 // OptionGroupAPIService OptionGroupAPI service
@@ -102,15 +102,15 @@ type OptionGroupAPIService internal.Service
 type ApiOptionGroupCreateRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
-	body       *IpamsvcOptionGroup
+	body       *OptionGroup
 }
 
-func (r ApiOptionGroupCreateRequest) Body(body IpamsvcOptionGroup) ApiOptionGroupCreateRequest {
+func (r ApiOptionGroupCreateRequest) Body(body OptionGroup) ApiOptionGroupCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionGroupCreateRequest) Execute() (*IpamsvcCreateOptionGroupResponse, *http.Response, error) {
+func (r ApiOptionGroupCreateRequest) Execute() (*CreateOptionGroupResponse, *http.Response, error) {
 	return r.ApiService.OptionGroupCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *OptionGroupAPIService) OptionGroupCreate(ctx context.Context) ApiOption
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*IpamsvcCreateOptionGroupResponse, *http.Response, error) {
+//	@return CreateOptionGroupResponse
+func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*CreateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateOptionGroupResponse
+		localVarReturnValue *CreateOptionGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupCreate")
@@ -365,7 +365,7 @@ func (r ApiOptionGroupListRequest) Tfilter(tfilter string) ApiOptionGroupListReq
 	return r
 }
 
-func (r ApiOptionGroupListRequest) Execute() (*IpamsvcListOptionGroupResponse, *http.Response, error) {
+func (r ApiOptionGroupListRequest) Execute() (*ListOptionGroupResponse, *http.Response, error) {
 	return r.ApiService.OptionGroupListExecute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *OptionGroupAPIService) OptionGroupList(ctx context.Context) ApiOptionGr
 
 // Execute executes the request
 //
-//	@return IpamsvcListOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListRequest) (*IpamsvcListOptionGroupResponse, *http.Response, error) {
+//	@return ListOptionGroupResponse
+func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListRequest) (*ListOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListOptionGroupResponse
+		localVarReturnValue *ListOptionGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupList")
@@ -491,7 +491,7 @@ func (r ApiOptionGroupReadRequest) Fields(fields string) ApiOptionGroupReadReque
 	return r
 }
 
-func (r ApiOptionGroupReadRequest) Execute() (*IpamsvcReadOptionGroupResponse, *http.Response, error) {
+func (r ApiOptionGroupReadRequest) Execute() (*ReadOptionGroupResponse, *http.Response, error) {
 	return r.ApiService.OptionGroupReadExecute(r)
 }
 
@@ -515,13 +515,13 @@ func (a *OptionGroupAPIService) OptionGroupRead(ctx context.Context, id string) 
 
 // Execute executes the request
 //
-//	@return IpamsvcReadOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*IpamsvcReadOptionGroupResponse, *http.Response, error) {
+//	@return ReadOptionGroupResponse
+func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*ReadOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadOptionGroupResponse
+		localVarReturnValue *ReadOptionGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupRead")
@@ -590,15 +590,15 @@ type ApiOptionGroupUpdateRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	id         string
-	body       *IpamsvcOptionGroup
+	body       *OptionGroup
 }
 
-func (r ApiOptionGroupUpdateRequest) Body(body IpamsvcOptionGroup) ApiOptionGroupUpdateRequest {
+func (r ApiOptionGroupUpdateRequest) Body(body OptionGroup) ApiOptionGroupUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionGroupUpdateRequest) Execute() (*IpamsvcUpdateOptionGroupResponse, *http.Response, error) {
+func (r ApiOptionGroupUpdateRequest) Execute() (*UpdateOptionGroupResponse, *http.Response, error) {
 	return r.ApiService.OptionGroupUpdateExecute(r)
 }
 
@@ -622,13 +622,13 @@ func (a *OptionGroupAPIService) OptionGroupUpdate(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*IpamsvcUpdateOptionGroupResponse, *http.Response, error) {
+//	@return UpdateOptionGroupResponse
+func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateOptionGroupResponse
+		localVarReturnValue *UpdateOptionGroupResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupUpdate")

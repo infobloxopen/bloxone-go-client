@@ -34,8 +34,8 @@ type OptionSpaceAPI interface {
 	OptionSpaceCreate(ctx context.Context) ApiOptionSpaceCreateRequest
 
 	// OptionSpaceCreateExecute executes the request
-	//  @return IpamsvcCreateOptionSpaceResponse
-	OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*IpamsvcCreateOptionSpaceResponse, *http.Response, error)
+	//  @return CreateOptionSpaceResponse
+	OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*CreateOptionSpaceResponse, *http.Response, error)
 	/*
 			OptionSpaceDelete Move the DHCP option space to the recycle bin.
 
@@ -62,8 +62,8 @@ type OptionSpaceAPI interface {
 	OptionSpaceList(ctx context.Context) ApiOptionSpaceListRequest
 
 	// OptionSpaceListExecute executes the request
-	//  @return IpamsvcListOptionSpaceResponse
-	OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*IpamsvcListOptionSpaceResponse, *http.Response, error)
+	//  @return ListOptionSpaceResponse
+	OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*ListOptionSpaceResponse, *http.Response, error)
 	/*
 			OptionSpaceRead Retrieve the DHCP option space.
 
@@ -77,8 +77,8 @@ type OptionSpaceAPI interface {
 	OptionSpaceRead(ctx context.Context, id string) ApiOptionSpaceReadRequest
 
 	// OptionSpaceReadExecute executes the request
-	//  @return IpamsvcReadOptionSpaceResponse
-	OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*IpamsvcReadOptionSpaceResponse, *http.Response, error)
+	//  @return ReadOptionSpaceResponse
+	OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*ReadOptionSpaceResponse, *http.Response, error)
 	/*
 			OptionSpaceUpdate Update the DHCP option space.
 
@@ -92,8 +92,8 @@ type OptionSpaceAPI interface {
 	OptionSpaceUpdate(ctx context.Context, id string) ApiOptionSpaceUpdateRequest
 
 	// OptionSpaceUpdateExecute executes the request
-	//  @return IpamsvcUpdateOptionSpaceResponse
-	OptionSpaceUpdateExecute(r ApiOptionSpaceUpdateRequest) (*IpamsvcUpdateOptionSpaceResponse, *http.Response, error)
+	//  @return UpdateOptionSpaceResponse
+	OptionSpaceUpdateExecute(r ApiOptionSpaceUpdateRequest) (*UpdateOptionSpaceResponse, *http.Response, error)
 }
 
 // OptionSpaceAPIService OptionSpaceAPI service
@@ -102,15 +102,15 @@ type OptionSpaceAPIService internal.Service
 type ApiOptionSpaceCreateRequest struct {
 	ctx        context.Context
 	ApiService OptionSpaceAPI
-	body       *IpamsvcOptionSpace
+	body       *OptionSpace
 }
 
-func (r ApiOptionSpaceCreateRequest) Body(body IpamsvcOptionSpace) ApiOptionSpaceCreateRequest {
+func (r ApiOptionSpaceCreateRequest) Body(body OptionSpace) ApiOptionSpaceCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionSpaceCreateRequest) Execute() (*IpamsvcCreateOptionSpaceResponse, *http.Response, error) {
+func (r ApiOptionSpaceCreateRequest) Execute() (*CreateOptionSpaceResponse, *http.Response, error) {
 	return r.ApiService.OptionSpaceCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *OptionSpaceAPIService) OptionSpaceCreate(ctx context.Context) ApiOption
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateOptionSpaceResponse
-func (a *OptionSpaceAPIService) OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*IpamsvcCreateOptionSpaceResponse, *http.Response, error) {
+//	@return CreateOptionSpaceResponse
+func (a *OptionSpaceAPIService) OptionSpaceCreateExecute(r ApiOptionSpaceCreateRequest) (*CreateOptionSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateOptionSpaceResponse
+		localVarReturnValue *CreateOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceCreate")
@@ -365,7 +365,7 @@ func (r ApiOptionSpaceListRequest) Tfilter(tfilter string) ApiOptionSpaceListReq
 	return r
 }
 
-func (r ApiOptionSpaceListRequest) Execute() (*IpamsvcListOptionSpaceResponse, *http.Response, error) {
+func (r ApiOptionSpaceListRequest) Execute() (*ListOptionSpaceResponse, *http.Response, error) {
 	return r.ApiService.OptionSpaceListExecute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *OptionSpaceAPIService) OptionSpaceList(ctx context.Context) ApiOptionSp
 
 // Execute executes the request
 //
-//	@return IpamsvcListOptionSpaceResponse
-func (a *OptionSpaceAPIService) OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*IpamsvcListOptionSpaceResponse, *http.Response, error) {
+//	@return ListOptionSpaceResponse
+func (a *OptionSpaceAPIService) OptionSpaceListExecute(r ApiOptionSpaceListRequest) (*ListOptionSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListOptionSpaceResponse
+		localVarReturnValue *ListOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceList")
@@ -491,7 +491,7 @@ func (r ApiOptionSpaceReadRequest) Fields(fields string) ApiOptionSpaceReadReque
 	return r
 }
 
-func (r ApiOptionSpaceReadRequest) Execute() (*IpamsvcReadOptionSpaceResponse, *http.Response, error) {
+func (r ApiOptionSpaceReadRequest) Execute() (*ReadOptionSpaceResponse, *http.Response, error) {
 	return r.ApiService.OptionSpaceReadExecute(r)
 }
 
@@ -515,13 +515,13 @@ func (a *OptionSpaceAPIService) OptionSpaceRead(ctx context.Context, id string) 
 
 // Execute executes the request
 //
-//	@return IpamsvcReadOptionSpaceResponse
-func (a *OptionSpaceAPIService) OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*IpamsvcReadOptionSpaceResponse, *http.Response, error) {
+//	@return ReadOptionSpaceResponse
+func (a *OptionSpaceAPIService) OptionSpaceReadExecute(r ApiOptionSpaceReadRequest) (*ReadOptionSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadOptionSpaceResponse
+		localVarReturnValue *ReadOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceRead")
@@ -590,15 +590,15 @@ type ApiOptionSpaceUpdateRequest struct {
 	ctx        context.Context
 	ApiService OptionSpaceAPI
 	id         string
-	body       *IpamsvcOptionSpace
+	body       *OptionSpace
 }
 
-func (r ApiOptionSpaceUpdateRequest) Body(body IpamsvcOptionSpace) ApiOptionSpaceUpdateRequest {
+func (r ApiOptionSpaceUpdateRequest) Body(body OptionSpace) ApiOptionSpaceUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionSpaceUpdateRequest) Execute() (*IpamsvcUpdateOptionSpaceResponse, *http.Response, error) {
+func (r ApiOptionSpaceUpdateRequest) Execute() (*UpdateOptionSpaceResponse, *http.Response, error) {
 	return r.ApiService.OptionSpaceUpdateExecute(r)
 }
 
@@ -622,13 +622,13 @@ func (a *OptionSpaceAPIService) OptionSpaceUpdate(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateOptionSpaceResponse
-func (a *OptionSpaceAPIService) OptionSpaceUpdateExecute(r ApiOptionSpaceUpdateRequest) (*IpamsvcUpdateOptionSpaceResponse, *http.Response, error) {
+//	@return UpdateOptionSpaceResponse
+func (a *OptionSpaceAPIService) OptionSpaceUpdateExecute(r ApiOptionSpaceUpdateRequest) (*UpdateOptionSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateOptionSpaceResponse
+		localVarReturnValue *UpdateOptionSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionSpaceAPIService.OptionSpaceUpdate")

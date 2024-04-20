@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Action** | Pointer to **string** | The inheritance setting.  Valid values are: * _inherit_: Use the inherited value. * _override_: Use the value set in the object.  Defaults to _inherit_. | [optional] 
 **DisplayName** | Pointer to **string** | The human-readable display name for the object referred to by _source_. | [optional] [readonly] 
 **Source** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**Value** | Pointer to [**[]IpamsvcIgnoreItem**](IpamsvcIgnoreItem.md) | The inherited value. | [optional] [readonly] 
+**Value** | Pointer to [**[]IgnoreItem**](IgnoreItem.md) | The inherited value. | [optional] [readonly] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *InheritedDHCPConfigIgnoreItemList) GetValue() []IpamsvcIgnoreItem`
+`func (o *InheritedDHCPConfigIgnoreItemList) GetValue() []IgnoreItem`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *InheritedDHCPConfigIgnoreItemList) GetValueOk() (*[]IpamsvcIgnoreItem, bool)`
+`func (o *InheritedDHCPConfigIgnoreItemList) GetValueOk() (*[]IgnoreItem, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *InheritedDHCPConfigIgnoreItemList) SetValue(v []IpamsvcIgnoreItem)`
+`func (o *InheritedDHCPConfigIgnoreItemList) SetValue(v []IgnoreItem)`
 
 SetValue sets Value field to given value.
 

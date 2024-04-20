@@ -34,8 +34,8 @@ type FixedAddressAPI interface {
 	FixedAddressCreate(ctx context.Context) ApiFixedAddressCreateRequest
 
 	// FixedAddressCreateExecute executes the request
-	//  @return IpamsvcCreateFixedAddressResponse
-	FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*IpamsvcCreateFixedAddressResponse, *http.Response, error)
+	//  @return CreateFixedAddressResponse
+	FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*CreateFixedAddressResponse, *http.Response, error)
 	/*
 			FixedAddressDelete Move the fixed address to the recycle bin.
 
@@ -62,8 +62,8 @@ type FixedAddressAPI interface {
 	FixedAddressList(ctx context.Context) ApiFixedAddressListRequest
 
 	// FixedAddressListExecute executes the request
-	//  @return IpamsvcListFixedAddressResponse
-	FixedAddressListExecute(r ApiFixedAddressListRequest) (*IpamsvcListFixedAddressResponse, *http.Response, error)
+	//  @return ListFixedAddressResponse
+	FixedAddressListExecute(r ApiFixedAddressListRequest) (*ListFixedAddressResponse, *http.Response, error)
 	/*
 			FixedAddressRead Retrieve the fixed address.
 
@@ -77,8 +77,8 @@ type FixedAddressAPI interface {
 	FixedAddressRead(ctx context.Context, id string) ApiFixedAddressReadRequest
 
 	// FixedAddressReadExecute executes the request
-	//  @return IpamsvcReadFixedAddressResponse
-	FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*IpamsvcReadFixedAddressResponse, *http.Response, error)
+	//  @return ReadFixedAddressResponse
+	FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*ReadFixedAddressResponse, *http.Response, error)
 	/*
 			FixedAddressUpdate Update the fixed address.
 
@@ -92,8 +92,8 @@ type FixedAddressAPI interface {
 	FixedAddressUpdate(ctx context.Context, id string) ApiFixedAddressUpdateRequest
 
 	// FixedAddressUpdateExecute executes the request
-	//  @return IpamsvcUpdateFixedAddressResponse
-	FixedAddressUpdateExecute(r ApiFixedAddressUpdateRequest) (*IpamsvcUpdateFixedAddressResponse, *http.Response, error)
+	//  @return UpdateFixedAddressResponse
+	FixedAddressUpdateExecute(r ApiFixedAddressUpdateRequest) (*UpdateFixedAddressResponse, *http.Response, error)
 }
 
 // FixedAddressAPIService FixedAddressAPI service
@@ -102,11 +102,11 @@ type FixedAddressAPIService internal.Service
 type ApiFixedAddressCreateRequest struct {
 	ctx        context.Context
 	ApiService FixedAddressAPI
-	body       *IpamsvcFixedAddress
+	body       *FixedAddress
 	inherit    *string
 }
 
-func (r ApiFixedAddressCreateRequest) Body(body IpamsvcFixedAddress) ApiFixedAddressCreateRequest {
+func (r ApiFixedAddressCreateRequest) Body(body FixedAddress) ApiFixedAddressCreateRequest {
 	r.body = &body
 	return r
 }
@@ -117,7 +117,7 @@ func (r ApiFixedAddressCreateRequest) Inherit(inherit string) ApiFixedAddressCre
 	return r
 }
 
-func (r ApiFixedAddressCreateRequest) Execute() (*IpamsvcCreateFixedAddressResponse, *http.Response, error) {
+func (r ApiFixedAddressCreateRequest) Execute() (*CreateFixedAddressResponse, *http.Response, error) {
 	return r.ApiService.FixedAddressCreateExecute(r)
 }
 
@@ -139,13 +139,13 @@ func (a *FixedAddressAPIService) FixedAddressCreate(ctx context.Context) ApiFixe
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateFixedAddressResponse
-func (a *FixedAddressAPIService) FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*IpamsvcCreateFixedAddressResponse, *http.Response, error) {
+//	@return CreateFixedAddressResponse
+func (a *FixedAddressAPIService) FixedAddressCreateExecute(r ApiFixedAddressCreateRequest) (*CreateFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateFixedAddressResponse
+		localVarReturnValue *CreateFixedAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedAddressAPIService.FixedAddressCreate")
@@ -382,7 +382,7 @@ func (r ApiFixedAddressListRequest) Inherit(inherit string) ApiFixedAddressListR
 	return r
 }
 
-func (r ApiFixedAddressListRequest) Execute() (*IpamsvcListFixedAddressResponse, *http.Response, error) {
+func (r ApiFixedAddressListRequest) Execute() (*ListFixedAddressResponse, *http.Response, error) {
 	return r.ApiService.FixedAddressListExecute(r)
 }
 
@@ -404,13 +404,13 @@ func (a *FixedAddressAPIService) FixedAddressList(ctx context.Context) ApiFixedA
 
 // Execute executes the request
 //
-//	@return IpamsvcListFixedAddressResponse
-func (a *FixedAddressAPIService) FixedAddressListExecute(r ApiFixedAddressListRequest) (*IpamsvcListFixedAddressResponse, *http.Response, error) {
+//	@return ListFixedAddressResponse
+func (a *FixedAddressAPIService) FixedAddressListExecute(r ApiFixedAddressListRequest) (*ListFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListFixedAddressResponse
+		localVarReturnValue *ListFixedAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedAddressAPIService.FixedAddressList")
@@ -518,7 +518,7 @@ func (r ApiFixedAddressReadRequest) Inherit(inherit string) ApiFixedAddressReadR
 	return r
 }
 
-func (r ApiFixedAddressReadRequest) Execute() (*IpamsvcReadFixedAddressResponse, *http.Response, error) {
+func (r ApiFixedAddressReadRequest) Execute() (*ReadFixedAddressResponse, *http.Response, error) {
 	return r.ApiService.FixedAddressReadExecute(r)
 }
 
@@ -542,13 +542,13 @@ func (a *FixedAddressAPIService) FixedAddressRead(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcReadFixedAddressResponse
-func (a *FixedAddressAPIService) FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*IpamsvcReadFixedAddressResponse, *http.Response, error) {
+//	@return ReadFixedAddressResponse
+func (a *FixedAddressAPIService) FixedAddressReadExecute(r ApiFixedAddressReadRequest) (*ReadFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadFixedAddressResponse
+		localVarReturnValue *ReadFixedAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedAddressAPIService.FixedAddressRead")
@@ -620,11 +620,11 @@ type ApiFixedAddressUpdateRequest struct {
 	ctx        context.Context
 	ApiService FixedAddressAPI
 	id         string
-	body       *IpamsvcFixedAddress
+	body       *FixedAddress
 	inherit    *string
 }
 
-func (r ApiFixedAddressUpdateRequest) Body(body IpamsvcFixedAddress) ApiFixedAddressUpdateRequest {
+func (r ApiFixedAddressUpdateRequest) Body(body FixedAddress) ApiFixedAddressUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -635,7 +635,7 @@ func (r ApiFixedAddressUpdateRequest) Inherit(inherit string) ApiFixedAddressUpd
 	return r
 }
 
-func (r ApiFixedAddressUpdateRequest) Execute() (*IpamsvcUpdateFixedAddressResponse, *http.Response, error) {
+func (r ApiFixedAddressUpdateRequest) Execute() (*UpdateFixedAddressResponse, *http.Response, error) {
 	return r.ApiService.FixedAddressUpdateExecute(r)
 }
 
@@ -659,13 +659,13 @@ func (a *FixedAddressAPIService) FixedAddressUpdate(ctx context.Context, id stri
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateFixedAddressResponse
-func (a *FixedAddressAPIService) FixedAddressUpdateExecute(r ApiFixedAddressUpdateRequest) (*IpamsvcUpdateFixedAddressResponse, *http.Response, error) {
+//	@return UpdateFixedAddressResponse
+func (a *FixedAddressAPIService) FixedAddressUpdateExecute(r ApiFixedAddressUpdateRequest) (*UpdateFixedAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateFixedAddressResponse
+		localVarReturnValue *UpdateFixedAddressResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedAddressAPIService.FixedAddressUpdate")

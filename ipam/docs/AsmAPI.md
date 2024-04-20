@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## AsmCreate
 
-> IpamsvcCreateASMResponse AsmCreate(ctx).Body(body).Execute()
+> CreateASMResponse AsmCreate(ctx).Body(body).Execute()
 
 Update subnet and ranges for Automated Scope Management.
 
@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcASM("SubnetId_example") // IpamsvcASM | 
+	body := *ipam.NewASM("SubnetId_example") // ASM | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AsmAPI.AsmCreate(context.Background()).Body(body).Execute()
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AsmCreate`: IpamsvcCreateASMResponse
+	// response from `AsmCreate`: CreateASMResponse
 	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmCreate`: %v\n", resp)
 }
 ```
@@ -56,11 +56,11 @@ Other parameters are passed through a pointer to a apiAsmCreateRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcASM**](IpamsvcASM.md) |  | 
+ **body** | [**ASM**](ASM.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateASMResponse**](IpamsvcCreateASMResponse.md)
+[**CreateASMResponse**](CreateASMResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## AsmList
 
-> IpamsvcListASMResponse AsmList(ctx).Fields(fields).SubnetId(subnetId).Execute()
+> ListASMResponse AsmList(ctx).Fields(fields).SubnetId(subnetId).Execute()
 
 Retrieve suggested updates for Automated Scope Management.
 
@@ -107,7 +107,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AsmList`: IpamsvcListASMResponse
+	// response from `AsmList`: ListASMResponse
 	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmList`: %v\n", resp)
 }
 ```
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListASMResponse**](IpamsvcListASMResponse.md)
+[**ListASMResponse**](ListASMResponse.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ## AsmRead
 
-> IpamsvcReadASMResponse AsmRead(ctx, id).Fields(fields).Execute()
+> ReadASMResponse AsmRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the suggested update for Automated Scope Management.
 
@@ -175,7 +175,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.AsmRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AsmRead`: IpamsvcReadASMResponse
+	// response from `AsmRead`: ReadASMResponse
 	fmt.Fprintf(os.Stdout, "Response from `AsmAPI.AsmRead`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadASMResponse**](IpamsvcReadASMResponse.md)
+[**ReadASMResponse**](ReadASMResponse.md)
 
 ### Authorization
 

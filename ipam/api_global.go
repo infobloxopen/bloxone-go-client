@@ -34,8 +34,8 @@ type GlobalAPI interface {
 	GlobalRead(ctx context.Context) ApiGlobalReadRequest
 
 	// GlobalReadExecute executes the request
-	//  @return IpamsvcReadGlobalResponse
-	GlobalReadExecute(r ApiGlobalReadRequest) (*IpamsvcReadGlobalResponse, *http.Response, error)
+	//  @return ReadGlobalResponse
+	GlobalReadExecute(r ApiGlobalReadRequest) (*ReadGlobalResponse, *http.Response, error)
 	/*
 			GlobalRead2 Retrieve the global configuration.
 
@@ -49,8 +49,8 @@ type GlobalAPI interface {
 	GlobalRead2(ctx context.Context, id string) ApiGlobalRead2Request
 
 	// GlobalRead2Execute executes the request
-	//  @return IpamsvcReadGlobalResponse
-	GlobalRead2Execute(r ApiGlobalRead2Request) (*IpamsvcReadGlobalResponse, *http.Response, error)
+	//  @return ReadGlobalResponse
+	GlobalRead2Execute(r ApiGlobalRead2Request) (*ReadGlobalResponse, *http.Response, error)
 	/*
 			GlobalUpdate Update the global configuration.
 
@@ -63,8 +63,8 @@ type GlobalAPI interface {
 	GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequest
 
 	// GlobalUpdateExecute executes the request
-	//  @return IpamsvcUpdateGlobalResponse
-	GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*IpamsvcUpdateGlobalResponse, *http.Response, error)
+	//  @return UpdateGlobalResponse
+	GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*UpdateGlobalResponse, *http.Response, error)
 	/*
 			GlobalUpdate2 Update the global configuration.
 
@@ -78,8 +78,8 @@ type GlobalAPI interface {
 	GlobalUpdate2(ctx context.Context, id string) ApiGlobalUpdate2Request
 
 	// GlobalUpdate2Execute executes the request
-	//  @return IpamsvcUpdateGlobalResponse
-	GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*IpamsvcUpdateGlobalResponse, *http.Response, error)
+	//  @return UpdateGlobalResponse
+	GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*UpdateGlobalResponse, *http.Response, error)
 }
 
 // GlobalAPIService GlobalAPI service
@@ -97,7 +97,7 @@ func (r ApiGlobalReadRequest) Fields(fields string) ApiGlobalReadRequest {
 	return r
 }
 
-func (r ApiGlobalReadRequest) Execute() (*IpamsvcReadGlobalResponse, *http.Response, error) {
+func (r ApiGlobalReadRequest) Execute() (*ReadGlobalResponse, *http.Response, error) {
 	return r.ApiService.GlobalReadExecute(r)
 }
 
@@ -119,13 +119,13 @@ func (a *GlobalAPIService) GlobalRead(ctx context.Context) ApiGlobalReadRequest 
 
 // Execute executes the request
 //
-//	@return IpamsvcReadGlobalResponse
-func (a *GlobalAPIService) GlobalReadExecute(r ApiGlobalReadRequest) (*IpamsvcReadGlobalResponse, *http.Response, error) {
+//	@return ReadGlobalResponse
+func (a *GlobalAPIService) GlobalReadExecute(r ApiGlobalReadRequest) (*ReadGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadGlobalResponse
+		localVarReturnValue *ReadGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalRead")
@@ -202,7 +202,7 @@ func (r ApiGlobalRead2Request) Fields(fields string) ApiGlobalRead2Request {
 	return r
 }
 
-func (r ApiGlobalRead2Request) Execute() (*IpamsvcReadGlobalResponse, *http.Response, error) {
+func (r ApiGlobalRead2Request) Execute() (*ReadGlobalResponse, *http.Response, error) {
 	return r.ApiService.GlobalRead2Execute(r)
 }
 
@@ -226,13 +226,13 @@ func (a *GlobalAPIService) GlobalRead2(ctx context.Context, id string) ApiGlobal
 
 // Execute executes the request
 //
-//	@return IpamsvcReadGlobalResponse
-func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*IpamsvcReadGlobalResponse, *http.Response, error) {
+//	@return ReadGlobalResponse
+func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*ReadGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadGlobalResponse
+		localVarReturnValue *ReadGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalRead2")
@@ -300,15 +300,15 @@ func (a *GlobalAPIService) GlobalRead2Execute(r ApiGlobalRead2Request) (*Ipamsvc
 type ApiGlobalUpdateRequest struct {
 	ctx        context.Context
 	ApiService GlobalAPI
-	body       *IpamsvcGlobal
+	body       *Global
 }
 
-func (r ApiGlobalUpdateRequest) Body(body IpamsvcGlobal) ApiGlobalUpdateRequest {
+func (r ApiGlobalUpdateRequest) Body(body Global) ApiGlobalUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGlobalUpdateRequest) Execute() (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
+func (r ApiGlobalUpdateRequest) Execute() (*UpdateGlobalResponse, *http.Response, error) {
 	return r.ApiService.GlobalUpdateExecute(r)
 }
 
@@ -330,13 +330,13 @@ func (a *GlobalAPIService) GlobalUpdate(ctx context.Context) ApiGlobalUpdateRequ
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateGlobalResponse
-func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
+//	@return UpdateGlobalResponse
+func (a *GlobalAPIService) GlobalUpdateExecute(r ApiGlobalUpdateRequest) (*UpdateGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateGlobalResponse
+		localVarReturnValue *UpdateGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalUpdate")
@@ -406,15 +406,15 @@ type ApiGlobalUpdate2Request struct {
 	ctx        context.Context
 	ApiService GlobalAPI
 	id         string
-	body       *IpamsvcGlobal
+	body       *Global
 }
 
-func (r ApiGlobalUpdate2Request) Body(body IpamsvcGlobal) ApiGlobalUpdate2Request {
+func (r ApiGlobalUpdate2Request) Body(body Global) ApiGlobalUpdate2Request {
 	r.body = &body
 	return r
 }
 
-func (r ApiGlobalUpdate2Request) Execute() (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
+func (r ApiGlobalUpdate2Request) Execute() (*UpdateGlobalResponse, *http.Response, error) {
 	return r.ApiService.GlobalUpdate2Execute(r)
 }
 
@@ -438,13 +438,13 @@ func (a *GlobalAPIService) GlobalUpdate2(ctx context.Context, id string) ApiGlob
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateGlobalResponse
-func (a *GlobalAPIService) GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*IpamsvcUpdateGlobalResponse, *http.Response, error) {
+//	@return UpdateGlobalResponse
+func (a *GlobalAPIService) GlobalUpdate2Execute(r ApiGlobalUpdate2Request) (*UpdateGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateGlobalResponse
+		localVarReturnValue *UpdateGlobalResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GlobalAPIService.GlobalUpdate2")

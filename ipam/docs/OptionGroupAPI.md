@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## OptionGroupCreate
 
-> IpamsvcCreateOptionGroupResponse OptionGroupCreate(ctx).Body(body).Execute()
+> CreateOptionGroupResponse OptionGroupCreate(ctx).Body(body).Execute()
 
 Create the DHCP option group.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcOptionGroup("Name_example") // IpamsvcOptionGroup | 
+	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionGroupAPI.OptionGroupCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupCreate`: IpamsvcCreateOptionGroupResponse
+	// response from `OptionGroupCreate`: CreateOptionGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiOptionGroupCreateRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcOptionGroup**](IpamsvcOptionGroup.md) |  | 
+ **body** | [**OptionGroup**](OptionGroup.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateOptionGroupResponse**](IpamsvcCreateOptionGroupResponse.md)
+[**CreateOptionGroupResponse**](CreateOptionGroupResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## OptionGroupList
 
-> IpamsvcListOptionGroupResponse OptionGroupList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionGroupResponse OptionGroupList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option groups.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupList`: IpamsvcListOptionGroupResponse
+	// response from `OptionGroupList`: ListOptionGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListOptionGroupResponse**](IpamsvcListOptionGroupResponse.md)
+[**ListOptionGroupResponse**](ListOptionGroupResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## OptionGroupRead
 
-> IpamsvcReadOptionGroupResponse OptionGroupRead(ctx, id).Fields(fields).Execute()
+> ReadOptionGroupResponse OptionGroupRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option group.
 
@@ -257,7 +257,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupRead`: IpamsvcReadOptionGroupResponse
+	// response from `OptionGroupRead`: ReadOptionGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupRead`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadOptionGroupResponse**](IpamsvcReadOptionGroupResponse.md)
+[**ReadOptionGroupResponse**](ReadOptionGroupResponse.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## OptionGroupUpdate
 
-> IpamsvcUpdateOptionGroupResponse OptionGroupUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionGroupResponse OptionGroupUpdate(ctx, id).Body(body).Execute()
 
 Update the DHCP option group.
 
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcOptionGroup("Name_example") // IpamsvcOptionGroup | 
+	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionGroupAPI.OptionGroupUpdate(context.Background(), id).Body(body).Execute()
@@ -329,7 +329,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupUpdate`: IpamsvcUpdateOptionGroupResponse
+	// response from `OptionGroupUpdate`: UpdateOptionGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupUpdate`: %v\n", resp)
 }
 ```
@@ -350,11 +350,11 @@ Other parameters are passed through a pointer to a apiOptionGroupUpdateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcOptionGroup**](IpamsvcOptionGroup.md) |  | 
+ **body** | [**OptionGroup**](OptionGroup.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateOptionGroupResponse**](IpamsvcUpdateOptionGroupResponse.md)
+[**UpdateOptionGroupResponse**](UpdateOptionGroupResponse.md)
 
 ### Authorization
 

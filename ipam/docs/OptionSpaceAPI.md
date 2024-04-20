@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## OptionSpaceCreate
 
-> IpamsvcCreateOptionSpaceResponse OptionSpaceCreate(ctx).Body(body).Execute()
+> CreateOptionSpaceResponse OptionSpaceCreate(ctx).Body(body).Execute()
 
 Create the DHCP option space.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcOptionSpace("Name_example") // IpamsvcOptionSpace | 
+	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceCreate`: IpamsvcCreateOptionSpaceResponse
+	// response from `OptionSpaceCreate`: CreateOptionSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiOptionSpaceCreateRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcOptionSpace**](IpamsvcOptionSpace.md) |  | 
+ **body** | [**OptionSpace**](OptionSpace.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateOptionSpaceResponse**](IpamsvcCreateOptionSpaceResponse.md)
+[**CreateOptionSpaceResponse**](CreateOptionSpaceResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## OptionSpaceList
 
-> IpamsvcListOptionSpaceResponse OptionSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionSpaceResponse OptionSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option spaces.
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceList`: IpamsvcListOptionSpaceResponse
+	// response from `OptionSpaceList`: ListOptionSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListOptionSpaceResponse**](IpamsvcListOptionSpaceResponse.md)
+[**ListOptionSpaceResponse**](ListOptionSpaceResponse.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## OptionSpaceRead
 
-> IpamsvcReadOptionSpaceResponse OptionSpaceRead(ctx, id).Fields(fields).Execute()
+> ReadOptionSpaceResponse OptionSpaceRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option space.
 
@@ -257,7 +257,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceRead`: IpamsvcReadOptionSpaceResponse
+	// response from `OptionSpaceRead`: ReadOptionSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceRead`: %v\n", resp)
 }
 ```
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadOptionSpaceResponse**](IpamsvcReadOptionSpaceResponse.md)
+[**ReadOptionSpaceResponse**](ReadOptionSpaceResponse.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## OptionSpaceUpdate
 
-> IpamsvcUpdateOptionSpaceResponse OptionSpaceUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionSpaceResponse OptionSpaceUpdate(ctx, id).Body(body).Execute()
 
 Update the DHCP option space.
 
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcOptionSpace("Name_example") // IpamsvcOptionSpace | 
+	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceUpdate(context.Background(), id).Body(body).Execute()
@@ -329,7 +329,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceUpdate`: IpamsvcUpdateOptionSpaceResponse
+	// response from `OptionSpaceUpdate`: UpdateOptionSpaceResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceUpdate`: %v\n", resp)
 }
 ```
@@ -350,11 +350,11 @@ Other parameters are passed through a pointer to a apiOptionSpaceUpdateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcOptionSpace**](IpamsvcOptionSpace.md) |  | 
+ **body** | [**OptionSpace**](OptionSpace.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateOptionSpaceResponse**](IpamsvcUpdateOptionSpaceResponse.md)
+[**UpdateOptionSpaceResponse**](UpdateOptionSpaceResponse.md)
 
 ### Authorization
 

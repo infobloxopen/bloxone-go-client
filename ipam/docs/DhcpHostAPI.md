@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DhcpHostList
 
-> IpamsvcListHostResponse DhcpHostList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ListHostResponse DhcpHostList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Retrieve DHCP hosts.
 
@@ -48,7 +48,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostList`: IpamsvcListHostResponse
+	// response from `DhcpHostList`: ListHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostList`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListHostResponse**](IpamsvcListHostResponse.md)
+[**ListHostResponse**](ListHostResponse.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## DhcpHostListAssociations
 
-> IpamsvcHostAssociationsResponse DhcpHostListAssociations(ctx, id).Execute()
+> HostAssociationsResponse DhcpHostListAssociations(ctx, id).Execute()
 
 Retrieve DHCP host associations.
 
@@ -121,7 +121,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostListAssociations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostListAssociations`: IpamsvcHostAssociationsResponse
+	// response from `DhcpHostListAssociations`: HostAssociationsResponse
 	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostListAssociations`: %v\n", resp)
 }
 ```
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcHostAssociationsResponse**](IpamsvcHostAssociationsResponse.md)
+[**HostAssociationsResponse**](HostAssociationsResponse.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## DhcpHostRead
 
-> IpamsvcReadHostResponse DhcpHostRead(ctx, id).Fields(fields).Execute()
+> ReadHostResponse DhcpHostRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP host.
 
@@ -192,7 +192,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostRead`: IpamsvcReadHostResponse
+	// response from `DhcpHostRead`: ReadHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostRead`: %v\n", resp)
 }
 ```
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadHostResponse**](IpamsvcReadHostResponse.md)
+[**ReadHostResponse**](ReadHostResponse.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## DhcpHostUpdate
 
-> IpamsvcUpdateHostResponse DhcpHostUpdate(ctx, id).Body(body).Execute()
+> UpdateHostResponse DhcpHostUpdate(ctx, id).Body(body).Execute()
 
 Update the DHCP hosts.
 
@@ -256,7 +256,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcHost() // IpamsvcHost | 
+	body := *ipam.NewHost() // Host | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.DhcpHostAPI.DhcpHostUpdate(context.Background(), id).Body(body).Execute()
@@ -264,7 +264,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostUpdate`: IpamsvcUpdateHostResponse
+	// response from `DhcpHostUpdate`: UpdateHostResponse
 	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostUpdate`: %v\n", resp)
 }
 ```
@@ -285,11 +285,11 @@ Other parameters are passed through a pointer to a apiDhcpHostUpdateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcHost**](IpamsvcHost.md) |  | 
+ **body** | [**Host**](Host.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateHostResponse**](IpamsvcUpdateHostResponse.md)
+[**UpdateHostResponse**](UpdateHostResponse.md)
 
 ### Authorization
 

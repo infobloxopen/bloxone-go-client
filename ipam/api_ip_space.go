@@ -39,8 +39,8 @@ type IpSpaceAPI interface {
 	IpSpaceBulkCopy(ctx context.Context) ApiIpSpaceBulkCopyRequest
 
 	// IpSpaceBulkCopyExecute executes the request
-	//  @return IpamsvcBulkCopyIPSpaceResponse
-	IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*IpamsvcBulkCopyIPSpaceResponse, *http.Response, error)
+	//  @return BulkCopyIPSpaceResponse
+	IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*BulkCopyIPSpaceResponse, *http.Response, error)
 	/*
 			IpSpaceCopy Copy the IP space.
 
@@ -54,8 +54,8 @@ type IpSpaceAPI interface {
 	IpSpaceCopy(ctx context.Context, id string) ApiIpSpaceCopyRequest
 
 	// IpSpaceCopyExecute executes the request
-	//  @return IpamsvcCopyIPSpaceResponse
-	IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*IpamsvcCopyIPSpaceResponse, *http.Response, error)
+	//  @return CopyIPSpaceResponse
+	IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*CopyIPSpaceResponse, *http.Response, error)
 	/*
 			IpSpaceCreate Create the IP space.
 
@@ -68,8 +68,8 @@ type IpSpaceAPI interface {
 	IpSpaceCreate(ctx context.Context) ApiIpSpaceCreateRequest
 
 	// IpSpaceCreateExecute executes the request
-	//  @return IpamsvcCreateIPSpaceResponse
-	IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*IpamsvcCreateIPSpaceResponse, *http.Response, error)
+	//  @return CreateIPSpaceResponse
+	IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*CreateIPSpaceResponse, *http.Response, error)
 	/*
 			IpSpaceDelete Move the IP space to the recycle bin.
 
@@ -96,8 +96,8 @@ type IpSpaceAPI interface {
 	IpSpaceList(ctx context.Context) ApiIpSpaceListRequest
 
 	// IpSpaceListExecute executes the request
-	//  @return IpamsvcListIPSpaceResponse
-	IpSpaceListExecute(r ApiIpSpaceListRequest) (*IpamsvcListIPSpaceResponse, *http.Response, error)
+	//  @return ListIPSpaceResponse
+	IpSpaceListExecute(r ApiIpSpaceListRequest) (*ListIPSpaceResponse, *http.Response, error)
 	/*
 			IpSpaceRead Retrieve the IP space.
 
@@ -111,8 +111,8 @@ type IpSpaceAPI interface {
 	IpSpaceRead(ctx context.Context, id string) ApiIpSpaceReadRequest
 
 	// IpSpaceReadExecute executes the request
-	//  @return IpamsvcReadIPSpaceResponse
-	IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*IpamsvcReadIPSpaceResponse, *http.Response, error)
+	//  @return ReadIPSpaceResponse
+	IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*ReadIPSpaceResponse, *http.Response, error)
 	/*
 			IpSpaceUpdate Update the IP space.
 
@@ -126,8 +126,8 @@ type IpSpaceAPI interface {
 	IpSpaceUpdate(ctx context.Context, id string) ApiIpSpaceUpdateRequest
 
 	// IpSpaceUpdateExecute executes the request
-	//  @return IpamsvcUpdateIPSpaceResponse
-	IpSpaceUpdateExecute(r ApiIpSpaceUpdateRequest) (*IpamsvcUpdateIPSpaceResponse, *http.Response, error)
+	//  @return UpdateIPSpaceResponse
+	IpSpaceUpdateExecute(r ApiIpSpaceUpdateRequest) (*UpdateIPSpaceResponse, *http.Response, error)
 }
 
 // IpSpaceAPIService IpSpaceAPI service
@@ -136,15 +136,15 @@ type IpSpaceAPIService internal.Service
 type ApiIpSpaceBulkCopyRequest struct {
 	ctx        context.Context
 	ApiService IpSpaceAPI
-	body       *IpamsvcBulkCopyIPSpace
+	body       *BulkCopyIPSpace
 }
 
-func (r ApiIpSpaceBulkCopyRequest) Body(body IpamsvcBulkCopyIPSpace) ApiIpSpaceBulkCopyRequest {
+func (r ApiIpSpaceBulkCopyRequest) Body(body BulkCopyIPSpace) ApiIpSpaceBulkCopyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIpSpaceBulkCopyRequest) Execute() (*IpamsvcBulkCopyIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceBulkCopyRequest) Execute() (*BulkCopyIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceBulkCopyExecute(r)
 }
 
@@ -171,13 +171,13 @@ func (a *IpSpaceAPIService) IpSpaceBulkCopy(ctx context.Context) ApiIpSpaceBulkC
 
 // Execute executes the request
 //
-//	@return IpamsvcBulkCopyIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*IpamsvcBulkCopyIPSpaceResponse, *http.Response, error) {
+//	@return BulkCopyIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceBulkCopyExecute(r ApiIpSpaceBulkCopyRequest) (*BulkCopyIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcBulkCopyIPSpaceResponse
+		localVarReturnValue *BulkCopyIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceBulkCopy")
@@ -247,15 +247,15 @@ type ApiIpSpaceCopyRequest struct {
 	ctx        context.Context
 	ApiService IpSpaceAPI
 	id         string
-	body       *IpamsvcCopyIPSpace
+	body       *CopyIPSpace
 }
 
-func (r ApiIpSpaceCopyRequest) Body(body IpamsvcCopyIPSpace) ApiIpSpaceCopyRequest {
+func (r ApiIpSpaceCopyRequest) Body(body CopyIPSpace) ApiIpSpaceCopyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIpSpaceCopyRequest) Execute() (*IpamsvcCopyIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceCopyRequest) Execute() (*CopyIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceCopyExecute(r)
 }
 
@@ -279,13 +279,13 @@ func (a *IpSpaceAPIService) IpSpaceCopy(ctx context.Context, id string) ApiIpSpa
 
 // Execute executes the request
 //
-//	@return IpamsvcCopyIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*IpamsvcCopyIPSpaceResponse, *http.Response, error) {
+//	@return CopyIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*CopyIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCopyIPSpaceResponse
+		localVarReturnValue *CopyIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceCopy")
@@ -355,11 +355,11 @@ func (a *IpSpaceAPIService) IpSpaceCopyExecute(r ApiIpSpaceCopyRequest) (*Ipamsv
 type ApiIpSpaceCreateRequest struct {
 	ctx        context.Context
 	ApiService IpSpaceAPI
-	body       *IpamsvcIPSpace
+	body       *IPSpace
 	inherit    *string
 }
 
-func (r ApiIpSpaceCreateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceCreateRequest {
+func (r ApiIpSpaceCreateRequest) Body(body IPSpace) ApiIpSpaceCreateRequest {
 	r.body = &body
 	return r
 }
@@ -370,7 +370,7 @@ func (r ApiIpSpaceCreateRequest) Inherit(inherit string) ApiIpSpaceCreateRequest
 	return r
 }
 
-func (r ApiIpSpaceCreateRequest) Execute() (*IpamsvcCreateIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceCreateRequest) Execute() (*CreateIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceCreateExecute(r)
 }
 
@@ -392,13 +392,13 @@ func (a *IpSpaceAPIService) IpSpaceCreate(ctx context.Context) ApiIpSpaceCreateR
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*IpamsvcCreateIPSpaceResponse, *http.Response, error) {
+//	@return CreateIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceCreateExecute(r ApiIpSpaceCreateRequest) (*CreateIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateIPSpaceResponse
+		localVarReturnValue *CreateIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceCreate")
@@ -635,7 +635,7 @@ func (r ApiIpSpaceListRequest) Inherit(inherit string) ApiIpSpaceListRequest {
 	return r
 }
 
-func (r ApiIpSpaceListRequest) Execute() (*IpamsvcListIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceListRequest) Execute() (*ListIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceListExecute(r)
 }
 
@@ -657,13 +657,13 @@ func (a *IpSpaceAPIService) IpSpaceList(ctx context.Context) ApiIpSpaceListReque
 
 // Execute executes the request
 //
-//	@return IpamsvcListIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceListExecute(r ApiIpSpaceListRequest) (*IpamsvcListIPSpaceResponse, *http.Response, error) {
+//	@return ListIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceListExecute(r ApiIpSpaceListRequest) (*ListIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListIPSpaceResponse
+		localVarReturnValue *ListIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceList")
@@ -771,7 +771,7 @@ func (r ApiIpSpaceReadRequest) Inherit(inherit string) ApiIpSpaceReadRequest {
 	return r
 }
 
-func (r ApiIpSpaceReadRequest) Execute() (*IpamsvcReadIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceReadRequest) Execute() (*ReadIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceReadExecute(r)
 }
 
@@ -795,13 +795,13 @@ func (a *IpSpaceAPIService) IpSpaceRead(ctx context.Context, id string) ApiIpSpa
 
 // Execute executes the request
 //
-//	@return IpamsvcReadIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*IpamsvcReadIPSpaceResponse, *http.Response, error) {
+//	@return ReadIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceReadExecute(r ApiIpSpaceReadRequest) (*ReadIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadIPSpaceResponse
+		localVarReturnValue *ReadIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceRead")
@@ -873,11 +873,11 @@ type ApiIpSpaceUpdateRequest struct {
 	ctx        context.Context
 	ApiService IpSpaceAPI
 	id         string
-	body       *IpamsvcIPSpace
+	body       *IPSpace
 	inherit    *string
 }
 
-func (r ApiIpSpaceUpdateRequest) Body(body IpamsvcIPSpace) ApiIpSpaceUpdateRequest {
+func (r ApiIpSpaceUpdateRequest) Body(body IPSpace) ApiIpSpaceUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -888,7 +888,7 @@ func (r ApiIpSpaceUpdateRequest) Inherit(inherit string) ApiIpSpaceUpdateRequest
 	return r
 }
 
-func (r ApiIpSpaceUpdateRequest) Execute() (*IpamsvcUpdateIPSpaceResponse, *http.Response, error) {
+func (r ApiIpSpaceUpdateRequest) Execute() (*UpdateIPSpaceResponse, *http.Response, error) {
 	return r.ApiService.IpSpaceUpdateExecute(r)
 }
 
@@ -912,13 +912,13 @@ func (a *IpSpaceAPIService) IpSpaceUpdate(ctx context.Context, id string) ApiIpS
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateIPSpaceResponse
-func (a *IpSpaceAPIService) IpSpaceUpdateExecute(r ApiIpSpaceUpdateRequest) (*IpamsvcUpdateIPSpaceResponse, *http.Response, error) {
+//	@return UpdateIPSpaceResponse
+func (a *IpSpaceAPIService) IpSpaceUpdateExecute(r ApiIpSpaceUpdateRequest) (*UpdateIPSpaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateIPSpaceResponse
+		localVarReturnValue *UpdateIPSpaceResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpSpaceAPIService.IpSpaceUpdate")

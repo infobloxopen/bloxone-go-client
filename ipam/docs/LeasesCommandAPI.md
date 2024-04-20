@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## LeasesCommandCreate
 
-> IpamsvcCreateLeasesCommandResponse LeasesCommandCreate(ctx).Body(body).Execute()
+> CreateLeasesCommandResponse LeasesCommandCreate(ctx).Body(body).Execute()
 
 Perform actions like clearing DHCP lease(s).
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcLeasesCommand("Command_example") // IpamsvcLeasesCommand | 
+	body := *ipam.NewLeasesCommand("Command_example") // LeasesCommand | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(body).Execute()
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `LeasesCommandAPI.LeasesCommandCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeasesCommandCreate`: IpamsvcCreateLeasesCommandResponse
+	// response from `LeasesCommandCreate`: CreateLeasesCommandResponse
 	fmt.Fprintf(os.Stdout, "Response from `LeasesCommandAPI.LeasesCommandCreate`: %v\n", resp)
 }
 ```
@@ -54,11 +54,11 @@ Other parameters are passed through a pointer to a apiLeasesCommandCreateRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcLeasesCommand**](IpamsvcLeasesCommand.md) |  | 
+ **body** | [**LeasesCommand**](LeasesCommand.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateLeasesCommandResponse**](IpamsvcCreateLeasesCommandResponse.md)
+[**CreateLeasesCommandResponse**](CreateLeasesCommandResponse.md)
 
 ### Authorization
 

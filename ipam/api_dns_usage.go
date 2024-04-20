@@ -33,8 +33,8 @@ type DnsUsageAPI interface {
 	DnsUsageList(ctx context.Context) ApiDnsUsageListRequest
 
 	// DnsUsageListExecute executes the request
-	//  @return IpamsvcListDNSUsageResponse
-	DnsUsageListExecute(r ApiDnsUsageListRequest) (*IpamsvcListDNSUsageResponse, *http.Response, error)
+	//  @return ListDNSUsageResponse
+	DnsUsageListExecute(r ApiDnsUsageListRequest) (*ListDNSUsageResponse, *http.Response, error)
 	/*
 		DnsUsageRead Retrieve the DNS usage.
 
@@ -47,8 +47,8 @@ type DnsUsageAPI interface {
 	DnsUsageRead(ctx context.Context, id string) ApiDnsUsageReadRequest
 
 	// DnsUsageReadExecute executes the request
-	//  @return IpamsvcReadDNSUsageResponse
-	DnsUsageReadExecute(r ApiDnsUsageReadRequest) (*IpamsvcReadDNSUsageResponse, *http.Response, error)
+	//  @return ReadDNSUsageResponse
+	DnsUsageReadExecute(r ApiDnsUsageReadRequest) (*ReadDNSUsageResponse, *http.Response, error)
 }
 
 // DnsUsageAPIService DnsUsageAPI service
@@ -101,7 +101,7 @@ func (r ApiDnsUsageListRequest) OrderBy(orderBy string) ApiDnsUsageListRequest {
 	return r
 }
 
-func (r ApiDnsUsageListRequest) Execute() (*IpamsvcListDNSUsageResponse, *http.Response, error) {
+func (r ApiDnsUsageListRequest) Execute() (*ListDNSUsageResponse, *http.Response, error) {
 	return r.ApiService.DnsUsageListExecute(r)
 }
 
@@ -122,13 +122,13 @@ func (a *DnsUsageAPIService) DnsUsageList(ctx context.Context) ApiDnsUsageListRe
 
 // Execute executes the request
 //
-//	@return IpamsvcListDNSUsageResponse
-func (a *DnsUsageAPIService) DnsUsageListExecute(r ApiDnsUsageListRequest) (*IpamsvcListDNSUsageResponse, *http.Response, error) {
+//	@return ListDNSUsageResponse
+func (a *DnsUsageAPIService) DnsUsageListExecute(r ApiDnsUsageListRequest) (*ListDNSUsageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListDNSUsageResponse
+		localVarReturnValue *ListDNSUsageResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DnsUsageAPIService.DnsUsageList")
@@ -220,7 +220,7 @@ func (r ApiDnsUsageReadRequest) Fields(fields string) ApiDnsUsageReadRequest {
 	return r
 }
 
-func (r ApiDnsUsageReadRequest) Execute() (*IpamsvcReadDNSUsageResponse, *http.Response, error) {
+func (r ApiDnsUsageReadRequest) Execute() (*ReadDNSUsageResponse, *http.Response, error) {
 	return r.ApiService.DnsUsageReadExecute(r)
 }
 
@@ -243,13 +243,13 @@ func (a *DnsUsageAPIService) DnsUsageRead(ctx context.Context, id string) ApiDns
 
 // Execute executes the request
 //
-//	@return IpamsvcReadDNSUsageResponse
-func (a *DnsUsageAPIService) DnsUsageReadExecute(r ApiDnsUsageReadRequest) (*IpamsvcReadDNSUsageResponse, *http.Response, error) {
+//	@return ReadDNSUsageResponse
+func (a *DnsUsageAPIService) DnsUsageReadExecute(r ApiDnsUsageReadRequest) (*ReadDNSUsageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadDNSUsageResponse
+		localVarReturnValue *ReadDNSUsageResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DnsUsageAPIService.DnsUsageRead")

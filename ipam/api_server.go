@@ -34,8 +34,8 @@ type ServerAPI interface {
 	ServerCreate(ctx context.Context) ApiServerCreateRequest
 
 	// ServerCreateExecute executes the request
-	//  @return IpamsvcCreateServerResponse
-	ServerCreateExecute(r ApiServerCreateRequest) (*IpamsvcCreateServerResponse, *http.Response, error)
+	//  @return CreateServerResponse
+	ServerCreateExecute(r ApiServerCreateRequest) (*CreateServerResponse, *http.Response, error)
 	/*
 			ServerDelete Move the DHCP configuration profile to the recycle bin.
 
@@ -62,8 +62,8 @@ type ServerAPI interface {
 	ServerList(ctx context.Context) ApiServerListRequest
 
 	// ServerListExecute executes the request
-	//  @return IpamsvcListServerResponse
-	ServerListExecute(r ApiServerListRequest) (*IpamsvcListServerResponse, *http.Response, error)
+	//  @return ListServerResponse
+	ServerListExecute(r ApiServerListRequest) (*ListServerResponse, *http.Response, error)
 	/*
 			ServerRead Retrieve the DHCP configuration profile.
 
@@ -77,8 +77,8 @@ type ServerAPI interface {
 	ServerRead(ctx context.Context, id string) ApiServerReadRequest
 
 	// ServerReadExecute executes the request
-	//  @return IpamsvcReadServerResponse
-	ServerReadExecute(r ApiServerReadRequest) (*IpamsvcReadServerResponse, *http.Response, error)
+	//  @return ReadServerResponse
+	ServerReadExecute(r ApiServerReadRequest) (*ReadServerResponse, *http.Response, error)
 	/*
 			ServerUpdate Update the DHCP configuration profile.
 
@@ -92,8 +92,8 @@ type ServerAPI interface {
 	ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest
 
 	// ServerUpdateExecute executes the request
-	//  @return IpamsvcUpdateServerResponse
-	ServerUpdateExecute(r ApiServerUpdateRequest) (*IpamsvcUpdateServerResponse, *http.Response, error)
+	//  @return UpdateServerResponse
+	ServerUpdateExecute(r ApiServerUpdateRequest) (*UpdateServerResponse, *http.Response, error)
 }
 
 // ServerAPIService ServerAPI service
@@ -102,11 +102,11 @@ type ServerAPIService internal.Service
 type ApiServerCreateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
-	body       *IpamsvcServer
+	body       *Server
 	inherit    *string
 }
 
-func (r ApiServerCreateRequest) Body(body IpamsvcServer) ApiServerCreateRequest {
+func (r ApiServerCreateRequest) Body(body Server) ApiServerCreateRequest {
 	r.body = &body
 	return r
 }
@@ -117,7 +117,7 @@ func (r ApiServerCreateRequest) Inherit(inherit string) ApiServerCreateRequest {
 	return r
 }
 
-func (r ApiServerCreateRequest) Execute() (*IpamsvcCreateServerResponse, *http.Response, error) {
+func (r ApiServerCreateRequest) Execute() (*CreateServerResponse, *http.Response, error) {
 	return r.ApiService.ServerCreateExecute(r)
 }
 
@@ -139,13 +139,13 @@ func (a *ServerAPIService) ServerCreate(ctx context.Context) ApiServerCreateRequ
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateServerResponse
-func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*IpamsvcCreateServerResponse, *http.Response, error) {
+//	@return CreateServerResponse
+func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*CreateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateServerResponse
+		localVarReturnValue *CreateServerResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerCreate")
@@ -382,7 +382,7 @@ func (r ApiServerListRequest) Inherit(inherit string) ApiServerListRequest {
 	return r
 }
 
-func (r ApiServerListRequest) Execute() (*IpamsvcListServerResponse, *http.Response, error) {
+func (r ApiServerListRequest) Execute() (*ListServerResponse, *http.Response, error) {
 	return r.ApiService.ServerListExecute(r)
 }
 
@@ -404,13 +404,13 @@ func (a *ServerAPIService) ServerList(ctx context.Context) ApiServerListRequest 
 
 // Execute executes the request
 //
-//	@return IpamsvcListServerResponse
-func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*IpamsvcListServerResponse, *http.Response, error) {
+//	@return ListServerResponse
+func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*ListServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListServerResponse
+		localVarReturnValue *ListServerResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerList")
@@ -518,7 +518,7 @@ func (r ApiServerReadRequest) Inherit(inherit string) ApiServerReadRequest {
 	return r
 }
 
-func (r ApiServerReadRequest) Execute() (*IpamsvcReadServerResponse, *http.Response, error) {
+func (r ApiServerReadRequest) Execute() (*ReadServerResponse, *http.Response, error) {
 	return r.ApiService.ServerReadExecute(r)
 }
 
@@ -542,13 +542,13 @@ func (a *ServerAPIService) ServerRead(ctx context.Context, id string) ApiServerR
 
 // Execute executes the request
 //
-//	@return IpamsvcReadServerResponse
-func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*IpamsvcReadServerResponse, *http.Response, error) {
+//	@return ReadServerResponse
+func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*ReadServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadServerResponse
+		localVarReturnValue *ReadServerResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerRead")
@@ -620,11 +620,11 @@ type ApiServerUpdateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	id         string
-	body       *IpamsvcServer
+	body       *Server
 	inherit    *string
 }
 
-func (r ApiServerUpdateRequest) Body(body IpamsvcServer) ApiServerUpdateRequest {
+func (r ApiServerUpdateRequest) Body(body Server) ApiServerUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -635,7 +635,7 @@ func (r ApiServerUpdateRequest) Inherit(inherit string) ApiServerUpdateRequest {
 	return r
 }
 
-func (r ApiServerUpdateRequest) Execute() (*IpamsvcUpdateServerResponse, *http.Response, error) {
+func (r ApiServerUpdateRequest) Execute() (*UpdateServerResponse, *http.Response, error) {
 	return r.ApiService.ServerUpdateExecute(r)
 }
 
@@ -659,13 +659,13 @@ func (a *ServerAPIService) ServerUpdate(ctx context.Context, id string) ApiServe
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateServerResponse
-func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*IpamsvcUpdateServerResponse, *http.Response, error) {
+//	@return UpdateServerResponse
+func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*UpdateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateServerResponse
+		localVarReturnValue *UpdateServerResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerUpdate")

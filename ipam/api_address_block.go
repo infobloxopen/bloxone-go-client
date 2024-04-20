@@ -35,8 +35,8 @@ type AddressBlockAPI interface {
 	AddressBlockCopy(ctx context.Context, id string) ApiAddressBlockCopyRequest
 
 	// AddressBlockCopyExecute executes the request
-	//  @return IpamsvcCopyAddressBlockResponse
-	AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*IpamsvcCopyAddressBlockResponse, *http.Response, error)
+	//  @return CopyAddressBlockResponse
+	AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*CopyAddressBlockResponse, *http.Response, error)
 	/*
 			AddressBlockCreate Create the address block.
 
@@ -49,8 +49,8 @@ type AddressBlockAPI interface {
 	AddressBlockCreate(ctx context.Context) ApiAddressBlockCreateRequest
 
 	// AddressBlockCreateExecute executes the request
-	//  @return IpamsvcCreateAddressBlockResponse
-	AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*IpamsvcCreateAddressBlockResponse, *http.Response, error)
+	//  @return CreateAddressBlockResponse
+	AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*CreateAddressBlockResponse, *http.Response, error)
 	/*
 			AddressBlockCreateNextAvailableAB Create the Next Available Address Block object.
 
@@ -64,8 +64,8 @@ type AddressBlockAPI interface {
 	AddressBlockCreateNextAvailableAB(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableABRequest
 
 	// AddressBlockCreateNextAvailableABExecute executes the request
-	//  @return IpamsvcCreateNextAvailableABResponse
-	AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*IpamsvcCreateNextAvailableABResponse, *http.Response, error)
+	//  @return CreateNextAvailableABResponse
+	AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*CreateNextAvailableABResponse, *http.Response, error)
 	/*
 			AddressBlockCreateNextAvailableIP Allocate the next available IP address.
 
@@ -79,8 +79,8 @@ type AddressBlockAPI interface {
 	AddressBlockCreateNextAvailableIP(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableIPRequest
 
 	// AddressBlockCreateNextAvailableIPExecute executes the request
-	//  @return IpamsvcCreateNextAvailableIPResponse
-	AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error)
+	//  @return CreateNextAvailableIPResponse
+	AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error)
 	/*
 			AddressBlockCreateNextAvailableSubnet Create the Next Available Subnet object.
 
@@ -94,8 +94,8 @@ type AddressBlockAPI interface {
 	AddressBlockCreateNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockCreateNextAvailableSubnetRequest
 
 	// AddressBlockCreateNextAvailableSubnetExecute executes the request
-	//  @return IpamsvcCreateNextAvailableSubnetResponse
-	AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*IpamsvcCreateNextAvailableSubnetResponse, *http.Response, error)
+	//  @return CreateNextAvailableSubnetResponse
+	AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*CreateNextAvailableSubnetResponse, *http.Response, error)
 	/*
 			AddressBlockDelete Move the address block to the recycle bin.
 
@@ -122,8 +122,8 @@ type AddressBlockAPI interface {
 	AddressBlockList(ctx context.Context) ApiAddressBlockListRequest
 
 	// AddressBlockListExecute executes the request
-	//  @return IpamsvcListAddressBlockResponse
-	AddressBlockListExecute(r ApiAddressBlockListRequest) (*IpamsvcListAddressBlockResponse, *http.Response, error)
+	//  @return ListAddressBlockResponse
+	AddressBlockListExecute(r ApiAddressBlockListRequest) (*ListAddressBlockResponse, *http.Response, error)
 	/*
 			AddressBlockListNextAvailableAB List Next Available Address Block objects.
 
@@ -137,8 +137,8 @@ type AddressBlockAPI interface {
 	AddressBlockListNextAvailableAB(ctx context.Context, id string) ApiAddressBlockListNextAvailableABRequest
 
 	// AddressBlockListNextAvailableABExecute executes the request
-	//  @return IpamsvcNextAvailableABResponse
-	AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*IpamsvcNextAvailableABResponse, *http.Response, error)
+	//  @return NextAvailableABResponse
+	AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*NextAvailableABResponse, *http.Response, error)
 	/*
 			AddressBlockListNextAvailableIP Retrieve the next available IP address.
 
@@ -152,8 +152,8 @@ type AddressBlockAPI interface {
 	AddressBlockListNextAvailableIP(ctx context.Context, id string) ApiAddressBlockListNextAvailableIPRequest
 
 	// AddressBlockListNextAvailableIPExecute executes the request
-	//  @return IpamsvcNextAvailableIPResponse
-	AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error)
+	//  @return NextAvailableIPResponse
+	AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error)
 	/*
 			AddressBlockListNextAvailableSubnet List Next Available Subnet objects.
 
@@ -167,8 +167,8 @@ type AddressBlockAPI interface {
 	AddressBlockListNextAvailableSubnet(ctx context.Context, id string) ApiAddressBlockListNextAvailableSubnetRequest
 
 	// AddressBlockListNextAvailableSubnetExecute executes the request
-	//  @return IpamsvcNextAvailableSubnetResponse
-	AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*IpamsvcNextAvailableSubnetResponse, *http.Response, error)
+	//  @return NextAvailableSubnetResponse
+	AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*NextAvailableSubnetResponse, *http.Response, error)
 	/*
 			AddressBlockRead Retrieve the address block.
 
@@ -182,8 +182,8 @@ type AddressBlockAPI interface {
 	AddressBlockRead(ctx context.Context, id string) ApiAddressBlockReadRequest
 
 	// AddressBlockReadExecute executes the request
-	//  @return IpamsvcReadAddressBlockResponse
-	AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*IpamsvcReadAddressBlockResponse, *http.Response, error)
+	//  @return ReadAddressBlockResponse
+	AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*ReadAddressBlockResponse, *http.Response, error)
 	/*
 			AddressBlockUpdate Update the address block.
 
@@ -197,8 +197,8 @@ type AddressBlockAPI interface {
 	AddressBlockUpdate(ctx context.Context, id string) ApiAddressBlockUpdateRequest
 
 	// AddressBlockUpdateExecute executes the request
-	//  @return IpamsvcUpdateAddressBlockResponse
-	AddressBlockUpdateExecute(r ApiAddressBlockUpdateRequest) (*IpamsvcUpdateAddressBlockResponse, *http.Response, error)
+	//  @return UpdateAddressBlockResponse
+	AddressBlockUpdateExecute(r ApiAddressBlockUpdateRequest) (*UpdateAddressBlockResponse, *http.Response, error)
 }
 
 // AddressBlockAPIService AddressBlockAPI service
@@ -208,15 +208,15 @@ type ApiAddressBlockCopyRequest struct {
 	ctx        context.Context
 	ApiService AddressBlockAPI
 	id         string
-	body       *IpamsvcCopyAddressBlock
+	body       *CopyAddressBlock
 }
 
-func (r ApiAddressBlockCopyRequest) Body(body IpamsvcCopyAddressBlock) ApiAddressBlockCopyRequest {
+func (r ApiAddressBlockCopyRequest) Body(body CopyAddressBlock) ApiAddressBlockCopyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAddressBlockCopyRequest) Execute() (*IpamsvcCopyAddressBlockResponse, *http.Response, error) {
+func (r ApiAddressBlockCopyRequest) Execute() (*CopyAddressBlockResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockCopyExecute(r)
 }
 
@@ -240,13 +240,13 @@ func (a *AddressBlockAPIService) AddressBlockCopy(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcCopyAddressBlockResponse
-func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*IpamsvcCopyAddressBlockResponse, *http.Response, error) {
+//	@return CopyAddressBlockResponse
+func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRequest) (*CopyAddressBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCopyAddressBlockResponse
+		localVarReturnValue *CopyAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCopy")
@@ -316,11 +316,11 @@ func (a *AddressBlockAPIService) AddressBlockCopyExecute(r ApiAddressBlockCopyRe
 type ApiAddressBlockCreateRequest struct {
 	ctx        context.Context
 	ApiService AddressBlockAPI
-	body       *IpamsvcAddressBlock
+	body       *AddressBlock
 	inherit    *string
 }
 
-func (r ApiAddressBlockCreateRequest) Body(body IpamsvcAddressBlock) ApiAddressBlockCreateRequest {
+func (r ApiAddressBlockCreateRequest) Body(body AddressBlock) ApiAddressBlockCreateRequest {
 	r.body = &body
 	return r
 }
@@ -331,7 +331,7 @@ func (r ApiAddressBlockCreateRequest) Inherit(inherit string) ApiAddressBlockCre
 	return r
 }
 
-func (r ApiAddressBlockCreateRequest) Execute() (*IpamsvcCreateAddressBlockResponse, *http.Response, error) {
+func (r ApiAddressBlockCreateRequest) Execute() (*CreateAddressBlockResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockCreateExecute(r)
 }
 
@@ -353,13 +353,13 @@ func (a *AddressBlockAPIService) AddressBlockCreate(ctx context.Context) ApiAddr
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateAddressBlockResponse
-func (a *AddressBlockAPIService) AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*IpamsvcCreateAddressBlockResponse, *http.Response, error) {
+//	@return CreateAddressBlockResponse
+func (a *AddressBlockAPIService) AddressBlockCreateExecute(r ApiAddressBlockCreateRequest) (*CreateAddressBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateAddressBlockResponse
+		localVarReturnValue *CreateAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreate")
@@ -472,7 +472,7 @@ func (r ApiAddressBlockCreateNextAvailableABRequest) Comment(comment string) Api
 	return r
 }
 
-func (r ApiAddressBlockCreateNextAvailableABRequest) Execute() (*IpamsvcCreateNextAvailableABResponse, *http.Response, error) {
+func (r ApiAddressBlockCreateNextAvailableABRequest) Execute() (*CreateNextAvailableABResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockCreateNextAvailableABExecute(r)
 }
 
@@ -496,13 +496,13 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableAB(ctx context.C
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateNextAvailableABResponse
-func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*IpamsvcCreateNextAvailableABResponse, *http.Response, error) {
+//	@return CreateNextAvailableABResponse
+func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableABExecute(r ApiAddressBlockCreateNextAvailableABRequest) (*CreateNextAvailableABResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateNextAvailableABResponse
+		localVarReturnValue *CreateNextAvailableABResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableAB")
@@ -600,7 +600,7 @@ func (r ApiAddressBlockCreateNextAvailableIPRequest) Count(count int32) ApiAddre
 	return r
 }
 
-func (r ApiAddressBlockCreateNextAvailableIPRequest) Execute() (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+func (r ApiAddressBlockCreateNextAvailableIPRequest) Execute() (*CreateNextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockCreateNextAvailableIPExecute(r)
 }
 
@@ -624,13 +624,13 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIP(ctx context.C
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateNextAvailableIPResponse
-func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*IpamsvcCreateNextAvailableIPResponse, *http.Response, error) {
+//	@return CreateNextAvailableIPResponse
+func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableIPExecute(r ApiAddressBlockCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateNextAvailableIPResponse
+		localVarReturnValue *CreateNextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableIP")
@@ -745,7 +745,7 @@ func (r ApiAddressBlockCreateNextAvailableSubnetRequest) DhcpHost(dhcpHost strin
 	return r
 }
 
-func (r ApiAddressBlockCreateNextAvailableSubnetRequest) Execute() (*IpamsvcCreateNextAvailableSubnetResponse, *http.Response, error) {
+func (r ApiAddressBlockCreateNextAvailableSubnetRequest) Execute() (*CreateNextAvailableSubnetResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockCreateNextAvailableSubnetExecute(r)
 }
 
@@ -769,13 +769,13 @@ func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnet(ctx conte
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateNextAvailableSubnetResponse
-func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*IpamsvcCreateNextAvailableSubnetResponse, *http.Response, error) {
+//	@return CreateNextAvailableSubnetResponse
+func (a *AddressBlockAPIService) AddressBlockCreateNextAvailableSubnetExecute(r ApiAddressBlockCreateNextAvailableSubnetRequest) (*CreateNextAvailableSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateNextAvailableSubnetResponse
+		localVarReturnValue *CreateNextAvailableSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockCreateNextAvailableSubnet")
@@ -1014,7 +1014,7 @@ func (r ApiAddressBlockListRequest) Inherit(inherit string) ApiAddressBlockListR
 	return r
 }
 
-func (r ApiAddressBlockListRequest) Execute() (*IpamsvcListAddressBlockResponse, *http.Response, error) {
+func (r ApiAddressBlockListRequest) Execute() (*ListAddressBlockResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockListExecute(r)
 }
 
@@ -1036,13 +1036,13 @@ func (a *AddressBlockAPIService) AddressBlockList(ctx context.Context) ApiAddres
 
 // Execute executes the request
 //
-//	@return IpamsvcListAddressBlockResponse
-func (a *AddressBlockAPIService) AddressBlockListExecute(r ApiAddressBlockListRequest) (*IpamsvcListAddressBlockResponse, *http.Response, error) {
+//	@return ListAddressBlockResponse
+func (a *AddressBlockAPIService) AddressBlockListExecute(r ApiAddressBlockListRequest) (*ListAddressBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListAddressBlockResponse
+		localVarReturnValue *ListAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockList")
@@ -1164,7 +1164,7 @@ func (r ApiAddressBlockListNextAvailableABRequest) Comment(comment string) ApiAd
 	return r
 }
 
-func (r ApiAddressBlockListNextAvailableABRequest) Execute() (*IpamsvcNextAvailableABResponse, *http.Response, error) {
+func (r ApiAddressBlockListNextAvailableABRequest) Execute() (*NextAvailableABResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockListNextAvailableABExecute(r)
 }
 
@@ -1188,13 +1188,13 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableAB(ctx context.Con
 
 // Execute executes the request
 //
-//	@return IpamsvcNextAvailableABResponse
-func (a *AddressBlockAPIService) AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*IpamsvcNextAvailableABResponse, *http.Response, error) {
+//	@return NextAvailableABResponse
+func (a *AddressBlockAPIService) AddressBlockListNextAvailableABExecute(r ApiAddressBlockListNextAvailableABRequest) (*NextAvailableABResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcNextAvailableABResponse
+		localVarReturnValue *NextAvailableABResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableAB")
@@ -1288,7 +1288,7 @@ func (r ApiAddressBlockListNextAvailableIPRequest) Count(count int32) ApiAddress
 	return r
 }
 
-func (r ApiAddressBlockListNextAvailableIPRequest) Execute() (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+func (r ApiAddressBlockListNextAvailableIPRequest) Execute() (*NextAvailableIPResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockListNextAvailableIPExecute(r)
 }
 
@@ -1312,13 +1312,13 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableIP(ctx context.Con
 
 // Execute executes the request
 //
-//	@return IpamsvcNextAvailableIPResponse
-func (a *AddressBlockAPIService) AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*IpamsvcNextAvailableIPResponse, *http.Response, error) {
+//	@return NextAvailableIPResponse
+func (a *AddressBlockAPIService) AddressBlockListNextAvailableIPExecute(r ApiAddressBlockListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcNextAvailableIPResponse
+		localVarReturnValue *NextAvailableIPResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableIP")
@@ -1427,7 +1427,7 @@ func (r ApiAddressBlockListNextAvailableSubnetRequest) DhcpHost(dhcpHost string)
 	return r
 }
 
-func (r ApiAddressBlockListNextAvailableSubnetRequest) Execute() (*IpamsvcNextAvailableSubnetResponse, *http.Response, error) {
+func (r ApiAddressBlockListNextAvailableSubnetRequest) Execute() (*NextAvailableSubnetResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockListNextAvailableSubnetExecute(r)
 }
 
@@ -1451,13 +1451,13 @@ func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnet(ctx context
 
 // Execute executes the request
 //
-//	@return IpamsvcNextAvailableSubnetResponse
-func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*IpamsvcNextAvailableSubnetResponse, *http.Response, error) {
+//	@return NextAvailableSubnetResponse
+func (a *AddressBlockAPIService) AddressBlockListNextAvailableSubnetExecute(r ApiAddressBlockListNextAvailableSubnetRequest) (*NextAvailableSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcNextAvailableSubnetResponse
+		localVarReturnValue *NextAvailableSubnetResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockListNextAvailableSubnet")
@@ -1554,7 +1554,7 @@ func (r ApiAddressBlockReadRequest) Inherit(inherit string) ApiAddressBlockReadR
 	return r
 }
 
-func (r ApiAddressBlockReadRequest) Execute() (*IpamsvcReadAddressBlockResponse, *http.Response, error) {
+func (r ApiAddressBlockReadRequest) Execute() (*ReadAddressBlockResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockReadExecute(r)
 }
 
@@ -1578,13 +1578,13 @@ func (a *AddressBlockAPIService) AddressBlockRead(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcReadAddressBlockResponse
-func (a *AddressBlockAPIService) AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*IpamsvcReadAddressBlockResponse, *http.Response, error) {
+//	@return ReadAddressBlockResponse
+func (a *AddressBlockAPIService) AddressBlockReadExecute(r ApiAddressBlockReadRequest) (*ReadAddressBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadAddressBlockResponse
+		localVarReturnValue *ReadAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockRead")
@@ -1656,11 +1656,11 @@ type ApiAddressBlockUpdateRequest struct {
 	ctx        context.Context
 	ApiService AddressBlockAPI
 	id         string
-	body       *IpamsvcAddressBlock
+	body       *AddressBlock
 	inherit    *string
 }
 
-func (r ApiAddressBlockUpdateRequest) Body(body IpamsvcAddressBlock) ApiAddressBlockUpdateRequest {
+func (r ApiAddressBlockUpdateRequest) Body(body AddressBlock) ApiAddressBlockUpdateRequest {
 	r.body = &body
 	return r
 }
@@ -1671,7 +1671,7 @@ func (r ApiAddressBlockUpdateRequest) Inherit(inherit string) ApiAddressBlockUpd
 	return r
 }
 
-func (r ApiAddressBlockUpdateRequest) Execute() (*IpamsvcUpdateAddressBlockResponse, *http.Response, error) {
+func (r ApiAddressBlockUpdateRequest) Execute() (*UpdateAddressBlockResponse, *http.Response, error) {
 	return r.ApiService.AddressBlockUpdateExecute(r)
 }
 
@@ -1695,13 +1695,13 @@ func (a *AddressBlockAPIService) AddressBlockUpdate(ctx context.Context, id stri
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateAddressBlockResponse
-func (a *AddressBlockAPIService) AddressBlockUpdateExecute(r ApiAddressBlockUpdateRequest) (*IpamsvcUpdateAddressBlockResponse, *http.Response, error) {
+//	@return UpdateAddressBlockResponse
+func (a *AddressBlockAPIService) AddressBlockUpdateExecute(r ApiAddressBlockUpdateRequest) (*UpdateAddressBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateAddressBlockResponse
+		localVarReturnValue *UpdateAddressBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AddressBlockAPIService.AddressBlockUpdate")

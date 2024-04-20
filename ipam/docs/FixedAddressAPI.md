@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## FixedAddressCreate
 
-> IpamsvcCreateFixedAddressResponse FixedAddressCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateFixedAddressResponse FixedAddressCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the fixed address.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // IpamsvcFixedAddress | 
+	body := *ipam.NewFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // FixedAddress | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressCreate`: IpamsvcCreateFixedAddressResponse
+	// response from `FixedAddressCreate`: CreateFixedAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressCreate`: %v\n", resp)
 }
 ```
@@ -59,12 +59,12 @@ Other parameters are passed through a pointer to a apiFixedAddressCreateRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcFixedAddress**](IpamsvcFixedAddress.md) |  | 
+ **body** | [**FixedAddress**](FixedAddress.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateFixedAddressResponse**](IpamsvcCreateFixedAddressResponse.md)
+[**CreateFixedAddressResponse**](CreateFixedAddressResponse.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressList
 
-> IpamsvcListFixedAddressResponse FixedAddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListFixedAddressResponse FixedAddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve fixed addresses.
 
@@ -186,7 +186,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressList`: IpamsvcListFixedAddressResponse
+	// response from `FixedAddressList`: ListFixedAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressList`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListFixedAddressResponse**](IpamsvcListFixedAddressResponse.md)
+[**ListFixedAddressResponse**](ListFixedAddressResponse.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressRead
 
-> IpamsvcReadFixedAddressResponse FixedAddressRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadFixedAddressResponse FixedAddressRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the fixed address.
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressRead`: IpamsvcReadFixedAddressResponse
+	// response from `FixedAddressRead`: ReadFixedAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressRead`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadFixedAddressResponse**](IpamsvcReadFixedAddressResponse.md)
+[**ReadFixedAddressResponse**](ReadFixedAddressResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## FixedAddressUpdate
 
-> IpamsvcUpdateFixedAddressResponse FixedAddressUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateFixedAddressResponse FixedAddressUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the fixed address.
 
@@ -327,7 +327,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // IpamsvcFixedAddress | 
+	body := *ipam.NewFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // FixedAddress | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -336,7 +336,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressUpdate`: IpamsvcUpdateFixedAddressResponse
+	// response from `FixedAddressUpdate`: UpdateFixedAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressUpdate`: %v\n", resp)
 }
 ```
@@ -357,12 +357,12 @@ Other parameters are passed through a pointer to a apiFixedAddressUpdateRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcFixedAddress**](IpamsvcFixedAddress.md) |  | 
+ **body** | [**FixedAddress**](FixedAddress.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateFixedAddressResponse**](IpamsvcUpdateFixedAddressResponse.md)
+[**UpdateFixedAddressResponse**](UpdateFixedAddressResponse.md)
 
 ### Authorization
 

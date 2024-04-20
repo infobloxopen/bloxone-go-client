@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## OptionCodeCreate
 
-> IpamsvcCreateOptionCodeResponse OptionCodeCreate(ctx).Body(body).Execute()
+> CreateOptionCodeResponse OptionCodeCreate(ctx).Body(body).Execute()
 
 Create the DHCP option code.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // IpamsvcOptionCode | 
+	body := *ipam.NewOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // OptionCode | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionCodeAPI.OptionCodeCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionCodeAPI.OptionCodeCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionCodeCreate`: IpamsvcCreateOptionCodeResponse
+	// response from `OptionCodeCreate`: CreateOptionCodeResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionCodeAPI.OptionCodeCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiOptionCodeCreateRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcOptionCode**](IpamsvcOptionCode.md) |  | 
+ **body** | [**OptionCode**](OptionCode.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateOptionCodeResponse**](IpamsvcCreateOptionCodeResponse.md)
+[**CreateOptionCodeResponse**](CreateOptionCodeResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## OptionCodeList
 
-> IpamsvcListOptionCodeResponse OptionCodeList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
+> ListOptionCodeResponse OptionCodeList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
 
 Retrieve DHCP option codes.
 
@@ -181,7 +181,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionCodeAPI.OptionCodeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionCodeList`: IpamsvcListOptionCodeResponse
+	// response from `OptionCodeList`: ListOptionCodeResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionCodeAPI.OptionCodeList`: %v\n", resp)
 }
 ```
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListOptionCodeResponse**](IpamsvcListOptionCodeResponse.md)
+[**ListOptionCodeResponse**](ListOptionCodeResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## OptionCodeRead
 
-> IpamsvcReadOptionCodeResponse OptionCodeRead(ctx, id).Fields(fields).Execute()
+> ReadOptionCodeResponse OptionCodeRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option code.
 
@@ -253,7 +253,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionCodeAPI.OptionCodeRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionCodeRead`: IpamsvcReadOptionCodeResponse
+	// response from `OptionCodeRead`: ReadOptionCodeResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionCodeAPI.OptionCodeRead`: %v\n", resp)
 }
 ```
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadOptionCodeResponse**](IpamsvcReadOptionCodeResponse.md)
+[**ReadOptionCodeResponse**](ReadOptionCodeResponse.md)
 
 ### Authorization
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## OptionCodeUpdate
 
-> IpamsvcUpdateOptionCodeResponse OptionCodeUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionCodeResponse OptionCodeUpdate(ctx, id).Body(body).Execute()
 
 Update the DHCP option code.
 
@@ -317,7 +317,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // IpamsvcOptionCode | 
+	body := *ipam.NewOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // OptionCode | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionCodeAPI.OptionCodeUpdate(context.Background(), id).Body(body).Execute()
@@ -325,7 +325,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OptionCodeAPI.OptionCodeUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionCodeUpdate`: IpamsvcUpdateOptionCodeResponse
+	// response from `OptionCodeUpdate`: UpdateOptionCodeResponse
 	fmt.Fprintf(os.Stdout, "Response from `OptionCodeAPI.OptionCodeUpdate`: %v\n", resp)
 }
 ```
@@ -346,11 +346,11 @@ Other parameters are passed through a pointer to a apiOptionCodeUpdateRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcOptionCode**](IpamsvcOptionCode.md) |  | 
+ **body** | [**OptionCode**](OptionCode.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateOptionCodeResponse**](IpamsvcUpdateOptionCodeResponse.md)
+[**UpdateOptionCodeResponse**](UpdateOptionCodeResponse.md)
 
 ### Authorization
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**IpamsvcAddress**](IpamsvcAddress.md) |  | [optional] 
+**Result** | Pointer to [**Address**](Address.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResult
 
-`func (o *IpamsvcCreateAddressResponse) GetResult() IpamsvcAddress`
+`func (o *IpamsvcCreateAddressResponse) GetResult() Address`
 
 GetResult returns the Result field if non-nil, zero value otherwise.
 
 ### GetResultOk
 
-`func (o *IpamsvcCreateAddressResponse) GetResultOk() (*IpamsvcAddress, bool)`
+`func (o *IpamsvcCreateAddressResponse) GetResultOk() (*Address, bool)`
 
 GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResult
 
-`func (o *IpamsvcCreateAddressResponse) SetResult(v IpamsvcAddress)`
+`func (o *IpamsvcCreateAddressResponse) SetResult(v Address)`
 
 SetResult sets Result field to given value.
 

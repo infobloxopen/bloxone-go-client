@@ -20,7 +20,7 @@ var _ MappedNullable = &IpamsvcCreateNextAvailableIPResponse{}
 // IpamsvcCreateNextAvailableIPResponse The response format to allocate the next available IP address.
 type IpamsvcCreateNextAvailableIPResponse struct {
 	// The list of allocated IP address objects.
-	Results []IpamsvcAddress `json:"results,omitempty"`
+	Results []Address `json:"results,omitempty"`
 }
 
 // NewIpamsvcCreateNextAvailableIPResponse instantiates a new IpamsvcCreateNextAvailableIPResponse object
@@ -41,9 +41,9 @@ func NewIpamsvcCreateNextAvailableIPResponseWithDefaults() *IpamsvcCreateNextAva
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *IpamsvcCreateNextAvailableIPResponse) GetResults() []IpamsvcAddress {
+func (o *IpamsvcCreateNextAvailableIPResponse) GetResults() []Address {
 	if o == nil || IsNil(o.Results) {
-		var ret []IpamsvcAddress
+		var ret []Address
 		return ret
 	}
 	return o.Results
@@ -51,7 +51,7 @@ func (o *IpamsvcCreateNextAvailableIPResponse) GetResults() []IpamsvcAddress {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpamsvcCreateNextAvailableIPResponse) GetResultsOk() ([]IpamsvcAddress, bool) {
+func (o *IpamsvcCreateNextAvailableIPResponse) GetResultsOk() ([]Address, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *IpamsvcCreateNextAvailableIPResponse) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []IpamsvcAddress and assigns it to the Results field.
-func (o *IpamsvcCreateNextAvailableIPResponse) SetResults(v []IpamsvcAddress) {
+// SetResults gets a reference to the given []Address and assigns it to the Results field.
+func (o *IpamsvcCreateNextAvailableIPResponse) SetResults(v []Address) {
 	o.Results = v
 }
 

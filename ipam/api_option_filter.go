@@ -34,8 +34,8 @@ type OptionFilterAPI interface {
 	OptionFilterCreate(ctx context.Context) ApiOptionFilterCreateRequest
 
 	// OptionFilterCreateExecute executes the request
-	//  @return IpamsvcCreateOptionFilterResponse
-	OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*IpamsvcCreateOptionFilterResponse, *http.Response, error)
+	//  @return CreateOptionFilterResponse
+	OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*CreateOptionFilterResponse, *http.Response, error)
 	/*
 			OptionFilterDelete Move the DHCP option filter to the recycle bin.
 
@@ -62,8 +62,8 @@ type OptionFilterAPI interface {
 	OptionFilterList(ctx context.Context) ApiOptionFilterListRequest
 
 	// OptionFilterListExecute executes the request
-	//  @return IpamsvcListOptionFilterResponse
-	OptionFilterListExecute(r ApiOptionFilterListRequest) (*IpamsvcListOptionFilterResponse, *http.Response, error)
+	//  @return ListOptionFilterResponse
+	OptionFilterListExecute(r ApiOptionFilterListRequest) (*ListOptionFilterResponse, *http.Response, error)
 	/*
 			OptionFilterRead Retrieve the DHCP option filter.
 
@@ -77,8 +77,8 @@ type OptionFilterAPI interface {
 	OptionFilterRead(ctx context.Context, id string) ApiOptionFilterReadRequest
 
 	// OptionFilterReadExecute executes the request
-	//  @return IpamsvcReadOptionFilterResponse
-	OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*IpamsvcReadOptionFilterResponse, *http.Response, error)
+	//  @return ReadOptionFilterResponse
+	OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*ReadOptionFilterResponse, *http.Response, error)
 	/*
 			OptionFilterUpdate Update the DHCP option filter.
 
@@ -92,8 +92,8 @@ type OptionFilterAPI interface {
 	OptionFilterUpdate(ctx context.Context, id string) ApiOptionFilterUpdateRequest
 
 	// OptionFilterUpdateExecute executes the request
-	//  @return IpamsvcUpdateOptionFilterResponse
-	OptionFilterUpdateExecute(r ApiOptionFilterUpdateRequest) (*IpamsvcUpdateOptionFilterResponse, *http.Response, error)
+	//  @return UpdateOptionFilterResponse
+	OptionFilterUpdateExecute(r ApiOptionFilterUpdateRequest) (*UpdateOptionFilterResponse, *http.Response, error)
 }
 
 // OptionFilterAPIService OptionFilterAPI service
@@ -102,15 +102,15 @@ type OptionFilterAPIService internal.Service
 type ApiOptionFilterCreateRequest struct {
 	ctx        context.Context
 	ApiService OptionFilterAPI
-	body       *IpamsvcOptionFilter
+	body       *OptionFilter
 }
 
-func (r ApiOptionFilterCreateRequest) Body(body IpamsvcOptionFilter) ApiOptionFilterCreateRequest {
+func (r ApiOptionFilterCreateRequest) Body(body OptionFilter) ApiOptionFilterCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionFilterCreateRequest) Execute() (*IpamsvcCreateOptionFilterResponse, *http.Response, error) {
+func (r ApiOptionFilterCreateRequest) Execute() (*CreateOptionFilterResponse, *http.Response, error) {
 	return r.ApiService.OptionFilterCreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *OptionFilterAPIService) OptionFilterCreate(ctx context.Context) ApiOpti
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateOptionFilterResponse
-func (a *OptionFilterAPIService) OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*IpamsvcCreateOptionFilterResponse, *http.Response, error) {
+//	@return CreateOptionFilterResponse
+func (a *OptionFilterAPIService) OptionFilterCreateExecute(r ApiOptionFilterCreateRequest) (*CreateOptionFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateOptionFilterResponse
+		localVarReturnValue *CreateOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterCreate")
@@ -365,7 +365,7 @@ func (r ApiOptionFilterListRequest) Tfilter(tfilter string) ApiOptionFilterListR
 	return r
 }
 
-func (r ApiOptionFilterListRequest) Execute() (*IpamsvcListOptionFilterResponse, *http.Response, error) {
+func (r ApiOptionFilterListRequest) Execute() (*ListOptionFilterResponse, *http.Response, error) {
 	return r.ApiService.OptionFilterListExecute(r)
 }
 
@@ -387,13 +387,13 @@ func (a *OptionFilterAPIService) OptionFilterList(ctx context.Context) ApiOption
 
 // Execute executes the request
 //
-//	@return IpamsvcListOptionFilterResponse
-func (a *OptionFilterAPIService) OptionFilterListExecute(r ApiOptionFilterListRequest) (*IpamsvcListOptionFilterResponse, *http.Response, error) {
+//	@return ListOptionFilterResponse
+func (a *OptionFilterAPIService) OptionFilterListExecute(r ApiOptionFilterListRequest) (*ListOptionFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListOptionFilterResponse
+		localVarReturnValue *ListOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterList")
@@ -491,7 +491,7 @@ func (r ApiOptionFilterReadRequest) Fields(fields string) ApiOptionFilterReadReq
 	return r
 }
 
-func (r ApiOptionFilterReadRequest) Execute() (*IpamsvcReadOptionFilterResponse, *http.Response, error) {
+func (r ApiOptionFilterReadRequest) Execute() (*ReadOptionFilterResponse, *http.Response, error) {
 	return r.ApiService.OptionFilterReadExecute(r)
 }
 
@@ -515,13 +515,13 @@ func (a *OptionFilterAPIService) OptionFilterRead(ctx context.Context, id string
 
 // Execute executes the request
 //
-//	@return IpamsvcReadOptionFilterResponse
-func (a *OptionFilterAPIService) OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*IpamsvcReadOptionFilterResponse, *http.Response, error) {
+//	@return ReadOptionFilterResponse
+func (a *OptionFilterAPIService) OptionFilterReadExecute(r ApiOptionFilterReadRequest) (*ReadOptionFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadOptionFilterResponse
+		localVarReturnValue *ReadOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterRead")
@@ -590,15 +590,15 @@ type ApiOptionFilterUpdateRequest struct {
 	ctx        context.Context
 	ApiService OptionFilterAPI
 	id         string
-	body       *IpamsvcOptionFilter
+	body       *OptionFilter
 }
 
-func (r ApiOptionFilterUpdateRequest) Body(body IpamsvcOptionFilter) ApiOptionFilterUpdateRequest {
+func (r ApiOptionFilterUpdateRequest) Body(body OptionFilter) ApiOptionFilterUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionFilterUpdateRequest) Execute() (*IpamsvcUpdateOptionFilterResponse, *http.Response, error) {
+func (r ApiOptionFilterUpdateRequest) Execute() (*UpdateOptionFilterResponse, *http.Response, error) {
 	return r.ApiService.OptionFilterUpdateExecute(r)
 }
 
@@ -622,13 +622,13 @@ func (a *OptionFilterAPIService) OptionFilterUpdate(ctx context.Context, id stri
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateOptionFilterResponse
-func (a *OptionFilterAPIService) OptionFilterUpdateExecute(r ApiOptionFilterUpdateRequest) (*IpamsvcUpdateOptionFilterResponse, *http.Response, error) {
+//	@return UpdateOptionFilterResponse
+func (a *OptionFilterAPIService) OptionFilterUpdateExecute(r ApiOptionFilterUpdateRequest) (*UpdateOptionFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateOptionFilterResponse
+		localVarReturnValue *UpdateOptionFilterResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionFilterAPIService.OptionFilterUpdate")

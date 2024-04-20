@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## RangeCreate
 
-> IpamsvcCreateRangeResponse RangeCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateRangeResponse RangeCreate(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the range.
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
+	body := *ipam.NewRange("End_example", "Start_example") // Range | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeCreate`: IpamsvcCreateRangeResponse
+	// response from `RangeCreate`: CreateRangeResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeCreate`: %v\n", resp)
 }
 ```
@@ -61,12 +61,12 @@ Other parameters are passed through a pointer to a apiRangeCreateRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcRange**](IpamsvcRange.md) |  | 
+ **body** | [**Range**](Range.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcCreateRangeResponse**](IpamsvcCreateRangeResponse.md)
+[**CreateRangeResponse**](CreateRangeResponse.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## RangeCreateNextAvailableIP
 
-> IpamsvcCreateNextAvailableIPResponse RangeCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> CreateNextAvailableIPResponse RangeCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -114,7 +114,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeCreateNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeCreateNextAvailableIP`: IpamsvcCreateNextAvailableIPResponse
+	// response from `RangeCreateNextAvailableIP`: CreateNextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeCreateNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcCreateNextAvailableIPResponse**](IpamsvcCreateNextAvailableIPResponse.md)
+[**CreateNextAvailableIPResponse**](CreateNextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## RangeList
 
-> IpamsvcListRangeResponse RangeList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListRangeResponse RangeList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve ranges.
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeList`: IpamsvcListRangeResponse
+	// response from `RangeList`: ListRangeResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeList`: %v\n", resp)
 }
 ```
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListRangeResponse**](IpamsvcListRangeResponse.md)
+[**ListRangeResponse**](ListRangeResponse.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## RangeListNextAvailableIP
 
-> IpamsvcNextAvailableIPResponse RangeListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> NextAvailableIPResponse RangeListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Retrieve the next available IP address.
 
@@ -338,7 +338,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeListNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeListNextAvailableIP`: IpamsvcNextAvailableIPResponse
+	// response from `RangeListNextAvailableIP`: NextAvailableIPResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeListNextAvailableIP`: %v\n", resp)
 }
 ```
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcNextAvailableIPResponse**](IpamsvcNextAvailableIPResponse.md)
+[**NextAvailableIPResponse**](NextAvailableIPResponse.md)
 
 ### Authorization
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## RangeRead
 
-> IpamsvcReadRangeResponse RangeRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadRangeResponse RangeRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the range.
 
@@ -412,7 +412,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeRead`: IpamsvcReadRangeResponse
+	// response from `RangeRead`: ReadRangeResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeRead`: %v\n", resp)
 }
 ```
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadRangeResponse**](IpamsvcReadRangeResponse.md)
+[**ReadRangeResponse**](ReadRangeResponse.md)
 
 ### Authorization
 
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 ## RangeUpdate
 
-> IpamsvcUpdateRangeResponse RangeUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateRangeResponse RangeUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the range.
 
@@ -477,7 +477,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcRange("End_example", "Start_example") // IpamsvcRange | 
+	body := *ipam.NewRange("End_example", "Start_example") // Range | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -486,7 +486,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeUpdate`: IpamsvcUpdateRangeResponse
+	// response from `RangeUpdate`: UpdateRangeResponse
 	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeUpdate`: %v\n", resp)
 }
 ```
@@ -507,12 +507,12 @@ Other parameters are passed through a pointer to a apiRangeUpdateRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcRange**](IpamsvcRange.md) |  | 
+ **body** | [**Range**](Range.md) |  | 
  **inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
 
 ### Return type
 
-[**IpamsvcUpdateRangeResponse**](IpamsvcUpdateRangeResponse.md)
+[**UpdateRangeResponse**](UpdateRangeResponse.md)
 
 ### Authorization
 

@@ -33,8 +33,8 @@ type LeasesCommandAPI interface {
 	LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest
 
 	// LeasesCommandCreateExecute executes the request
-	//  @return IpamsvcCreateLeasesCommandResponse
-	LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*IpamsvcCreateLeasesCommandResponse, *http.Response, error)
+	//  @return CreateLeasesCommandResponse
+	LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*CreateLeasesCommandResponse, *http.Response, error)
 }
 
 // LeasesCommandAPIService LeasesCommandAPI service
@@ -43,15 +43,15 @@ type LeasesCommandAPIService internal.Service
 type ApiLeasesCommandCreateRequest struct {
 	ctx        context.Context
 	ApiService LeasesCommandAPI
-	body       *IpamsvcLeasesCommand
+	body       *LeasesCommand
 }
 
-func (r ApiLeasesCommandCreateRequest) Body(body IpamsvcLeasesCommand) ApiLeasesCommandCreateRequest {
+func (r ApiLeasesCommandCreateRequest) Body(body LeasesCommand) ApiLeasesCommandCreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiLeasesCommandCreateRequest) Execute() (*IpamsvcCreateLeasesCommandResponse, *http.Response, error) {
+func (r ApiLeasesCommandCreateRequest) Execute() (*CreateLeasesCommandResponse, *http.Response, error) {
 	return r.ApiService.LeasesCommandCreateExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLe
 
 // Execute executes the request
 //
-//	@return IpamsvcCreateLeasesCommandResponse
-func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*IpamsvcCreateLeasesCommandResponse, *http.Response, error) {
+//	@return CreateLeasesCommandResponse
+func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*CreateLeasesCommandResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcCreateLeasesCommandResponse
+		localVarReturnValue *CreateLeasesCommandResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeasesCommandAPIService.LeasesCommandCreate")

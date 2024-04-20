@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## DnsUsageList
 
-> IpamsvcListDNSUsageResponse DnsUsageList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
+> ListDNSUsageResponse DnsUsageList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
 
 Retrieve DNS usage for multiple objects.
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.DnsUsageList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DnsUsageList`: IpamsvcListDNSUsageResponse
+	// response from `DnsUsageList`: ListDNSUsageResponse
 	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.DnsUsageList`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListDNSUsageResponse**](IpamsvcListDNSUsageResponse.md)
+[**ListDNSUsageResponse**](ListDNSUsageResponse.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DnsUsageRead
 
-> IpamsvcReadDNSUsageResponse DnsUsageRead(ctx, id).Fields(fields).Execute()
+> ReadDNSUsageResponse DnsUsageRead(ctx, id).Fields(fields).Execute()
 
 Retrieve the DNS usage.
 
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.DnsUsageRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DnsUsageRead`: IpamsvcReadDNSUsageResponse
+	// response from `DnsUsageRead`: ReadDNSUsageResponse
 	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.DnsUsageRead`: %v\n", resp)
 }
 ```
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadDNSUsageResponse**](IpamsvcReadDNSUsageResponse.md)
+[**ReadDNSUsageResponse**](ReadDNSUsageResponse.md)
 
 ### Authorization
 

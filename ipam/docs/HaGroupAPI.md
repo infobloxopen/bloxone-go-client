@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## HaGroupCreate
 
-> IpamsvcCreateHAGroupResponse HaGroupCreate(ctx).Body(body).Execute()
+> CreateHAGroupResponse HaGroupCreate(ctx).Body(body).Execute()
 
 Create the HA group.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamsvcHAGroup([]ipam.IpamsvcHAGroupHost{*ipam.NewIpamsvcHAGroupHost("Host_example")}, "Name_example") // IpamsvcHAGroup | 
+	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HaGroupAPI.HaGroupCreate(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupCreate`: IpamsvcCreateHAGroupResponse
+	// response from `HaGroupCreate`: CreateHAGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupCreate`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a apiHaGroupCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcHAGroup**](IpamsvcHAGroup.md) |  | 
+ **body** | [**HAGroup**](HAGroup.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateHAGroupResponse**](IpamsvcCreateHAGroupResponse.md)
+[**CreateHAGroupResponse**](CreateHAGroupResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## HaGroupList
 
-> IpamsvcListHAGroupResponse HaGroupList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
+> ListHAGroupResponse HaGroupList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
 
 Retrieve HA groups.
 
@@ -184,7 +184,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupList`: IpamsvcListHAGroupResponse
+	// response from `HaGroupList`: ListHAGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupList`: %v\n", resp)
 }
 ```
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListHAGroupResponse**](IpamsvcListHAGroupResponse.md)
+[**ListHAGroupResponse**](ListHAGroupResponse.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## HaGroupRead
 
-> IpamsvcReadHAGroupResponse HaGroupRead(ctx, id).Fields(fields).CollectStats(collectStats).Execute()
+> ReadHAGroupResponse HaGroupRead(ctx, id).Fields(fields).CollectStats(collectStats).Execute()
 
 Retrieve the HA group.
 
@@ -260,7 +260,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupRead``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupRead`: IpamsvcReadHAGroupResponse
+	// response from `HaGroupRead`: ReadHAGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupRead`: %v\n", resp)
 }
 ```
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadHAGroupResponse**](IpamsvcReadHAGroupResponse.md)
+[**ReadHAGroupResponse**](ReadHAGroupResponse.md)
 
 ### Authorization
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## HaGroupUpdate
 
-> IpamsvcUpdateHAGroupResponse HaGroupUpdate(ctx, id).Body(body).Execute()
+> UpdateHAGroupResponse HaGroupUpdate(ctx, id).Body(body).Execute()
 
 Update the HA group.
 
@@ -325,7 +325,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamsvcHAGroup([]ipam.IpamsvcHAGroupHost{*ipam.NewIpamsvcHAGroupHost("Host_example")}, "Name_example") // IpamsvcHAGroup | 
+	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HaGroupAPI.HaGroupUpdate(context.Background(), id).Body(body).Execute()
@@ -333,7 +333,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupUpdate`: IpamsvcUpdateHAGroupResponse
+	// response from `HaGroupUpdate`: UpdateHAGroupResponse
 	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupUpdate`: %v\n", resp)
 }
 ```
@@ -354,11 +354,11 @@ Other parameters are passed through a pointer to a apiHaGroupUpdateRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcHAGroup**](IpamsvcHAGroup.md) |  | 
+ **body** | [**HAGroup**](HAGroup.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateHAGroupResponse**](IpamsvcUpdateHAGroupResponse.md)
+[**UpdateHAGroupResponse**](UpdateHAGroupResponse.md)
 
 ### Authorization
 

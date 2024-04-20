@@ -34,8 +34,8 @@ type DhcpHostAPI interface {
 	DhcpHostList(ctx context.Context) ApiDhcpHostListRequest
 
 	// DhcpHostListExecute executes the request
-	//  @return IpamsvcListHostResponse
-	DhcpHostListExecute(r ApiDhcpHostListRequest) (*IpamsvcListHostResponse, *http.Response, error)
+	//  @return ListHostResponse
+	DhcpHostListExecute(r ApiDhcpHostListRequest) (*ListHostResponse, *http.Response, error)
 	/*
 		DhcpHostListAssociations Retrieve DHCP host associations.
 
@@ -48,8 +48,8 @@ type DhcpHostAPI interface {
 	DhcpHostListAssociations(ctx context.Context, id string) ApiDhcpHostListAssociationsRequest
 
 	// DhcpHostListAssociationsExecute executes the request
-	//  @return IpamsvcHostAssociationsResponse
-	DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*IpamsvcHostAssociationsResponse, *http.Response, error)
+	//  @return HostAssociationsResponse
+	DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*HostAssociationsResponse, *http.Response, error)
 	/*
 			DhcpHostRead Retrieve the DHCP host.
 
@@ -63,8 +63,8 @@ type DhcpHostAPI interface {
 	DhcpHostRead(ctx context.Context, id string) ApiDhcpHostReadRequest
 
 	// DhcpHostReadExecute executes the request
-	//  @return IpamsvcReadHostResponse
-	DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*IpamsvcReadHostResponse, *http.Response, error)
+	//  @return ReadHostResponse
+	DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*ReadHostResponse, *http.Response, error)
 	/*
 			DhcpHostUpdate Update the DHCP hosts.
 
@@ -78,8 +78,8 @@ type DhcpHostAPI interface {
 	DhcpHostUpdate(ctx context.Context, id string) ApiDhcpHostUpdateRequest
 
 	// DhcpHostUpdateExecute executes the request
-	//  @return IpamsvcUpdateHostResponse
-	DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (*IpamsvcUpdateHostResponse, *http.Response, error)
+	//  @return UpdateHostResponse
+	DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (*UpdateHostResponse, *http.Response, error)
 }
 
 // DhcpHostAPIService DhcpHostAPI service
@@ -146,7 +146,7 @@ func (r ApiDhcpHostListRequest) TorderBy(torderBy string) ApiDhcpHostListRequest
 	return r
 }
 
-func (r ApiDhcpHostListRequest) Execute() (*IpamsvcListHostResponse, *http.Response, error) {
+func (r ApiDhcpHostListRequest) Execute() (*ListHostResponse, *http.Response, error) {
 	return r.ApiService.DhcpHostListExecute(r)
 }
 
@@ -168,13 +168,13 @@ func (a *DhcpHostAPIService) DhcpHostList(ctx context.Context) ApiDhcpHostListRe
 
 // Execute executes the request
 //
-//	@return IpamsvcListHostResponse
-func (a *DhcpHostAPIService) DhcpHostListExecute(r ApiDhcpHostListRequest) (*IpamsvcListHostResponse, *http.Response, error) {
+//	@return ListHostResponse
+func (a *DhcpHostAPIService) DhcpHostListExecute(r ApiDhcpHostListRequest) (*ListHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcListHostResponse
+		localVarReturnValue *ListHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpHostAPIService.DhcpHostList")
@@ -265,7 +265,7 @@ type ApiDhcpHostListAssociationsRequest struct {
 	id         string
 }
 
-func (r ApiDhcpHostListAssociationsRequest) Execute() (*IpamsvcHostAssociationsResponse, *http.Response, error) {
+func (r ApiDhcpHostListAssociationsRequest) Execute() (*HostAssociationsResponse, *http.Response, error) {
 	return r.ApiService.DhcpHostListAssociationsExecute(r)
 }
 
@@ -288,13 +288,13 @@ func (a *DhcpHostAPIService) DhcpHostListAssociations(ctx context.Context, id st
 
 // Execute executes the request
 //
-//	@return IpamsvcHostAssociationsResponse
-func (a *DhcpHostAPIService) DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*IpamsvcHostAssociationsResponse, *http.Response, error) {
+//	@return HostAssociationsResponse
+func (a *DhcpHostAPIService) DhcpHostListAssociationsExecute(r ApiDhcpHostListAssociationsRequest) (*HostAssociationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcHostAssociationsResponse
+		localVarReturnValue *HostAssociationsResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpHostAPIService.DhcpHostListAssociations")
@@ -369,7 +369,7 @@ func (r ApiDhcpHostReadRequest) Fields(fields string) ApiDhcpHostReadRequest {
 	return r
 }
 
-func (r ApiDhcpHostReadRequest) Execute() (*IpamsvcReadHostResponse, *http.Response, error) {
+func (r ApiDhcpHostReadRequest) Execute() (*ReadHostResponse, *http.Response, error) {
 	return r.ApiService.DhcpHostReadExecute(r)
 }
 
@@ -393,13 +393,13 @@ func (a *DhcpHostAPIService) DhcpHostRead(ctx context.Context, id string) ApiDhc
 
 // Execute executes the request
 //
-//	@return IpamsvcReadHostResponse
-func (a *DhcpHostAPIService) DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*IpamsvcReadHostResponse, *http.Response, error) {
+//	@return ReadHostResponse
+func (a *DhcpHostAPIService) DhcpHostReadExecute(r ApiDhcpHostReadRequest) (*ReadHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcReadHostResponse
+		localVarReturnValue *ReadHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpHostAPIService.DhcpHostRead")
@@ -468,15 +468,15 @@ type ApiDhcpHostUpdateRequest struct {
 	ctx        context.Context
 	ApiService DhcpHostAPI
 	id         string
-	body       *IpamsvcHost
+	body       *Host
 }
 
-func (r ApiDhcpHostUpdateRequest) Body(body IpamsvcHost) ApiDhcpHostUpdateRequest {
+func (r ApiDhcpHostUpdateRequest) Body(body Host) ApiDhcpHostUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiDhcpHostUpdateRequest) Execute() (*IpamsvcUpdateHostResponse, *http.Response, error) {
+func (r ApiDhcpHostUpdateRequest) Execute() (*UpdateHostResponse, *http.Response, error) {
 	return r.ApiService.DhcpHostUpdateExecute(r)
 }
 
@@ -500,13 +500,13 @@ func (a *DhcpHostAPIService) DhcpHostUpdate(ctx context.Context, id string) ApiD
 
 // Execute executes the request
 //
-//	@return IpamsvcUpdateHostResponse
-func (a *DhcpHostAPIService) DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (*IpamsvcUpdateHostResponse, *http.Response, error) {
+//	@return UpdateHostResponse
+func (a *DhcpHostAPIService) DhcpHostUpdateExecute(r ApiDhcpHostUpdateRequest) (*UpdateHostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *IpamsvcUpdateHostResponse
+		localVarReturnValue *UpdateHostResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpHostAPIService.DhcpHostUpdate")

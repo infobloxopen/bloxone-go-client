@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]IpamsvcAddress**](IpamsvcAddress.md) | The list of allocated IP address objects. | [optional] 
+**Results** | Pointer to [**[]Address**](Address.md) | The list of allocated IP address objects. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *IpamsvcCreateNextAvailableIPResponse) GetResults() []IpamsvcAddress`
+`func (o *IpamsvcCreateNextAvailableIPResponse) GetResults() []Address`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *IpamsvcCreateNextAvailableIPResponse) GetResultsOk() (*[]IpamsvcAddress, bool)`
+`func (o *IpamsvcCreateNextAvailableIPResponse) GetResultsOk() (*[]Address, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *IpamsvcCreateNextAvailableIPResponse) SetResults(v []IpamsvcAddress)`
+`func (o *IpamsvcCreateNextAvailableIPResponse) SetResults(v []Address)`
 
 SetResults sets Results field to given value.
 
