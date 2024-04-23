@@ -4,13 +4,13 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SecurityPolicyRulesListSecurityPolicyRules**](SecurityPolicyRulesAPI.md#SecurityPolicyRulesListSecurityPolicyRules) | **Get** /security_policy_rules | List Security Policy Rules.
+[**ListSecurityPolicyRules**](SecurityPolicyRulesAPI.md#ListSecurityPolicyRules) | **Get** /security_policy_rules | List Security Policy Rules.
 
 
 
-## SecurityPolicyRulesListSecurityPolicyRules
+## ListSecurityPolicyRules
 
-> AtcfwSecurityPolicyRuleMultiResponse SecurityPolicyRulesListSecurityPolicyRules(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> SecurityPolicyRuleMultiResponse ListSecurityPolicyRules(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 List Security Policy Rules.
 
@@ -37,13 +37,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.SecurityPolicyRulesAPI.SecurityPolicyRulesListSecurityPolicyRules(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.SecurityPolicyRulesAPI.ListSecurityPolicyRules(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityPolicyRulesAPI.SecurityPolicyRulesListSecurityPolicyRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityPolicyRulesAPI.ListSecurityPolicyRules``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SecurityPolicyRulesListSecurityPolicyRules`: AtcfwSecurityPolicyRuleMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `SecurityPolicyRulesAPI.SecurityPolicyRulesListSecurityPolicyRules`: %v\n", resp)
+	// response from `ListSecurityPolicyRules`: SecurityPolicyRuleMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecurityPolicyRulesAPI.ListSecurityPolicyRules`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSecurityPolicyRulesListSecurityPolicyRulesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSecurityPolicyRulesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwSecurityPolicyRuleMultiResponse**](AtcfwSecurityPolicyRuleMultiResponse.md)
+[**SecurityPolicyRuleMultiResponse**](SecurityPolicyRuleMultiResponse.md)
 
 ### Authorization
 

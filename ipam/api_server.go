@@ -23,115 +23,115 @@ import (
 
 type ServerAPI interface {
 	/*
-			ServerCreate Create the DHCP configuration profile.
+			Create Create the DHCP configuration profile.
 
 			Use this method to create a __Server__ object.
 		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerCreateRequest
+			@return ServerAPICreateRequest
 	*/
-	ServerCreate(ctx context.Context) ApiServerCreateRequest
+	Create(ctx context.Context) ServerAPICreateRequest
 
-	// ServerCreateExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateServerResponse
-	ServerCreateExecute(r ApiServerCreateRequest) (*CreateServerResponse, *http.Response, error)
+	CreateExecute(r ServerAPICreateRequest) (*CreateServerResponse, *http.Response, error)
 	/*
-			ServerDelete Move the DHCP configuration profile to the recycle bin.
+			Delete Move the DHCP configuration profile to the recycle bin.
 
 			Use this method to move a __Server__ object to the recycle bin.
 		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiServerDeleteRequest
+			@return ServerAPIDeleteRequest
 	*/
-	ServerDelete(ctx context.Context, id string) ApiServerDeleteRequest
+	Delete(ctx context.Context, id string) ServerAPIDeleteRequest
 
-	// ServerDeleteExecute executes the request
-	ServerDeleteExecute(r ApiServerDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ServerAPIDeleteRequest) (*http.Response, error)
 	/*
-			ServerList Retrieve DHCP configuration profiles.
+			List Retrieve DHCP configuration profiles.
 
 			Use this method to retrieve __Server__ objects.
 		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiServerListRequest
+			@return ServerAPIListRequest
 	*/
-	ServerList(ctx context.Context) ApiServerListRequest
+	List(ctx context.Context) ServerAPIListRequest
 
-	// ServerListExecute executes the request
+	// ListExecute executes the request
 	//  @return ListServerResponse
-	ServerListExecute(r ApiServerListRequest) (*ListServerResponse, *http.Response, error)
+	ListExecute(r ServerAPIListRequest) (*ListServerResponse, *http.Response, error)
 	/*
-			ServerRead Retrieve the DHCP configuration profile.
+			Read Retrieve the DHCP configuration profile.
 
 			Use this method to retrieve a __Server__ object.
 		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiServerReadRequest
+			@return ServerAPIReadRequest
 	*/
-	ServerRead(ctx context.Context, id string) ApiServerReadRequest
+	Read(ctx context.Context, id string) ServerAPIReadRequest
 
-	// ServerReadExecute executes the request
+	// ReadExecute executes the request
 	//  @return ReadServerResponse
-	ServerReadExecute(r ApiServerReadRequest) (*ReadServerResponse, *http.Response, error)
+	ReadExecute(r ServerAPIReadRequest) (*ReadServerResponse, *http.Response, error)
 	/*
-			ServerUpdate Update the DHCP configuration profile.
+			Update Update the DHCP configuration profile.
 
 			Use this method to update a __Server__ object.
 		A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiServerUpdateRequest
+			@return ServerAPIUpdateRequest
 	*/
-	ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest
+	Update(ctx context.Context, id string) ServerAPIUpdateRequest
 
-	// ServerUpdateExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateServerResponse
-	ServerUpdateExecute(r ApiServerUpdateRequest) (*UpdateServerResponse, *http.Response, error)
+	UpdateExecute(r ServerAPIUpdateRequest) (*UpdateServerResponse, *http.Response, error)
 }
 
 // ServerAPIService ServerAPI service
 type ServerAPIService internal.Service
 
-type ApiServerCreateRequest struct {
+type ServerAPICreateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	body       *Server
 	inherit    *string
 }
 
-func (r ApiServerCreateRequest) Body(body Server) ApiServerCreateRequest {
+func (r ServerAPICreateRequest) Body(body Server) ServerAPICreateRequest {
 	r.body = &body
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiServerCreateRequest) Inherit(inherit string) ApiServerCreateRequest {
+func (r ServerAPICreateRequest) Inherit(inherit string) ServerAPICreateRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiServerCreateRequest) Execute() (*CreateServerResponse, *http.Response, error) {
-	return r.ApiService.ServerCreateExecute(r)
+func (r ServerAPICreateRequest) Execute() (*CreateServerResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-ServerCreate Create the DHCP configuration profile.
+Create Create the DHCP configuration profile.
 
 Use this method to create a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServerCreateRequest
+	@return ServerAPICreateRequest
 */
-func (a *ServerAPIService) ServerCreate(ctx context.Context) ApiServerCreateRequest {
-	return ApiServerCreateRequest{
+func (a *ServerAPIService) Create(ctx context.Context) ServerAPICreateRequest {
+	return ServerAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -140,7 +140,7 @@ func (a *ServerAPIService) ServerCreate(ctx context.Context) ApiServerCreateRequ
 // Execute executes the request
 //
 //	@return CreateServerResponse
-func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*CreateServerResponse, *http.Response, error) {
+func (a *ServerAPIService) CreateExecute(r ServerAPICreateRequest) (*CreateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -148,7 +148,7 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Creat
 		localVarReturnValue *CreateServerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerCreate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -224,28 +224,28 @@ func (a *ServerAPIService) ServerCreateExecute(r ApiServerCreateRequest) (*Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiServerDeleteRequest struct {
+type ServerAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	id         string
 }
 
-func (r ApiServerDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ServerDeleteExecute(r)
+func (r ServerAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ServerDelete Move the DHCP configuration profile to the recycle bin.
+Delete Move the DHCP configuration profile to the recycle bin.
 
 Use this method to move a __Server__ object to the recycle bin.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiServerDeleteRequest
+	@return ServerAPIDeleteRequest
 */
-func (a *ServerAPIService) ServerDelete(ctx context.Context, id string) ApiServerDeleteRequest {
-	return ApiServerDeleteRequest{
+func (a *ServerAPIService) Delete(ctx context.Context, id string) ServerAPIDeleteRequest {
+	return ServerAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -253,14 +253,14 @@ func (a *ServerAPIService) ServerDelete(ctx context.Context, id string) ApiServe
 }
 
 // Execute executes the request
-func (a *ServerAPIService) ServerDeleteExecute(r ApiServerDeleteRequest) (*http.Response, error) {
+func (a *ServerAPIService) DeleteExecute(r ServerAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -314,7 +314,7 @@ func (a *ServerAPIService) ServerDeleteExecute(r ApiServerDeleteRequest) (*http.
 	return localVarHTTPResponse, nil
 }
 
-type ApiServerListRequest struct {
+type ServerAPIListRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	filter     *string
@@ -329,74 +329,74 @@ type ApiServerListRequest struct {
 }
 
 // A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
-func (r ApiServerListRequest) Filter(filter string) ApiServerListRequest {
+func (r ServerAPIListRequest) Filter(filter string) ServerAPIListRequest {
 	r.filter = &filter
 	return r
 }
 
 // A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
-func (r ApiServerListRequest) OrderBy(orderBy string) ApiServerListRequest {
+func (r ServerAPIListRequest) OrderBy(orderBy string) ServerAPIListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiServerListRequest) Fields(fields string) ApiServerListRequest {
+func (r ServerAPIListRequest) Fields(fields string) ServerAPIListRequest {
 	r.fields = &fields
 	return r
 }
 
 // The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
-func (r ApiServerListRequest) Offset(offset int32) ApiServerListRequest {
+func (r ServerAPIListRequest) Offset(offset int32) ServerAPIListRequest {
 	r.offset = &offset
 	return r
 }
 
 // The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
-func (r ApiServerListRequest) Limit(limit int32) ApiServerListRequest {
+func (r ServerAPIListRequest) Limit(limit int32) ServerAPIListRequest {
 	r.limit = &limit
 	return r
 }
 
 // The service-defined string used to identify a page of resources. A null value indicates the first page.
-func (r ApiServerListRequest) PageToken(pageToken string) ApiServerListRequest {
+func (r ServerAPIListRequest) PageToken(pageToken string) ServerAPIListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
 // This parameter is used for sorting by tags.
-func (r ApiServerListRequest) TorderBy(torderBy string) ApiServerListRequest {
+func (r ServerAPIListRequest) TorderBy(torderBy string) ServerAPIListRequest {
 	r.torderBy = &torderBy
 	return r
 }
 
 // This parameter is used for filtering by tags.
-func (r ApiServerListRequest) Tfilter(tfilter string) ApiServerListRequest {
+func (r ServerAPIListRequest) Tfilter(tfilter string) ServerAPIListRequest {
 	r.tfilter = &tfilter
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiServerListRequest) Inherit(inherit string) ApiServerListRequest {
+func (r ServerAPIListRequest) Inherit(inherit string) ServerAPIListRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiServerListRequest) Execute() (*ListServerResponse, *http.Response, error) {
-	return r.ApiService.ServerListExecute(r)
+func (r ServerAPIListRequest) Execute() (*ListServerResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ServerList Retrieve DHCP configuration profiles.
+List Retrieve DHCP configuration profiles.
 
 Use this method to retrieve __Server__ objects.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServerListRequest
+	@return ServerAPIListRequest
 */
-func (a *ServerAPIService) ServerList(ctx context.Context) ApiServerListRequest {
-	return ApiServerListRequest{
+func (a *ServerAPIService) List(ctx context.Context) ServerAPIListRequest {
+	return ServerAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -405,7 +405,7 @@ func (a *ServerAPIService) ServerList(ctx context.Context) ApiServerListRequest 
 // Execute executes the request
 //
 //	@return ListServerResponse
-func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*ListServerResponse, *http.Response, error) {
+func (a *ServerAPIService) ListExecute(r ServerAPIListRequest) (*ListServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -413,7 +413,7 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*ListServe
 		localVarReturnValue *ListServerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerList")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -498,7 +498,7 @@ func (a *ServerAPIService) ServerListExecute(r ApiServerListRequest) (*ListServe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiServerReadRequest struct {
+type ServerAPIReadRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	id         string
@@ -507,33 +507,33 @@ type ApiServerReadRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiServerReadRequest) Fields(fields string) ApiServerReadRequest {
+func (r ServerAPIReadRequest) Fields(fields string) ServerAPIReadRequest {
 	r.fields = &fields
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiServerReadRequest) Inherit(inherit string) ApiServerReadRequest {
+func (r ServerAPIReadRequest) Inherit(inherit string) ServerAPIReadRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiServerReadRequest) Execute() (*ReadServerResponse, *http.Response, error) {
-	return r.ApiService.ServerReadExecute(r)
+func (r ServerAPIReadRequest) Execute() (*ReadServerResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ServerRead Retrieve the DHCP configuration profile.
+Read Retrieve the DHCP configuration profile.
 
 Use this method to retrieve a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiServerReadRequest
+	@return ServerAPIReadRequest
 */
-func (a *ServerAPIService) ServerRead(ctx context.Context, id string) ApiServerReadRequest {
-	return ApiServerReadRequest{
+func (a *ServerAPIService) Read(ctx context.Context, id string) ServerAPIReadRequest {
+	return ServerAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -543,7 +543,7 @@ func (a *ServerAPIService) ServerRead(ctx context.Context, id string) ApiServerR
 // Execute executes the request
 //
 //	@return ReadServerResponse
-func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*ReadServerResponse, *http.Response, error) {
+func (a *ServerAPIService) ReadExecute(r ServerAPIReadRequest) (*ReadServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -551,7 +551,7 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*ReadServe
 		localVarReturnValue *ReadServerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerRead")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *ServerAPIService) ServerReadExecute(r ApiServerReadRequest) (*ReadServe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiServerUpdateRequest struct {
+type ServerAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService ServerAPI
 	id         string
@@ -624,33 +624,33 @@ type ApiServerUpdateRequest struct {
 	inherit    *string
 }
 
-func (r ApiServerUpdateRequest) Body(body Server) ApiServerUpdateRequest {
+func (r ServerAPIUpdateRequest) Body(body Server) ServerAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiServerUpdateRequest) Inherit(inherit string) ApiServerUpdateRequest {
+func (r ServerAPIUpdateRequest) Inherit(inherit string) ServerAPIUpdateRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiServerUpdateRequest) Execute() (*UpdateServerResponse, *http.Response, error) {
-	return r.ApiService.ServerUpdateExecute(r)
+func (r ServerAPIUpdateRequest) Execute() (*UpdateServerResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ServerUpdate Update the DHCP configuration profile.
+Update Update the DHCP configuration profile.
 
 Use this method to update a __Server__ object.
 A __Server__ (DHCP Config Profile) is a named configuration profile that can be shared for specified list of hosts.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiServerUpdateRequest
+	@return ServerAPIUpdateRequest
 */
-func (a *ServerAPIService) ServerUpdate(ctx context.Context, id string) ApiServerUpdateRequest {
-	return ApiServerUpdateRequest{
+func (a *ServerAPIService) Update(ctx context.Context, id string) ServerAPIUpdateRequest {
+	return ServerAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -660,7 +660,7 @@ func (a *ServerAPIService) ServerUpdate(ctx context.Context, id string) ApiServe
 // Execute executes the request
 //
 //	@return UpdateServerResponse
-func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*UpdateServerResponse, *http.Response, error) {
+func (a *ServerAPIService) UpdateExecute(r ServerAPIUpdateRequest) (*UpdateServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -668,7 +668,7 @@ func (a *ServerAPIService) ServerUpdateExecute(r ApiServerUpdateRequest) (*Updat
 		localVarReturnValue *UpdateServerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.ServerUpdate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ServerAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

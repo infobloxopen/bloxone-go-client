@@ -23,11 +23,11 @@ func TestAddressAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test AddressAPIService AddressCreate", func(t *testing.T) {
+	t.Run("Test AddressAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AddressAPI.AddressCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AddressAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,38 +35,24 @@ func TestAddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressAPIService AddressDelete", func(t *testing.T) {
+	t.Run("Test AddressAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.AddressAPI.AddressDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.AddressAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AddressAPIService AddressList", func(t *testing.T) {
+	t.Run("Test AddressAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AddressAPI.AddressList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AddressAPIService AddressRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.AddressAPI.AddressRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +60,27 @@ func TestAddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressAPIService AddressUpdate", func(t *testing.T) {
+	t.Run("Test AddressAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressAPI.AddressUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AddressAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AddressAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

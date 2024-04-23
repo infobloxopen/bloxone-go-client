@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TsigCreate**](TsigAPI.md#TsigCreate) | **Post** /keys/tsig | Create the TSIG key.
-[**TsigDelete**](TsigAPI.md#TsigDelete) | **Delete** /keys/tsig/{id} | Delete the TSIG key.
-[**TsigList**](TsigAPI.md#TsigList) | **Get** /keys/tsig | Retrieve TSIG keys.
-[**TsigRead**](TsigAPI.md#TsigRead) | **Get** /keys/tsig/{id} | Retrieve the TSIG key.
-[**TsigUpdate**](TsigAPI.md#TsigUpdate) | **Patch** /keys/tsig/{id} | Update the TSIG key.
+[**Create**](TsigAPI.md#Create) | **Post** /keys/tsig | Create the TSIG key.
+[**Delete**](TsigAPI.md#Delete) | **Delete** /keys/tsig/{id} | Delete the TSIG key.
+[**List**](TsigAPI.md#List) | **Get** /keys/tsig | Retrieve TSIG keys.
+[**Read**](TsigAPI.md#Read) | **Get** /keys/tsig/{id} | Retrieve the TSIG key.
+[**Update**](TsigAPI.md#Update) | **Patch** /keys/tsig/{id} | Update the TSIG key.
 
 
 
-## TsigCreate
+## Create
 
-> KeysCreateTSIGKeyResponse TsigCreate(ctx).Body(body).Execute()
+> CreateTSIGKeyResponse Create(ctx).Body(body).Execute()
 
 Create the TSIG key.
 
@@ -34,16 +34,16 @@ import (
 )
 
 func main() {
-	body := *keys.NewKeysTSIGKey("Name_example", "Secret_example") // KeysTSIGKey | 
+	body := *keys.NewTSIGKey("Name_example", "Secret_example") // TSIGKey | 
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.TsigAPI.TsigCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.TsigAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.TsigCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TsigCreate`: KeysCreateTSIGKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.TsigCreate`: %v\n", resp)
+	// response from `Create`: CreateTSIGKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,16 +53,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTsigCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**KeysTSIGKey**](KeysTSIGKey.md) |  | 
+ **body** | [**TSIGKey**](TSIGKey.md) |  | 
 
 ### Return type
 
-[**KeysCreateTSIGKeyResponse**](KeysCreateTSIGKeyResponse.md)
+[**CreateTSIGKeyResponse**](CreateTSIGKeyResponse.md)
 
 ### Authorization
 
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TsigDelete
+## Delete
 
-> TsigDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Delete the TSIG key.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := keys.NewAPIClient()
-	r, err := apiClient.TsigAPI.TsigDelete(context.Background(), id).Execute()
+	r, err := apiClient.TsigAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.TsigDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTsigDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TsigList
+## List
 
-> KeysListTSIGKeyResponse TsigList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ListTSIGKeyResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Retrieve TSIG keys.
 
@@ -178,13 +178,13 @@ func main() {
 	torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.TsigAPI.TsigList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.TsigAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.TsigList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TsigList`: KeysListTSIGKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.TsigList`: %v\n", resp)
+	// response from `List`: ListTSIGKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTsigListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeysListTSIGKeyResponse**](KeysListTSIGKeyResponse.md)
+[**ListTSIGKeyResponse**](ListTSIGKeyResponse.md)
 
 ### Authorization
 
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TsigRead
+## Read
 
-> KeysReadTSIGKeyResponse TsigRead(ctx, id).Fields(fields).Execute()
+> ReadTSIGKeyResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the TSIG key.
 
@@ -252,13 +252,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.TsigAPI.TsigRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.TsigAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.TsigRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TsigRead`: KeysReadTSIGKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.TsigRead`: %v\n", resp)
+	// response from `Read`: ReadTSIGKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTsigReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeysReadTSIGKeyResponse**](KeysReadTSIGKeyResponse.md)
+[**ReadTSIGKeyResponse**](ReadTSIGKeyResponse.md)
 
 ### Authorization
 
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## TsigUpdate
+## Update
 
-> KeysUpdateTSIGKeyResponse TsigUpdate(ctx, id).Body(body).Execute()
+> UpdateTSIGKeyResponse Update(ctx, id).Body(body).Execute()
 
 Update the TSIG key.
 
@@ -321,16 +321,16 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *keys.NewKeysTSIGKey("Name_example", "Secret_example") // KeysTSIGKey | 
+	body := *keys.NewTSIGKey("Name_example", "Secret_example") // TSIGKey | 
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.TsigAPI.TsigUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.TsigAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.TsigUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TsigAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TsigUpdate`: KeysUpdateTSIGKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.TsigUpdate`: %v\n", resp)
+	// response from `Update`: UpdateTSIGKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `TsigAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,17 +344,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiTsigUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**KeysTSIGKey**](KeysTSIGKey.md) |  | 
+ **body** | [**TSIGKey**](TSIGKey.md) |  | 
 
 ### Return type
 
-[**KeysUpdateTSIGKeyResponse**](KeysUpdateTSIGKeyResponse.md)
+[**UpdateTSIGKeyResponse**](UpdateTSIGKeyResponse.md)
 
 ### Authorization
 

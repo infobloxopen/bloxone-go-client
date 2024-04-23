@@ -4,13 +4,13 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatFeedsListThreatFeeds**](ThreatFeedsAPI.md#ThreatFeedsListThreatFeeds) | **Get** /threat_feeds | List Threat Feeds.
+[**ListThreatFeeds**](ThreatFeedsAPI.md#ListThreatFeeds) | **Get** /threat_feeds | List Threat Feeds.
 
 
 
-## ThreatFeedsListThreatFeeds
+## ListThreatFeeds
 
-> AtcfwThreatFeedMultiResponse ThreatFeedsListThreatFeeds(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> ThreatFeedMultiResponse ListThreatFeeds(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 List Threat Feeds.
 
@@ -37,13 +37,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.ThreatFeedsAPI.ThreatFeedsListThreatFeeds(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.ThreatFeedsAPI.ListThreatFeeds(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatFeedsAPI.ThreatFeedsListThreatFeeds``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatFeedsAPI.ListThreatFeeds``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatFeedsListThreatFeeds`: AtcfwThreatFeedMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatFeedsAPI.ThreatFeedsListThreatFeeds`: %v\n", resp)
+	// response from `ListThreatFeeds`: ThreatFeedMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatFeedsAPI.ListThreatFeeds`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiThreatFeedsListThreatFeedsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListThreatFeedsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwThreatFeedMultiResponse**](AtcfwThreatFeedMultiResponse.md)
+[**ThreatFeedMultiResponse**](ThreatFeedMultiResponse.md)
 
 ### Authorization
 

@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OptionSpaceCreate**](OptionSpaceAPI.md#OptionSpaceCreate) | **Post** /dhcp/option_space | Create the DHCP option space.
-[**OptionSpaceDelete**](OptionSpaceAPI.md#OptionSpaceDelete) | **Delete** /dhcp/option_space/{id} | Move the DHCP option space to the recycle bin.
-[**OptionSpaceList**](OptionSpaceAPI.md#OptionSpaceList) | **Get** /dhcp/option_space | Retrieve DHCP option spaces.
-[**OptionSpaceRead**](OptionSpaceAPI.md#OptionSpaceRead) | **Get** /dhcp/option_space/{id} | Retrieve the DHCP option space.
-[**OptionSpaceUpdate**](OptionSpaceAPI.md#OptionSpaceUpdate) | **Patch** /dhcp/option_space/{id} | Update the DHCP option space.
+[**Create**](OptionSpaceAPI.md#Create) | **Post** /dhcp/option_space | Create the DHCP option space.
+[**Delete**](OptionSpaceAPI.md#Delete) | **Delete** /dhcp/option_space/{id} | Move the DHCP option space to the recycle bin.
+[**List**](OptionSpaceAPI.md#List) | **Get** /dhcp/option_space | Retrieve DHCP option spaces.
+[**Read**](OptionSpaceAPI.md#Read) | **Get** /dhcp/option_space/{id} | Retrieve the DHCP option space.
+[**Update**](OptionSpaceAPI.md#Update) | **Patch** /dhcp/option_space/{id} | Update the DHCP option space.
 
 
 
-## OptionSpaceCreate
+## Create
 
-> CreateOptionSpaceResponse OptionSpaceCreate(ctx).Body(body).Execute()
+> CreateOptionSpaceResponse Create(ctx).Body(body).Execute()
 
 Create the DHCP option space.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.OptionSpaceAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceCreate`: CreateOptionSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceCreate`: %v\n", resp)
+	// response from `Create`: CreateOptionSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionSpaceCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionSpaceDelete
+## Delete
 
-> OptionSpaceDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the DHCP option space to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.OptionSpaceAPI.OptionSpaceDelete(context.Background(), id).Execute()
+	r, err := apiClient.OptionSpaceAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionSpaceDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionSpaceList
+## List
 
-> ListOptionSpaceResponse OptionSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionSpaceResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option spaces.
 
@@ -178,13 +178,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.OptionSpaceAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceList`: ListOptionSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceList`: %v\n", resp)
+	// response from `List`: ListOptionSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionSpaceListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionSpaceRead
+## Read
 
-> ReadOptionSpaceResponse OptionSpaceRead(ctx, id).Fields(fields).Execute()
+> ReadOptionSpaceResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option space.
 
@@ -252,13 +252,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.OptionSpaceAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceRead`: ReadOptionSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceRead`: %v\n", resp)
+	// response from `Read`: ReadOptionSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionSpaceReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionSpaceUpdate
+## Update
 
-> UpdateOptionSpaceResponse OptionSpaceUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionSpaceResponse Update(ctx, id).Body(body).Execute()
 
 Update the DHCP option space.
 
@@ -324,13 +324,13 @@ func main() {
 	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionSpaceAPI.OptionSpaceUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.OptionSpaceAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.OptionSpaceUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionSpaceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionSpaceUpdate`: UpdateOptionSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.OptionSpaceUpdate`: %v\n", resp)
+	// response from `Update`: UpdateOptionSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionSpaceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionSpaceUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

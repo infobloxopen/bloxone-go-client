@@ -86,105 +86,105 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AddressAPI* | [**AddressCreate**](docs/AddressAPI.md#addresscreate) | **Post** /ipam/address | Create the IP address.
-*AddressAPI* | [**AddressDelete**](docs/AddressAPI.md#addressdelete) | **Delete** /ipam/address/{id} | Move the IP address to the recycle bin.
-*AddressAPI* | [**AddressList**](docs/AddressAPI.md#addresslist) | **Get** /ipam/address | Retrieve IP addresses.
-*AddressAPI* | [**AddressRead**](docs/AddressAPI.md#addressread) | **Get** /ipam/address/{id} | Retrieve the IP address.
-*AddressAPI* | [**AddressUpdate**](docs/AddressAPI.md#addressupdate) | **Patch** /ipam/address/{id} | Update the IP address.
-*AddressBlockAPI* | [**AddressBlockCopy**](docs/AddressBlockAPI.md#addressblockcopy) | **Post** /ipam/address_block/{id}/copy | Copy the address block.
-*AddressBlockAPI* | [**AddressBlockCreate**](docs/AddressBlockAPI.md#addressblockcreate) | **Post** /ipam/address_block | Create the address block.
-*AddressBlockAPI* | [**AddressBlockCreateNextAvailableAB**](docs/AddressBlockAPI.md#addressblockcreatenextavailableab) | **Post** /ipam/address_block/{id}/nextavailableaddressblock | Create the Next Available Address Block object.
-*AddressBlockAPI* | [**AddressBlockCreateNextAvailableIP**](docs/AddressBlockAPI.md#addressblockcreatenextavailableip) | **Post** /ipam/address_block/{id}/nextavailableip | Allocate the next available IP address.
-*AddressBlockAPI* | [**AddressBlockCreateNextAvailableSubnet**](docs/AddressBlockAPI.md#addressblockcreatenextavailablesubnet) | **Post** /ipam/address_block/{id}/nextavailablesubnet | Create the Next Available Subnet object.
-*AddressBlockAPI* | [**AddressBlockDelete**](docs/AddressBlockAPI.md#addressblockdelete) | **Delete** /ipam/address_block/{id} | Move the address block to the recycle bin.
-*AddressBlockAPI* | [**AddressBlockList**](docs/AddressBlockAPI.md#addressblocklist) | **Get** /ipam/address_block | Retrieve the address blocks.
-*AddressBlockAPI* | [**AddressBlockListNextAvailableAB**](docs/AddressBlockAPI.md#addressblocklistnextavailableab) | **Get** /ipam/address_block/{id}/nextavailableaddressblock | List Next Available Address Block objects.
-*AddressBlockAPI* | [**AddressBlockListNextAvailableIP**](docs/AddressBlockAPI.md#addressblocklistnextavailableip) | **Get** /ipam/address_block/{id}/nextavailableip | Retrieve the next available IP address.
-*AddressBlockAPI* | [**AddressBlockListNextAvailableSubnet**](docs/AddressBlockAPI.md#addressblocklistnextavailablesubnet) | **Get** /ipam/address_block/{id}/nextavailablesubnet | List Next Available Subnet objects.
-*AddressBlockAPI* | [**AddressBlockRead**](docs/AddressBlockAPI.md#addressblockread) | **Get** /ipam/address_block/{id} | Retrieve the address block.
-*AddressBlockAPI* | [**AddressBlockUpdate**](docs/AddressBlockAPI.md#addressblockupdate) | **Patch** /ipam/address_block/{id} | Update the address block.
-*AsmAPI* | [**AsmCreate**](docs/AsmAPI.md#asmcreate) | **Post** /ipam/asm | Update subnet and ranges for Automated Scope Management.
-*AsmAPI* | [**AsmList**](docs/AsmAPI.md#asmlist) | **Get** /ipam/asm | Retrieve suggested updates for Automated Scope Management.
-*AsmAPI* | [**AsmRead**](docs/AsmAPI.md#asmread) | **Get** /ipam/asm/{id} | Retrieve the suggested update for Automated Scope Management.
-*DhcpHostAPI* | [**DhcpHostList**](docs/DhcpHostAPI.md#dhcphostlist) | **Get** /dhcp/host | Retrieve DHCP hosts.
-*DhcpHostAPI* | [**DhcpHostListAssociations**](docs/DhcpHostAPI.md#dhcphostlistassociations) | **Get** /dhcp/host/{id}/associations | Retrieve DHCP host associations.
-*DhcpHostAPI* | [**DhcpHostRead**](docs/DhcpHostAPI.md#dhcphostread) | **Get** /dhcp/host/{id} | Retrieve the DHCP host.
-*DhcpHostAPI* | [**DhcpHostUpdate**](docs/DhcpHostAPI.md#dhcphostupdate) | **Patch** /dhcp/host/{id} | Update the DHCP hosts.
-*DnsUsageAPI* | [**DnsUsageList**](docs/DnsUsageAPI.md#dnsusagelist) | **Get** /ipam/dns_usage | Retrieve DNS usage for multiple objects.
-*DnsUsageAPI* | [**DnsUsageRead**](docs/DnsUsageAPI.md#dnsusageread) | **Get** /ipam/dns_usage/{id} | Retrieve the DNS usage.
-*FilterAPI* | [**FilterList**](docs/FilterAPI.md#filterlist) | **Get** /dhcp/filter | Retrieve DHCP filters.
-*FixedAddressAPI* | [**FixedAddressCreate**](docs/FixedAddressAPI.md#fixedaddresscreate) | **Post** /dhcp/fixed_address | Create the fixed address.
-*FixedAddressAPI* | [**FixedAddressDelete**](docs/FixedAddressAPI.md#fixedaddressdelete) | **Delete** /dhcp/fixed_address/{id} | Move the fixed address to the recycle bin.
-*FixedAddressAPI* | [**FixedAddressList**](docs/FixedAddressAPI.md#fixedaddresslist) | **Get** /dhcp/fixed_address | Retrieve fixed addresses.
-*FixedAddressAPI* | [**FixedAddressRead**](docs/FixedAddressAPI.md#fixedaddressread) | **Get** /dhcp/fixed_address/{id} | Retrieve the fixed address.
-*FixedAddressAPI* | [**FixedAddressUpdate**](docs/FixedAddressAPI.md#fixedaddressupdate) | **Patch** /dhcp/fixed_address/{id} | Update the fixed address.
-*GlobalAPI* | [**GlobalRead**](docs/GlobalAPI.md#globalread) | **Get** /dhcp/global | Retrieve the global configuration.
-*GlobalAPI* | [**GlobalRead2**](docs/GlobalAPI.md#globalread2) | **Get** /dhcp/global/{id} | Retrieve the global configuration.
-*GlobalAPI* | [**GlobalUpdate**](docs/GlobalAPI.md#globalupdate) | **Patch** /dhcp/global | Update the global configuration.
-*GlobalAPI* | [**GlobalUpdate2**](docs/GlobalAPI.md#globalupdate2) | **Patch** /dhcp/global/{id} | Update the global configuration.
-*HaGroupAPI* | [**HaGroupCreate**](docs/HaGroupAPI.md#hagroupcreate) | **Post** /dhcp/ha_group | Create the HA group.
-*HaGroupAPI* | [**HaGroupDelete**](docs/HaGroupAPI.md#hagroupdelete) | **Delete** /dhcp/ha_group/{id} | Delete the HA group.
-*HaGroupAPI* | [**HaGroupList**](docs/HaGroupAPI.md#hagrouplist) | **Get** /dhcp/ha_group | Retrieve HA groups.
-*HaGroupAPI* | [**HaGroupRead**](docs/HaGroupAPI.md#hagroupread) | **Get** /dhcp/ha_group/{id} | Retrieve the HA group.
-*HaGroupAPI* | [**HaGroupUpdate**](docs/HaGroupAPI.md#hagroupupdate) | **Patch** /dhcp/ha_group/{id} | Update the HA group.
-*HardwareFilterAPI* | [**HardwareFilterCreate**](docs/HardwareFilterAPI.md#hardwarefiltercreate) | **Post** /dhcp/hardware_filter | Create the hardware filter.
-*HardwareFilterAPI* | [**HardwareFilterDelete**](docs/HardwareFilterAPI.md#hardwarefilterdelete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
-*HardwareFilterAPI* | [**HardwareFilterList**](docs/HardwareFilterAPI.md#hardwarefilterlist) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
-*HardwareFilterAPI* | [**HardwareFilterRead**](docs/HardwareFilterAPI.md#hardwarefilterread) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
-*HardwareFilterAPI* | [**HardwareFilterUpdate**](docs/HardwareFilterAPI.md#hardwarefilterupdate) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
-*IpSpaceAPI* | [**IpSpaceBulkCopy**](docs/IpSpaceAPI.md#ipspacebulkcopy) | **Post** /ipam/ip_space/bulk_copy | Copy the specified address block and subnets in the IP space.
-*IpSpaceAPI* | [**IpSpaceCopy**](docs/IpSpaceAPI.md#ipspacecopy) | **Post** /ipam/ip_space/{id}/copy | Copy the IP space.
-*IpSpaceAPI* | [**IpSpaceCreate**](docs/IpSpaceAPI.md#ipspacecreate) | **Post** /ipam/ip_space | Create the IP space.
-*IpSpaceAPI* | [**IpSpaceDelete**](docs/IpSpaceAPI.md#ipspacedelete) | **Delete** /ipam/ip_space/{id} | Move the IP space to the recycle bin.
-*IpSpaceAPI* | [**IpSpaceList**](docs/IpSpaceAPI.md#ipspacelist) | **Get** /ipam/ip_space | Retrieve IP spaces.
-*IpSpaceAPI* | [**IpSpaceRead**](docs/IpSpaceAPI.md#ipspaceread) | **Get** /ipam/ip_space/{id} | Retrieve the IP space.
-*IpSpaceAPI* | [**IpSpaceUpdate**](docs/IpSpaceAPI.md#ipspaceupdate) | **Patch** /ipam/ip_space/{id} | Update the IP space.
-*IpamHostAPI* | [**IpamHostCreate**](docs/IpamHostAPI.md#ipamhostcreate) | **Post** /ipam/host | Create the IPAM host.
-*IpamHostAPI* | [**IpamHostDelete**](docs/IpamHostAPI.md#ipamhostdelete) | **Delete** /ipam/host/{id} | Move the IPAM host to the recycle bin.
-*IpamHostAPI* | [**IpamHostList**](docs/IpamHostAPI.md#ipamhostlist) | **Get** /ipam/host | Retrieve the IPAM hosts.
-*IpamHostAPI* | [**IpamHostRead**](docs/IpamHostAPI.md#ipamhostread) | **Get** /ipam/host/{id} | Retrieve the IPAM host.
-*IpamHostAPI* | [**IpamHostUpdate**](docs/IpamHostAPI.md#ipamhostupdate) | **Patch** /ipam/host/{id} | Update the IPAM host.
-*LeasesCommandAPI* | [**LeasesCommandCreate**](docs/LeasesCommandAPI.md#leasescommandcreate) | **Post** /dhcp/leases_command | Perform actions like clearing DHCP lease(s).
-*OptionCodeAPI* | [**OptionCodeCreate**](docs/OptionCodeAPI.md#optioncodecreate) | **Post** /dhcp/option_code | Create the DHCP option code.
-*OptionCodeAPI* | [**OptionCodeDelete**](docs/OptionCodeAPI.md#optioncodedelete) | **Delete** /dhcp/option_code/{id} | Delete the DHCP option code.
-*OptionCodeAPI* | [**OptionCodeList**](docs/OptionCodeAPI.md#optioncodelist) | **Get** /dhcp/option_code | Retrieve DHCP option codes.
-*OptionCodeAPI* | [**OptionCodeRead**](docs/OptionCodeAPI.md#optioncoderead) | **Get** /dhcp/option_code/{id} | Retrieve the DHCP option code.
-*OptionCodeAPI* | [**OptionCodeUpdate**](docs/OptionCodeAPI.md#optioncodeupdate) | **Patch** /dhcp/option_code/{id} | Update the DHCP option code.
-*OptionFilterAPI* | [**OptionFilterCreate**](docs/OptionFilterAPI.md#optionfiltercreate) | **Post** /dhcp/option_filter | Create the DHCP option filter.
-*OptionFilterAPI* | [**OptionFilterDelete**](docs/OptionFilterAPI.md#optionfilterdelete) | **Delete** /dhcp/option_filter/{id} | Move the DHCP option filter to the recycle bin.
-*OptionFilterAPI* | [**OptionFilterList**](docs/OptionFilterAPI.md#optionfilterlist) | **Get** /dhcp/option_filter | Retrieve DHCP option filters.
-*OptionFilterAPI* | [**OptionFilterRead**](docs/OptionFilterAPI.md#optionfilterread) | **Get** /dhcp/option_filter/{id} | Retrieve the DHCP option filter.
-*OptionFilterAPI* | [**OptionFilterUpdate**](docs/OptionFilterAPI.md#optionfilterupdate) | **Patch** /dhcp/option_filter/{id} | Update the DHCP option filter.
-*OptionGroupAPI* | [**OptionGroupCreate**](docs/OptionGroupAPI.md#optiongroupcreate) | **Post** /dhcp/option_group | Create the DHCP option group.
-*OptionGroupAPI* | [**OptionGroupDelete**](docs/OptionGroupAPI.md#optiongroupdelete) | **Delete** /dhcp/option_group/{id} | Move the DHCP option group to the recycle bin.
-*OptionGroupAPI* | [**OptionGroupList**](docs/OptionGroupAPI.md#optiongrouplist) | **Get** /dhcp/option_group | Retrieve DHCP option groups.
-*OptionGroupAPI* | [**OptionGroupRead**](docs/OptionGroupAPI.md#optiongroupread) | **Get** /dhcp/option_group/{id} | Retrieve the DHCP option group.
-*OptionGroupAPI* | [**OptionGroupUpdate**](docs/OptionGroupAPI.md#optiongroupupdate) | **Patch** /dhcp/option_group/{id} | Update the DHCP option group.
-*OptionSpaceAPI* | [**OptionSpaceCreate**](docs/OptionSpaceAPI.md#optionspacecreate) | **Post** /dhcp/option_space | Create the DHCP option space.
-*OptionSpaceAPI* | [**OptionSpaceDelete**](docs/OptionSpaceAPI.md#optionspacedelete) | **Delete** /dhcp/option_space/{id} | Move the DHCP option space to the recycle bin.
-*OptionSpaceAPI* | [**OptionSpaceList**](docs/OptionSpaceAPI.md#optionspacelist) | **Get** /dhcp/option_space | Retrieve DHCP option spaces.
-*OptionSpaceAPI* | [**OptionSpaceRead**](docs/OptionSpaceAPI.md#optionspaceread) | **Get** /dhcp/option_space/{id} | Retrieve the DHCP option space.
-*OptionSpaceAPI* | [**OptionSpaceUpdate**](docs/OptionSpaceAPI.md#optionspaceupdate) | **Patch** /dhcp/option_space/{id} | Update the DHCP option space.
-*RangeAPI* | [**RangeCreate**](docs/RangeAPI.md#rangecreate) | **Post** /ipam/range | Create the range.
-*RangeAPI* | [**RangeCreateNextAvailableIP**](docs/RangeAPI.md#rangecreatenextavailableip) | **Post** /ipam/range/{id}/nextavailableip | Allocate the next available IP address.
-*RangeAPI* | [**RangeDelete**](docs/RangeAPI.md#rangedelete) | **Delete** /ipam/range/{id} | Move the range to the recycle bin.
-*RangeAPI* | [**RangeList**](docs/RangeAPI.md#rangelist) | **Get** /ipam/range | Retrieve ranges.
-*RangeAPI* | [**RangeListNextAvailableIP**](docs/RangeAPI.md#rangelistnextavailableip) | **Get** /ipam/range/{id}/nextavailableip | Retrieve the next available IP address.
-*RangeAPI* | [**RangeRead**](docs/RangeAPI.md#rangeread) | **Get** /ipam/range/{id} | Retrieve the range.
-*RangeAPI* | [**RangeUpdate**](docs/RangeAPI.md#rangeupdate) | **Patch** /ipam/range/{id} | Update the range.
-*ServerAPI* | [**ServerCreate**](docs/ServerAPI.md#servercreate) | **Post** /dhcp/server | Create the DHCP configuration profile.
-*ServerAPI* | [**ServerDelete**](docs/ServerAPI.md#serverdelete) | **Delete** /dhcp/server/{id} | Move the DHCP configuration profile to the recycle bin.
-*ServerAPI* | [**ServerList**](docs/ServerAPI.md#serverlist) | **Get** /dhcp/server | Retrieve DHCP configuration profiles.
-*ServerAPI* | [**ServerRead**](docs/ServerAPI.md#serverread) | **Get** /dhcp/server/{id} | Retrieve the DHCP configuration profile.
-*ServerAPI* | [**ServerUpdate**](docs/ServerAPI.md#serverupdate) | **Patch** /dhcp/server/{id} | Update the DHCP configuration profile.
-*SubnetAPI* | [**SubnetCopy**](docs/SubnetAPI.md#subnetcopy) | **Post** /ipam/subnet/{id}/copy | Copy the subnet.
-*SubnetAPI* | [**SubnetCreate**](docs/SubnetAPI.md#subnetcreate) | **Post** /ipam/subnet | Create the subnet.
-*SubnetAPI* | [**SubnetCreateNextAvailableIP**](docs/SubnetAPI.md#subnetcreatenextavailableip) | **Post** /ipam/subnet/{id}/nextavailableip | Allocate the next available IP address.
-*SubnetAPI* | [**SubnetDelete**](docs/SubnetAPI.md#subnetdelete) | **Delete** /ipam/subnet/{id} | Move the subnet to the recycle bin.
-*SubnetAPI* | [**SubnetList**](docs/SubnetAPI.md#subnetlist) | **Get** /ipam/subnet | Retrieve subnets.
-*SubnetAPI* | [**SubnetListNextAvailableIP**](docs/SubnetAPI.md#subnetlistnextavailableip) | **Get** /ipam/subnet/{id}/nextavailableip | Retrieve the next available IP address.
-*SubnetAPI* | [**SubnetRead**](docs/SubnetAPI.md#subnetread) | **Get** /ipam/subnet/{id} | Retrieve the subnet.
-*SubnetAPI* | [**SubnetUpdate**](docs/SubnetAPI.md#subnetupdate) | **Patch** /ipam/subnet/{id} | Update the subnet.
+*AddressAPI* | [**Create**](docs/AddressAPI.md#create) | **Post** /ipam/address | Create the IP address.
+*AddressAPI* | [**Delete**](docs/AddressAPI.md#delete) | **Delete** /ipam/address/{id} | Move the IP address to the recycle bin.
+*AddressAPI* | [**List**](docs/AddressAPI.md#list) | **Get** /ipam/address | Retrieve IP addresses.
+*AddressAPI* | [**Read**](docs/AddressAPI.md#read) | **Get** /ipam/address/{id} | Retrieve the IP address.
+*AddressAPI* | [**Update**](docs/AddressAPI.md#update) | **Patch** /ipam/address/{id} | Update the IP address.
+*AddressBlockAPI* | [**Copy**](docs/AddressBlockAPI.md#copy) | **Post** /ipam/address_block/{id}/copy | Copy the address block.
+*AddressBlockAPI* | [**Create**](docs/AddressBlockAPI.md#create) | **Post** /ipam/address_block | Create the address block.
+*AddressBlockAPI* | [**CreateNextAvailableAB**](docs/AddressBlockAPI.md#createnextavailableab) | **Post** /ipam/address_block/{id}/nextavailableaddressblock | Create the Next Available Address Block object.
+*AddressBlockAPI* | [**CreateNextAvailableIP**](docs/AddressBlockAPI.md#createnextavailableip) | **Post** /ipam/address_block/{id}/nextavailableip | Allocate the next available IP address.
+*AddressBlockAPI* | [**CreateNextAvailableSubnet**](docs/AddressBlockAPI.md#createnextavailablesubnet) | **Post** /ipam/address_block/{id}/nextavailablesubnet | Create the Next Available Subnet object.
+*AddressBlockAPI* | [**Delete**](docs/AddressBlockAPI.md#delete) | **Delete** /ipam/address_block/{id} | Move the address block to the recycle bin.
+*AddressBlockAPI* | [**List**](docs/AddressBlockAPI.md#list) | **Get** /ipam/address_block | Retrieve the address blocks.
+*AddressBlockAPI* | [**ListNextAvailableAB**](docs/AddressBlockAPI.md#listnextavailableab) | **Get** /ipam/address_block/{id}/nextavailableaddressblock | List Next Available Address Block objects.
+*AddressBlockAPI* | [**ListNextAvailableIP**](docs/AddressBlockAPI.md#listnextavailableip) | **Get** /ipam/address_block/{id}/nextavailableip | Retrieve the next available IP address.
+*AddressBlockAPI* | [**ListNextAvailableSubnet**](docs/AddressBlockAPI.md#listnextavailablesubnet) | **Get** /ipam/address_block/{id}/nextavailablesubnet | List Next Available Subnet objects.
+*AddressBlockAPI* | [**Read**](docs/AddressBlockAPI.md#read) | **Get** /ipam/address_block/{id} | Retrieve the address block.
+*AddressBlockAPI* | [**Update**](docs/AddressBlockAPI.md#update) | **Patch** /ipam/address_block/{id} | Update the address block.
+*AsmAPI* | [**Create**](docs/AsmAPI.md#create) | **Post** /ipam/asm | Update subnet and ranges for Automated Scope Management.
+*AsmAPI* | [**List**](docs/AsmAPI.md#list) | **Get** /ipam/asm | Retrieve suggested updates for Automated Scope Management.
+*AsmAPI* | [**Read**](docs/AsmAPI.md#read) | **Get** /ipam/asm/{id} | Retrieve the suggested update for Automated Scope Management.
+*DhcpHostAPI* | [**List**](docs/DhcpHostAPI.md#list) | **Get** /dhcp/host | Retrieve DHCP hosts.
+*DhcpHostAPI* | [**ListAssociations**](docs/DhcpHostAPI.md#listassociations) | **Get** /dhcp/host/{id}/associations | Retrieve DHCP host associations.
+*DhcpHostAPI* | [**Read**](docs/DhcpHostAPI.md#read) | **Get** /dhcp/host/{id} | Retrieve the DHCP host.
+*DhcpHostAPI* | [**Update**](docs/DhcpHostAPI.md#update) | **Patch** /dhcp/host/{id} | Update the DHCP hosts.
+*DnsUsageAPI* | [**List**](docs/DnsUsageAPI.md#list) | **Get** /ipam/dns_usage | Retrieve DNS usage for multiple objects.
+*DnsUsageAPI* | [**Read**](docs/DnsUsageAPI.md#read) | **Get** /ipam/dns_usage/{id} | Retrieve the DNS usage.
+*FilterAPI* | [**List**](docs/FilterAPI.md#list) | **Get** /dhcp/filter | Retrieve DHCP filters.
+*FixedAddressAPI* | [**Create**](docs/FixedAddressAPI.md#create) | **Post** /dhcp/fixed_address | Create the fixed address.
+*FixedAddressAPI* | [**Delete**](docs/FixedAddressAPI.md#delete) | **Delete** /dhcp/fixed_address/{id} | Move the fixed address to the recycle bin.
+*FixedAddressAPI* | [**List**](docs/FixedAddressAPI.md#list) | **Get** /dhcp/fixed_address | Retrieve fixed addresses.
+*FixedAddressAPI* | [**Read**](docs/FixedAddressAPI.md#read) | **Get** /dhcp/fixed_address/{id} | Retrieve the fixed address.
+*FixedAddressAPI* | [**Update**](docs/FixedAddressAPI.md#update) | **Patch** /dhcp/fixed_address/{id} | Update the fixed address.
+*GlobalAPI* | [**Read**](docs/GlobalAPI.md#read) | **Get** /dhcp/global | Retrieve the global configuration.
+*GlobalAPI* | [**ReadById**](docs/GlobalAPI.md#readbyid) | **Get** /dhcp/global/{id} | Retrieve the global configuration.
+*GlobalAPI* | [**Update**](docs/GlobalAPI.md#update) | **Patch** /dhcp/global | Update the global configuration.
+*GlobalAPI* | [**UpdateById**](docs/GlobalAPI.md#updatebyid) | **Patch** /dhcp/global/{id} | Update the global configuration.
+*HaGroupAPI* | [**Create**](docs/HaGroupAPI.md#create) | **Post** /dhcp/ha_group | Create the HA group.
+*HaGroupAPI* | [**Delete**](docs/HaGroupAPI.md#delete) | **Delete** /dhcp/ha_group/{id} | Delete the HA group.
+*HaGroupAPI* | [**List**](docs/HaGroupAPI.md#list) | **Get** /dhcp/ha_group | Retrieve HA groups.
+*HaGroupAPI* | [**Read**](docs/HaGroupAPI.md#read) | **Get** /dhcp/ha_group/{id} | Retrieve the HA group.
+*HaGroupAPI* | [**Update**](docs/HaGroupAPI.md#update) | **Patch** /dhcp/ha_group/{id} | Update the HA group.
+*HardwareFilterAPI* | [**Create**](docs/HardwareFilterAPI.md#create) | **Post** /dhcp/hardware_filter | Create the hardware filter.
+*HardwareFilterAPI* | [**Delete**](docs/HardwareFilterAPI.md#delete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
+*HardwareFilterAPI* | [**List**](docs/HardwareFilterAPI.md#list) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
+*HardwareFilterAPI* | [**Read**](docs/HardwareFilterAPI.md#read) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
+*HardwareFilterAPI* | [**Update**](docs/HardwareFilterAPI.md#update) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
+*IpSpaceAPI* | [**BulkCopy**](docs/IpSpaceAPI.md#bulkcopy) | **Post** /ipam/ip_space/bulk_copy | Copy the specified address block and subnets in the IP space.
+*IpSpaceAPI* | [**Copy**](docs/IpSpaceAPI.md#copy) | **Post** /ipam/ip_space/{id}/copy | Copy the IP space.
+*IpSpaceAPI* | [**Create**](docs/IpSpaceAPI.md#create) | **Post** /ipam/ip_space | Create the IP space.
+*IpSpaceAPI* | [**Delete**](docs/IpSpaceAPI.md#delete) | **Delete** /ipam/ip_space/{id} | Move the IP space to the recycle bin.
+*IpSpaceAPI* | [**List**](docs/IpSpaceAPI.md#list) | **Get** /ipam/ip_space | Retrieve IP spaces.
+*IpSpaceAPI* | [**Read**](docs/IpSpaceAPI.md#read) | **Get** /ipam/ip_space/{id} | Retrieve the IP space.
+*IpSpaceAPI* | [**Update**](docs/IpSpaceAPI.md#update) | **Patch** /ipam/ip_space/{id} | Update the IP space.
+*IpamHostAPI* | [**Create**](docs/IpamHostAPI.md#create) | **Post** /ipam/host | Create the IPAM host.
+*IpamHostAPI* | [**Delete**](docs/IpamHostAPI.md#delete) | **Delete** /ipam/host/{id} | Move the IPAM host to the recycle bin.
+*IpamHostAPI* | [**List**](docs/IpamHostAPI.md#list) | **Get** /ipam/host | Retrieve the IPAM hosts.
+*IpamHostAPI* | [**Read**](docs/IpamHostAPI.md#read) | **Get** /ipam/host/{id} | Retrieve the IPAM host.
+*IpamHostAPI* | [**Update**](docs/IpamHostAPI.md#update) | **Patch** /ipam/host/{id} | Update the IPAM host.
+*LeasesCommandAPI* | [**Create**](docs/LeasesCommandAPI.md#create) | **Post** /dhcp/leases_command | Perform actions like clearing DHCP lease(s).
+*OptionCodeAPI* | [**Create**](docs/OptionCodeAPI.md#create) | **Post** /dhcp/option_code | Create the DHCP option code.
+*OptionCodeAPI* | [**Delete**](docs/OptionCodeAPI.md#delete) | **Delete** /dhcp/option_code/{id} | Delete the DHCP option code.
+*OptionCodeAPI* | [**List**](docs/OptionCodeAPI.md#list) | **Get** /dhcp/option_code | Retrieve DHCP option codes.
+*OptionCodeAPI* | [**Read**](docs/OptionCodeAPI.md#read) | **Get** /dhcp/option_code/{id} | Retrieve the DHCP option code.
+*OptionCodeAPI* | [**Update**](docs/OptionCodeAPI.md#update) | **Patch** /dhcp/option_code/{id} | Update the DHCP option code.
+*OptionFilterAPI* | [**Create**](docs/OptionFilterAPI.md#create) | **Post** /dhcp/option_filter | Create the DHCP option filter.
+*OptionFilterAPI* | [**Delete**](docs/OptionFilterAPI.md#delete) | **Delete** /dhcp/option_filter/{id} | Move the DHCP option filter to the recycle bin.
+*OptionFilterAPI* | [**List**](docs/OptionFilterAPI.md#list) | **Get** /dhcp/option_filter | Retrieve DHCP option filters.
+*OptionFilterAPI* | [**Read**](docs/OptionFilterAPI.md#read) | **Get** /dhcp/option_filter/{id} | Retrieve the DHCP option filter.
+*OptionFilterAPI* | [**Update**](docs/OptionFilterAPI.md#update) | **Patch** /dhcp/option_filter/{id} | Update the DHCP option filter.
+*OptionGroupAPI* | [**Create**](docs/OptionGroupAPI.md#create) | **Post** /dhcp/option_group | Create the DHCP option group.
+*OptionGroupAPI* | [**Delete**](docs/OptionGroupAPI.md#delete) | **Delete** /dhcp/option_group/{id} | Move the DHCP option group to the recycle bin.
+*OptionGroupAPI* | [**List**](docs/OptionGroupAPI.md#list) | **Get** /dhcp/option_group | Retrieve DHCP option groups.
+*OptionGroupAPI* | [**Read**](docs/OptionGroupAPI.md#read) | **Get** /dhcp/option_group/{id} | Retrieve the DHCP option group.
+*OptionGroupAPI* | [**Update**](docs/OptionGroupAPI.md#update) | **Patch** /dhcp/option_group/{id} | Update the DHCP option group.
+*OptionSpaceAPI* | [**Create**](docs/OptionSpaceAPI.md#create) | **Post** /dhcp/option_space | Create the DHCP option space.
+*OptionSpaceAPI* | [**Delete**](docs/OptionSpaceAPI.md#delete) | **Delete** /dhcp/option_space/{id} | Move the DHCP option space to the recycle bin.
+*OptionSpaceAPI* | [**List**](docs/OptionSpaceAPI.md#list) | **Get** /dhcp/option_space | Retrieve DHCP option spaces.
+*OptionSpaceAPI* | [**Read**](docs/OptionSpaceAPI.md#read) | **Get** /dhcp/option_space/{id} | Retrieve the DHCP option space.
+*OptionSpaceAPI* | [**Update**](docs/OptionSpaceAPI.md#update) | **Patch** /dhcp/option_space/{id} | Update the DHCP option space.
+*RangeAPI* | [**Create**](docs/RangeAPI.md#create) | **Post** /ipam/range | Create the range.
+*RangeAPI* | [**CreateNextAvailableIP**](docs/RangeAPI.md#createnextavailableip) | **Post** /ipam/range/{id}/nextavailableip | Allocate the next available IP address.
+*RangeAPI* | [**Delete**](docs/RangeAPI.md#delete) | **Delete** /ipam/range/{id} | Move the range to the recycle bin.
+*RangeAPI* | [**List**](docs/RangeAPI.md#list) | **Get** /ipam/range | Retrieve ranges.
+*RangeAPI* | [**ListNextAvailableIP**](docs/RangeAPI.md#listnextavailableip) | **Get** /ipam/range/{id}/nextavailableip | Retrieve the next available IP address.
+*RangeAPI* | [**Read**](docs/RangeAPI.md#read) | **Get** /ipam/range/{id} | Retrieve the range.
+*RangeAPI* | [**Update**](docs/RangeAPI.md#update) | **Patch** /ipam/range/{id} | Update the range.
+*ServerAPI* | [**Create**](docs/ServerAPI.md#create) | **Post** /dhcp/server | Create the DHCP configuration profile.
+*ServerAPI* | [**Delete**](docs/ServerAPI.md#delete) | **Delete** /dhcp/server/{id} | Move the DHCP configuration profile to the recycle bin.
+*ServerAPI* | [**List**](docs/ServerAPI.md#list) | **Get** /dhcp/server | Retrieve DHCP configuration profiles.
+*ServerAPI* | [**Read**](docs/ServerAPI.md#read) | **Get** /dhcp/server/{id} | Retrieve the DHCP configuration profile.
+*ServerAPI* | [**Update**](docs/ServerAPI.md#update) | **Patch** /dhcp/server/{id} | Update the DHCP configuration profile.
+*SubnetAPI* | [**Copy**](docs/SubnetAPI.md#copy) | **Post** /ipam/subnet/{id}/copy | Copy the subnet.
+*SubnetAPI* | [**Create**](docs/SubnetAPI.md#create) | **Post** /ipam/subnet | Create the subnet.
+*SubnetAPI* | [**CreateNextAvailableIP**](docs/SubnetAPI.md#createnextavailableip) | **Post** /ipam/subnet/{id}/nextavailableip | Allocate the next available IP address.
+*SubnetAPI* | [**Delete**](docs/SubnetAPI.md#delete) | **Delete** /ipam/subnet/{id} | Move the subnet to the recycle bin.
+*SubnetAPI* | [**List**](docs/SubnetAPI.md#list) | **Get** /ipam/subnet | Retrieve subnets.
+*SubnetAPI* | [**ListNextAvailableIP**](docs/SubnetAPI.md#listnextavailableip) | **Get** /ipam/subnet/{id}/nextavailableip | Retrieve the next available IP address.
+*SubnetAPI* | [**Read**](docs/SubnetAPI.md#read) | **Get** /ipam/subnet/{id} | Retrieve the subnet.
+*SubnetAPI* | [**Update**](docs/SubnetAPI.md#update) | **Patch** /ipam/subnet/{id} | Update the subnet.
 
 
 ## Documentation For Models

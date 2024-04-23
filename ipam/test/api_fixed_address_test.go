@@ -23,11 +23,11 @@ func TestFixedAddressAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test FixedAddressAPIService FixedAddressCreate", func(t *testing.T) {
+	t.Run("Test FixedAddressAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,38 +35,24 @@ func TestFixedAddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FixedAddressAPIService FixedAddressDelete", func(t *testing.T) {
+	t.Run("Test FixedAddressAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.FixedAddressAPI.FixedAddressDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.FixedAddressAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test FixedAddressAPIService FixedAddressList", func(t *testing.T) {
+	t.Run("Test FixedAddressAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FixedAddressAPIService FixedAddressRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +60,27 @@ func TestFixedAddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FixedAddressAPIService FixedAddressUpdate", func(t *testing.T) {
+	t.Run("Test FixedAddressAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.FixedAddressAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FixedAddressAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.FixedAddressAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

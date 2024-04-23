@@ -23,11 +23,11 @@ func TestAccessCodesAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test AccessCodesAPIService AccessCodesCreateAccessCode", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService CreateAccessCode", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AccessCodesAPI.AccessCodesCreateAccessCode(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessCodesAPI.CreateAccessCode(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,35 +35,35 @@ func TestAccessCodesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessCodesAPIService AccessCodesDeleteAccessCodes", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService DeleteAccessCodes", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.AccessCodesAPI.AccessCodesDeleteAccessCodes(context.Background()).Execute()
+		httpRes, err := apiClient.AccessCodesAPI.DeleteAccessCodes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AccessCodesAPIService AccessCodesDeleteSingleAccessCodes", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService DeleteSingleAccessCodes", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var accessKey string
 
-		httpRes, err := apiClient.AccessCodesAPI.AccessCodesDeleteSingleAccessCodes(context.Background(), accessKey).Execute()
+		httpRes, err := apiClient.AccessCodesAPI.DeleteSingleAccessCodes(context.Background(), accessKey).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AccessCodesAPIService AccessCodesListAccessCodes", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService ListAccessCodes", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AccessCodesAPI.AccessCodesListAccessCodes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccessCodesAPI.ListAccessCodes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,13 +71,13 @@ func TestAccessCodesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessCodesAPIService AccessCodesReadAccessCode", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService ReadAccessCode", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var accessKey string
 
-		resp, httpRes, err := apiClient.AccessCodesAPI.AccessCodesReadAccessCode(context.Background(), accessKey).Execute()
+		resp, httpRes, err := apiClient.AccessCodesAPI.ReadAccessCode(context.Background(), accessKey).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -85,13 +85,13 @@ func TestAccessCodesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessCodesAPIService AccessCodesUpdateAccessCode", func(t *testing.T) {
+	t.Run("Test AccessCodesAPIService UpdateAccessCode", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var payloadAccessKey string
 
-		resp, httpRes, err := apiClient.AccessCodesAPI.AccessCodesUpdateAccessCode(context.Background(), payloadAccessKey).Execute()
+		resp, httpRes, err := apiClient.AccessCodesAPI.UpdateAccessCode(context.Background(), payloadAccessKey).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

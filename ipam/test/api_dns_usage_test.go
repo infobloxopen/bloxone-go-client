@@ -23,11 +23,11 @@ func TestDnsUsageAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test DnsUsageAPIService DnsUsageList", func(t *testing.T) {
+	t.Run("Test DnsUsageAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DnsUsageAPI.DnsUsageList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DnsUsageAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDnsUsageAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DnsUsageAPIService DnsUsageRead", func(t *testing.T) {
+	t.Run("Test DnsUsageAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DnsUsageAPI.DnsUsageRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DnsUsageAPI.Read(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

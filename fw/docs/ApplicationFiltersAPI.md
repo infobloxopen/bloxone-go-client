@@ -4,18 +4,18 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApplicationFiltersCreateApplicationFilter**](ApplicationFiltersAPI.md#ApplicationFiltersCreateApplicationFilter) | **Post** /application_filters | Create Application Filter.
-[**ApplicationFiltersDeleteApplicationFilters**](ApplicationFiltersAPI.md#ApplicationFiltersDeleteApplicationFilters) | **Delete** /application_filters | Delete Application Filters.
-[**ApplicationFiltersDeleteSingleApplicationFilters**](ApplicationFiltersAPI.md#ApplicationFiltersDeleteSingleApplicationFilters) | **Delete** /application_filters/{id} | Delete Application Filter Object by ID.
-[**ApplicationFiltersListApplicationFilters**](ApplicationFiltersAPI.md#ApplicationFiltersListApplicationFilters) | **Get** /application_filters | List Application Filters.
-[**ApplicationFiltersReadApplicationFilter**](ApplicationFiltersAPI.md#ApplicationFiltersReadApplicationFilter) | **Get** /application_filters/{id} | Read Application Filter.
-[**ApplicationFiltersUpdateApplicationFilter**](ApplicationFiltersAPI.md#ApplicationFiltersUpdateApplicationFilter) | **Put** /application_filters/{id} | Update Application Filter.
+[**CreateApplicationFilter**](ApplicationFiltersAPI.md#CreateApplicationFilter) | **Post** /application_filters | Create Application Filter.
+[**DeleteApplicationFilters**](ApplicationFiltersAPI.md#DeleteApplicationFilters) | **Delete** /application_filters | Delete Application Filters.
+[**DeleteSingleApplicationFilters**](ApplicationFiltersAPI.md#DeleteSingleApplicationFilters) | **Delete** /application_filters/{id} | Delete Application Filter Object by ID.
+[**ListApplicationFilters**](ApplicationFiltersAPI.md#ListApplicationFilters) | **Get** /application_filters | List Application Filters.
+[**ReadApplicationFilter**](ApplicationFiltersAPI.md#ReadApplicationFilter) | **Get** /application_filters/{id} | Read Application Filter.
+[**UpdateApplicationFilter**](ApplicationFiltersAPI.md#UpdateApplicationFilter) | **Put** /application_filters/{id} | Update Application Filter.
 
 
 
-## ApplicationFiltersCreateApplicationFilter
+## CreateApplicationFilter
 
-> AtcfwApplicationFilterCreateResponse ApplicationFiltersCreateApplicationFilter(ctx).Body(body).Execute()
+> ApplicationFilterCreateResponse CreateApplicationFilter(ctx).Body(body).Execute()
 
 Create Application Filter.
 
@@ -35,16 +35,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
+	body := *fw.NewApplicationFilter() // ApplicationFilter | The Application Filter object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.ApplicationFiltersAPI.CreateApplicationFilter(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.CreateApplicationFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApplicationFiltersCreateApplicationFilter`: AtcfwApplicationFilterCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter`: %v\n", resp)
+	// response from `CreateApplicationFilter`: ApplicationFilterCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.CreateApplicationFilter`: %v\n", resp)
 }
 ```
 
@@ -54,16 +54,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersCreateApplicationFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateApplicationFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwApplicationFilter**](AtcfwApplicationFilter.md) | The Application Filter object. | 
+ **body** | [**ApplicationFilter**](ApplicationFilter.md) | The Application Filter object. | 
 
 ### Return type
 
-[**AtcfwApplicationFilterCreateResponse**](AtcfwApplicationFilterCreateResponse.md)
+[**ApplicationFilterCreateResponse**](ApplicationFilterCreateResponse.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApplicationFiltersDeleteApplicationFilters
+## DeleteApplicationFilters
 
-> ApplicationFiltersDeleteApplicationFilters(ctx).Body(body).Execute()
+> DeleteApplicationFilters(ctx).Body(body).Execute()
 
 Delete Application Filters.
 
@@ -101,12 +101,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwApplicationFiltersDeleteRequest() // AtcfwApplicationFiltersDeleteRequest | 
+	body := *fw.NewApplicationFiltersDeleteRequest() // ApplicationFiltersDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters(context.Background()).Body(body).Execute()
+	r, err := apiClient.ApplicationFiltersAPI.DeleteApplicationFilters(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.DeleteApplicationFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -118,12 +118,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersDeleteApplicationFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteApplicationFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwApplicationFiltersDeleteRequest**](AtcfwApplicationFiltersDeleteRequest.md) |  | 
+ **body** | [**ApplicationFiltersDeleteRequest**](ApplicationFiltersDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -143,9 +143,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApplicationFiltersDeleteSingleApplicationFilters
+## DeleteSingleApplicationFilters
 
-> ApplicationFiltersDeleteSingleApplicationFilters(ctx, id).Execute()
+> DeleteSingleApplicationFilters(ctx, id).Execute()
 
 Delete Application Filter Object by ID.
 
@@ -168,9 +168,9 @@ func main() {
 	id := int32(56) // int32 | The Application Filter object identifier.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters(context.Background(), id).Execute()
+	r, err := apiClient.ApplicationFiltersAPI.DeleteSingleApplicationFilters(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.DeleteSingleApplicationFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersDeleteSingleApplicationFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleApplicationFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,9 +211,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApplicationFiltersListApplicationFilters
+## ListApplicationFilters
 
-> AtcfwApplicationFilterMultiResponse ApplicationFiltersListApplicationFilters(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ApplicationFilterMultiResponse ListApplicationFilters(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Application Filters.
 
@@ -242,13 +242,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ListApplicationFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ListApplicationFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApplicationFiltersListApplicationFilters`: AtcfwApplicationFilterMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters`: %v\n", resp)
+	// response from `ListApplicationFilters`: ApplicationFilterMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ListApplicationFilters`: %v\n", resp)
 }
 ```
 
@@ -258,7 +258,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersListApplicationFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListApplicationFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwApplicationFilterMultiResponse**](AtcfwApplicationFilterMultiResponse.md)
+[**ApplicationFilterMultiResponse**](ApplicationFilterMultiResponse.md)
 
 ### Authorization
 
@@ -289,9 +289,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApplicationFiltersReadApplicationFilter
+## ReadApplicationFilter
 
-> AtcfwApplicationFilterReadResponse ApplicationFiltersReadApplicationFilter(ctx, id).Fields(fields).Name(name).Execute()
+> ApplicationFilterReadResponse ReadApplicationFilter(ctx, id).Fields(fields).Name(name).Execute()
 
 Read Application Filter.
 
@@ -316,13 +316,13 @@ func main() {
 	name := "name_example" // string | The name of the application filter. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter(context.Background(), id).Fields(fields).Name(name).Execute()
+	resp, r, err := apiClient.ApplicationFiltersAPI.ReadApplicationFilter(context.Background(), id).Fields(fields).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ReadApplicationFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApplicationFiltersReadApplicationFilter`: AtcfwApplicationFilterReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter`: %v\n", resp)
+	// response from `ReadApplicationFilter`: ApplicationFilterReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ReadApplicationFilter`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersReadApplicationFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadApplicationFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwApplicationFilterReadResponse**](AtcfwApplicationFilterReadResponse.md)
+[**ApplicationFilterReadResponse**](ApplicationFilterReadResponse.md)
 
 ### Authorization
 
@@ -363,9 +363,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApplicationFiltersUpdateApplicationFilter
+## UpdateApplicationFilter
 
-> AtcfwApplicationFilterUpdateResponse ApplicationFiltersUpdateApplicationFilter(ctx, id).Body(body).Execute()
+> ApplicationFilterUpdateResponse UpdateApplicationFilter(ctx, id).Body(body).Execute()
 
 Update Application Filter.
 
@@ -386,16 +386,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Application Filter object identifier.
-	body := *fw.NewAtcfwApplicationFilter() // AtcfwApplicationFilter | The Application Filter object.
+	body := *fw.NewApplicationFilter() // ApplicationFilter | The Application Filter object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.ApplicationFiltersAPI.UpdateApplicationFilter(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationFiltersAPI.UpdateApplicationFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApplicationFiltersUpdateApplicationFilter`: AtcfwApplicationFilterUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter`: %v\n", resp)
+	// response from `UpdateApplicationFilter`: ApplicationFilterUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationFiltersAPI.UpdateApplicationFilter`: %v\n", resp)
 }
 ```
 
@@ -409,17 +409,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApplicationFiltersUpdateApplicationFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateApplicationFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwApplicationFilter**](AtcfwApplicationFilter.md) | The Application Filter object. | 
+ **body** | [**ApplicationFilter**](ApplicationFilter.md) | The Application Filter object. | 
 
 ### Return type
 
-[**AtcfwApplicationFilterUpdateResponse**](AtcfwApplicationFilterUpdateResponse.md)
+[**ApplicationFilterUpdateResponse**](ApplicationFilterUpdateResponse.md)
 
 ### Authorization
 

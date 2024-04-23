@@ -4,19 +4,19 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InternalDomainListsCreateInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsCreateInternalDomains) | **Post** /internal_domain_lists | Create Internal Domains.
-[**InternalDomainListsDeleteInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsDeleteInternalDomains) | **Delete** /internal_domain_lists | Delete Internal Domains.
-[**InternalDomainListsDeleteSingleInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsDeleteSingleInternalDomains) | **Delete** /internal_domain_lists/{id} | Delete Internal Domains.
-[**InternalDomainListsInternalDomainsItemsPartialUpdate**](InternalDomainListsAPI.md#InternalDomainListsInternalDomainsItemsPartialUpdate) | **Patch** /internal_domain_lists/{id}/items | Patch Internal Domains.
-[**InternalDomainListsListInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsListInternalDomains) | **Get** /internal_domain_lists | List Internal Domains.
-[**InternalDomainListsReadInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsReadInternalDomains) | **Get** /internal_domain_lists/{id} | Read Internal Domains.
-[**InternalDomainListsUpdateInternalDomains**](InternalDomainListsAPI.md#InternalDomainListsUpdateInternalDomains) | **Put** /internal_domain_lists/{id} | Update Internal Domains.
+[**CreateInternalDomains**](InternalDomainListsAPI.md#CreateInternalDomains) | **Post** /internal_domain_lists | Create Internal Domains.
+[**DeleteInternalDomains**](InternalDomainListsAPI.md#DeleteInternalDomains) | **Delete** /internal_domain_lists | Delete Internal Domains.
+[**DeleteSingleInternalDomains**](InternalDomainListsAPI.md#DeleteSingleInternalDomains) | **Delete** /internal_domain_lists/{id} | Delete Internal Domains.
+[**InternalDomainsItemsPartialUpdate**](InternalDomainListsAPI.md#InternalDomainsItemsPartialUpdate) | **Patch** /internal_domain_lists/{id}/items | Patch Internal Domains.
+[**ListInternalDomains**](InternalDomainListsAPI.md#ListInternalDomains) | **Get** /internal_domain_lists | List Internal Domains.
+[**ReadInternalDomains**](InternalDomainListsAPI.md#ReadInternalDomains) | **Get** /internal_domain_lists/{id} | Read Internal Domains.
+[**UpdateInternalDomains**](InternalDomainListsAPI.md#UpdateInternalDomains) | **Put** /internal_domain_lists/{id} | Update Internal Domains.
 
 
 
-## InternalDomainListsCreateInternalDomains
+## CreateInternalDomains
 
-> AtcfwInternalDomainsCreateResponse InternalDomainListsCreateInternalDomains(ctx).Body(body).Execute()
+> InternalDomainsCreateResponse CreateInternalDomains(ctx).Body(body).Execute()
 
 Create Internal Domains.
 
@@ -36,16 +36,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
+	body := *fw.NewInternalDomains() // InternalDomains | The Internal Domains object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsCreateInternalDomains(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.InternalDomainListsAPI.CreateInternalDomains(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.CreateInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InternalDomainListsCreateInternalDomains`: AtcfwInternalDomainsCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsCreateInternalDomains`: %v\n", resp)
+	// response from `CreateInternalDomains`: InternalDomainsCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.CreateInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -55,16 +55,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsCreateInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwInternalDomains**](AtcfwInternalDomains.md) | The Internal Domains object. | 
+ **body** | [**InternalDomains**](InternalDomains.md) | The Internal Domains object. | 
 
 ### Return type
 
-[**AtcfwInternalDomainsCreateResponse**](AtcfwInternalDomainsCreateResponse.md)
+[**InternalDomainsCreateResponse**](InternalDomainsCreateResponse.md)
 
 ### Authorization
 
@@ -80,9 +80,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsDeleteInternalDomains
+## DeleteInternalDomains
 
-> InternalDomainListsDeleteInternalDomains(ctx).Body(body).Execute()
+> DeleteInternalDomains(ctx).Body(body).Execute()
 
 Delete Internal Domains.
 
@@ -102,12 +102,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwInternalDomainsDeleteRequest() // AtcfwInternalDomainsDeleteRequest | 
+	body := *fw.NewInternalDomainsDeleteRequest() // InternalDomainsDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains(context.Background()).Body(body).Execute()
+	r, err := apiClient.InternalDomainListsAPI.DeleteInternalDomains(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.DeleteInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -119,12 +119,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsDeleteInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwInternalDomainsDeleteRequest**](AtcfwInternalDomainsDeleteRequest.md) |  | 
+ **body** | [**InternalDomainsDeleteRequest**](InternalDomainsDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -144,9 +144,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsDeleteSingleInternalDomains
+## DeleteSingleInternalDomains
 
-> InternalDomainListsDeleteSingleInternalDomains(ctx, id).Execute()
+> DeleteSingleInternalDomains(ctx, id).Execute()
 
 Delete Internal Domains.
 
@@ -169,9 +169,9 @@ func main() {
 	id := int32(56) // int32 | The Internal Domains object identifiers.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains(context.Background(), id).Execute()
+	r, err := apiClient.InternalDomainListsAPI.DeleteSingleInternalDomains(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.DeleteSingleInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsDeleteSingleInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -212,9 +212,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsInternalDomainsItemsPartialUpdate
+## InternalDomainsItemsPartialUpdate
 
-> map[string]interface{} InternalDomainListsInternalDomainsItemsPartialUpdate(ctx, id).Body(body).Execute()
+> map[string]interface{} InternalDomainsItemsPartialUpdate(ctx, id).Body(body).Execute()
 
 Patch Internal Domains.
 
@@ -235,16 +235,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Internal Domain List object identifier.
-	body := *fw.NewAtcfwInternalDomainsItems() // AtcfwInternalDomainsItems | The Internal Domains Items Patch object.
+	body := *fw.NewInternalDomainsItems() // InternalDomainsItems | The Internal Domains Items Patch object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainsItemsPartialUpdate(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainsItemsPartialUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InternalDomainListsInternalDomainsItemsPartialUpdate`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate`: %v\n", resp)
+	// response from `InternalDomainsItemsPartialUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainsItemsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -258,13 +258,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsInternalDomainsItemsPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiInternalDomainsItemsPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwInternalDomainsItems**](AtcfwInternalDomainsItems.md) | The Internal Domains Items Patch object. | 
+ **body** | [**InternalDomainsItems**](InternalDomainsItems.md) | The Internal Domains Items Patch object. | 
 
 ### Return type
 
@@ -284,9 +284,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsListInternalDomains
+## ListInternalDomains
 
-> AtcfwInternalDomainsMultiResponse InternalDomainListsListInternalDomains(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> InternalDomainsMultiResponse ListInternalDomains(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Internal Domains.
 
@@ -315,13 +315,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsListInternalDomains(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.InternalDomainListsAPI.ListInternalDomains(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsListInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.ListInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InternalDomainListsListInternalDomains`: AtcfwInternalDomainsMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsListInternalDomains`: %v\n", resp)
+	// response from `ListInternalDomains`: InternalDomainsMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.ListInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -331,7 +331,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsListInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwInternalDomainsMultiResponse**](AtcfwInternalDomainsMultiResponse.md)
+[**InternalDomainsMultiResponse**](InternalDomainsMultiResponse.md)
 
 ### Authorization
 
@@ -362,9 +362,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsReadInternalDomains
+## ReadInternalDomains
 
-> AtcfwInternalDomainsReadResponse InternalDomainListsReadInternalDomains(ctx, id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> InternalDomainsReadResponse ReadInternalDomains(ctx, id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 Read Internal Domains.
 
@@ -392,13 +392,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsReadInternalDomains(context.Background(), id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.InternalDomainListsAPI.ReadInternalDomains(context.Background(), id).Fields(fields).Name(name).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsReadInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.ReadInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InternalDomainListsReadInternalDomains`: AtcfwInternalDomainsReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsReadInternalDomains`: %v\n", resp)
+	// response from `ReadInternalDomains`: InternalDomainsReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.ReadInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsReadInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwInternalDomainsReadResponse**](AtcfwInternalDomainsReadResponse.md)
+[**InternalDomainsReadResponse**](InternalDomainsReadResponse.md)
 
 ### Authorization
 
@@ -442,9 +442,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InternalDomainListsUpdateInternalDomains
+## UpdateInternalDomains
 
-> AtcfwInternalDomainsUpdateResponse InternalDomainListsUpdateInternalDomains(ctx, id).Body(body).Execute()
+> InternalDomainsUpdateResponse UpdateInternalDomains(ctx, id).Body(body).Execute()
 
 Update Internal Domains.
 
@@ -465,16 +465,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Internal Domain object identifier.
-	body := *fw.NewAtcfwInternalDomains() // AtcfwInternalDomains | The Internal Domains object.
+	body := *fw.NewInternalDomains() // InternalDomains | The Internal Domains object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.InternalDomainListsAPI.UpdateInternalDomains(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InternalDomainListsAPI.UpdateInternalDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InternalDomainListsUpdateInternalDomains`: AtcfwInternalDomainsUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains`: %v\n", resp)
+	// response from `UpdateInternalDomains`: InternalDomainsUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `InternalDomainListsAPI.UpdateInternalDomains`: %v\n", resp)
 }
 ```
 
@@ -488,17 +488,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInternalDomainListsUpdateInternalDomainsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateInternalDomainsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwInternalDomains**](AtcfwInternalDomains.md) | The Internal Domains object. | 
+ **body** | [**InternalDomains**](InternalDomains.md) | The Internal Domains object. | 
 
 ### Return type
 
-[**AtcfwInternalDomainsUpdateResponse**](AtcfwInternalDomainsUpdateResponse.md)
+[**InternalDomainsUpdateResponse**](InternalDomainsUpdateResponse.md)
 
 ### Authorization
 

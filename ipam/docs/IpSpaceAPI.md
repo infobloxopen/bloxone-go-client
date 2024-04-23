@@ -4,19 +4,19 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**IpSpaceBulkCopy**](IpSpaceAPI.md#IpSpaceBulkCopy) | **Post** /ipam/ip_space/bulk_copy | Copy the specified address block and subnets in the IP space.
-[**IpSpaceCopy**](IpSpaceAPI.md#IpSpaceCopy) | **Post** /ipam/ip_space/{id}/copy | Copy the IP space.
-[**IpSpaceCreate**](IpSpaceAPI.md#IpSpaceCreate) | **Post** /ipam/ip_space | Create the IP space.
-[**IpSpaceDelete**](IpSpaceAPI.md#IpSpaceDelete) | **Delete** /ipam/ip_space/{id} | Move the IP space to the recycle bin.
-[**IpSpaceList**](IpSpaceAPI.md#IpSpaceList) | **Get** /ipam/ip_space | Retrieve IP spaces.
-[**IpSpaceRead**](IpSpaceAPI.md#IpSpaceRead) | **Get** /ipam/ip_space/{id} | Retrieve the IP space.
-[**IpSpaceUpdate**](IpSpaceAPI.md#IpSpaceUpdate) | **Patch** /ipam/ip_space/{id} | Update the IP space.
+[**BulkCopy**](IpSpaceAPI.md#BulkCopy) | **Post** /ipam/ip_space/bulk_copy | Copy the specified address block and subnets in the IP space.
+[**Copy**](IpSpaceAPI.md#Copy) | **Post** /ipam/ip_space/{id}/copy | Copy the IP space.
+[**Create**](IpSpaceAPI.md#Create) | **Post** /ipam/ip_space | Create the IP space.
+[**Delete**](IpSpaceAPI.md#Delete) | **Delete** /ipam/ip_space/{id} | Move the IP space to the recycle bin.
+[**List**](IpSpaceAPI.md#List) | **Get** /ipam/ip_space | Retrieve IP spaces.
+[**Read**](IpSpaceAPI.md#Read) | **Get** /ipam/ip_space/{id} | Retrieve the IP space.
+[**Update**](IpSpaceAPI.md#Update) | **Patch** /ipam/ip_space/{id} | Update the IP space.
 
 
 
-## IpSpaceBulkCopy
+## BulkCopy
 
-> BulkCopyIPSpaceResponse IpSpaceBulkCopy(ctx).Body(body).Execute()
+> BulkCopyIPSpaceResponse BulkCopy(ctx).Body(body).Execute()
 
 Copy the specified address block and subnets in the IP space.
 
@@ -39,13 +39,13 @@ func main() {
 	body := *ipam.NewBulkCopyIPSpace([]string{"CopyObjects_example"}, "Target_example") // BulkCopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceBulkCopy(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.BulkCopy(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceBulkCopy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.BulkCopy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceBulkCopy`: BulkCopyIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceBulkCopy`: %v\n", resp)
+	// response from `BulkCopy`: BulkCopyIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.BulkCopy`: %v\n", resp)
 }
 ```
 
@@ -55,7 +55,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceBulkCopyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiBulkCopyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceCopy
+## Copy
 
-> CopyIPSpaceResponse IpSpaceCopy(ctx, id).Body(body).Execute()
+> CopyIPSpaceResponse Copy(ctx, id).Body(body).Execute()
 
 Copy the IP space.
 
@@ -106,13 +106,13 @@ func main() {
 	body := *ipam.NewCopyIPSpace("Name_example") // CopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceCopy(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.Copy(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceCopy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.Copy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceCopy`: CopyIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceCopy`: %v\n", resp)
+	// response from `Copy`: CopyIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.Copy`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceCopyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCopyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -152,9 +152,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceCreate
+## Create
 
-> CreateIPSpaceResponse IpSpaceCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateIPSpaceResponse Create(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the IP space.
 
@@ -178,13 +178,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceCreate(context.Background()).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.Create(context.Background()).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceCreate`: CreateIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceCreate`: %v\n", resp)
+	// response from `Create`: CreateIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceDelete
+## Delete
 
-> IpSpaceDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the IP space to the recycle bin.
 
@@ -245,9 +245,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.IpSpaceAPI.IpSpaceDelete(context.Background(), id).Execute()
+	r, err := apiClient.IpSpaceAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,9 +288,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceList
+## List
 
-> ListIPSpaceResponse IpSpaceList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListIPSpaceResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve IP spaces.
 
@@ -321,13 +321,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceList`: ListIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceList`: %v\n", resp)
+	// response from `List`: ListIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -337,7 +337,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -370,9 +370,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceRead
+## Read
 
-> ReadIPSpaceResponse IpSpaceRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadIPSpaceResponse Read(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the IP space.
 
@@ -397,13 +397,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.Read(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceRead`: ReadIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceRead`: %v\n", resp)
+	// response from `Read`: ReadIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -444,9 +444,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpSpaceUpdate
+## Update
 
-> UpdateIPSpaceResponse IpSpaceUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateIPSpaceResponse Update(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the IP space.
 
@@ -471,13 +471,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpSpaceAPI.IpSpaceUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.IpSpaceAPI.Update(context.Background(), id).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.IpSpaceUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpSpaceUpdate`: UpdateIPSpaceResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.IpSpaceUpdate`: %v\n", resp)
+	// response from `Update`: UpdateIPSpaceResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpSpaceUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

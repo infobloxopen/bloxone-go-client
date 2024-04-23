@@ -1,0 +1,949 @@
+openapi: 3.0.1
+info:
+  description: |
+    BloxOne Cloud is a SaaS offering designed to provide protection to devices on and off-premises, including roaming, remote, and branch offices. It provides visibility into infected and compromised devices, prevents DNS-based data exfiltration, and automatically stops device communications with command-and-control servers (C&Cs) and botnets, in addition to providing recursive DNS services in the cloud. You can access the services by deploying the BloxOne Endpoint agent or the DNS forwarding proxy.
+
+    For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
+
+    By implementing the DNS forwarding proxy, you can rest assured that BloxOne Cloud effectively enforces DNS client-based security policies at your remote sites. On-premises devices that send DNS queries reveal their actual client IP addresses (instead of their NAT IP address), which allows BloxOne Cloud to apply the security policies applicable to the respective endpoints and identify infected clients.
+  title: DFP API
+  version: v1
+servers:
+- url: https://csp.infoblox.com/api/atcdfp/v1/
+paths:
+  /config/check:
+    post:
+      description: Use this method to check config
+      operationId: accountsCheckConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/typesConfigCheckRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/typesConfigCheckResponse'
+          description: POST operation response
+      summary: Check Config.
+      tags:
+      - accounts
+      x-codegen-request-body-name: body
+  /dfp_services:
+    get:
+      description: |+
+        Use this method to retrieve information on all DNS Forwarding Proxy objects for the account.
+
+        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
+
+      operationId: dfpListDfp
+      parameters:
+      - description: |
+          A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.
+
+          Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.
+
+          You can filter by following fields:
+
+          | Name                    | type   | Supported Op                |
+          | ----------------------- | ------ | --------------------------- |
+          | name                    | string | !=, ==, ~, !~, >, <, <=, >= |
+          | site_id                 | string | !=, ==, ~, !~, >, <, <=, >= |
+          | ophid                   | string | !=, ==, ~, !~, >, <, <=, >= |
+          | policy_id               | int32  | !=, ==, >, <, <=, >=        |
+          | default_security_policy | bool   | !=, ==                      |
+
+          In addition groupping operators are supported:
+
+          | Op  | Description          |
+          | --- | -------------------- |
+          | and | Logical AND          |
+          | or  | Logical OR           |
+          | not | Logical NOT          |
+          | ()  | Groupping Operators  |
+
+          Example:
+          ```
+          ?_filter="((name=='dfp1')or(ophid~'oph'))and(default_security_policy!='true')"
+          ```
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/atcdfpDfpListResponse'
+          description: GET operation response
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpListDfp_500_response'
+          description: |2-
+
+            - Internal server error occurred
+      summary: List DNS Forwarding Proxies.
+      tags:
+      - dfp
+      x-tf-resource: dfp_service
+      x-tf-datasource: dfp_services
+  /dfps/{id}:
+    get:
+      description: |
+        Use this method to retrieve information on the specified DNS Forwarding Proxy object.
+
+        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
+
+        Note that DNS Forwarding Proxy cannot be created (all information regarding DFP is synchronized from hostapp service).
+      operationId: dfpReadDfp
+      parameters:
+      - description: The DNS Forwarding Proxy object identifier.
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: |-
+          The name of the DNS Forwarding Proxy.
+          Used only if the 'id' field is empty.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: The On-Prem Application Service identifier. For internal Use
+          only.
+        in: query
+        name: service_id
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/atcdfpDfpReadResponse'
+          description: GET operation response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpReadDfp_404_response'
+          description: |2-
+
+            - 'id' value must contain existing DFP identifier
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpListDfp_500_response'
+          description: |2-
+
+            - Internal server error occurred
+      summary: Read DNS Forwarding Proxy.
+      tags:
+      - dfp
+    put:
+      description: |
+        Use this method to update resolvers for the specified DNS Forwarding Proxy.
+
+        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries. There is a possibility to set default resolver(s) depending on the license class. DNS forwarding proxy would fallback to the default resolvers when BloxOne Cloud is unreachable.
+      operationId: dfpCreateOrUpdateDfp
+      parameters:
+      - description: The DNS Forwarding Proxy object identifier.
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/atcdfpDfpCreateOrUpdatePayload'
+        description: The DNS Forwarding Proxy object.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/atcdfpDfpCreateOrUpdateResponse'
+          description: PUT operation response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpCreateOrUpdateDfp_400_response'
+          description: |2-
+
+            - 'id' value must be greater than or equal to zero
+            - 'resolvers' value must contain values that are valid IPv4 or IPv6 addresses
+            - 'resolvers' value must contain unique elements
+            - 'default_resolvers' value must contain values that are valid IPv4 or IPv6 addresses
+            - 'default_resolvers' value must contain unique elements
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpReadDfp_404_response'
+          description: |2-
+
+            - 'id' value must contain existing DFP identifier
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dfpListDfp_500_response'
+          description: |2-
+
+            - Internal server error occurred
+      summary: Update DNS Forwarding Proxy resolvers.
+      tags:
+      - dfp
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    atcdfpDNSProtocol:
+      default: DO53
+      enum:
+      - DO53
+      - DOT
+      type: string
+    atcdfpDfp:
+      example:
+        elb_ip_list:
+        - 1.1.1.1
+        - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+        created_time: 2000-01-23T04:56:07.000+00:00
+        updated_time: 2000-01-23T04:56:07.000+00:00
+        resolvers:
+        - 1.1.1.1
+        - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+        resolvers_all:
+        - address: address
+          is_fallback: true
+          is_local: true
+          protocols:
+          - DO53
+          - DOT
+        - address: address
+          is_fallback: true
+          is_local: true
+          protocols:
+          - DO53
+          - DOT
+        forwarding_policy: forwarding_policy
+        policy_id: 52134
+        internal_domain_lists:
+        - 1
+        - 1
+        service_name: dfp_service_1
+        default_resolvers:
+        - 4.4.4.4
+        - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+        pop_region_id: 5
+        ophid: aed8263b8900bfb178e0bb7c57ba5af8
+        service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+        host:
+        - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          legacy_host_id: 0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+        - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          legacy_host_id: 0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+        name: dfp_a
+        site_id: 134997289555407a8527bea7957ea7a0
+        net_addr_policy_ids:
+        - policy_id: 5
+          addr_net: addr_net
+        - policy_id: 5
+          addr_net: addr_net
+        id: 6
+      properties:
+        created_time:
+          description: The time when this DNS Forwarding Proxy object was created.
+          format: date-time
+          readOnly: true
+          type: string
+        default_resolvers:
+          description: The list of default DNS resolvers that will be used in case
+            if the BloxOne Cloud is unreachable.  Deprecated DO NOT USE. Use resolvers_all.
+          example:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          items:
+            type: string
+          readOnly: true
+          type: array
+        elb_ip_list:
+          description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
+            that are used as ELB IPs.
+          example:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          items:
+            type: string
+          readOnly: true
+          type: array
+        forwarding_policy:
+          type: string
+        host:
+          description: host information. For internal Use only.
+          items:
+            $ref: '#/components/schemas/atcdfpDfpHost'
+          type: array
+        id:
+          description: The DNS Forwarding Proxy object identifier.
+          format: int32
+          readOnly: true
+          type: integer
+        internal_domain_lists:
+          description: The list of internal domains list IDs that are associated with
+            this DFP
+          items:
+            format: int32
+            type: integer
+          type: array
+        name:
+          description: The name of the DNS Forwarding Proxy.
+          example: dfp_a
+          readOnly: true
+          type: string
+        net_addr_policy_ids:
+          description: List of network-address-scoped security policy assignments
+          items:
+            $ref: '#/components/schemas/atcdfpNetAddrPolicyAssignment'
+          type: array
+        ophid:
+          description: The On-Prem Host identifier.
+          example: aed8263b8900bfb178e0bb7c57ba5af8
+          readOnly: true
+          type: string
+        policy_id:
+          description: The identifier of the security policy with which the DNS Forwarding
+            Proxy is associated.
+          example: 52134
+          format: int32
+          readOnly: true
+          type: integer
+        pop_region_id:
+          description: Point of Presence (PoP) region
+          format: int32
+          readOnly: true
+          type: integer
+        resolvers:
+          description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
+            that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all.
+          example:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          items:
+            type: string
+          readOnly: true
+          type: array
+        resolvers_all:
+          items:
+            $ref: '#/components/schemas/atcdfpResolver'
+          type: array
+        service_id:
+          description: The On-Prem Application Service identifier. For internal Use
+            only
+          example: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+          readOnly: true
+          type: string
+        service_name:
+          description: The On-Prem Application Service name. For internal Use only
+          example: dfp_service_1
+          readOnly: true
+          type: string
+        site_id:
+          description: The DNS Forwarding Proxy site identifier that is appended to
+            DNS queries originating from this DNS Forwarding Proxy and subsequently
+            used for policy lookup purposes.
+          example: 134997289555407a8527bea7957ea7a0
+          readOnly: true
+          type: string
+        updated_time:
+          description: The time when this DNS Forwarding Proxy object was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    atcdfpDfpCreateOrUpdatePayload:
+      description: |-
+        DNS Forwarding Proxy object.
+
+        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
+
+        Note that DNS Forwarding Proxy cannot be created (all information regarding DFP is synchronized from hostapp service).
+      properties:
+        default_resolvers:
+          description: The list of default DNS resolvers that will be used in case
+            if the BloxOne Cloud is unreachable. Deprecated DO NOT USE. Use resolvers_all.
+          example:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          items:
+            type: string
+          type: array
+        forwarding_policy:
+          description: |-
+            The type of DNS resolver as Forwarding Policy. It can hold values as ib_cloud_first, external_first or external_only
+            The default value is ib_cloud_first. If empty string is sent then ib_cloud_first will be considered.
+          example: ib_cloud_first
+          type: string
+        host:
+          description: host information. For internal Use only.
+          items:
+            $ref: '#/components/schemas/atcdfpDfpHost'
+          type: array
+        id:
+          description: The DNS Forwarding Proxy object identifier.
+          format: int32
+          readOnly: true
+          type: integer
+        internal_domain_lists:
+          description: The list of internal domain list ids associated with this DFP
+            (or resolvers)
+          items:
+            format: int32
+            type: integer
+          type: array
+        name:
+          description: The name of the DNS Forwarding Proxy.
+          example: dfp_a
+          type: string
+        pop_region_id:
+          description: Point of Presence (PoP) region
+          format: int32
+          type: integer
+        resolvers:
+          description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
+            that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all.
+          example:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          items:
+            type: string
+          type: array
+        resolvers_all:
+          description: "The DNS forwarding proxy additional resolvers used for fallback\
+            \ and local resolution. This field replaces resolvers and default_resolvers\
+            \ fields which are deprecated. Either deprecated fields or new field can\
+            \ be used, both can not be used at same time."
+          example:
+            address: 1.1.1.1
+            is_fallback: false
+            is_local: false
+            protocols:
+            - DO53
+            - DOT
+          items:
+            $ref: '#/components/schemas/atcdfpResolver'
+          type: array
+        service_id:
+          description: The DNS Forwarding Proxy Service ID object identifier.
+          type: string
+        service_name:
+          description: The name of the DNS Forwarding Proxy Service.
+          example: dfp_a
+          type: string
+        site_id:
+          description: The DNS Forwarding Proxy site identifier that is appended to
+            DNS queries originating from this DNS Forwarding Proxy and subsequently
+            used for policy lookup purposes.
+          example: 134997289555407a8527bea7957ea7a0
+          type: string
+      type: object
+    atcdfpDfpCreateOrUpdateResponse:
+      description: The DNS Forwarding Proxy update response.
+      example:
+        results:
+          elb_ip_list:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          created_time: 2000-01-23T04:56:07.000+00:00
+          updated_time: 2000-01-23T04:56:07.000+00:00
+          resolvers:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          resolvers_all:
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          forwarding_policy: forwarding_policy
+          policy_id: 52134
+          internal_domain_lists:
+          - 1
+          - 1
+          service_name: dfp_service_1
+          default_resolvers:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          pop_region_id: 5
+          ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+          host:
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+          net_addr_policy_ids:
+          - policy_id: 5
+            addr_net: addr_net
+          - policy_id: 5
+            addr_net: addr_net
+          id: 6
+      properties:
+        results:
+          $ref: '#/components/schemas/atcdfpDfp'
+      type: object
+    atcdfpDfpHost:
+      example:
+        ophid: aed8263b8900bfb178e0bb7c57ba5af8
+        legacy_host_id: 0
+        name: dfp_a
+        site_id: 134997289555407a8527bea7957ea7a0
+      properties:
+        legacy_host_id:
+          description: // The DNS Forwarding Proxy legacy ID object identifier.
+          format: int32
+          type: integer
+        name:
+          description: The name of the DNS Forwarding Proxy.
+          example: dfp_a
+          readOnly: true
+          type: string
+        ophid:
+          description: The On-Prem Host identifier.
+          example: aed8263b8900bfb178e0bb7c57ba5af8
+          readOnly: true
+          type: string
+        site_id:
+          description: The DNS Forwarding Proxy site identifier that is appended to
+            DNS queries originating from this DNS Forwarding Proxy and subsequently
+            used for policy lookup purposes.
+          example: 134997289555407a8527bea7957ea7a0
+          readOnly: true
+          type: string
+      type: object
+    atcdfpDfpListResponse:
+      description: The DNS Forwarding Proxy list response.
+      example:
+        results:
+        - elb_ip_list:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          created_time: 2000-01-23T04:56:07.000+00:00
+          updated_time: 2000-01-23T04:56:07.000+00:00
+          resolvers:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          resolvers_all:
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          forwarding_policy: forwarding_policy
+          policy_id: 52134
+          internal_domain_lists:
+          - 1
+          - 1
+          service_name: dfp_service_1
+          default_resolvers:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          pop_region_id: 5
+          ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+          host:
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+          net_addr_policy_ids:
+          - policy_id: 5
+            addr_net: addr_net
+          - policy_id: 5
+            addr_net: addr_net
+          id: 6
+        - elb_ip_list:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          created_time: 2000-01-23T04:56:07.000+00:00
+          updated_time: 2000-01-23T04:56:07.000+00:00
+          resolvers:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          resolvers_all:
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          forwarding_policy: forwarding_policy
+          policy_id: 52134
+          internal_domain_lists:
+          - 1
+          - 1
+          service_name: dfp_service_1
+          default_resolvers:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          pop_region_id: 5
+          ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+          host:
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+          net_addr_policy_ids:
+          - policy_id: 5
+            addr_net: addr_net
+          - policy_id: 5
+            addr_net: addr_net
+          id: 6
+      properties:
+        results:
+          description: The list of DNS Forwarding Proxy objects.
+          items:
+            $ref: '#/components/schemas/atcdfpDfp'
+          type: array
+      type: object
+    atcdfpDfpReadResponse:
+      description: The DNS Forwarding Proxy read response.
+      example:
+        results:
+          elb_ip_list:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          created_time: 2000-01-23T04:56:07.000+00:00
+          updated_time: 2000-01-23T04:56:07.000+00:00
+          resolvers:
+          - 1.1.1.1
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          resolvers_all:
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          - address: address
+            is_fallback: true
+            is_local: true
+            protocols:
+            - DO53
+            - DOT
+          forwarding_policy: forwarding_policy
+          policy_id: 52134
+          internal_domain_lists:
+          - 1
+          - 1
+          service_name: dfp_service_1
+          default_resolvers:
+          - 4.4.4.4
+          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
+          pop_region_id: 5
+          ophid: aed8263b8900bfb178e0bb7c57ba5af8
+          service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
+          host:
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          - ophid: aed8263b8900bfb178e0bb7c57ba5af8
+            legacy_host_id: 0
+            name: dfp_a
+            site_id: 134997289555407a8527bea7957ea7a0
+          name: dfp_a
+          site_id: 134997289555407a8527bea7957ea7a0
+          net_addr_policy_ids:
+          - policy_id: 5
+            addr_net: addr_net
+          - policy_id: 5
+            addr_net: addr_net
+          id: 6
+      properties:
+        results:
+          $ref: '#/components/schemas/atcdfpDfp'
+      type: object
+    atcdfpNetAddrPolicyAssignment:
+      description: network address with the assigned policy
+      example:
+        policy_id: 5
+        addr_net: addr_net
+      properties:
+        addr_net:
+          description: network address in IPv4 CIDR (address/bitmask length) string
+            format
+          type: string
+        policy_id:
+          description: Identifier of the security policy associated with this address
+            block
+          format: int32
+          type: integer
+      type: object
+    atcdfpResolver:
+      example:
+        address: address
+        is_fallback: true
+        is_local: true
+        protocols:
+        - DO53
+        - DOT
+      properties:
+        address:
+          description: address that can be used as resolver
+          type: string
+        is_fallback:
+          description: Mark it true to set default DNS resolvers that will be used
+            in case if the BloxOne Cloud is unreachable.
+          format: boolean
+          type: boolean
+        is_local:
+          description: Mark it true to set internal or local DNS servers' IPv4 or
+            IPv6 addresses that are used as DNS resolvers
+          format: boolean
+          type: boolean
+        protocols:
+          description: The list of DNS resolver communication protocols.
+          example:
+          - DO53
+          - DOT
+          items:
+            $ref: '#/components/schemas/atcdfpDNSProtocol'
+          type: array
+      type: object
+    typesConfigCheckRequest:
+      description: The Config Check request.
+      properties:
+        account_id:
+          format: int32
+          type: integer
+        config_check_type:
+          type: string
+        notify:
+          description: Caller sets to false if wants to suppress notification.
+          format: boolean
+          type: boolean
+      type: object
+    typesConfigCheckResponse:
+      description: The Config Check response.
+      example:
+        results:
+        - additional_info: additional_info
+          resource_uri: resource_uri
+          config_check_type: config_check_type
+          result_code: result_code
+        - additional_info: additional_info
+          resource_uri: resource_uri
+          config_check_type: config_check_type
+          result_code: result_code
+      properties:
+        results:
+          description: The list of check result.
+          items:
+            $ref: '#/components/schemas/typesConfigCheckResult'
+          type: array
+      type: object
+    typesConfigCheckResult:
+      description: The ConfigCheckResult object.
+      example:
+        additional_info: additional_info
+        resource_uri: resource_uri
+        config_check_type: config_check_type
+        result_code: result_code
+      properties:
+        additional_info:
+          description: Provides more info about the potential problem.
+          type: string
+        config_check_type:
+          description: Service check type.
+          type: string
+        resource_uri:
+          description: URI of the resource that was checked.
+          type: string
+        result_code:
+          description: The check result.
+          type: string
+      type: object
+    dfpListDfp_500_response_error:
+      example:
+        code: INTERNAL
+        message: Internal Server Error
+        status: "500"
+      properties:
+        code:
+          example: INTERNAL
+          type: string
+        message:
+          example: Internal Server Error
+          type: string
+        status:
+          example: "500"
+          type: string
+      type: object
+    dfpListDfp_500_response:
+      example:
+        error:
+          code: INTERNAL
+          message: Internal Server Error
+          status: "500"
+      properties:
+        error:
+          $ref: '#/components/schemas/dfpListDfp_500_response_error'
+      type: object
+    dfpReadDfp_404_response_error:
+      example:
+        code: NOT_FOUND
+        message: Dfp does not exist
+        status: "404"
+      properties:
+        code:
+          example: NOT_FOUND
+          type: string
+        message:
+          example: Dfp does not exist
+          type: string
+        status:
+          example: "404"
+          type: string
+      type: object
+    dfpReadDfp_404_response:
+      example:
+        error:
+          code: NOT_FOUND
+          message: Dfp does not exist
+          status: "404"
+      properties:
+        error:
+          $ref: '#/components/schemas/dfpReadDfp_404_response_error'
+      type: object
+    dfpCreateOrUpdateDfp_400_response_error:
+      example:
+        code: INVALID_ARGUMENT
+        message: "invalid 'by': invalid DfpCreateOrUpdatePayload.Id: value must be\
+          \ greater than or equal to 0"
+        status: "400"
+      properties:
+        code:
+          example: INVALID_ARGUMENT
+          type: string
+        message:
+          example: "invalid 'by': invalid DfpCreateOrUpdatePayload.Id: value must\
+            \ be greater than or equal to 0"
+          type: string
+        status:
+          example: "400"
+          type: string
+      type: object
+    dfpCreateOrUpdateDfp_400_response:
+      example:
+        error:
+          code: INVALID_ARGUMENT
+          message: "invalid 'by': invalid DfpCreateOrUpdatePayload.Id: value must\
+            \ be greater than or equal to 0"
+          status: "400"
+      properties:
+        error:
+          $ref: '#/components/schemas/dfpCreateOrUpdateDfp_400_response_error'
+      type: object
+x-original-swagger-version: "2.0"

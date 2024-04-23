@@ -23,11 +23,11 @@ func TestAppApprovalsAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test AppApprovalsAPIService AppApprovalsListAppApprovals", func(t *testing.T) {
+	t.Run("Test AppApprovalsAPIService ListAppApprovals", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AppApprovalsAPI.AppApprovalsListAppApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AppApprovalsAPI.ListAppApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,11 @@ func TestAppApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppApprovalsAPIService AppApprovalsReplaceAppApprovals", func(t *testing.T) {
+	t.Run("Test AppApprovalsAPIService ReplaceAppApprovals", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AppApprovalsAPI.AppApprovalsReplaceAppApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AppApprovalsAPI.ReplaceAppApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,11 +47,11 @@ func TestAppApprovalsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppApprovalsAPIService AppApprovalsUpdateAppApprovals", func(t *testing.T) {
+	t.Run("Test AppApprovalsAPIService UpdateAppApprovals", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AppApprovalsAPI.AppApprovalsUpdateAppApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AppApprovalsAPI.UpdateAppApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

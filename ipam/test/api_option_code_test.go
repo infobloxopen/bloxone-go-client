@@ -23,11 +23,11 @@ func TestOptionCodeAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test OptionCodeAPIService OptionCodeCreate", func(t *testing.T) {
+	t.Run("Test OptionCodeAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,38 +35,24 @@ func TestOptionCodeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionCodeAPIService OptionCodeDelete", func(t *testing.T) {
+	t.Run("Test OptionCodeAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.OptionCodeAPI.OptionCodeDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.OptionCodeAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OptionCodeAPIService OptionCodeList", func(t *testing.T) {
+	t.Run("Test OptionCodeAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OptionCodeAPIService OptionCodeRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +60,27 @@ func TestOptionCodeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionCodeAPIService OptionCodeUpdate", func(t *testing.T) {
+	t.Run("Test OptionCodeAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.OptionCodeAPI.OptionCodeUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionCodeAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OptionCodeAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.OptionCodeAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test NamedListsAPIService NamedListsCreateNamedList", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService CreateNamedList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsCreateNamedList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.CreateNamedList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,35 +35,35 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsDeleteNamedLists", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService DeleteNamedLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.NamedListsAPI.NamedListsDeleteNamedLists(context.Background()).Execute()
+		httpRes, err := apiClient.NamedListsAPI.DeleteNamedLists(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsDeleteSingleNamedLists", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService DeleteSingleNamedLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.NamedListsAPI.NamedListsDeleteSingleNamedLists(context.Background(), id).Execute()
+		httpRes, err := apiClient.NamedListsAPI.DeleteSingleNamedLists(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsListNamedLists", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService ListNamedLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsListNamedLists(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.ListNamedLists(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,11 +71,11 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsListNamedListsCSV", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService ListNamedListsCSV", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsListNamedListsCSV(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.ListNamedListsCSV(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -83,11 +83,11 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsMultiListUpdate", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService MultiListUpdate", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsMultiListUpdate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.MultiListUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -95,13 +95,13 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsReadNamedList", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService ReadNamedList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsReadNamedList(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.ReadNamedList(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -109,13 +109,13 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsUpdateNamedList", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService UpdateNamedList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsUpdateNamedList(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.UpdateNamedList(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -123,13 +123,13 @@ func TestNamedListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListsAPIService NamedListsUpdateNamedListPartial", func(t *testing.T) {
+	t.Run("Test NamedListsAPIService UpdateNamedListPartial", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListsAPI.NamedListsUpdateNamedListPartial(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListsAPI.UpdateNamedListPartial(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

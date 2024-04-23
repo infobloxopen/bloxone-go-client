@@ -4,21 +4,21 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NamedListsCreateNamedList**](NamedListsAPI.md#NamedListsCreateNamedList) | **Post** /named_lists | Create Named List.
-[**NamedListsDeleteNamedLists**](NamedListsAPI.md#NamedListsDeleteNamedLists) | **Delete** /named_lists | Delete Named Lists.
-[**NamedListsDeleteSingleNamedLists**](NamedListsAPI.md#NamedListsDeleteSingleNamedLists) | **Delete** /named_lists/{id} | Delete Named Lists.
-[**NamedListsListNamedLists**](NamedListsAPI.md#NamedListsListNamedLists) | **Get** /named_lists | List Named Lists.
-[**NamedListsListNamedListsCSV**](NamedListsAPI.md#NamedListsListNamedListsCSV) | **Get** /named_lists_download | List Named Lists in CSV format.
-[**NamedListsMultiListUpdate**](NamedListsAPI.md#NamedListsMultiListUpdate) | **Patch** /named_lists | Patch Multiple Named Lists.
-[**NamedListsReadNamedList**](NamedListsAPI.md#NamedListsReadNamedList) | **Get** /named_lists/{id} | Read Named List.
-[**NamedListsUpdateNamedList**](NamedListsAPI.md#NamedListsUpdateNamedList) | **Put** /named_lists/{id} | Update Named List.
-[**NamedListsUpdateNamedListPartial**](NamedListsAPI.md#NamedListsUpdateNamedListPartial) | **Patch** /named_lists/{id} | Patch TI List.
+[**CreateNamedList**](NamedListsAPI.md#CreateNamedList) | **Post** /named_lists | Create Named List.
+[**DeleteNamedLists**](NamedListsAPI.md#DeleteNamedLists) | **Delete** /named_lists | Delete Named Lists.
+[**DeleteSingleNamedLists**](NamedListsAPI.md#DeleteSingleNamedLists) | **Delete** /named_lists/{id} | Delete Named Lists.
+[**ListNamedLists**](NamedListsAPI.md#ListNamedLists) | **Get** /named_lists | List Named Lists.
+[**ListNamedListsCSV**](NamedListsAPI.md#ListNamedListsCSV) | **Get** /named_lists_download | List Named Lists in CSV format.
+[**MultiListUpdate**](NamedListsAPI.md#MultiListUpdate) | **Patch** /named_lists | Patch Multiple Named Lists.
+[**ReadNamedList**](NamedListsAPI.md#ReadNamedList) | **Get** /named_lists/{id} | Read Named List.
+[**UpdateNamedList**](NamedListsAPI.md#UpdateNamedList) | **Put** /named_lists/{id} | Update Named List.
+[**UpdateNamedListPartial**](NamedListsAPI.md#UpdateNamedListPartial) | **Patch** /named_lists/{id} | Patch TI List.
 
 
 
-## NamedListsCreateNamedList
+## CreateNamedList
 
-> AtcfwNamedListCreateResponse NamedListsCreateNamedList(ctx).Body(body).Execute()
+> NamedListCreateResponse CreateNamedList(ctx).Body(body).Execute()
 
 Create Named List.
 
@@ -38,16 +38,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwNamedList() // AtcfwNamedList | The Named List object.
+	body := *fw.NewNamedList() // NamedList | The Named List object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsCreateNamedList(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.NamedListsAPI.CreateNamedList(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsCreateNamedList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.CreateNamedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsCreateNamedList`: AtcfwNamedListCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsCreateNamedList`: %v\n", resp)
+	// response from `CreateNamedList`: NamedListCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.CreateNamedList`: %v\n", resp)
 }
 ```
 
@@ -57,16 +57,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsCreateNamedListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateNamedListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwNamedList**](AtcfwNamedList.md) | The Named List object. | 
+ **body** | [**NamedList**](NamedList.md) | The Named List object. | 
 
 ### Return type
 
-[**AtcfwNamedListCreateResponse**](AtcfwNamedListCreateResponse.md)
+[**NamedListCreateResponse**](NamedListCreateResponse.md)
 
 ### Authorization
 
@@ -82,9 +82,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsDeleteNamedLists
+## DeleteNamedLists
 
-> NamedListsDeleteNamedLists(ctx).Body(body).Execute()
+> DeleteNamedLists(ctx).Body(body).Execute()
 
 Delete Named Lists.
 
@@ -104,12 +104,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwNamedListsDeleteRequest() // AtcfwNamedListsDeleteRequest | 
+	body := *fw.NewNamedListsDeleteRequest() // NamedListsDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.NamedListsAPI.NamedListsDeleteNamedLists(context.Background()).Body(body).Execute()
+	r, err := apiClient.NamedListsAPI.DeleteNamedLists(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsDeleteNamedLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.DeleteNamedLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,12 +121,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsDeleteNamedListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNamedListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwNamedListsDeleteRequest**](AtcfwNamedListsDeleteRequest.md) |  | 
+ **body** | [**NamedListsDeleteRequest**](NamedListsDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -146,9 +146,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsDeleteSingleNamedLists
+## DeleteSingleNamedLists
 
-> NamedListsDeleteSingleNamedLists(ctx, id).Execute()
+> DeleteSingleNamedLists(ctx, id).Execute()
 
 Delete Named Lists.
 
@@ -171,9 +171,9 @@ func main() {
 	id := int32(56) // int32 | The Named List object identifiers.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.NamedListsAPI.NamedListsDeleteSingleNamedLists(context.Background(), id).Execute()
+	r, err := apiClient.NamedListsAPI.DeleteSingleNamedLists(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsDeleteSingleNamedLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.DeleteSingleNamedLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsDeleteSingleNamedListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleNamedListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -214,9 +214,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsListNamedLists
+## ListNamedLists
 
-> AtcfwNamedListReadMultiResponse NamedListsListNamedLists(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> NamedListReadMultiResponse ListNamedLists(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Named Lists.
 
@@ -245,13 +245,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsListNamedLists(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.NamedListsAPI.ListNamedLists(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsListNamedLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.ListNamedLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsListNamedLists`: AtcfwNamedListReadMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsListNamedLists`: %v\n", resp)
+	// response from `ListNamedLists`: NamedListReadMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.ListNamedLists`: %v\n", resp)
 }
 ```
 
@@ -261,7 +261,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsListNamedListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListNamedListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwNamedListReadMultiResponse**](AtcfwNamedListReadMultiResponse.md)
+[**NamedListReadMultiResponse**](NamedListReadMultiResponse.md)
 
 ### Authorization
 
@@ -292,9 +292,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsListNamedListsCSV
+## ListNamedListsCSV
 
-> AtcfwNamedListCSVListResponse NamedListsListNamedListsCSV(ctx).Filter(filter).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> NamedListCSVListResponse ListNamedListsCSV(ctx).Filter(filter).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Named Lists in CSV format.
 
@@ -320,13 +320,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsListNamedListsCSV(context.Background()).Filter(filter).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.NamedListsAPI.ListNamedListsCSV(context.Background()).Filter(filter).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsListNamedListsCSV``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.ListNamedListsCSV``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsListNamedListsCSV`: AtcfwNamedListCSVListResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsListNamedListsCSV`: %v\n", resp)
+	// response from `ListNamedListsCSV`: NamedListCSVListResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.ListNamedListsCSV`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsListNamedListsCSVRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListNamedListsCSVRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwNamedListCSVListResponse**](AtcfwNamedListCSVListResponse.md)
+[**NamedListCSVListResponse**](NamedListCSVListResponse.md)
 
 ### Authorization
 
@@ -364,9 +364,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsMultiListUpdate
+## MultiListUpdate
 
-> map[string]interface{} NamedListsMultiListUpdate(ctx).Body(body).Execute()
+> map[string]interface{} MultiListUpdate(ctx).Body(body).Execute()
 
 Patch Multiple Named Lists.
 
@@ -386,16 +386,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwMultiListUpdate() // AtcfwMultiListUpdate | 
+	body := *fw.NewMultiListUpdate() // MultiListUpdate | 
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsMultiListUpdate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.NamedListsAPI.MultiListUpdate(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsMultiListUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.MultiListUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsMultiListUpdate`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsMultiListUpdate`: %v\n", resp)
+	// response from `MultiListUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.MultiListUpdate`: %v\n", resp)
 }
 ```
 
@@ -405,12 +405,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsMultiListUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiMultiListUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwMultiListUpdate**](AtcfwMultiListUpdate.md) |  | 
+ **body** | [**MultiListUpdate**](MultiListUpdate.md) |  | 
 
 ### Return type
 
@@ -430,9 +430,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsReadNamedList
+## ReadNamedList
 
-> AtcfwNamedListReadResponse NamedListsReadNamedList(ctx, id).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Name(name).Type_(type_).Execute()
+> NamedListReadResponse ReadNamedList(ctx, id).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Name(name).Type_(type_).Execute()
 
 Read Named List.
 
@@ -461,13 +461,13 @@ func main() {
 	type_ := "type__example" // string | The type of the named list. See 'NamedList' for more details. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsReadNamedList(context.Background(), id).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Name(name).Type_(type_).Execute()
+	resp, r, err := apiClient.NamedListsAPI.ReadNamedList(context.Background(), id).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Name(name).Type_(type_).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsReadNamedList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.ReadNamedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsReadNamedList`: AtcfwNamedListReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsReadNamedList`: %v\n", resp)
+	// response from `ReadNamedList`: NamedListReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.ReadNamedList`: %v\n", resp)
 }
 ```
 
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsReadNamedListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadNamedListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwNamedListReadResponse**](AtcfwNamedListReadResponse.md)
+[**NamedListReadResponse**](NamedListReadResponse.md)
 
 ### Authorization
 
@@ -512,9 +512,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsUpdateNamedList
+## UpdateNamedList
 
-> AtcfwNamedListUpdateResponse NamedListsUpdateNamedList(ctx, id).Body(body).Execute()
+> NamedListUpdateResponse UpdateNamedList(ctx, id).Body(body).Execute()
 
 Update Named List.
 
@@ -535,16 +535,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Named List object identifier.
-	body := *fw.NewAtcfwNamedList() // AtcfwNamedList | The Named List object.
+	body := *fw.NewNamedList() // NamedList | The Named List object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsUpdateNamedList(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.NamedListsAPI.UpdateNamedList(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsUpdateNamedList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.UpdateNamedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsUpdateNamedList`: AtcfwNamedListUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsUpdateNamedList`: %v\n", resp)
+	// response from `UpdateNamedList`: NamedListUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.UpdateNamedList`: %v\n", resp)
 }
 ```
 
@@ -558,17 +558,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsUpdateNamedListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateNamedListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwNamedList**](AtcfwNamedList.md) | The Named List object. | 
+ **body** | [**NamedList**](NamedList.md) | The Named List object. | 
 
 ### Return type
 
-[**AtcfwNamedListUpdateResponse**](AtcfwNamedListUpdateResponse.md)
+[**NamedListUpdateResponse**](NamedListUpdateResponse.md)
 
 ### Authorization
 
@@ -584,9 +584,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListsUpdateNamedListPartial
+## UpdateNamedListPartial
 
-> AtcfwNamedListUpdateResponse NamedListsUpdateNamedListPartial(ctx, id).Body(body).Execute()
+> NamedListUpdateResponse UpdateNamedListPartial(ctx, id).Body(body).Execute()
 
 Patch TI List.
 
@@ -607,16 +607,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Named List object identifier.
-	body := *fw.NewAtcfwListSeverityLevels() // AtcfwListSeverityLevels | The Named List object.
+	body := *fw.NewListSeverityLevels() // ListSeverityLevels | The Named List object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListsAPI.NamedListsUpdateNamedListPartial(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.NamedListsAPI.UpdateNamedListPartial(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.NamedListsUpdateNamedListPartial``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListsAPI.UpdateNamedListPartial``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListsUpdateNamedListPartial`: AtcfwNamedListUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.NamedListsUpdateNamedListPartial`: %v\n", resp)
+	// response from `UpdateNamedListPartial`: NamedListUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListsAPI.UpdateNamedListPartial`: %v\n", resp)
 }
 ```
 
@@ -630,17 +630,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListsUpdateNamedListPartialRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateNamedListPartialRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwListSeverityLevels**](AtcfwListSeverityLevels.md) | The Named List object. | 
+ **body** | [**ListSeverityLevels**](ListSeverityLevels.md) | The Named List object. | 
 
 ### Return type
 
-[**AtcfwNamedListUpdateResponse**](AtcfwNamedListUpdateResponse.md)
+[**NamedListUpdateResponse**](NamedListUpdateResponse.md)
 
 ### Authorization
 

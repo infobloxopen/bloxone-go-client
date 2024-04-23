@@ -23,11 +23,11 @@ func TestUploadAPIService(t *testing.T) {
 
 	apiClient := keys.NewAPIClient()
 
-	t.Run("Test UploadAPIService UploadUpload", func(t *testing.T) {
+	t.Run("Test UploadAPIService Upload", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UploadAPI.UploadUpload(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UploadAPI.Upload(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

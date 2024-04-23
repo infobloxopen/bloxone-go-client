@@ -23,11 +23,11 @@ func TestNetworkListsAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test NetworkListsAPIService NetworkListsCreateNetworkList", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService CreateNetworkList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkListsAPI.NetworkListsCreateNetworkList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworkListsAPI.CreateNetworkList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,35 +35,35 @@ func TestNetworkListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkListsAPIService NetworkListsDeleteNetworkLists", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService DeleteNetworkLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.NetworkListsAPI.NetworkListsDeleteNetworkLists(context.Background()).Execute()
+		httpRes, err := apiClient.NetworkListsAPI.DeleteNetworkLists(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NetworkListsAPIService NetworkListsDeleteSingleNetworkLists", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService DeleteSingleNetworkLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.NetworkListsAPI.NetworkListsDeleteSingleNetworkLists(context.Background(), id).Execute()
+		httpRes, err := apiClient.NetworkListsAPI.DeleteSingleNetworkLists(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NetworkListsAPIService NetworkListsListNetworkLists", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService ListNetworkLists", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkListsAPI.NetworkListsListNetworkLists(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworkListsAPI.ListNetworkLists(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,13 +71,13 @@ func TestNetworkListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkListsAPIService NetworkListsReadNetworkList", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService ReadNetworkList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NetworkListsAPI.NetworkListsReadNetworkList(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NetworkListsAPI.ReadNetworkList(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -85,13 +85,13 @@ func TestNetworkListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkListsAPIService NetworkListsUpdateNetworkList", func(t *testing.T) {
+	t.Run("Test NetworkListsAPIService UpdateNetworkList", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NetworkListsAPI.NetworkListsUpdateNetworkList(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NetworkListsAPI.UpdateNetworkList(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

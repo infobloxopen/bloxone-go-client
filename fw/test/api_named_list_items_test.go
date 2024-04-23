@@ -23,26 +23,26 @@ func TestNamedListItemsAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsDeleteNamedListItems", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService DeleteNamedListItems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsDeleteNamedListItems(context.Background(), id).Execute()
+		httpRes, err := apiClient.NamedListItemsAPI.DeleteNamedListItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsInsertOrReplaceNamedListItems", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService InsertOrReplaceNamedListItems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListItemsAPI.InsertOrReplaceNamedListItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,13 +50,13 @@ func TestNamedListItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsNamedListItemsPartialUpdate", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService NamedListItemsPartialUpdate", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsPartialUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

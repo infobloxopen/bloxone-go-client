@@ -4,13 +4,13 @@ All URIs are relative to *https://csp.infoblox.com/api/atcdfp/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccountsCheckConfig**](AccountsAPI.md#AccountsCheckConfig) | **Post** /config/check | Check Config.
+[**CheckConfig**](AccountsAPI.md#CheckConfig) | **Post** /config/check | Check Config.
 
 
 
-## AccountsCheckConfig
+## CheckConfig
 
-> TypesConfigCheckResponse AccountsCheckConfig(ctx).Body(body).Execute()
+> TypesConfigCheckResponse CheckConfig(ctx).Body(body).Execute()
 
 Check Config.
 
@@ -33,13 +33,13 @@ func main() {
 	body := *dfp.NewTypesConfigCheckRequest() // TypesConfigCheckRequest | 
 
 	apiClient := dfp.NewAPIClient()
-	resp, r, err := apiClient.AccountsAPI.AccountsCheckConfig(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.AccountsAPI.CheckConfig(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.AccountsCheckConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.CheckConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccountsCheckConfig`: TypesConfigCheckResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.AccountsCheckConfig`: %v\n", resp)
+	// response from `CheckConfig`: TypesConfigCheckResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.CheckConfig`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccountsCheckConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCheckConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

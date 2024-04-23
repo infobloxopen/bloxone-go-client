@@ -22,50 +22,50 @@ import (
 
 type LeasesCommandAPI interface {
 	/*
-			LeasesCommandCreate Perform actions like clearing DHCP lease(s).
+			Create Perform actions like clearing DHCP lease(s).
 
 			Use this method to create a __LeasesCommand__ object.
 		The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiLeasesCommandCreateRequest
+			@return LeasesCommandAPICreateRequest
 	*/
-	LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest
+	Create(ctx context.Context) LeasesCommandAPICreateRequest
 
-	// LeasesCommandCreateExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateLeasesCommandResponse
-	LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*CreateLeasesCommandResponse, *http.Response, error)
+	CreateExecute(r LeasesCommandAPICreateRequest) (*CreateLeasesCommandResponse, *http.Response, error)
 }
 
 // LeasesCommandAPIService LeasesCommandAPI service
 type LeasesCommandAPIService internal.Service
 
-type ApiLeasesCommandCreateRequest struct {
+type LeasesCommandAPICreateRequest struct {
 	ctx        context.Context
 	ApiService LeasesCommandAPI
 	body       *LeasesCommand
 }
 
-func (r ApiLeasesCommandCreateRequest) Body(body LeasesCommand) ApiLeasesCommandCreateRequest {
+func (r LeasesCommandAPICreateRequest) Body(body LeasesCommand) LeasesCommandAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiLeasesCommandCreateRequest) Execute() (*CreateLeasesCommandResponse, *http.Response, error) {
-	return r.ApiService.LeasesCommandCreateExecute(r)
+func (r LeasesCommandAPICreateRequest) Execute() (*CreateLeasesCommandResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-LeasesCommandCreate Perform actions like clearing DHCP lease(s).
+Create Perform actions like clearing DHCP lease(s).
 
 Use this method to create a __LeasesCommand__ object.
 The __LeasesCommand__ object (_dhcp/leases_command_) is used for performing an action like clearing DHCP lease(s).
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLeasesCommandCreateRequest
+	@return LeasesCommandAPICreateRequest
 */
-func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLeasesCommandCreateRequest {
-	return ApiLeasesCommandCreateRequest{
+func (a *LeasesCommandAPIService) Create(ctx context.Context) LeasesCommandAPICreateRequest {
+	return LeasesCommandAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -74,7 +74,7 @@ func (a *LeasesCommandAPIService) LeasesCommandCreate(ctx context.Context) ApiLe
 // Execute executes the request
 //
 //	@return CreateLeasesCommandResponse
-func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandCreateRequest) (*CreateLeasesCommandResponse, *http.Response, error) {
+func (a *LeasesCommandAPIService) CreateExecute(r LeasesCommandAPICreateRequest) (*CreateLeasesCommandResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -82,7 +82,7 @@ func (a *LeasesCommandAPIService) LeasesCommandCreateExecute(r ApiLeasesCommandC
 		localVarReturnValue *CreateLeasesCommandResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeasesCommandAPIService.LeasesCommandCreate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeasesCommandAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

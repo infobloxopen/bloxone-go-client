@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FixedAddressCreate**](FixedAddressAPI.md#FixedAddressCreate) | **Post** /dhcp/fixed_address | Create the fixed address.
-[**FixedAddressDelete**](FixedAddressAPI.md#FixedAddressDelete) | **Delete** /dhcp/fixed_address/{id} | Move the fixed address to the recycle bin.
-[**FixedAddressList**](FixedAddressAPI.md#FixedAddressList) | **Get** /dhcp/fixed_address | Retrieve fixed addresses.
-[**FixedAddressRead**](FixedAddressAPI.md#FixedAddressRead) | **Get** /dhcp/fixed_address/{id} | Retrieve the fixed address.
-[**FixedAddressUpdate**](FixedAddressAPI.md#FixedAddressUpdate) | **Patch** /dhcp/fixed_address/{id} | Update the fixed address.
+[**Create**](FixedAddressAPI.md#Create) | **Post** /dhcp/fixed_address | Create the fixed address.
+[**Delete**](FixedAddressAPI.md#Delete) | **Delete** /dhcp/fixed_address/{id} | Move the fixed address to the recycle bin.
+[**List**](FixedAddressAPI.md#List) | **Get** /dhcp/fixed_address | Retrieve fixed addresses.
+[**Read**](FixedAddressAPI.md#Read) | **Get** /dhcp/fixed_address/{id} | Retrieve the fixed address.
+[**Update**](FixedAddressAPI.md#Update) | **Patch** /dhcp/fixed_address/{id} | Update the fixed address.
 
 
 
-## FixedAddressCreate
+## Create
 
-> CreateFixedAddressResponse FixedAddressCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateFixedAddressResponse Create(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the fixed address.
 
@@ -38,13 +38,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.FixedAddressAPI.FixedAddressCreate(context.Background()).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.FixedAddressAPI.Create(context.Background()).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressCreate`: CreateFixedAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressCreate`: %v\n", resp)
+	// response from `Create`: CreateFixedAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -54,7 +54,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFixedAddressCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FixedAddressDelete
+## Delete
 
-> FixedAddressDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the fixed address to the recycle bin.
 
@@ -105,9 +105,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.FixedAddressAPI.FixedAddressDelete(context.Background(), id).Execute()
+	r, err := apiClient.FixedAddressAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFixedAddressDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -148,9 +148,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FixedAddressList
+## List
 
-> ListFixedAddressResponse FixedAddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListFixedAddressResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve fixed addresses.
 
@@ -181,13 +181,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.FixedAddressAPI.FixedAddressList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+	resp, r, err := apiClient.FixedAddressAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressList`: ListFixedAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressList`: %v\n", resp)
+	// response from `List`: ListFixedAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.List`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFixedAddressListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -230,9 +230,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FixedAddressRead
+## Read
 
-> ReadFixedAddressResponse FixedAddressRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadFixedAddressResponse Read(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the fixed address.
 
@@ -257,13 +257,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.FixedAddressAPI.FixedAddressRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
+	resp, r, err := apiClient.FixedAddressAPI.Read(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressRead`: ReadFixedAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressRead`: %v\n", resp)
+	// response from `Read`: ReadFixedAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFixedAddressReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -304,9 +304,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FixedAddressUpdate
+## Update
 
-> UpdateFixedAddressResponse FixedAddressUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateFixedAddressResponse Update(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the fixed address.
 
@@ -331,13 +331,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.FixedAddressAPI.FixedAddressUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.FixedAddressAPI.Update(context.Background(), id).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.FixedAddressUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedAddressAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FixedAddressUpdate`: UpdateFixedAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.FixedAddressUpdate`: %v\n", resp)
+	// response from `Update`: UpdateFixedAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedAddressAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFixedAddressUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

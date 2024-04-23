@@ -23,11 +23,11 @@ func TestSecurityPolicyRulesAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test SecurityPolicyRulesAPIService SecurityPolicyRulesListSecurityPolicyRules", func(t *testing.T) {
+	t.Run("Test SecurityPolicyRulesAPIService ListSecurityPolicyRules", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SecurityPolicyRulesAPI.SecurityPolicyRulesListSecurityPolicyRules(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SecurityPolicyRulesAPI.ListSecurityPolicyRules(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

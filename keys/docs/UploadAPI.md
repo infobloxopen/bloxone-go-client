@@ -4,13 +4,13 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UploadUpload**](UploadAPI.md#UploadUpload) | **Post** /keys/upload | Upload content to the keys service.
+[**Upload**](UploadAPI.md#Upload) | **Post** /keys/upload | Upload content to the keys service.
 
 
 
-## UploadUpload
+## Upload
 
-> DdiuploadResponse UploadUpload(ctx).Body(body).Execute()
+> DdiuploadResponse Upload(ctx).Body(body).Execute()
 
 Upload content to the keys service.
 
@@ -33,13 +33,13 @@ func main() {
 	body := *keys.NewUploadRequest("Content_example", keys.uploadContentType("UNKNOWN")) // UploadRequest | 
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.UploadAPI.UploadUpload(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.UploadAPI.Upload(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UploadAPI.UploadUpload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UploadAPI.Upload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UploadUpload`: DdiuploadResponse
-	fmt.Fprintf(os.Stdout, "Response from `UploadAPI.UploadUpload`: %v\n", resp)
+	// response from `Upload`: DdiuploadResponse
+	fmt.Fprintf(os.Stdout, "Response from `UploadAPI.Upload`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUploadUploadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUploadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

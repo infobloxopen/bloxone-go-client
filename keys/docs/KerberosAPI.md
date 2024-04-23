@@ -4,17 +4,16 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**KerberosDelete**](KerberosAPI.md#KerberosDelete) | **Delete** /keys/kerberos/{id} | Delete the Kerberos key.
-[**KerberosList**](KerberosAPI.md#KerberosList) | **Get** /keys/kerberos | Retrieve Kerberos keys.
-[**KerberosRead**](KerberosAPI.md#KerberosRead) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
-[**KerberosUpdate**](KerberosAPI.md#KerberosUpdate) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
-[**KeysKerberosPost**](KerberosAPI.md#KeysKerberosPost) | **Post** /keys/kerberos | 
+[**Delete**](KerberosAPI.md#Delete) | **Delete** /keys/kerberos/{id} | Delete the Kerberos key.
+[**List**](KerberosAPI.md#List) | **Get** /keys/kerberos | Retrieve Kerberos keys.
+[**Read**](KerberosAPI.md#Read) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
+[**Update**](KerberosAPI.md#Update) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
 
 
 
-## KerberosDelete
+## Delete
 
-> KerberosDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Delete the Kerberos key.
 
@@ -37,9 +36,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := keys.NewAPIClient()
-	r, err := apiClient.KerberosAPI.KerberosDelete(context.Background(), id).Execute()
+	r, err := apiClient.KerberosAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KerberosDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -55,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiKerberosDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## KerberosList
+## List
 
-> KeysListKerberosKeyResponse KerberosList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ListKerberosKeyResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Retrieve Kerberos keys.
 
@@ -112,13 +111,13 @@ func main() {
 	torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.KerberosAPI.KerberosList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.KerberosAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KerberosList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `KerberosList`: KeysListKerberosKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.KerberosList`: %v\n", resp)
+	// response from `List`: ListKerberosKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.List`: %v\n", resp)
 }
 ```
 
@@ -128,7 +127,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiKerberosListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -144,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeysListKerberosKeyResponse**](KeysListKerberosKeyResponse.md)
+[**ListKerberosKeyResponse**](ListKerberosKeyResponse.md)
 
 ### Authorization
 
@@ -160,9 +159,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## KerberosRead
+## Read
 
-> KeysReadKerberosKeyResponse KerberosRead(ctx, id).Fields(fields).Execute()
+> ReadKerberosKeyResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the Kerberos key.
 
@@ -186,13 +185,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.KerberosAPI.KerberosRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.KerberosAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KerberosRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `KerberosRead`: KeysReadKerberosKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.KerberosRead`: %v\n", resp)
+	// response from `Read`: ReadKerberosKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -206,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiKerberosReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -216,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeysReadKerberosKeyResponse**](KeysReadKerberosKeyResponse.md)
+[**ReadKerberosKeyResponse**](ReadKerberosKeyResponse.md)
 
 ### Authorization
 
@@ -232,9 +231,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## KerberosUpdate
+## Update
 
-> KeysUpdateKerberosKeyResponse KerberosUpdate(ctx, id).Body(body).Execute()
+> UpdateKerberosKeyResponse Update(ctx, id).Body(body).Execute()
 
 Update the Kerberos key.
 
@@ -258,13 +257,13 @@ func main() {
 	body := *keys.NewKerberosKey() // KerberosKey | 
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.KerberosAPI.KerberosUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.KerberosAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KerberosUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `KerberosUpdate`: KeysUpdateKerberosKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.KerberosUpdate`: %v\n", resp)
+	// response from `Update`: UpdateKerberosKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -278,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiKerberosUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,71 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeysUpdateKerberosKeyResponse**](KeysUpdateKerberosKeyResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## KeysKerberosPost
-
-> KeysListKerberosKeyResponse KeysKerberosPost(ctx).Body(body).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/infobloxopen/bloxone-go-client/keys"
-)
-
-func main() {
-	body := *keys.NewKerberosKey() // KerberosKey | 
-
-	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.KerberosAPI.KeysKerberosPost(context.Background()).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KerberosAPI.KeysKerberosPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `KeysKerberosPost`: KeysListKerberosKeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `KerberosAPI.KeysKerberosPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiKeysKerberosPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**KerberosKey**](KerberosKey.md) |  | 
-
-### Return type
-
-[**KeysListKerberosKeyResponse**](KeysListKerberosKeyResponse.md)
+[**UpdateKerberosKeyResponse**](UpdateKerberosKeyResponse.md)
 
 ### Authorization
 

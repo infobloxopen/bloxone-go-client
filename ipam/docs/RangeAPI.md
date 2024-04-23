@@ -4,19 +4,19 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RangeCreate**](RangeAPI.md#RangeCreate) | **Post** /ipam/range | Create the range.
-[**RangeCreateNextAvailableIP**](RangeAPI.md#RangeCreateNextAvailableIP) | **Post** /ipam/range/{id}/nextavailableip | Allocate the next available IP address.
-[**RangeDelete**](RangeAPI.md#RangeDelete) | **Delete** /ipam/range/{id} | Move the range to the recycle bin.
-[**RangeList**](RangeAPI.md#RangeList) | **Get** /ipam/range | Retrieve ranges.
-[**RangeListNextAvailableIP**](RangeAPI.md#RangeListNextAvailableIP) | **Get** /ipam/range/{id}/nextavailableip | Retrieve the next available IP address.
-[**RangeRead**](RangeAPI.md#RangeRead) | **Get** /ipam/range/{id} | Retrieve the range.
-[**RangeUpdate**](RangeAPI.md#RangeUpdate) | **Patch** /ipam/range/{id} | Update the range.
+[**Create**](RangeAPI.md#Create) | **Post** /ipam/range | Create the range.
+[**CreateNextAvailableIP**](RangeAPI.md#CreateNextAvailableIP) | **Post** /ipam/range/{id}/nextavailableip | Allocate the next available IP address.
+[**Delete**](RangeAPI.md#Delete) | **Delete** /ipam/range/{id} | Move the range to the recycle bin.
+[**List**](RangeAPI.md#List) | **Get** /ipam/range | Retrieve ranges.
+[**ListNextAvailableIP**](RangeAPI.md#ListNextAvailableIP) | **Get** /ipam/range/{id}/nextavailableip | Retrieve the next available IP address.
+[**Read**](RangeAPI.md#Read) | **Get** /ipam/range/{id} | Retrieve the range.
+[**Update**](RangeAPI.md#Update) | **Patch** /ipam/range/{id} | Update the range.
 
 
 
-## RangeCreate
+## Create
 
-> CreateRangeResponse RangeCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateRangeResponse Create(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the range.
 
@@ -40,13 +40,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeCreate(context.Background()).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.RangeAPI.Create(context.Background()).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeCreate`: CreateRangeResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeCreate`: %v\n", resp)
+	// response from `Create`: CreateRangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -56,7 +56,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeCreateNextAvailableIP
+## CreateNextAvailableIP
 
-> CreateNextAvailableIPResponse RangeCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> CreateNextAvailableIPResponse CreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -109,13 +109,13 @@ func main() {
 	count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional) (default to 1)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeCreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
+	resp, r, err := apiClient.RangeAPI.CreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeCreateNextAvailableIP``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.CreateNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeCreateNextAvailableIP`: CreateNextAvailableIPResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeCreateNextAvailableIP`: %v\n", resp)
+	// response from `CreateNextAvailableIP`: CreateNextAvailableIPResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.CreateNextAvailableIP`: %v\n", resp)
 }
 ```
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeCreateNextAvailableIPRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateNextAvailableIPRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -156,9 +156,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeDelete
+## Delete
 
-> RangeDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the range to the recycle bin.
 
@@ -181,9 +181,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.RangeAPI.RangeDelete(context.Background(), id).Execute()
+	r, err := apiClient.RangeAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,9 +224,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeList
+## List
 
-> ListRangeResponse RangeList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListRangeResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve ranges.
 
@@ -257,13 +257,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+	resp, r, err := apiClient.RangeAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeList`: ListRangeResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeList`: %v\n", resp)
+	// response from `List`: ListRangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.List`: %v\n", resp)
 }
 ```
 
@@ -273,7 +273,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -306,9 +306,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeListNextAvailableIP
+## ListNextAvailableIP
 
-> NextAvailableIPResponse RangeListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> NextAvailableIPResponse ListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Retrieve the next available IP address.
 
@@ -333,13 +333,13 @@ func main() {
 	count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeListNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
+	resp, r, err := apiClient.RangeAPI.ListNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeListNextAvailableIP``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.ListNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeListNextAvailableIP`: NextAvailableIPResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeListNextAvailableIP`: %v\n", resp)
+	// response from `ListNextAvailableIP`: NextAvailableIPResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.ListNextAvailableIP`: %v\n", resp)
 }
 ```
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeListNextAvailableIPRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListNextAvailableIPRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -380,9 +380,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeRead
+## Read
 
-> ReadRangeResponse RangeRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadRangeResponse Read(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the range.
 
@@ -407,13 +407,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
+	resp, r, err := apiClient.RangeAPI.Read(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeRead`: ReadRangeResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeRead`: %v\n", resp)
+	// response from `Read`: ReadRangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -454,9 +454,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RangeUpdate
+## Update
 
-> UpdateRangeResponse RangeUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateRangeResponse Update(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the range.
 
@@ -481,13 +481,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.RangeAPI.RangeUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.RangeAPI.Update(context.Background(), id).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.RangeUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RangeAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RangeUpdate`: UpdateRangeResponse
-	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.RangeUpdate`: %v\n", resp)
+	// response from `Update`: UpdateRangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `RangeAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRangeUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -1,0 +1,797 @@
+openapi: 3.0.1
+info:
+  description: Host activation service provides a RESTful interface to manage cert
+    and join token object. Join tokens are essentially a password that allows on-prem
+    hosts to auto-associate themselves to a customer's account and receive a signed
+    cert.
+  title: Host Activation Service
+  version: v1
+servers:
+- url: http://csp.infoblox.com/host-activation/v1/
+- url: https://csp.infoblox.com/host-activation/v1/
+security:
+- ApiKeyAuth: []
+paths:
+  /cert/{cert_serial}/revoke:
+    post:
+      description: |-
+        The user can revoke the cert from the cloud (for example, if in case a host is compromised).
+        Validation:
+        - one of "cert_serial" or "ophid" should be provided
+        - "revoke_reason" is optional
+      operationId: UI_CSRRevoke
+      parameters:
+      - description: x509 serial number of the certificate. This can be obtained by
+          parsing the client certificate file on the onprem. Either cert_serial or
+          ophid is required
+        in: path
+        name: cert_serial
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationRevokeCertRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Invalidates a certificate by adding it to a certificate revocation
+        list.
+      tags:
+      - UI_CSR
+      x-codegen-request-body-name: body
+  /csr:
+    get:
+      operationId: UI_CSRList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hostactivationListCSRsResponse'
+          description: GET operation response
+      summary: User can list the certificate signing requests for an account.
+      tags:
+      - UI_CSR
+  /csr/{activation_code}/approve:
+    post:
+      operationId: UI_CSRApprove
+      parameters:
+      - description: activation code is used by the clients to track the approval
+          of the CSR
+        in: path
+        name: activation_code
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationApproveCSRRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Marks the certificate signing request as approved. The host activation
+        service will then continue with the signing process.
+      tags:
+      - UI_CSR
+      x-codegen-request-body-name: body
+  /csr/{activation_code}/deny:
+    post:
+      operationId: UI_CSRDeny
+      parameters:
+      - description: activation code is used by the clients to track the approval
+          of the CSR
+        in: path
+        name: activation_code
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationDenyCSRRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Marks the certificate signing request as denied.
+      tags:
+      - UI_CSR
+      x-codegen-request-body-name: body
+  /host/{ophid}/revoke:
+    post:
+      description: |-
+        The user can revoke the cert from the cloud (for example, if in case a host is compromised).
+        Validation:
+        - one of "cert_serial" or "ophid" should be provided
+        - "revoke_reason" is optional
+      operationId: UI_CSRRevoke2
+      parameters:
+      - description: On-prem host ID which can be obtained either from on-prem or
+          BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem >
+          click on 3 dots on top right side > General Information > Ophid) .
+        in: path
+        name: ophid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationRevokeCertRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Invalidates a certificate by adding it to a certificate revocation
+        list.
+      tags:
+      - UI_CSR
+      x-codegen-request-body-name: body
+  /jointoken:
+    get:
+      description: Both active and revoked join tokens are listed by default.
+      operationId: UI_JoinTokenList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hostactivationListJoinTokenResponse'
+          description: GET operation response
+      summary: User can list the join tokens for an account.
+      tags:
+      - UI_JoinToken
+    post:
+      description: |-
+        Validation:
+        - "name" is required and should be unique.
+        - "description" is optioanl.
+      operationId: UI_JoinTokenCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationJoinToken'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hostactivationCreateJoinTokenResponse'
+          description: POST operation response
+      summary: User can create a join token. Join token is random character string
+        which is used for instant validation of new hosts.
+      tags:
+      - UI_JoinToken
+      x-tf-resource: infra_join_token
+      x-tf-datasource: infra_join_tokens
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /jointoken/{id}:
+    delete:
+      operationId: UI_JoinTokenDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: "User can revoke the join token. Once revoked, it can not be used further.\
+        \ The join token record is preserved forever."
+      tags:
+      - UI_JoinToken
+    get:
+      operationId: UI_JoinTokenRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hostactivationReadJoinTokenResponse'
+          description: GET operation response
+      summary: User can get the join token providing its resource id in the parameter.
+      tags:
+      - UI_JoinToken
+    patch:
+      description: |-
+        Validation: Following fields is needed. Provide what needs to be
+        - "expires_at"
+        - "tags"
+      operationId: UI_JoinTokenUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationJoinToken'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hostactivationUpdateJoinTokenResponse'
+          description: PATCH operation response
+      summary: User can modify the tags or expiration time of a join token.
+      tags:
+      - UI_JoinToken
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /jointokens:
+    delete:
+      operationId: UI_JoinTokenDeleteSet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/hostactivationDeleteJoinTokensRequest'
+        required: true
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: "User can revoke a list of join tokens. Once revoked, join tokens can\
+        \ not be used further. The records are preserved forever."
+      tags:
+      - UI_JoinToken
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    JoinTokenJoinTokenStatus:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - ACTIVE
+      - EXPIRED
+      - REVOKED
+      type: string
+    apiPageInfo:
+      description: |-
+        PageInfo represents both server-driven and client-driven pagination response.
+        Server-driven pagination is a model in which the server returns some
+        amount of data along with an token indicating there is more data
+        and where subsequent queries can get the next page of data.
+        Client-driven pagination is a model in which rows are addressable by
+        offset and page size (limit).
+      example:
+        offset: 0
+        size: 6
+        page_token: page_token
+      properties:
+        offset:
+          description: |-
+            The service may optionally include the offset of the next page of resources.
+            A null value indicates no more pages.
+          format: int32
+          type: integer
+        page_token:
+          description: |-
+            The service response should contain a string to indicate
+            the next page of resources.
+            A null value indicates no more pages.
+          type: string
+        size:
+          description: The service may optionally include the total number of resources
+            being paged.
+          format: int32
+          type: integer
+      type: object
+    hostactivationApproveCSRRequest:
+      properties:
+        activation_code:
+          title: activation code is used by the clients to track the approval of the
+            CSR
+          type: string
+      type: object
+    hostactivationCSR:
+      description: Represents a certificate signing request from an on-prem host.
+      example:
+        src_ip:
+          value: value
+        ophid: ophid
+        csr: csr
+        host_serial: host_serial
+        activation_code: activation_code
+        join_token:
+          last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        signature: signature
+        created_at: 2000-01-23T04:56:07.000+00:00
+        client_ip:
+          value: value
+        id: id
+        state: null
+      properties:
+        activation_code:
+          title: activation code is used by the clients to track the approval of the
+            CSR
+          type: string
+        client_ip:
+          $ref: '#/components/schemas/typesInetValue'
+        created_at:
+          format: date-time
+          type: string
+        csr:
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          title: raw PEM encoded request from OpenSSL/CFSSL
+          type: string
+        host_serial:
+          title: "arbitrary string provided by the host for visual identification,\
+            \ usually a BloxOne appliance serial number"
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        join_token:
+          $ref: '#/components/schemas/hostactivationJoinToken'
+        ophid:
+          title: onprem host id
+          type: string
+        signature:
+          title: "signature of the raw CSR, used for lookups"
+          type: string
+        src_ip:
+          $ref: '#/components/schemas/typesInetValue'
+        state:
+          $ref: '#/components/schemas/hostactivationCSRState'
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    hostactivationCSRState:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - NEW
+      - VERIFIED
+      - DENIED
+      - TIMEOUT
+      - RENEWED
+      title: CSRState represents states of the CSR
+      type: string
+    hostactivationCreateJoinTokenResponse:
+      example:
+        result:
+          last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+        join_token: join_token
+      properties:
+        join_token:
+          type: string
+        result:
+          $ref: '#/components/schemas/hostactivationJoinToken'
+      type: object
+    hostactivationDeleteJoinTokensRequest:
+      properties:
+        ids:
+          description: The resource identifier.
+          items:
+            type: string
+          type: array
+      type: object
+    hostactivationDenyCSRRequest:
+      properties:
+        activation_code:
+          title: activation code is used by the clients to track the approval of the
+            CSR
+          type: string
+      type: object
+    hostactivationJoinToken:
+      example:
+        last_used_at: 2000-01-23T04:56:07.000+00:00
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        token_id: token_id
+        name: name
+        description: description
+        id: id
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        use_counter: 1
+        status: null
+        tags: "{}"
+      properties:
+        deleted_at:
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        last_used_at:
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/JoinTokenJoinTokenStatus'
+        tags:
+          additionalProperties: false
+          type: object
+        token_id:
+          description: first half of the token.
+          readOnly: true
+          type: string
+        use_counter:
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    hostactivationListCSRsResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - src_ip:
+            value: value
+          ophid: ophid
+          csr: csr
+          host_serial: host_serial
+          activation_code: activation_code
+          join_token:
+            last_used_at: 2000-01-23T04:56:07.000+00:00
+            expires_at: 2000-01-23T04:56:07.000+00:00
+            token_id: token_id
+            name: name
+            description: description
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            use_counter: 1
+            status: null
+            tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          signature: signature
+          created_at: 2000-01-23T04:56:07.000+00:00
+          client_ip:
+            value: value
+          id: id
+          state: null
+        - src_ip:
+            value: value
+          ophid: ophid
+          csr: csr
+          host_serial: host_serial
+          activation_code: activation_code
+          join_token:
+            last_used_at: 2000-01-23T04:56:07.000+00:00
+            expires_at: 2000-01-23T04:56:07.000+00:00
+            token_id: token_id
+            name: name
+            description: description
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            use_counter: 1
+            status: null
+            tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          signature: signature
+          created_at: 2000-01-23T04:56:07.000+00:00
+          client_ip:
+            value: value
+          id: id
+          state: null
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/hostactivationCSR'
+          type: array
+      type: object
+    hostactivationListJoinTokenResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+        - last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/hostactivationJoinToken'
+          type: array
+      type: object
+    hostactivationReadJoinTokenResponse:
+      example:
+        result:
+          last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/hostactivationJoinToken'
+      type: object
+    hostactivationRevokeCertRequest:
+      properties:
+        cert_serial:
+          title: x509 serial number of the certificate. This can be obtained by parsing
+            the client certificate file on the onprem. Either cert_serial or ophid
+            is required
+          type: string
+        ophid:
+          description: On-prem host ID which can be obtained either from on-prem or
+            BloxOne UI portal(Manage > Infrastructure > Hosts > Select the onprem
+            > click on 3 dots on top right side > General Information > Ophid) .
+          type: string
+        revoke_reason:
+          title: reason for certificate revocation
+          type: string
+      type: object
+    hostactivationUpdateJoinTokenResponse:
+      example:
+        result:
+          last_used_at: 2000-01-23T04:56:07.000+00:00
+          expires_at: 2000-01-23T04:56:07.000+00:00
+          token_id: token_id
+          name: name
+          description: description
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          use_counter: 1
+          status: null
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/hostactivationJoinToken'
+      type: object
+    typesInetValue:
+      example:
+        value: value
+      properties:
+        value:
+          type: string
+      type: object
+    typesJSONValue:
+      properties:
+        value:
+          type: string
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: "Format for value: 'Token token=<API_KEY>'"
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"

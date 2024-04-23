@@ -4,18 +4,18 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NetworkListsCreateNetworkList**](NetworkListsAPI.md#NetworkListsCreateNetworkList) | **Post** /network_lists | Create Network List.
-[**NetworkListsDeleteNetworkLists**](NetworkListsAPI.md#NetworkListsDeleteNetworkLists) | **Delete** /network_lists | Delete Network Lists.
-[**NetworkListsDeleteSingleNetworkLists**](NetworkListsAPI.md#NetworkListsDeleteSingleNetworkLists) | **Delete** /network_lists/{id} | Delete Network Lists.
-[**NetworkListsListNetworkLists**](NetworkListsAPI.md#NetworkListsListNetworkLists) | **Get** /network_lists | List Network Lists.
-[**NetworkListsReadNetworkList**](NetworkListsAPI.md#NetworkListsReadNetworkList) | **Get** /network_lists/{id} | Read Network List.
-[**NetworkListsUpdateNetworkList**](NetworkListsAPI.md#NetworkListsUpdateNetworkList) | **Put** /network_lists/{id} | Update Network List.
+[**CreateNetworkList**](NetworkListsAPI.md#CreateNetworkList) | **Post** /network_lists | Create Network List.
+[**DeleteNetworkLists**](NetworkListsAPI.md#DeleteNetworkLists) | **Delete** /network_lists | Delete Network Lists.
+[**DeleteSingleNetworkLists**](NetworkListsAPI.md#DeleteSingleNetworkLists) | **Delete** /network_lists/{id} | Delete Network Lists.
+[**ListNetworkLists**](NetworkListsAPI.md#ListNetworkLists) | **Get** /network_lists | List Network Lists.
+[**ReadNetworkList**](NetworkListsAPI.md#ReadNetworkList) | **Get** /network_lists/{id} | Read Network List.
+[**UpdateNetworkList**](NetworkListsAPI.md#UpdateNetworkList) | **Put** /network_lists/{id} | Update Network List.
 
 
 
-## NetworkListsCreateNetworkList
+## CreateNetworkList
 
-> AtcfwNetworkListCreateResponse NetworkListsCreateNetworkList(ctx).Body(body).Execute()
+> NetworkListCreateResponse CreateNetworkList(ctx).Body(body).Execute()
 
 Create Network List.
 
@@ -35,16 +35,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwNetworkList() // AtcfwNetworkList | The Network List object.
+	body := *fw.NewNetworkList() // NetworkList | The Network List object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NetworkListsAPI.NetworkListsCreateNetworkList(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.CreateNetworkList(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsCreateNetworkList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.CreateNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NetworkListsCreateNetworkList`: AtcfwNetworkListCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.NetworkListsCreateNetworkList`: %v\n", resp)
+	// response from `CreateNetworkList`: NetworkListCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.CreateNetworkList`: %v\n", resp)
 }
 ```
 
@@ -54,16 +54,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsCreateNetworkListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateNetworkListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwNetworkList**](AtcfwNetworkList.md) | The Network List object. | 
+ **body** | [**NetworkList**](NetworkList.md) | The Network List object. | 
 
 ### Return type
 
-[**AtcfwNetworkListCreateResponse**](AtcfwNetworkListCreateResponse.md)
+[**NetworkListCreateResponse**](NetworkListCreateResponse.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NetworkListsDeleteNetworkLists
+## DeleteNetworkLists
 
-> NetworkListsDeleteNetworkLists(ctx).Body(body).Execute()
+> DeleteNetworkLists(ctx).Body(body).Execute()
 
 Delete Network Lists.
 
@@ -101,12 +101,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwNetworkListsDeleteRequest() // AtcfwNetworkListsDeleteRequest | 
+	body := *fw.NewNetworkListsDeleteRequest() // NetworkListsDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.NetworkListsAPI.NetworkListsDeleteNetworkLists(context.Background()).Body(body).Execute()
+	r, err := apiClient.NetworkListsAPI.DeleteNetworkLists(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsDeleteNetworkLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.DeleteNetworkLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -118,12 +118,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsDeleteNetworkListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNetworkListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwNetworkListsDeleteRequest**](AtcfwNetworkListsDeleteRequest.md) |  | 
+ **body** | [**NetworkListsDeleteRequest**](NetworkListsDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -143,9 +143,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NetworkListsDeleteSingleNetworkLists
+## DeleteSingleNetworkLists
 
-> NetworkListsDeleteSingleNetworkLists(ctx, id).Execute()
+> DeleteSingleNetworkLists(ctx, id).Execute()
 
 Delete Network Lists.
 
@@ -168,9 +168,9 @@ func main() {
 	id := int32(56) // int32 | The Network List object identifier.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.NetworkListsAPI.NetworkListsDeleteSingleNetworkLists(context.Background(), id).Execute()
+	r, err := apiClient.NetworkListsAPI.DeleteSingleNetworkLists(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsDeleteSingleNetworkLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.DeleteSingleNetworkLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsDeleteSingleNetworkListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleNetworkListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,9 +211,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NetworkListsListNetworkLists
+## ListNetworkLists
 
-> AtcfwNetworkListMultiResponse NetworkListsListNetworkLists(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> NetworkListMultiResponse ListNetworkLists(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 List Network Lists.
 
@@ -240,13 +240,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NetworkListsAPI.NetworkListsListNetworkLists(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.ListNetworkLists(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsListNetworkLists``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.ListNetworkLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NetworkListsListNetworkLists`: AtcfwNetworkListMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.NetworkListsListNetworkLists`: %v\n", resp)
+	// response from `ListNetworkLists`: NetworkListMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.ListNetworkLists`: %v\n", resp)
 }
 ```
 
@@ -256,7 +256,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsListNetworkListsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListNetworkListsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwNetworkListMultiResponse**](AtcfwNetworkListMultiResponse.md)
+[**NetworkListMultiResponse**](NetworkListMultiResponse.md)
 
 ### Authorization
 
@@ -285,9 +285,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NetworkListsReadNetworkList
+## ReadNetworkList
 
-> AtcfwNetworkListReadResponse NetworkListsReadNetworkList(ctx, id).Fields(fields).Name(name).Execute()
+> NetworkListReadResponse ReadNetworkList(ctx, id).Fields(fields).Name(name).Execute()
 
 Read Network List.
 
@@ -312,13 +312,13 @@ func main() {
 	name := "name_example" // string | The name of the network list. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NetworkListsAPI.NetworkListsReadNetworkList(context.Background(), id).Fields(fields).Name(name).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.ReadNetworkList(context.Background(), id).Fields(fields).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsReadNetworkList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.ReadNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NetworkListsReadNetworkList`: AtcfwNetworkListReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.NetworkListsReadNetworkList`: %v\n", resp)
+	// response from `ReadNetworkList`: NetworkListReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.ReadNetworkList`: %v\n", resp)
 }
 ```
 
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsReadNetworkListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadNetworkListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwNetworkListReadResponse**](AtcfwNetworkListReadResponse.md)
+[**NetworkListReadResponse**](NetworkListReadResponse.md)
 
 ### Authorization
 
@@ -359,9 +359,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NetworkListsUpdateNetworkList
+## UpdateNetworkList
 
-> AtcfwNetworkListUpdateResponse NetworkListsUpdateNetworkList(ctx, id).Body(body).Execute()
+> NetworkListUpdateResponse UpdateNetworkList(ctx, id).Body(body).Execute()
 
 Update Network List.
 
@@ -382,16 +382,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Network List object identifier.
-	body := *fw.NewAtcfwNetworkList() // AtcfwNetworkList | The Network List object.
+	body := *fw.NewNetworkList() // NetworkList | The Network List object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NetworkListsAPI.NetworkListsUpdateNetworkList(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.NetworkListsAPI.UpdateNetworkList(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.NetworkListsUpdateNetworkList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkListsAPI.UpdateNetworkList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NetworkListsUpdateNetworkList`: AtcfwNetworkListUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.NetworkListsUpdateNetworkList`: %v\n", resp)
+	// response from `UpdateNetworkList`: NetworkListUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkListsAPI.UpdateNetworkList`: %v\n", resp)
 }
 ```
 
@@ -405,17 +405,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNetworkListsUpdateNetworkListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateNetworkListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwNetworkList**](AtcfwNetworkList.md) | The Network List object. | 
+ **body** | [**NetworkList**](NetworkList.md) | The Network List object. | 
 
 ### Return type
 
-[**AtcfwNetworkListUpdateResponse**](AtcfwNetworkListUpdateResponse.md)
+[**NetworkListUpdateResponse**](NetworkListUpdateResponse.md)
 
 ### Authorization
 

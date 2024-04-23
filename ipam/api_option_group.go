@@ -23,108 +23,108 @@ import (
 
 type OptionGroupAPI interface {
 	/*
-			OptionGroupCreate Create the DHCP option group.
+			Create Create the DHCP option group.
 
 			Use this method to create an __OptionGroup__ object.
 		The __OptionGroup__ object is a named collection of options.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionGroupCreateRequest
+			@return OptionGroupAPICreateRequest
 	*/
-	OptionGroupCreate(ctx context.Context) ApiOptionGroupCreateRequest
+	Create(ctx context.Context) OptionGroupAPICreateRequest
 
-	// OptionGroupCreateExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateOptionGroupResponse
-	OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*CreateOptionGroupResponse, *http.Response, error)
+	CreateExecute(r OptionGroupAPICreateRequest) (*CreateOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupDelete Move the DHCP option group to the recycle bin.
+			Delete Move the DHCP option group to the recycle bin.
 
 			Use this method to move an __OptionGroup__ object to the recycle bin.
 		The __OptionGroup__ object is a named collection of options.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupDeleteRequest
+			@return OptionGroupAPIDeleteRequest
 	*/
-	OptionGroupDelete(ctx context.Context, id string) ApiOptionGroupDeleteRequest
+	Delete(ctx context.Context, id string) OptionGroupAPIDeleteRequest
 
-	// OptionGroupDeleteExecute executes the request
-	OptionGroupDeleteExecute(r ApiOptionGroupDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r OptionGroupAPIDeleteRequest) (*http.Response, error)
 	/*
-			OptionGroupList Retrieve DHCP option groups.
+			List Retrieve DHCP option groups.
 
 			Use this method to retrieve __OptionGroup__ objects.
 		The __OptionGroup__ object is a named collection of options.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiOptionGroupListRequest
+			@return OptionGroupAPIListRequest
 	*/
-	OptionGroupList(ctx context.Context) ApiOptionGroupListRequest
+	List(ctx context.Context) OptionGroupAPIListRequest
 
-	// OptionGroupListExecute executes the request
+	// ListExecute executes the request
 	//  @return ListOptionGroupResponse
-	OptionGroupListExecute(r ApiOptionGroupListRequest) (*ListOptionGroupResponse, *http.Response, error)
+	ListExecute(r OptionGroupAPIListRequest) (*ListOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupRead Retrieve the DHCP option group.
+			Read Retrieve the DHCP option group.
 
 			Use this method to retrieve an __OptionGroup__ object.
 		The __OptionGroup__ object is a named collection of options.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupReadRequest
+			@return OptionGroupAPIReadRequest
 	*/
-	OptionGroupRead(ctx context.Context, id string) ApiOptionGroupReadRequest
+	Read(ctx context.Context, id string) OptionGroupAPIReadRequest
 
-	// OptionGroupReadExecute executes the request
+	// ReadExecute executes the request
 	//  @return ReadOptionGroupResponse
-	OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*ReadOptionGroupResponse, *http.Response, error)
+	ReadExecute(r OptionGroupAPIReadRequest) (*ReadOptionGroupResponse, *http.Response, error)
 	/*
-			OptionGroupUpdate Update the DHCP option group.
+			Update Update the DHCP option group.
 
 			Use this method to update an __OptionGroup__ object.
 		The __OptionGroup__ object is a named collection of options.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiOptionGroupUpdateRequest
+			@return OptionGroupAPIUpdateRequest
 	*/
-	OptionGroupUpdate(ctx context.Context, id string) ApiOptionGroupUpdateRequest
+	Update(ctx context.Context, id string) OptionGroupAPIUpdateRequest
 
-	// OptionGroupUpdateExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateOptionGroupResponse
-	OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error)
+	UpdateExecute(r OptionGroupAPIUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error)
 }
 
 // OptionGroupAPIService OptionGroupAPI service
 type OptionGroupAPIService internal.Service
 
-type ApiOptionGroupCreateRequest struct {
+type OptionGroupAPICreateRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	body       *OptionGroup
 }
 
-func (r ApiOptionGroupCreateRequest) Body(body OptionGroup) ApiOptionGroupCreateRequest {
+func (r OptionGroupAPICreateRequest) Body(body OptionGroup) OptionGroupAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionGroupCreateRequest) Execute() (*CreateOptionGroupResponse, *http.Response, error) {
-	return r.ApiService.OptionGroupCreateExecute(r)
+func (r OptionGroupAPICreateRequest) Execute() (*CreateOptionGroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-OptionGroupCreate Create the DHCP option group.
+Create Create the DHCP option group.
 
 Use this method to create an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionGroupCreateRequest
+	@return OptionGroupAPICreateRequest
 */
-func (a *OptionGroupAPIService) OptionGroupCreate(ctx context.Context) ApiOptionGroupCreateRequest {
-	return ApiOptionGroupCreateRequest{
+func (a *OptionGroupAPIService) Create(ctx context.Context) OptionGroupAPICreateRequest {
+	return OptionGroupAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -133,7 +133,7 @@ func (a *OptionGroupAPIService) OptionGroupCreate(ctx context.Context) ApiOption
 // Execute executes the request
 //
 //	@return CreateOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateRequest) (*CreateOptionGroupResponse, *http.Response, error) {
+func (a *OptionGroupAPIService) CreateExecute(r OptionGroupAPICreateRequest) (*CreateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -141,7 +141,7 @@ func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateR
 		localVarReturnValue *CreateOptionGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupCreate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -214,28 +214,28 @@ func (a *OptionGroupAPIService) OptionGroupCreateExecute(r ApiOptionGroupCreateR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOptionGroupDeleteRequest struct {
+type OptionGroupAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	id         string
 }
 
-func (r ApiOptionGroupDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.OptionGroupDeleteExecute(r)
+func (r OptionGroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-OptionGroupDelete Move the DHCP option group to the recycle bin.
+Delete Move the DHCP option group to the recycle bin.
 
 Use this method to move an __OptionGroup__ object to the recycle bin.
 The __OptionGroup__ object is a named collection of options.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupDeleteRequest
+	@return OptionGroupAPIDeleteRequest
 */
-func (a *OptionGroupAPIService) OptionGroupDelete(ctx context.Context, id string) ApiOptionGroupDeleteRequest {
-	return ApiOptionGroupDeleteRequest{
+func (a *OptionGroupAPIService) Delete(ctx context.Context, id string) OptionGroupAPIDeleteRequest {
+	return OptionGroupAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -243,14 +243,14 @@ func (a *OptionGroupAPIService) OptionGroupDelete(ctx context.Context, id string
 }
 
 // Execute executes the request
-func (a *OptionGroupAPIService) OptionGroupDeleteExecute(r ApiOptionGroupDeleteRequest) (*http.Response, error) {
+func (a *OptionGroupAPIService) DeleteExecute(r OptionGroupAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -304,7 +304,7 @@ func (a *OptionGroupAPIService) OptionGroupDeleteExecute(r ApiOptionGroupDeleteR
 	return localVarHTTPResponse, nil
 }
 
-type ApiOptionGroupListRequest struct {
+type OptionGroupAPIListRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	fields     *string
@@ -318,68 +318,68 @@ type ApiOptionGroupListRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiOptionGroupListRequest) Fields(fields string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) Fields(fields string) OptionGroupAPIListRequest {
 	r.fields = &fields
 	return r
 }
 
 // A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
-func (r ApiOptionGroupListRequest) Filter(filter string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) Filter(filter string) OptionGroupAPIListRequest {
 	r.filter = &filter
 	return r
 }
 
 // The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
-func (r ApiOptionGroupListRequest) Offset(offset int32) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) Offset(offset int32) OptionGroupAPIListRequest {
 	r.offset = &offset
 	return r
 }
 
 // The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
-func (r ApiOptionGroupListRequest) Limit(limit int32) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) Limit(limit int32) OptionGroupAPIListRequest {
 	r.limit = &limit
 	return r
 }
 
 // The service-defined string used to identify a page of resources. A null value indicates the first page.
-func (r ApiOptionGroupListRequest) PageToken(pageToken string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) PageToken(pageToken string) OptionGroupAPIListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
 // A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
-func (r ApiOptionGroupListRequest) OrderBy(orderBy string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) OrderBy(orderBy string) OptionGroupAPIListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
 // This parameter is used for sorting by tags.
-func (r ApiOptionGroupListRequest) TorderBy(torderBy string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) TorderBy(torderBy string) OptionGroupAPIListRequest {
 	r.torderBy = &torderBy
 	return r
 }
 
 // This parameter is used for filtering by tags.
-func (r ApiOptionGroupListRequest) Tfilter(tfilter string) ApiOptionGroupListRequest {
+func (r OptionGroupAPIListRequest) Tfilter(tfilter string) OptionGroupAPIListRequest {
 	r.tfilter = &tfilter
 	return r
 }
 
-func (r ApiOptionGroupListRequest) Execute() (*ListOptionGroupResponse, *http.Response, error) {
-	return r.ApiService.OptionGroupListExecute(r)
+func (r OptionGroupAPIListRequest) Execute() (*ListOptionGroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-OptionGroupList Retrieve DHCP option groups.
+List Retrieve DHCP option groups.
 
 Use this method to retrieve __OptionGroup__ objects.
 The __OptionGroup__ object is a named collection of options.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOptionGroupListRequest
+	@return OptionGroupAPIListRequest
 */
-func (a *OptionGroupAPIService) OptionGroupList(ctx context.Context) ApiOptionGroupListRequest {
-	return ApiOptionGroupListRequest{
+func (a *OptionGroupAPIService) List(ctx context.Context) OptionGroupAPIListRequest {
+	return OptionGroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -388,7 +388,7 @@ func (a *OptionGroupAPIService) OptionGroupList(ctx context.Context) ApiOptionGr
 // Execute executes the request
 //
 //	@return ListOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListRequest) (*ListOptionGroupResponse, *http.Response, error) {
+func (a *OptionGroupAPIService) ListExecute(r OptionGroupAPIListRequest) (*ListOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -396,7 +396,7 @@ func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListReque
 		localVarReturnValue *ListOptionGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupList")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -478,7 +478,7 @@ func (a *OptionGroupAPIService) OptionGroupListExecute(r ApiOptionGroupListReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOptionGroupReadRequest struct {
+type OptionGroupAPIReadRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	id         string
@@ -486,27 +486,27 @@ type ApiOptionGroupReadRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiOptionGroupReadRequest) Fields(fields string) ApiOptionGroupReadRequest {
+func (r OptionGroupAPIReadRequest) Fields(fields string) OptionGroupAPIReadRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiOptionGroupReadRequest) Execute() (*ReadOptionGroupResponse, *http.Response, error) {
-	return r.ApiService.OptionGroupReadExecute(r)
+func (r OptionGroupAPIReadRequest) Execute() (*ReadOptionGroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-OptionGroupRead Retrieve the DHCP option group.
+Read Retrieve the DHCP option group.
 
 Use this method to retrieve an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupReadRequest
+	@return OptionGroupAPIReadRequest
 */
-func (a *OptionGroupAPIService) OptionGroupRead(ctx context.Context, id string) ApiOptionGroupReadRequest {
-	return ApiOptionGroupReadRequest{
+func (a *OptionGroupAPIService) Read(ctx context.Context, id string) OptionGroupAPIReadRequest {
+	return OptionGroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -516,7 +516,7 @@ func (a *OptionGroupAPIService) OptionGroupRead(ctx context.Context, id string) 
 // Execute executes the request
 //
 //	@return ReadOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadRequest) (*ReadOptionGroupResponse, *http.Response, error) {
+func (a *OptionGroupAPIService) ReadExecute(r OptionGroupAPIReadRequest) (*ReadOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -524,7 +524,7 @@ func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadReque
 		localVarReturnValue *ReadOptionGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupRead")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -586,34 +586,34 @@ func (a *OptionGroupAPIService) OptionGroupReadExecute(r ApiOptionGroupReadReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOptionGroupUpdateRequest struct {
+type OptionGroupAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService OptionGroupAPI
 	id         string
 	body       *OptionGroup
 }
 
-func (r ApiOptionGroupUpdateRequest) Body(body OptionGroup) ApiOptionGroupUpdateRequest {
+func (r OptionGroupAPIUpdateRequest) Body(body OptionGroup) OptionGroupAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiOptionGroupUpdateRequest) Execute() (*UpdateOptionGroupResponse, *http.Response, error) {
-	return r.ApiService.OptionGroupUpdateExecute(r)
+func (r OptionGroupAPIUpdateRequest) Execute() (*UpdateOptionGroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-OptionGroupUpdate Update the DHCP option group.
+Update Update the DHCP option group.
 
 Use this method to update an __OptionGroup__ object.
 The __OptionGroup__ object is a named collection of options.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiOptionGroupUpdateRequest
+	@return OptionGroupAPIUpdateRequest
 */
-func (a *OptionGroupAPIService) OptionGroupUpdate(ctx context.Context, id string) ApiOptionGroupUpdateRequest {
-	return ApiOptionGroupUpdateRequest{
+func (a *OptionGroupAPIService) Update(ctx context.Context, id string) OptionGroupAPIUpdateRequest {
+	return OptionGroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -623,7 +623,7 @@ func (a *OptionGroupAPIService) OptionGroupUpdate(ctx context.Context, id string
 // Execute executes the request
 //
 //	@return UpdateOptionGroupResponse
-func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error) {
+func (a *OptionGroupAPIService) UpdateExecute(r OptionGroupAPIUpdateRequest) (*UpdateOptionGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -631,7 +631,7 @@ func (a *OptionGroupAPIService) OptionGroupUpdateExecute(r ApiOptionGroupUpdateR
 		localVarReturnValue *UpdateOptionGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.OptionGroupUpdate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OptionGroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

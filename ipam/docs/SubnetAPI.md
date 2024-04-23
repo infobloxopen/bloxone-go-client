@@ -4,20 +4,20 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SubnetCopy**](SubnetAPI.md#SubnetCopy) | **Post** /ipam/subnet/{id}/copy | Copy the subnet.
-[**SubnetCreate**](SubnetAPI.md#SubnetCreate) | **Post** /ipam/subnet | Create the subnet.
-[**SubnetCreateNextAvailableIP**](SubnetAPI.md#SubnetCreateNextAvailableIP) | **Post** /ipam/subnet/{id}/nextavailableip | Allocate the next available IP address.
-[**SubnetDelete**](SubnetAPI.md#SubnetDelete) | **Delete** /ipam/subnet/{id} | Move the subnet to the recycle bin.
-[**SubnetList**](SubnetAPI.md#SubnetList) | **Get** /ipam/subnet | Retrieve subnets.
-[**SubnetListNextAvailableIP**](SubnetAPI.md#SubnetListNextAvailableIP) | **Get** /ipam/subnet/{id}/nextavailableip | Retrieve the next available IP address.
-[**SubnetRead**](SubnetAPI.md#SubnetRead) | **Get** /ipam/subnet/{id} | Retrieve the subnet.
-[**SubnetUpdate**](SubnetAPI.md#SubnetUpdate) | **Patch** /ipam/subnet/{id} | Update the subnet.
+[**Copy**](SubnetAPI.md#Copy) | **Post** /ipam/subnet/{id}/copy | Copy the subnet.
+[**Create**](SubnetAPI.md#Create) | **Post** /ipam/subnet | Create the subnet.
+[**CreateNextAvailableIP**](SubnetAPI.md#CreateNextAvailableIP) | **Post** /ipam/subnet/{id}/nextavailableip | Allocate the next available IP address.
+[**Delete**](SubnetAPI.md#Delete) | **Delete** /ipam/subnet/{id} | Move the subnet to the recycle bin.
+[**List**](SubnetAPI.md#List) | **Get** /ipam/subnet | Retrieve subnets.
+[**ListNextAvailableIP**](SubnetAPI.md#ListNextAvailableIP) | **Get** /ipam/subnet/{id}/nextavailableip | Retrieve the next available IP address.
+[**Read**](SubnetAPI.md#Read) | **Get** /ipam/subnet/{id} | Retrieve the subnet.
+[**Update**](SubnetAPI.md#Update) | **Patch** /ipam/subnet/{id} | Update the subnet.
 
 
 
-## SubnetCopy
+## Copy
 
-> CopySubnetResponse SubnetCopy(ctx, id).Body(body).Execute()
+> CopySubnetResponse Copy(ctx, id).Body(body).Execute()
 
 Copy the subnet.
 
@@ -41,13 +41,13 @@ func main() {
 	body := *ipam.NewCopySubnet("Space_example") // CopySubnet | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetCopy(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.SubnetAPI.Copy(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCopy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.Copy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCopy`: CopySubnetResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCopy`: %v\n", resp)
+	// response from `Copy`: CopySubnetResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.Copy`: %v\n", resp)
 }
 ```
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetCopyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCopyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetCreate
+## Create
 
-> CreateSubnetResponse SubnetCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateSubnetResponse Create(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the subnet.
 
@@ -113,13 +113,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetCreate(context.Background()).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.SubnetAPI.Create(context.Background()).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCreate`: CreateSubnetResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCreate`: %v\n", resp)
+	// response from `Create`: CreateSubnetResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -129,7 +129,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -155,9 +155,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetCreateNextAvailableIP
+## CreateNextAvailableIP
 
-> CreateNextAvailableIPResponse SubnetCreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> CreateNextAvailableIPResponse CreateNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Allocate the next available IP address.
 
@@ -182,13 +182,13 @@ func main() {
 	count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional) (default to 1)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
+	resp, r, err := apiClient.SubnetAPI.CreateNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetCreateNextAvailableIP``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.CreateNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetCreateNextAvailableIP`: CreateNextAvailableIPResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetCreateNextAvailableIP`: %v\n", resp)
+	// response from `CreateNextAvailableIP`: CreateNextAvailableIPResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.CreateNextAvailableIP`: %v\n", resp)
 }
 ```
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetCreateNextAvailableIPRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateNextAvailableIPRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -229,9 +229,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetDelete
+## Delete
 
-> SubnetDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the subnet to the recycle bin.
 
@@ -254,9 +254,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.SubnetAPI.SubnetDelete(context.Background(), id).Execute()
+	r, err := apiClient.SubnetAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -297,9 +297,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetList
+## List
 
-> ListSubnetResponse SubnetList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListSubnetResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve subnets.
 
@@ -330,13 +330,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+	resp, r, err := apiClient.SubnetAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetList`: ListSubnetResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetList`: %v\n", resp)
+	// response from `List`: ListSubnetResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.List`: %v\n", resp)
 }
 ```
 
@@ -346,7 +346,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -379,9 +379,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetListNextAvailableIP
+## ListNextAvailableIP
 
-> NextAvailableIPResponse SubnetListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
+> NextAvailableIPResponse ListNextAvailableIP(ctx, id).Contiguous(contiguous).Count(count).Execute()
 
 Retrieve the next available IP address.
 
@@ -406,13 +406,13 @@ func main() {
 	count := int32(56) // int32 | The number of IP addresses requested.  Defaults to 1. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetListNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
+	resp, r, err := apiClient.SubnetAPI.ListNextAvailableIP(context.Background(), id).Contiguous(contiguous).Count(count).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetListNextAvailableIP``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.ListNextAvailableIP``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetListNextAvailableIP`: NextAvailableIPResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetListNextAvailableIP`: %v\n", resp)
+	// response from `ListNextAvailableIP`: NextAvailableIPResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.ListNextAvailableIP`: %v\n", resp)
 }
 ```
 
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetListNextAvailableIPRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListNextAvailableIPRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -453,9 +453,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetRead
+## Read
 
-> ReadSubnetResponse SubnetRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadSubnetResponse Read(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the subnet.
 
@@ -480,13 +480,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
+	resp, r, err := apiClient.SubnetAPI.Read(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetRead`: ReadSubnetResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetRead`: %v\n", resp)
+	// response from `Read`: ReadSubnetResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -527,9 +527,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubnetUpdate
+## Update
 
-> UpdateSubnetResponse SubnetUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateSubnetResponse Update(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the subnet.
 
@@ -554,13 +554,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SubnetAPI.SubnetUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.SubnetAPI.Update(context.Background(), id).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.SubnetUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubnetUpdate`: UpdateSubnetResponse
-	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.SubnetUpdate`: %v\n", resp)
+	// response from `Update`: UpdateSubnetResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSubnetUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

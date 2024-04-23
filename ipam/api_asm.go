@@ -23,81 +23,81 @@ import (
 
 type AsmAPI interface {
 	/*
-			AsmCreate Update subnet and ranges for Automated Scope Management.
+			Create Update subnet and ranges for Automated Scope Management.
 
 			Use this method to update the subnet and range for Automated Scope Management.
 		The __ASM__ object generates and returns the suggestions from the ASM suggestion engine and allows for updating the subnet and range.
 		This method attempts to expand the scope by expanding a range or adding a new range and, if necessary, expanding the subnet.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAsmCreateRequest
+			@return AsmAPICreateRequest
 	*/
-	AsmCreate(ctx context.Context) ApiAsmCreateRequest
+	Create(ctx context.Context) AsmAPICreateRequest
 
-	// AsmCreateExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateASMResponse
-	AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMResponse, *http.Response, error)
+	CreateExecute(r AsmAPICreateRequest) (*CreateASMResponse, *http.Response, error)
 	/*
-			AsmList Retrieve suggested updates for Automated Scope Management.
+			List Retrieve suggested updates for Automated Scope Management.
 
 			Use this method to retrieve __ASM__ objects for Automated Scope Management.
 		The __ASM__ object returns the suggested updates for the subnet from the ASM suggestion engine and allows for updating the subnet and range information.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiAsmListRequest
+			@return AsmAPIListRequest
 	*/
-	AsmList(ctx context.Context) ApiAsmListRequest
+	List(ctx context.Context) AsmAPIListRequest
 
-	// AsmListExecute executes the request
+	// ListExecute executes the request
 	//  @return ListASMResponse
-	AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *http.Response, error)
+	ListExecute(r AsmAPIListRequest) (*ListASMResponse, *http.Response, error)
 	/*
-			AsmRead Retrieve the suggested update for Automated Scope Management.
+			Read Retrieve the suggested update for Automated Scope Management.
 
 			Use this method to retrieve an __ASM__ object for Automated Scope Management.
 		The __ASM__ object returns the suggested updates for the subnet from the ASM suggestion engine and allows for updating the subnet and range information.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiAsmReadRequest
+			@return AsmAPIReadRequest
 	*/
-	AsmRead(ctx context.Context, id string) ApiAsmReadRequest
+	Read(ctx context.Context, id string) AsmAPIReadRequest
 
-	// AsmReadExecute executes the request
+	// ReadExecute executes the request
 	//  @return ReadASMResponse
-	AsmReadExecute(r ApiAsmReadRequest) (*ReadASMResponse, *http.Response, error)
+	ReadExecute(r AsmAPIReadRequest) (*ReadASMResponse, *http.Response, error)
 }
 
 // AsmAPIService AsmAPI service
 type AsmAPIService internal.Service
 
-type ApiAsmCreateRequest struct {
+type AsmAPICreateRequest struct {
 	ctx        context.Context
 	ApiService AsmAPI
 	body       *ASM
 }
 
-func (r ApiAsmCreateRequest) Body(body ASM) ApiAsmCreateRequest {
+func (r AsmAPICreateRequest) Body(body ASM) AsmAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAsmCreateRequest) Execute() (*CreateASMResponse, *http.Response, error) {
-	return r.ApiService.AsmCreateExecute(r)
+func (r AsmAPICreateRequest) Execute() (*CreateASMResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-AsmCreate Update subnet and ranges for Automated Scope Management.
+Create Update subnet and ranges for Automated Scope Management.
 
 Use this method to update the subnet and range for Automated Scope Management.
 The __ASM__ object generates and returns the suggestions from the ASM suggestion engine and allows for updating the subnet and range.
 This method attempts to expand the scope by expanding a range or adding a new range and, if necessary, expanding the subnet.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAsmCreateRequest
+	@return AsmAPICreateRequest
 */
-func (a *AsmAPIService) AsmCreate(ctx context.Context) ApiAsmCreateRequest {
-	return ApiAsmCreateRequest{
+func (a *AsmAPIService) Create(ctx context.Context) AsmAPICreateRequest {
+	return AsmAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -106,7 +106,7 @@ func (a *AsmAPIService) AsmCreate(ctx context.Context) ApiAsmCreateRequest {
 // Execute executes the request
 //
 //	@return CreateASMResponse
-func (a *AsmAPIService) AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMResponse, *http.Response, error) {
+func (a *AsmAPIService) CreateExecute(r AsmAPICreateRequest) (*CreateASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -114,7 +114,7 @@ func (a *AsmAPIService) AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMRespo
 		localVarReturnValue *CreateASMResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmCreate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -177,7 +177,7 @@ func (a *AsmAPIService) AsmCreateExecute(r ApiAsmCreateRequest) (*CreateASMRespo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAsmListRequest struct {
+type AsmAPIListRequest struct {
 	ctx        context.Context
 	ApiService AsmAPI
 	fields     *string
@@ -185,31 +185,31 @@ type ApiAsmListRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiAsmListRequest) Fields(fields string) ApiAsmListRequest {
+func (r AsmAPIListRequest) Fields(fields string) AsmAPIListRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiAsmListRequest) SubnetId(subnetId string) ApiAsmListRequest {
+func (r AsmAPIListRequest) SubnetId(subnetId string) AsmAPIListRequest {
 	r.subnetId = &subnetId
 	return r
 }
 
-func (r ApiAsmListRequest) Execute() (*ListASMResponse, *http.Response, error) {
-	return r.ApiService.AsmListExecute(r)
+func (r AsmAPIListRequest) Execute() (*ListASMResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-AsmList Retrieve suggested updates for Automated Scope Management.
+List Retrieve suggested updates for Automated Scope Management.
 
 Use this method to retrieve __ASM__ objects for Automated Scope Management.
 The __ASM__ object returns the suggested updates for the subnet from the ASM suggestion engine and allows for updating the subnet and range information.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAsmListRequest
+	@return AsmAPIListRequest
 */
-func (a *AsmAPIService) AsmList(ctx context.Context) ApiAsmListRequest {
-	return ApiAsmListRequest{
+func (a *AsmAPIService) List(ctx context.Context) AsmAPIListRequest {
+	return AsmAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -218,7 +218,7 @@ func (a *AsmAPIService) AsmList(ctx context.Context) ApiAsmListRequest {
 // Execute executes the request
 //
 //	@return ListASMResponse
-func (a *AsmAPIService) AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *http.Response, error) {
+func (a *AsmAPIService) ListExecute(r AsmAPIListRequest) (*ListASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -226,7 +226,7 @@ func (a *AsmAPIService) AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *
 		localVarReturnValue *ListASMResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmList")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -290,7 +290,7 @@ func (a *AsmAPIService) AsmListExecute(r ApiAsmListRequest) (*ListASMResponse, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAsmReadRequest struct {
+type AsmAPIReadRequest struct {
 	ctx        context.Context
 	ApiService AsmAPI
 	id         string
@@ -298,27 +298,27 @@ type ApiAsmReadRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiAsmReadRequest) Fields(fields string) ApiAsmReadRequest {
+func (r AsmAPIReadRequest) Fields(fields string) AsmAPIReadRequest {
 	r.fields = &fields
 	return r
 }
 
-func (r ApiAsmReadRequest) Execute() (*ReadASMResponse, *http.Response, error) {
-	return r.ApiService.AsmReadExecute(r)
+func (r AsmAPIReadRequest) Execute() (*ReadASMResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-AsmRead Retrieve the suggested update for Automated Scope Management.
+Read Retrieve the suggested update for Automated Scope Management.
 
 Use this method to retrieve an __ASM__ object for Automated Scope Management.
 The __ASM__ object returns the suggested updates for the subnet from the ASM suggestion engine and allows for updating the subnet and range information.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiAsmReadRequest
+	@return AsmAPIReadRequest
 */
-func (a *AsmAPIService) AsmRead(ctx context.Context, id string) ApiAsmReadRequest {
-	return ApiAsmReadRequest{
+func (a *AsmAPIService) Read(ctx context.Context, id string) AsmAPIReadRequest {
+	return AsmAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -328,7 +328,7 @@ func (a *AsmAPIService) AsmRead(ctx context.Context, id string) ApiAsmReadReques
 // Execute executes the request
 //
 //	@return ReadASMResponse
-func (a *AsmAPIService) AsmReadExecute(r ApiAsmReadRequest) (*ReadASMResponse, *http.Response, error) {
+func (a *AsmAPIService) ReadExecute(r AsmAPIReadRequest) (*ReadASMResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -336,7 +336,7 @@ func (a *AsmAPIService) AsmReadExecute(r ApiAsmReadRequest) (*ReadASMResponse, *
 		localVarReturnValue *ReadASMResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.AsmRead")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AsmAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

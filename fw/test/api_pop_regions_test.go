@@ -23,11 +23,11 @@ func TestPopRegionsAPIService(t *testing.T) {
 
 	apiClient := fw.NewAPIClient()
 
-	t.Run("Test PopRegionsAPIService PopRegionsListPoPRegions", func(t *testing.T) {
+	t.Run("Test PopRegionsAPIService ListPoPRegions", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PopRegionsAPI.PopRegionsListPoPRegions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PopRegionsAPI.ListPoPRegions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestPopRegionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PopRegionsAPIService PopRegionsReadPoPRegion", func(t *testing.T) {
+	t.Run("Test PopRegionsAPIService ReadPoPRegion", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PopRegionsAPI.PopRegionsReadPoPRegion(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PopRegionsAPI.ReadPoPRegion(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

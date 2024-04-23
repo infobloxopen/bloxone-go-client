@@ -23,13 +23,13 @@ func TestDfpAPIService(t *testing.T) {
 
 	apiClient := dfp.NewAPIClient()
 
-	t.Run("Test DfpAPIService DfpCreateOrUpdateDfp", func(t *testing.T) {
+	t.Run("Test DfpAPIService CreateOrUpdateDfp", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DfpAPI.CreateOrUpdateDfp(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,11 +37,11 @@ func TestDfpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DfpAPIService DfpListDfp", func(t *testing.T) {
+	t.Run("Test DfpAPIService ListDfp", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DfpAPI.DfpListDfp(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DfpAPI.ListDfp(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDfpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DfpAPIService DfpReadDfp", func(t *testing.T) {
+	t.Run("Test DfpAPIService ReadDfp", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.DfpAPI.DfpReadDfp(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DfpAPI.ReadDfp(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

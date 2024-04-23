@@ -22,48 +22,48 @@ import (
 
 type UploadAPI interface {
 	/*
-		UploadUpload Upload content to the keys service.
+		Upload Upload content to the keys service.
 
 		Use this method to upload specified content type to the keys service.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApiUploadUploadRequest
+		@return UploadAPIUploadRequest
 	*/
-	UploadUpload(ctx context.Context) ApiUploadUploadRequest
+	Upload(ctx context.Context) UploadAPIUploadRequest
 
-	// UploadUploadExecute executes the request
+	// UploadExecute executes the request
 	//  @return DdiuploadResponse
-	UploadUploadExecute(r ApiUploadUploadRequest) (*DdiuploadResponse, *http.Response, error)
+	UploadExecute(r UploadAPIUploadRequest) (*DdiuploadResponse, *http.Response, error)
 }
 
 // UploadAPIService UploadAPI service
 type UploadAPIService internal.Service
 
-type ApiUploadUploadRequest struct {
+type UploadAPIUploadRequest struct {
 	ctx        context.Context
 	ApiService UploadAPI
 	body       *UploadRequest
 }
 
-func (r ApiUploadUploadRequest) Body(body UploadRequest) ApiUploadUploadRequest {
+func (r UploadAPIUploadRequest) Body(body UploadRequest) UploadAPIUploadRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiUploadUploadRequest) Execute() (*DdiuploadResponse, *http.Response, error) {
-	return r.ApiService.UploadUploadExecute(r)
+func (r UploadAPIUploadRequest) Execute() (*DdiuploadResponse, *http.Response, error) {
+	return r.ApiService.UploadExecute(r)
 }
 
 /*
-UploadUpload Upload content to the keys service.
+Upload Upload content to the keys service.
 
 Use this method to upload specified content type to the keys service.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUploadUploadRequest
+	@return UploadAPIUploadRequest
 */
-func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequest {
-	return ApiUploadUploadRequest{
+func (a *UploadAPIService) Upload(ctx context.Context) UploadAPIUploadRequest {
+	return UploadAPIUploadRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -72,7 +72,7 @@ func (a *UploadAPIService) UploadUpload(ctx context.Context) ApiUploadUploadRequ
 // Execute executes the request
 //
 //	@return DdiuploadResponse
-func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*DdiuploadResponse, *http.Response, error) {
+func (a *UploadAPIService) UploadExecute(r UploadAPIUploadRequest) (*DdiuploadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -80,7 +80,7 @@ func (a *UploadAPIService) UploadUploadExecute(r ApiUploadUploadRequest) (*Ddiup
 		localVarReturnValue *DdiuploadResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UploadAPIService.UploadUpload")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UploadAPIService.Upload")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

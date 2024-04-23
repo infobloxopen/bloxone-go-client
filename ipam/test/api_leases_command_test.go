@@ -23,11 +23,11 @@ func TestLeasesCommandAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test LeasesCommandAPIService LeasesCommandCreate", func(t *testing.T) {
+	t.Run("Test LeasesCommandAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.LeasesCommandAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

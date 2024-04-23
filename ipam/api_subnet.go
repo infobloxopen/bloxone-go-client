@@ -23,155 +23,155 @@ import (
 
 type SubnetAPI interface {
 	/*
-			SubnetCopy Copy the subnet.
+			Copy Copy the subnet.
 
 			Use this method to copy a __Subnet__ object.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetCopyRequest
+			@return SubnetAPICopyRequest
 	*/
-	SubnetCopy(ctx context.Context, id string) ApiSubnetCopyRequest
+	Copy(ctx context.Context, id string) SubnetAPICopyRequest
 
-	// SubnetCopyExecute executes the request
+	// CopyExecute executes the request
 	//  @return CopySubnetResponse
-	SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubnetResponse, *http.Response, error)
+	CopyExecute(r SubnetAPICopyRequest) (*CopySubnetResponse, *http.Response, error)
 	/*
-			SubnetCreate Create the subnet.
+			Create Create the subnet.
 
 			Use this method to create a __Subnet__ object.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiSubnetCreateRequest
+			@return SubnetAPICreateRequest
 	*/
-	SubnetCreate(ctx context.Context) ApiSubnetCreateRequest
+	Create(ctx context.Context) SubnetAPICreateRequest
 
-	// SubnetCreateExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSubnetResponse
-	SubnetCreateExecute(r ApiSubnetCreateRequest) (*CreateSubnetResponse, *http.Response, error)
+	CreateExecute(r SubnetAPICreateRequest) (*CreateSubnetResponse, *http.Response, error)
 	/*
-			SubnetCreateNextAvailableIP Allocate the next available IP address.
+			CreateNextAvailableIP Allocate the next available IP address.
 
 			Use this method to allocate the next available IP address.
 		This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetCreateNextAvailableIPRequest
+			@return SubnetAPICreateNextAvailableIPRequest
 	*/
-	SubnetCreateNextAvailableIP(ctx context.Context, id string) ApiSubnetCreateNextAvailableIPRequest
+	CreateNextAvailableIP(ctx context.Context, id string) SubnetAPICreateNextAvailableIPRequest
 
-	// SubnetCreateNextAvailableIPExecute executes the request
+	// CreateNextAvailableIPExecute executes the request
 	//  @return CreateNextAvailableIPResponse
-	SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error)
+	CreateNextAvailableIPExecute(r SubnetAPICreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error)
 	/*
-			SubnetDelete Move the subnet to the recycle bin.
+			Delete Move the subnet to the recycle bin.
 
 			Use this method to move a __Subnet__ object to the recycle bin.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetDeleteRequest
+			@return SubnetAPIDeleteRequest
 	*/
-	SubnetDelete(ctx context.Context, id string) ApiSubnetDeleteRequest
+	Delete(ctx context.Context, id string) SubnetAPIDeleteRequest
 
-	// SubnetDeleteExecute executes the request
-	SubnetDeleteExecute(r ApiSubnetDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SubnetAPIDeleteRequest) (*http.Response, error)
 	/*
-			SubnetList Retrieve subnets.
+			List Retrieve subnets.
 
 			Use this method to retrieve __Subnet__ objects.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@return ApiSubnetListRequest
+			@return SubnetAPIListRequest
 	*/
-	SubnetList(ctx context.Context) ApiSubnetListRequest
+	List(ctx context.Context) SubnetAPIListRequest
 
-	// SubnetListExecute executes the request
+	// ListExecute executes the request
 	//  @return ListSubnetResponse
-	SubnetListExecute(r ApiSubnetListRequest) (*ListSubnetResponse, *http.Response, error)
+	ListExecute(r SubnetAPIListRequest) (*ListSubnetResponse, *http.Response, error)
 	/*
-			SubnetListNextAvailableIP Retrieve the next available IP address.
+			ListNextAvailableIP Retrieve the next available IP address.
 
 			Use this method to retrieve the next available IP address.
 		This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetListNextAvailableIPRequest
+			@return SubnetAPIListNextAvailableIPRequest
 	*/
-	SubnetListNextAvailableIP(ctx context.Context, id string) ApiSubnetListNextAvailableIPRequest
+	ListNextAvailableIP(ctx context.Context, id string) SubnetAPIListNextAvailableIPRequest
 
-	// SubnetListNextAvailableIPExecute executes the request
+	// ListNextAvailableIPExecute executes the request
 	//  @return NextAvailableIPResponse
-	SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error)
+	ListNextAvailableIPExecute(r SubnetAPIListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error)
 	/*
-			SubnetRead Retrieve the subnet.
+			Read Retrieve the subnet.
 
 			Use this method to retrieve a __Subnet__ object.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetReadRequest
+			@return SubnetAPIReadRequest
 	*/
-	SubnetRead(ctx context.Context, id string) ApiSubnetReadRequest
+	Read(ctx context.Context, id string) SubnetAPIReadRequest
 
-	// SubnetReadExecute executes the request
+	// ReadExecute executes the request
 	//  @return ReadSubnetResponse
-	SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubnetResponse, *http.Response, error)
+	ReadExecute(r SubnetAPIReadRequest) (*ReadSubnetResponse, *http.Response, error)
 	/*
-			SubnetUpdate Update the subnet.
+			Update Update the subnet.
 
 			Use this method to update a __Subnet__ object.
 		The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param id An application specific resource identity of a resource
-			@return ApiSubnetUpdateRequest
+			@return SubnetAPIUpdateRequest
 	*/
-	SubnetUpdate(ctx context.Context, id string) ApiSubnetUpdateRequest
+	Update(ctx context.Context, id string) SubnetAPIUpdateRequest
 
-	// SubnetUpdateExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSubnetResponse
-	SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*UpdateSubnetResponse, *http.Response, error)
+	UpdateExecute(r SubnetAPIUpdateRequest) (*UpdateSubnetResponse, *http.Response, error)
 }
 
 // SubnetAPIService SubnetAPI service
 type SubnetAPIService internal.Service
 
-type ApiSubnetCopyRequest struct {
+type SubnetAPICopyRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
 	body       *CopySubnet
 }
 
-func (r ApiSubnetCopyRequest) Body(body CopySubnet) ApiSubnetCopyRequest {
+func (r SubnetAPICopyRequest) Body(body CopySubnet) SubnetAPICopyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSubnetCopyRequest) Execute() (*CopySubnetResponse, *http.Response, error) {
-	return r.ApiService.SubnetCopyExecute(r)
+func (r SubnetAPICopyRequest) Execute() (*CopySubnetResponse, *http.Response, error) {
+	return r.ApiService.CopyExecute(r)
 }
 
 /*
-SubnetCopy Copy the subnet.
+Copy Copy the subnet.
 
 Use this method to copy a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetCopyRequest
+	@return SubnetAPICopyRequest
 */
-func (a *SubnetAPIService) SubnetCopy(ctx context.Context, id string) ApiSubnetCopyRequest {
-	return ApiSubnetCopyRequest{
+func (a *SubnetAPIService) Copy(ctx context.Context, id string) SubnetAPICopyRequest {
+	return SubnetAPICopyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -181,7 +181,7 @@ func (a *SubnetAPIService) SubnetCopy(ctx context.Context, id string) ApiSubnetC
 // Execute executes the request
 //
 //	@return CopySubnetResponse
-func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubnetResponse, *http.Response, error) {
+func (a *SubnetAPIService) CopyExecute(r SubnetAPICopyRequest) (*CopySubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -189,7 +189,7 @@ func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubne
 		localVarReturnValue *CopySubnetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCopy")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.Copy")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -253,39 +253,39 @@ func (a *SubnetAPIService) SubnetCopyExecute(r ApiSubnetCopyRequest) (*CopySubne
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetCreateRequest struct {
+type SubnetAPICreateRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	body       *Subnet
 	inherit    *string
 }
 
-func (r ApiSubnetCreateRequest) Body(body Subnet) ApiSubnetCreateRequest {
+func (r SubnetAPICreateRequest) Body(body Subnet) SubnetAPICreateRequest {
 	r.body = &body
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiSubnetCreateRequest) Inherit(inherit string) ApiSubnetCreateRequest {
+func (r SubnetAPICreateRequest) Inherit(inherit string) SubnetAPICreateRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiSubnetCreateRequest) Execute() (*CreateSubnetResponse, *http.Response, error) {
-	return r.ApiService.SubnetCreateExecute(r)
+func (r SubnetAPICreateRequest) Execute() (*CreateSubnetResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-SubnetCreate Create the subnet.
+Create Create the subnet.
 
 Use this method to create a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubnetCreateRequest
+	@return SubnetAPICreateRequest
 */
-func (a *SubnetAPIService) SubnetCreate(ctx context.Context) ApiSubnetCreateRequest {
-	return ApiSubnetCreateRequest{
+func (a *SubnetAPIService) Create(ctx context.Context) SubnetAPICreateRequest {
+	return SubnetAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -294,7 +294,7 @@ func (a *SubnetAPIService) SubnetCreate(ctx context.Context) ApiSubnetCreateRequ
 // Execute executes the request
 //
 //	@return CreateSubnetResponse
-func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*CreateSubnetResponse, *http.Response, error) {
+func (a *SubnetAPIService) CreateExecute(r SubnetAPICreateRequest) (*CreateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -302,7 +302,7 @@ func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*Creat
 		localVarReturnValue *CreateSubnetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCreate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -378,7 +378,7 @@ func (a *SubnetAPIService) SubnetCreateExecute(r ApiSubnetCreateRequest) (*Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetCreateNextAvailableIPRequest struct {
+type SubnetAPICreateNextAvailableIPRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
@@ -387,33 +387,33 @@ type ApiSubnetCreateNextAvailableIPRequest struct {
 }
 
 // Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_.
-func (r ApiSubnetCreateNextAvailableIPRequest) Contiguous(contiguous bool) ApiSubnetCreateNextAvailableIPRequest {
+func (r SubnetAPICreateNextAvailableIPRequest) Contiguous(contiguous bool) SubnetAPICreateNextAvailableIPRequest {
 	r.contiguous = &contiguous
 	return r
 }
 
 // The number of IP addresses requested.  Defaults to 1.
-func (r ApiSubnetCreateNextAvailableIPRequest) Count(count int32) ApiSubnetCreateNextAvailableIPRequest {
+func (r SubnetAPICreateNextAvailableIPRequest) Count(count int32) SubnetAPICreateNextAvailableIPRequest {
 	r.count = &count
 	return r
 }
 
-func (r ApiSubnetCreateNextAvailableIPRequest) Execute() (*CreateNextAvailableIPResponse, *http.Response, error) {
-	return r.ApiService.SubnetCreateNextAvailableIPExecute(r)
+func (r SubnetAPICreateNextAvailableIPRequest) Execute() (*CreateNextAvailableIPResponse, *http.Response, error) {
+	return r.ApiService.CreateNextAvailableIPExecute(r)
 }
 
 /*
-SubnetCreateNextAvailableIP Allocate the next available IP address.
+CreateNextAvailableIP Allocate the next available IP address.
 
 Use this method to allocate the next available IP address.
 This allocates one or more __Address__ (_ipam/address_) resource from available addresses, when the IP address is not known prior to allocation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetCreateNextAvailableIPRequest
+	@return SubnetAPICreateNextAvailableIPRequest
 */
-func (a *SubnetAPIService) SubnetCreateNextAvailableIP(ctx context.Context, id string) ApiSubnetCreateNextAvailableIPRequest {
-	return ApiSubnetCreateNextAvailableIPRequest{
+func (a *SubnetAPIService) CreateNextAvailableIP(ctx context.Context, id string) SubnetAPICreateNextAvailableIPRequest {
+	return SubnetAPICreateNextAvailableIPRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -423,7 +423,7 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIP(ctx context.Context, id s
 // Execute executes the request
 //
 //	@return CreateNextAvailableIPResponse
-func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error) {
+func (a *SubnetAPIService) CreateNextAvailableIPExecute(r SubnetAPICreateNextAvailableIPRequest) (*CreateNextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -431,7 +431,7 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateN
 		localVarReturnValue *CreateNextAvailableIPResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetCreateNextAvailableIP")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.CreateNextAvailableIP")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -502,28 +502,28 @@ func (a *SubnetAPIService) SubnetCreateNextAvailableIPExecute(r ApiSubnetCreateN
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetDeleteRequest struct {
+type SubnetAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
 }
 
-func (r ApiSubnetDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SubnetDeleteExecute(r)
+func (r SubnetAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-SubnetDelete Move the subnet to the recycle bin.
+Delete Move the subnet to the recycle bin.
 
 Use this method to move a __Subnet__ object to the recycle bin.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetDeleteRequest
+	@return SubnetAPIDeleteRequest
 */
-func (a *SubnetAPIService) SubnetDelete(ctx context.Context, id string) ApiSubnetDeleteRequest {
-	return ApiSubnetDeleteRequest{
+func (a *SubnetAPIService) Delete(ctx context.Context, id string) SubnetAPIDeleteRequest {
+	return SubnetAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -531,14 +531,14 @@ func (a *SubnetAPIService) SubnetDelete(ctx context.Context, id string) ApiSubne
 }
 
 // Execute executes the request
-func (a *SubnetAPIService) SubnetDeleteExecute(r ApiSubnetDeleteRequest) (*http.Response, error) {
+func (a *SubnetAPIService) DeleteExecute(r SubnetAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -592,7 +592,7 @@ func (a *SubnetAPIService) SubnetDeleteExecute(r ApiSubnetDeleteRequest) (*http.
 	return localVarHTTPResponse, nil
 }
 
-type ApiSubnetListRequest struct {
+type SubnetAPIListRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	fields     *string
@@ -607,74 +607,74 @@ type ApiSubnetListRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiSubnetListRequest) Fields(fields string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Fields(fields string) SubnetAPIListRequest {
 	r.fields = &fields
 	return r
 }
 
 // A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |
-func (r ApiSubnetListRequest) Filter(filter string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Filter(filter string) SubnetAPIListRequest {
 	r.filter = &filter
 	return r
 }
 
 // The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.
-func (r ApiSubnetListRequest) Offset(offset int32) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Offset(offset int32) SubnetAPIListRequest {
 	r.offset = &offset
 	return r
 }
 
 // The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.
-func (r ApiSubnetListRequest) Limit(limit int32) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Limit(limit int32) SubnetAPIListRequest {
 	r.limit = &limit
 	return r
 }
 
 // The service-defined string used to identify a page of resources. A null value indicates the first page.
-func (r ApiSubnetListRequest) PageToken(pageToken string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) PageToken(pageToken string) SubnetAPIListRequest {
 	r.pageToken = &pageToken
 	return r
 }
 
 // A collection of response resources can be sorted by their JSON tags. For a &#39;flat&#39; resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix &#39;asc&#39; sorts the data in ascending order. The suffix &#39;desc&#39; sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.
-func (r ApiSubnetListRequest) OrderBy(orderBy string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) OrderBy(orderBy string) SubnetAPIListRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
 // This parameter is used for sorting by tags.
-func (r ApiSubnetListRequest) TorderBy(torderBy string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) TorderBy(torderBy string) SubnetAPIListRequest {
 	r.torderBy = &torderBy
 	return r
 }
 
 // This parameter is used for filtering by tags.
-func (r ApiSubnetListRequest) Tfilter(tfilter string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Tfilter(tfilter string) SubnetAPIListRequest {
 	r.tfilter = &tfilter
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiSubnetListRequest) Inherit(inherit string) ApiSubnetListRequest {
+func (r SubnetAPIListRequest) Inherit(inherit string) SubnetAPIListRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiSubnetListRequest) Execute() (*ListSubnetResponse, *http.Response, error) {
-	return r.ApiService.SubnetListExecute(r)
+func (r SubnetAPIListRequest) Execute() (*ListSubnetResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SubnetList Retrieve subnets.
+List Retrieve subnets.
 
 Use this method to retrieve __Subnet__ objects.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSubnetListRequest
+	@return SubnetAPIListRequest
 */
-func (a *SubnetAPIService) SubnetList(ctx context.Context) ApiSubnetListRequest {
-	return ApiSubnetListRequest{
+func (a *SubnetAPIService) List(ctx context.Context) SubnetAPIListRequest {
+	return SubnetAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -683,7 +683,7 @@ func (a *SubnetAPIService) SubnetList(ctx context.Context) ApiSubnetListRequest 
 // Execute executes the request
 //
 //	@return ListSubnetResponse
-func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*ListSubnetResponse, *http.Response, error) {
+func (a *SubnetAPIService) ListExecute(r SubnetAPIListRequest) (*ListSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -691,7 +691,7 @@ func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*ListSubne
 		localVarReturnValue *ListSubnetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetList")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -776,7 +776,7 @@ func (a *SubnetAPIService) SubnetListExecute(r ApiSubnetListRequest) (*ListSubne
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetListNextAvailableIPRequest struct {
+type SubnetAPIListNextAvailableIPRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
@@ -785,33 +785,33 @@ type ApiSubnetListNextAvailableIPRequest struct {
 }
 
 // Indicates whether the IP addresses should belong to a contiguous block.  Defaults to _false_.
-func (r ApiSubnetListNextAvailableIPRequest) Contiguous(contiguous bool) ApiSubnetListNextAvailableIPRequest {
+func (r SubnetAPIListNextAvailableIPRequest) Contiguous(contiguous bool) SubnetAPIListNextAvailableIPRequest {
 	r.contiguous = &contiguous
 	return r
 }
 
 // The number of IP addresses requested.  Defaults to 1.
-func (r ApiSubnetListNextAvailableIPRequest) Count(count int32) ApiSubnetListNextAvailableIPRequest {
+func (r SubnetAPIListNextAvailableIPRequest) Count(count int32) SubnetAPIListNextAvailableIPRequest {
 	r.count = &count
 	return r
 }
 
-func (r ApiSubnetListNextAvailableIPRequest) Execute() (*NextAvailableIPResponse, *http.Response, error) {
-	return r.ApiService.SubnetListNextAvailableIPExecute(r)
+func (r SubnetAPIListNextAvailableIPRequest) Execute() (*NextAvailableIPResponse, *http.Response, error) {
+	return r.ApiService.ListNextAvailableIPExecute(r)
 }
 
 /*
-SubnetListNextAvailableIP Retrieve the next available IP address.
+ListNextAvailableIP Retrieve the next available IP address.
 
 Use this method to retrieve the next available IP address.
 This returns one or more __Address__ (_ipam/address_) resource from available addresses, when IP address is not known prior to allocation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetListNextAvailableIPRequest
+	@return SubnetAPIListNextAvailableIPRequest
 */
-func (a *SubnetAPIService) SubnetListNextAvailableIP(ctx context.Context, id string) ApiSubnetListNextAvailableIPRequest {
-	return ApiSubnetListNextAvailableIPRequest{
+func (a *SubnetAPIService) ListNextAvailableIP(ctx context.Context, id string) SubnetAPIListNextAvailableIPRequest {
+	return SubnetAPIListNextAvailableIPRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -821,7 +821,7 @@ func (a *SubnetAPIService) SubnetListNextAvailableIP(ctx context.Context, id str
 // Execute executes the request
 //
 //	@return NextAvailableIPResponse
-func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error) {
+func (a *SubnetAPIService) ListNextAvailableIPExecute(r SubnetAPIListNextAvailableIPRequest) (*NextAvailableIPResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -829,7 +829,7 @@ func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextA
 		localVarReturnValue *NextAvailableIPResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetListNextAvailableIP")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.ListNextAvailableIP")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -894,7 +894,7 @@ func (a *SubnetAPIService) SubnetListNextAvailableIPExecute(r ApiSubnetListNextA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetReadRequest struct {
+type SubnetAPIReadRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
@@ -903,33 +903,33 @@ type ApiSubnetReadRequest struct {
 }
 
 // A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.
-func (r ApiSubnetReadRequest) Fields(fields string) ApiSubnetReadRequest {
+func (r SubnetAPIReadRequest) Fields(fields string) SubnetAPIReadRequest {
 	r.fields = &fields
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiSubnetReadRequest) Inherit(inherit string) ApiSubnetReadRequest {
+func (r SubnetAPIReadRequest) Inherit(inherit string) SubnetAPIReadRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiSubnetReadRequest) Execute() (*ReadSubnetResponse, *http.Response, error) {
-	return r.ApiService.SubnetReadExecute(r)
+func (r SubnetAPIReadRequest) Execute() (*ReadSubnetResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SubnetRead Retrieve the subnet.
+Read Retrieve the subnet.
 
 Use this method to retrieve a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetReadRequest
+	@return SubnetAPIReadRequest
 */
-func (a *SubnetAPIService) SubnetRead(ctx context.Context, id string) ApiSubnetReadRequest {
-	return ApiSubnetReadRequest{
+func (a *SubnetAPIService) Read(ctx context.Context, id string) SubnetAPIReadRequest {
+	return SubnetAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -939,7 +939,7 @@ func (a *SubnetAPIService) SubnetRead(ctx context.Context, id string) ApiSubnetR
 // Execute executes the request
 //
 //	@return ReadSubnetResponse
-func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubnetResponse, *http.Response, error) {
+func (a *SubnetAPIService) ReadExecute(r SubnetAPIReadRequest) (*ReadSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -947,7 +947,7 @@ func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubne
 		localVarReturnValue *ReadSubnetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetRead")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -1012,7 +1012,7 @@ func (a *SubnetAPIService) SubnetReadExecute(r ApiSubnetReadRequest) (*ReadSubne
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubnetUpdateRequest struct {
+type SubnetAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService SubnetAPI
 	id         string
@@ -1020,33 +1020,33 @@ type ApiSubnetUpdateRequest struct {
 	inherit    *string
 }
 
-func (r ApiSubnetUpdateRequest) Body(body Subnet) ApiSubnetUpdateRequest {
+func (r SubnetAPIUpdateRequest) Body(body Subnet) SubnetAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
 // This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none
-func (r ApiSubnetUpdateRequest) Inherit(inherit string) ApiSubnetUpdateRequest {
+func (r SubnetAPIUpdateRequest) Inherit(inherit string) SubnetAPIUpdateRequest {
 	r.inherit = &inherit
 	return r
 }
 
-func (r ApiSubnetUpdateRequest) Execute() (*UpdateSubnetResponse, *http.Response, error) {
-	return r.ApiService.SubnetUpdateExecute(r)
+func (r SubnetAPIUpdateRequest) Execute() (*UpdateSubnetResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SubnetUpdate Update the subnet.
+Update Update the subnet.
 
 Use this method to update a __Subnet__ object.
 The __Subnet__ object represents a set of addresses from which addresses are assigned to network equipment interfaces.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id An application specific resource identity of a resource
-	@return ApiSubnetUpdateRequest
+	@return SubnetAPIUpdateRequest
 */
-func (a *SubnetAPIService) SubnetUpdate(ctx context.Context, id string) ApiSubnetUpdateRequest {
-	return ApiSubnetUpdateRequest{
+func (a *SubnetAPIService) Update(ctx context.Context, id string) SubnetAPIUpdateRequest {
+	return SubnetAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1056,7 +1056,7 @@ func (a *SubnetAPIService) SubnetUpdate(ctx context.Context, id string) ApiSubne
 // Execute executes the request
 //
 //	@return UpdateSubnetResponse
-func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*UpdateSubnetResponse, *http.Response, error) {
+func (a *SubnetAPIService) UpdateExecute(r SubnetAPIUpdateRequest) (*UpdateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1064,7 +1064,7 @@ func (a *SubnetAPIService) SubnetUpdateExecute(r ApiSubnetUpdateRequest) (*Updat
 		localVarReturnValue *UpdateSubnetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.SubnetUpdate")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubnetAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

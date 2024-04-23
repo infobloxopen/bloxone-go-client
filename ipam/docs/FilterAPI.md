@@ -4,13 +4,13 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FilterList**](FilterAPI.md#FilterList) | **Get** /dhcp/filter | Retrieve DHCP filters.
+[**List**](FilterAPI.md#List) | **Get** /dhcp/filter | Retrieve DHCP filters.
 
 
 
-## FilterList
+## List
 
-> ListFilterResponse FilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListFilterResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP filters.
 
@@ -40,13 +40,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.FilterAPI.FilterList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.FilterAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterAPI.FilterList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FilterList`: ListFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `FilterAPI.FilterList`: %v\n", resp)
+	// response from `List`: ListFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `FilterAPI.List`: %v\n", resp)
 }
 ```
 
@@ -56,7 +56,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFilterListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

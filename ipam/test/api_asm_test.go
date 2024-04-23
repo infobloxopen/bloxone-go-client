@@ -23,11 +23,11 @@ func TestAsmAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test AsmAPIService AsmCreate", func(t *testing.T) {
+	t.Run("Test AsmAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AsmAPI.AsmCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AsmAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,11 @@ func TestAsmAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AsmAPIService AsmList", func(t *testing.T) {
+	t.Run("Test AsmAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AsmAPI.AsmList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AsmAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,13 +47,13 @@ func TestAsmAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AsmAPIService AsmRead", func(t *testing.T) {
+	t.Run("Test AsmAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AsmAPI.AsmRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AsmAPI.Read(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

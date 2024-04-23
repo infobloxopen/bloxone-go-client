@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HaGroupCreate**](HaGroupAPI.md#HaGroupCreate) | **Post** /dhcp/ha_group | Create the HA group.
-[**HaGroupDelete**](HaGroupAPI.md#HaGroupDelete) | **Delete** /dhcp/ha_group/{id} | Delete the HA group.
-[**HaGroupList**](HaGroupAPI.md#HaGroupList) | **Get** /dhcp/ha_group | Retrieve HA groups.
-[**HaGroupRead**](HaGroupAPI.md#HaGroupRead) | **Get** /dhcp/ha_group/{id} | Retrieve the HA group.
-[**HaGroupUpdate**](HaGroupAPI.md#HaGroupUpdate) | **Patch** /dhcp/ha_group/{id} | Update the HA group.
+[**Create**](HaGroupAPI.md#Create) | **Post** /dhcp/ha_group | Create the HA group.
+[**Delete**](HaGroupAPI.md#Delete) | **Delete** /dhcp/ha_group/{id} | Delete the HA group.
+[**List**](HaGroupAPI.md#List) | **Get** /dhcp/ha_group | Retrieve HA groups.
+[**Read**](HaGroupAPI.md#Read) | **Get** /dhcp/ha_group/{id} | Retrieve the HA group.
+[**Update**](HaGroupAPI.md#Update) | **Patch** /dhcp/ha_group/{id} | Update the HA group.
 
 
 
-## HaGroupCreate
+## Create
 
-> CreateHAGroupResponse HaGroupCreate(ctx).Body(body).Execute()
+> CreateHAGroupResponse Create(ctx).Body(body).Execute()
 
 Create the HA group.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HaGroupAPI.HaGroupCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.HaGroupAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupCreate`: CreateHAGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupCreate`: %v\n", resp)
+	// response from `Create`: CreateHAGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHaGroupCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HaGroupDelete
+## Delete
 
-> HaGroupDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Delete the HA group.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.HaGroupAPI.HaGroupDelete(context.Background(), id).Execute()
+	r, err := apiClient.HaGroupAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHaGroupDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HaGroupList
+## List
 
-> ListHAGroupResponse HaGroupList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
+> ListHAGroupResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
 
 Retrieve HA groups.
 
@@ -179,13 +179,13 @@ func main() {
 	collectStats := true // bool | collect_stats gets the HA group stats(state, status, heartbeat) if set to _true_ in the _GET_ _/dhcp/ha_group_ request. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HaGroupAPI.HaGroupList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
+	resp, r, err := apiClient.HaGroupAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).CollectStats(collectStats).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupList`: ListHAGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupList`: %v\n", resp)
+	// response from `List`: ListHAGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -195,7 +195,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHaGroupListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -228,9 +228,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HaGroupRead
+## Read
 
-> ReadHAGroupResponse HaGroupRead(ctx, id).Fields(fields).CollectStats(collectStats).Execute()
+> ReadHAGroupResponse Read(ctx, id).Fields(fields).CollectStats(collectStats).Execute()
 
 Retrieve the HA group.
 
@@ -255,13 +255,13 @@ func main() {
 	collectStats := true // bool | collect_stats gets the HA group stats(state, status, heartbeat) if set to _true_ in the _GET_ _/dhcp/ha_group_ request. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HaGroupAPI.HaGroupRead(context.Background(), id).Fields(fields).CollectStats(collectStats).Execute()
+	resp, r, err := apiClient.HaGroupAPI.Read(context.Background(), id).Fields(fields).CollectStats(collectStats).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupRead`: ReadHAGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupRead`: %v\n", resp)
+	// response from `Read`: ReadHAGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHaGroupReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -302,9 +302,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HaGroupUpdate
+## Update
 
-> UpdateHAGroupResponse HaGroupUpdate(ctx, id).Body(body).Execute()
+> UpdateHAGroupResponse Update(ctx, id).Body(body).Execute()
 
 Update the HA group.
 
@@ -328,13 +328,13 @@ func main() {
 	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HaGroupAPI.HaGroupUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.HaGroupAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.HaGroupUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HaGroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HaGroupUpdate`: UpdateHAGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.HaGroupUpdate`: %v\n", resp)
+	// response from `Update`: UpdateHAGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `HaGroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHaGroupUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

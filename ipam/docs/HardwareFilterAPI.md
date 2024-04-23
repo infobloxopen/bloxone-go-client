@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HardwareFilterCreate**](HardwareFilterAPI.md#HardwareFilterCreate) | **Post** /dhcp/hardware_filter | Create the hardware filter.
-[**HardwareFilterDelete**](HardwareFilterAPI.md#HardwareFilterDelete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
-[**HardwareFilterList**](HardwareFilterAPI.md#HardwareFilterList) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
-[**HardwareFilterRead**](HardwareFilterAPI.md#HardwareFilterRead) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
-[**HardwareFilterUpdate**](HardwareFilterAPI.md#HardwareFilterUpdate) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
+[**Create**](HardwareFilterAPI.md#Create) | **Post** /dhcp/hardware_filter | Create the hardware filter.
+[**Delete**](HardwareFilterAPI.md#Delete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
+[**List**](HardwareFilterAPI.md#List) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
+[**Read**](HardwareFilterAPI.md#Read) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
+[**Update**](HardwareFilterAPI.md#Update) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
 
 
 
-## HardwareFilterCreate
+## Create
 
-> CreateHardwareFilterResponse HardwareFilterCreate(ctx).Body(body).Execute()
+> CreateHardwareFilterResponse Create(ctx).Body(body).Execute()
 
 Create the hardware filter.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.HardwareFilterAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterCreate`: CreateHardwareFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterCreate`: %v\n", resp)
+	// response from `Create`: CreateHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterDelete
+## Delete
 
-> HardwareFilterDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the hardware filter to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.HardwareFilterAPI.HardwareFilterDelete(context.Background(), id).Execute()
+	r, err := apiClient.HardwareFilterAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterList
+## List
 
-> ListHardwareFilterResponse HardwareFilterList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListHardwareFilterResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve hardware filters.
 
@@ -178,13 +178,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.HardwareFilterAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterList`: ListHardwareFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterList`: %v\n", resp)
+	// response from `List`: ListHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterRead
+## Read
 
-> ReadHardwareFilterResponse HardwareFilterRead(ctx, id).Fields(fields).Execute()
+> ReadHardwareFilterResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the hardware filter.
 
@@ -252,13 +252,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.HardwareFilterAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterRead`: ReadHardwareFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterRead`: %v\n", resp)
+	// response from `Read`: ReadHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterUpdate
+## Update
 
-> UpdateHardwareFilterResponse HardwareFilterUpdate(ctx, id).Body(body).Execute()
+> UpdateHardwareFilterResponse Update(ctx, id).Body(body).Execute()
 
 Update the hardware filter.
 
@@ -324,13 +324,13 @@ func main() {
 	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.HardwareFilterAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HardwareFilterUpdate`: UpdateHardwareFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterUpdate`: %v\n", resp)
+	// response from `Update`: UpdateHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

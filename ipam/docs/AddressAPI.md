@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddressCreate**](AddressAPI.md#AddressCreate) | **Post** /ipam/address | Create the IP address.
-[**AddressDelete**](AddressAPI.md#AddressDelete) | **Delete** /ipam/address/{id} | Move the IP address to the recycle bin.
-[**AddressList**](AddressAPI.md#AddressList) | **Get** /ipam/address | Retrieve IP addresses.
-[**AddressRead**](AddressAPI.md#AddressRead) | **Get** /ipam/address/{id} | Retrieve the IP address.
-[**AddressUpdate**](AddressAPI.md#AddressUpdate) | **Patch** /ipam/address/{id} | Update the IP address.
+[**Create**](AddressAPI.md#Create) | **Post** /ipam/address | Create the IP address.
+[**Delete**](AddressAPI.md#Delete) | **Delete** /ipam/address/{id} | Move the IP address to the recycle bin.
+[**List**](AddressAPI.md#List) | **Get** /ipam/address | Retrieve IP addresses.
+[**Read**](AddressAPI.md#Read) | **Get** /ipam/address/{id} | Retrieve the IP address.
+[**Update**](AddressAPI.md#Update) | **Patch** /ipam/address/{id} | Update the IP address.
 
 
 
-## AddressCreate
+## Create
 
-> CreateAddressResponse AddressCreate(ctx).Body(body).Execute()
+> CreateAddressResponse Create(ctx).Body(body).Execute()
 
 Create the IP address.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewAddress("Address_example") // Address | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AddressAPI.AddressCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.AddressAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressCreate`: CreateAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressCreate`: %v\n", resp)
+	// response from `Create`: CreateAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddressCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AddressDelete
+## Delete
 
-> AddressDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the IP address to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.AddressAPI.AddressDelete(context.Background(), id).Execute()
+	r, err := apiClient.AddressAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddressDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AddressList
+## List
 
-> ListAddressResponse AddressList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListAddressResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve IP addresses.
 
@@ -180,13 +180,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AddressAPI.AddressList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.AddressAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Scope(scope).AddressState(addressState).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressList`: ListAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressList`: %v\n", resp)
+	// response from `List`: ListAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.List`: %v\n", resp)
 }
 ```
 
@@ -196,7 +196,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddressListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -230,9 +230,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AddressRead
+## Read
 
-> ReadAddressResponse AddressRead(ctx, id).Fields(fields).Execute()
+> ReadAddressResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the IP address.
 
@@ -256,13 +256,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AddressAPI.AddressRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.AddressAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressRead`: ReadAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressRead`: %v\n", resp)
+	// response from `Read`: ReadAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddressReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -302,9 +302,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AddressUpdate
+## Update
 
-> UpdateAddressResponse AddressUpdate(ctx, id).Body(body).Execute()
+> UpdateAddressResponse Update(ctx, id).Body(body).Execute()
 
 Update the IP address.
 
@@ -328,13 +328,13 @@ func main() {
 	body := *ipam.NewAddress("Address_example") // Address | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AddressAPI.AddressUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.AddressAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.AddressUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AddressUpdate`: UpdateAddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.AddressUpdate`: %v\n", resp)
+	// response from `Update`: UpdateAddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddressAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddressUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

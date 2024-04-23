@@ -4,15 +4,15 @@ All URIs are relative to *https://csp.infoblox.com/api/atcdfp/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DfpCreateOrUpdateDfp**](DfpAPI.md#DfpCreateOrUpdateDfp) | **Put** /dfps/{id} | Update DNS Forwarding Proxy resolvers.
-[**DfpListDfp**](DfpAPI.md#DfpListDfp) | **Get** /dfp_services | List DNS Forwarding Proxies.
-[**DfpReadDfp**](DfpAPI.md#DfpReadDfp) | **Get** /dfps/{id} | Read DNS Forwarding Proxy.
+[**CreateOrUpdateDfp**](DfpAPI.md#CreateOrUpdateDfp) | **Put** /dfps/{id} | Update DNS Forwarding Proxy resolvers.
+[**ListDfp**](DfpAPI.md#ListDfp) | **Get** /dfp_services | List DNS Forwarding Proxies.
+[**ReadDfp**](DfpAPI.md#ReadDfp) | **Get** /dfps/{id} | Read DNS Forwarding Proxy.
 
 
 
-## DfpCreateOrUpdateDfp
+## CreateOrUpdateDfp
 
-> AtcdfpDfpCreateOrUpdateResponse DfpCreateOrUpdateDfp(ctx, id).Body(body).Execute()
+> DfpCreateOrUpdateResponse CreateOrUpdateDfp(ctx, id).Body(body).Execute()
 
 Update DNS Forwarding Proxy resolvers.
 
@@ -33,16 +33,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The DNS Forwarding Proxy object identifier.
-	body := *dfp.NewAtcdfpDfpCreateOrUpdatePayload() // AtcdfpDfpCreateOrUpdatePayload | The DNS Forwarding Proxy object.
+	body := *dfp.NewDfpCreateOrUpdatePayload() // DfpCreateOrUpdatePayload | The DNS Forwarding Proxy object.
 
 	apiClient := dfp.NewAPIClient()
-	resp, r, err := apiClient.DfpAPI.DfpCreateOrUpdateDfp(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.DfpAPI.CreateOrUpdateDfp(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpCreateOrUpdateDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.CreateOrUpdateDfp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DfpCreateOrUpdateDfp`: AtcdfpDfpCreateOrUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpCreateOrUpdateDfp`: %v\n", resp)
+	// response from `CreateOrUpdateDfp`: DfpCreateOrUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.CreateOrUpdateDfp`: %v\n", resp)
 }
 ```
 
@@ -56,17 +56,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDfpCreateOrUpdateDfpRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOrUpdateDfpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcdfpDfpCreateOrUpdatePayload**](AtcdfpDfpCreateOrUpdatePayload.md) | The DNS Forwarding Proxy object. | 
+ **body** | [**DfpCreateOrUpdatePayload**](DfpCreateOrUpdatePayload.md) | The DNS Forwarding Proxy object. | 
 
 ### Return type
 
-[**AtcdfpDfpCreateOrUpdateResponse**](AtcdfpDfpCreateOrUpdateResponse.md)
+[**DfpCreateOrUpdateResponse**](DfpCreateOrUpdateResponse.md)
 
 ### Authorization
 
@@ -82,9 +82,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## DfpListDfp
+## ListDfp
 
-> AtcdfpDfpListResponse DfpListDfp(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> DfpListResponse ListDfp(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 List DNS Forwarding Proxies.
 
@@ -111,13 +111,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := dfp.NewAPIClient()
-	resp, r, err := apiClient.DfpAPI.DfpListDfp(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.DfpAPI.ListDfp(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpListDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.ListDfp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DfpListDfp`: AtcdfpDfpListResponse
-	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpListDfp`: %v\n", resp)
+	// response from `ListDfp`: DfpListResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.ListDfp`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDfpListDfpRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListDfpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcdfpDfpListResponse**](AtcdfpDfpListResponse.md)
+[**DfpListResponse**](DfpListResponse.md)
 
 ### Authorization
 
@@ -156,9 +156,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## DfpReadDfp
+## ReadDfp
 
-> AtcdfpDfpReadResponse DfpReadDfp(ctx, id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
+> DfpReadResponse ReadDfp(ctx, id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
 
 Read DNS Forwarding Proxy.
 
@@ -184,13 +184,13 @@ func main() {
 	serviceId := "serviceId_example" // string | The On-Prem Application Service identifier. For internal Use only. (optional)
 
 	apiClient := dfp.NewAPIClient()
-	resp, r, err := apiClient.DfpAPI.DfpReadDfp(context.Background(), id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
+	resp, r, err := apiClient.DfpAPI.ReadDfp(context.Background(), id).Fields(fields).Name(name).ServiceId(serviceId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.DfpReadDfp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DfpAPI.ReadDfp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DfpReadDfp`: AtcdfpDfpReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.DfpReadDfp`: %v\n", resp)
+	// response from `ReadDfp`: DfpReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `DfpAPI.ReadDfp`: %v\n", resp)
 }
 ```
 
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDfpReadDfpRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadDfpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcdfpDfpReadResponse**](AtcdfpDfpReadResponse.md)
+[**DfpReadResponse**](DfpReadResponse.md)
 
 ### Authorization
 

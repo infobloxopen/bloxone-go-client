@@ -4,18 +4,18 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccessCodesCreateAccessCode**](AccessCodesAPI.md#AccessCodesCreateAccessCode) | **Post** /access_codes | Create Access Codes
-[**AccessCodesDeleteAccessCodes**](AccessCodesAPI.md#AccessCodesDeleteAccessCodes) | **Delete** /access_codes | Delete Access Codes
-[**AccessCodesDeleteSingleAccessCodes**](AccessCodesAPI.md#AccessCodesDeleteSingleAccessCodes) | **Delete** /access_codes/{access_key} | Delete Access Code By ID
-[**AccessCodesListAccessCodes**](AccessCodesAPI.md#AccessCodesListAccessCodes) | **Get** /access_codes | List Access Codes
-[**AccessCodesReadAccessCode**](AccessCodesAPI.md#AccessCodesReadAccessCode) | **Get** /access_codes/{access_key} | Read Access Codes
-[**AccessCodesUpdateAccessCode**](AccessCodesAPI.md#AccessCodesUpdateAccessCode) | **Put** /access_codes/{payload.access_key} | Update Access Codes
+[**CreateAccessCode**](AccessCodesAPI.md#CreateAccessCode) | **Post** /access_codes | Create Access Codes
+[**DeleteAccessCodes**](AccessCodesAPI.md#DeleteAccessCodes) | **Delete** /access_codes | Delete Access Codes
+[**DeleteSingleAccessCodes**](AccessCodesAPI.md#DeleteSingleAccessCodes) | **Delete** /access_codes/{access_key} | Delete Access Code By ID
+[**ListAccessCodes**](AccessCodesAPI.md#ListAccessCodes) | **Get** /access_codes | List Access Codes
+[**ReadAccessCode**](AccessCodesAPI.md#ReadAccessCode) | **Get** /access_codes/{access_key} | Read Access Codes
+[**UpdateAccessCode**](AccessCodesAPI.md#UpdateAccessCode) | **Put** /access_codes/{payload.access_key} | Update Access Codes
 
 
 
-## AccessCodesCreateAccessCode
+## CreateAccessCode
 
-> AtcfwAccessCodeCreateResponse AccessCodesCreateAccessCode(ctx).Body(body).Execute()
+> AccessCodeCreateResponse CreateAccessCode(ctx).Body(body).Execute()
 
 Create Access Codes
 
@@ -35,16 +35,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwAccessCode() // AtcfwAccessCode | The Bypass Code object.
+	body := *fw.NewAccessCode() // AccessCode | The Bypass Code object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.AccessCodesAPI.AccessCodesCreateAccessCode(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.AccessCodesAPI.CreateAccessCode(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesCreateAccessCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.CreateAccessCode``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccessCodesCreateAccessCode`: AtcfwAccessCodeCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.AccessCodesCreateAccessCode`: %v\n", resp)
+	// response from `CreateAccessCode`: AccessCodeCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.CreateAccessCode`: %v\n", resp)
 }
 ```
 
@@ -54,16 +54,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesCreateAccessCodeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAccessCodeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwAccessCode**](AtcfwAccessCode.md) | The Bypass Code object. | 
+ **body** | [**AccessCode**](AccessCode.md) | The Bypass Code object. | 
 
 ### Return type
 
-[**AtcfwAccessCodeCreateResponse**](AtcfwAccessCodeCreateResponse.md)
+[**AccessCodeCreateResponse**](AccessCodeCreateResponse.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AccessCodesDeleteAccessCodes
+## DeleteAccessCodes
 
-> AccessCodesDeleteAccessCodes(ctx).Body(body).Execute()
+> DeleteAccessCodes(ctx).Body(body).Execute()
 
 Delete Access Codes
 
@@ -101,12 +101,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwAccessCodeDeleteRequest() // AtcfwAccessCodeDeleteRequest | 
+	body := *fw.NewAccessCodeDeleteRequest() // AccessCodeDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.AccessCodesAPI.AccessCodesDeleteAccessCodes(context.Background()).Body(body).Execute()
+	r, err := apiClient.AccessCodesAPI.DeleteAccessCodes(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesDeleteAccessCodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.DeleteAccessCodes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -118,12 +118,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesDeleteAccessCodesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAccessCodesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwAccessCodeDeleteRequest**](AtcfwAccessCodeDeleteRequest.md) |  | 
+ **body** | [**AccessCodeDeleteRequest**](AccessCodeDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -143,9 +143,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AccessCodesDeleteSingleAccessCodes
+## DeleteSingleAccessCodes
 
-> AccessCodesDeleteSingleAccessCodes(ctx, accessKey).Execute()
+> DeleteSingleAccessCodes(ctx, accessKey).Execute()
 
 Delete Access Code By ID
 
@@ -168,9 +168,9 @@ func main() {
 	accessKey := "accessKey_example" // string | The Bypass Code identifier.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.AccessCodesAPI.AccessCodesDeleteSingleAccessCodes(context.Background(), accessKey).Execute()
+	r, err := apiClient.AccessCodesAPI.DeleteSingleAccessCodes(context.Background(), accessKey).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesDeleteSingleAccessCodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.DeleteSingleAccessCodes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesDeleteSingleAccessCodesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleAccessCodesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,9 +211,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AccessCodesListAccessCodes
+## ListAccessCodes
 
-> AtcfwAccessCodeMultiResponse AccessCodesListAccessCodes(ctx).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+> AccessCodeMultiResponse ListAccessCodes(ctx).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 
 List Access Codes
 
@@ -239,13 +239,13 @@ func main() {
 	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.AccessCodesAPI.AccessCodesListAccessCodes(context.Background()).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
+	resp, r, err := apiClient.AccessCodesAPI.ListAccessCodes(context.Background()).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesListAccessCodes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.ListAccessCodes``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccessCodesListAccessCodes`: AtcfwAccessCodeMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.AccessCodesListAccessCodes`: %v\n", resp)
+	// response from `ListAccessCodes`: AccessCodeMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.ListAccessCodes`: %v\n", resp)
 }
 ```
 
@@ -255,7 +255,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesListAccessCodesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAccessCodesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwAccessCodeMultiResponse**](AtcfwAccessCodeMultiResponse.md)
+[**AccessCodeMultiResponse**](AccessCodeMultiResponse.md)
 
 ### Authorization
 
@@ -283,9 +283,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AccessCodesReadAccessCode
+## ReadAccessCode
 
-> AtcfwAccessCodeReadResponse AccessCodesReadAccessCode(ctx, accessKey).Name(name).Execute()
+> AccessCodeReadResponse ReadAccessCode(ctx, accessKey).Name(name).Execute()
 
 Read Access Codes
 
@@ -309,13 +309,13 @@ func main() {
 	name := "name_example" // string | The Bypass Code name. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.AccessCodesAPI.AccessCodesReadAccessCode(context.Background(), accessKey).Name(name).Execute()
+	resp, r, err := apiClient.AccessCodesAPI.ReadAccessCode(context.Background(), accessKey).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesReadAccessCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.ReadAccessCode``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccessCodesReadAccessCode`: AtcfwAccessCodeReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.AccessCodesReadAccessCode`: %v\n", resp)
+	// response from `ReadAccessCode`: AccessCodeReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.ReadAccessCode`: %v\n", resp)
 }
 ```
 
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesReadAccessCodeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAccessCodeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwAccessCodeReadResponse**](AtcfwAccessCodeReadResponse.md)
+[**AccessCodeReadResponse**](AccessCodeReadResponse.md)
 
 ### Authorization
 
@@ -355,9 +355,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AccessCodesUpdateAccessCode
+## UpdateAccessCode
 
-> AtcfwAccessCodeUpdateResponse AccessCodesUpdateAccessCode(ctx, payloadAccessKey).Body(body).Execute()
+> AccessCodeUpdateResponse UpdateAccessCode(ctx, payloadAccessKey).Body(body).Execute()
 
 Update Access Codes
 
@@ -378,16 +378,16 @@ import (
 
 func main() {
 	payloadAccessKey := "payloadAccessKey_example" // string | Auto generated unique Bypass Code value
-	body := *fw.NewAtcfwAccessCode() // AtcfwAccessCode | The Bypass Code object.
+	body := *fw.NewAccessCode() // AccessCode | The Bypass Code object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.AccessCodesAPI.AccessCodesUpdateAccessCode(context.Background(), payloadAccessKey).Body(body).Execute()
+	resp, r, err := apiClient.AccessCodesAPI.UpdateAccessCode(context.Background(), payloadAccessKey).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.AccessCodesUpdateAccessCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessCodesAPI.UpdateAccessCode``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccessCodesUpdateAccessCode`: AtcfwAccessCodeUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.AccessCodesUpdateAccessCode`: %v\n", resp)
+	// response from `UpdateAccessCode`: AccessCodeUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccessCodesAPI.UpdateAccessCode`: %v\n", resp)
 }
 ```
 
@@ -401,17 +401,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAccessCodesUpdateAccessCodeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAccessCodeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwAccessCode**](AtcfwAccessCode.md) | The Bypass Code object. | 
+ **body** | [**AccessCode**](AccessCode.md) | The Bypass Code object. | 
 
 ### Return type
 
-[**AtcfwAccessCodeUpdateResponse**](AtcfwAccessCodeUpdateResponse.md)
+[**AccessCodeUpdateResponse**](AccessCodeUpdateResponse.md)
 
 ### Authorization
 

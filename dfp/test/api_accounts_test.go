@@ -23,11 +23,11 @@ func TestAccountsAPIService(t *testing.T) {
 
 	apiClient := dfp.NewAPIClient()
 
-	t.Run("Test AccountsAPIService AccountsCheckConfig", func(t *testing.T) {
+	t.Run("Test AccountsAPIService CheckConfig", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AccountsAPI.AccountsCheckConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccountsAPI.CheckConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

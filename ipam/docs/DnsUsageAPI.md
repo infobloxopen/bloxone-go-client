@@ -4,14 +4,14 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DnsUsageList**](DnsUsageAPI.md#DnsUsageList) | **Get** /ipam/dns_usage | Retrieve DNS usage for multiple objects.
-[**DnsUsageRead**](DnsUsageAPI.md#DnsUsageRead) | **Get** /ipam/dns_usage/{id} | Retrieve the DNS usage.
+[**List**](DnsUsageAPI.md#List) | **Get** /ipam/dns_usage | Retrieve DNS usage for multiple objects.
+[**Read**](DnsUsageAPI.md#Read) | **Get** /ipam/dns_usage/{id} | Retrieve the DNS usage.
 
 
 
-## DnsUsageList
+## List
 
-> ListDNSUsageResponse DnsUsageList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
+> ListDNSUsageResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
 
 Retrieve DNS usage for multiple objects.
 
@@ -39,13 +39,13 @@ func main() {
 	orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DnsUsageAPI.DnsUsageList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
+	resp, r, err := apiClient.DnsUsageAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.DnsUsageList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DnsUsageList`: ListDNSUsageResponse
-	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.DnsUsageList`: %v\n", resp)
+	// response from `List`: ListDNSUsageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.List`: %v\n", resp)
 }
 ```
 
@@ -55,7 +55,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsUsageListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -85,9 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DnsUsageRead
+## Read
 
-> ReadDNSUsageResponse DnsUsageRead(ctx, id).Fields(fields).Execute()
+> ReadDNSUsageResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the DNS usage.
 
@@ -111,13 +111,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DnsUsageAPI.DnsUsageRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.DnsUsageAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.DnsUsageRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DnsUsageAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DnsUsageRead`: ReadDNSUsageResponse
-	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.DnsUsageRead`: %v\n", resp)
+	// response from `Read`: ReadDNSUsageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DnsUsageAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsUsageReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

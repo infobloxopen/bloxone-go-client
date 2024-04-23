@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**IpamHostCreate**](IpamHostAPI.md#IpamHostCreate) | **Post** /ipam/host | Create the IPAM host.
-[**IpamHostDelete**](IpamHostAPI.md#IpamHostDelete) | **Delete** /ipam/host/{id} | Move the IPAM host to the recycle bin.
-[**IpamHostList**](IpamHostAPI.md#IpamHostList) | **Get** /ipam/host | Retrieve the IPAM hosts.
-[**IpamHostRead**](IpamHostAPI.md#IpamHostRead) | **Get** /ipam/host/{id} | Retrieve the IPAM host.
-[**IpamHostUpdate**](IpamHostAPI.md#IpamHostUpdate) | **Patch** /ipam/host/{id} | Update the IPAM host.
+[**Create**](IpamHostAPI.md#Create) | **Post** /ipam/host | Create the IPAM host.
+[**Delete**](IpamHostAPI.md#Delete) | **Delete** /ipam/host/{id} | Move the IPAM host to the recycle bin.
+[**List**](IpamHostAPI.md#List) | **Get** /ipam/host | Retrieve the IPAM hosts.
+[**Read**](IpamHostAPI.md#Read) | **Get** /ipam/host/{id} | Retrieve the IPAM host.
+[**Update**](IpamHostAPI.md#Update) | **Patch** /ipam/host/{id} | Update the IPAM host.
 
 
 
-## IpamHostCreate
+## Create
 
-> CreateIpamHostResponse IpamHostCreate(ctx).Body(body).Execute()
+> CreateIpamHostResponse Create(ctx).Body(body).Execute()
 
 Create the IPAM host.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamHostAPI.IpamHostCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.IpamHostAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostCreate`: CreateIpamHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostCreate`: %v\n", resp)
+	// response from `Create`: CreateIpamHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpamHostCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpamHostDelete
+## Delete
 
-> IpamHostDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the IPAM host to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.IpamHostAPI.IpamHostDelete(context.Background(), id).Execute()
+	r, err := apiClient.IpamHostAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpamHostDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpamHostList
+## List
 
-> ListIpamHostResponse IpamHostList(ctx).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListIpamHostResponse List(ctx).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the IPAM hosts.
 
@@ -178,13 +178,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamHostAPI.IpamHostList(context.Background()).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.IpamHostAPI.List(context.Background()).Fields(fields).OrderBy(orderBy).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostList`: ListIpamHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostList`: %v\n", resp)
+	// response from `List`: ListIpamHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpamHostListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpamHostRead
+## Read
 
-> ReadIpamHostResponse IpamHostRead(ctx, id).OrderBy(orderBy).Fields(fields).Execute()
+> ReadIpamHostResponse Read(ctx, id).OrderBy(orderBy).Fields(fields).Execute()
 
 Retrieve the IPAM host.
 
@@ -253,13 +253,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamHostAPI.IpamHostRead(context.Background(), id).OrderBy(orderBy).Fields(fields).Execute()
+	resp, r, err := apiClient.IpamHostAPI.Read(context.Background(), id).OrderBy(orderBy).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostRead`: ReadIpamHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostRead`: %v\n", resp)
+	// response from `Read`: ReadIpamHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpamHostReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IpamHostUpdate
+## Update
 
-> UpdateIpamHostResponse IpamHostUpdate(ctx, id).Body(body).Execute()
+> UpdateIpamHostResponse Update(ctx, id).Body(body).Execute()
 
 Update the IPAM host.
 
@@ -326,13 +326,13 @@ func main() {
 	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamHostAPI.IpamHostUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.IpamHostAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.IpamHostUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamHostAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IpamHostUpdate`: UpdateIpamHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.IpamHostUpdate`: %v\n", resp)
+	// response from `Update`: UpdateIpamHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamHostAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIpamHostUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

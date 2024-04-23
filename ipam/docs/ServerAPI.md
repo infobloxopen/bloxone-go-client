@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServerCreate**](ServerAPI.md#ServerCreate) | **Post** /dhcp/server | Create the DHCP configuration profile.
-[**ServerDelete**](ServerAPI.md#ServerDelete) | **Delete** /dhcp/server/{id} | Move the DHCP configuration profile to the recycle bin.
-[**ServerList**](ServerAPI.md#ServerList) | **Get** /dhcp/server | Retrieve DHCP configuration profiles.
-[**ServerRead**](ServerAPI.md#ServerRead) | **Get** /dhcp/server/{id} | Retrieve the DHCP configuration profile.
-[**ServerUpdate**](ServerAPI.md#ServerUpdate) | **Patch** /dhcp/server/{id} | Update the DHCP configuration profile.
+[**Create**](ServerAPI.md#Create) | **Post** /dhcp/server | Create the DHCP configuration profile.
+[**Delete**](ServerAPI.md#Delete) | **Delete** /dhcp/server/{id} | Move the DHCP configuration profile to the recycle bin.
+[**List**](ServerAPI.md#List) | **Get** /dhcp/server | Retrieve DHCP configuration profiles.
+[**Read**](ServerAPI.md#Read) | **Get** /dhcp/server/{id} | Retrieve the DHCP configuration profile.
+[**Update**](ServerAPI.md#Update) | **Patch** /dhcp/server/{id} | Update the DHCP configuration profile.
 
 
 
-## ServerCreate
+## Create
 
-> CreateServerResponse ServerCreate(ctx).Body(body).Inherit(inherit).Execute()
+> CreateServerResponse Create(ctx).Body(body).Inherit(inherit).Execute()
 
 Create the DHCP configuration profile.
 
@@ -38,13 +38,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.ServerAPI.ServerCreate(context.Background()).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.ServerAPI.Create(context.Background()).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerCreate`: CreateServerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerCreate`: %v\n", resp)
+	// response from `Create`: CreateServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -54,7 +54,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiServerCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ServerDelete
+## Delete
 
-> ServerDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the DHCP configuration profile to the recycle bin.
 
@@ -105,9 +105,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.ServerAPI.ServerDelete(context.Background(), id).Execute()
+	r, err := apiClient.ServerAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiServerDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -148,9 +148,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ServerList
+## List
 
-> ListServerResponse ServerList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+> ListServerResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 
 Retrieve DHCP configuration profiles.
 
@@ -181,13 +181,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.ServerAPI.ServerList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
+	resp, r, err := apiClient.ServerAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerList`: ListServerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerList`: %v\n", resp)
+	// response from `List`: ListServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.List`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiServerListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -230,9 +230,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ServerRead
+## Read
 
-> ReadServerResponse ServerRead(ctx, id).Fields(fields).Inherit(inherit).Execute()
+> ReadServerResponse Read(ctx, id).Fields(fields).Inherit(inherit).Execute()
 
 Retrieve the DHCP configuration profile.
 
@@ -257,13 +257,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.ServerAPI.ServerRead(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
+	resp, r, err := apiClient.ServerAPI.Read(context.Background(), id).Fields(fields).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerRead`: ReadServerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerRead`: %v\n", resp)
+	// response from `Read`: ReadServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiServerReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -304,9 +304,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ServerUpdate
+## Update
 
-> UpdateServerResponse ServerUpdate(ctx, id).Body(body).Inherit(inherit).Execute()
+> UpdateServerResponse Update(ctx, id).Body(body).Inherit(inherit).Execute()
 
 Update the DHCP configuration profile.
 
@@ -331,13 +331,13 @@ func main() {
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.ServerAPI.ServerUpdate(context.Background(), id).Body(body).Inherit(inherit).Execute()
+	resp, r, err := apiClient.ServerAPI.Update(context.Background(), id).Body(body).Inherit(inherit).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.ServerUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServerAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServerUpdate`: UpdateServerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.ServerUpdate`: %v\n", resp)
+	// response from `Update`: UpdateServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServerAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiServerUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

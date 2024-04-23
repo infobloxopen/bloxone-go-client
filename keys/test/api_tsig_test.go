@@ -23,11 +23,11 @@ func TestTsigAPIService(t *testing.T) {
 
 	apiClient := keys.NewAPIClient()
 
-	t.Run("Test TsigAPIService TsigCreate", func(t *testing.T) {
+	t.Run("Test TsigAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TsigAPI.TsigCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TsigAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,38 +35,24 @@ func TestTsigAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TsigAPIService TsigDelete", func(t *testing.T) {
+	t.Run("Test TsigAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.TsigAPI.TsigDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.TsigAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TsigAPIService TsigList", func(t *testing.T) {
+	t.Run("Test TsigAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TsigAPI.TsigList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TsigAPIService TsigRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.TsigAPI.TsigRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TsigAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +60,27 @@ func TestTsigAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TsigAPIService TsigUpdate", func(t *testing.T) {
+	t.Run("Test TsigAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.TsigAPI.TsigUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TsigAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TsigAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.TsigAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

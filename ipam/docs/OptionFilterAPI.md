@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OptionFilterCreate**](OptionFilterAPI.md#OptionFilterCreate) | **Post** /dhcp/option_filter | Create the DHCP option filter.
-[**OptionFilterDelete**](OptionFilterAPI.md#OptionFilterDelete) | **Delete** /dhcp/option_filter/{id} | Move the DHCP option filter to the recycle bin.
-[**OptionFilterList**](OptionFilterAPI.md#OptionFilterList) | **Get** /dhcp/option_filter | Retrieve DHCP option filters.
-[**OptionFilterRead**](OptionFilterAPI.md#OptionFilterRead) | **Get** /dhcp/option_filter/{id} | Retrieve the DHCP option filter.
-[**OptionFilterUpdate**](OptionFilterAPI.md#OptionFilterUpdate) | **Patch** /dhcp/option_filter/{id} | Update the DHCP option filter.
+[**Create**](OptionFilterAPI.md#Create) | **Post** /dhcp/option_filter | Create the DHCP option filter.
+[**Delete**](OptionFilterAPI.md#Delete) | **Delete** /dhcp/option_filter/{id} | Move the DHCP option filter to the recycle bin.
+[**List**](OptionFilterAPI.md#List) | **Get** /dhcp/option_filter | Retrieve DHCP option filters.
+[**Read**](OptionFilterAPI.md#Read) | **Get** /dhcp/option_filter/{id} | Retrieve the DHCP option filter.
+[**Update**](OptionFilterAPI.md#Update) | **Patch** /dhcp/option_filter/{id} | Update the DHCP option filter.
 
 
 
-## OptionFilterCreate
+## Create
 
-> CreateOptionFilterResponse OptionFilterCreate(ctx).Body(body).Execute()
+> CreateOptionFilterResponse Create(ctx).Body(body).Execute()
 
 Create the DHCP option filter.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionFilterAPI.OptionFilterCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.OptionFilterAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterCreate`: CreateOptionFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterCreate`: %v\n", resp)
+	// response from `Create`: CreateOptionFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionFilterCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionFilterDelete
+## Delete
 
-> OptionFilterDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the DHCP option filter to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.OptionFilterAPI.OptionFilterDelete(context.Background(), id).Execute()
+	r, err := apiClient.OptionFilterAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionFilterDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionFilterList
+## List
 
-> ListOptionFilterResponse OptionFilterList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionFilterResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option filters.
 
@@ -178,13 +178,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionFilterAPI.OptionFilterList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.OptionFilterAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterList`: ListOptionFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterList`: %v\n", resp)
+	// response from `List`: ListOptionFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionFilterListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionFilterRead
+## Read
 
-> ReadOptionFilterResponse OptionFilterRead(ctx, id).Fields(fields).Execute()
+> ReadOptionFilterResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option filter.
 
@@ -252,13 +252,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionFilterAPI.OptionFilterRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.OptionFilterAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterRead`: ReadOptionFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterRead`: %v\n", resp)
+	// response from `Read`: ReadOptionFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionFilterReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionFilterUpdate
+## Update
 
-> UpdateOptionFilterResponse OptionFilterUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionFilterResponse Update(ctx, id).Body(body).Execute()
 
 Update the DHCP option filter.
 
@@ -324,13 +324,13 @@ func main() {
 	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionFilterAPI.OptionFilterUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.OptionFilterAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.OptionFilterUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionFilterAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionFilterUpdate`: UpdateOptionFilterResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.OptionFilterUpdate`: %v\n", resp)
+	// response from `Update`: UpdateOptionFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionFilterAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionFilterUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

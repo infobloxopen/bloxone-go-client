@@ -92,40 +92,40 @@ All URIs are relative to *http://csp.infoblox.com/api/anycast/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerCreateAnycastConfig**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagercreateanycastconfig) | **Post** /accm/ac_configs | Create Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerCreateAnycastVersion**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagercreateanycastversion) | **Post** /accm/ac_version/{id} | Create Anycast Version
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerDeleteAnycastConfig**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerdeleteanycastconfig) | **Delete** /accm/ac_configs/{id} | Delete Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerDeleteAnycastVersion**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerdeleteanycastversion) | **Delete** /accm/ac_version/{id} | Delete anycast version
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerDeleteOnpremHost**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerdeleteonpremhost) | **Delete** /accm/op_hosts/{id} | Delete On-Prem Host
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetAnycastConfig**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetanycastconfig) | **Get** /accm/ac_configs/{id} | Retrieve Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetAnycastConfigList**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetanycastconfiglist) | **Get** /accm/ac_configs | Retrieve Multiple Anycast Configurations
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetAnycastVersion**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetanycastversion) | **Get** /accm/ac_version/{id} | Retrieve Anycast Version
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetOnpremConfig**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetonpremconfig) | **Get** /accm/oph_configs/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetOnpremConfig2**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetonpremconfig2) | **Get** /onprem_config/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetOnpremHost**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetonpremhost) | **Get** /accm/op_hosts/{id} | Retrieve On-Prem Host
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetStatus**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetstatus) | **Get** /accm/oph_config_statuses/{ophid}/latest | Retrieve Configuration Status
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerGetStatus2**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagergetstatus2) | **Get** /onprem_config_statuses/{ophid}/latest | Retrieve Configuration Status
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerlistanycastconfigswithruntimestatus) | **Get** /accm/ac_runtime_statuses | Read list of Anycast Configurations
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerreadanycastconfigwithruntimestatus) | **Get** /accm/ac_runtime_statuses/{id} | Read Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerUpdateAnycastConfig**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerupdateanycastconfig) | **Put** /accm/ac_configs/{id} | Create or Update Anycast Configuration
-*OnPremAnycastManagerAPI* | [**OnPremAnycastManagerUpdateOnpremHost**](docs/OnPremAnycastManagerAPI.md#onpremanycastmanagerupdateonpremhost) | **Put** /accm/op_hosts/{id} | Create or Update On-Prem Host
+*OnPremAnycastManagerAPI* | [**CreateAnycastConfig**](docs/OnPremAnycastManagerAPI.md#createanycastconfig) | **Post** /accm/ac_configs | Create Anycast Configuration
+*OnPremAnycastManagerAPI* | [**CreateAnycastVersion**](docs/OnPremAnycastManagerAPI.md#createanycastversion) | **Post** /accm/ac_version/{id} | Create Anycast Version
+*OnPremAnycastManagerAPI* | [**DeleteAnycastConfig**](docs/OnPremAnycastManagerAPI.md#deleteanycastconfig) | **Delete** /accm/ac_configs/{id} | Delete Anycast Configuration
+*OnPremAnycastManagerAPI* | [**DeleteAnycastVersion**](docs/OnPremAnycastManagerAPI.md#deleteanycastversion) | **Delete** /accm/ac_version/{id} | Delete anycast version
+*OnPremAnycastManagerAPI* | [**DeleteOnpremHost**](docs/OnPremAnycastManagerAPI.md#deleteonpremhost) | **Delete** /accm/op_hosts/{id} | Delete On-Prem Host
+*OnPremAnycastManagerAPI* | [**GetAnycastConfig**](docs/OnPremAnycastManagerAPI.md#getanycastconfig) | **Get** /accm/ac_configs/{id} | Retrieve Anycast Configuration
+*OnPremAnycastManagerAPI* | [**GetAnycastConfigList**](docs/OnPremAnycastManagerAPI.md#getanycastconfiglist) | **Get** /accm/ac_configs | Retrieve Multiple Anycast Configurations
+*OnPremAnycastManagerAPI* | [**GetAnycastVersion**](docs/OnPremAnycastManagerAPI.md#getanycastversion) | **Get** /accm/ac_version/{id} | Retrieve Anycast Version
+*OnPremAnycastManagerAPI* | [**GetOnpremConfig**](docs/OnPremAnycastManagerAPI.md#getonpremconfig) | **Get** /accm/oph_configs/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
+*OnPremAnycastManagerAPI* | [**GetOnpremConfig2**](docs/OnPremAnycastManagerAPI.md#getonpremconfig2) | **Get** /onprem_config/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
+*OnPremAnycastManagerAPI* | [**GetOnpremHost**](docs/OnPremAnycastManagerAPI.md#getonpremhost) | **Get** /accm/op_hosts/{id} | Retrieve On-Prem Host
+*OnPremAnycastManagerAPI* | [**GetStatus**](docs/OnPremAnycastManagerAPI.md#getstatus) | **Get** /accm/oph_config_statuses/{ophid}/latest | Retrieve Configuration Status
+*OnPremAnycastManagerAPI* | [**GetStatus2**](docs/OnPremAnycastManagerAPI.md#getstatus2) | **Get** /onprem_config_statuses/{ophid}/latest | Retrieve Configuration Status
+*OnPremAnycastManagerAPI* | [**ListAnycastConfigsWithRuntimeStatus**](docs/OnPremAnycastManagerAPI.md#listanycastconfigswithruntimestatus) | **Get** /accm/ac_runtime_statuses | Read list of Anycast Configurations
+*OnPremAnycastManagerAPI* | [**ReadAnycastConfigWithRuntimeStatus**](docs/OnPremAnycastManagerAPI.md#readanycastconfigwithruntimestatus) | **Get** /accm/ac_runtime_statuses/{id} | Read Anycast Configuration
+*OnPremAnycastManagerAPI* | [**UpdateAnycastConfig**](docs/OnPremAnycastManagerAPI.md#updateanycastconfig) | **Put** /accm/ac_configs/{id} | Create or Update Anycast Configuration
+*OnPremAnycastManagerAPI* | [**UpdateOnpremHost**](docs/OnPremAnycastManagerAPI.md#updateonpremhost) | **Put** /accm/op_hosts/{id} | Create or Update On-Prem Host
 
 
 ## Documentation For Models
 
- - [ProtoAnycastConfig](docs/ProtoAnycastConfig.md)
- - [ProtoAnycastConfigRef](docs/ProtoAnycastConfigRef.md)
- - [ProtoAnycastConfigResponse](docs/ProtoAnycastConfigResponse.md)
- - [ProtoAnycastVersion](docs/ProtoAnycastVersion.md)
- - [ProtoBgpConfig](docs/ProtoBgpConfig.md)
- - [ProtoBgpNeighbor](docs/ProtoBgpNeighbor.md)
- - [ProtoGetAnycastConfigListResponse](docs/ProtoGetAnycastConfigListResponse.md)
- - [ProtoOnpremHost](docs/ProtoOnpremHost.md)
- - [ProtoOnpremHostRef](docs/ProtoOnpremHostRef.md)
- - [ProtoOnpremHostResponse](docs/ProtoOnpremHostResponse.md)
- - [ProtoOspfConfig](docs/ProtoOspfConfig.md)
- - [ProtoOspfv3Config](docs/ProtoOspfv3Config.md)
- - [ProtobufFieldMask](docs/ProtobufFieldMask.md)
+ - [AnycastConfig](docs/AnycastConfig.md)
+ - [AnycastConfigRef](docs/AnycastConfigRef.md)
+ - [AnycastConfigResponse](docs/AnycastConfigResponse.md)
+ - [AnycastVersion](docs/AnycastVersion.md)
+ - [BgpConfig](docs/BgpConfig.md)
+ - [BgpNeighbor](docs/BgpNeighbor.md)
+ - [BufFieldMask](docs/BufFieldMask.md)
+ - [GetAnycastConfigListResponse](docs/GetAnycastConfigListResponse.md)
+ - [OnpremHost](docs/OnpremHost.md)
+ - [OnpremHostRef](docs/OnpremHostRef.md)
+ - [OnpremHostResponse](docs/OnpremHostResponse.md)
+ - [OspfConfig](docs/OspfConfig.md)
+ - [Ospfv3Config](docs/Ospfv3Config.md)
  - [ServiceConfig](docs/ServiceConfig.md)
  - [ServiceConfigObject](docs/ServiceConfigObject.md)
  - [ServiceStatusCode](docs/ServiceStatusCode.md)

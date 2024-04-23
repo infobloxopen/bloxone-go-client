@@ -4,14 +4,14 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PopRegionsListPoPRegions**](PopRegionsAPI.md#PopRegionsListPoPRegions) | **Get** /pop_regions | List PoP Regions.
-[**PopRegionsReadPoPRegion**](PopRegionsAPI.md#PopRegionsReadPoPRegion) | **Get** /pop_regions/{id} | Read PoP Region.
+[**ListPoPRegions**](PopRegionsAPI.md#ListPoPRegions) | **Get** /pop_regions | List PoP Regions.
+[**ReadPoPRegion**](PopRegionsAPI.md#ReadPoPRegion) | **Get** /pop_regions/{id} | Read PoP Region.
 
 
 
-## PopRegionsListPoPRegions
+## ListPoPRegions
 
-> AtcfwListPoPRegionsResponse PopRegionsListPoPRegions(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ListPoPRegionsResponse ListPoPRegions(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List PoP Regions.
 
@@ -40,13 +40,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.PopRegionsAPI.PopRegionsListPoPRegions(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.PopRegionsAPI.ListPoPRegions(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PopRegionsAPI.PopRegionsListPoPRegions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PopRegionsAPI.ListPoPRegions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PopRegionsListPoPRegions`: AtcfwListPoPRegionsResponse
-	fmt.Fprintf(os.Stdout, "Response from `PopRegionsAPI.PopRegionsListPoPRegions`: %v\n", resp)
+	// response from `ListPoPRegions`: ListPoPRegionsResponse
+	fmt.Fprintf(os.Stdout, "Response from `PopRegionsAPI.ListPoPRegions`: %v\n", resp)
 }
 ```
 
@@ -56,7 +56,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPopRegionsListPoPRegionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListPoPRegionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwListPoPRegionsResponse**](AtcfwListPoPRegionsResponse.md)
+[**ListPoPRegionsResponse**](ListPoPRegionsResponse.md)
 
 ### Authorization
 
@@ -87,9 +87,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PopRegionsReadPoPRegion
+## ReadPoPRegion
 
-> AtcfwReadPoPRegionResponse PopRegionsReadPoPRegion(ctx, id).Execute()
+> ReadPoPRegionResponse ReadPoPRegion(ctx, id).Execute()
 
 Read PoP Region.
 
@@ -112,13 +112,13 @@ func main() {
 	id := int32(56) // int32 | The PoP region object identifier
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.PopRegionsAPI.PopRegionsReadPoPRegion(context.Background(), id).Execute()
+	resp, r, err := apiClient.PopRegionsAPI.ReadPoPRegion(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PopRegionsAPI.PopRegionsReadPoPRegion``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `PopRegionsAPI.ReadPoPRegion``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PopRegionsReadPoPRegion`: AtcfwReadPoPRegionResponse
-	fmt.Fprintf(os.Stdout, "Response from `PopRegionsAPI.PopRegionsReadPoPRegion`: %v\n", resp)
+	// response from `ReadPoPRegion`: ReadPoPRegionResponse
+	fmt.Fprintf(os.Stdout, "Response from `PopRegionsAPI.ReadPoPRegion`: %v\n", resp)
 }
 ```
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPopRegionsReadPoPRegionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadPoPRegionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwReadPoPRegionResponse**](AtcfwReadPoPRegionResponse.md)
+[**ReadPoPRegionResponse**](ReadPoPRegionResponse.md)
 
 ### Authorization
 

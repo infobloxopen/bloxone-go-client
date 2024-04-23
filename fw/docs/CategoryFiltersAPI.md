@@ -4,18 +4,18 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CategoryFiltersCreateCategoryFilter**](CategoryFiltersAPI.md#CategoryFiltersCreateCategoryFilter) | **Post** /category_filters | Create Category Filter.
-[**CategoryFiltersDeleteCategoryFilters**](CategoryFiltersAPI.md#CategoryFiltersDeleteCategoryFilters) | **Delete** /category_filters | Delete Category Filters By ID.
-[**CategoryFiltersDeleteSingleCategoryFilters**](CategoryFiltersAPI.md#CategoryFiltersDeleteSingleCategoryFilters) | **Delete** /category_filters/{id} | Delete Category Filters.
-[**CategoryFiltersListCategoryFilters**](CategoryFiltersAPI.md#CategoryFiltersListCategoryFilters) | **Get** /category_filters | List Category Filters.
-[**CategoryFiltersReadCategoryFilter**](CategoryFiltersAPI.md#CategoryFiltersReadCategoryFilter) | **Get** /category_filters/{id} | Read Category Filter.
-[**CategoryFiltersUpdateCategoryFilter**](CategoryFiltersAPI.md#CategoryFiltersUpdateCategoryFilter) | **Put** /category_filters/{id} | Update Category Filter.
+[**CreateCategoryFilter**](CategoryFiltersAPI.md#CreateCategoryFilter) | **Post** /category_filters | Create Category Filter.
+[**DeleteCategoryFilters**](CategoryFiltersAPI.md#DeleteCategoryFilters) | **Delete** /category_filters | Delete Category Filters By ID.
+[**DeleteSingleCategoryFilters**](CategoryFiltersAPI.md#DeleteSingleCategoryFilters) | **Delete** /category_filters/{id} | Delete Category Filters.
+[**ListCategoryFilters**](CategoryFiltersAPI.md#ListCategoryFilters) | **Get** /category_filters | List Category Filters.
+[**ReadCategoryFilter**](CategoryFiltersAPI.md#ReadCategoryFilter) | **Get** /category_filters/{id} | Read Category Filter.
+[**UpdateCategoryFilter**](CategoryFiltersAPI.md#UpdateCategoryFilter) | **Put** /category_filters/{id} | Update Category Filter.
 
 
 
-## CategoryFiltersCreateCategoryFilter
+## CreateCategoryFilter
 
-> AtcfwCategoryFilterCreateResponse CategoryFiltersCreateCategoryFilter(ctx).Body(body).Execute()
+> CategoryFilterCreateResponse CreateCategoryFilter(ctx).Body(body).Execute()
 
 Create Category Filter.
 
@@ -35,16 +35,16 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwCategoryFilter() // AtcfwCategoryFilter | The Category Filter object.
+	body := *fw.NewCategoryFilter() // CategoryFilter | The Category Filter object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.CategoryFiltersAPI.CategoryFiltersCreateCategoryFilter(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.CategoryFiltersAPI.CreateCategoryFilter(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersCreateCategoryFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CreateCategoryFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryFiltersCreateCategoryFilter`: AtcfwCategoryFilterCreateResponse
-	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.CategoryFiltersCreateCategoryFilter`: %v\n", resp)
+	// response from `CreateCategoryFilter`: CategoryFilterCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.CreateCategoryFilter`: %v\n", resp)
 }
 ```
 
@@ -54,16 +54,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersCreateCategoryFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCategoryFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwCategoryFilter**](AtcfwCategoryFilter.md) | The Category Filter object. | 
+ **body** | [**CategoryFilter**](CategoryFilter.md) | The Category Filter object. | 
 
 ### Return type
 
-[**AtcfwCategoryFilterCreateResponse**](AtcfwCategoryFilterCreateResponse.md)
+[**CategoryFilterCreateResponse**](CategoryFilterCreateResponse.md)
 
 ### Authorization
 
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CategoryFiltersDeleteCategoryFilters
+## DeleteCategoryFilters
 
-> CategoryFiltersDeleteCategoryFilters(ctx).Body(body).Execute()
+> DeleteCategoryFilters(ctx).Body(body).Execute()
 
 Delete Category Filters By ID.
 
@@ -101,12 +101,12 @@ import (
 )
 
 func main() {
-	body := *fw.NewAtcfwCategoryFiltersDeleteRequest() // AtcfwCategoryFiltersDeleteRequest | 
+	body := *fw.NewCategoryFiltersDeleteRequest() // CategoryFiltersDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.CategoryFiltersAPI.CategoryFiltersDeleteCategoryFilters(context.Background()).Body(body).Execute()
+	r, err := apiClient.CategoryFiltersAPI.DeleteCategoryFilters(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersDeleteCategoryFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.DeleteCategoryFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -118,12 +118,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersDeleteCategoryFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCategoryFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwCategoryFiltersDeleteRequest**](AtcfwCategoryFiltersDeleteRequest.md) |  | 
+ **body** | [**CategoryFiltersDeleteRequest**](CategoryFiltersDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -143,9 +143,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CategoryFiltersDeleteSingleCategoryFilters
+## DeleteSingleCategoryFilters
 
-> CategoryFiltersDeleteSingleCategoryFilters(ctx, id).Execute()
+> DeleteSingleCategoryFilters(ctx, id).Execute()
 
 Delete Category Filters.
 
@@ -168,9 +168,9 @@ func main() {
 	id := int32(56) // int32 | The Category Filter object identifier.
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.CategoryFiltersAPI.CategoryFiltersDeleteSingleCategoryFilters(context.Background(), id).Execute()
+	r, err := apiClient.CategoryFiltersAPI.DeleteSingleCategoryFilters(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersDeleteSingleCategoryFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.DeleteSingleCategoryFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersDeleteSingleCategoryFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSingleCategoryFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,9 +211,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CategoryFiltersListCategoryFilters
+## ListCategoryFilters
 
-> AtcfwCategoryFilterMultiResponse CategoryFiltersListCategoryFilters(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> CategoryFilterMultiResponse ListCategoryFilters(ctx).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Category Filters.
 
@@ -242,13 +242,13 @@ func main() {
 	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.CategoryFiltersAPI.CategoryFiltersListCategoryFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.CategoryFiltersAPI.ListCategoryFilters(context.Background()).Filter(filter).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersListCategoryFilters``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.ListCategoryFilters``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryFiltersListCategoryFilters`: AtcfwCategoryFilterMultiResponse
-	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.CategoryFiltersListCategoryFilters`: %v\n", resp)
+	// response from `ListCategoryFilters`: CategoryFilterMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.ListCategoryFilters`: %v\n", resp)
 }
 ```
 
@@ -258,7 +258,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersListCategoryFiltersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCategoryFiltersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwCategoryFilterMultiResponse**](AtcfwCategoryFilterMultiResponse.md)
+[**CategoryFilterMultiResponse**](CategoryFilterMultiResponse.md)
 
 ### Authorization
 
@@ -289,9 +289,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CategoryFiltersReadCategoryFilter
+## ReadCategoryFilter
 
-> AtcfwCategoryFilterReadResponse CategoryFiltersReadCategoryFilter(ctx, id).Fields(fields).Name(name).Execute()
+> CategoryFilterReadResponse ReadCategoryFilter(ctx, id).Fields(fields).Name(name).Execute()
 
 Read Category Filter.
 
@@ -316,13 +316,13 @@ func main() {
 	name := "name_example" // string |  (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.CategoryFiltersAPI.CategoryFiltersReadCategoryFilter(context.Background(), id).Fields(fields).Name(name).Execute()
+	resp, r, err := apiClient.CategoryFiltersAPI.ReadCategoryFilter(context.Background(), id).Fields(fields).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersReadCategoryFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.ReadCategoryFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryFiltersReadCategoryFilter`: AtcfwCategoryFilterReadResponse
-	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.CategoryFiltersReadCategoryFilter`: %v\n", resp)
+	// response from `ReadCategoryFilter`: CategoryFilterReadResponse
+	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.ReadCategoryFilter`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersReadCategoryFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadCategoryFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwCategoryFilterReadResponse**](AtcfwCategoryFilterReadResponse.md)
+[**CategoryFilterReadResponse**](CategoryFilterReadResponse.md)
 
 ### Authorization
 
@@ -363,9 +363,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CategoryFiltersUpdateCategoryFilter
+## UpdateCategoryFilter
 
-> AtcfwCategoryFilterUpdateResponse CategoryFiltersUpdateCategoryFilter(ctx, id).Body(body).Execute()
+> CategoryFilterUpdateResponse UpdateCategoryFilter(ctx, id).Body(body).Execute()
 
 Update Category Filter.
 
@@ -386,16 +386,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Category Filter object identifier.
-	body := *fw.NewAtcfwCategoryFilter() // AtcfwCategoryFilter | The Category Filter object.
+	body := *fw.NewCategoryFilter() // CategoryFilter | The Category Filter object.
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.CategoryFiltersAPI.CategoryFiltersUpdateCategoryFilter(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.CategoryFiltersAPI.UpdateCategoryFilter(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.CategoryFiltersUpdateCategoryFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryFiltersAPI.UpdateCategoryFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryFiltersUpdateCategoryFilter`: AtcfwCategoryFilterUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.CategoryFiltersUpdateCategoryFilter`: %v\n", resp)
+	// response from `UpdateCategoryFilter`: CategoryFilterUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `CategoryFiltersAPI.UpdateCategoryFilter`: %v\n", resp)
 }
 ```
 
@@ -409,17 +409,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCategoryFiltersUpdateCategoryFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateCategoryFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwCategoryFilter**](AtcfwCategoryFilter.md) | The Category Filter object. | 
+ **body** | [**CategoryFilter**](CategoryFilter.md) | The Category Filter object. | 
 
 ### Return type
 
-[**AtcfwCategoryFilterUpdateResponse**](AtcfwCategoryFilterUpdateResponse.md)
+[**CategoryFilterUpdateResponse**](CategoryFilterUpdateResponse.md)
 
 ### Authorization
 

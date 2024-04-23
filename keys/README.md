@@ -88,36 +88,35 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GenerateTsigAPI* | [**GenerateTsigGenerateTSIG**](docs/GenerateTsigAPI.md#generatetsiggeneratetsig) | **Get** /keys/generate_tsig | Generate TSIG key with a random secret.
-*KerberosAPI* | [**KerberosDelete**](docs/KerberosAPI.md#kerberosdelete) | **Delete** /keys/kerberos/{id} | Delete the Kerberos key.
-*KerberosAPI* | [**KerberosList**](docs/KerberosAPI.md#kerberoslist) | **Get** /keys/kerberos | Retrieve Kerberos keys.
-*KerberosAPI* | [**KerberosRead**](docs/KerberosAPI.md#kerberosread) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
-*KerberosAPI* | [**KerberosUpdate**](docs/KerberosAPI.md#kerberosupdate) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
-*KerberosAPI* | [**KeysKerberosPost**](docs/KerberosAPI.md#keyskerberospost) | **Post** /keys/kerberos | 
-*TsigAPI* | [**TsigCreate**](docs/TsigAPI.md#tsigcreate) | **Post** /keys/tsig | Create the TSIG key.
-*TsigAPI* | [**TsigDelete**](docs/TsigAPI.md#tsigdelete) | **Delete** /keys/tsig/{id} | Delete the TSIG key.
-*TsigAPI* | [**TsigList**](docs/TsigAPI.md#tsiglist) | **Get** /keys/tsig | Retrieve TSIG keys.
-*TsigAPI* | [**TsigRead**](docs/TsigAPI.md#tsigread) | **Get** /keys/tsig/{id} | Retrieve the TSIG key.
-*TsigAPI* | [**TsigUpdate**](docs/TsigAPI.md#tsigupdate) | **Patch** /keys/tsig/{id} | Update the TSIG key.
-*UploadAPI* | [**UploadUpload**](docs/UploadAPI.md#uploadupload) | **Post** /keys/upload | Upload content to the keys service.
+*GenerateTsigAPI* | [**GenerateTSIG**](docs/GenerateTsigAPI.md#generatetsig) | **Get** /keys/generate_tsig | Generate TSIG key with a random secret.
+*KerberosAPI* | [**Delete**](docs/KerberosAPI.md#delete) | **Delete** /keys/kerberos/{id} | Delete the Kerberos key.
+*KerberosAPI* | [**List**](docs/KerberosAPI.md#list) | **Get** /keys/kerberos | Retrieve Kerberos keys.
+*KerberosAPI* | [**Read**](docs/KerberosAPI.md#read) | **Get** /keys/kerberos/{id} | Retrieve the Kerberos key.
+*KerberosAPI* | [**Update**](docs/KerberosAPI.md#update) | **Patch** /keys/kerberos/{id} | Update the Kerberos key.
+*TsigAPI* | [**Create**](docs/TsigAPI.md#create) | **Post** /keys/tsig | Create the TSIG key.
+*TsigAPI* | [**Delete**](docs/TsigAPI.md#delete) | **Delete** /keys/tsig/{id} | Delete the TSIG key.
+*TsigAPI* | [**List**](docs/TsigAPI.md#list) | **Get** /keys/tsig | Retrieve TSIG keys.
+*TsigAPI* | [**Read**](docs/TsigAPI.md#read) | **Get** /keys/tsig/{id} | Retrieve the TSIG key.
+*TsigAPI* | [**Update**](docs/TsigAPI.md#update) | **Patch** /keys/tsig/{id} | Update the TSIG key.
+*UploadAPI* | [**Upload**](docs/UploadAPI.md#upload) | **Post** /keys/upload | Upload content to the keys service.
 
 
 ## Documentation For Models
 
+ - [CreateTSIGKeyResponse](docs/CreateTSIGKeyResponse.md)
  - [DdiuploadResponse](docs/DdiuploadResponse.md)
+ - [GenerateTSIGResponse](docs/GenerateTSIGResponse.md)
+ - [GenerateTSIGResult](docs/GenerateTSIGResult.md)
  - [KerberosKey](docs/KerberosKey.md)
  - [KerberosKeys](docs/KerberosKeys.md)
- - [KeysCreateTSIGKeyResponse](docs/KeysCreateTSIGKeyResponse.md)
- - [KeysGenerateTSIGResponse](docs/KeysGenerateTSIGResponse.md)
- - [KeysGenerateTSIGResult](docs/KeysGenerateTSIGResult.md)
- - [KeysListKerberosKeyResponse](docs/KeysListKerberosKeyResponse.md)
- - [KeysListTSIGKeyResponse](docs/KeysListTSIGKeyResponse.md)
- - [KeysReadKerberosKeyResponse](docs/KeysReadKerberosKeyResponse.md)
- - [KeysReadTSIGKeyResponse](docs/KeysReadTSIGKeyResponse.md)
- - [KeysTSIGKey](docs/KeysTSIGKey.md)
- - [KeysUpdateKerberosKeyResponse](docs/KeysUpdateKerberosKeyResponse.md)
- - [KeysUpdateTSIGKeyResponse](docs/KeysUpdateTSIGKeyResponse.md)
+ - [ListKerberosKeyResponse](docs/ListKerberosKeyResponse.md)
+ - [ListTSIGKeyResponse](docs/ListTSIGKeyResponse.md)
  - [ProtobufFieldMask](docs/ProtobufFieldMask.md)
+ - [ReadKerberosKeyResponse](docs/ReadKerberosKeyResponse.md)
+ - [ReadTSIGKeyResponse](docs/ReadTSIGKeyResponse.md)
+ - [TSIGKey](docs/TSIGKey.md)
+ - [UpdateKerberosKeyResponse](docs/UpdateKerberosKeyResponse.md)
+ - [UpdateTSIGKeyResponse](docs/UpdateTSIGKeyResponse.md)
  - [UploadContentType](docs/UploadContentType.md)
  - [UploadRequest](docs/UploadRequest.md)
 

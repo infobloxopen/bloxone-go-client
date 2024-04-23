@@ -4,16 +4,16 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DhcpHostList**](DhcpHostAPI.md#DhcpHostList) | **Get** /dhcp/host | Retrieve DHCP hosts.
-[**DhcpHostListAssociations**](DhcpHostAPI.md#DhcpHostListAssociations) | **Get** /dhcp/host/{id}/associations | Retrieve DHCP host associations.
-[**DhcpHostRead**](DhcpHostAPI.md#DhcpHostRead) | **Get** /dhcp/host/{id} | Retrieve the DHCP host.
-[**DhcpHostUpdate**](DhcpHostAPI.md#DhcpHostUpdate) | **Patch** /dhcp/host/{id} | Update the DHCP hosts.
+[**List**](DhcpHostAPI.md#List) | **Get** /dhcp/host | Retrieve DHCP hosts.
+[**ListAssociations**](DhcpHostAPI.md#ListAssociations) | **Get** /dhcp/host/{id}/associations | Retrieve DHCP host associations.
+[**Read**](DhcpHostAPI.md#Read) | **Get** /dhcp/host/{id} | Retrieve the DHCP host.
+[**Update**](DhcpHostAPI.md#Update) | **Patch** /dhcp/host/{id} | Update the DHCP hosts.
 
 
 
-## DhcpHostList
+## List
 
-> ListHostResponse DhcpHostList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ListHostResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Retrieve DHCP hosts.
 
@@ -43,13 +43,13 @@ func main() {
 	torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DhcpHostAPI.DhcpHostList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.DhcpHostAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostList`: ListHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostList`: %v\n", resp)
+	// response from `List`: ListHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.List`: %v\n", resp)
 }
 ```
 
@@ -59,7 +59,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDhcpHostListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -91,9 +91,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DhcpHostListAssociations
+## ListAssociations
 
-> HostAssociationsResponse DhcpHostListAssociations(ctx, id).Execute()
+> HostAssociationsResponse ListAssociations(ctx, id).Execute()
 
 Retrieve DHCP host associations.
 
@@ -116,13 +116,13 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DhcpHostAPI.DhcpHostListAssociations(context.Background(), id).Execute()
+	resp, r, err := apiClient.DhcpHostAPI.ListAssociations(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostListAssociations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.ListAssociations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostListAssociations`: HostAssociationsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostListAssociations`: %v\n", resp)
+	// response from `ListAssociations`: HostAssociationsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.ListAssociations`: %v\n", resp)
 }
 ```
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDhcpHostListAssociationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAssociationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -161,9 +161,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DhcpHostRead
+## Read
 
-> ReadHostResponse DhcpHostRead(ctx, id).Fields(fields).Execute()
+> ReadHostResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP host.
 
@@ -187,13 +187,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DhcpHostAPI.DhcpHostRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.DhcpHostAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostRead`: ReadHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostRead`: %v\n", resp)
+	// response from `Read`: ReadHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDhcpHostReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -233,9 +233,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DhcpHostUpdate
+## Update
 
-> UpdateHostResponse DhcpHostUpdate(ctx, id).Body(body).Execute()
+> UpdateHostResponse Update(ctx, id).Body(body).Execute()
 
 Update the DHCP hosts.
 
@@ -259,13 +259,13 @@ func main() {
 	body := *ipam.NewHost() // Host | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DhcpHostAPI.DhcpHostUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.DhcpHostAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.DhcpHostUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpHostAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DhcpHostUpdate`: UpdateHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.DhcpHostUpdate`: %v\n", resp)
+	// response from `Update`: UpdateHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpHostAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDhcpHostUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

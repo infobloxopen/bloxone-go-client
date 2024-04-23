@@ -28,6 +28,13 @@ type APIClient struct {
 }
 
 // NewAPIClient creates a new API client.
+// The client can be configured with a variadic option. The following options are available:
+// - WithClientName(string) sets the name of the client using the SDK.
+// - WithCSPUrl(string) sets the URL for BloxOne Cloud Services Portal.
+// - WithAPIKey(string) sets the APIKey for accessing the BloxOne API.
+// - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
+// - WithDefaultTags(map[string]string) sets the tags the client can set by default for objects that has tags support.
+// - WithDebug() sets the debug mode.
 func NewAPIClient(options ...option.ClientOption) *APIClient {
 	cfg := internal.NewConfiguration()
 	for _, o := range options {

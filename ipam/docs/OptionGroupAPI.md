@@ -4,17 +4,17 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OptionGroupCreate**](OptionGroupAPI.md#OptionGroupCreate) | **Post** /dhcp/option_group | Create the DHCP option group.
-[**OptionGroupDelete**](OptionGroupAPI.md#OptionGroupDelete) | **Delete** /dhcp/option_group/{id} | Move the DHCP option group to the recycle bin.
-[**OptionGroupList**](OptionGroupAPI.md#OptionGroupList) | **Get** /dhcp/option_group | Retrieve DHCP option groups.
-[**OptionGroupRead**](OptionGroupAPI.md#OptionGroupRead) | **Get** /dhcp/option_group/{id} | Retrieve the DHCP option group.
-[**OptionGroupUpdate**](OptionGroupAPI.md#OptionGroupUpdate) | **Patch** /dhcp/option_group/{id} | Update the DHCP option group.
+[**Create**](OptionGroupAPI.md#Create) | **Post** /dhcp/option_group | Create the DHCP option group.
+[**Delete**](OptionGroupAPI.md#Delete) | **Delete** /dhcp/option_group/{id} | Move the DHCP option group to the recycle bin.
+[**List**](OptionGroupAPI.md#List) | **Get** /dhcp/option_group | Retrieve DHCP option groups.
+[**Read**](OptionGroupAPI.md#Read) | **Get** /dhcp/option_group/{id} | Retrieve the DHCP option group.
+[**Update**](OptionGroupAPI.md#Update) | **Patch** /dhcp/option_group/{id} | Update the DHCP option group.
 
 
 
-## OptionGroupCreate
+## Create
 
-> CreateOptionGroupResponse OptionGroupCreate(ctx).Body(body).Execute()
+> CreateOptionGroupResponse Create(ctx).Body(body).Execute()
 
 Create the DHCP option group.
 
@@ -37,13 +37,13 @@ func main() {
 	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionGroupAPI.OptionGroupCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.OptionGroupAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupCreate`: CreateOptionGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupCreate`: %v\n", resp)
+	// response from `Create`: CreateOptionGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,7 +53,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionGroupCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionGroupDelete
+## Delete
 
-> OptionGroupDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the DHCP option group to the recycle bin.
 
@@ -103,9 +103,9 @@ func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.OptionGroupAPI.OptionGroupDelete(context.Background(), id).Execute()
+	r, err := apiClient.OptionGroupAPI.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionGroupDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionGroupList
+## List
 
-> ListOptionGroupResponse OptionGroupList(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOptionGroupResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve DHCP option groups.
 
@@ -178,13 +178,13 @@ func main() {
 	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionGroupAPI.OptionGroupList(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	resp, r, err := apiClient.OptionGroupAPI.List(context.Background()).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupList`: ListOptionGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupList`: %v\n", resp)
+	// response from `List`: ListOptionGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionGroupListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionGroupRead
+## Read
 
-> ReadOptionGroupResponse OptionGroupRead(ctx, id).Fields(fields).Execute()
+> ReadOptionGroupResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the DHCP option group.
 
@@ -252,13 +252,13 @@ func main() {
 	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionGroupAPI.OptionGroupRead(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.OptionGroupAPI.Read(context.Background(), id).Fields(fields).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupRead``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupRead`: ReadOptionGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupRead`: %v\n", resp)
+	// response from `Read`: ReadOptionGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionGroupReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OptionGroupUpdate
+## Update
 
-> UpdateOptionGroupResponse OptionGroupUpdate(ctx, id).Body(body).Execute()
+> UpdateOptionGroupResponse Update(ctx, id).Body(body).Execute()
 
 Update the DHCP option group.
 
@@ -324,13 +324,13 @@ func main() {
 	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.OptionGroupAPI.OptionGroupUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.OptionGroupAPI.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.OptionGroupUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OptionGroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OptionGroupUpdate`: UpdateOptionGroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.OptionGroupUpdate`: %v\n", resp)
+	// response from `Update`: UpdateOptionGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OptionGroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOptionGroupUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

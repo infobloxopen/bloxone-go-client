@@ -4,13 +4,13 @@ All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LeasesCommandCreate**](LeasesCommandAPI.md#LeasesCommandCreate) | **Post** /dhcp/leases_command | Perform actions like clearing DHCP lease(s).
+[**Create**](LeasesCommandAPI.md#Create) | **Post** /dhcp/leases_command | Perform actions like clearing DHCP lease(s).
 
 
 
-## LeasesCommandCreate
+## Create
 
-> CreateLeasesCommandResponse LeasesCommandCreate(ctx).Body(body).Execute()
+> CreateLeasesCommandResponse Create(ctx).Body(body).Execute()
 
 Perform actions like clearing DHCP lease(s).
 
@@ -33,13 +33,13 @@ func main() {
 	body := *ipam.NewLeasesCommand("Command_example") // LeasesCommand | 
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.LeasesCommandAPI.LeasesCommandCreate(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.LeasesCommandAPI.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LeasesCommandAPI.LeasesCommandCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `LeasesCommandAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LeasesCommandCreate`: CreateLeasesCommandResponse
-	fmt.Fprintf(os.Stdout, "Response from `LeasesCommandAPI.LeasesCommandCreate`: %v\n", resp)
+	// response from `Create`: CreateLeasesCommandResponse
+	fmt.Fprintf(os.Stdout, "Response from `LeasesCommandAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiLeasesCommandCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -91,29 +91,29 @@ All URIs are relative to *https://csp.infoblox.com/api/atcdfp/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsAPI* | [**AccountsCheckConfig**](docs/AccountsAPI.md#accountscheckconfig) | **Post** /config/check | Check Config.
-*DfpAPI* | [**DfpCreateOrUpdateDfp**](docs/DfpAPI.md#dfpcreateorupdatedfp) | **Put** /dfps/{id} | Update DNS Forwarding Proxy resolvers.
-*DfpAPI* | [**DfpListDfp**](docs/DfpAPI.md#dfplistdfp) | **Get** /dfp_services | List DNS Forwarding Proxies.
-*DfpAPI* | [**DfpReadDfp**](docs/DfpAPI.md#dfpreaddfp) | **Get** /dfps/{id} | Read DNS Forwarding Proxy.
+*AccountsAPI* | [**CheckConfig**](docs/AccountsAPI.md#checkconfig) | **Post** /config/check | Check Config.
+*DfpAPI* | [**CreateOrUpdateDfp**](docs/DfpAPI.md#createorupdatedfp) | **Put** /dfps/{id} | Update DNS Forwarding Proxy resolvers.
+*DfpAPI* | [**ListDfp**](docs/DfpAPI.md#listdfp) | **Get** /dfp_services | List DNS Forwarding Proxies.
+*DfpAPI* | [**ReadDfp**](docs/DfpAPI.md#readdfp) | **Get** /dfps/{id} | Read DNS Forwarding Proxy.
 
 
 ## Documentation For Models
 
- - [AtcdfpDNSProtocol](docs/AtcdfpDNSProtocol.md)
- - [AtcdfpDfp](docs/AtcdfpDfp.md)
- - [AtcdfpDfpCreateOrUpdatePayload](docs/AtcdfpDfpCreateOrUpdatePayload.md)
- - [AtcdfpDfpCreateOrUpdateResponse](docs/AtcdfpDfpCreateOrUpdateResponse.md)
- - [AtcdfpDfpHost](docs/AtcdfpDfpHost.md)
- - [AtcdfpDfpListResponse](docs/AtcdfpDfpListResponse.md)
- - [AtcdfpDfpReadResponse](docs/AtcdfpDfpReadResponse.md)
- - [AtcdfpNetAddrPolicyAssignment](docs/AtcdfpNetAddrPolicyAssignment.md)
- - [AtcdfpResolver](docs/AtcdfpResolver.md)
+ - [DNSProtocol](docs/DNSProtocol.md)
+ - [Dfp](docs/Dfp.md)
  - [DfpCreateOrUpdateDfp400Response](docs/DfpCreateOrUpdateDfp400Response.md)
  - [DfpCreateOrUpdateDfp400ResponseError](docs/DfpCreateOrUpdateDfp400ResponseError.md)
+ - [DfpCreateOrUpdatePayload](docs/DfpCreateOrUpdatePayload.md)
+ - [DfpCreateOrUpdateResponse](docs/DfpCreateOrUpdateResponse.md)
+ - [DfpHost](docs/DfpHost.md)
  - [DfpListDfp500Response](docs/DfpListDfp500Response.md)
  - [DfpListDfp500ResponseError](docs/DfpListDfp500ResponseError.md)
+ - [DfpListResponse](docs/DfpListResponse.md)
  - [DfpReadDfp404Response](docs/DfpReadDfp404Response.md)
  - [DfpReadDfp404ResponseError](docs/DfpReadDfp404ResponseError.md)
+ - [DfpReadResponse](docs/DfpReadResponse.md)
+ - [NetAddrPolicyAssignment](docs/NetAddrPolicyAssignment.md)
+ - [Resolver](docs/Resolver.md)
  - [TypesConfigCheckRequest](docs/TypesConfigCheckRequest.md)
  - [TypesConfigCheckResponse](docs/TypesConfigCheckResponse.md)
  - [TypesConfigCheckResult](docs/TypesConfigCheckResult.md)

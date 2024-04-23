@@ -4,15 +4,15 @@ All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NamedListItemsDeleteNamedListItems**](NamedListItemsAPI.md#NamedListItemsDeleteNamedListItems) | **Delete** /named_lists/{id}/items | Delete Named List Items.
-[**NamedListItemsInsertOrReplaceNamedListItems**](NamedListItemsAPI.md#NamedListItemsInsertOrReplaceNamedListItems) | **Post** /named_lists/{id}/items | Insert Named List Items.
-[**NamedListItemsNamedListItemsPartialUpdate**](NamedListItemsAPI.md#NamedListItemsNamedListItemsPartialUpdate) | **Patch** /named_lists/{id}/items | Partial Update Named List Items.
+[**DeleteNamedListItems**](NamedListItemsAPI.md#DeleteNamedListItems) | **Delete** /named_lists/{id}/items | Delete Named List Items.
+[**InsertOrReplaceNamedListItems**](NamedListItemsAPI.md#InsertOrReplaceNamedListItems) | **Post** /named_lists/{id}/items | Insert Named List Items.
+[**NamedListItemsPartialUpdate**](NamedListItemsAPI.md#NamedListItemsPartialUpdate) | **Patch** /named_lists/{id}/items | Partial Update Named List Items.
 
 
 
-## NamedListItemsDeleteNamedListItems
+## DeleteNamedListItems
 
-> NamedListItemsDeleteNamedListItems(ctx, id).Body(body).Execute()
+> DeleteNamedListItems(ctx, id).Body(body).Execute()
 
 Delete Named List Items.
 
@@ -33,12 +33,12 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Named List object identifier.
-	body := *fw.NewAtcfwNamedListItemsDeleteRequest() // AtcfwNamedListItemsDeleteRequest | 
+	body := *fw.NewNamedListItemsDeleteRequest() // NamedListItemsDeleteRequest | 
 
 	apiClient := fw.NewAPIClient()
-	r, err := apiClient.NamedListItemsAPI.NamedListItemsDeleteNamedListItems(context.Background(), id).Body(body).Execute()
+	r, err := apiClient.NamedListItemsAPI.DeleteNamedListItems(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsDeleteNamedListItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.DeleteNamedListItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -54,13 +54,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListItemsDeleteNamedListItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNamedListItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwNamedListItemsDeleteRequest**](AtcfwNamedListItemsDeleteRequest.md) |  | 
+ **body** | [**NamedListItemsDeleteRequest**](NamedListItemsDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -80,9 +80,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListItemsInsertOrReplaceNamedListItems
+## InsertOrReplaceNamedListItems
 
-> AtcfwNamedListItemsInsertOrUpdateResponse NamedListItemsInsertOrReplaceNamedListItems(ctx, id).Body(body).Execute()
+> NamedListItemsInsertOrUpdateResponse InsertOrReplaceNamedListItems(ctx, id).Body(body).Execute()
 
 Insert Named List Items.
 
@@ -103,16 +103,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Named List object identifier.
-	body := *fw.NewAtcfwNamedListItemsInsertOrUpdate() // AtcfwNamedListItemsInsertOrUpdate | NamedListItemsInsertOrUpdate object
+	body := *fw.NewNamedListItemsInsertOrUpdate() // NamedListItemsInsertOrUpdate | NamedListItemsInsertOrUpdate object
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.NamedListItemsAPI.InsertOrReplaceNamedListItems(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.InsertOrReplaceNamedListItems``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListItemsInsertOrReplaceNamedListItems`: AtcfwNamedListItemsInsertOrUpdateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems`: %v\n", resp)
+	// response from `InsertOrReplaceNamedListItems`: NamedListItemsInsertOrUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.InsertOrReplaceNamedListItems`: %v\n", resp)
 }
 ```
 
@@ -126,17 +126,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListItemsInsertOrReplaceNamedListItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiInsertOrReplaceNamedListItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwNamedListItemsInsertOrUpdate**](AtcfwNamedListItemsInsertOrUpdate.md) | NamedListItemsInsertOrUpdate object | 
+ **body** | [**NamedListItemsInsertOrUpdate**](NamedListItemsInsertOrUpdate.md) | NamedListItemsInsertOrUpdate object | 
 
 ### Return type
 
-[**AtcfwNamedListItemsInsertOrUpdateResponse**](AtcfwNamedListItemsInsertOrUpdateResponse.md)
+[**NamedListItemsInsertOrUpdateResponse**](NamedListItemsInsertOrUpdateResponse.md)
 
 ### Authorization
 
@@ -152,9 +152,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## NamedListItemsNamedListItemsPartialUpdate
+## NamedListItemsPartialUpdate
 
-> map[string]interface{} NamedListItemsNamedListItemsPartialUpdate(ctx, id).Body(body).Execute()
+> map[string]interface{} NamedListItemsPartialUpdate(ctx, id).Body(body).Execute()
 
 Partial Update Named List Items.
 
@@ -175,16 +175,16 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Named List object identifier.
-	body := *fw.NewAtcfwNamedListItemsPartialUpdate() // AtcfwNamedListItemsPartialUpdate | NamedListItemsPartialUpdate object
+	body := *fw.NewNamedListItemsPartialUpdate() // NamedListItemsPartialUpdate | NamedListItemsPartialUpdate object
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.NamedListItemsAPI.NamedListItemsPartialUpdate(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NamedListItemsAPI.NamedListItemsPartialUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NamedListItemsNamedListItemsPartialUpdate`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate`: %v\n", resp)
+	// response from `NamedListItemsPartialUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `NamedListItemsAPI.NamedListItemsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -198,13 +198,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListItemsNamedListItemsPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiNamedListItemsPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**AtcfwNamedListItemsPartialUpdate**](AtcfwNamedListItemsPartialUpdate.md) | NamedListItemsPartialUpdate object | 
+ **body** | [**NamedListItemsPartialUpdate**](NamedListItemsPartialUpdate.md) | NamedListItemsPartialUpdate object | 
 
 ### Return type
 
