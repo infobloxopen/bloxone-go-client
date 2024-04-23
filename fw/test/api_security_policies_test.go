@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_SecurityPoliciesAPIService(t *testing.T) {
+func TestSecurityPoliciesAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesCreateSecurityPolicy", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService CreateSecurityPolicy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesCreateSecurityPolicy(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SecurityPoliciesAPI.CreateSecurityPolicy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,35 +35,35 @@ func Test_fw_SecurityPoliciesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesDeleteSecurityPolicy", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService DeleteSecurityPolicy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesDeleteSecurityPolicy(context.Background()).Execute()
+		httpRes, err := apiClient.SecurityPoliciesAPI.DeleteSecurityPolicy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesDeleteSingleSecurityPolicy", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService DeleteSingleSecurityPolicy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesDeleteSingleSecurityPolicy(context.Background(), id).Execute()
+		httpRes, err := apiClient.SecurityPoliciesAPI.DeleteSingleSecurityPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesListSecurityPolicies", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService ListSecurityPolicies", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesListSecurityPolicies(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SecurityPoliciesAPI.ListSecurityPolicies(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +71,13 @@ func Test_fw_SecurityPoliciesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesReadSecurityPolicy", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService ReadSecurityPolicy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesReadSecurityPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SecurityPoliciesAPI.ReadSecurityPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,13 +85,13 @@ func Test_fw_SecurityPoliciesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecurityPoliciesAPIService SecurityPoliciesUpdateSecurityPolicy", func(t *testing.T) {
+	t.Run("Test SecurityPoliciesAPIService UpdateSecurityPolicy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.SecurityPoliciesAPI.SecurityPoliciesUpdateSecurityPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SecurityPoliciesAPI.UpdateSecurityPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

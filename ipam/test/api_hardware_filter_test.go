@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_HardwareFilterAPIService(t *testing.T) {
+func TestHardwareFilterAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test HardwareFilterAPIService HardwareFilterCreate", func(t *testing.T) {
+	t.Run("Test HardwareFilterAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HardwareFilterAPI.HardwareFilterCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HardwareFilterAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_HardwareFilterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HardwareFilterAPIService HardwareFilterDelete", func(t *testing.T) {
+	t.Run("Test HardwareFilterAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.HardwareFilterAPI.HardwareFilterDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.HardwareFilterAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test HardwareFilterAPIService HardwareFilterList", func(t *testing.T) {
+	t.Run("Test HardwareFilterAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HardwareFilterAPI.HardwareFilterList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test HardwareFilterAPIService HardwareFilterRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.HardwareFilterAPI.HardwareFilterRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.HardwareFilterAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_HardwareFilterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HardwareFilterAPIService HardwareFilterUpdate", func(t *testing.T) {
+	t.Run("Test HardwareFilterAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.HardwareFilterAPI.HardwareFilterUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.HardwareFilterAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HardwareFilterAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.HardwareFilterAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,19 +1,19 @@
-# \GlobalAPI
+# GlobalAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GlobalRead**](GlobalAPI.md#GlobalRead) | **Get** /dhcp/global | Retrieve the global configuration.
-[**GlobalRead2**](GlobalAPI.md#GlobalRead2) | **Get** /dhcp/global/{id} | Retrieve the global configuration.
-[**GlobalUpdate**](GlobalAPI.md#GlobalUpdate) | **Patch** /dhcp/global | Update the global configuration.
-[**GlobalUpdate2**](GlobalAPI.md#GlobalUpdate2) | **Patch** /dhcp/global/{id} | Update the global configuration.
+[**Read**](GlobalAPI.md#Read) | **Get** /dhcp/global | Retrieve the global configuration.
+[**ReadById**](GlobalAPI.md#ReadById) | **Get** /dhcp/global/{id} | Retrieve the global configuration.
+[**Update**](GlobalAPI.md#Update) | **Patch** /dhcp/global | Update the global configuration.
+[**UpdateById**](GlobalAPI.md#UpdateById) | **Patch** /dhcp/global/{id} | Update the global configuration.
 
 
 
-## GlobalRead
+## Read
 
-> IpamsvcReadGlobalResponse GlobalRead(ctx).Fields(fields).Execute()
+> ReadGlobalResponse Read(ctx).Fields(fields).Execute()
 
 Retrieve the global configuration.
 
@@ -25,24 +25,24 @@ Retrieve the global configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalRead(context.Background()).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalRead`: IpamsvcReadGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.Read(context.Background()).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.Read``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Read`: ReadGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGlobalReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadGlobalResponse**](IpamsvcReadGlobalResponse.md)
+[**ReadGlobalResponse**](ReadGlobalResponse.md)
 
 ### Authorization
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GlobalRead2
+## ReadById
 
-> IpamsvcReadGlobalResponse GlobalRead2(ctx, id).Fields(fields).Execute()
+> ReadGlobalResponse ReadById(ctx, id).Fields(fields).Execute()
 
 Retrieve the global configuration.
 
@@ -91,25 +91,25 @@ Retrieve the global configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	id := "id_example" // string | An application specific resource identity of a resource
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), id).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalRead2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalRead2`: IpamsvcReadGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalRead2`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.ReadById(context.Background(), id).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.ReadById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadById`: ReadGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.ReadById`: %v\n", resp)
 }
 ```
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGlobalRead2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadGlobalResponse**](IpamsvcReadGlobalResponse.md)
+[**ReadGlobalResponse**](ReadGlobalResponse.md)
 
 ### Authorization
 
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GlobalUpdate
+## Update
 
-> IpamsvcUpdateGlobalResponse GlobalUpdate(ctx).Body(body).Execute()
+> UpdateGlobalResponse Update(ctx).Body(body).Execute()
 
 Update the global configuration.
 
@@ -163,24 +163,24 @@ Update the global configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcGlobal() // IpamsvcGlobal | 
+	body := *ipam.NewGlobal() // Global | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalUpdate`: IpamsvcUpdateGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.Update(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: UpdateGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -190,16 +190,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGlobalUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcGlobal**](IpamsvcGlobal.md) |  | 
+ **body** | [**Global**](Global.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateGlobalResponse**](IpamsvcUpdateGlobalResponse.md)
+[**UpdateGlobalResponse**](UpdateGlobalResponse.md)
 
 ### Authorization
 
@@ -215,9 +215,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GlobalUpdate2
+## UpdateById
 
-> IpamsvcUpdateGlobalResponse GlobalUpdate2(ctx, id).Body(body).Execute()
+> UpdateGlobalResponse UpdateById(ctx, id).Body(body).Execute()
 
 Update the global configuration.
 
@@ -229,25 +229,25 @@ Update the global configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcGlobal() // IpamsvcGlobal | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *ipam.NewGlobal() // Global | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.GlobalUpdate2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GlobalUpdate2`: IpamsvcUpdateGlobalResponse
-    fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.GlobalUpdate2`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.GlobalAPI.UpdateById(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GlobalAPI.UpdateById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateById`: UpdateGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `GlobalAPI.UpdateById`: %v\n", resp)
 }
 ```
 
@@ -261,17 +261,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGlobalUpdate2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcGlobal**](IpamsvcGlobal.md) |  | 
+ **body** | [**Global**](Global.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateGlobalResponse**](IpamsvcUpdateGlobalResponse.md)
+[**UpdateGlobalResponse**](UpdateGlobalResponse.md)
 
 ### Authorization
 

@@ -16,35 +16,33 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_NamedListItemsAPIService(t *testing.T) {
+func TestNamedListItemsAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsDeleteNamedListItems", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService DeleteNamedListItems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsDeleteNamedListItems(context.Background(), id).Execute()
+		httpRes, err := apiClient.NamedListItemsAPI.DeleteNamedListItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsInsertOrReplaceNamedListItems", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService InsertOrReplaceNamedListItems", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsInsertOrReplaceNamedListItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListItemsAPI.InsertOrReplaceNamedListItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,13 +50,13 @@ func Test_fw_NamedListItemsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedListItemsAPIService NamedListItemsNamedListItemsPartialUpdate", func(t *testing.T) {
+	t.Run("Test NamedListItemsAPIService NamedListItemsPartialUpdate", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsNamedListItemsPartialUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NamedListItemsAPI.NamedListItemsPartialUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

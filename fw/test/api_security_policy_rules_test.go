@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_SecurityPolicyRulesAPIService(t *testing.T) {
+func TestSecurityPolicyRulesAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test SecurityPolicyRulesAPIService SecurityPolicyRulesListSecurityPolicyRules", func(t *testing.T) {
+	t.Run("Test SecurityPolicyRulesAPIService ListSecurityPolicyRules", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SecurityPolicyRulesAPI.SecurityPolicyRulesListSecurityPolicyRules(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SecurityPolicyRulesAPI.ListSecurityPolicyRules(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

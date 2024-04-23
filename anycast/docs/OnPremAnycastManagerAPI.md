@@ -1,32 +1,32 @@
-# \OnPremAnycastManagerAPI
+# OnPremAnycastManagerAPI
 
-All URIs are relative to *http://localhost/api/anycast/v1*
+All URIs are relative to *http://csp.infoblox.com/api/anycast/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OnPremAnycastManagerCreateAnycastConfig**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerCreateAnycastConfig) | **Post** /accm/ac_configs | Create Anycast Configuration
-[**OnPremAnycastManagerCreateAnycastVersion**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerCreateAnycastVersion) | **Post** /accm/ac_version/{id} | Create Anycast Version
-[**OnPremAnycastManagerDeleteAnycastConfig**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerDeleteAnycastConfig) | **Delete** /accm/ac_configs/{id} | Delete Anycast Configuration
-[**OnPremAnycastManagerDeleteAnycastVersion**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerDeleteAnycastVersion) | **Delete** /accm/ac_version/{id} | Delete anycast version
-[**OnPremAnycastManagerDeleteOnpremHost**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerDeleteOnpremHost) | **Delete** /accm/op_hosts/{id} | Delete On-Prem Host
-[**OnPremAnycastManagerGetAnycastConfig**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetAnycastConfig) | **Get** /accm/ac_configs/{id} | Retrieve Anycast Configuration
-[**OnPremAnycastManagerGetAnycastConfigList**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetAnycastConfigList) | **Get** /accm/ac_configs | Retrieve Multiple Anycast Configurations
-[**OnPremAnycastManagerGetAnycastVersion**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetAnycastVersion) | **Get** /accm/ac_version/{id} | Retrieve Anycast Version
-[**OnPremAnycastManagerGetOnpremConfig**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetOnpremConfig) | **Get** /accm/oph_configs/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
-[**OnPremAnycastManagerGetOnpremConfig2**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetOnpremConfig2) | **Get** /onprem_config/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
-[**OnPremAnycastManagerGetOnpremHost**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetOnpremHost) | **Get** /accm/op_hosts/{id} | Retrieve On-Prem Host
-[**OnPremAnycastManagerGetStatus**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetStatus) | **Get** /accm/oph_config_statuses/{ophid}/latest | Retrieve Configuration Status
-[**OnPremAnycastManagerGetStatus2**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerGetStatus2) | **Get** /onprem_config_statuses/{ophid}/latest | Retrieve Configuration Status
-[**OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus) | **Get** /accm/ac_runtime_statuses | Read list of Anycast Configurations
-[**OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus) | **Get** /accm/ac_runtime_statuses/{id} | Read Anycast Configuration
-[**OnPremAnycastManagerUpdateAnycastConfig**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerUpdateAnycastConfig) | **Put** /accm/ac_configs/{id} | Create or Update Anycast Configuration
-[**OnPremAnycastManagerUpdateOnpremHost**](OnPremAnycastManagerAPI.md#OnPremAnycastManagerUpdateOnpremHost) | **Put** /accm/op_hosts/{id} | Create or Update On-Prem Host
+[**CreateAnycastConfig**](OnPremAnycastManagerAPI.md#CreateAnycastConfig) | **Post** /accm/ac_configs | Create Anycast Configuration
+[**CreateAnycastVersion**](OnPremAnycastManagerAPI.md#CreateAnycastVersion) | **Post** /accm/ac_version/{id} | Create Anycast Version
+[**DeleteAnycastConfig**](OnPremAnycastManagerAPI.md#DeleteAnycastConfig) | **Delete** /accm/ac_configs/{id} | Delete Anycast Configuration
+[**DeleteAnycastVersion**](OnPremAnycastManagerAPI.md#DeleteAnycastVersion) | **Delete** /accm/ac_version/{id} | Delete anycast version
+[**DeleteOnpremHost**](OnPremAnycastManagerAPI.md#DeleteOnpremHost) | **Delete** /accm/op_hosts/{id} | Delete On-Prem Host
+[**GetAnycastConfig**](OnPremAnycastManagerAPI.md#GetAnycastConfig) | **Get** /accm/ac_configs/{id} | Retrieve Anycast Configuration
+[**GetAnycastConfigList**](OnPremAnycastManagerAPI.md#GetAnycastConfigList) | **Get** /accm/ac_configs | Retrieve Multiple Anycast Configurations
+[**GetAnycastVersion**](OnPremAnycastManagerAPI.md#GetAnycastVersion) | **Get** /accm/ac_version/{id} | Retrieve Anycast Version
+[**GetOnpremConfig**](OnPremAnycastManagerAPI.md#GetOnpremConfig) | **Get** /accm/oph_configs/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
+[**GetOnpremConfig2**](OnPremAnycastManagerAPI.md#GetOnpremConfig2) | **Get** /onprem_config/{ophid}/{version} | Retrieve Generated, Per-Host Anycast Configuration
+[**GetOnpremHost**](OnPremAnycastManagerAPI.md#GetOnpremHost) | **Get** /accm/op_hosts/{id} | Retrieve On-Prem Host
+[**GetStatus**](OnPremAnycastManagerAPI.md#GetStatus) | **Get** /accm/oph_config_statuses/{ophid}/latest | Retrieve Configuration Status
+[**GetStatus2**](OnPremAnycastManagerAPI.md#GetStatus2) | **Get** /onprem_config_statuses/{ophid}/latest | Retrieve Configuration Status
+[**ListAnycastConfigsWithRuntimeStatus**](OnPremAnycastManagerAPI.md#ListAnycastConfigsWithRuntimeStatus) | **Get** /accm/ac_runtime_statuses | Read list of Anycast Configurations
+[**ReadAnycastConfigWithRuntimeStatus**](OnPremAnycastManagerAPI.md#ReadAnycastConfigWithRuntimeStatus) | **Get** /accm/ac_runtime_statuses/{id} | Read Anycast Configuration
+[**UpdateAnycastConfig**](OnPremAnycastManagerAPI.md#UpdateAnycastConfig) | **Put** /accm/ac_configs/{id} | Create or Update Anycast Configuration
+[**UpdateOnpremHost**](OnPremAnycastManagerAPI.md#UpdateOnpremHost) | **Put** /accm/op_hosts/{id} | Create or Update On-Prem Host
 
 
 
-## OnPremAnycastManagerCreateAnycastConfig
+## CreateAnycastConfig
 
-> ProtoAnycastConfigResponse OnPremAnycastManagerCreateAnycastConfig(ctx).Body(body).Execute()
+> AnycastConfigResponse CreateAnycastConfig(ctx).Body(body).Execute()
 
 Create Anycast Configuration
 
@@ -38,24 +38,24 @@ Create Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    body := *openapiclient.NewProtoAnycastConfig() // ProtoAnycastConfig | 
+	body := *anycast.NewAnycastConfig() // AnycastConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastConfig(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerCreateAnycastConfig`: ProtoAnycastConfigResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastConfig`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.CreateAnycastConfig(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.CreateAnycastConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAnycastConfig`: AnycastConfigResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.CreateAnycastConfig`: %v\n", resp)
 }
 ```
 
@@ -65,16 +65,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerCreateAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAnycastConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ProtoAnycastConfig**](ProtoAnycastConfig.md) |  | 
+ **body** | [**AnycastConfig**](AnycastConfig.md) |  | 
 
 ### Return type
 
-[**ProtoAnycastConfigResponse**](ProtoAnycastConfigResponse.md)
+[**AnycastConfigResponse**](AnycastConfigResponse.md)
 
 ### Authorization
 
@@ -90,9 +90,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerCreateAnycastVersion
+## CreateAnycastVersion
 
-> map[string]interface{} OnPremAnycastManagerCreateAnycastVersion(ctx, id).Execute()
+> map[string]interface{} CreateAnycastVersion(ctx, id).Execute()
 
 Create Anycast Version
 
@@ -104,24 +104,24 @@ Create Anycast Version
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastVersion(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastVersion``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerCreateAnycastVersion`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerCreateAnycastVersion`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.CreateAnycastVersion(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.CreateAnycastVersion``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAnycastVersion`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.CreateAnycastVersion`: %v\n", resp)
 }
 ```
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerCreateAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAnycastVersionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -160,9 +160,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerDeleteAnycastConfig
+## DeleteAnycastConfig
 
-> map[string]interface{} OnPremAnycastManagerDeleteAnycastConfig(ctx, id).Execute()
+> map[string]interface{} DeleteAnycastConfig(ctx, id).Execute()
 
 Delete Anycast Configuration
 
@@ -174,24 +174,24 @@ Delete Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastConfig(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerDeleteAnycastConfig`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastConfig`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.DeleteAnycastConfig(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.DeleteAnycastConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteAnycastConfig`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.DeleteAnycastConfig`: %v\n", resp)
 }
 ```
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerDeleteAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAnycastConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -230,9 +230,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerDeleteAnycastVersion
+## DeleteAnycastVersion
 
-> map[string]interface{} OnPremAnycastManagerDeleteAnycastVersion(ctx, id).Execute()
+> map[string]interface{} DeleteAnycastVersion(ctx, id).Execute()
 
 Delete anycast version
 
@@ -244,24 +244,24 @@ Delete anycast version
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastVersion(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastVersion``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerDeleteAnycastVersion`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteAnycastVersion`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.DeleteAnycastVersion(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.DeleteAnycastVersion``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteAnycastVersion`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.DeleteAnycastVersion`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerDeleteAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAnycastVersionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerDeleteOnpremHost
+## DeleteOnpremHost
 
-> map[string]interface{} OnPremAnycastManagerDeleteOnpremHost(ctx, id).Execute()
+> map[string]interface{} DeleteOnpremHost(ctx, id).Execute()
 
 Delete On-Prem Host
 
@@ -314,24 +314,24 @@ Delete On-Prem Host
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteOnpremHost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteOnpremHost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerDeleteOnpremHost`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerDeleteOnpremHost`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.DeleteOnpremHost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.DeleteOnpremHost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteOnpremHost`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.DeleteOnpremHost`: %v\n", resp)
 }
 ```
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerDeleteOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOnpremHostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -370,9 +370,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetAnycastConfig
+## GetAnycastConfig
 
-> ProtoAnycastConfigResponse OnPremAnycastManagerGetAnycastConfig(ctx, id).Execute()
+> AnycastConfigResponse GetAnycastConfig(ctx, id).Execute()
 
 Retrieve Anycast Configuration
 
@@ -384,24 +384,24 @@ Retrieve Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfig(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetAnycastConfig`: ProtoAnycastConfigResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfig`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetAnycastConfig(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetAnycastConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAnycastConfig`: AnycastConfigResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetAnycastConfig`: %v\n", resp)
 }
 ```
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAnycastConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoAnycastConfigResponse**](ProtoAnycastConfigResponse.md)
+[**AnycastConfigResponse**](AnycastConfigResponse.md)
 
 ### Authorization
 
@@ -440,9 +440,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetAnycastConfigList
+## GetAnycastConfigList
 
-> ProtoGetAnycastConfigListResponse OnPremAnycastManagerGetAnycastConfigList(ctx).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> GetAnycastConfigListResponse GetAnycastConfigList(ctx).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Retrieve Multiple Anycast Configurations
 
@@ -454,30 +454,30 @@ Retrieve Multiple Anycast Configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    accountId := int64(789) // int64 |  (optional)
-    service := "service_example" // string |  (optional)
-    hostId := int64(789) // int64 |  (optional)
-    ophid := "ophid_example" // string |  (optional)
-    isConfigured := true // bool |  (optional)
-    tfilter := "tfilter_example" // string |  (optional)
-    torderBy := "torderBy_example" // string |  (optional)
+	accountId := int64(789) // int64 |  (optional)
+	service := "service_example" // string |  (optional)
+	hostId := int64(789) // int64 |  (optional)
+	ophid := "ophid_example" // string |  (optional)
+	isConfigured := true // bool |  (optional)
+	tfilter := "tfilter_example" // string |  (optional)
+	torderBy := "torderBy_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfigList(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfigList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetAnycastConfigList`: ProtoGetAnycastConfigListResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastConfigList`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetAnycastConfigList(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetAnycastConfigList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAnycastConfigList`: GetAnycastConfigListResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetAnycastConfigList`: %v\n", resp)
 }
 ```
 
@@ -487,7 +487,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetAnycastConfigListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAnycastConfigListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoGetAnycastConfigListResponse**](ProtoGetAnycastConfigListResponse.md)
+[**GetAnycastConfigListResponse**](GetAnycastConfigListResponse.md)
 
 ### Authorization
 
@@ -518,9 +518,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetAnycastVersion
+## GetAnycastVersion
 
-> ProtoAnycastVersion OnPremAnycastManagerGetAnycastVersion(ctx, id).Execute()
+> AnycastVersion GetAnycastVersion(ctx, id).Execute()
 
 Retrieve Anycast Version
 
@@ -532,24 +532,24 @@ Retrieve Anycast Version
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastVersion(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastVersion``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetAnycastVersion`: ProtoAnycastVersion
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetAnycastVersion`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetAnycastVersion(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetAnycastVersion``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAnycastVersion`: AnycastVersion
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetAnycastVersion`: %v\n", resp)
 }
 ```
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAnycastVersionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -572,7 +572,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoAnycastVersion**](ProtoAnycastVersion.md)
+[**AnycastVersion**](AnycastVersion.md)
 
 ### Authorization
 
@@ -588,9 +588,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetOnpremConfig
+## GetOnpremConfig
 
-> ServiceConfig OnPremAnycastManagerGetOnpremConfig(ctx, ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+> ServiceConfig GetOnpremConfig(ctx, ophid, version).AppName(appName).AppVersion(appVersion).Execute()
 
 Retrieve Generated, Per-Host Anycast Configuration
 
@@ -602,27 +602,27 @@ Retrieve Generated, Per-Host Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    ophid := "ophid_example" // string | 
-    version := "version_example" // string | 
-    appName := "appName_example" // string |  (optional)
-    appVersion := "appVersion_example" // string |  (optional)
+	ophid := "ophid_example" // string | 
+	version := "version_example" // string | 
+	appName := "appName_example" // string |  (optional)
+	appVersion := "appVersion_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetOnpremConfig`: ServiceConfig
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetOnpremConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOnpremConfig`: ServiceConfig
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetOnpremConfig`: %v\n", resp)
 }
 ```
 
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetOnpremConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOnpremConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -665,9 +665,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetOnpremConfig2
+## GetOnpremConfig2
 
-> ServiceConfig OnPremAnycastManagerGetOnpremConfig2(ctx, ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+> ServiceConfig GetOnpremConfig2(ctx, ophid, version).AppName(appName).AppVersion(appVersion).Execute()
 
 Retrieve Generated, Per-Host Anycast Configuration
 
@@ -679,27 +679,27 @@ Retrieve Generated, Per-Host Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    ophid := "ophid_example" // string | 
-    version := "version_example" // string | 
-    appName := "appName_example" // string |  (optional)
-    appVersion := "appVersion_example" // string |  (optional)
+	ophid := "ophid_example" // string | 
+	version := "version_example" // string | 
+	appName := "appName_example" // string |  (optional)
+	appVersion := "appVersion_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig2(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetOnpremConfig2`: ServiceConfig
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremConfig2`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig2(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetOnpremConfig2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOnpremConfig2`: ServiceConfig
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetOnpremConfig2`: %v\n", resp)
 }
 ```
 
@@ -714,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetOnpremConfig2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOnpremConfig2Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -742,9 +742,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetOnpremHost
+## GetOnpremHost
 
-> ProtoOnpremHostResponse OnPremAnycastManagerGetOnpremHost(ctx, id).Execute()
+> OnpremHostResponse GetOnpremHost(ctx, id).Execute()
 
 Retrieve On-Prem Host
 
@@ -756,24 +756,24 @@ Retrieve On-Prem Host
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremHost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremHost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetOnpremHost`: ProtoOnpremHostResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetOnpremHost`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremHost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetOnpremHost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOnpremHost`: OnpremHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetOnpremHost`: %v\n", resp)
 }
 ```
 
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOnpremHostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -796,7 +796,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoOnpremHostResponse**](ProtoOnpremHostResponse.md)
+[**OnpremHostResponse**](OnpremHostResponse.md)
 
 ### Authorization
 
@@ -812,9 +812,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetStatus
+## GetStatus
 
-> ServiceStatusUpdateRequest OnPremAnycastManagerGetStatus(ctx, ophid).Execute()
+> ServiceStatusUpdateRequest GetStatus(ctx, ophid).Execute()
 
 Retrieve Configuration Status
 
@@ -826,24 +826,24 @@ Retrieve Configuration Status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    ophid := "ophid_example" // string | 
+	ophid := "ophid_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus(context.Background(), ophid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetStatus`: ServiceStatusUpdateRequest
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetStatus(context.Background(), ophid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetStatus`: ServiceStatusUpdateRequest
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetStatus`: %v\n", resp)
 }
 ```
 
@@ -857,7 +857,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -882,9 +882,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerGetStatus2
+## GetStatus2
 
-> ServiceStatusUpdateRequest OnPremAnycastManagerGetStatus2(ctx, ophid).Execute()
+> ServiceStatusUpdateRequest GetStatus2(ctx, ophid).Execute()
 
 Retrieve Configuration Status
 
@@ -896,24 +896,24 @@ Retrieve Configuration Status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    ophid := "ophid_example" // string | 
+	ophid := "ophid_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus2(context.Background(), ophid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus2``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerGetStatus2`: ServiceStatusUpdateRequest
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerGetStatus2`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetStatus2(context.Background(), ophid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetStatus2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetStatus2`: ServiceStatusUpdateRequest
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.GetStatus2`: %v\n", resp)
 }
 ```
 
@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerGetStatus2Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetStatus2Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -952,9 +952,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus
+## ListAnycastConfigsWithRuntimeStatus
 
-> ProtoGetAnycastConfigListResponse OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus(ctx).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> GetAnycastConfigListResponse ListAnycastConfigsWithRuntimeStatus(ctx).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 Read list of Anycast Configurations
 
@@ -966,30 +966,30 @@ Read list of Anycast Configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    accountId := int64(789) // int64 |  (optional)
-    service := "service_example" // string |  (optional)
-    hostId := int64(789) // int64 |  (optional)
-    ophid := "ophid_example" // string |  (optional)
-    isConfigured := true // bool |  (optional)
-    tfilter := "tfilter_example" // string |  (optional)
-    torderBy := "torderBy_example" // string |  (optional)
+	accountId := int64(789) // int64 |  (optional)
+	service := "service_example" // string |  (optional)
+	hostId := int64(789) // int64 |  (optional)
+	ophid := "ophid_example" // string |  (optional)
+	isConfigured := true // bool |  (optional)
+	tfilter := "tfilter_example" // string |  (optional)
+	torderBy := "torderBy_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus`: ProtoGetAnycastConfigListResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerListAnycastConfigsWithRuntimeStatus`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAnycastConfigsWithRuntimeStatus`: GetAnycastConfigListResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus`: %v\n", resp)
 }
 ```
 
@@ -999,7 +999,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerListAnycastConfigsWithRuntimeStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAnycastConfigsWithRuntimeStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1014,7 +1014,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoGetAnycastConfigListResponse**](ProtoGetAnycastConfigListResponse.md)
+[**GetAnycastConfigListResponse**](GetAnycastConfigListResponse.md)
 
 ### Authorization
 
@@ -1030,9 +1030,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus
+## ReadAnycastConfigWithRuntimeStatus
 
-> ProtoAnycastConfigResponse OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus(ctx, id).Execute()
+> AnycastConfigResponse ReadAnycastConfigWithRuntimeStatus(ctx, id).Execute()
 
 Read Anycast Configuration
 
@@ -1044,24 +1044,24 @@ Read Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus`: ProtoAnycastConfigResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerReadAnycastConfigWithRuntimeStatus`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.ReadAnycastConfigWithRuntimeStatus(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.ReadAnycastConfigWithRuntimeStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadAnycastConfigWithRuntimeStatus`: AnycastConfigResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.ReadAnycastConfigWithRuntimeStatus`: %v\n", resp)
 }
 ```
 
@@ -1075,7 +1075,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerReadAnycastConfigWithRuntimeStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAnycastConfigWithRuntimeStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1084,7 +1084,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProtoAnycastConfigResponse**](ProtoAnycastConfigResponse.md)
+[**AnycastConfigResponse**](AnycastConfigResponse.md)
 
 ### Authorization
 
@@ -1100,9 +1100,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerUpdateAnycastConfig
+## UpdateAnycastConfig
 
-> ProtoAnycastConfigResponse OnPremAnycastManagerUpdateAnycastConfig(ctx, id).Body(body).Execute()
+> AnycastConfigResponse UpdateAnycastConfig(ctx, id).Body(body).Execute()
 
 Create or Update Anycast Configuration
 
@@ -1114,25 +1114,25 @@ Create or Update Anycast Configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    body := *openapiclient.NewProtoAnycastConfig() // ProtoAnycastConfig | 
+	id := int64(789) // int64 | 
+	body := *anycast.NewAnycastConfig() // AnycastConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateAnycastConfig(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateAnycastConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerUpdateAnycastConfig`: ProtoAnycastConfigResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateAnycastConfig`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.UpdateAnycastConfig(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.UpdateAnycastConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAnycastConfig`: AnycastConfigResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.UpdateAnycastConfig`: %v\n", resp)
 }
 ```
 
@@ -1146,17 +1146,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerUpdateAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAnycastConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ProtoAnycastConfig**](ProtoAnycastConfig.md) |  | 
+ **body** | [**AnycastConfig**](AnycastConfig.md) |  | 
 
 ### Return type
 
-[**ProtoAnycastConfigResponse**](ProtoAnycastConfigResponse.md)
+[**AnycastConfigResponse**](AnycastConfigResponse.md)
 
 ### Authorization
 
@@ -1172,9 +1172,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OnPremAnycastManagerUpdateOnpremHost
+## UpdateOnpremHost
 
-> ProtoOnpremHostResponse OnPremAnycastManagerUpdateOnpremHost(ctx, id).Body(body).Execute()
+> OnpremHostResponse UpdateOnpremHost(ctx, id).Body(body).Execute()
 
 Create or Update On-Prem Host
 
@@ -1186,25 +1186,25 @@ Create or Update On-Prem Host
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/anycast"
 )
 
 func main() {
-    id := int64(789) // int64 | Numeric host identifier
-    body := *openapiclient.NewProtoOnpremHost() // ProtoOnpremHost | 
+	id := int64(789) // int64 | Numeric host identifier
+	body := *anycast.NewOnpremHost() // OnpremHost | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateOnpremHost(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateOnpremHost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OnPremAnycastManagerUpdateOnpremHost`: ProtoOnpremHostResponse
-    fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.OnPremAnycastManagerUpdateOnpremHost`: %v\n", resp)
+	apiClient := anycast.NewAPIClient()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.UpdateOnpremHost(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.UpdateOnpremHost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOnpremHost`: OnpremHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `OnPremAnycastManagerAPI.UpdateOnpremHost`: %v\n", resp)
 }
 ```
 
@@ -1218,17 +1218,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOnPremAnycastManagerUpdateOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOnpremHostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**ProtoOnpremHost**](ProtoOnpremHost.md) |  | 
+ **body** | [**OnpremHost**](OnpremHost.md) |  | 
 
 ### Return type
 
-[**ProtoOnpremHostResponse**](ProtoOnpremHostResponse.md)
+[**OnpremHostResponse**](OnpremHostResponse.md)
 
 ### Authorization
 

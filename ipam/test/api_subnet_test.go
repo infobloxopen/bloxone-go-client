@@ -16,22 +16,20 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_SubnetAPIService(t *testing.T) {
+func TestSubnetAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test SubnetAPIService SubnetCopy", func(t *testing.T) {
+	t.Run("Test SubnetAPIService Copy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCopy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.Copy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -39,11 +37,11 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetCreate", func(t *testing.T) {
+	t.Run("Test SubnetAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,13 +49,13 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetCreateNextAvailableIP", func(t *testing.T) {
+	t.Run("Test SubnetAPIService CreateNextAvailableIP", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetCreateNextAvailableIP(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.CreateNextAvailableIP(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,38 +63,24 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetDelete", func(t *testing.T) {
+	t.Run("Test SubnetAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.SubnetAPI.SubnetDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.SubnetAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetList", func(t *testing.T) {
+	t.Run("Test SubnetAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SubnetAPIService SubnetListNextAvailableIP", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetListNextAvailableIP(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,13 +88,13 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetRead", func(t *testing.T) {
+	t.Run("Test SubnetAPIService ListNextAvailableIP", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.ListNextAvailableIP(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,13 +102,27 @@ func Test_ipam_SubnetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SubnetAPIService SubnetUpdate", func(t *testing.T) {
+	t.Run("Test SubnetAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SubnetAPI.SubnetUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SubnetAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SubnetAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.SubnetAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

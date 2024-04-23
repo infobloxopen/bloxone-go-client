@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_DnsUsageAPIService(t *testing.T) {
+func TestDnsUsageAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test DnsUsageAPIService DnsUsageList", func(t *testing.T) {
+	t.Run("Test DnsUsageAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DnsUsageAPI.DnsUsageList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DnsUsageAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +35,13 @@ func Test_ipam_DnsUsageAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DnsUsageAPIService DnsUsageRead", func(t *testing.T) {
+	t.Run("Test DnsUsageAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DnsUsageAPI.DnsUsageRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DnsUsageAPI.Read(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

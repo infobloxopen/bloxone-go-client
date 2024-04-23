@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_OptionSpaceAPIService(t *testing.T) {
+func TestOptionSpaceAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test OptionSpaceAPIService OptionSpaceCreate", func(t *testing.T) {
+	t.Run("Test OptionSpaceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionSpaceAPI.OptionSpaceCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OptionSpaceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_OptionSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionSpaceAPIService OptionSpaceDelete", func(t *testing.T) {
+	t.Run("Test OptionSpaceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.OptionSpaceAPI.OptionSpaceDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.OptionSpaceAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OptionSpaceAPIService OptionSpaceList", func(t *testing.T) {
+	t.Run("Test OptionSpaceAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionSpaceAPI.OptionSpaceList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OptionSpaceAPIService OptionSpaceRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.OptionSpaceAPI.OptionSpaceRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionSpaceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_OptionSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionSpaceAPIService OptionSpaceUpdate", func(t *testing.T) {
+	t.Run("Test OptionSpaceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.OptionSpaceAPI.OptionSpaceUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionSpaceAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OptionSpaceAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.OptionSpaceAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

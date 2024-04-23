@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_HaGroupAPIService(t *testing.T) {
+func TestHaGroupAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test HaGroupAPIService HaGroupCreate", func(t *testing.T) {
+	t.Run("Test HaGroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HaGroupAPIService HaGroupDelete", func(t *testing.T) {
+	t.Run("Test HaGroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.HaGroupAPI.HaGroupDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.HaGroupAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test HaGroupAPIService HaGroupList", func(t *testing.T) {
+	t.Run("Test HaGroupAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test HaGroupAPIService HaGroupRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_HaGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HaGroupAPIService HaGroupUpdate", func(t *testing.T) {
+	t.Run("Test HaGroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.HaGroupAPI.HaGroupUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.HaGroupAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HaGroupAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.HaGroupAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

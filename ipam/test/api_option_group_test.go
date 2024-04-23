@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_OptionGroupAPIService(t *testing.T) {
+func TestOptionGroupAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test OptionGroupAPIService OptionGroupCreate", func(t *testing.T) {
+	t.Run("Test OptionGroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionGroupAPI.OptionGroupCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OptionGroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_OptionGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionGroupAPIService OptionGroupDelete", func(t *testing.T) {
+	t.Run("Test OptionGroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.OptionGroupAPI.OptionGroupDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.OptionGroupAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OptionGroupAPIService OptionGroupList", func(t *testing.T) {
+	t.Run("Test OptionGroupAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionGroupAPI.OptionGroupList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OptionGroupAPIService OptionGroupRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.OptionGroupAPI.OptionGroupRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionGroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_OptionGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionGroupAPIService OptionGroupUpdate", func(t *testing.T) {
+	t.Run("Test OptionGroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.OptionGroupAPI.OptionGroupUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionGroupAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OptionGroupAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.OptionGroupAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

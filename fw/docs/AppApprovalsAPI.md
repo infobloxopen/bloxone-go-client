@@ -1,18 +1,18 @@
-# \AppApprovalsAPI
+# AppApprovalsAPI
 
-All URIs are relative to *http://localhost/api/atcfw/v1*
+All URIs are relative to *https://csp.infoblox.com/api/atcfw/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AppApprovalsListAppApprovals**](AppApprovalsAPI.md#AppApprovalsListAppApprovals) | **Get** /app_approvals | 
-[**AppApprovalsReplaceAppApprovals**](AppApprovalsAPI.md#AppApprovalsReplaceAppApprovals) | **Put** /app_approvals | Update Application Approval.
-[**AppApprovalsUpdateAppApprovals**](AppApprovalsAPI.md#AppApprovalsUpdateAppApprovals) | **Patch** /app_approvals | 
+[**ListAppApprovals**](AppApprovalsAPI.md#ListAppApprovals) | **Get** /app_approvals | 
+[**ReplaceAppApprovals**](AppApprovalsAPI.md#ReplaceAppApprovals) | **Put** /app_approvals | Update Application Approval.
+[**UpdateAppApprovals**](AppApprovalsAPI.md#UpdateAppApprovals) | **Patch** /app_approvals | 
 
 
 
-## AppApprovalsListAppApprovals
+## ListAppApprovals
 
-> AtcfwAppApprovalMultiResponse AppApprovalsListAppApprovals(ctx).Filter(filter).Execute()
+> AppApprovalMultiResponse ListAppApprovals(ctx).Filter(filter).Execute()
 
 
 
@@ -22,24 +22,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
+	filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsListAppApprovals(context.Background()).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsListAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsListAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsListAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.ListAppApprovals(context.Background()).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.ListAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAppApprovals`: AppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.ListAppApprovals`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAppApprovalsListAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAppApprovalsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AtcfwAppApprovalMultiResponse**](AtcfwAppApprovalMultiResponse.md)
+[**AppApprovalMultiResponse**](AppApprovalMultiResponse.md)
 
 ### Authorization
 
@@ -74,9 +74,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AppApprovalsReplaceAppApprovals
+## ReplaceAppApprovals
 
-> AtcfwAppApprovalMultiResponse AppApprovalsReplaceAppApprovals(ctx).Body(body).Execute()
+> AppApprovalMultiResponse ReplaceAppApprovals(ctx).Body(body).Execute()
 
 Update Application Approval.
 
@@ -88,24 +88,24 @@ Update Application Approval.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwAppApprovalsReplaceRequest() // AtcfwAppApprovalsReplaceRequest | 
+	body := *fw.NewAppApprovalsReplaceRequest() // AppApprovalsReplaceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsReplaceAppApprovals(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsReplaceAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsReplaceAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsReplaceAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.ReplaceAppApprovals(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.ReplaceAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReplaceAppApprovals`: AppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.ReplaceAppApprovals`: %v\n", resp)
 }
 ```
 
@@ -115,16 +115,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAppApprovalsReplaceAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReplaceAppApprovalsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwAppApprovalsReplaceRequest**](AtcfwAppApprovalsReplaceRequest.md) |  | 
+ **body** | [**AppApprovalsReplaceRequest**](AppApprovalsReplaceRequest.md) |  | 
 
 ### Return type
 
-[**AtcfwAppApprovalMultiResponse**](AtcfwAppApprovalMultiResponse.md)
+[**AppApprovalMultiResponse**](AppApprovalMultiResponse.md)
 
 ### Authorization
 
@@ -140,9 +140,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## AppApprovalsUpdateAppApprovals
+## UpdateAppApprovals
 
-> AtcfwAppApprovalMultiResponse AppApprovalsUpdateAppApprovals(ctx).Body(body).Execute()
+> AppApprovalMultiResponse UpdateAppApprovals(ctx).Body(body).Execute()
 
 
 
@@ -152,24 +152,24 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
 func main() {
-    body := *openapiclient.NewAtcfwAppApprovalsUpdateRequest() // AtcfwAppApprovalsUpdateRequest | 
+	body := *fw.NewAppApprovalsUpdateRequest() // AppApprovalsUpdateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppApprovalsAPI.AppApprovalsUpdateAppApprovals(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.AppApprovalsUpdateAppApprovals``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AppApprovalsUpdateAppApprovals`: AtcfwAppApprovalMultiResponse
-    fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.AppApprovalsUpdateAppApprovals`: %v\n", resp)
+	apiClient := fw.NewAPIClient()
+	resp, r, err := apiClient.AppApprovalsAPI.UpdateAppApprovals(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.UpdateAppApprovals``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAppApprovals`: AppApprovalMultiResponse
+	fmt.Fprintf(os.Stdout, "Response from `AppApprovalsAPI.UpdateAppApprovals`: %v\n", resp)
 }
 ```
 
@@ -179,16 +179,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAppApprovalsUpdateAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAppApprovalsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AtcfwAppApprovalsUpdateRequest**](AtcfwAppApprovalsUpdateRequest.md) |  | 
+ **body** | [**AppApprovalsUpdateRequest**](AppApprovalsUpdateRequest.md) |  | 
 
 ### Return type
 
-[**AtcfwAppApprovalMultiResponse**](AtcfwAppApprovalMultiResponse.md)
+[**AppApprovalMultiResponse**](AppApprovalMultiResponse.md)
 
 ### Authorization
 

@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
-func Test_keys_UploadAPIService(t *testing.T) {
+func TestUploadAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := keys.NewAPIClient()
 
-	t.Run("Test UploadAPIService UploadUpload", func(t *testing.T) {
+	t.Run("Test UploadAPIService Upload", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UploadAPI.UploadUpload(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UploadAPI.Upload(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

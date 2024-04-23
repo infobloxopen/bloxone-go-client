@@ -16,22 +16,20 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_AddressBlockAPIService(t *testing.T) {
+func TestAddressBlockAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test AddressBlockAPIService AddressBlockCopy", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService Copy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockCopy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.Copy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -39,11 +37,11 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockCreate", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,13 +49,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockCreateNextAvailableAB", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService CreateNextAvailableAB", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableAB(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.CreateNextAvailableAB(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,13 +63,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockCreateNextAvailableIP", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService CreateNextAvailableIP", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableIP(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.CreateNextAvailableIP(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,13 +77,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockCreateNextAvailableSubnet", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService CreateNextAvailableSubnet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockCreateNextAvailableSubnet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.CreateNextAvailableSubnet(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,38 +91,24 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockDelete", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.AddressBlockAPI.AddressBlockDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.AddressBlockAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockList", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AddressBlockAPIService AddressBlockListNextAvailableAB", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockListNextAvailableAB(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -132,13 +116,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockListNextAvailableIP", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService ListNextAvailableAB", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockListNextAvailableIP(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.ListNextAvailableAB(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -146,13 +130,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockListNextAvailableSubnet", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService ListNextAvailableIP", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockListNextAvailableSubnet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.ListNextAvailableIP(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -160,13 +144,13 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockRead", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService ListNextAvailableSubnet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.ListNextAvailableSubnet(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -174,13 +158,27 @@ func Test_ipam_AddressBlockAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddressBlockAPIService AddressBlockUpdate", func(t *testing.T) {
+	t.Run("Test AddressBlockAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AddressBlockAPI.AddressBlockUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AddressBlockAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AddressBlockAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AddressBlockAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

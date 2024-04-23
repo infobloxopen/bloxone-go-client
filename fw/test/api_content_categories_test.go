@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_ContentCategoriesAPIService(t *testing.T) {
+func TestContentCategoriesAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test ContentCategoriesAPIService ContentCategoriesListContentCategories", func(t *testing.T) {
+	t.Run("Test ContentCategoriesAPIService ListContentCategories", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ContentCategoriesAPI.ContentCategoriesListContentCategories(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ContentCategoriesAPI.ListContentCategories(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

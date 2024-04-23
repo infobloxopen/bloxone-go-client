@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_DhcpHostAPIService(t *testing.T) {
+func TestDhcpHostAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test DhcpHostAPIService DhcpHostList", func(t *testing.T) {
+	t.Run("Test DhcpHostAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +35,13 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpHostAPIService DhcpHostListAssociations", func(t *testing.T) {
+	t.Run("Test DhcpHostAPIService ListAssociations", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostListAssociations(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.ListAssociations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,13 +49,13 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpHostAPIService DhcpHostRead", func(t *testing.T) {
+	t.Run("Test DhcpHostAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.Read(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,13 +63,13 @@ func Test_ipam_DhcpHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpHostAPIService DhcpHostUpdate", func(t *testing.T) {
+	t.Run("Test DhcpHostAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.DhcpHostAPI.DhcpHostUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DhcpHostAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

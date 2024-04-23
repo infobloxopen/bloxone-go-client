@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_ApplicationFiltersAPIService(t *testing.T) {
+func TestApplicationFiltersAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersCreateApplicationFilter", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService CreateApplicationFilter", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersCreateApplicationFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationFiltersAPI.CreateApplicationFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,35 +35,35 @@ func Test_fw_ApplicationFiltersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersDeleteApplicationFilters", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService DeleteApplicationFilters", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteApplicationFilters(context.Background()).Execute()
+		httpRes, err := apiClient.ApplicationFiltersAPI.DeleteApplicationFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersDeleteSingleApplicationFilters", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService DeleteSingleApplicationFilters", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersDeleteSingleApplicationFilters(context.Background(), id).Execute()
+		httpRes, err := apiClient.ApplicationFiltersAPI.DeleteSingleApplicationFilters(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersListApplicationFilters", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService ListApplicationFilters", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersListApplicationFilters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ListApplicationFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +71,13 @@ func Test_fw_ApplicationFiltersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersReadApplicationFilter", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService ReadApplicationFilter", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersReadApplicationFilter(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ReadApplicationFilter(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,13 +85,13 @@ func Test_fw_ApplicationFiltersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationFiltersAPIService ApplicationFiltersUpdateApplicationFilter", func(t *testing.T) {
+	t.Run("Test ApplicationFiltersAPIService UpdateApplicationFilter", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ApplicationFiltersAPI.ApplicationFiltersUpdateApplicationFilter(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ApplicationFiltersAPI.UpdateApplicationFilter(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

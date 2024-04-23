@@ -16,47 +16,31 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/keys"
+	"github.com/infobloxopen/bloxone-go-client/keys"
 )
 
-func Test_keys_KerberosAPIService(t *testing.T) {
+func TestKerberosAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := keys.NewAPIClient()
 
-	t.Run("Test KerberosAPIService KerberosDelete", func(t *testing.T) {
+	t.Run("Test KerberosAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.KerberosAPI.KerberosDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.KerberosAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test KerberosAPIService KerberosList", func(t *testing.T) {
+	t.Run("Test KerberosAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.KerberosAPI.KerberosList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KerberosAPIService KerberosRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.KerberosAPI.KerberosRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.KerberosAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,13 +48,27 @@ func Test_keys_KerberosAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KerberosAPIService KerberosUpdate", func(t *testing.T) {
+	t.Run("Test KerberosAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.KerberosAPI.KerberosUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.KerberosAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test KerberosAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.KerberosAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

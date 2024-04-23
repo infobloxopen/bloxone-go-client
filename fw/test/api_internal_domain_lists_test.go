@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	openapiclient "github.com/infobloxopen/bloxone-go-client/fw"
-	"github.com/infobloxopen/bloxone-go-client/internal"
+	"github.com/infobloxopen/bloxone-go-client/fw"
 )
 
-func Test_fw_InternalDomainListsAPIService(t *testing.T) {
+func TestInternalDomainListsAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := fw.NewAPIClient()
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsCreateInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService CreateInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsCreateInternalDomains(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InternalDomainListsAPI.CreateInternalDomains(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,37 +35,37 @@ func Test_fw_InternalDomainListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsDeleteInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService DeleteInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteInternalDomains(context.Background()).Execute()
+		httpRes, err := apiClient.InternalDomainListsAPI.DeleteInternalDomains(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsDeleteSingleInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService DeleteSingleInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsDeleteSingleInternalDomains(context.Background(), id).Execute()
+		httpRes, err := apiClient.InternalDomainListsAPI.DeleteSingleInternalDomains(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsInternalDomainsItemsPartialUpdate", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService InternalDomainsItemsPartialUpdate", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsInternalDomainsItemsPartialUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainsItemsPartialUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -75,11 +73,11 @@ func Test_fw_InternalDomainListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsListInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService ListInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsListInternalDomains(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InternalDomainListsAPI.ListInternalDomains(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,13 +85,13 @@ func Test_fw_InternalDomainListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsReadInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService ReadInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsReadInternalDomains(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.InternalDomainListsAPI.ReadInternalDomains(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -101,13 +99,13 @@ func Test_fw_InternalDomainListsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InternalDomainListsAPIService InternalDomainListsUpdateInternalDomains", func(t *testing.T) {
+	t.Run("Test InternalDomainListsAPIService UpdateInternalDomains", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id int32
 
-		resp, httpRes, err := apiClient.InternalDomainListsAPI.InternalDomainListsUpdateInternalDomains(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.InternalDomainListsAPI.UpdateInternalDomains(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

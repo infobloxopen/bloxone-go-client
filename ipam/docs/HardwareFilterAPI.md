@@ -1,20 +1,20 @@
-# \HardwareFilterAPI
+# HardwareFilterAPI
 
 All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HardwareFilterCreate**](HardwareFilterAPI.md#HardwareFilterCreate) | **Post** /dhcp/hardware_filter | Create the hardware filter.
-[**HardwareFilterDelete**](HardwareFilterAPI.md#HardwareFilterDelete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
-[**HardwareFilterList**](HardwareFilterAPI.md#HardwareFilterList) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
-[**HardwareFilterRead**](HardwareFilterAPI.md#HardwareFilterRead) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
-[**HardwareFilterUpdate**](HardwareFilterAPI.md#HardwareFilterUpdate) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
+[**Create**](HardwareFilterAPI.md#Create) | **Post** /dhcp/hardware_filter | Create the hardware filter.
+[**Delete**](HardwareFilterAPI.md#Delete) | **Delete** /dhcp/hardware_filter/{id} | Move the hardware filter to the recycle bin.
+[**List**](HardwareFilterAPI.md#List) | **Get** /dhcp/hardware_filter | Retrieve hardware filters.
+[**Read**](HardwareFilterAPI.md#Read) | **Get** /dhcp/hardware_filter/{id} | Retrieve the hardware filter.
+[**Update**](HardwareFilterAPI.md#Update) | **Patch** /dhcp/hardware_filter/{id} | Update the hardware filter.
 
 
 
-## HardwareFilterCreate
+## Create
 
-> IpamsvcCreateHardwareFilterResponse HardwareFilterCreate(ctx).Body(body).Execute()
+> CreateHardwareFilterResponse Create(ctx).Body(body).Execute()
 
 Create the hardware filter.
 
@@ -26,24 +26,24 @@ Create the hardware filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    body := *openapiclient.NewIpamsvcHardwareFilter("Name_example") // IpamsvcHardwareFilter | 
+	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterCreate(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `HardwareFilterCreate`: IpamsvcCreateHardwareFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterCreate`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.HardwareFilterAPI.Create(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Create`: %v\n", resp)
 }
 ```
 
@@ -53,16 +53,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**IpamsvcHardwareFilter**](IpamsvcHardwareFilter.md) |  | 
+ **body** | [**HardwareFilter**](HardwareFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcCreateHardwareFilterResponse**](IpamsvcCreateHardwareFilterResponse.md)
+[**CreateHardwareFilterResponse**](CreateHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterDelete
+## Delete
 
-> HardwareFilterDelete(ctx, id).Execute()
+> Delete(ctx, id).Execute()
 
 Move the hardware filter to the recycle bin.
 
@@ -92,22 +92,22 @@ Move the hardware filter to the recycle bin.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
+	id := "id_example" // string | An application specific resource identity of a resource
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.HardwareFilterAPI.HardwareFilterDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.HardwareFilterAPI.Delete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterList
+## List
 
-> IpamsvcListHardwareFilterResponse HardwareFilterList(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListHardwareFilterResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve hardware filters.
 
@@ -160,31 +160,31 @@ Retrieve hardware filters.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
-    orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-    offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-    limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-    pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
-    torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
-    tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
+	filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
+	orderBy := "orderBy_example" // string |   A collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)  Specify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.         (optional)
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
+	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
+	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
+	torderBy := "torderBy_example" // string | This parameter is used for sorting by tags. (optional)
+	tfilter := "tfilter_example" // string | This parameter is used for filtering by tags. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterList(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `HardwareFilterList`: IpamsvcListHardwareFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterList`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.HardwareFilterAPI.List(context.Background()).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `List`: ListHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.List`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcListHardwareFilterResponse**](IpamsvcListHardwareFilterResponse.md)
+[**ListHardwareFilterResponse**](ListHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -226,9 +226,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterRead
+## Read
 
-> IpamsvcReadHardwareFilterResponse HardwareFilterRead(ctx, id).Fields(fields).Execute()
+> ReadHardwareFilterResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the hardware filter.
 
@@ -240,25 +240,25 @@ Retrieve the hardware filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	id := "id_example" // string | An application specific resource identity of a resource
+	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterRead(context.Background(), id).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterRead``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `HardwareFilterRead`: IpamsvcReadHardwareFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterRead`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.HardwareFilterAPI.Read(context.Background(), id).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Read``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Read`: ReadHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IpamsvcReadHardwareFilterResponse**](IpamsvcReadHardwareFilterResponse.md)
+[**ReadHardwareFilterResponse**](ReadHardwareFilterResponse.md)
 
 ### Authorization
 
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HardwareFilterUpdate
+## Update
 
-> IpamsvcUpdateHardwareFilterResponse HardwareFilterUpdate(ctx, id).Body(body).Execute()
+> UpdateHardwareFilterResponse Update(ctx, id).Body(body).Execute()
 
 Update the hardware filter.
 
@@ -312,25 +312,25 @@ Update the hardware filter.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/infobloxopen/bloxone-go-client"
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
 func main() {
-    id := "id_example" // string | An application specific resource identity of a resource
-    body := *openapiclient.NewIpamsvcHardwareFilter("Name_example") // IpamsvcHardwareFilter | 
+	id := "id_example" // string | An application specific resource identity of a resource
+	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HardwareFilterAPI.HardwareFilterUpdate(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.HardwareFilterUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `HardwareFilterUpdate`: IpamsvcUpdateHardwareFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.HardwareFilterUpdate`: %v\n", resp)
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.HardwareFilterAPI.Update(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareFilterAPI.Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Update`: UpdateHardwareFilterResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareFilterAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -344,17 +344,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHardwareFilterUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**IpamsvcHardwareFilter**](IpamsvcHardwareFilter.md) |  | 
+ **body** | [**HardwareFilter**](HardwareFilter.md) |  | 
 
 ### Return type
 
-[**IpamsvcUpdateHardwareFilterResponse**](IpamsvcUpdateHardwareFilterResponse.md)
+[**UpdateHardwareFilterResponse**](UpdateHardwareFilterResponse.md)
 
 ### Authorization
 

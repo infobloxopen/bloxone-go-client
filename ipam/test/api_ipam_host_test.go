@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_IpamHostAPIService(t *testing.T) {
+func TestIpamHostAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test IpamHostAPIService IpamHostCreate", func(t *testing.T) {
+	t.Run("Test IpamHostAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpamHostAPI.IpamHostCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IpamHostAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_IpamHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpamHostAPIService IpamHostDelete", func(t *testing.T) {
+	t.Run("Test IpamHostAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.IpamHostAPI.IpamHostDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.IpamHostAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test IpamHostAPIService IpamHostList", func(t *testing.T) {
+	t.Run("Test IpamHostAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpamHostAPI.IpamHostList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IpamHostAPIService IpamHostRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.IpamHostAPI.IpamHostRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IpamHostAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_IpamHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpamHostAPIService IpamHostUpdate", func(t *testing.T) {
+	t.Run("Test IpamHostAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.IpamHostAPI.IpamHostUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IpamHostAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IpamHostAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IpamHostAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

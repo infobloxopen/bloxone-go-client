@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_IpSpaceAPIService(t *testing.T) {
+func TestIpSpaceAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test IpSpaceAPIService IpSpaceBulkCopy", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService BulkCopy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceBulkCopy(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.BulkCopy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +35,13 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpSpaceAPIService IpSpaceCopy", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService Copy", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCopy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.Copy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,11 +49,11 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpSpaceAPIService IpSpaceCreate", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,38 +61,24 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpSpaceAPIService IpSpaceDelete", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.IpSpaceAPI.IpSpaceDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.IpSpaceAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test IpSpaceAPIService IpSpaceList", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IpSpaceAPIService IpSpaceRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,13 +86,27 @@ func Test_ipam_IpSpaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpSpaceAPIService IpSpaceUpdate", func(t *testing.T) {
+	t.Run("Test IpSpaceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.IpSpaceAPI.IpSpaceUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IpSpaceAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IpSpaceAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IpSpaceAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

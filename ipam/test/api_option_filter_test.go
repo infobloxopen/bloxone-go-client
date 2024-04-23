@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_OptionFilterAPIService(t *testing.T) {
+func TestOptionFilterAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test OptionFilterAPIService OptionFilterCreate", func(t *testing.T) {
+	t.Run("Test OptionFilterAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionFilterAPI.OptionFilterCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OptionFilterAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,38 +35,24 @@ func Test_ipam_OptionFilterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionFilterAPIService OptionFilterDelete", func(t *testing.T) {
+	t.Run("Test OptionFilterAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.OptionFilterAPI.OptionFilterDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.OptionFilterAPI.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OptionFilterAPIService OptionFilterList", func(t *testing.T) {
+	t.Run("Test OptionFilterAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptionFilterAPI.OptionFilterList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OptionFilterAPIService OptionFilterRead", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.OptionFilterAPI.OptionFilterRead(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionFilterAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +60,27 @@ func Test_ipam_OptionFilterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptionFilterAPIService OptionFilterUpdate", func(t *testing.T) {
+	t.Run("Test OptionFilterAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.OptionFilterAPI.OptionFilterUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OptionFilterAPI.Read(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OptionFilterAPIService Update", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.OptionFilterAPI.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,0 +1,2280 @@
+openapi: 3.0.1
+info:
+  description: "The **Infrastructure Management API** provides a RESTful interface\
+    \ to manage Infrastructure Hosts and Services objects.\n\nThe following is a list\
+    \ of the different Services and their string types (the string types are to be\
+    \ used with the APIs for the `service_type` field):\n | Service name | Service\
+    \ type | \n | ------ | ------ | \n | Access Authentication | authn | \n | Anycast\
+    \ | anycast | \n | Data Connector | cdc | \n | DHCP | dhcp | \n | DNS | dns |\
+    \ \n | DNS Forwarding Proxy | dfp | \n | NIOS Grid Connector | orpheus | \n |\
+    \ MS AD Sync | msad | \n | NTP | ntp | \n | BGP | bgp | \n | RIP | rip | \n |\
+    \ OSPF | ospf | \n\n\n---\n\n\n### Hosts API\n\nThe Hosts API is used to manage\
+    \ the Infrastructure Host resources.\nThese include various operations related\
+    \ to hosts such as viewing, creating, updating, replacing, disconnecting, and\
+    \ deleting Hosts.\nManagement of Hosts is done from the Cloud Services Portal\
+    \ (CSP) by navigating to the Manage -> Infrastructure -> Hosts tab.\n\n---\n\n\
+    \n### Services API\n\nThe Services API is used to manage the Infrastructure Service\
+    \ resources (a.k.a. BloxOne applications).\nThese include various operations related\
+    \ to hosts such as viewing, creating, updating, starting/stopping, configuring,\
+    \ and deleting Services.\nManagement of Services is done from the Cloud Services\
+    \ Portal (CSP) by navigating to the Manage -> Infrastructure -> Services tab.\n\
+    \n---\n\n\n### Detail APIs\n\nThe Detail APIs are read-only APIs used to list\
+    \ all the Infrastructure resources (Hosts and Services).\nEach resource record\
+    \ returned also contains information about its other associated resources and\
+    \ the\nstatus information for itself and the associated resource(s) (i.e., Host/Service\
+    \ status).\n\n---\n\n\n"
+  title: Infrastructure Management API
+  version: v1
+servers:
+- url: http://csp.infoblox.com/api/infra/v1/
+- url: https://csp.infoblox.com/api/infra/v1/
+security:
+- ApiKeyAuth: []
+paths:
+  /applications:
+    get:
+      description: Used in order to retrieve available applications (Service types)
+        for a particular account.
+      operationId: ServicesApplications
+      parameters:
+      - description: Account ID.
+        in: query
+        name: account_id
+        schema:
+          format: int64
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraApplicationsResponse'
+          description: GET operation response
+      summary: List applications (Service types) for a particular account.
+      tags:
+      - Services
+  /detail_hosts:
+    get:
+      operationId: DetailHostsList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraListDetailHostsResponse'
+          description: GET operation response
+      summary: List all the Hosts along with its associated Services (applications).
+      tags:
+      - Detail
+  /detail_services:
+    get:
+      operationId: DetailServicesList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraListDetailServicesResponse'
+          description: GET operation response
+      summary: List all the Services (applications) along with its associated Hosts.
+      tags:
+      - Detail
+  /hosts:
+    get:
+      operationId: HostsList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraListHostResponse'
+          description: GET operation response
+      summary: List all the Host resources for an account.
+      tags:
+      - Hosts
+    post:
+      description: |-
+        Validation:
+        - "display_name" is required and should be unique.
+      operationId: HostsCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraHost'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraCreateHostResponse'
+          description: POST operation response
+      summary: Create a Host resource.
+      tags:
+      - Hosts
+      x-tf-resource: infra_host
+      x-tf-datasource: infra_hosts
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /hosts/assign_tags:
+    post:
+      description: |-
+        Validation:
+        - "ids" is required.
+        - "tags" is required.
+      operationId: HostsAssignTags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraAssignTagsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Assign tags for list of hosts.
+      tags:
+      - Hosts
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /hosts/unassign_tags:
+    post:
+      description: |-
+        Validation:
+        - "ids" is required.
+        - "keys" is required.
+      operationId: HostsUnassignTags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraUnassignTagsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Unassign tag for the list hosts.
+      tags:
+      - Hosts
+      x-codegen-request-body-name: body
+  /hosts/{from.resource_id}/replace/{to.resource_id}:
+    post:
+      operationId: HostsReplace
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: from.resource_id
+        required: true
+        schema:
+          type: string
+      - description: An application specific resource identity of a resource
+        in: path
+        name: to.resource_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraReplaceHostRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraReplaceHostResponse'
+          description: POST operation response
+      summary: Migrate a Host's configuration from one to another.
+      tags:
+      - Hosts
+      x-codegen-request-body-name: body
+  /hosts/{id}:
+    delete:
+      description: |-
+        Validation:
+        - "id" is required.
+      operationId: HostsDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: Delete a Host resource.
+      tags:
+      - Hosts
+    get:
+      description: |-
+        Validation:
+        - "id" is required.
+      operationId: HostsRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraGetHostResponse'
+          description: GET operation response
+      summary: Get a Host resource.
+      tags:
+      - Hosts
+    put:
+      description: |-
+        Validation:
+        - "id" is required.
+        - "display_name" is required and should be unique.
+        - "pool_id" is required.
+      operationId: HostsUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraHost'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraUpdateHostResponse'
+          description: PUT operation response
+      summary: Update a Host resource.
+      tags:
+      - Hosts
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /hosts/{id}/disconnect:
+    post:
+      description: "The user can disconnect the host from the cloud (for example,\
+        \ if in case a host is compromised)."
+      operationId: HostsDisconnect
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraDisconnectRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Disconnect a Host by resource ID.
+      tags:
+      - Hosts
+      x-codegen-request-body-name: body
+  /services:
+    get:
+      operationId: ServicesList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraListServiceResponse'
+          description: GET operation response
+      summary: List all the Service resources for an account.
+      tags:
+      - Services
+    post:
+      description: |-
+        Validation:
+        - "name" is required and should be unique.
+        - "service_type" is required.
+        - "pool_id" is required.
+      operationId: ServicesCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraService'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraCreateServiceResponse'
+          description: POST operation response
+      summary: Create a Service resource.
+      tags:
+      - Services
+      x-tf-resource: infra_service
+      x-tf-datasource: infra_services
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /services/{id}:
+    delete:
+      description: |-
+        Validation:
+        - "id" is required.
+      operationId: ServicesDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: Delete a Service resource.
+      tags:
+      - Services
+    get:
+      description: |-
+        Validation:
+        - "id" is required.
+      operationId: ServicesRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraGetServiceResponse'
+          description: GET operation response
+      summary: Read a Service resource.
+      tags:
+      - Services
+    put:
+      description: |-
+        Validation:
+        - "id" is required.
+        - "name" is required and should be unique.
+        - "service_type" is required.
+        - "pool_id" is required.
+      operationId: ServicesUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/infraService'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infraUpdateServiceResponse'
+          description: PUT operation response
+      summary: Update a Service resource.
+      tags:
+      - Services
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    apiPageInfo:
+      description: |-
+        PageInfo represents both server-driven and client-driven pagination response.
+        Server-driven pagination is a model in which the server returns some
+        amount of data along with an token indicating there is more data
+        and where subsequent queries can get the next page of data.
+        Client-driven pagination is a model in which rows are addressable by
+        offset and page size (limit).
+      example:
+        offset: 0
+        size: 6
+        page_token: page_token
+      properties:
+        offset:
+          description: |-
+            The service may optionally include the offset of the next page of resources.
+            A null value indicates no more pages.
+          format: int32
+          type: integer
+        page_token:
+          description: |-
+            The service response should contain a string to indicate
+            the next page of resources.
+            A null value indicates no more pages.
+          type: string
+        size:
+          description: The service may optionally include the total number of resources
+            being paged.
+          format: int32
+          type: integer
+      type: object
+    infraApplications:
+      example:
+        applications:
+        - applications
+        - applications
+      properties:
+        applications:
+          items:
+            type: string
+          type: array
+      type: object
+    infraApplicationsResponse:
+      description: Applications response.
+      example:
+        results:
+          applications:
+          - applications
+          - applications
+      properties:
+        results:
+          $ref: '#/components/schemas/infraApplications'
+      type: object
+    infraAssignTagsRequest:
+      properties:
+        ids:
+          description: The resource identifier.
+          items:
+            type: string
+          type: array
+        override:
+          format: boolean
+          type: boolean
+        tags:
+          additionalProperties: false
+          type: object
+      title: Assign Tags Request
+      type: object
+    infraCreateHostResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          serial_number: serial_number
+          ip_address: ip_address
+          display_name: display_name
+          pool_id: pool_id
+          created_by: created_by
+          host_type: host_type
+          location_id: location_id
+          noa_cluster: noa_cluster
+          tags: "{}"
+          host_subtype: host_subtype
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+      properties:
+        result:
+          $ref: '#/components/schemas/infraHost'
+      title: CreateHost Response Structure
+      type: object
+    infraCreateServiceResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          desired_state: desired_state
+          id: id
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          pool_id: pool_id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/infraService'
+      title: CreateService Response Structure
+      type: object
+    infraDetailHost:
+      example:
+        configs:
+        - service_type: service_type
+          service_name: service_name
+          service_id: service_id
+          current_version: current_version
+          status:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            message: message
+            status: status
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        - service_type: service_type
+          service_name: service_name
+          service_id: service_id
+          current_version: current_version
+          status:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            message: message
+            status: status
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        connectivity_monitor: "{}"
+        maintenance_mode: maintenance_mode
+        timezone: timezone
+        nat_ip: nat_ip
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        host_type: host_type
+        ophid: ophid
+        ip_space: ip_space
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        mac_address: mac_address
+        host_version: host_version
+        legacy_id: legacy_id
+        id: id
+        pool:
+          composite_status: composite_status
+          pool_id: pool_id
+          pool_name: pool_name
+        serial_number: serial_number
+        ip_address: ip_address
+        services:
+        - service_type: service_type
+          service_name: service_name
+          service_id: service_id
+          current_version: current_version
+          status:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            message: message
+            status: status
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        - service_type: service_type
+          service_name: service_name
+          service_id: service_id
+          current_version: current_version
+          status:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            message: message
+            status: status
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        composite_status: composite_status
+        display_name: display_name
+        tags: "{}"
+        host_subtype: host_subtype
+        site_id: site_id
+        location:
+          metadata: "{}"
+          address: "{}"
+          latitude: 1.4658129805029452
+          id: id
+          longitude: 5.962133916683182
+      properties:
+        composite_status:
+          description: "Composite Status of this Host (`online`, `degraded`, `error`,\
+            \ `offline`, `pending`, `awaiting approval`)."
+          type: string
+        configs:
+          description: The list of Host-specific configurations for each Service deployed
+            on this Host.
+          items:
+            $ref: '#/components/schemas/infraDetailHostServiceConfig'
+          type: array
+        connectivity_monitor:
+          additionalProperties: false
+          title: |-
+            connectivity_monitor represents connectivity_monitor properties eg.
+            "connectivity_monitor": {"cost":1000000,"endpoint_type":"csp","endpoint":"http://csp.infoblox.com","interval":15}
+          type: object
+        created_at:
+          description: The timestamp of creation of Host.
+          format: date-time
+          type: string
+        description:
+          description: The description of the Host.
+          type: string
+        display_name:
+          description: The name of the Host.
+          type: string
+        host_subtype:
+          description: |-
+            The sub-type of a specific Host type.
+
+            Example: For Host type BloxOne Appliance, sub-type could be "B105" or "VEP1425"
+          type: string
+        host_type:
+          title: "The type of Host (1. NIOS , 2. NIOS HA, 3. BloxOne VM , 4. BloxOne\
+            \ Appliance, 5. BloxOne Container, 6. CNIOS)"
+          type: string
+        host_version:
+          description: The version of the Host platform services.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        ip_address:
+          description: The IP address of the Host.
+          type: string
+        ip_space:
+          description: The IP Space of the Host.
+          type: string
+        legacy_id:
+          description: The legacy Host object identifier.
+          format: int64
+          type: string
+        location:
+          $ref: '#/components/schemas/infraDetailLocation'
+        mac_address:
+          description: The MAC address of the Host.
+          type: string
+        maintenance_mode:
+          title: Maintenance mode flag (`enabled` or `disabled`)
+          type: string
+        nat_ip:
+          description: The NAT IP address of the Host.
+          type: string
+        ophid:
+          description: |-
+            The unique On-Prem Host ID generated by the On-Prem device and assigned to the Host once
+            it is registered and logged into the Infoblox Cloud.
+          type: string
+        pool:
+          $ref: '#/components/schemas/infraPoolInfo'
+        serial_number:
+          description: The unique serial number of the Host.
+          type: string
+        services:
+          description: The list of Services deployed on this Host.
+          items:
+            $ref: '#/components/schemas/infraDetailHostServiceConfig'
+          type: array
+        site_id:
+          description: The Site ID of the Host.
+          type: string
+        tags:
+          additionalProperties: false
+          description: Tags associated with this Host.
+          type: object
+        timezone:
+          description: The timezone of the Host.
+          type: string
+        updated_at:
+          description: The timestamp of the latest update on Host.
+          format: date-time
+          type: string
+      title: DetailHost
+      type: object
+    infraDetailHostServiceConfig:
+      example:
+        service_type: service_type
+        service_name: service_name
+        service_id: service_id
+        current_version: current_version
+        status:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          message: message
+          status: status
+        upgraded_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        current_version:
+          description: The current version of the Service deployed on the Host.
+          type: string
+        service_id:
+          description: The resource identifier.
+          type: string
+        service_name:
+          description: The name of the Service.
+          type: string
+        service_type:
+          description: "The type of the Service deployed on the Host (`dns`, `cdc`,\
+            \ etc.)."
+          type: string
+        status:
+          $ref: '#/components/schemas/infraShortServiceStatus'
+        upgraded_at:
+          description: The timestamp of the latest upgrade of the Host-specific Service
+            configuration.
+          format: date-time
+          type: string
+      title: DetailHostServiceConfig
+      type: object
+    infraDetailLocation:
+      example:
+        metadata: "{}"
+        address: "{}"
+        latitude: 1.4658129805029452
+        id: id
+        longitude: 5.962133916683182
+      properties:
+        address:
+          additionalProperties: false
+          description: "The address of the Location containing address, postal_code,\
+            \ city, state, and country."
+          type: object
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        latitude:
+          description: Latitude of the Location.
+          format: double
+          type: number
+        longitude:
+          description: Longitude of the Location.
+          format: double
+          type: number
+        metadata:
+          additionalProperties: false
+          description: The metadata of the Location which could contain other info
+            such as attributions.
+          type: object
+      title: DetailLocation
+      type: object
+    infraDetailService:
+      example:
+        hosts:
+        - ophid: ophid
+          maintenance_mode: maintenance_mode
+          legacy_id: legacy_id
+          id: id
+          ip_address: ip_address
+          composite_status: composite_status
+          display_name: display_name
+          config:
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+        - ophid: ophid
+          maintenance_mode: maintenance_mode
+          legacy_id: legacy_id
+          id: id
+          ip_address: ip_address
+          composite_status: composite_status
+          display_name: display_name
+          config:
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+        pool:
+          composite_status: composite_status
+          pool_id: pool_id
+          pool_name: pool_name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        current_version: current_version
+        description: description
+        desired_state: desired_state
+        composite_status: composite_status
+        interface_labels:
+        - interface_labels
+        - interface_labels
+        tags: "{}"
+        service_type: service_type
+        desired_version: desired_version
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        location:
+          metadata: "{}"
+          address: "{}"
+          latitude: 1.4658129805029452
+          id: id
+          longitude: 5.962133916683182
+        id: id
+        composite_state: composite_state
+      properties:
+        composite_state:
+          description: "Composite State of this Service (`started`, `stopped`, `stopping`,\
+            \ `starting`, `error`)."
+          type: string
+        composite_status:
+          description: "Composite Status of this Service (`online`, `stopped`, `degraded`,\
+            \ `error`)."
+          type: string
+        created_at:
+          description: Timestamp of creation of Service.
+          format: date-time
+          type: string
+        current_version:
+          description: Current version of this Service.
+          type: string
+        description:
+          description: The description of the Service.
+          type: string
+        desired_state:
+          description: The desired state of the Service (`"start"` or `"stop"`).
+          type: string
+        desired_version:
+          description: The desired version of the Service.
+          type: string
+        hosts:
+          description: List of Hosts on which this Service is deployed.
+          items:
+            $ref: '#/components/schemas/infraDetailServiceHost'
+          type: array
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        interface_labels:
+          description: List of interfaces on which this Service can operate.
+          items:
+            type: string
+          type: array
+        location:
+          $ref: '#/components/schemas/infraDetailLocation'
+        name:
+          description: The name of the Service.
+          type: string
+        pool:
+          $ref: '#/components/schemas/infraPoolInfo'
+        service_type:
+          description: "The type of the Service deployed on the Host (`dns`, `cdc`,\
+            \ etc.)."
+          type: string
+        tags:
+          additionalProperties: false
+          description: Tags associated with this Service.
+          type: object
+        updated_at:
+          description: Timestamp of the latest update on Service.
+          format: date-time
+          type: string
+      title: DetailService
+      type: object
+    infraDetailServiceHost:
+      example:
+        ophid: ophid
+        maintenance_mode: maintenance_mode
+        legacy_id: legacy_id
+        id: id
+        ip_address: ip_address
+        composite_status: composite_status
+        display_name: display_name
+        config:
+          current_version: current_version
+          status:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            message: message
+            status: status
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        composite_status:
+          description: "Composite Status of the Host (`online`, `degraded`, `error`,\
+            \ `offline`, `pending`, `awaiting approval`)."
+          type: string
+        config:
+          $ref: '#/components/schemas/infraDetailServiceHostConfig'
+        display_name:
+          description: The name of the Host (unique).
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        ip_address:
+          description: The IP address of the Host.
+          type: string
+        legacy_id:
+          description: The legacy Host object identifier.
+          format: int64
+          type: string
+        maintenance_mode:
+          title: Maintenance mode flag for the Host (`enabled` or `disabled`)
+          type: string
+        ophid:
+          description: |-
+            The unique On-Prem Host ID generated by the On-Prem device and assigned to the Host once
+            it is registered and logged into the Infoblox Cloud.
+          type: string
+      title: DetailServiceHost
+      type: object
+    infraDetailServiceHostConfig:
+      example:
+        current_version: current_version
+        status:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          message: message
+          status: status
+        upgraded_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        current_version:
+          description: The current version of the Service deployed on the Host.
+          type: string
+        status:
+          $ref: '#/components/schemas/infraShortServiceStatus'
+        upgraded_at:
+          format: date-time
+          type: string
+      title: DetailServiceHostConfig
+      type: object
+    infraDisconnectRequest:
+      properties:
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+      title: Disconnect Host Request Structure
+      type: object
+    infraGetHostResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          serial_number: serial_number
+          ip_address: ip_address
+          display_name: display_name
+          pool_id: pool_id
+          created_by: created_by
+          host_type: host_type
+          location_id: location_id
+          noa_cluster: noa_cluster
+          tags: "{}"
+          host_subtype: host_subtype
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+      properties:
+        result:
+          $ref: '#/components/schemas/infraHost'
+      title: GetHost Response Structure
+      type: object
+    infraGetServiceResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          desired_state: desired_state
+          id: id
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          pool_id: pool_id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/infraService'
+      title: GetService Response Structure
+      type: object
+    infraHost:
+      description: Infrastructure Service
+      example:
+        configs:
+        - service_type: service_type
+          extra_data: extra_data
+          service_id: service_id
+          current_version: current_version
+          id: id
+          host_id: host_id
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        - service_type: service_type
+          extra_data: extra_data
+          service_id: service_id
+          current_version: current_version
+          id: id
+          host_id: host_id
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        connectivity_monitor: "{}"
+        maintenance_mode: maintenance_mode
+        timezone: timezone
+        nat_ip: nat_ip
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        serial_number: serial_number
+        ip_address: ip_address
+        display_name: display_name
+        pool_id: pool_id
+        created_by: created_by
+        host_type: host_type
+        location_id: location_id
+        noa_cluster: noa_cluster
+        tags: "{}"
+        host_subtype: host_subtype
+        ophid: ophid
+        ip_space: ip_space
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        mac_address: mac_address
+        host_version: host_version
+        legacy_id: legacy_id
+        id: id
+      properties:
+        configs:
+          description: The list of Host-specific configurations for each Service deployed
+            on this Host.
+          items:
+            $ref: '#/components/schemas/infraServiceHostConfig'
+          readOnly: true
+          type: array
+        connectivity_monitor:
+          additionalProperties: false
+          description: |-
+            Represents the connectivity monitor properties of a Host, to enable/disable connectivity monitoring
+            for redundant network interfaces.
+
+            The "endpoint_type" is:
+            - `"csp"` for enabling monitoring
+            - `""` for disabling monitoring (default)
+
+            Note: Currently, all fields except "endpoint_type" are read-only, and will be overridden to default values
+            in case they are edited.
+
+            Example:
+            ```
+            {
+              "connectivity_monitor": {
+                "cost":1000000,
+                "endpoint_type":"csp",
+                "endpoint":"http://csp.infoblox.com",
+                "interval":15,
+                "failure_threshold":1,
+                "success_threshold":2
+              }
+            }
+            ```
+          readOnly: true
+          title: Connectivity Monitor Properties
+          type: object
+        created_at:
+          description: The timestamp of creation of Host.
+          format: date-time
+          readOnly: true
+          type: string
+        created_by:
+          description: The creator of the Host (internal use only).
+          readOnly: true
+          type: string
+        description:
+          description: The description of the Host (optional).
+          type: string
+        display_name:
+          description: The name of the Host (unique).
+          type: string
+        host_subtype:
+          description: |-
+            The sub-type of a specific Host type.
+
+            Example: For Host type BloxOne Appliance, sub-type could be "B105" or "VEP1425"
+          readOnly: true
+          type: string
+        host_type:
+          description: |-
+            The type of Host.
+
+            Should be one of: 1. NIOS , 2. NIOS HA, 3. BloxOne VM , 4. BloxOne Appliance, 5. BloxOne Container, 6. CNIOS
+          readOnly: true
+          type: string
+        host_version:
+          description: The version of the Host platform services.
+          readOnly: true
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        ip_address:
+          description: The IP address of the Host.
+          readOnly: true
+          type: string
+        ip_space:
+          description: The IP Space of the Host.
+          type: string
+        legacy_id:
+          description: The legacy Host object identifier.
+          format: int64
+          readOnly: true
+          type: string
+        location_id:
+          description: The resource identifier.
+          type: string
+        mac_address:
+          description: The MAC address of the Host.
+          readOnly: true
+          type: string
+        maintenance_mode:
+          title: Maintenance mode flag (`enabled` or `disabled`)
+          type: string
+        nat_ip:
+          description: The NAT IP address of the Host.
+          readOnly: true
+          type: string
+        noa_cluster:
+          description: The CSP cluster identifier (internal use only).
+          readOnly: true
+          type: string
+        ophid:
+          description: |-
+            The unique On-Prem Host ID generated by the On-Prem device and assigned to the Host once
+            it is registered and logged into the Infoblox Cloud.
+          readOnly: true
+          type: string
+        pool_id:
+          description: The resource identifier.
+          type: string
+        serial_number:
+          description: The unique serial number of the Host.
+          type: string
+        tags:
+          additionalProperties: false
+          description: Tags associated with this Host.
+          type: object
+        timezone:
+          description: The timezone of the Host.
+          readOnly: true
+          type: string
+        updated_at:
+          description: The timestamp of the latest update on Host.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - display_name
+      title: Host
+      type: object
+    infraListDetailHostsResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - configs:
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          host_type: host_type
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+          pool:
+            composite_status: composite_status
+            pool_id: pool_id
+            pool_name: pool_name
+          serial_number: serial_number
+          ip_address: ip_address
+          services:
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          display_name: display_name
+          tags: "{}"
+          host_subtype: host_subtype
+          site_id: site_id
+          location:
+            metadata: "{}"
+            address: "{}"
+            latitude: 1.4658129805029452
+            id: id
+            longitude: 5.962133916683182
+        - configs:
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          host_type: host_type
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+          pool:
+            composite_status: composite_status
+            pool_id: pool_id
+            pool_name: pool_name
+          serial_number: serial_number
+          ip_address: ip_address
+          services:
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            service_name: service_name
+            service_id: service_id
+            current_version: current_version
+            status:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              message: message
+              status: status
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          display_name: display_name
+          tags: "{}"
+          host_subtype: host_subtype
+          site_id: site_id
+          location:
+            metadata: "{}"
+            address: "{}"
+            latitude: 1.4658129805029452
+            id: id
+            longitude: 5.962133916683182
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/infraDetailHost'
+          type: array
+      title: DetailHosts List Response Structure
+      type: object
+    infraListDetailServicesResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - hosts:
+          - ophid: ophid
+            maintenance_mode: maintenance_mode
+            legacy_id: legacy_id
+            id: id
+            ip_address: ip_address
+            composite_status: composite_status
+            display_name: display_name
+            config:
+              current_version: current_version
+              status:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                message: message
+                status: status
+              upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - ophid: ophid
+            maintenance_mode: maintenance_mode
+            legacy_id: legacy_id
+            id: id
+            ip_address: ip_address
+            composite_status: composite_status
+            display_name: display_name
+            config:
+              current_version: current_version
+              status:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                message: message
+                status: status
+              upgraded_at: 2000-01-23T04:56:07.000+00:00
+          pool:
+            composite_status: composite_status
+            pool_id: pool_id
+            pool_name: pool_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          current_version: current_version
+          description: description
+          desired_state: desired_state
+          composite_status: composite_status
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          tags: "{}"
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          location:
+            metadata: "{}"
+            address: "{}"
+            latitude: 1.4658129805029452
+            id: id
+            longitude: 5.962133916683182
+          id: id
+          composite_state: composite_state
+        - hosts:
+          - ophid: ophid
+            maintenance_mode: maintenance_mode
+            legacy_id: legacy_id
+            id: id
+            ip_address: ip_address
+            composite_status: composite_status
+            display_name: display_name
+            config:
+              current_version: current_version
+              status:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                message: message
+                status: status
+              upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - ophid: ophid
+            maintenance_mode: maintenance_mode
+            legacy_id: legacy_id
+            id: id
+            ip_address: ip_address
+            composite_status: composite_status
+            display_name: display_name
+            config:
+              current_version: current_version
+              status:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                message: message
+                status: status
+              upgraded_at: 2000-01-23T04:56:07.000+00:00
+          pool:
+            composite_status: composite_status
+            pool_id: pool_id
+            pool_name: pool_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          current_version: current_version
+          description: description
+          desired_state: desired_state
+          composite_status: composite_status
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          tags: "{}"
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          location:
+            metadata: "{}"
+            address: "{}"
+            latitude: 1.4658129805029452
+            id: id
+            longitude: 5.962133916683182
+          id: id
+          composite_state: composite_state
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/infraDetailService'
+          type: array
+      title: DetailServices List Response Structure
+      type: object
+    infraListHostResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          serial_number: serial_number
+          ip_address: ip_address
+          display_name: display_name
+          pool_id: pool_id
+          created_by: created_by
+          host_type: host_type
+          location_id: location_id
+          noa_cluster: noa_cluster
+          tags: "{}"
+          host_subtype: host_subtype
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+        - configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          serial_number: serial_number
+          ip_address: ip_address
+          display_name: display_name
+          pool_id: pool_id
+          created_by: created_by
+          host_type: host_type
+          location_id: location_id
+          noa_cluster: noa_cluster
+          tags: "{}"
+          host_subtype: host_subtype
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/infraHost'
+          type: array
+      title: ListHost Response Structure
+      type: object
+    infraListServiceResponse:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          desired_state: desired_state
+          id: id
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          pool_id: pool_id
+          tags: "{}"
+        - configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          desired_state: desired_state
+          id: id
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          pool_id: pool_id
+          tags: "{}"
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/infraService'
+          type: array
+      title: ListService Response Structure
+      type: object
+    infraPoolInfo:
+      example:
+        composite_status: composite_status
+        pool_id: pool_id
+        pool_name: pool_name
+      properties:
+        composite_status:
+          description: "Composite Status of the Pool that this resource belongs to\
+            \ (`online`, `degraded`, `error`, `unavailable`)."
+          type: string
+        pool_id:
+          description: The resource identifier.
+          type: string
+        pool_name:
+          description: Name of the Pool that this resource belongs to.
+          type: string
+      title: Infrastructure Pool Information (internal)
+      type: object
+    infraReplaceHostRequest:
+      properties:
+        from:
+          description: The resource identifier.
+          type: string
+        to:
+          description: The resource identifier.
+          type: string
+      title: ReplaceHostRequest Request Structure
+      type: object
+    infraReplaceHostResponse:
+      title: ReplaceHostResponse Response Structure
+      type: object
+    infraService:
+      description: Infrastructure Service
+      example:
+        configs:
+        - service_type: service_type
+          extra_data: extra_data
+          service_id: service_id
+          current_version: current_version
+          id: id
+          host_id: host_id
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        - service_type: service_type
+          extra_data: extra_data
+          service_id: service_id
+          current_version: current_version
+          id: id
+          host_id: host_id
+          upgraded_at: 2000-01-23T04:56:07.000+00:00
+        service_type: service_type
+        desired_version: desired_version
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        desired_state: desired_state
+        id: id
+        interface_labels:
+        - interface_labels
+        - interface_labels
+        pool_id: pool_id
+        tags: "{}"
+      properties:
+        configs:
+          description: List of Host-specific configurations of this Service.
+          items:
+            $ref: '#/components/schemas/infraServiceHostConfig'
+          readOnly: true
+          type: array
+        created_at:
+          description: Timestamp of creation of Service.
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: The description of the Service (optional).
+          type: string
+        desired_state:
+          description: The desired state of the Service. Should either be `"start"`
+            or `"stop"`.
+          type: string
+        desired_version:
+          description: The desired version of the Service.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        interface_labels:
+          description: |-
+            List of interfaces on which this Service can operate.
+            Note: The list can contain custom interface labels (Example: `["WAN","LAN","label1","label2"]`)
+          items:
+            type: string
+          title: Interface Labels List
+          type: array
+        name:
+          description: The name of the Service (unique).
+          type: string
+        pool_id:
+          description: The resource identifier.
+          type: string
+        service_type:
+          description: "The type of the Service deployed on the Host (`dns`, `cdc`,\
+            \ etc.)."
+          type: string
+        tags:
+          additionalProperties: false
+          description: Tags associated with this Service.
+          type: object
+        updated_at:
+          description: Timestamp of the latest update on Service.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      - pool_id
+      - service_type
+      title: Service
+      type: object
+    infraServiceHostConfig:
+      description: ServiceHostConfig is the specific configuration for each Service
+        deployed on a Host
+      example:
+        service_type: service_type
+        extra_data: extra_data
+        service_id: service_id
+        current_version: current_version
+        id: id
+        host_id: host_id
+        upgraded_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        current_version:
+          description: The current version of the Service deployed on the Host.
+          type: string
+        extra_data:
+          description: The field to carry any extra data specific to this configuration.
+          type: string
+        host_id:
+          description: The resource identifier.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        service_id:
+          description: The resource identifier.
+          type: string
+        service_type:
+          description: "The type of the Service deployed on the Host (`dns`, `cdc`,\
+            \ etc.)."
+          type: string
+        upgraded_at:
+          description: The timestamp of the latest upgrade of the Host-specific Service
+            configuration.
+          format: date-time
+          type: string
+      title: ServiceHostConfig
+      type: object
+    infraShortServiceStatus:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        message: message
+        status: status
+      properties:
+        message:
+          description: Status message text for the Service.
+          type: string
+        status:
+          description: "Status of the Service (`started`, `starting`, `stopping`,\
+            \ `stopped`, `error`)."
+          type: string
+        updated_at:
+          description: Timestamp of the latest status update of Service.
+          format: date-time
+          type: string
+      title: ShortServiceStatus
+      type: object
+    infraUnassignTagsRequest:
+      properties:
+        ids:
+          description: The resource identifier.
+          items:
+            type: string
+          type: array
+        keys:
+          items:
+            type: string
+          type: array
+      title: Unassign Tags Request
+      type: object
+    infraUpdateHostResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          connectivity_monitor: "{}"
+          maintenance_mode: maintenance_mode
+          timezone: timezone
+          nat_ip: nat_ip
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          serial_number: serial_number
+          ip_address: ip_address
+          display_name: display_name
+          pool_id: pool_id
+          created_by: created_by
+          host_type: host_type
+          location_id: location_id
+          noa_cluster: noa_cluster
+          tags: "{}"
+          host_subtype: host_subtype
+          ophid: ophid
+          ip_space: ip_space
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          mac_address: mac_address
+          host_version: host_version
+          legacy_id: legacy_id
+          id: id
+      properties:
+        result:
+          $ref: '#/components/schemas/infraHost'
+      title: UpdateHost Response Structure
+      type: object
+    infraUpdateServiceResponse:
+      example:
+        result:
+          configs:
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          - service_type: service_type
+            extra_data: extra_data
+            service_id: service_id
+            current_version: current_version
+            id: id
+            host_id: host_id
+            upgraded_at: 2000-01-23T04:56:07.000+00:00
+          service_type: service_type
+          desired_version: desired_version
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          desired_state: desired_state
+          id: id
+          interface_labels:
+          - interface_labels
+          - interface_labels
+          pool_id: pool_id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/infraService'
+      title: UpdateService Response Structure
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"

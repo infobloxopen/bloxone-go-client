@@ -16,20 +16,18 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/infobloxopen/bloxone-go-client/internal"
-	openapiclient "github.com/infobloxopen/bloxone-go-client/ipam"
+	"github.com/infobloxopen/bloxone-go-client/ipam"
 )
 
-func Test_ipam_GlobalAPIService(t *testing.T) {
+func TestGlobalAPIService(t *testing.T) {
 
-	configuration := internal.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test GlobalAPIService GlobalRead", func(t *testing.T) {
+	t.Run("Test GlobalAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalRead(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.Read(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +35,13 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GlobalAPIService GlobalRead2", func(t *testing.T) {
+	t.Run("Test GlobalAPIService ReadById", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalRead2(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.ReadById(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,11 +49,11 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GlobalAPIService GlobalUpdate", func(t *testing.T) {
+	t.Run("Test GlobalAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.Update(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,13 +61,13 @@ func Test_ipam_GlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GlobalAPIService GlobalUpdate2", func(t *testing.T) {
+	t.Run("Test GlobalAPIService UpdateById", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.GlobalAPI.GlobalUpdate2(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.GlobalAPI.UpdateById(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
