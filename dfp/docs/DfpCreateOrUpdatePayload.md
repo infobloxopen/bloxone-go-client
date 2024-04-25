@@ -4,14 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultResolvers** | Pointer to **[]string** | The list of default DNS resolvers that will be used in case if the BloxOne Cloud is unreachable. Deprecated DO NOT USE. Use resolvers_all. | [optional] 
 **ForwardingPolicy** | Pointer to **string** | The type of DNS resolver as Forwarding Policy. It can hold values as ib_cloud_first, external_first or external_only The default value is ib_cloud_first. If empty string is sent then ib_cloud_first will be considered. | [optional] 
 **Host** | Pointer to [**[]DfpHost**](DfpHost.md) | host information. For internal Use only. | [optional] 
 **Id** | Pointer to **int32** | The DNS Forwarding Proxy object identifier. | [optional] [readonly] 
 **InternalDomainLists** | Pointer to **[]int32** | The list of internal domain list ids associated with this DFP (or resolvers) | [optional] 
 **Name** | Pointer to **string** | The name of the DNS Forwarding Proxy. | [optional] 
 **PopRegionId** | Pointer to **int32** | Point of Presence (PoP) region | [optional] 
-**Resolvers** | Pointer to **[]string** | The list of internal or local DNS servers&#39; IPv4 or IPv6 addresses that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all. | [optional] 
 **ResolversAll** | Pointer to [**[]Resolver**](Resolver.md) | The DNS forwarding proxy additional resolvers used for fallback and local resolution. This field replaces resolvers and default_resolvers fields which are deprecated. Either deprecated fields or new field can be used, both can not be used at same time. | [optional] 
 **ServiceId** | Pointer to **string** | The DNS Forwarding Proxy Service ID object identifier. | [optional] 
 **ServiceName** | Pointer to **string** | The name of the DNS Forwarding Proxy Service. | [optional] 
@@ -35,31 +33,6 @@ will change when the set of required properties is changed
 NewDfpCreateOrUpdatePayloadWithDefaults instantiates a new DfpCreateOrUpdatePayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDefaultResolvers
-
-`func (o *DfpCreateOrUpdatePayload) GetDefaultResolvers() []string`
-
-GetDefaultResolvers returns the DefaultResolvers field if non-nil, zero value otherwise.
-
-### GetDefaultResolversOk
-
-`func (o *DfpCreateOrUpdatePayload) GetDefaultResolversOk() (*[]string, bool)`
-
-GetDefaultResolversOk returns a tuple with the DefaultResolvers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultResolvers
-
-`func (o *DfpCreateOrUpdatePayload) SetDefaultResolvers(v []string)`
-
-SetDefaultResolvers sets DefaultResolvers field to given value.
-
-### HasDefaultResolvers
-
-`func (o *DfpCreateOrUpdatePayload) HasDefaultResolvers() bool`
-
-HasDefaultResolvers returns a boolean if a field has been set.
 
 ### GetForwardingPolicy
 
@@ -210,31 +183,6 @@ SetPopRegionId sets PopRegionId field to given value.
 `func (o *DfpCreateOrUpdatePayload) HasPopRegionId() bool`
 
 HasPopRegionId returns a boolean if a field has been set.
-
-### GetResolvers
-
-`func (o *DfpCreateOrUpdatePayload) GetResolvers() []string`
-
-GetResolvers returns the Resolvers field if non-nil, zero value otherwise.
-
-### GetResolversOk
-
-`func (o *DfpCreateOrUpdatePayload) GetResolversOk() (*[]string, bool)`
-
-GetResolversOk returns a tuple with the Resolvers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResolvers
-
-`func (o *DfpCreateOrUpdatePayload) SetResolvers(v []string)`
-
-SetResolvers sets Resolvers field to given value.
-
-### HasResolvers
-
-`func (o *DfpCreateOrUpdatePayload) HasResolvers() bool`
-
-HasResolvers returns a boolean if a field has been set.
 
 ### GetResolversAll
 

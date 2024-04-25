@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedTime** | Pointer to **time.Time** | The time when this DNS Forwarding Proxy object was created. | [optional] [readonly] 
-**DefaultResolvers** | Pointer to **[]string** | The list of default DNS resolvers that will be used in case if the BloxOne Cloud is unreachable.  Deprecated DO NOT USE. Use resolvers_all. | [optional] [readonly] 
 **ElbIpList** | Pointer to **[]string** | The list of internal or local DNS servers&#39; IPv4 or IPv6 addresses that are used as ELB IPs. | [optional] [readonly] 
 **ForwardingPolicy** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to [**[]DfpHost**](DfpHost.md) | host information. For internal Use only. | [optional] 
@@ -16,7 +15,6 @@ Name | Type | Description | Notes
 **Ophid** | Pointer to **string** | The On-Prem Host identifier. | [optional] [readonly] 
 **PolicyId** | Pointer to **int32** | The identifier of the security policy with which the DNS Forwarding Proxy is associated. | [optional] [readonly] 
 **PopRegionId** | Pointer to **int32** | Point of Presence (PoP) region | [optional] [readonly] 
-**Resolvers** | Pointer to **[]string** | The list of internal or local DNS servers&#39; IPv4 or IPv6 addresses that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all. | [optional] [readonly] 
 **ResolversAll** | Pointer to [**[]Resolver**](Resolver.md) |  | [optional] 
 **ServiceId** | Pointer to **string** | The On-Prem Application Service identifier. For internal Use only | [optional] [readonly] 
 **ServiceName** | Pointer to **string** | The On-Prem Application Service name. For internal Use only | [optional] [readonly] 
@@ -66,31 +64,6 @@ SetCreatedTime sets CreatedTime field to given value.
 `func (o *Dfp) HasCreatedTime() bool`
 
 HasCreatedTime returns a boolean if a field has been set.
-
-### GetDefaultResolvers
-
-`func (o *Dfp) GetDefaultResolvers() []string`
-
-GetDefaultResolvers returns the DefaultResolvers field if non-nil, zero value otherwise.
-
-### GetDefaultResolversOk
-
-`func (o *Dfp) GetDefaultResolversOk() (*[]string, bool)`
-
-GetDefaultResolversOk returns a tuple with the DefaultResolvers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultResolvers
-
-`func (o *Dfp) SetDefaultResolvers(v []string)`
-
-SetDefaultResolvers sets DefaultResolvers field to given value.
-
-### HasDefaultResolvers
-
-`func (o *Dfp) HasDefaultResolvers() bool`
-
-HasDefaultResolvers returns a boolean if a field has been set.
 
 ### GetElbIpList
 
@@ -341,31 +314,6 @@ SetPopRegionId sets PopRegionId field to given value.
 `func (o *Dfp) HasPopRegionId() bool`
 
 HasPopRegionId returns a boolean if a field has been set.
-
-### GetResolvers
-
-`func (o *Dfp) GetResolvers() []string`
-
-GetResolvers returns the Resolvers field if non-nil, zero value otherwise.
-
-### GetResolversOk
-
-`func (o *Dfp) GetResolversOk() (*[]string, bool)`
-
-GetResolversOk returns a tuple with the Resolvers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResolvers
-
-`func (o *Dfp) SetResolvers(v []string)`
-
-SetResolvers sets Resolvers field to given value.
-
-### HasResolvers
-
-`func (o *Dfp) HasResolvers() bool`
-
-HasResolvers returns a boolean if a field has been set.
 
 ### GetResolversAll
 
