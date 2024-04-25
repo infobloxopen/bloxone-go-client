@@ -1,7 +1,7 @@
 /*
 DFP API
 
-Testing DfpAPIService
+Testing InfraServicesAPIService
 
 */
 
@@ -19,17 +19,17 @@ import (
 	"github.com/infobloxopen/bloxone-go-client/dfp"
 )
 
-func TestDfpAPIService(t *testing.T) {
+func TestInfraServicesAPIService(t *testing.T) {
 
 	apiClient := dfp.NewAPIClient()
 
-	t.Run("Test DfpAPIService CreateOrUpdateDfp", func(t *testing.T) {
+	t.Run("Test InfraServicesAPIService CreateOrUpdateDfpService", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var id int32
+		var payloadServiceId string
 
-		resp, httpRes, err := apiClient.DfpAPI.CreateOrUpdateDfp(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.InfraServicesAPI.CreateOrUpdateDfpService(context.Background(), payloadServiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,11 +37,11 @@ func TestDfpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DfpAPIService ListDfp", func(t *testing.T) {
+	t.Run("Test InfraServicesAPIService ListDfpServices", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DfpAPI.ListDfp(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InfraServicesAPI.ListDfpServices(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDfpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DfpAPIService ReadDfp", func(t *testing.T) {
+	t.Run("Test InfraServicesAPIService ReadDfpService", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var id int32
+		var serviceId string
 
-		resp, httpRes, err := apiClient.DfpAPI.ReadDfp(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.InfraServicesAPI.ReadDfpService(context.Background(), serviceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

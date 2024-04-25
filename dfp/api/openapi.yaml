@@ -13,7 +13,7 @@ servers:
 paths:
   /config/check:
     post:
-      description: Use this method to check config
+      description: Use this method to check configuration
       operationId: accountsCheckConfig
       requestBody:
         content:
@@ -35,11 +35,9 @@ paths:
   /dfp_services:
     get:
       description: |+
-        Use this method to retrieve information on all DNS Forwarding Proxy objects for the account.
+        Use this method to retrieve information on all DNS Forwarding Proxy services.
 
-        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
-
-      operationId: dfpListDfp
+      operationId: infra_servicesListDfpServices
       parameters:
       - description: |
           A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.
@@ -48,13 +46,13 @@ paths:
 
           You can filter by following fields:
 
-          | Name                    | type   | Supported Op                |
-          | ----------------------- | ------ | --------------------------- |
-          | name                    | string | !=, ==, ~, !~, >, <, <=, >= |
-          | site_id                 | string | !=, ==, ~, !~, >, <, <=, >= |
-          | ophid                   | string | !=, ==, ~, !~, >, <, <=, >= |
-          | policy_id               | int32  | !=, ==, >, <, <=, >=        |
-          | default_security_policy | bool   | !=, ==                      |
+          | Name                    | type     | Supported Op                |
+          | ----------------------- | -------- | --------------------------- |
+          | service_name            | string   | !=, ==, ~, !~, >, <, <=, >= |
+          | internal_domain_lists   | [int32]  | !=, ==, ~, !~, >, <, <=, >= |
+          | policy_id               | int32    | !=, ==, >, <, <=, >=        |
+          | default_security_policy | bool     | !=, ==                      |
+
 
           In addition groupping operators are supported:
 
@@ -67,7 +65,7 @@ paths:
 
           Example:
           ```
-          ?_filter="((name=='dfp1')or(ophid~'oph'))and(default_security_policy!='true')"
+          ?_filter="((service_name=='dfp1')or(policy_id~'oph'))and(default_security_policy!='true')"
           ```
         in: query
         name: _filter
@@ -116,29 +114,83 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dfpListDfp_500_response'
+                $ref: '#/components/schemas/infra_servicesListDfpServices_500_response'
           description: |2-
 
             - Internal server error occurred
-      summary: List DNS Forwarding Proxies.
+      summary: List DNS Forwarding Proxy services.
       tags:
-      - dfp
-      x-tf-resource: dfp_service
-      x-tf-datasource: dfp_services
-  /dfps/{id}:
+      - infra_services
+  /dfp_services/{payload.service_id}:
+    put:
+      description: |
+        Use this method to update resolvers for the specified DNS Forwarding Proxy Service.
+      operationId: infra_servicesCreateOrUpdateDfpService
+      parameters:
+      - description: The DNS Forwarding Proxy Service ID object identifier.
+        in: path
+        name: payload.service_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/atcdfpDfpCreateOrUpdatePayload'
+        description: The DNS Forwarding Proxy object.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/atcdfpDfpCreateOrUpdateResponse'
+          description: PUT operation response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infra_servicesCreateOrUpdateDfpService_400_response'
+          description: |2-
+
+            - 'id' value must be greater than or equal to zero
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infra_servicesCreateOrUpdateDfpService_404_response'
+          description: |2-
+
+            - 'id' value must contain existing DFP identifier
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infra_servicesListDfpServices_500_response'
+          description: |2-
+
+            - Internal server error occurred
+      summary: Update DNS Forwarding Proxy services.
+      tags:
+      - infra_services
+      x-codegen-request-body-name: body
+  /dfp_services/{service_id}:
     get:
       description: |
-        Use this method to retrieve information on the specified DNS Forwarding Proxy object.
-
-        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries.
-
-        Note that DNS Forwarding Proxy cannot be created (all information regarding DFP is synchronized from hostapp service).
-      operationId: dfpReadDfp
+        Use this method to retrieve information on the specified DNS Forwarding Proxy service.
+      operationId: infra_servicesReadDfpService
       parameters:
-      - description: The DNS Forwarding Proxy object identifier.
+      - description: The On-Prem Application Service identifier. For internal Use
+          only
         in: path
-        name: id
+        name: service_id
         required: true
+        schema:
+          type: string
+      - description: The DNS Forwarding Proxy object identifier.
+        in: query
+        name: id
         schema:
           format: int32
           type: integer
@@ -161,12 +213,6 @@ paths:
         name: name
         schema:
           type: string
-      - description: The On-Prem Application Service identifier. For internal Use
-          only.
-        in: query
-        name: service_id
-        schema:
-          type: string
       responses:
         "200":
           content:
@@ -178,7 +224,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dfpReadDfp_404_response'
+                $ref: '#/components/schemas/infra_servicesCreateOrUpdateDfpService_404_response'
           description: |2-
 
             - 'id' value must contain existing DFP identifier
@@ -186,73 +232,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dfpListDfp_500_response'
+                $ref: '#/components/schemas/infra_servicesListDfpServices_500_response'
           description: |2-
 
             - Internal server error occurred
-      summary: Read DNS Forwarding Proxy.
+      summary: Read DNS Forwarding Proxy services.
       tags:
-      - dfp
-    put:
-      description: |
-        Use this method to update resolvers for the specified DNS Forwarding Proxy.
-
-        For remote office deployments or in cases where installing an endpoint agent is not desirable or possible, you can use the DNS forwarding proxy. It is a software that runs on bare-metal, VM infrastructures, or Infoblox NIOS appliances; and it embeds the client IPs in DNS queries before forwarding them to BloxOne Cloud. The communications are encrypted and client visibility is maintained. The proxy also provides DNS resolution to local DNS zones when you configure local resolvers. Once you set up a DNS forwarding proxy, it becomes the main DNS server for your remote site. It will also cache responses to speed resolution of future queries. There is a possibility to set default resolver(s) depending on the license class. DNS forwarding proxy would fallback to the default resolvers when BloxOne Cloud is unreachable.
-      operationId: dfpCreateOrUpdateDfp
-      parameters:
-      - description: The DNS Forwarding Proxy object identifier.
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/atcdfpDfpCreateOrUpdatePayload'
-        description: The DNS Forwarding Proxy object.
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/atcdfpDfpCreateOrUpdateResponse'
-          description: PUT operation response
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/dfpCreateOrUpdateDfp_400_response'
-          description: |2-
-
-            - 'id' value must be greater than or equal to zero
-            - 'resolvers' value must contain values that are valid IPv4 or IPv6 addresses
-            - 'resolvers' value must contain unique elements
-            - 'default_resolvers' value must contain values that are valid IPv4 or IPv6 addresses
-            - 'default_resolvers' value must contain unique elements
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/dfpReadDfp_404_response'
-          description: |2-
-
-            - 'id' value must contain existing DFP identifier
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/dfpListDfp_500_response'
-          description: |2-
-
-            - Internal server error occurred
-      summary: Update DNS Forwarding Proxy resolvers.
-      tags:
-      - dfp
-      x-codegen-request-body-name: body
+      - infra_services
 components:
   schemas:
     atcdfpDNSProtocol:
@@ -268,9 +254,6 @@ components:
         - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
         created_time: 2000-01-23T04:56:07.000+00:00
         updated_time: 2000-01-23T04:56:07.000+00:00
-        resolvers:
-        - 1.1.1.1
-        - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
         resolvers_all:
         - address: address
           is_fallback: true
@@ -290,9 +273,6 @@ components:
         - 1
         - 1
         service_name: dfp_service_1
-        default_resolvers:
-        - 4.4.4.4
-        - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
         pop_region_id: 5
         ophid: aed8263b8900bfb178e0bb7c57ba5af8
         service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
@@ -319,16 +299,6 @@ components:
           format: date-time
           readOnly: true
           type: string
-        default_resolvers:
-          description: The list of default DNS resolvers that will be used in case
-            if the BloxOne Cloud is unreachable.  Deprecated DO NOT USE. Use resolvers_all.
-          example:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
-          items:
-            type: string
-          readOnly: true
-          type: array
         elb_ip_list:
           description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
             that are used as ELB IPs.
@@ -385,16 +355,6 @@ components:
           format: int32
           readOnly: true
           type: integer
-        resolvers:
-          description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
-            that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all.
-          example:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
-          items:
-            type: string
-          readOnly: true
-          type: array
         resolvers_all:
           items:
             $ref: '#/components/schemas/atcdfpResolver'
@@ -431,15 +391,6 @@ components:
 
         Note that DNS Forwarding Proxy cannot be created (all information regarding DFP is synchronized from hostapp service).
       properties:
-        default_resolvers:
-          description: The list of default DNS resolvers that will be used in case
-            if the BloxOne Cloud is unreachable. Deprecated DO NOT USE. Use resolvers_all.
-          example:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
-          items:
-            type: string
-          type: array
         forwarding_policy:
           description: |-
             The type of DNS resolver as Forwarding Policy. It can hold values as ib_cloud_first, external_first or external_only
@@ -471,15 +422,6 @@ components:
           description: Point of Presence (PoP) region
           format: int32
           type: integer
-        resolvers:
-          description: The list of internal or local DNS servers' IPv4 or IPv6 addresses
-            that are used as DNS resolvers. Deprecated DO NOT USE. Use resolvers_all.
-          example:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
-          items:
-            type: string
-          type: array
         resolvers_all:
           description: "The DNS forwarding proxy additional resolvers used for fallback\
             \ and local resolution. This field replaces resolvers and default_resolvers\
@@ -518,9 +460,6 @@ components:
           - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           created_time: 2000-01-23T04:56:07.000+00:00
           updated_time: 2000-01-23T04:56:07.000+00:00
-          resolvers:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           resolvers_all:
           - address: address
             is_fallback: true
@@ -540,9 +479,6 @@ components:
           - 1
           - 1
           service_name: dfp_service_1
-          default_resolvers:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           pop_region_id: 5
           ophid: aed8263b8900bfb178e0bb7c57ba5af8
           service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
@@ -605,9 +541,6 @@ components:
           - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           created_time: 2000-01-23T04:56:07.000+00:00
           updated_time: 2000-01-23T04:56:07.000+00:00
-          resolvers:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           resolvers_all:
           - address: address
             is_fallback: true
@@ -627,9 +560,6 @@ components:
           - 1
           - 1
           service_name: dfp_service_1
-          default_resolvers:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           pop_region_id: 5
           ophid: aed8263b8900bfb178e0bb7c57ba5af8
           service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
@@ -655,9 +585,6 @@ components:
           - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           created_time: 2000-01-23T04:56:07.000+00:00
           updated_time: 2000-01-23T04:56:07.000+00:00
-          resolvers:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           resolvers_all:
           - address: address
             is_fallback: true
@@ -677,9 +604,6 @@ components:
           - 1
           - 1
           service_name: dfp_service_1
-          default_resolvers:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           pop_region_id: 5
           ophid: aed8263b8900bfb178e0bb7c57ba5af8
           service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
@@ -716,9 +640,6 @@ components:
           - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           created_time: 2000-01-23T04:56:07.000+00:00
           updated_time: 2000-01-23T04:56:07.000+00:00
-          resolvers:
-          - 1.1.1.1
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           resolvers_all:
           - address: address
             is_fallback: true
@@ -738,9 +659,6 @@ components:
           - 1
           - 1
           service_name: dfp_service_1
-          default_resolvers:
-          - 4.4.4.4
-          - 2001:cdba:9abc:5678:ffff:ffff:ffff:ffff
           pop_region_id: 5
           ophid: aed8263b8900bfb178e0bb7c57ba5af8
           service_id: u2y3w3fuhhtx7aykfkuergkuboc33wyqrrmjnr5tyrlyredwow374gu5uwzqnsb6
@@ -865,7 +783,7 @@ components:
           description: The check result.
           type: string
       type: object
-    dfpListDfp_500_response_error:
+    infra_servicesListDfpServices_500_response_error:
       example:
         code: INTERNAL
         message: Internal Server Error
@@ -881,7 +799,7 @@ components:
           example: "500"
           type: string
       type: object
-    dfpListDfp_500_response:
+    infra_servicesListDfpServices_500_response:
       example:
         error:
           code: INTERNAL
@@ -889,35 +807,9 @@ components:
           status: "500"
       properties:
         error:
-          $ref: '#/components/schemas/dfpListDfp_500_response_error'
+          $ref: '#/components/schemas/infra_servicesListDfpServices_500_response_error'
       type: object
-    dfpReadDfp_404_response_error:
-      example:
-        code: NOT_FOUND
-        message: Dfp does not exist
-        status: "404"
-      properties:
-        code:
-          example: NOT_FOUND
-          type: string
-        message:
-          example: Dfp does not exist
-          type: string
-        status:
-          example: "404"
-          type: string
-      type: object
-    dfpReadDfp_404_response:
-      example:
-        error:
-          code: NOT_FOUND
-          message: Dfp does not exist
-          status: "404"
-      properties:
-        error:
-          $ref: '#/components/schemas/dfpReadDfp_404_response_error'
-      type: object
-    dfpCreateOrUpdateDfp_400_response_error:
+    infra_servicesCreateOrUpdateDfpService_400_response_error:
       example:
         code: INVALID_ARGUMENT
         message: "invalid 'by': invalid DfpCreateOrUpdatePayload.Id: value must be\
@@ -935,7 +827,7 @@ components:
           example: "400"
           type: string
       type: object
-    dfpCreateOrUpdateDfp_400_response:
+    infra_servicesCreateOrUpdateDfpService_400_response:
       example:
         error:
           code: INVALID_ARGUMENT
@@ -944,6 +836,32 @@ components:
           status: "400"
       properties:
         error:
-          $ref: '#/components/schemas/dfpCreateOrUpdateDfp_400_response_error'
+          $ref: '#/components/schemas/infra_servicesCreateOrUpdateDfpService_400_response_error'
+      type: object
+    infra_servicesCreateOrUpdateDfpService_404_response_error:
+      example:
+        code: NOT_FOUND
+        message: Dfp does not exist
+        status: "404"
+      properties:
+        code:
+          example: NOT_FOUND
+          type: string
+        message:
+          example: Dfp does not exist
+          type: string
+        status:
+          example: "404"
+          type: string
+      type: object
+    infra_servicesCreateOrUpdateDfpService_404_response:
+      example:
+        error:
+          code: NOT_FOUND
+          message: Dfp does not exist
+          status: "404"
+      properties:
+        error:
+          $ref: '#/components/schemas/infra_servicesCreateOrUpdateDfpService_404_response_error'
       type: object
 x-original-swagger-version: "2.0"

@@ -1,4 +1,4 @@
-# DfpReadDfp404ResponseError
+# InfraServicesListDfpServices500ResponseError
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewDfpReadDfp404ResponseError
+### NewInfraServicesListDfpServices500ResponseError
 
-`func NewDfpReadDfp404ResponseError() *DfpReadDfp404ResponseError`
+`func NewInfraServicesListDfpServices500ResponseError() *InfraServicesListDfpServices500ResponseError`
 
-NewDfpReadDfp404ResponseError instantiates a new DfpReadDfp404ResponseError object
+NewInfraServicesListDfpServices500ResponseError instantiates a new InfraServicesListDfpServices500ResponseError object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDfpReadDfp404ResponseErrorWithDefaults
+### NewInfraServicesListDfpServices500ResponseErrorWithDefaults
 
-`func NewDfpReadDfp404ResponseErrorWithDefaults() *DfpReadDfp404ResponseError`
+`func NewInfraServicesListDfpServices500ResponseErrorWithDefaults() *InfraServicesListDfpServices500ResponseError`
 
-NewDfpReadDfp404ResponseErrorWithDefaults instantiates a new DfpReadDfp404ResponseError object
+NewInfraServicesListDfpServices500ResponseErrorWithDefaults instantiates a new InfraServicesListDfpServices500ResponseError object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCode
 
-`func (o *DfpReadDfp404ResponseError) GetCode() string`
+`func (o *InfraServicesListDfpServices500ResponseError) GetCode() string`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *DfpReadDfp404ResponseError) GetCodeOk() (*string, bool)`
+`func (o *InfraServicesListDfpServices500ResponseError) GetCodeOk() (*string, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *DfpReadDfp404ResponseError) SetCode(v string)`
+`func (o *InfraServicesListDfpServices500ResponseError) SetCode(v string)`
 
 SetCode sets Code field to given value.
 
 ### HasCode
 
-`func (o *DfpReadDfp404ResponseError) HasCode() bool`
+`func (o *InfraServicesListDfpServices500ResponseError) HasCode() bool`
 
 HasCode returns a boolean if a field has been set.
 
 ### GetMessage
 
-`func (o *DfpReadDfp404ResponseError) GetMessage() string`
+`func (o *InfraServicesListDfpServices500ResponseError) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *DfpReadDfp404ResponseError) GetMessageOk() (*string, bool)`
+`func (o *InfraServicesListDfpServices500ResponseError) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *DfpReadDfp404ResponseError) SetMessage(v string)`
+`func (o *InfraServicesListDfpServices500ResponseError) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *DfpReadDfp404ResponseError) HasMessage() bool`
+`func (o *InfraServicesListDfpServices500ResponseError) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DfpReadDfp404ResponseError) GetStatus() string`
+`func (o *InfraServicesListDfpServices500ResponseError) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DfpReadDfp404ResponseError) GetStatusOk() (*string, bool)`
+`func (o *InfraServicesListDfpServices500ResponseError) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DfpReadDfp404ResponseError) SetStatus(v string)`
+`func (o *InfraServicesListDfpServices500ResponseError) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *DfpReadDfp404ResponseError) HasStatus() bool`
+`func (o *InfraServicesListDfpServices500ResponseError) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 
