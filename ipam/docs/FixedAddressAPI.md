@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // FixedAddress | 
+	body := *ipam.NewFixedAddress("192.168.1.10", "mac", "00:0a:95:9d:68:16") // FixedAddress | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -327,7 +327,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewFixedAddress("Address_example", "MatchType_example", "MatchValue_example") // FixedAddress | 
+	body := *ipam.NewFixedAddress("192.168.1.10", "mac", "00:0a:95:9d:68:16") // FixedAddress | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()

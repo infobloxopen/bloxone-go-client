@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewServer("Name_example") // Server | 
+	body := *dnsconfig.NewServer("Example Primary Hosts DNS Profile") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := dnsconfig.NewAPIClient()
@@ -327,7 +327,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewServer("Name_example") // Server | 
+	body := *dnsconfig.NewServer("Example Primary Hosts DNS Profile") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := dnsconfig.NewAPIClient()

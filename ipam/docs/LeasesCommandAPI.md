@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewLeasesCommand("Command_example") // LeasesCommand | 
+	body := *ipam.NewLeasesCommand("resend-ddns") // LeasesCommand | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.LeasesCommandAPI.Create(context.Background()).Body(body).Execute()

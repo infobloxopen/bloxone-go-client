@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // OptionCode | 
+	body := *ipam.NewOptionCode(int64(15), "Example Option Code", "ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd", "fqdn") // OptionCode | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionCodeAPI.Create(context.Background()).Body(body).Execute()
@@ -317,7 +317,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewOptionCode(int64(123), "Name_example", "OptionSpace_example", "Type_example") // OptionCode | 
+	body := *ipam.NewOptionCode(int64(15), "Example Option Code", "ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd", "fqdn") // OptionCode | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionCodeAPI.Update(context.Background(), id).Body(body).Execute()

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewACL("Name_example") // ACL | 
+	body := *dnsconfig.NewACL("Example ACL") // ACL | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.AclAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewACL("Name_example") // ACL | 
+	body := *dnsconfig.NewACL("Example ACL") // ACL | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.AclAPI.Update(context.Background(), id).Body(body).Execute()

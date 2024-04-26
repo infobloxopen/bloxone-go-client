@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
+	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("dhcp/host/8b02a7a2-fef0-4717-a616-095ef2afadcd")}, "Example HA Group") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HaGroupAPI.Create(context.Background()).Body(body).Execute()
@@ -325,7 +325,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("Host_example")}, "Name_example") // HAGroup | 
+	body := *ipam.NewHAGroup([]ipam.HAGroupHost{*ipam.NewHAGroupHost("dhcp/host/8b02a7a2-fef0-4717-a616-095ef2afadcd")}, "Example HA Group") // HAGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HaGroupAPI.Update(context.Background(), id).Body(body).Execute()

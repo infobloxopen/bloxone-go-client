@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewServer("Name_example") // Server | 
+	body := *ipam.NewServer("Example DHCP Config Profile") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -327,7 +327,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewServer("Name_example") // Server | 
+	body := *ipam.NewServer("Example DHCP Config Profile") // Server | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()

@@ -288,7 +288,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name
@@ -330,7 +331,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name
@@ -363,7 +365,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name
@@ -408,7 +411,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name
@@ -454,7 +458,8 @@ components:
         id: id
         view_name: view_name
         ipam_host: ipam_host
-        rdata: "{}"
+        rdata:
+          address: 10.0.0.0
         ttl: 6
         dns_absolute_name_spec: dns_absolute_name_spec
         absolute_zone_name: absolute_zone_name
@@ -740,6 +745,8 @@ components:
             \ is _ASCII_ or _BASE64_. </li><li>_16_: If _type_ is _HEX_.</li></ul>Defaults\
             \ to none. <br><br>| Only required for some types.\nvalue        | A string\
             \ representing the value for the sub-subfield | Yes"
+          example:
+            address: 10.0.0.0
           type: object
         source:
           description: |-
@@ -874,7 +881,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name
@@ -916,7 +924,8 @@ components:
           id: id
           view_name: view_name
           ipam_host: ipam_host
-          rdata: "{}"
+          rdata:
+            address: 10.0.0.0
           ttl: 6
           dns_absolute_name_spec: dns_absolute_name_spec
           absolute_zone_name: absolute_zone_name

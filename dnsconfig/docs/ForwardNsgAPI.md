@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewForwardNSG("Name_example") // ForwardNSG | 
+	body := *dnsconfig.NewForwardNSG("Example Forward NSG") // ForwardNSG | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.ForwardNsgAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewForwardNSG("Name_example") // ForwardNSG | 
+	body := *dnsconfig.NewForwardNSG("Example Forward NSG") // ForwardNSG | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.ForwardNsgAPI.Update(context.Background(), id).Body(body).Execute()

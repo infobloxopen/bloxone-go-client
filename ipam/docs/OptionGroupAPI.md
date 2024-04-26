@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
+	body := *ipam.NewOptionGroup("Example Option Group") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionGroupAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewOptionGroup("Name_example") // OptionGroup | 
+	body := *ipam.NewOptionGroup("Example Option Group") // OptionGroup | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionGroupAPI.Update(context.Background(), id).Body(body).Execute()

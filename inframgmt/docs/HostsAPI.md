@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	body := *inframgmt.NewHost("DisplayName_example") // Host | 
+	body := *inframgmt.NewHost("Example Host Name") // Host | 
 
 	apiClient := inframgmt.NewAPIClient()
 	resp, r, err := apiClient.HostsAPI.Create(context.Background()).Body(body).Execute()
@@ -598,7 +598,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *inframgmt.NewHost("DisplayName_example") // Host | 
+	body := *inframgmt.NewHost("Example Host Name") // Host | 
 
 	apiClient := inframgmt.NewAPIClient()
 	resp, r, err := apiClient.HostsAPI.Update(context.Background(), id).Body(body).Execute()

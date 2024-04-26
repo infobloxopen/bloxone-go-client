@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewGlobal("Id_example") // Global | 
+	body := *dnsconfig.NewGlobal("dns/global/cd0ad27d-87f3-4f0f-ac71-91272b4c1492") // Global | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.GlobalAPI.Update(context.Background()).Body(body).Execute()
@@ -238,7 +238,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewGlobal("Id_example") // Global | 
+	body := *dnsconfig.NewGlobal("dns/global/cd0ad27d-87f3-4f0f-ac71-91272b4c1492") // Global | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.GlobalAPI.Update2(context.Background(), id).Body(body).Execute()

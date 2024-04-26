@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewAddress("Address_example") // Address | 
+	body := *ipam.NewAddress("10.0.0.0") // Address | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressAPI.Create(context.Background()).Body(body).Execute()
@@ -325,7 +325,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewAddress("Address_example") // Address | 
+	body := *ipam.NewAddress("10.0.0.0") // Address | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressAPI.Update(context.Background(), id).Body(body).Execute()

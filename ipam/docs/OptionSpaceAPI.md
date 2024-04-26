@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
+	body := *ipam.NewOptionSpace("Example Option Space") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionSpaceAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewOptionSpace("Name_example") // OptionSpace | 
+	body := *ipam.NewOptionSpace("Example Option Space") // OptionSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionSpaceAPI.Update(context.Background(), id).Body(body).Execute()

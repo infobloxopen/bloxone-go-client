@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewASM("SubnetId_example") // ASM | 
+	body := *ipam.NewASM("ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995") // ASM | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AsmAPI.Create(context.Background()).Body(body).Execute()

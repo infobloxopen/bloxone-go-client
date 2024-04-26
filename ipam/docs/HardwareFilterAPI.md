@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
+	body := *ipam.NewHardwareFilter("Example Hardware Filter") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HardwareFilterAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewHardwareFilter("Name_example") // HardwareFilter | 
+	body := *ipam.NewHardwareFilter("Example Hardware Filter") // HardwareFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.HardwareFilterAPI.Update(context.Background(), id).Body(body).Execute()
