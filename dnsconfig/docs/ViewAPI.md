@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewBulkCopyView([]string{"Resources_example"}, "Target_example") // BulkCopyView | 
+	body := *dnsconfig.NewBulkCopyView([]string{"Resources_example"}, "dns/view/b78e6236-1e70-11eb-8dee-acde48001122") // BulkCopyView | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.ViewAPI.BulkCopy(context.Background()).Body(body).Execute()
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewView("Name_example") // View | 
+	body := *dnsconfig.NewView("Example Config View") // View | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := dnsconfig.NewAPIClient()
@@ -394,7 +394,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewView("Name_example") // View | 
+	body := *dnsconfig.NewView("Example Config View") // View | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := dnsconfig.NewAPIClient()

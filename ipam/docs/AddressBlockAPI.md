@@ -42,7 +42,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewCopyAddressBlock("Space_example") // CopyAddressBlock | 
+	body := *ipam.NewCopyAddressBlock("ipam/ip_space/59882b4a-427a-4077-a9b4-f08cb2b97318") // CopyAddressBlock | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.AddressBlockAPI.Copy(context.Background(), id).Body(body).Execute()

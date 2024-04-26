@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewCopyForwardZone("TargetView_example") // CopyForwardZone | 
+	body := *dnsconfig.NewCopyForwardZone("dns/view/23311109-fad4-448f-a7a7-55ad791ae7eb") // CopyForwardZone | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.ForwardZoneAPI.Copy(context.Background()).Body(body).Execute()

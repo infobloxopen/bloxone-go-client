@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewLBDN("Name_example", "View_example") // LBDN | 
+	body := *dnsconfig.NewLBDN("example.com", "dns/view/23311109-fad4-448f-a7a7-55ad791ae7eb") // LBDN | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.LbdnAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewLBDN("Name_example", "View_example") // LBDN | 
+	body := *dnsconfig.NewLBDN("example.com", "dns/view/23311109-fad4-448f-a7a7-55ad791ae7eb") // LBDN | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.LbdnAPI.Update(context.Background(), id).Body(body).Execute()

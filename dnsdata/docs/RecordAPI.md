@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	body := *dnsdata.NewRecord(map[string]interface{}(123)) // Record | 
+	body := *dnsdata.NewRecord(map[string]interface{}({"address":"10.0.0.0"})) // Record | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
 	apiClient := dnsdata.NewAPIClient()
@@ -400,7 +400,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsdata.NewRecord(map[string]interface{}(123)) // Record | 
+	body := *dnsdata.NewRecord(map[string]interface{}({"address":"10.0.0.0"})) // Record | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources. (optional)
 
 	apiClient := dnsdata.NewAPIClient()

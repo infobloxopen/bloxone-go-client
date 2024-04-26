@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
+	body := *ipam.NewOptionFilter("Example Option Filter", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionFilterAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewOptionFilter("Name_example", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
+	body := *ipam.NewOptionFilter("Example Option Filter", *ipam.NewOptionFilterRuleList()) // OptionFilter | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.OptionFilterAPI.Update(context.Background(), id).Body(body).Execute()

@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewBulkCopyIPSpace([]string{"CopyObjects_example"}, "Target_example") // BulkCopyIPSpace | 
+	body := *ipam.NewBulkCopyIPSpace([]string{"CopyObjects_example"}, "ipam/ip_space/6ef9db92-99fa-4ca0-a36e-749760a38d29") // BulkCopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpSpaceAPI.BulkCopy(context.Background()).Body(body).Execute()
@@ -103,7 +103,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewCopyIPSpace("Name_example") // CopyIPSpace | 
+	body := *ipam.NewCopyIPSpace("Example IP Space") // CopyIPSpace | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpSpaceAPI.Copy(context.Background(), id).Body(body).Execute()
@@ -174,7 +174,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIPSpace("Name_example") // IPSpace | 
+	body := *ipam.NewIPSpace("Example IP Space") // IPSpace | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -467,7 +467,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIPSpace("Name_example") // IPSpace | 
+	body := *ipam.NewIPSpace("Example IP Space") // IPSpace | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()

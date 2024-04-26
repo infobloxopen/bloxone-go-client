@@ -4406,10 +4406,10 @@ components:
         source: source
         display_name: display_name
         value:
-        - type: type
-          value: value
-        - type: type
-          value: value
+        - type: client_hex
+          value: 01:23:45:67:89:AB
+        - type: client_hex
+          value: 01:23:45:67:89:AB
       properties:
         action:
           description: |-
@@ -4656,7 +4656,7 @@ components:
         suppress_time: 5
         lookahead: 6
         front_start: front_start
-        subnet_id: subnet_id
+        subnet_id: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
         growth: 0
         id: id
         subnet_address: subnet_address
@@ -4733,6 +4733,7 @@ components:
           type: string
         subnet_id:
           description: The resource identifier.
+          example: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
           type: string
         subnet_range:
           description: The resource identifier.
@@ -4859,7 +4860,7 @@ components:
       description: The __AccessFilter__ object represents an allow/deny filter for
         a DHCP range.
       example:
-        access: access
+        access: allow
         option_filter_id: option_filter_id
         hardware_filter_id: hardware_filter_id
       properties:
@@ -4868,6 +4869,7 @@ components:
             The access type of DHCP filter (_allow_ or _deny_).
 
             Defaults to _allow_.
+          example: allow
           type: string
         hardware_filter_id:
           description: The resource identifier.
@@ -4884,7 +4886,7 @@ components:
         address within a given IP space.
       example:
         parent: parent
-        address: address
+        address: 10.0.0.0
         usage:
         - usage
         - usage
@@ -4898,10 +4900,10 @@ components:
         hwaddr: hwaddr
         protocol: protocol
         names:
-        - name: name
-          type: type
-        - name: name
-          type: type
+        - name: example.com
+          type: FQDN
+        - name: example.com
+          type: FQDN
         updated_at: 2000-01-23T04:56:07.000+00:00
         dhcp_info:
           preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -4924,6 +4926,7 @@ components:
       properties:
         address:
           description: The address in form "a.b.c.d".
+          example: 10.0.0.0
           type: string
         comment:
           description: The description for the address object. May contain 0 to 1024
@@ -5038,10 +5041,10 @@ components:
           - filters_v6
           - filters_v6
           ignore_list:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
           allow_unknown: true
           filters:
           - filters
@@ -5059,8 +5062,8 @@ components:
         - usage
         created_at: 2000-01-23T04:56:07.000+00:00
         threshold:
-          high: 20
-          low: 41
+          high: 100
+          low: 10
           enabled: true
         ddns_send_updates: true
         utilization_v6:
@@ -5109,8 +5112,8 @@ components:
           total: total
           static: static
           dynamic: dynamic
-          utilization: 12
-          abandon_utilization: 73
+          utilization: 41
+          abandon_utilization: 20
           used: used
           abandoned: abandoned
           free: free
@@ -5169,10 +5172,10 @@ components:
               source: source
               display_name: display_name
               value:
-              - type: type
-                value: value
-              - type: type
-                value: value
+              - type: client_hex
+                value: 01:23:45:67:89:AB
+              - type: client_hex
+                value: 01:23:45:67:89:AB
             allow_unknown:
               action: action
               source: source
@@ -5598,6 +5601,9 @@ components:
           type: boolean
         copy_objects:
           description: The resource identifier.
+          example:
+          - ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
+          - ipam/subnet/c8566b79-e312-4fcd-a766-81bdd1f70b35
           items:
             type: string
           type: array
@@ -5617,6 +5623,7 @@ components:
           type: boolean
         target:
           description: The resource identifier.
+          example: ipam/ip_space/6ef9db92-99fa-4ca0-a36e-749760a38d29
           type: string
       required:
       - copy_objects
@@ -5685,6 +5692,7 @@ components:
           type: boolean
         space:
           description: The resource identifier.
+          example: ipam/ip_space/59882b4a-427a-4077-a9b4-f08cb2b97318
           type: string
       required:
       - space
@@ -5721,6 +5729,7 @@ components:
         name:
           description: The name for the copied IP space. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example IP Space
           type: string
         skip_on_error:
           description: |-
@@ -5798,6 +5807,7 @@ components:
           type: boolean
         space:
           description: The resource identifier.
+          example: ipam/ip_space/59882b4a-427a-4077-a9b4-f08cb2b97318
           type: string
       required:
       - space
@@ -5838,7 +5848,7 @@ components:
           suppress_time: 5
           lookahead: 6
           front_start: front_start
-          subnet_id: subnet_id
+          subnet_id: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
           growth: 0
           id: id
           subnet_address: subnet_address
@@ -5861,10 +5871,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -5882,8 +5892,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -5932,8 +5942,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -5992,10 +6002,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -6154,7 +6164,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -6168,10 +6178,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -6201,7 +6211,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 192.168.1.10
           header_option_filename: header_option_filename
           created_at: 2000-01-23T04:56:07.000+00:00
           dhcp_options:
@@ -6213,7 +6223,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          match_value: match_value
+          match_value: 00:0a:95:9d:68:16
           inheritance_assigned_hosts:
           - ophid: ophid
             host: host
@@ -6266,7 +6276,7 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          match_type: match_type
+          match_type: mac
           comment: comment
           inheritance_parent: inheritance_parent
           id: id
@@ -6286,27 +6296,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -6341,7 +6333,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Hardware Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -6363,10 +6355,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -6381,8 +6373,8 @@ components:
           asm_scope_flag: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -6425,8 +6417,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -6485,10 +6477,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -6665,7 +6657,7 @@ components:
             option_code: option_code
             group: group
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example IP Space
           comment: comment
           ddns_update_on_renew: false
           ddns_generated_prefix: myhost
@@ -6688,15 +6680,15 @@ components:
           auto_generate_records: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           host_names:
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          name: name
+          name: Example IPAM Host
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -6729,10 +6721,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -6750,8 +6742,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -6800,8 +6792,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -6860,10 +6852,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -7022,10 +7014,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -7043,8 +7035,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -7093,8 +7085,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -7153,10 +7145,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -7318,7 +7310,7 @@ components:
       example:
         results:
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -7332,10 +7324,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -7356,7 +7348,7 @@ components:
           state: state
           disable_dhcp: true
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -7370,10 +7362,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -7415,10 +7407,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -7436,8 +7428,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -7495,8 +7487,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -7555,10 +7547,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -7719,10 +7711,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -7740,8 +7732,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -7799,8 +7791,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -7859,10 +7851,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -8025,16 +8017,16 @@ components:
       description: The response format to create the __OptionCode__ object.
       example:
         result:
-          code: 21
+          code: 15
           updated_at: 2000-01-23T04:56:07.000+00:00
           array: true
-          name: name
+          name: Example Option Code
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           source: source
-          type: type
-          option_space: option_space
+          type: fqdn
+          option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
       properties:
         result:
           $ref: '#/components/schemas/ipamsvcOptionCode'
@@ -8060,12 +8052,12 @@ components:
             match: match
             rules:
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
           tags: "{}"
           protocol: protocol
@@ -8073,7 +8065,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Option Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -8088,7 +8080,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           dhcp_options:
@@ -8113,7 +8105,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Space
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -8128,15 +8120,15 @@ components:
       example:
         result:
           parent: parent
-          start: start
+          start: 10.0.0.0
           created_at: 2000-01-23T04:56:07.000+00:00
           exclusion_ranges:
-          - start: start
+          - start: 10.0.0.0
             comment: comment
-            end: end
-          - start: start
+            end: 10.0.0.10
+          - start: 10.0.0.0
             comment: comment
-            end: end
+            end: 10.0.0.10
           dhcp_options:
           - option_value: option_value
             type: type
@@ -8147,23 +8139,23 @@ components:
             option_code: option_code
             group: group
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           utilization:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
           filters:
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
           utilization_v6:
@@ -8209,7 +8201,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           comment: comment
-          end: end
+          end: 10.0.0.10
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
@@ -8233,10 +8225,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -8253,14 +8245,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -8309,12 +8301,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -8339,12 +8331,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -8400,10 +8392,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -8531,14 +8523,14 @@ components:
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 ddns_send_updates: true
                 ddns_zones:
@@ -8562,12 +8554,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -8592,12 +8584,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -8623,7 +8615,7 @@ components:
             group: group
           kerberos_tkey_lifetime: 7
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example DHCP Config Profile
           comment: comment
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -8646,10 +8638,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -8667,8 +8659,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -8726,8 +8718,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -8786,10 +8778,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -8957,14 +8949,14 @@ components:
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         ddns_send_updates: true
         ddns_zones:
@@ -8988,12 +8980,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -9018,12 +9010,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -9171,12 +9163,12 @@ components:
           nameserver: nameserver
           server_principal: server_principal
         fqdn: fqdn
-        zone: zone
+        zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
         tsig_key:
           name: name
           comment: comment
           secret: secret
-          key: key
+          key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
           algorithm: algorithm
           protocol_name: protocol_name
         tsig_enabled: true
@@ -9221,6 +9213,7 @@ components:
           type: string
         zone:
           description: The resource identifier.
+          example: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           type: string
       required:
       - zone
@@ -9236,10 +9229,10 @@ components:
         - filters_v6
         - filters_v6
         ignore_list:
-        - type: type
-          value: value
-        - type: type
-          value: value
+        - type: client_hex
+          value: 01:23:45:67:89:AB
+        - type: client_hex
+          value: 01:23:45:67:89:AB
         allow_unknown: true
         filters:
         - filters
@@ -9463,10 +9456,10 @@ components:
             source: source
             display_name: display_name
             value:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
           allow_unknown:
             action: action
             source: source
@@ -9753,22 +9746,25 @@ components:
       description: A __DHCPUtilizationThreshold__ object represents threshold settings
         for DHCP utilization.
       example:
-        high: 14
-        low: 68
+        high: 100
+        low: 0
         enabled: true
       properties:
         enabled:
           description: Indicates whether the DHCP utilization threshold is enabled
             or not.
+          example: true
           format: boolean
           type: boolean
         high:
           description: The high threshold value for DHCP utilization in percentage.
+          example: 100
           format: int64
           maximum: 100
           type: integer
         low:
           description: The low threshold value for DHCP utilization in percentage.
+          example: 0
           format: int64
           maximum: 100
           type: integer
@@ -9835,9 +9831,9 @@ components:
       description: The __ExclusionRange__ object represents an exclusion range inside
         a DHCP range.
       example:
-        start: start
+        start: 10.0.0.0
         comment: comment
-        end: end
+        end: 10.0.0.10
       properties:
         comment:
           description: The description for the exclusion range. May contain 0 to 1024
@@ -9845,9 +9841,11 @@ components:
           type: string
         end:
           description: The end address of the exclusion range.
+          example: 10.0.0.10
           type: string
         start:
           description: The start address of the exclusion range.
+          example: 10.0.0.0
           type: string
       required:
       - end
@@ -9902,7 +9900,7 @@ components:
         _match_value_ so it can match that client.
       example:
         parent: parent
-        address: address
+        address: 192.168.1.10
         header_option_filename: header_option_filename
         created_at: 2000-01-23T04:56:07.000+00:00
         dhcp_options:
@@ -9914,7 +9912,7 @@ components:
           type: type
           option_code: option_code
           group: group
-        match_value: match_value
+        match_value: 00:0a:95:9d:68:16
         inheritance_assigned_hosts:
         - ophid: ophid
           host: host
@@ -9967,7 +9965,7 @@ components:
         ip_space: ip_space
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
-        match_type: match_type
+        match_type: mac
         comment: comment
         inheritance_parent: inheritance_parent
         id: id
@@ -9976,6 +9974,7 @@ components:
       properties:
         address:
           description: The reserved address.
+          example: 192.168.1.10
           type: string
         comment:
           description: The description for the fixed address. May contain 0 to 1024
@@ -10037,9 +10036,11 @@ components:
              * _client_text_ or _client_hex_: match the client identifier for IPv4 only,
              * _relay_text_ or _relay_hex_: match the circuit ID or remote ID in the DHCP relay agent option (82) for IPv4 only,
              * _duid_: match the DHCP unique identifier, currently match only for IPv6 protocol.
+          example: mac
           type: string
         match_value:
           description: The value to match.
+          example: 00:0a:95:9d:68:16
           type: string
         name:
           description: The name of the fixed address. May contain 1 to 256 characters.
@@ -10132,10 +10133,10 @@ components:
           - filters_v6
           - filters_v6
           ignore_list:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
           allow_unknown: true
           filters:
           - filters
@@ -10152,14 +10153,14 @@ components:
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         ddns_send_updates: true
         hostname_rewrite_enabled: true
@@ -10169,16 +10170,16 @@ components:
         hostname_rewrite_char: hostname_rewrite_char
         ddns_use_conflict_resolution: true
         prefer_option_12: true
-        kerberos_rekey_interval: 1
+        kerberos_rekey_interval: 6
         id: id
         ddns_ttl_percent: 7.0614014
         dhcp_threshold:
-          high: 14
-          low: 68
+          high: 100
+          low: 0
           enabled: true
         header_option_server_address: header_option_server_address
         server_principal: server_principal
-        kerberos_retry_interval: 4
+        kerberos_retry_interval: 7
         ddns_enabled: true
         client_principal: client_principal
         ddns_client_update: ddns_client_update
@@ -10223,12 +10224,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -10253,12 +10254,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -10273,7 +10274,7 @@ components:
           type: type
           option_code: option_code
           group: group
-        kerberos_tkey_lifetime: 5
+        kerberos_tkey_lifetime: 1
         vendor_specific_option_option_space: vendor_specific_option_option_space
         ddns_update_on_renew: true
         ddns_generated_prefix: ddns_generated_prefix
@@ -10542,27 +10543,9 @@ components:
         ip_space: ip_space
         updated_at: 2000-01-23T04:56:07.000+00:00
         hosts:
-        - address: address
-          heartbeats:
-          - successful_heartbeat: successful_heartbeat
-            peer: peer
-          - successful_heartbeat: successful_heartbeat
-            peer: peer
-          role: role
-          port: 0
-          host: host
-          state: state
-        - address: address
-          heartbeats:
-          - successful_heartbeat: successful_heartbeat
-            peer: peer
-          - successful_heartbeat: successful_heartbeat
-            peer: peer
-          role: role
-          port: 0
-          host: host
-          state: state
-        name: name
+        - host1
+        - host2
+        name: Example HA Group
         created_at: 2000-01-23T04:56:07.000+00:00
         comment: comment
         id: id
@@ -10583,6 +10566,9 @@ components:
           type: string
         hosts:
           description: The list of hosts.
+          example:
+          - host1
+          - host2
           items:
             $ref: '#/components/schemas/ipamsvcHAGroupHost'
           type: array
@@ -10605,6 +10591,7 @@ components:
         name:
           description: The name of the HA group. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example HA Group
           type: string
         status:
           description: Status of the HA group. This field is set when the _collect_stats_
@@ -10626,9 +10613,6 @@ components:
       title: HAGroup
       type: object
     ipamsvcHAGroupHeartbeats:
-      example:
-        successful_heartbeat: successful_heartbeat
-        peer: peer
       properties:
         peer:
           description: The name of the peer.
@@ -10641,17 +10625,6 @@ components:
     ipamsvcHAGroupHost:
       description: An __HAGroupHost__ object (_dhcp/ha_group_host_) represents an
         on-prem host belonging to an HA Group.
-      example:
-        address: address
-        heartbeats:
-        - successful_heartbeat: successful_heartbeat
-          peer: peer
-        - successful_heartbeat: successful_heartbeat
-          peer: peer
-        role: role
-        port: 0
-        host: host
-        state: state
       properties:
         address:
           description: The address on which this host listens.
@@ -10665,6 +10638,7 @@ components:
           type: array
         host:
           description: The resource identifier.
+          example: dhcp/host/8b02a7a2-fef0-4717-a616-095ef2afadcd
           type: string
         port:
           description: The HA port.
@@ -10708,7 +10682,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         lease_time: 0
         vendor_specific_option_option_space: vendor_specific_option_option_space
-        name: name
+        name: Example Hardware Filter
         comment: comment
         id: id
         header_option_server_address: header_option_server_address
@@ -10753,6 +10727,7 @@ components:
         name:
           description: The name of the hardware filter. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example Hardware Filter
           type: string
         role:
           description: |-
@@ -10907,27 +10882,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -10938,27 +10895,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -10993,10 +10932,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -11014,8 +10953,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -11073,8 +11012,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -11133,10 +11072,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -11297,10 +11236,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -11318,8 +11257,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -11377,8 +11316,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -11437,10 +11376,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -11619,8 +11558,8 @@ components:
       description: The __HostName__ object represents a name associated with the __Host__
         object.
       example:
-        zone: zone
-        name: name
+        zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+        name: Example Host Name
         alias: true
         primary_name: true
       properties:
@@ -11630,6 +11569,7 @@ components:
           type: boolean
         name:
           description: A name for the host.
+          example: Example Host Name
           type: string
         primary_name:
           description: |-
@@ -11641,6 +11581,7 @@ components:
           type: boolean
         zone:
           description: The resource identifier.
+          example: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
           type: string
       required:
       - name
@@ -11682,10 +11623,10 @@ components:
           - filters_v6
           - filters_v6
           ignore_list:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
           allow_unknown: true
           filters:
           - filters
@@ -11700,8 +11641,8 @@ components:
         asm_scope_flag: 0
         created_at: 2000-01-23T04:56:07.000+00:00
         threshold:
-          high: 20
-          low: 41
+          high: 100
+          low: 10
           enabled: true
         ddns_send_updates: true
         utilization_v6:
@@ -11744,8 +11685,8 @@ components:
           total: total
           static: static
           dynamic: dynamic
-          utilization: 12
-          abandon_utilization: 73
+          utilization: 41
+          abandon_utilization: 20
           used: used
           abandoned: abandoned
           free: free
@@ -11804,10 +11745,10 @@ components:
               source: source
               display_name: display_name
               value:
-              - type: type
-                value: value
-              - type: type
-                value: value
+              - type: client_hex
+                value: 01:23:45:67:89:AB
+              - type: client_hex
+                value: 01:23:45:67:89:AB
             allow_unknown:
               action: action
               source: source
@@ -11984,7 +11925,7 @@ components:
           option_code: option_code
           group: group
         vendor_specific_option_option_space: vendor_specific_option_option_space
-        name: name
+        name: Example IP Space
         comment: comment
         ddns_update_on_renew: false
         ddns_generated_prefix: myhost
@@ -12149,6 +12090,7 @@ components:
         name:
           description: The name of the IP space. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example IP Space
           type: string
         tags:
           additionalProperties: false
@@ -12230,10 +12172,10 @@ components:
             source: source
             display_name: display_name
             value:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
           allow_unknown:
             action: action
             source: source
@@ -12441,8 +12383,8 @@ components:
       description: An Ignore Item object (_dhcp/ignore_item_) represents an item in
         a DHCP ignore list.
       example:
-        type: type
-        value: value
+        type: client_hex
+        value: 01:23:45:67:89:AB
       properties:
         type:
           description: |-
@@ -12450,9 +12392,11 @@ components:
              * _client_hex_,
              * _client_text_,
              * _hardware_.
+          example: client_hex
           type: string
         value:
           description: Value to match.
+          example: 01:23:45:67:89:AB
           type: string
       required:
       - type
@@ -12603,14 +12547,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           ddns_zones:
@@ -12634,12 +12578,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -12664,12 +12608,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -12794,10 +12738,10 @@ components:
           source: source
           display_name: display_name
           value:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
         allow_unknown:
           action: action
           source: source
@@ -13011,15 +12955,15 @@ components:
         auto_generate_records: true
         updated_at: 2000-01-23T04:56:07.000+00:00
         host_names:
-        - zone: zone
-          name: name
+        - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+          name: Example Host Name
           alias: true
           primary_name: true
-        - zone: zone
-          name: name
+        - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+          name: Example Host Name
           alias: true
           primary_name: true
-        name: name
+        name: Example IPAM Host
         created_at: 2000-01-23T04:56:07.000+00:00
         comment: comment
         id: id
@@ -13060,6 +13004,7 @@ components:
         name:
           description: The name of the IPAM host. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example IPAM Host
           type: string
         tags:
           additionalProperties: false
@@ -13082,8 +13027,8 @@ components:
         principal: principal
         uploaded_at: uploaded_at
         domain: domain
-        version: 7
-        key: key
+        version: 1
+        key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
         algorithm: algorithm
       properties:
         algorithm:
@@ -13096,6 +13041,7 @@ components:
           type: string
         key:
           description: The resource identifier.
+          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           type: string
         principal:
           description: Kerberos principal associated with key.
@@ -13161,6 +13107,7 @@ components:
             | :------       | ----------- |
             | _clear_       | Removes selected lease(s) from the DHCP server(s). This will NOT affect the client that issued the lease. |
             | _resend-ddns_ | Resends a request to kea-dhcp-ddns to update DNS for selected lease(s). |
+          example: resend-ddns
           type: string
         range:
           description: The list of ranges to execute the "command" on. For now it
@@ -13202,7 +13149,7 @@ components:
           suppress_time: 5
           lookahead: 6
           front_start: front_start
-          subnet_id: subnet_id
+          subnet_id: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
           growth: 0
           id: id
           subnet_address: subnet_address
@@ -13226,7 +13173,7 @@ components:
           suppress_time: 5
           lookahead: 6
           front_start: front_start
-          subnet_id: subnet_id
+          subnet_id: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
           growth: 0
           id: id
           subnet_address: subnet_address
@@ -13252,10 +13199,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -13273,8 +13220,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -13323,8 +13270,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -13383,10 +13330,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -13545,10 +13492,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -13566,8 +13513,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -13616,8 +13563,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -13676,10 +13623,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -13841,7 +13788,7 @@ components:
       example:
         results:
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -13855,10 +13802,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -13879,7 +13826,7 @@ components:
           state: state
           disable_dhcp: true
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -13893,10 +13840,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -13987,7 +13934,7 @@ components:
       example:
         results:
         - parent: parent
-          address: address
+          address: 192.168.1.10
           header_option_filename: header_option_filename
           created_at: 2000-01-23T04:56:07.000+00:00
           dhcp_options:
@@ -13999,7 +13946,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          match_value: match_value
+          match_value: 00:0a:95:9d:68:16
           inheritance_assigned_hosts:
           - ophid: ophid
             host: host
@@ -14052,14 +13999,14 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          match_type: match_type
+          match_type: mac
           comment: comment
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
           header_option_server_address: header_option_server_address
         - parent: parent
-          address: address
+          address: 192.168.1.10
           header_option_filename: header_option_filename
           created_at: 2000-01-23T04:56:07.000+00:00
           dhcp_options:
@@ -14071,7 +14018,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          match_value: match_value
+          match_value: 00:0a:95:9d:68:16
           inheritance_assigned_hosts:
           - ophid: ophid
             host: host
@@ -14124,7 +14071,7 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          match_type: match_type
+          match_type: mac
           comment: comment
           inheritance_parent: inheritance_parent
           id: id
@@ -14147,27 +14094,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -14178,27 +14107,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -14236,7 +14147,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Hardware Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -14260,7 +14171,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Hardware Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -14331,10 +14242,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -14349,8 +14260,8 @@ components:
           asm_scope_flag: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -14393,8 +14304,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -14453,10 +14364,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -14633,7 +14544,7 @@ components:
             option_code: option_code
             group: group
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example IP Space
           comment: comment
           ddns_update_on_renew: false
           ddns_generated_prefix: myhost
@@ -14646,10 +14557,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -14664,8 +14575,8 @@ components:
           asm_scope_flag: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -14708,8 +14619,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -14768,10 +14679,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -14948,7 +14859,7 @@ components:
             option_code: option_code
             group: group
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example IP Space
           comment: comment
           ddns_update_on_renew: false
           ddns_generated_prefix: myhost
@@ -14974,15 +14885,15 @@ components:
           auto_generate_records: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           host_names:
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          name: name
+          name: Example IPAM Host
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -14997,15 +14908,15 @@ components:
           auto_generate_records: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           host_names:
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          name: name
+          name: Example IPAM Host
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -15022,26 +14933,26 @@ components:
       description: The response format to retrieve __OptionCode__ objects.
       example:
         results:
-        - code: 21
+        - code: 15
           updated_at: 2000-01-23T04:56:07.000+00:00
           array: true
-          name: name
+          name: Example Option Code
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           source: source
-          type: type
-          option_space: option_space
-        - code: 21
+          type: fqdn
+          option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
+        - code: 15
           updated_at: 2000-01-23T04:56:07.000+00:00
           array: true
-          name: name
+          name: Example Option Code
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           source: source
-          type: type
-          option_space: option_space
+          type: fqdn
+          option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
       properties:
         results:
           description: The list of OptionCode objects.
@@ -15070,12 +14981,12 @@ components:
             match: match
             rules:
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
           tags: "{}"
           protocol: protocol
@@ -15083,7 +14994,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Option Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -15103,12 +15014,12 @@ components:
             match: match
             rules:
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
           tags: "{}"
           protocol: protocol
@@ -15116,7 +15027,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Option Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -15134,7 +15045,7 @@ components:
         results:
         - protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           dhcp_options:
@@ -15150,7 +15061,7 @@ components:
           tags: "{}"
         - protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           dhcp_options:
@@ -15178,14 +15089,14 @@ components:
         results:
         - protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Space
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           tags: "{}"
         - protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Space
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -15203,15 +15114,15 @@ components:
       example:
         results:
         - parent: parent
-          start: start
+          start: 10.0.0.0
           created_at: 2000-01-23T04:56:07.000+00:00
           exclusion_ranges:
-          - start: start
+          - start: 10.0.0.0
             comment: comment
-            end: end
-          - start: start
+            end: 10.0.0.10
+          - start: 10.0.0.0
             comment: comment
-            end: end
+            end: 10.0.0.10
           dhcp_options:
           - option_value: option_value
             type: type
@@ -15222,23 +15133,23 @@ components:
             option_code: option_code
             group: group
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           utilization:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
           filters:
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
           utilization_v6:
@@ -15284,21 +15195,21 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           comment: comment
-          end: end
+          end: 10.0.0.10
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
           dhcp_host: dhcp_host
         - parent: parent
-          start: start
+          start: 10.0.0.0
           created_at: 2000-01-23T04:56:07.000+00:00
           exclusion_ranges:
-          - start: start
+          - start: 10.0.0.0
             comment: comment
-            end: end
-          - start: start
+            end: 10.0.0.10
+          - start: 10.0.0.0
             comment: comment
-            end: end
+            end: 10.0.0.10
           dhcp_options:
           - option_value: option_value
             type: type
@@ -15309,23 +15220,23 @@ components:
             option_code: option_code
             group: group
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           utilization:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
           filters:
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
           utilization_v6:
@@ -15371,7 +15282,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           comment: comment
-          end: end
+          end: 10.0.0.10
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
@@ -15398,10 +15309,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -15418,14 +15329,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -15474,12 +15385,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -15504,12 +15415,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -15565,10 +15476,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -15696,14 +15607,14 @@ components:
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 ddns_send_updates: true
                 ddns_zones:
@@ -15727,12 +15638,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -15757,12 +15668,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -15788,7 +15699,7 @@ components:
             group: group
           kerberos_tkey_lifetime: 7
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example DHCP Config Profile
           comment: comment
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -15802,10 +15713,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -15822,14 +15733,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -15878,12 +15789,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -15908,12 +15819,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -15969,10 +15880,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -16100,14 +16011,14 @@ components:
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 ddns_send_updates: true
                 ddns_zones:
@@ -16131,12 +16042,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -16161,12 +16072,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -16192,7 +16103,7 @@ components:
             group: group
           kerberos_tkey_lifetime: 7
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example DHCP Config Profile
           comment: comment
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -16218,10 +16129,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -16239,8 +16150,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -16298,8 +16209,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -16358,10 +16269,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -16522,10 +16433,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -16543,8 +16454,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -16602,8 +16513,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -16662,10 +16573,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -16827,14 +16738,16 @@ components:
     ipamsvcName:
       description: The __Name__ object represents a name associated with an address.
       example:
-        name: name
-        type: type
+        name: example.com
+        type: FQDN
       properties:
         name:
           description: The name expressed as a single label or FQDN.
+          example: example.com
           type: string
         type:
           description: The origin of the name.
+          example: FQDN
           type: string
       required:
       - name
@@ -16919,10 +16832,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -16940,8 +16853,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -16990,8 +16903,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -17050,10 +16963,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -17212,10 +17125,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -17233,8 +17146,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -17283,8 +17196,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -17343,10 +17256,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -17508,7 +17421,7 @@ components:
       example:
         results:
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -17522,10 +17435,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -17546,7 +17459,7 @@ components:
           state: state
           disable_dhcp: true
         - parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -17560,10 +17473,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -17605,10 +17518,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -17626,8 +17539,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -17685,8 +17598,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -17745,10 +17658,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -17909,10 +17822,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -17930,8 +17843,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -17989,8 +17902,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -18049,10 +17962,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -18214,16 +18127,16 @@ components:
     ipamsvcOptionCode:
       description: An __OptionCode__ (_dhcp/option_code_) defines a DHCP option code.
       example:
-        code: 21
+        code: 15
         updated_at: 2000-01-23T04:56:07.000+00:00
         array: true
-        name: name
+        name: Example Option Code
         created_at: 2000-01-23T04:56:07.000+00:00
         comment: comment
         id: id
         source: source
-        type: type
-        option_space: option_space
+        type: fqdn
+        option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
       properties:
         array:
           description: Indicates whether the option value is an array of the type
@@ -18232,6 +18145,7 @@ components:
           type: boolean
         code:
           description: The option code.
+          example: 15
           format: int64
           maximum: 254
           minimum: 1
@@ -18252,9 +18166,11 @@ components:
         name:
           description: The name of the option code. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example Option Code
           type: string
         option_space:
           description: The resource identifier.
+          example: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
           type: string
         source:
           description: |-
@@ -18286,6 +18202,7 @@ components:
             * _uint8_
             * _uint16_
             * _uint32_
+          example: fqdn
           type: string
         updated_at:
           description: Time when the object has been updated. Equals to _created_at_
@@ -18321,12 +18238,12 @@ components:
           match: match
           rules:
           - option_value: option_value
-            compare: compare
-            option_code: option_code
+            compare: equals
+            option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
             substring_offset: 6
           - option_value: option_value
-            compare: compare
-            option_code: option_code
+            compare: equals
+            option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
             substring_offset: 6
         tags: "{}"
         protocol: protocol
@@ -18334,7 +18251,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         lease_time: 0
         vendor_specific_option_option_space: vendor_specific_option_option_space
-        name: name
+        name: Example Option Filter
         comment: comment
         id: id
         header_option_server_address: header_option_server_address
@@ -18374,6 +18291,7 @@ components:
         name:
           description: The name of the option filter. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example Option Filter
           type: string
         protocol:
           description: The type of protocol of option filter (_ip4_ or _ip6_).
@@ -18410,8 +18328,8 @@ components:
         a filter rule to match a DHCP client.
       example:
         option_value: option_value
-        compare: compare
-        option_code: option_code
+        compare: equals
+        option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
         substring_offset: 6
       properties:
         compare:
@@ -18427,9 +18345,11 @@ components:
              * _not_text_substring_: value is not the specified substring of the option.
              * _hex_substring_: value is the specified hexadecimal substring of the option,
              * _not_hex_substring_: value is not the specified hexadecimal substring of the option.
+          example: equals
           type: string
         option_code:
           description: The resource identifier.
+          example: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
           type: string
         option_value:
           description: The value to match against.
@@ -18452,12 +18372,12 @@ components:
         match: match
         rules:
         - option_value: option_value
-          compare: compare
-          option_code: option_code
+          compare: equals
+          option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
           substring_offset: 6
         - option_value: option_value
-          compare: compare
-          option_code: option_code
+          compare: equals
+          option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
           substring_offset: 6
       properties:
         match:
@@ -18477,7 +18397,7 @@ components:
       example:
         protocol: protocol
         updated_at: 2000-01-23T04:56:07.000+00:00
-        name: name
+        name: Example Option Group
         created_at: 2000-01-23T04:56:07.000+00:00
         comment: comment
         dhcp_options:
@@ -18514,6 +18434,7 @@ components:
         name:
           description: The name of the option group. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example Option Group
           type: string
         protocol:
           description: The type of protocol (_ip4_ or _ip6_).
@@ -18566,7 +18487,7 @@ components:
       example:
         protocol: protocol
         updated_at: 2000-01-23T04:56:07.000+00:00
-        name: name
+        name: Example Option Space
         created_at: 2000-01-23T04:56:07.000+00:00
         comment: comment
         id: id
@@ -18588,6 +18509,7 @@ components:
         name:
           description: The name of the option space. Must contain 1 to 256 characters.
             Can include UTF-8.
+          example: Example Option Space
           type: string
         protocol:
           description: The type of protocol for the option space (_ip4_ or _ip6_).
@@ -18614,15 +18536,15 @@ components:
         \ to align with CIDR boundaries. "
       example:
         parent: parent
-        start: start
+        start: 10.0.0.0
         created_at: 2000-01-23T04:56:07.000+00:00
         exclusion_ranges:
-        - start: start
+        - start: 10.0.0.0
           comment: comment
-          end: end
-        - start: start
+          end: 10.0.0.10
+        - start: 10.0.0.0
           comment: comment
-          end: end
+          end: 10.0.0.10
         dhcp_options:
         - option_value: option_value
           type: type
@@ -18633,23 +18555,23 @@ components:
           option_code: option_code
           group: group
         threshold:
-          high: 20
-          low: 41
+          high: 100
+          low: 10
           enabled: true
         utilization:
           total: total
           static: static
           dynamic: dynamic
-          utilization: 12
-          abandon_utilization: 73
+          utilization: 41
+          abandon_utilization: 20
           used: used
           abandoned: abandoned
           free: free
         filters:
-        - access: access
+        - access: allow
           option_filter_id: option_filter_id
           hardware_filter_id: hardware_filter_id
-        - access: access
+        - access: allow
           option_filter_id: option_filter_id
           hardware_filter_id: hardware_filter_id
         utilization_v6:
@@ -18695,7 +18617,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         comment: comment
-        end: end
+        end: 10.0.0.10
         inheritance_parent: inheritance_parent
         id: id
         disable_dhcp: true
@@ -18728,6 +18650,7 @@ components:
           type: boolean
         end:
           description: The end IP address of the range.
+          example: 10.0.0.10
           type: string
         exclusion_ranges:
           description: The list of all exclusion ranges in the scope of the range.
@@ -18770,6 +18693,7 @@ components:
           type: string
         start:
           description: The start IP address of the range.
+          example: 10.0.0.0
           type: string
         tags:
           additionalProperties: false
@@ -18816,7 +18740,7 @@ components:
           suppress_time: 5
           lookahead: 6
           front_start: front_start
-          subnet_id: subnet_id
+          subnet_id: ipam/subnet/d1606f5a-b6f5-4bcb-9585-641b5c063995
           growth: 0
           id: id
           subnet_address: subnet_address
@@ -18839,10 +18763,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -18860,8 +18784,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -18910,8 +18834,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -18970,10 +18894,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -19132,7 +19056,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -19146,10 +19070,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -19198,7 +19122,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 192.168.1.10
           header_option_filename: header_option_filename
           created_at: 2000-01-23T04:56:07.000+00:00
           dhcp_options:
@@ -19210,7 +19134,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          match_value: match_value
+          match_value: 00:0a:95:9d:68:16
           inheritance_assigned_hosts:
           - ophid: ophid
             host: host
@@ -19263,7 +19187,7 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          match_type: match_type
+          match_type: mac
           comment: comment
           inheritance_parent: inheritance_parent
           id: id
@@ -19288,10 +19212,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -19308,14 +19232,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -19325,16 +19249,16 @@ components:
           hostname_rewrite_char: hostname_rewrite_char
           ddns_use_conflict_resolution: true
           prefer_option_12: true
-          kerberos_rekey_interval: 1
+          kerberos_rekey_interval: 6
           id: id
           ddns_ttl_percent: 7.0614014
           dhcp_threshold:
-            high: 14
-            low: 68
+            high: 100
+            low: 0
             enabled: true
           header_option_server_address: header_option_server_address
           server_principal: server_principal
-          kerberos_retry_interval: 4
+          kerberos_retry_interval: 7
           ddns_enabled: true
           client_principal: client_principal
           ddns_client_update: ddns_client_update
@@ -19379,12 +19303,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -19409,12 +19333,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -19429,7 +19353,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          kerberos_tkey_lifetime: 5
+          kerberos_tkey_lifetime: 1
           vendor_specific_option_option_space: vendor_specific_option_option_space
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -19447,27 +19371,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -19502,7 +19408,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Hardware Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -19550,10 +19456,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -19568,8 +19474,8 @@ components:
           asm_scope_flag: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -19612,8 +19518,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -19672,10 +19578,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -19852,7 +19758,7 @@ components:
             option_code: option_code
             group: group
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example IP Space
           comment: comment
           ddns_update_on_renew: false
           ddns_generated_prefix: myhost
@@ -19875,15 +19781,15 @@ components:
           auto_generate_records: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           host_names:
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          name: name
+          name: Example IPAM Host
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -19897,16 +19803,16 @@ components:
       description: The response format to retrieve the __OptionCode__ object.
       example:
         result:
-          code: 21
+          code: 15
           updated_at: 2000-01-23T04:56:07.000+00:00
           array: true
-          name: name
+          name: Example Option Code
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           source: source
-          type: type
-          option_space: option_space
+          type: fqdn
+          option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
       properties:
         result:
           $ref: '#/components/schemas/ipamsvcOptionCode'
@@ -19932,12 +19838,12 @@ components:
             match: match
             rules:
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
           tags: "{}"
           protocol: protocol
@@ -19945,7 +19851,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Option Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -19960,7 +19866,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           dhcp_options:
@@ -19985,7 +19891,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Space
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -20000,15 +19906,15 @@ components:
       example:
         result:
           parent: parent
-          start: start
+          start: 10.0.0.0
           created_at: 2000-01-23T04:56:07.000+00:00
           exclusion_ranges:
-          - start: start
+          - start: 10.0.0.0
             comment: comment
-            end: end
-          - start: start
+            end: 10.0.0.10
+          - start: 10.0.0.0
             comment: comment
-            end: end
+            end: 10.0.0.10
           dhcp_options:
           - option_value: option_value
             type: type
@@ -20019,23 +19925,23 @@ components:
             option_code: option_code
             group: group
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           utilization:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
           filters:
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
           utilization_v6:
@@ -20081,7 +19987,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           comment: comment
-          end: end
+          end: 10.0.0.10
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
@@ -20105,10 +20011,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -20125,14 +20031,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -20181,12 +20087,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -20211,12 +20117,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -20272,10 +20178,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -20403,14 +20309,14 @@ components:
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 ddns_send_updates: true
                 ddns_zones:
@@ -20434,12 +20340,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -20464,12 +20370,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -20495,7 +20401,7 @@ components:
             group: group
           kerberos_tkey_lifetime: 7
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example DHCP Config Profile
           comment: comment
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -20518,10 +20424,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -20539,8 +20445,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -20598,8 +20504,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -20658,10 +20564,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -20831,10 +20737,10 @@ components:
           - filters_v6
           - filters_v6
           ignore_list:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
           allow_unknown: true
           filters:
           - filters
@@ -20851,14 +20757,14 @@ components:
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         - principal: principal
           uploaded_at: uploaded_at
           domain: domain
-          version: 7
-          key: key
+          version: 1
+          key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
           algorithm: algorithm
         ddns_send_updates: true
         hostname_rewrite_enabled: true
@@ -20907,12 +20813,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -20937,12 +20843,12 @@ components:
             nameserver: nameserver
             server_principal: server_principal
           fqdn: fqdn
-          zone: zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           tsig_key:
             name: name
             comment: comment
             secret: secret
-            key: key
+            key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
             algorithm: algorithm
             protocol_name: protocol_name
           tsig_enabled: true
@@ -20998,10 +20904,10 @@ components:
               source: source
               display_name: display_name
               value:
-              - type: type
-                value: value
-              - type: type
-                value: value
+              - type: client_hex
+                value: 01:23:45:67:89:AB
+              - type: client_hex
+                value: 01:23:45:67:89:AB
             allow_unknown:
               action: action
               source: source
@@ -21129,14 +21035,14 @@ components:
               - principal: principal
                 uploaded_at: uploaded_at
                 domain: domain
-                version: 7
-                key: key
+                version: 1
+                key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                 algorithm: algorithm
               - principal: principal
                 uploaded_at: uploaded_at
                 domain: domain
-                version: 7
-                key: key
+                version: 1
+                key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                 algorithm: algorithm
               ddns_send_updates: true
               ddns_zones:
@@ -21160,12 +21066,12 @@ components:
                   nameserver: nameserver
                   server_principal: server_principal
                 fqdn: fqdn
-                zone: zone
+                zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                 tsig_key:
                   name: name
                   comment: comment
                   secret: secret
-                  key: key
+                  key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                   algorithm: algorithm
                   protocol_name: protocol_name
                 tsig_enabled: true
@@ -21190,12 +21096,12 @@ components:
                   nameserver: nameserver
                   server_principal: server_principal
                 fqdn: fqdn
-                zone: zone
+                zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                 tsig_key:
                   name: name
                   comment: comment
                   secret: secret
-                  key: key
+                  key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                   algorithm: algorithm
                   protocol_name: protocol_name
                 tsig_enabled: true
@@ -21221,7 +21127,7 @@ components:
           group: group
         kerberos_tkey_lifetime: 7
         vendor_specific_option_option_space: vendor_specific_option_option_space
-        name: name
+        name: Example DHCP Config Profile
         comment: comment
         ddns_update_on_renew: true
         ddns_generated_prefix: ddns_generated_prefix
@@ -21468,6 +21374,7 @@ components:
         name:
           description: The name of the DHCP Config Profile. Must contain 1 to 256
             characters. Can include UTF-8.
+          example: Example DHCP Config Profile
           type: string
         server_principal:
           description: |-
@@ -21544,10 +21451,10 @@ components:
             source: source
             display_name: display_name
             value:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
           allow_unknown:
             action: action
             source: source
@@ -21675,14 +21582,14 @@ components:
             - principal: principal
               uploaded_at: uploaded_at
               domain: domain
-              version: 7
-              key: key
+              version: 1
+              key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
               algorithm: algorithm
             - principal: principal
               uploaded_at: uploaded_at
               domain: domain
-              version: 7
-              key: key
+              version: 1
+              key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
               algorithm: algorithm
             ddns_send_updates: true
             ddns_zones:
@@ -21706,12 +21613,12 @@ components:
                 nameserver: nameserver
                 server_principal: server_principal
               fqdn: fqdn
-              zone: zone
+              zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
               tsig_key:
                 name: name
                 comment: comment
                 secret: secret
-                key: key
+                key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                 algorithm: algorithm
                 protocol_name: protocol_name
               tsig_enabled: true
@@ -21736,12 +21643,12 @@ components:
                 nameserver: nameserver
                 server_principal: server_principal
               fqdn: fqdn
-              zone: zone
+              zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
               tsig_key:
                 name: name
                 comment: comment
                 secret: secret
-                key: key
+                key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                 algorithm: algorithm
                 protocol_name: protocol_name
               tsig_enabled: true
@@ -21805,10 +21712,10 @@ components:
           - filters_v6
           - filters_v6
           ignore_list:
-          - type: type
-            value: value
-          - type: type
-            value: value
+          - type: client_hex
+            value: 01:23:45:67:89:AB
+          - type: client_hex
+            value: 01:23:45:67:89:AB
           allow_unknown: true
           filters:
           - filters
@@ -21826,8 +21733,8 @@ components:
         - usage
         created_at: 2000-01-23T04:56:07.000+00:00
         threshold:
-          high: 20
-          low: 41
+          high: 100
+          low: 10
           enabled: true
         ddns_send_updates: true
         utilization_v6:
@@ -21885,8 +21792,8 @@ components:
           total: total
           static: static
           dynamic: dynamic
-          utilization: 12
-          abandon_utilization: 73
+          utilization: 41
+          abandon_utilization: 20
           used: used
           abandoned: abandoned
           free: free
@@ -21945,10 +21852,10 @@ components:
               source: source
               display_name: display_name
               value:
-              - type: type
-                value: value
-              - type: type
-                value: value
+              - type: client_hex
+                value: 01:23:45:67:89:AB
+              - type: client_hex
+                value: 01:23:45:67:89:AB
             allow_unknown:
               action: action
               source: source
@@ -22340,7 +22247,7 @@ components:
         name: name
         comment: comment
         secret: secret
-        key: key
+        key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
         algorithm: algorithm
         protocol_name: protocol_name
       properties:
@@ -22361,6 +22268,7 @@ components:
           type: string
         key:
           description: The resource identifier.
+          example: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
           type: string
         name:
           description: "The TSIG key name, FQDN."
@@ -22390,10 +22298,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -22411,8 +22319,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -22461,8 +22369,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -22521,10 +22429,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -22683,7 +22591,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 10.0.0.0
           usage:
           - usage
           - usage
@@ -22697,10 +22605,10 @@ components:
           hwaddr: hwaddr
           protocol: protocol
           names:
-          - name: name
-            type: type
-          - name: name
-            type: type
+          - name: example.com
+            type: FQDN
+          - name: example.com
+            type: FQDN
           updated_at: 2000-01-23T04:56:07.000+00:00
           dhcp_info:
             preferred_lifetime: 2000-01-23T04:56:07.000+00:00
@@ -22730,7 +22638,7 @@ components:
       example:
         result:
           parent: parent
-          address: address
+          address: 192.168.1.10
           header_option_filename: header_option_filename
           created_at: 2000-01-23T04:56:07.000+00:00
           dhcp_options:
@@ -22742,7 +22650,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          match_value: match_value
+          match_value: 00:0a:95:9d:68:16
           inheritance_assigned_hosts:
           - ophid: ophid
             host: host
@@ -22795,7 +22703,7 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          match_type: match_type
+          match_type: mac
           comment: comment
           inheritance_parent: inheritance_parent
           id: id
@@ -22820,10 +22728,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -22840,14 +22748,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -22857,16 +22765,16 @@ components:
           hostname_rewrite_char: hostname_rewrite_char
           ddns_use_conflict_resolution: true
           prefer_option_12: true
-          kerberos_rekey_interval: 1
+          kerberos_rekey_interval: 6
           id: id
           ddns_ttl_percent: 7.0614014
           dhcp_threshold:
-            high: 14
-            low: 68
+            high: 100
+            low: 0
             enabled: true
           header_option_server_address: header_option_server_address
           server_principal: server_principal
-          kerberos_retry_interval: 4
+          kerberos_retry_interval: 7
           ddns_enabled: true
           client_principal: client_principal
           ddns_client_update: ddns_client_update
@@ -22911,12 +22819,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -22941,12 +22849,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -22961,7 +22869,7 @@ components:
             type: type
             option_code: option_code
             group: group
-          kerberos_tkey_lifetime: 5
+          kerberos_tkey_lifetime: 1
           vendor_specific_option_option_space: vendor_specific_option_option_space
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -22979,27 +22887,9 @@ components:
           ip_space: ip_space
           updated_at: 2000-01-23T04:56:07.000+00:00
           hosts:
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          - address: address
-            heartbeats:
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            - successful_heartbeat: successful_heartbeat
-              peer: peer
-            role: role
-            port: 0
-            host: host
-            state: state
-          name: name
+          - host1
+          - host2
+          name: Example HA Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -23034,7 +22924,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Hardware Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -23082,10 +22972,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -23100,8 +22990,8 @@ components:
           asm_scope_flag: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -23144,8 +23034,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -23204,10 +23094,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -23384,7 +23274,7 @@ components:
             option_code: option_code
             group: group
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example IP Space
           comment: comment
           ddns_update_on_renew: false
           ddns_generated_prefix: myhost
@@ -23407,15 +23297,15 @@ components:
           auto_generate_records: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           host_names:
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          - zone: zone
-            name: name
+          - zone: dns/auth_zone/45d344c2-004e-42e4-9a41-fc5d0b38fd58
+            name: Example Host Name
             alias: true
             primary_name: true
-          name: name
+          name: Example IPAM Host
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -23429,16 +23319,16 @@ components:
       description: The response format to update the __OptionCode__ object.
       example:
         result:
-          code: 21
+          code: 15
           updated_at: 2000-01-23T04:56:07.000+00:00
           array: true
-          name: name
+          name: Example Option Code
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
           source: source
-          type: type
-          option_space: option_space
+          type: fqdn
+          option_space: ipam/ip_space/8b02a7a2-fef0-4717-a616-095ef2afadcd
       properties:
         result:
           $ref: '#/components/schemas/ipamsvcOptionCode'
@@ -23464,12 +23354,12 @@ components:
             match: match
             rules:
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
             - option_value: option_value
-              compare: compare
-              option_code: option_code
+              compare: equals
+              option_code: dhcp/option_code/0b41ec0d-2675-455e-af6d-0bfb3b4220ba
               substring_offset: 6
           tags: "{}"
           protocol: protocol
@@ -23477,7 +23367,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           lease_time: 0
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example Option Filter
           comment: comment
           id: id
           header_option_server_address: header_option_server_address
@@ -23492,7 +23382,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Group
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           dhcp_options:
@@ -23517,7 +23407,7 @@ components:
         result:
           protocol: protocol
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Option Space
           created_at: 2000-01-23T04:56:07.000+00:00
           comment: comment
           id: id
@@ -23532,15 +23422,15 @@ components:
       example:
         result:
           parent: parent
-          start: start
+          start: 10.0.0.0
           created_at: 2000-01-23T04:56:07.000+00:00
           exclusion_ranges:
-          - start: start
+          - start: 10.0.0.0
             comment: comment
-            end: end
-          - start: start
+            end: 10.0.0.10
+          - start: 10.0.0.0
             comment: comment
-            end: end
+            end: 10.0.0.10
           dhcp_options:
           - option_value: option_value
             type: type
@@ -23551,23 +23441,23 @@ components:
             option_code: option_code
             group: group
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           utilization:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
           filters:
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
-          - access: access
+          - access: allow
             option_filter_id: option_filter_id
             hardware_filter_id: hardware_filter_id
           utilization_v6:
@@ -23613,7 +23503,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           comment: comment
-          end: end
+          end: 10.0.0.10
           inheritance_parent: inheritance_parent
           id: id
           disable_dhcp: true
@@ -23637,10 +23527,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -23657,14 +23547,14 @@ components:
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           - principal: principal
             uploaded_at: uploaded_at
             domain: domain
-            version: 7
-            key: key
+            version: 1
+            key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
             algorithm: algorithm
           ddns_send_updates: true
           hostname_rewrite_enabled: true
@@ -23713,12 +23603,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -23743,12 +23633,12 @@ components:
               nameserver: nameserver
               server_principal: server_principal
             fqdn: fqdn
-            zone: zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             tsig_key:
               name: name
               comment: comment
               secret: secret
-              key: key
+              key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
               algorithm: algorithm
               protocol_name: protocol_name
             tsig_enabled: true
@@ -23804,10 +23694,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -23935,14 +23825,14 @@ components:
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 - principal: principal
                   uploaded_at: uploaded_at
                   domain: domain
-                  version: 7
-                  key: key
+                  version: 1
+                  key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a1b2c3d4e5f6
                   algorithm: algorithm
                 ddns_send_updates: true
                 ddns_zones:
@@ -23966,12 +23856,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -23996,12 +23886,12 @@ components:
                     nameserver: nameserver
                     server_principal: server_principal
                   fqdn: fqdn
-                  zone: zone
+                  zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
                   tsig_key:
                     name: name
                     comment: comment
                     secret: secret
-                    key: key
+                    key: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
                     algorithm: algorithm
                     protocol_name: protocol_name
                   tsig_enabled: true
@@ -24027,7 +23917,7 @@ components:
             group: group
           kerberos_tkey_lifetime: 7
           vendor_specific_option_option_space: vendor_specific_option_option_space
-          name: name
+          name: Example DHCP Config Profile
           comment: comment
           ddns_update_on_renew: true
           ddns_generated_prefix: ddns_generated_prefix
@@ -24050,10 +23940,10 @@ components:
             - filters_v6
             - filters_v6
             ignore_list:
-            - type: type
-              value: value
-            - type: type
-              value: value
+            - type: client_hex
+              value: 01:23:45:67:89:AB
+            - type: client_hex
+              value: 01:23:45:67:89:AB
             allow_unknown: true
             filters:
             - filters
@@ -24071,8 +23961,8 @@ components:
           - usage
           created_at: 2000-01-23T04:56:07.000+00:00
           threshold:
-            high: 20
-            low: 41
+            high: 100
+            low: 10
             enabled: true
           ddns_send_updates: true
           utilization_v6:
@@ -24130,8 +24020,8 @@ components:
             total: total
             static: static
             dynamic: dynamic
-            utilization: 12
-            abandon_utilization: 73
+            utilization: 41
+            abandon_utilization: 20
             used: used
             abandoned: abandoned
             free: free
@@ -24190,10 +24080,10 @@ components:
                 source: source
                 display_name: display_name
                 value:
-                - type: type
-                  value: value
-                - type: type
-                  value: value
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
+                - type: client_hex
+                  value: 01:23:45:67:89:AB
               allow_unknown:
                 action: action
                 source: source
@@ -24356,8 +24246,8 @@ components:
         total: total
         static: static
         dynamic: dynamic
-        utilization: 12
-        abandon_utilization: 73
+        utilization: 41
+        abandon_utilization: 20
         used: used
         abandoned: abandoned
         free: free
@@ -24418,19 +24308,21 @@ components:
       description: A __UtilizationThreshold__ object represents IP address utilization
         threshold settings.
       example:
-        high: 20
-        low: 41
+        high: 100
+        low: 10
         enabled: true
       properties:
         enabled:
           description: Indicates whether the utilization threshold for IP addresses
             is enabled or not.
+          example: true
           format: boolean
           type: boolean
         high:
           description: The high threshold value for the percentage of used IP addresses
             relative to the total IP addresses available in the scope of the object.
             Thresholds are inclusive in the comparison test.
+          example: 100
           format: int64
           maximum: 100
           type: integer
@@ -24438,6 +24330,7 @@ components:
           description: The low threshold value for the percentage of used IP addresses
             relative to the total IP addresses available in the scope of the object.
             Thresholds are inclusive in the comparison test.
+          example: 10
           format: int64
           maximum: 100
           type: integer

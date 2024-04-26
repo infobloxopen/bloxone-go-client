@@ -821,7 +821,7 @@ components:
           description: description
           serial_number: serial_number
           ip_address: ip_address
-          display_name: display_name
+          display_name: Example Host Name
           pool_id: pool_id
           created_by: created_by
           host_type: host_type
@@ -859,10 +859,10 @@ components:
             id: id
             host_id: host_id
             upgraded_at: 2000-01-23T04:56:07.000+00:00
-          service_type: service_type
+          service_type: dns
           desired_version: desired_version
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Service Name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           desired_state: desired_state
@@ -870,7 +870,7 @@ components:
           interface_labels:
           - interface_labels
           - interface_labels
-          pool_id: pool_id
+          pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           tags: "{}"
       properties:
         result:
@@ -1326,7 +1326,7 @@ components:
           description: description
           serial_number: serial_number
           ip_address: ip_address
-          display_name: display_name
+          display_name: Example Host Name
           pool_id: pool_id
           created_by: created_by
           host_type: host_type
@@ -1364,10 +1364,10 @@ components:
             id: id
             host_id: host_id
             upgraded_at: 2000-01-23T04:56:07.000+00:00
-          service_type: service_type
+          service_type: dns
           desired_version: desired_version
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Service Name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           desired_state: desired_state
@@ -1375,7 +1375,7 @@ components:
           interface_labels:
           - interface_labels
           - interface_labels
-          pool_id: pool_id
+          pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           tags: "{}"
       properties:
         result:
@@ -1408,7 +1408,7 @@ components:
         description: description
         serial_number: serial_number
         ip_address: ip_address
-        display_name: display_name
+        display_name: Example Host Name
         pool_id: pool_id
         created_by: created_by
         host_type: host_type
@@ -1474,6 +1474,7 @@ components:
           type: string
         display_name:
           description: The name of the Host (unique).
+          example: Example Host Name
           type: string
         host_subtype:
           description: |-
@@ -1864,7 +1865,7 @@ components:
           description: description
           serial_number: serial_number
           ip_address: ip_address
-          display_name: display_name
+          display_name: Example Host Name
           pool_id: pool_id
           created_by: created_by
           host_type: host_type
@@ -1902,7 +1903,7 @@ components:
           description: description
           serial_number: serial_number
           ip_address: ip_address
-          display_name: display_name
+          display_name: Example Host Name
           pool_id: pool_id
           created_by: created_by
           host_type: host_type
@@ -1948,10 +1949,10 @@ components:
             id: id
             host_id: host_id
             upgraded_at: 2000-01-23T04:56:07.000+00:00
-          service_type: service_type
+          service_type: dns
           desired_version: desired_version
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Service Name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           desired_state: desired_state
@@ -1959,7 +1960,7 @@ components:
           interface_labels:
           - interface_labels
           - interface_labels
-          pool_id: pool_id
+          pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           tags: "{}"
         - configs:
           - service_type: service_type
@@ -1976,10 +1977,10 @@ components:
             id: id
             host_id: host_id
             upgraded_at: 2000-01-23T04:56:07.000+00:00
-          service_type: service_type
+          service_type: dns
           desired_version: desired_version
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Service Name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           desired_state: desired_state
@@ -1987,7 +1988,7 @@ components:
           interface_labels:
           - interface_labels
           - interface_labels
-          pool_id: pool_id
+          pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           tags: "{}"
       properties:
         page:
@@ -2047,10 +2048,10 @@ components:
           id: id
           host_id: host_id
           upgraded_at: 2000-01-23T04:56:07.000+00:00
-        service_type: service_type
+        service_type: dns
         desired_version: desired_version
         updated_at: 2000-01-23T04:56:07.000+00:00
-        name: name
+        name: Example Service Name
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         desired_state: desired_state
@@ -2058,7 +2059,7 @@ components:
         interface_labels:
         - interface_labels
         - interface_labels
-        pool_id: pool_id
+        pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
         tags: "{}"
       properties:
         configs:
@@ -2096,13 +2097,16 @@ components:
           type: array
         name:
           description: The name of the Service (unique).
+          example: Example Service Name
           type: string
         pool_id:
           description: The resource identifier.
+          example: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           type: string
         service_type:
           description: "The type of the Service deployed on the Host (`dns`, `cdc`,\
             \ etc.)."
+          example: dns
           type: string
         tags:
           additionalProperties: false
@@ -2216,7 +2220,7 @@ components:
           description: description
           serial_number: serial_number
           ip_address: ip_address
-          display_name: display_name
+          display_name: Example Host Name
           pool_id: pool_id
           created_by: created_by
           host_type: host_type
@@ -2254,10 +2258,10 @@ components:
             id: id
             host_id: host_id
             upgraded_at: 2000-01-23T04:56:07.000+00:00
-          service_type: service_type
+          service_type: dns
           desired_version: desired_version
           updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
+          name: Example Service Name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           desired_state: desired_state
@@ -2265,7 +2269,7 @@ components:
           interface_labels:
           - interface_labels
           - interface_labels
-          pool_id: pool_id
+          pool_id: dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6
           tags: "{}"
       properties:
         result:

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *keys.NewTSIGKey("Name_example", "Secret_example") // TSIGKey | 
+	body := *keys.NewTSIGKey("test.key.com.", "bGVzYnJvbnplc2ZvbnRkdXNraQ==") // TSIGKey | 
 
 	apiClient := keys.NewAPIClient()
 	resp, r, err := apiClient.TsigAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *keys.NewTSIGKey("Name_example", "Secret_example") // TSIGKey | 
+	body := *keys.NewTSIGKey("test.key.com.", "bGVzYnJvbnplc2ZvbnRkdXNraQ==") // TSIGKey | 
 
 	apiClient := keys.NewAPIClient()
 	resp, r, err := apiClient.TsigAPI.Update(context.Background(), id).Body(body).Execute()

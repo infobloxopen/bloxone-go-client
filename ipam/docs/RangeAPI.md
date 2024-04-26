@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewRange("End_example", "Start_example") // Range | 
+	body := *ipam.NewRange("10.0.0.10", "10.0.0.0") // Range | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()
@@ -477,7 +477,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewRange("End_example", "Start_example") // Range | 
+	body := *ipam.NewRange("10.0.0.10", "10.0.0.0") // Range | 
 	inherit := "inherit_example" // string | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none (optional)
 
 	apiClient := ipam.NewAPIClient()

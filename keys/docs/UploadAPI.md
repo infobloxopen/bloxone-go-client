@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	body := *keys.NewUploadRequest("Content_example", keys.uploadContentType("UNKNOWN")) // UploadRequest | 
+	body := *keys.NewUploadRequest("aGVsbG93b3JsZA==", keys.uploadContentType("UNKNOWN")) // UploadRequest | 
 
 	apiClient := keys.NewAPIClient()
 	resp, r, err := apiClient.UploadAPI.Upload(context.Background()).Body(body).Execute()

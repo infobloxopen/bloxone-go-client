@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewAuthNSG("Name_example") // AuthNSG | 
+	body := *dnsconfig.NewAuthNSG("Example Authoritative DNS Server Group") // AuthNSG | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.AuthNsgAPI.Create(context.Background()).Body(body).Execute()
@@ -321,7 +321,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *dnsconfig.NewAuthNSG("Name_example") // AuthNSG | 
+	body := *dnsconfig.NewAuthNSG("Example Authoritative DNS Server Group") // AuthNSG | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.AuthNsgAPI.Update(context.Background(), id).Body(body).Execute()

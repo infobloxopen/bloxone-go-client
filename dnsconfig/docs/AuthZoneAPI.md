@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	body := *dnsconfig.NewCopyAuthZone("TargetView_example") // CopyAuthZone | 
+	body := *dnsconfig.NewCopyAuthZone("dns/view/23311109-fad4-448f-a7a7-55ad791ae7eb") // CopyAuthZone | 
 
 	apiClient := dnsconfig.NewAPIClient()
 	resp, r, err := apiClient.AuthZoneAPI.Copy(context.Background()).Body(body).Execute()

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
+	body := *ipam.NewIpamHost("Example IPAM Host") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpamHostAPI.Create(context.Background()).Body(body).Execute()
@@ -323,7 +323,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *ipam.NewIpamHost("Name_example") // IpamHost | 
+	body := *ipam.NewIpamHost("Example IPAM Host") // IpamHost | 
 
 	apiClient := ipam.NewAPIClient()
 	resp, r, err := apiClient.IpamHostAPI.Update(context.Background(), id).Body(body).Execute()

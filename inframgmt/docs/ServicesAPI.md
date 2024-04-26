@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-	body := *inframgmt.NewService("Name_example", "PoolId_example", "ServiceType_example") // Service | 
+	body := *inframgmt.NewService("Example Service Name", "dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6", "dns") // Service | 
 
 	apiClient := inframgmt.NewAPIClient()
 	resp, r, err := apiClient.ServicesAPI.Create(context.Background()).Body(body).Execute()
@@ -384,7 +384,7 @@ import (
 
 func main() {
 	id := "id_example" // string | An application specific resource identity of a resource
-	body := *inframgmt.NewService("Name_example", "PoolId_example", "ServiceType_example") // Service | 
+	body := *inframgmt.NewService("Example Service Name", "dhcp/pool/9432a119-6f1e-49c2-bf47-57944773cae6", "dns") // Service | 
 
 	apiClient := inframgmt.NewAPIClient()
 	resp, r, err := apiClient.ServicesAPI.Update(context.Background(), id).Body(body).Execute()
