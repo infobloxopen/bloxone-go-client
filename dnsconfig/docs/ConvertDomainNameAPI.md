@@ -53,12 +53,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiConvertRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `ConvertDomainNameAPIConvertRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 

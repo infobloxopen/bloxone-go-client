@@ -65,12 +65,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPICreateAnycastConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AnycastConfig**](AnycastConfig.md) |  | 
+**body** | [**AnycastConfig**](AnycastConfig.md) |  | 
 
 ### Return type
 
@@ -135,12 +135,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPICreateAnycastVersionRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -205,12 +204,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIDeleteAnycastConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -275,12 +273,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIDeleteAnycastVersionRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -345,12 +342,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIDeleteOnpremHostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -415,12 +411,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetAnycastConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -462,16 +457,9 @@ import (
 )
 
 func main() {
-	accountId := int64(789) // int64 |  (optional)
-	service := "service_example" // string |  (optional)
-	hostId := int64(789) // int64 |  (optional)
-	ophid := "ophid_example" // string |  (optional)
-	isConfigured := true // bool |  (optional)
-	tfilter := "tfilter_example" // string |  (optional)
-	torderBy := "torderBy_example" // string |  (optional)
 
 	apiClient := anycast.NewAPIClient()
-	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetAnycastConfigList(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetAnycastConfigList(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetAnycastConfigList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,18 +475,18 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAnycastConfigListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetAnycastConfigListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **int64** |  | 
- **service** | **string** |  | 
- **hostId** | **int64** |  | 
- **ophid** | **string** |  | 
- **isConfigured** | **bool** |  | 
- **tfilter** | **string** |  | 
- **torderBy** | **string** |  | 
+**accountId** | **int64** |  | 
+**service** | **string** |  | 
+**hostId** | **int64** |  | 
+**ophid** | **string** |  | 
+**isConfigured** | **bool** |  | 
+**tfilter** | **string** |  | 
+**torderBy** | **string** |  | 
 
 ### Return type
 
@@ -563,12 +551,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAnycastVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetAnycastVersionRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -612,11 +599,9 @@ import (
 func main() {
 	ophid := "ophid_example" // string | 
 	version := "version_example" // string | 
-	appName := "appName_example" // string |  (optional)
-	appVersion := "appVersion_example" // string |  (optional)
 
 	apiClient := anycast.NewAPIClient()
-	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig(context.Background(), ophid, version).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetOnpremConfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -637,15 +622,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOnpremConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetOnpremConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
- **appName** | **string** |  | 
- **appVersion** | **string** |  | 
+**appName** | **string** |  | 
+**appVersion** | **string** |  | 
 
 ### Return type
 
@@ -689,11 +672,9 @@ import (
 func main() {
 	ophid := "ophid_example" // string | 
 	version := "version_example" // string | 
-	appName := "appName_example" // string |  (optional)
-	appVersion := "appVersion_example" // string |  (optional)
 
 	apiClient := anycast.NewAPIClient()
-	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig2(context.Background(), ophid, version).AppName(appName).AppVersion(appVersion).Execute()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.GetOnpremConfig2(context.Background(), ophid, version).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.GetOnpremConfig2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -714,15 +695,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOnpremConfig2Request struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetOnpremConfig2Request` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
- **appName** | **string** |  | 
- **appVersion** | **string** |  | 
+**appName** | **string** |  | 
+**appVersion** | **string** |  | 
 
 ### Return type
 
@@ -787,12 +766,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetOnpremHostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -857,12 +835,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetStatusRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -927,12 +904,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetStatus2Request struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIGetStatus2Request` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -974,16 +950,9 @@ import (
 )
 
 func main() {
-	accountId := int64(789) // int64 |  (optional)
-	service := "service_example" // string |  (optional)
-	hostId := int64(789) // int64 |  (optional)
-	ophid := "ophid_example" // string |  (optional)
-	isConfigured := true // bool |  (optional)
-	tfilter := "tfilter_example" // string |  (optional)
-	torderBy := "torderBy_example" // string |  (optional)
 
 	apiClient := anycast.NewAPIClient()
-	resp, r, err := apiClient.OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus(context.Background()).AccountId(accountId).Service(service).HostId(hostId).Ophid(ophid).IsConfigured(isConfigured).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OnPremAnycastManagerAPI.ListAnycastConfigsWithRuntimeStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -999,18 +968,18 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAnycastConfigsWithRuntimeStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIListAnycastConfigsWithRuntimeStatusRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **int64** |  | 
- **service** | **string** |  | 
- **hostId** | **int64** |  | 
- **ophid** | **string** |  | 
- **isConfigured** | **bool** |  | 
- **tfilter** | **string** |  | 
- **torderBy** | **string** |  | 
+**accountId** | **int64** |  | 
+**service** | **string** |  | 
+**hostId** | **int64** |  | 
+**ophid** | **string** |  | 
+**isConfigured** | **bool** |  | 
+**tfilter** | **string** |  | 
+**torderBy** | **string** |  | 
 
 ### Return type
 
@@ -1075,12 +1044,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadAnycastConfigWithRuntimeStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIReadAnycastConfigWithRuntimeStatusRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -1146,13 +1114,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAnycastConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIUpdateAnycastConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**AnycastConfig**](AnycastConfig.md) |  | 
+**body** | [**AnycastConfig**](AnycastConfig.md) |  | 
 
 ### Return type
 
@@ -1218,13 +1185,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateOnpremHostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `OnPremAnycastManagerAPIUpdateOnpremHostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**OnpremHost**](OnpremHost.md) |  | 
+**body** | [**OnpremHost**](OnpremHost.md) |  | 
 
 ### Return type
 

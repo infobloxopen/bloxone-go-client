@@ -51,12 +51,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AsmAPICreateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ASM**](ASM.md) |  | 
+**body** | [**ASM**](ASM.md) |  | 
 
 ### Return type
 
@@ -98,11 +98,9 @@ import (
 )
 
 func main() {
-	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-	subnetId := "subnetId_example" // string |  (optional)
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AsmAPI.List(context.Background()).Fields(fields).SubnetId(subnetId).Execute()
+	resp, r, err := apiClient.AsmAPI.List(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -118,13 +116,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AsmAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
- **subnetId** | **string** |  | 
+**fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+**subnetId** | **string** |  | 
 
 ### Return type
 
@@ -166,11 +164,10 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | An application specific resource identity of a resource
-	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
+	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.AsmAPI.Read(context.Background(), id).Fields(fields).Execute()
+	resp, r, err := apiClient.AsmAPI.Read(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AsmAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,13 +187,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AsmAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+**fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
 
 ### Return type
 

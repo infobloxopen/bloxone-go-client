@@ -49,12 +49,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCheckConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AccountsAPICheckConfigRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesConfigCheckRequest**](TypesConfigCheckRequest.md) |  | 
+**body** | [**TypesConfigCheckRequest**](TypesConfigCheckRequest.md) |  | 
 
 ### Return type
 

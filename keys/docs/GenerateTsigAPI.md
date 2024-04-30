@@ -30,10 +30,9 @@ import (
 )
 
 func main() {
-	algorithm := "algorithm_example" // string | The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_. (optional)
 
 	apiClient := keys.NewAPIClient()
-	resp, r, err := apiClient.GenerateTsigAPI.GenerateTSIG(context.Background()).Algorithm(algorithm).Execute()
+	resp, r, err := apiClient.GenerateTsigAPI.GenerateTSIG(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GenerateTsigAPI.GenerateTSIG``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,12 +48,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGenerateTSIGRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `GenerateTsigAPIGenerateTSIGRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **algorithm** | **string** | The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_. | 
+**algorithm** | **string** | The TSIG key algorithm.  Valid values are: * _hmac_sha256_ * _hmac_sha1_ * _hmac_sha224_ * _hmac_sha384_ * _hmac_sha512_  Defaults to _hmac_sha256_. | 
 
 ### Return type
 

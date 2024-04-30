@@ -54,13 +54,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteNamedListItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `NamedListItemsAPIDeleteNamedListItemsRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**NamedListItemsDeleteRequest**](NamedListItemsDeleteRequest.md) |  | 
+**body** | [**NamedListItemsDeleteRequest**](NamedListItemsDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -126,13 +125,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInsertOrReplaceNamedListItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `NamedListItemsAPIInsertOrReplaceNamedListItemsRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**NamedListItemsInsertOrUpdate**](NamedListItemsInsertOrUpdate.md) | NamedListItemsInsertOrUpdate object | 
+**body** | [**NamedListItemsInsertOrUpdate**](NamedListItemsInsertOrUpdate.md) | NamedListItemsInsertOrUpdate object | 
 
 ### Return type
 
@@ -198,13 +196,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiNamedListItemsPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `NamedListItemsAPINamedListItemsPartialUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**NamedListItemsPartialUpdate**](NamedListItemsPartialUpdate.md) | NamedListItemsPartialUpdate object | 
+**body** | [**NamedListItemsPartialUpdate**](NamedListItemsPartialUpdate.md) | NamedListItemsPartialUpdate object | 
 
 ### Return type
 

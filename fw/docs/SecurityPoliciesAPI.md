@@ -54,12 +54,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateSecurityPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPICreateSecurityPolicyRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SecurityPolicy**](SecurityPolicy.md) | The Security Policy object. | 
+**body** | [**SecurityPolicy**](SecurityPolicy.md) | The Security Policy object. | 
 
 ### Return type
 
@@ -118,12 +118,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteSecurityPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPIDeleteSecurityPolicyRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SecurityPolicyDeleteRequest**](SecurityPolicyDeleteRequest.md) |  | 
+**body** | [**SecurityPolicyDeleteRequest**](SecurityPolicyDeleteRequest.md) |  | 
 
 ### Return type
 
@@ -186,12 +186,11 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteSingleSecurityPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPIDeleteSingleSecurityPolicyRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 ### Return type
 
@@ -233,17 +232,9 @@ import (
 )
 
 func main() {
-	filter := "filter_example" // string | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.  You can filter by following fields:  | Name               | type   | Supported Op                | | ------------------ | ------ | --------------------------- | | id                 | int32  | !=, ==, >, <, <=, >=        | | name               | string | !=, ==, ~, !~, >, <, <=, >= | | description        | string | !=, ==, ~, !~, >, <, <=, >= | | is_default         | bool   | !=, ==                      |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Example: ``` ?_filter=\"((name=='sec_policy_a')or(name~'policy_b'))and(is_default!='true')\" ```  (optional)
-	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-	includeAccessCodes := true // bool |  (optional)
-	offset := int32(56) // int32 |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.          (optional)
-	limit := int32(56) // int32 |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          (optional)
-	pageToken := "pageToken_example" // string |   The service-defined string used to identify a page of resources. A null value indicates the first page.          (optional)
-	tfilter := "tfilter_example" // string | Filtering by tags. (optional)
-	torderBy := "torderBy_example" // string | Sorting by tags. (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.SecurityPoliciesAPI.ListSecurityPolicies(context.Background()).Filter(filter).Fields(fields).IncludeAccessCodes(includeAccessCodes).Offset(offset).Limit(limit).PageToken(pageToken).Tfilter(tfilter).TorderBy(torderBy).Execute()
+	resp, r, err := apiClient.SecurityPoliciesAPI.ListSecurityPolicies(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecurityPoliciesAPI.ListSecurityPolicies``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -259,19 +250,19 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListSecurityPoliciesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPIListSecurityPoliciesRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **string** | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;.  You can filter by following fields:  | Name               | type   | Supported Op                | | ------------------ | ------ | --------------------------- | | id                 | int32  | !&#x3D;, &#x3D;&#x3D;, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D;        | | name               | string | !&#x3D;, &#x3D;&#x3D;, ~, !~, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D; | | description        | string | !&#x3D;, &#x3D;&#x3D;, ~, !~, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D; | | is_default         | bool   | !&#x3D;, &#x3D;&#x3D;                      |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Example: &#x60;&#x60;&#x60; ?_filter&#x3D;\&quot;((name&#x3D;&#x3D;&#39;sec_policy_a&#39;)or(name~&#39;policy_b&#39;))and(is_default!&#x3D;&#39;true&#39;)\&quot; &#x60;&#x60;&#x60;  | 
- **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
- **includeAccessCodes** | **bool** |  | 
- **offset** | **int32** |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.          | 
- **limit** | **int32** |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          | 
- **pageToken** | **string** |   The service-defined string used to identify a page of resources. A null value indicates the first page.          | 
- **tfilter** | **string** | Filtering by tags. | 
- **torderBy** | **string** | Sorting by tags. | 
+**filter** | **string** | A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;.  You can filter by following fields:  | Name               | type   | Supported Op                | | ------------------ | ------ | --------------------------- | | id                 | int32  | !&#x3D;, &#x3D;&#x3D;, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D;        | | name               | string | !&#x3D;, &#x3D;&#x3D;, ~, !~, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D; | | description        | string | !&#x3D;, &#x3D;&#x3D;, ~, !~, &gt;, &lt;, &lt;&#x3D;, &gt;&#x3D; | | is_default         | bool   | !&#x3D;, &#x3D;&#x3D;                      |  In addition grouping operators are supported:  | Op  | Description          | | --- | -------------------- | | and | Logical AND          | | or  | Logical OR           | | not | Logical NOT          | | ()  | Groupping Operators  |  Example: &#x60;&#x60;&#x60; ?_filter&#x3D;\&quot;((name&#x3D;&#x3D;&#39;sec_policy_a&#39;)or(name~&#39;policy_b&#39;))and(is_default!&#x3D;&#39;true&#39;)\&quot; &#x60;&#x60;&#x60;  | 
+**fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+**includeAccessCodes** | **bool** |  | 
+**offset** | **int32** |   The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be &#39;0&#39;.          | 
+**limit** | **int32** |   The integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.          | 
+**pageToken** | **string** |   The service-defined string used to identify a page of resources. A null value indicates the first page.          | 
+**tfilter** | **string** | Filtering by tags. | 
+**torderBy** | **string** | Sorting by tags. | 
 
 ### Return type
 
@@ -314,11 +305,9 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The Security Policy object identifier.
-	fields := "fields_example" // string |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         (optional)
-	name := "name_example" // string |  (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.SecurityPoliciesAPI.ReadSecurityPolicy(context.Background(), id).Fields(fields).Name(name).Execute()
+	resp, r, err := apiClient.SecurityPoliciesAPI.ReadSecurityPolicy(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecurityPoliciesAPI.ReadSecurityPolicy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,14 +327,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadSecurityPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPIReadSecurityPolicyRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
- **name** | **string** |  | 
+**fields** | **string** |   A collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.  Specify this parameter as a comma-separated list of JSON tag names.         | 
+**name** | **string** |  | 
 
 ### Return type
 
@@ -411,13 +399,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateSecurityPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `SecurityPoliciesAPIUpdateSecurityPolicyRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **body** | [**SecurityPolicy**](SecurityPolicy.md) | The Security Policy object. | 
+**body** | [**SecurityPolicy**](SecurityPolicy.md) | The Security Policy object. | 
 
 ### Return type
 

@@ -30,10 +30,9 @@ import (
 )
 
 func main() {
-	filter := "filter_example" // string |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  ==   |  Equal                     |  |  !=   |  Not Equal                 |  |  >    |  Greater Than              |  |   >=  |  Greater Than or Equal To  |  |  <    |  Less Than                 |  |  <=   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         (optional)
 
 	apiClient := fw.NewAPIClient()
-	resp, r, err := apiClient.AppApprovalsAPI.ListAppApprovals(context.Background()).Filter(filter).Execute()
+	resp, r, err := apiClient.AppApprovalsAPI.ListAppApprovals(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppApprovalsAPI.ListAppApprovals``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,12 +48,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AppApprovalsAPIListAppApprovalsRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **string** |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         | 
+**filter** | **string** |   A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.  Literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and &#39;null&#39;. The following operators are commonly used in filter expressions:  |  Op   |  Description               |  |  --   |  -----------               |  |  &#x3D;&#x3D;   |  Equal                     |  |  !&#x3D;   |  Not Equal                 |  |  &gt;    |  Greater Than              |  |   &gt;&#x3D;  |  Greater Than or Equal To  |  |  &lt;    |  Less Than                 |  |  &lt;&#x3D;   |  Less Than or Equal To     |  |  and  |  Logical AND               |  |  ~    |  Matches Regex             |  |  !~   |  Does Not Match Regex      |  |  or   |  Logical OR                |  |  not  |  Logical NOT               |  |  ()   |  Groupping Operators       |         | 
 
 ### Return type
 
@@ -115,12 +114,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReplaceAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AppApprovalsAPIReplaceAppApprovalsRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AppApprovalsReplaceRequest**](AppApprovalsReplaceRequest.md) |  | 
+**body** | [**AppApprovalsReplaceRequest**](AppApprovalsReplaceRequest.md) |  | 
 
 ### Return type
 
@@ -179,12 +178,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAppApprovalsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `AppApprovalsAPIUpdateAppApprovalsRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AppApprovalsUpdateRequest**](AppApprovalsUpdateRequest.md) |  | 
+**body** | [**AppApprovalsUpdateRequest**](AppApprovalsUpdateRequest.md) |  | 
 
 ### Return type
 

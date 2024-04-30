@@ -49,12 +49,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `CacheFlushAPICreateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CacheFlush**](CacheFlush.md) |  | 
+**body** | [**CacheFlush**](CacheFlush.md) |  | 
 
 ### Return type
 
