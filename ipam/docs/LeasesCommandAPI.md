@@ -49,12 +49,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `LeasesCommandAPICreateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LeasesCommand**](LeasesCommand.md) |  | 
+**body** | [**LeasesCommand**](LeasesCommand.md) |  | 
 
 ### Return type
 

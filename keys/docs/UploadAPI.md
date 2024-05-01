@@ -49,12 +49,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUploadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a `UploadAPIUploadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UploadRequest**](UploadRequest.md) |  | 
+**body** | [**UploadRequest**](UploadRequest.md) |  | 
 
 ### Return type
 
