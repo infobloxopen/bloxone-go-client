@@ -133,6 +133,8 @@ paths:
         required: true
         schema:
           type: string
+          x-gosdk-type: resource_id
+        x-gosdk-type: resource_id
       requestBody:
         content:
           application/json:
@@ -188,6 +190,8 @@ paths:
         required: true
         schema:
           type: string
+          x-gosdk-type: resource_id
+        x-gosdk-type: resource_id
       - description: The DNS Forwarding Proxy object identifier.
         in: query
         name: id
