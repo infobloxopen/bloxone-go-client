@@ -87,6 +87,7 @@ paths:
       - OnPremAnycastManager
       x-tf-resource: anycast_ac_config
       x-tf-datasource: anycast_ac_configs
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /accm/ac_configs/{id}:
     delete:
@@ -165,6 +166,7 @@ paths:
       summary: Create or Update Anycast Configuration
       tags:
       - OnPremAnycastManager
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /accm/ac_runtime_statuses:
     get:

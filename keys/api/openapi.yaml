@@ -219,6 +219,7 @@ paths:
       summary: Update the Kerberos key.
       tags:
       - kerberos
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /keys/tsig:
     get:

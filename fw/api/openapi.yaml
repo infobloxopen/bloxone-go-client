@@ -617,6 +617,7 @@ paths:
       summary: Create Application Filter.
       tags:
       - application_filters
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /application_filters/{id}:
     delete:
@@ -750,6 +751,7 @@ paths:
       summary: Update Application Filter.
       tags:
       - application_filters
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /category_filters:
     delete:
@@ -948,6 +950,7 @@ paths:
       summary: Create Category Filter.
       tags:
       - category_filters
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /category_filters/{id}:
     delete:
@@ -1117,6 +1120,7 @@ paths:
       summary: Update Category Filter.
       tags:
       - category_filters
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /content_categories:
     get:
@@ -1374,6 +1378,7 @@ paths:
       summary: Create Internal Domains.
       tags:
       - internal_domain_lists
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /internal_domain_lists/{id}:
     delete:
@@ -1582,6 +1587,7 @@ paths:
       summary: Update Internal Domains.
       tags:
       - internal_domain_lists
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /internal_domain_lists/{id}/items:
     patch:
@@ -1888,6 +1894,7 @@ paths:
       summary: Create Named List.
       tags:
       - named_lists
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /named_lists/{id}:
     delete:
@@ -2094,6 +2101,7 @@ paths:
       summary: Patch TI List.
       tags:
       - named_lists
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
     put:
       description: |
@@ -2168,6 +2176,7 @@ paths:
       summary: Update Named List.
       tags:
       - named_lists
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /named_lists/{id}/items:
     delete:
@@ -3137,6 +3146,7 @@ paths:
       summary: Create Security Policy.
       tags:
       - security_policies
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /security_policies/{id}:
     delete:
@@ -3320,6 +3330,7 @@ paths:
       summary: Update Security Policy.
       tags:
       - security_policies
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /security_policy_rules:
     get:
