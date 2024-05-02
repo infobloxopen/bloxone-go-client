@@ -663,7 +663,6 @@ paths:
       summary: Retrieve the HA group.
       tags:
       - ha_group
-      x-sdk-default-tags: true
     patch:
       description: |-
         Use this method to update an __HAGroup__ object.
@@ -692,6 +691,7 @@ paths:
       summary: Update the HA group.
       tags:
       - ha_group
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /dhcp/hardware_filter:
     get:
@@ -2732,6 +2732,7 @@ paths:
       summary: Create the Next Available Address Block object.
       tags:
       - address_block
+      x-sdk-default-tags: true
   /ipam/address_block/{id}/nextavailableip:
     get:
       description: |-
@@ -2815,6 +2816,7 @@ paths:
       summary: Allocate the next available IP address.
       tags:
       - address_block
+      x-sdk-default-tags: true
   /ipam/address_block/{id}/nextavailablesubnet:
     get:
       description: |-
@@ -2918,6 +2920,7 @@ paths:
       summary: Create the Next Available Subnet object.
       tags:
       - address_block
+      x-sdk-default-tags: true
   /ipam/asm:
     get:
       description: |-
@@ -3991,6 +3994,7 @@ paths:
       summary: Allocate the next available IP address.
       tags:
       - range
+      x-sdk-default-tags: true
   /ipam/subnet:
     get:
       description: |-
@@ -4359,6 +4363,7 @@ paths:
       summary: Allocate the next available IP address.
       tags:
       - subnet
+      x-sdk-default-tags: true
 components:
   schemas:
     InheritedDHCPConfigFilterList:
