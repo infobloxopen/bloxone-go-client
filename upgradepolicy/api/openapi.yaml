@@ -1,0 +1,615 @@
+openapi: 3.0.1
+info:
+  description: "Infoblox by default does automatic software updates when they become\
+    \ available. Updates are applied to all on-prem hosts, physical or virtual. However,\
+    \ you can override and schedule the software updates. You can also defer the updates\
+    \ to a later date and time. You can configure up to a total of 50 deferrals (scheduled\
+    \ and deferred software updates), which means you have the flexibility to create\
+    \ up to 50 update groups across different on-prem hosts by mapping with appropriate\
+    \ tags. Tags are be used to associate deferrals (scheduled or deferred) with a\
+    \ specific or group of onprem-hosts. Apart from software update deferrals, config\
+    \ update deferrals also can be configured using these overrides."
+  title: Schedule Software/Config Updates
+  version: v2
+servers:
+- url: /api/upgrade_policy/
+security:
+- ApiKeyAuth: []
+paths:
+  /v2/config/apply_now:
+    post:
+      operationId: Upgrade Policy V2ApplyConfigNow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service_v2ApplyConfigNowRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2ApplyConfigNowResponse'
+          description: POST operation response
+      summary: Immediately apply the config updates object to the list of hosts
+      tags:
+      - Upgrade Policy V2
+      x-codegen-request-body-name: body
+  /v2/maintenance_windows:
+    get:
+      operationId: Upgrade Policy V2List
+      parameters:
+      - description: window type (software or config).
+        in: query
+        name: window_type
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2ListMaintenanceWindowResponse'
+          description: GET operation response
+      summary: List all the maintenance windows
+      tags:
+      - Upgrade Policy V2
+    post:
+      operationId: Upgrade Policy V2Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service_v2CreateMaintenanceWindowRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2CreateMaintenanceWindowResponse'
+          description: POST operation response
+      summary: Create a maintenance window
+      tags:
+      - Upgrade Policy V2
+      x-codegen-request-body-name: body
+  /v2/maintenance_windows/batch:
+    post:
+      operationId: Upgrade Policy V2Batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service_v2BatchMaintenanceWindowRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2BatchMaintenanceWindowResponse'
+          description: POST operation response
+      summary: "Create, update and/or delete multiple maintenance windows in a single\
+        \ request"
+      tags:
+      - Upgrade Policy V2
+      x-codegen-request-body-name: body
+  /v2/maintenance_windows/{id}:
+    delete:
+      operationId: Upgrade Policy V2Delete
+      parameters:
+      - description: uuid of a maintenance window record
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2DeleteMaintenanceWindowResponse'
+          description: DELETE operation response
+      summary: Delete maintenance window
+      tags:
+      - Upgrade Policy V2
+    get:
+      operationId: Upgrade Policy V2Get
+      parameters:
+      - description: uuid of a maintenance window record
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2GetMaintenanceWindowResponse'
+          description: GET operation response
+      summary: Read a maintenance window
+      tags:
+      - Upgrade Policy V2
+    patch:
+      operationId: Upgrade Policy V2Update
+      parameters:
+      - description: uuid of a maintenance window record
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service_v2UpdateMaintenanceWindowRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service_v2UpdateMaintenanceWindowResponse'
+          description: PATCH operation response
+      summary: Update an existing maintenance window
+      tags:
+      - Upgrade Policy V2
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    service_v2ApplyConfigNowRequest:
+      properties:
+        payload:
+          items:
+            $ref: '#/components/schemas/service_v2OnpremDetails'
+          type: array
+      type: object
+    service_v2ApplyConfigNowResponse:
+      example:
+        result:
+        - ophid: ophid
+          hostid: hostid
+          statusCode: null
+        - ophid: ophid
+          hostid: hostid
+          statusCode: null
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/service_v2ApplyConfigNowStatus'
+          type: array
+      type: object
+    service_v2ApplyConfigNowStatus:
+      example:
+        ophid: ophid
+        hostid: hostid
+        statusCode: null
+      properties:
+        hostid:
+          type: string
+        ophid:
+          type: string
+        statusCode:
+          $ref: '#/components/schemas/service_v2StatusCode'
+      type: object
+    service_v2BatchMaintenanceWindow:
+      properties:
+        create_mws:
+          items:
+            $ref: '#/components/schemas/service_v2CreateMaintenanceWindow'
+          type: array
+        delete_mws:
+          items:
+            type: string
+          type: array
+        update_mws:
+          items:
+            $ref: '#/components/schemas/service_v2UpdateBatchMaintenanceWindow'
+          type: array
+      type: object
+    service_v2BatchMaintenanceWindowRequest:
+      properties:
+        payload:
+          $ref: '#/components/schemas/service_v2BatchMaintenanceWindow'
+      type: object
+    service_v2BatchMaintenanceWindowResponse:
+      example:
+        result:
+          created_ids:
+          - created_ids
+          - created_ids
+          updated_mws:
+          - scheduled_window:
+              duration: 0
+              start_time: 6
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              weekday: 1
+              created_at: 2000-01-23T04:56:07.000+00:00
+              enabled: true
+            window_type: window_type
+            id: id
+            deferred_window:
+              start_time: 2000-01-23T04:56:07.000+00:00
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              end_time: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              enabled: true
+            tags:
+              key: "{}"
+          - scheduled_window:
+              duration: 0
+              start_time: 6
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              weekday: 1
+              created_at: 2000-01-23T04:56:07.000+00:00
+              enabled: true
+            window_type: window_type
+            id: id
+            deferred_window:
+              start_time: 2000-01-23T04:56:07.000+00:00
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              end_time: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              enabled: true
+            tags:
+              key: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/service_v2BatchMaintenanceWindowResult'
+      type: object
+    service_v2BatchMaintenanceWindowResult:
+      example:
+        created_ids:
+        - created_ids
+        - created_ids
+        updated_mws:
+        - scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+        - scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+      properties:
+        created_ids:
+          items:
+            type: string
+          type: array
+        updated_mws:
+          items:
+            $ref: '#/components/schemas/service_v2MaintenanceWindow'
+          type: array
+      type: object
+    service_v2CreateMaintenanceWindow:
+      properties:
+        deferred_window:
+          $ref: '#/components/schemas/service_v2DeferredWindow'
+        id:
+          readOnly: true
+          type: string
+        scheduled_window:
+          $ref: '#/components/schemas/service_v2ScheduledWindow'
+        tags:
+          additionalProperties:
+            type: object
+          type: object
+        window_type:
+          type: string
+      title: "Create maintenance window structure which includes schedule window,\
+        \ defer window and tags"
+      type: object
+    service_v2CreateMaintenanceWindowRequest:
+      properties:
+        payload:
+          $ref: '#/components/schemas/service_v2CreateMaintenanceWindow'
+      type: object
+    service_v2CreateMaintenanceWindowResponse:
+      example:
+        id: id
+      properties:
+        id:
+          readOnly: true
+          type: string
+      type: object
+    service_v2DeferredWindow:
+      example:
+        start_time: 2000-01-23T04:56:07.000+00:00
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        end_time: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        enabled: true
+      properties:
+        created_at:
+          format: date-time
+          readOnly: true
+          title: create date timestamp of the defer window
+          type: string
+        enabled:
+          format: boolean
+          title: enable defer window
+          type: boolean
+        end_time:
+          format: date-time
+          title: date and time at which defer window will end
+          type: string
+        start_time:
+          format: date-time
+          title: date and time at which defer window will start
+          type: string
+        updated_at:
+          format: date-time
+          readOnly: true
+          title: last update date timestamp of the defer window
+          type: string
+      title: Deferred window structure
+      type: object
+    service_v2DeleteMaintenanceWindowResponse:
+      example:
+        window_type: window_type
+      properties:
+        window_type:
+          type: string
+      type: object
+    service_v2GetMaintenanceWindowResponse:
+      example:
+        result:
+          scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/service_v2MaintenanceWindow'
+      type: object
+    service_v2ListMaintenanceWindowResponse:
+      example:
+        result:
+        - scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+        - scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/service_v2MaintenanceWindow'
+          type: array
+      type: object
+    service_v2MaintenanceWindow:
+      example:
+        scheduled_window:
+          duration: 0
+          start_time: 6
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          weekday: 1
+          created_at: 2000-01-23T04:56:07.000+00:00
+          enabled: true
+        window_type: window_type
+        id: id
+        deferred_window:
+          start_time: 2000-01-23T04:56:07.000+00:00
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          end_time: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          enabled: true
+        tags:
+          key: "{}"
+      properties:
+        deferred_window:
+          $ref: '#/components/schemas/service_v2DeferredWindow'
+        id:
+          readOnly: true
+          type: string
+        scheduled_window:
+          $ref: '#/components/schemas/service_v2ScheduledWindow'
+        tags:
+          additionalProperties:
+            type: object
+          type: object
+        window_type:
+          readOnly: true
+          type: string
+      title: "Maintenance window structure which includes schedule window, defer window\
+        \ and tags"
+      type: object
+    service_v2OnpremDetails:
+      properties:
+        hostid:
+          title: host id of onprem host
+          type: string
+        ophid:
+          title: ophid of onprem host
+          type: string
+      type: object
+    service_v2ScheduledWindow:
+      example:
+        duration: 0
+        start_time: 6
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        weekday: 1
+        created_at: 2000-01-23T04:56:07.000+00:00
+        enabled: true
+      properties:
+        created_at:
+          format: date-time
+          readOnly: true
+          title: created date timestamp of the schedule window
+          type: string
+        duration:
+          format: int32
+          title: total duration of the schedule window in minutes
+          type: integer
+        enabled:
+          format: boolean
+          title: "enable schedule window (true for schedule update, false for automatic\
+            \ update)"
+          type: boolean
+        start_time:
+          format: int32
+          title: time of the day in minutes at which schedule window will be active
+          type: integer
+        updated_at:
+          format: date-time
+          readOnly: true
+          title: last updated date timestamp of the schedule window
+          type: string
+        weekday:
+          format: int32
+          title: "day on which schedule window will be active (Sunday (0), Monday(1)...\
+            \ Saturday (6)"
+          type: integer
+      title: Schedule window structure
+      type: object
+    service_v2StatusCode:
+      default: SUCCESS
+      enum:
+      - SUCCESS
+      - GENERAL_FAILURE
+      - HASH_FAILURE
+      - VALIDATION_FAILURE
+      - COPY_FAILURE
+      - RELOAD_FAILIURE
+      title: Config apply status codes
+      type: string
+    service_v2UpdateBatchMaintenanceWindow:
+      properties:
+        deferred_window:
+          $ref: '#/components/schemas/service_v2DeferredWindow'
+        mw_id:
+          type: string
+        scheduled_window:
+          $ref: '#/components/schemas/service_v2ScheduledWindow'
+        tags:
+          additionalProperties:
+            type: object
+          type: object
+      type: object
+    service_v2UpdateMaintenanceWindow:
+      properties:
+        deferred_window:
+          $ref: '#/components/schemas/service_v2DeferredWindow'
+        id:
+          readOnly: true
+          type: string
+        scheduled_window:
+          $ref: '#/components/schemas/service_v2ScheduledWindow'
+        tags:
+          additionalProperties:
+            type: object
+          type: object
+      title: "Update maintenance window structure which includes schedule window,\
+        \ defer window and tags"
+      type: object
+    service_v2UpdateMaintenanceWindowRequest:
+      properties:
+        id:
+          readOnly: true
+          title: uuid of a maintenance window record
+          type: string
+        payload:
+          $ref: '#/components/schemas/service_v2UpdateMaintenanceWindow'
+      type: object
+    service_v2UpdateMaintenanceWindowResponse:
+      example:
+        result:
+          scheduled_window:
+            duration: 0
+            start_time: 6
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            weekday: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          window_type: window_type
+          id: id
+          deferred_window:
+            start_time: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            end_time: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            enabled: true
+          tags:
+            key: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/service_v2MaintenanceWindow'
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
