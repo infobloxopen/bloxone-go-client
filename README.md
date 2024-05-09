@@ -12,6 +12,7 @@ The following Bloxone APIs are supported:
 ## Bloxone Threat Defense
 - [Threat Defense Cloud (FW API)](fw/README.md)
 - [DNS Forwarding Proxy (DFP API)](dfp/README.md)
+- [Redirect](redirect/README.md)
 
 ## Bloxone DDI
 - [IP Address Management](ipam/README.md)
