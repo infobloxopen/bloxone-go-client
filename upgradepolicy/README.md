@@ -85,39 +85,39 @@ All URIs are relative to *http://localhost/api/upgrade_policy*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*UpgradePolicyV2API* | [**UpgradePolicyV2ApplyConfigNow**](docs/UpgradePolicyV2API.md#upgradepolicyv2applyconfignow) | **Post** /v2/config/apply_now | Immediately apply the config updates object to the list of hosts
-*UpgradePolicyV2API* | [**UpgradePolicyV2Batch**](docs/UpgradePolicyV2API.md#upgradepolicyv2batch) | **Post** /v2/maintenance_windows/batch | Create, update and/or delete multiple maintenance windows in a single request
-*UpgradePolicyV2API* | [**UpgradePolicyV2Create**](docs/UpgradePolicyV2API.md#upgradepolicyv2create) | **Post** /v2/maintenance_windows | Create a maintenance window
-*UpgradePolicyV2API* | [**UpgradePolicyV2Delete**](docs/UpgradePolicyV2API.md#upgradepolicyv2delete) | **Delete** /v2/maintenance_windows/{id} | Delete maintenance window
-*UpgradePolicyV2API* | [**UpgradePolicyV2Get**](docs/UpgradePolicyV2API.md#upgradepolicyv2get) | **Get** /v2/maintenance_windows/{id} | Read a maintenance window
-*UpgradePolicyV2API* | [**UpgradePolicyV2List**](docs/UpgradePolicyV2API.md#upgradepolicyv2list) | **Get** /v2/maintenance_windows | List all the maintenance windows
-*UpgradePolicyV2API* | [**UpgradePolicyV2Update**](docs/UpgradePolicyV2API.md#upgradepolicyv2update) | **Patch** /v2/maintenance_windows/{id} | Update an existing maintenance window
+*UpgradePolicyV2API* | [**ApplyConfigNow**](docs/UpgradePolicyV2API.md#applyconfignow) | **Post** /v2/config/apply_now | Immediately apply the config updates object to the list of hosts
+*UpgradePolicyV2API* | [**Batch**](docs/UpgradePolicyV2API.md#batch) | **Post** /v2/maintenance_windows/batch | Create, update and/or delete multiple maintenance windows in a single request
+*UpgradePolicyV2API* | [**Create**](docs/UpgradePolicyV2API.md#create) | **Post** /v2/maintenance_windows | Create a maintenance window
+*UpgradePolicyV2API* | [**Delete**](docs/UpgradePolicyV2API.md#delete) | **Delete** /v2/maintenance_windows/{id} | Delete maintenance window
+*UpgradePolicyV2API* | [**Get**](docs/UpgradePolicyV2API.md#get) | **Get** /v2/maintenance_windows/{id} | Read a maintenance window
+*UpgradePolicyV2API* | [**List**](docs/UpgradePolicyV2API.md#list) | **Get** /v2/maintenance_windows | List all the maintenance windows
+*UpgradePolicyV2API* | [**Update**](docs/UpgradePolicyV2API.md#update) | **Patch** /v2/maintenance_windows/{id} | Update an existing maintenance window
 
 
 ## Documentation For Models
 
- - [ServiceV2ApplyConfigNowRequest](docs/ServiceV2ApplyConfigNowRequest.md)
- - [ServiceV2ApplyConfigNowResponse](docs/ServiceV2ApplyConfigNowResponse.md)
- - [ServiceV2ApplyConfigNowStatus](docs/ServiceV2ApplyConfigNowStatus.md)
- - [ServiceV2BatchMaintenanceWindow](docs/ServiceV2BatchMaintenanceWindow.md)
- - [ServiceV2BatchMaintenanceWindowRequest](docs/ServiceV2BatchMaintenanceWindowRequest.md)
- - [ServiceV2BatchMaintenanceWindowResponse](docs/ServiceV2BatchMaintenanceWindowResponse.md)
- - [ServiceV2BatchMaintenanceWindowResult](docs/ServiceV2BatchMaintenanceWindowResult.md)
- - [ServiceV2CreateMaintenanceWindow](docs/ServiceV2CreateMaintenanceWindow.md)
- - [ServiceV2CreateMaintenanceWindowRequest](docs/ServiceV2CreateMaintenanceWindowRequest.md)
- - [ServiceV2CreateMaintenanceWindowResponse](docs/ServiceV2CreateMaintenanceWindowResponse.md)
- - [ServiceV2DeferredWindow](docs/ServiceV2DeferredWindow.md)
- - [ServiceV2DeleteMaintenanceWindowResponse](docs/ServiceV2DeleteMaintenanceWindowResponse.md)
- - [ServiceV2GetMaintenanceWindowResponse](docs/ServiceV2GetMaintenanceWindowResponse.md)
- - [ServiceV2ListMaintenanceWindowResponse](docs/ServiceV2ListMaintenanceWindowResponse.md)
- - [ServiceV2MaintenanceWindow](docs/ServiceV2MaintenanceWindow.md)
- - [ServiceV2OnpremDetails](docs/ServiceV2OnpremDetails.md)
- - [ServiceV2ScheduledWindow](docs/ServiceV2ScheduledWindow.md)
- - [ServiceV2StatusCode](docs/ServiceV2StatusCode.md)
- - [ServiceV2UpdateBatchMaintenanceWindow](docs/ServiceV2UpdateBatchMaintenanceWindow.md)
- - [ServiceV2UpdateMaintenanceWindow](docs/ServiceV2UpdateMaintenanceWindow.md)
- - [ServiceV2UpdateMaintenanceWindowRequest](docs/ServiceV2UpdateMaintenanceWindowRequest.md)
- - [ServiceV2UpdateMaintenanceWindowResponse](docs/ServiceV2UpdateMaintenanceWindowResponse.md)
+ - [ApplyConfigNowRequest](docs/ApplyConfigNowRequest.md)
+ - [ApplyConfigNowResponse](docs/ApplyConfigNowResponse.md)
+ - [ApplyConfigNowStatus](docs/ApplyConfigNowStatus.md)
+ - [BatchMaintenanceWindow](docs/BatchMaintenanceWindow.md)
+ - [BatchMaintenanceWindowRequest](docs/BatchMaintenanceWindowRequest.md)
+ - [BatchMaintenanceWindowResponse](docs/BatchMaintenanceWindowResponse.md)
+ - [BatchMaintenanceWindowResult](docs/BatchMaintenanceWindowResult.md)
+ - [CreateMaintenanceWindow](docs/CreateMaintenanceWindow.md)
+ - [CreateMaintenanceWindowRequest](docs/CreateMaintenanceWindowRequest.md)
+ - [CreateMaintenanceWindowResponse](docs/CreateMaintenanceWindowResponse.md)
+ - [DeferredWindow](docs/DeferredWindow.md)
+ - [DeleteMaintenanceWindowResponse](docs/DeleteMaintenanceWindowResponse.md)
+ - [GetMaintenanceWindowResponse](docs/GetMaintenanceWindowResponse.md)
+ - [ListMaintenanceWindowResponse](docs/ListMaintenanceWindowResponse.md)
+ - [MaintenanceWindow](docs/MaintenanceWindow.md)
+ - [OnpremDetails](docs/OnpremDetails.md)
+ - [ScheduledWindow](docs/ScheduledWindow.md)
+ - [StatusCode](docs/StatusCode.md)
+ - [UpdateBatchMaintenanceWindow](docs/UpdateBatchMaintenanceWindow.md)
+ - [UpdateMaintenanceWindow](docs/UpdateMaintenanceWindow.md)
+ - [UpdateMaintenanceWindowRequest](docs/UpdateMaintenanceWindowRequest.md)
+ - [UpdateMaintenanceWindowResponse](docs/UpdateMaintenanceWindowResponse.md)
 
 
 ## Documentation for Utility Methods

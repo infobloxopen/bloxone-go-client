@@ -4,19 +4,19 @@ All URIs are relative to *http://localhost/api/upgrade_policy*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UpgradePolicyV2ApplyConfigNow**](UpgradePolicyV2API.md#UpgradePolicyV2ApplyConfigNow) | **Post** /v2/config/apply_now | Immediately apply the config updates object to the list of hosts
-[**UpgradePolicyV2Batch**](UpgradePolicyV2API.md#UpgradePolicyV2Batch) | **Post** /v2/maintenance_windows/batch | Create, update and/or delete multiple maintenance windows in a single request
-[**UpgradePolicyV2Create**](UpgradePolicyV2API.md#UpgradePolicyV2Create) | **Post** /v2/maintenance_windows | Create a maintenance window
-[**UpgradePolicyV2Delete**](UpgradePolicyV2API.md#UpgradePolicyV2Delete) | **Delete** /v2/maintenance_windows/{id} | Delete maintenance window
-[**UpgradePolicyV2Get**](UpgradePolicyV2API.md#UpgradePolicyV2Get) | **Get** /v2/maintenance_windows/{id} | Read a maintenance window
-[**UpgradePolicyV2List**](UpgradePolicyV2API.md#UpgradePolicyV2List) | **Get** /v2/maintenance_windows | List all the maintenance windows
-[**UpgradePolicyV2Update**](UpgradePolicyV2API.md#UpgradePolicyV2Update) | **Patch** /v2/maintenance_windows/{id} | Update an existing maintenance window
+[**ApplyConfigNow**](UpgradePolicyV2API.md#ApplyConfigNow) | **Post** /v2/config/apply_now | Immediately apply the config updates object to the list of hosts
+[**Batch**](UpgradePolicyV2API.md#Batch) | **Post** /v2/maintenance_windows/batch | Create, update and/or delete multiple maintenance windows in a single request
+[**Create**](UpgradePolicyV2API.md#Create) | **Post** /v2/maintenance_windows | Create a maintenance window
+[**Delete**](UpgradePolicyV2API.md#Delete) | **Delete** /v2/maintenance_windows/{id} | Delete maintenance window
+[**Get**](UpgradePolicyV2API.md#Get) | **Get** /v2/maintenance_windows/{id} | Read a maintenance window
+[**List**](UpgradePolicyV2API.md#List) | **Get** /v2/maintenance_windows | List all the maintenance windows
+[**Update**](UpgradePolicyV2API.md#Update) | **Patch** /v2/maintenance_windows/{id} | Update an existing maintenance window
 
 
 
-## UpgradePolicyV2ApplyConfigNow
+## ApplyConfigNow
 
-> ServiceV2ApplyConfigNowResponse UpgradePolicyV2ApplyConfigNow(ctx).Body(body).Execute()
+> ApplyConfigNowResponse ApplyConfigNow(ctx).Body(body).Execute()
 
 Immediately apply the config updates object to the list of hosts
 
@@ -34,16 +34,16 @@ import (
 )
 
 func main() {
-	body := *upgradepolicy.NewServiceV2ApplyConfigNowRequest() // ServiceV2ApplyConfigNowRequest | 
+	body := *upgradepolicy.NewApplyConfigNowRequest() // ApplyConfigNowRequest | 
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2ApplyConfigNow(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.ApplyConfigNow(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2ApplyConfigNow``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.ApplyConfigNow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2ApplyConfigNow`: ServiceV2ApplyConfigNowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2ApplyConfigNow`: %v\n", resp)
+	// response from `ApplyConfigNow`: ApplyConfigNowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.ApplyConfigNow`: %v\n", resp)
 }
 ```
 
@@ -53,16 +53,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIApplyConfigNowRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**ServiceV2ApplyConfigNowRequest**](ServiceV2ApplyConfigNowRequest.md) |  | 
+**body** | [**ApplyConfigNowRequest**](ApplyConfigNowRequest.md) |  | 
 
 ### Return type
 
-[**ServiceV2ApplyConfigNowResponse**](ServiceV2ApplyConfigNowResponse.md)
+[**ApplyConfigNowResponse**](ApplyConfigNowResponse.md)
 
 ### Authorization
 
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2Batch
+## Batch
 
-> ServiceV2BatchMaintenanceWindowResponse UpgradePolicyV2Batch(ctx).Body(body).Execute()
+> BatchMaintenanceWindowResponse Batch(ctx).Body(body).Execute()
 
 Create, update and/or delete multiple maintenance windows in a single request
 
@@ -98,16 +98,16 @@ import (
 )
 
 func main() {
-	body := *upgradepolicy.NewServiceV2BatchMaintenanceWindowRequest() // ServiceV2BatchMaintenanceWindowRequest | 
+	body := *upgradepolicy.NewBatchMaintenanceWindowRequest() // BatchMaintenanceWindowRequest | 
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Batch(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.Batch(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2Batch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.Batch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2Batch`: ServiceV2BatchMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2Batch`: %v\n", resp)
+	// response from `Batch`: BatchMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.Batch`: %v\n", resp)
 }
 ```
 
@@ -117,16 +117,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2BatchRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIBatchRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**ServiceV2BatchMaintenanceWindowRequest**](ServiceV2BatchMaintenanceWindowRequest.md) |  | 
+**body** | [**BatchMaintenanceWindowRequest**](BatchMaintenanceWindowRequest.md) |  | 
 
 ### Return type
 
-[**ServiceV2BatchMaintenanceWindowResponse**](ServiceV2BatchMaintenanceWindowResponse.md)
+[**BatchMaintenanceWindowResponse**](BatchMaintenanceWindowResponse.md)
 
 ### Authorization
 
@@ -142,9 +142,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2Create
+## Create
 
-> ServiceV2CreateMaintenanceWindowResponse UpgradePolicyV2Create(ctx).Body(body).Execute()
+> CreateMaintenanceWindowResponse Create(ctx).Body(body).Execute()
 
 Create a maintenance window
 
@@ -162,16 +162,16 @@ import (
 )
 
 func main() {
-	body := *upgradepolicy.NewServiceV2CreateMaintenanceWindowRequest() // ServiceV2CreateMaintenanceWindowRequest | 
+	body := *upgradepolicy.NewCreateMaintenanceWindowRequest() // CreateMaintenanceWindowRequest | 
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Create(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.Create(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2Create`: ServiceV2CreateMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2Create`: %v\n", resp)
+	// response from `Create`: CreateMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.Create`: %v\n", resp)
 }
 ```
 
@@ -181,16 +181,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2CreateRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APICreateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**ServiceV2CreateMaintenanceWindowRequest**](ServiceV2CreateMaintenanceWindowRequest.md) |  | 
+**body** | [**CreateMaintenanceWindowRequest**](CreateMaintenanceWindowRequest.md) |  | 
 
 ### Return type
 
-[**ServiceV2CreateMaintenanceWindowResponse**](ServiceV2CreateMaintenanceWindowResponse.md)
+[**CreateMaintenanceWindowResponse**](CreateMaintenanceWindowResponse.md)
 
 ### Authorization
 
@@ -206,9 +206,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2Delete
+## Delete
 
-> ServiceV2DeleteMaintenanceWindowResponse UpgradePolicyV2Delete(ctx, id).Execute()
+> DeleteMaintenanceWindowResponse Delete(ctx, id).Execute()
 
 Delete maintenance window
 
@@ -229,13 +229,13 @@ func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | uuid of a maintenance window record
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Delete(context.Background(), id).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.Delete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.Delete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2Delete`: ServiceV2DeleteMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2Delete`: %v\n", resp)
+	// response from `Delete`: DeleteMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.Delete`: %v\n", resp)
 }
 ```
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2DeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceV2DeleteMaintenanceWindowResponse**](ServiceV2DeleteMaintenanceWindowResponse.md)
+[**DeleteMaintenanceWindowResponse**](DeleteMaintenanceWindowResponse.md)
 
 ### Authorization
 
@@ -273,9 +273,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2Get
+## Get
 
-> ServiceV2GetMaintenanceWindowResponse UpgradePolicyV2Get(ctx, id).Execute()
+> GetMaintenanceWindowResponse Get(ctx, id).Execute()
 
 Read a maintenance window
 
@@ -296,13 +296,13 @@ func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | uuid of a maintenance window record
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Get(context.Background(), id).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.Get(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.Get``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2Get`: ServiceV2GetMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2Get`: %v\n", resp)
+	// response from `Get`: GetMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.Get`: %v\n", resp)
 }
 ```
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2GetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceV2GetMaintenanceWindowResponse**](ServiceV2GetMaintenanceWindowResponse.md)
+[**GetMaintenanceWindowResponse**](GetMaintenanceWindowResponse.md)
 
 ### Authorization
 
@@ -340,9 +340,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2List
+## List
 
-> ServiceV2ListMaintenanceWindowResponse UpgradePolicyV2List(ctx).WindowType(windowType).Execute()
+> ListMaintenanceWindowResponse List(ctx).WindowType(windowType).Execute()
 
 List all the maintenance windows
 
@@ -362,13 +362,13 @@ import (
 func main() {
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2List(context.Background()).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2List``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2List`: ServiceV2ListMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2List`: %v\n", resp)
+	// response from `List`: ListMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.List`: %v\n", resp)
 }
 ```
 
@@ -378,7 +378,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2ListRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceV2ListMaintenanceWindowResponse**](ServiceV2ListMaintenanceWindowResponse.md)
+[**ListMaintenanceWindowResponse**](ListMaintenanceWindowResponse.md)
 
 ### Authorization
 
@@ -403,9 +403,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpgradePolicyV2Update
+## Update
 
-> ServiceV2UpdateMaintenanceWindowResponse UpgradePolicyV2Update(ctx, id).Body(body).Execute()
+> UpdateMaintenanceWindowResponse Update(ctx, id).Body(body).Execute()
 
 Update an existing maintenance window
 
@@ -424,16 +424,16 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | uuid of a maintenance window record
-	body := *upgradepolicy.NewServiceV2UpdateMaintenanceWindowRequest() // ServiceV2UpdateMaintenanceWindowRequest | 
+	body := *upgradepolicy.NewUpdateMaintenanceWindowRequest() // UpdateMaintenanceWindowRequest | 
 
 	apiClient := upgradepolicy.NewAPIClient()
-	resp, r, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Update(context.Background(), id).Body(body).Execute()
+	resp, r, err := apiClient.UpgradePolicyV2API.Update(context.Background(), id).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.UpgradePolicyV2Update``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradePolicyV2API.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpgradePolicyV2Update`: ServiceV2UpdateMaintenanceWindowResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.UpgradePolicyV2Update`: %v\n", resp)
+	// response from `Update`: UpdateMaintenanceWindowResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradePolicyV2API.Update`: %v\n", resp)
 }
 ```
 
@@ -447,16 +447,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpgradePolicyV2UpdateRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradePolicyV2APIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**ServiceV2UpdateMaintenanceWindowRequest**](ServiceV2UpdateMaintenanceWindowRequest.md) |  | 
+**body** | [**UpdateMaintenanceWindowRequest**](UpdateMaintenanceWindowRequest.md) |  | 
 
 ### Return type
 
-[**ServiceV2UpdateMaintenanceWindowResponse**](ServiceV2UpdateMaintenanceWindowResponse.md)
+[**UpdateMaintenanceWindowResponse**](UpdateMaintenanceWindowResponse.md)
 
 ### Authorization
 

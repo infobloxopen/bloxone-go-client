@@ -23,113 +23,113 @@ import (
 
 type UpgradePolicyV2API interface {
 	/*
-		UpgradePolicyV2ApplyConfigNow Immediately apply the config updates object to the list of hosts
+		ApplyConfigNow Immediately apply the config updates object to the list of hosts
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest
+		@return UpgradePolicyV2APIApplyConfigNowRequest
 	*/
-	UpgradePolicyV2ApplyConfigNow(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest
+	ApplyConfigNow(ctx context.Context) UpgradePolicyV2APIApplyConfigNowRequest
 
-	// UpgradePolicyV2ApplyConfigNowExecute executes the request
-	//  @return ServiceV2ApplyConfigNowResponse
-	UpgradePolicyV2ApplyConfigNowExecute(r UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest) (*ServiceV2ApplyConfigNowResponse, *http.Response, error)
+	// ApplyConfigNowExecute executes the request
+	//  @return ApplyConfigNowResponse
+	ApplyConfigNowExecute(r UpgradePolicyV2APIApplyConfigNowRequest) (*ApplyConfigNowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2Batch Create, update and/or delete multiple maintenance windows in a single request
+		Batch Create, update and/or delete multiple maintenance windows in a single request
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradePolicyV2APIUpgradePolicyV2BatchRequest
+		@return UpgradePolicyV2APIBatchRequest
 	*/
-	UpgradePolicyV2Batch(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2BatchRequest
+	Batch(ctx context.Context) UpgradePolicyV2APIBatchRequest
 
-	// UpgradePolicyV2BatchExecute executes the request
-	//  @return ServiceV2BatchMaintenanceWindowResponse
-	UpgradePolicyV2BatchExecute(r UpgradePolicyV2APIUpgradePolicyV2BatchRequest) (*ServiceV2BatchMaintenanceWindowResponse, *http.Response, error)
+	// BatchExecute executes the request
+	//  @return BatchMaintenanceWindowResponse
+	BatchExecute(r UpgradePolicyV2APIBatchRequest) (*BatchMaintenanceWindowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2Create Create a maintenance window
+		Create Create a maintenance window
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradePolicyV2APIUpgradePolicyV2CreateRequest
+		@return UpgradePolicyV2APICreateRequest
 	*/
-	UpgradePolicyV2Create(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2CreateRequest
+	Create(ctx context.Context) UpgradePolicyV2APICreateRequest
 
-	// UpgradePolicyV2CreateExecute executes the request
-	//  @return ServiceV2CreateMaintenanceWindowResponse
-	UpgradePolicyV2CreateExecute(r UpgradePolicyV2APIUpgradePolicyV2CreateRequest) (*ServiceV2CreateMaintenanceWindowResponse, *http.Response, error)
+	// CreateExecute executes the request
+	//  @return CreateMaintenanceWindowResponse
+	CreateExecute(r UpgradePolicyV2APICreateRequest) (*CreateMaintenanceWindowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2Delete Delete maintenance window
+		Delete Delete maintenance window
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param id uuid of a maintenance window record
-		@return UpgradePolicyV2APIUpgradePolicyV2DeleteRequest
+		@return UpgradePolicyV2APIDeleteRequest
 	*/
-	UpgradePolicyV2Delete(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2DeleteRequest
+	Delete(ctx context.Context, id string) UpgradePolicyV2APIDeleteRequest
 
-	// UpgradePolicyV2DeleteExecute executes the request
-	//  @return ServiceV2DeleteMaintenanceWindowResponse
-	UpgradePolicyV2DeleteExecute(r UpgradePolicyV2APIUpgradePolicyV2DeleteRequest) (*ServiceV2DeleteMaintenanceWindowResponse, *http.Response, error)
+	// DeleteExecute executes the request
+	//  @return DeleteMaintenanceWindowResponse
+	DeleteExecute(r UpgradePolicyV2APIDeleteRequest) (*DeleteMaintenanceWindowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2Get Read a maintenance window
+		Get Read a maintenance window
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param id uuid of a maintenance window record
-		@return UpgradePolicyV2APIUpgradePolicyV2GetRequest
+		@return UpgradePolicyV2APIGetRequest
 	*/
-	UpgradePolicyV2Get(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2GetRequest
+	Get(ctx context.Context, id string) UpgradePolicyV2APIGetRequest
 
-	// UpgradePolicyV2GetExecute executes the request
-	//  @return ServiceV2GetMaintenanceWindowResponse
-	UpgradePolicyV2GetExecute(r UpgradePolicyV2APIUpgradePolicyV2GetRequest) (*ServiceV2GetMaintenanceWindowResponse, *http.Response, error)
+	// GetExecute executes the request
+	//  @return GetMaintenanceWindowResponse
+	GetExecute(r UpgradePolicyV2APIGetRequest) (*GetMaintenanceWindowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2List List all the maintenance windows
+		List List all the maintenance windows
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradePolicyV2APIUpgradePolicyV2ListRequest
+		@return UpgradePolicyV2APIListRequest
 	*/
-	UpgradePolicyV2List(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2ListRequest
+	List(ctx context.Context) UpgradePolicyV2APIListRequest
 
-	// UpgradePolicyV2ListExecute executes the request
-	//  @return ServiceV2ListMaintenanceWindowResponse
-	UpgradePolicyV2ListExecute(r UpgradePolicyV2APIUpgradePolicyV2ListRequest) (*ServiceV2ListMaintenanceWindowResponse, *http.Response, error)
+	// ListExecute executes the request
+	//  @return ListMaintenanceWindowResponse
+	ListExecute(r UpgradePolicyV2APIListRequest) (*ListMaintenanceWindowResponse, *http.Response, error)
 	/*
-		UpgradePolicyV2Update Update an existing maintenance window
+		Update Update an existing maintenance window
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param id uuid of a maintenance window record
-		@return UpgradePolicyV2APIUpgradePolicyV2UpdateRequest
+		@return UpgradePolicyV2APIUpdateRequest
 	*/
-	UpgradePolicyV2Update(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2UpdateRequest
+	Update(ctx context.Context, id string) UpgradePolicyV2APIUpdateRequest
 
-	// UpgradePolicyV2UpdateExecute executes the request
-	//  @return ServiceV2UpdateMaintenanceWindowResponse
-	UpgradePolicyV2UpdateExecute(r UpgradePolicyV2APIUpgradePolicyV2UpdateRequest) (*ServiceV2UpdateMaintenanceWindowResponse, *http.Response, error)
+	// UpdateExecute executes the request
+	//  @return UpdateMaintenanceWindowResponse
+	UpdateExecute(r UpgradePolicyV2APIUpdateRequest) (*UpdateMaintenanceWindowResponse, *http.Response, error)
 }
 
 // UpgradePolicyV2APIService UpgradePolicyV2API service
 type UpgradePolicyV2APIService internal.Service
 
-type UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest struct {
+type UpgradePolicyV2APIApplyConfigNowRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
-	body       *ServiceV2ApplyConfigNowRequest
+	body       *ApplyConfigNowRequest
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest) Body(body ServiceV2ApplyConfigNowRequest) UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest {
+func (r UpgradePolicyV2APIApplyConfigNowRequest) Body(body ApplyConfigNowRequest) UpgradePolicyV2APIApplyConfigNowRequest {
 	r.body = &body
 	return r
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest) Execute() (*ServiceV2ApplyConfigNowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2ApplyConfigNowExecute(r)
+func (r UpgradePolicyV2APIApplyConfigNowRequest) Execute() (*ApplyConfigNowResponse, *http.Response, error) {
+	return r.ApiService.ApplyConfigNowExecute(r)
 }
 
 /*
-UpgradePolicyV2ApplyConfigNow Immediately apply the config updates object to the list of hosts
+ApplyConfigNow Immediately apply the config updates object to the list of hosts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest
+	@return UpgradePolicyV2APIApplyConfigNowRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2ApplyConfigNow(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest{
+func (a *UpgradePolicyV2APIService) ApplyConfigNow(ctx context.Context) UpgradePolicyV2APIApplyConfigNowRequest {
+	return UpgradePolicyV2APIApplyConfigNowRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -137,16 +137,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2ApplyConfigNow(ctx context.Co
 
 // Execute executes the request
 //
-//	@return ServiceV2ApplyConfigNowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2ApplyConfigNowExecute(r UpgradePolicyV2APIUpgradePolicyV2ApplyConfigNowRequest) (*ServiceV2ApplyConfigNowResponse, *http.Response, error) {
+//	@return ApplyConfigNowResponse
+func (a *UpgradePolicyV2APIService) ApplyConfigNowExecute(r UpgradePolicyV2APIApplyConfigNowRequest) (*ApplyConfigNowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2ApplyConfigNowResponse
+		localVarReturnValue *ApplyConfigNowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2ApplyConfigNow")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.ApplyConfigNow")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -209,29 +209,29 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2ApplyConfigNowExecute(r Upgra
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2BatchRequest struct {
+type UpgradePolicyV2APIBatchRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
-	body       *ServiceV2BatchMaintenanceWindowRequest
+	body       *BatchMaintenanceWindowRequest
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2BatchRequest) Body(body ServiceV2BatchMaintenanceWindowRequest) UpgradePolicyV2APIUpgradePolicyV2BatchRequest {
+func (r UpgradePolicyV2APIBatchRequest) Body(body BatchMaintenanceWindowRequest) UpgradePolicyV2APIBatchRequest {
 	r.body = &body
 	return r
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2BatchRequest) Execute() (*ServiceV2BatchMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2BatchExecute(r)
+func (r UpgradePolicyV2APIBatchRequest) Execute() (*BatchMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.BatchExecute(r)
 }
 
 /*
-UpgradePolicyV2Batch Create, update and/or delete multiple maintenance windows in a single request
+Batch Create, update and/or delete multiple maintenance windows in a single request
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradePolicyV2APIUpgradePolicyV2BatchRequest
+	@return UpgradePolicyV2APIBatchRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2Batch(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2BatchRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2BatchRequest{
+func (a *UpgradePolicyV2APIService) Batch(ctx context.Context) UpgradePolicyV2APIBatchRequest {
+	return UpgradePolicyV2APIBatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -239,16 +239,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2Batch(ctx context.Context) Up
 
 // Execute executes the request
 //
-//	@return ServiceV2BatchMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2BatchExecute(r UpgradePolicyV2APIUpgradePolicyV2BatchRequest) (*ServiceV2BatchMaintenanceWindowResponse, *http.Response, error) {
+//	@return BatchMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) BatchExecute(r UpgradePolicyV2APIBatchRequest) (*BatchMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2BatchMaintenanceWindowResponse
+		localVarReturnValue *BatchMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2Batch")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.Batch")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -311,29 +311,29 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2BatchExecute(r UpgradePolicyV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2CreateRequest struct {
+type UpgradePolicyV2APICreateRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
-	body       *ServiceV2CreateMaintenanceWindowRequest
+	body       *CreateMaintenanceWindowRequest
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2CreateRequest) Body(body ServiceV2CreateMaintenanceWindowRequest) UpgradePolicyV2APIUpgradePolicyV2CreateRequest {
+func (r UpgradePolicyV2APICreateRequest) Body(body CreateMaintenanceWindowRequest) UpgradePolicyV2APICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2CreateRequest) Execute() (*ServiceV2CreateMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2CreateExecute(r)
+func (r UpgradePolicyV2APICreateRequest) Execute() (*CreateMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-UpgradePolicyV2Create Create a maintenance window
+Create Create a maintenance window
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradePolicyV2APIUpgradePolicyV2CreateRequest
+	@return UpgradePolicyV2APICreateRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2Create(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2CreateRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2CreateRequest{
+func (a *UpgradePolicyV2APIService) Create(ctx context.Context) UpgradePolicyV2APICreateRequest {
+	return UpgradePolicyV2APICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -341,16 +341,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2Create(ctx context.Context) U
 
 // Execute executes the request
 //
-//	@return ServiceV2CreateMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2CreateExecute(r UpgradePolicyV2APIUpgradePolicyV2CreateRequest) (*ServiceV2CreateMaintenanceWindowResponse, *http.Response, error) {
+//	@return CreateMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) CreateExecute(r UpgradePolicyV2APICreateRequest) (*CreateMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2CreateMaintenanceWindowResponse
+		localVarReturnValue *CreateMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2Create")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -413,25 +413,25 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2CreateExecute(r UpgradePolicy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2DeleteRequest struct {
+type UpgradePolicyV2APIDeleteRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
 	id         string
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2DeleteRequest) Execute() (*ServiceV2DeleteMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2DeleteExecute(r)
+func (r UpgradePolicyV2APIDeleteRequest) Execute() (*DeleteMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-UpgradePolicyV2Delete Delete maintenance window
+Delete Delete maintenance window
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id uuid of a maintenance window record
-	@return UpgradePolicyV2APIUpgradePolicyV2DeleteRequest
+	@return UpgradePolicyV2APIDeleteRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2Delete(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2DeleteRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2DeleteRequest{
+func (a *UpgradePolicyV2APIService) Delete(ctx context.Context, id string) UpgradePolicyV2APIDeleteRequest {
+	return UpgradePolicyV2APIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -440,16 +440,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2Delete(ctx context.Context, i
 
 // Execute executes the request
 //
-//	@return ServiceV2DeleteMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2DeleteExecute(r UpgradePolicyV2APIUpgradePolicyV2DeleteRequest) (*ServiceV2DeleteMaintenanceWindowResponse, *http.Response, error) {
+//	@return DeleteMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) DeleteExecute(r UpgradePolicyV2APIDeleteRequest) (*DeleteMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2DeleteMaintenanceWindowResponse
+		localVarReturnValue *DeleteMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2Delete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.Delete")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -508,25 +508,25 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2DeleteExecute(r UpgradePolicy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2GetRequest struct {
+type UpgradePolicyV2APIGetRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
 	id         string
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2GetRequest) Execute() (*ServiceV2GetMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2GetExecute(r)
+func (r UpgradePolicyV2APIGetRequest) Execute() (*GetMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.GetExecute(r)
 }
 
 /*
-UpgradePolicyV2Get Read a maintenance window
+Get Read a maintenance window
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id uuid of a maintenance window record
-	@return UpgradePolicyV2APIUpgradePolicyV2GetRequest
+	@return UpgradePolicyV2APIGetRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2Get(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2GetRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2GetRequest{
+func (a *UpgradePolicyV2APIService) Get(ctx context.Context, id string) UpgradePolicyV2APIGetRequest {
+	return UpgradePolicyV2APIGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -535,16 +535,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2Get(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return ServiceV2GetMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2GetExecute(r UpgradePolicyV2APIUpgradePolicyV2GetRequest) (*ServiceV2GetMaintenanceWindowResponse, *http.Response, error) {
+//	@return GetMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) GetExecute(r UpgradePolicyV2APIGetRequest) (*GetMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2GetMaintenanceWindowResponse
+		localVarReturnValue *GetMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.Get")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -603,30 +603,30 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2GetExecute(r UpgradePolicyV2A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2ListRequest struct {
+type UpgradePolicyV2APIListRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
 	windowType *string
 }
 
 // window type (software or config).
-func (r UpgradePolicyV2APIUpgradePolicyV2ListRequest) WindowType(windowType string) UpgradePolicyV2APIUpgradePolicyV2ListRequest {
+func (r UpgradePolicyV2APIListRequest) WindowType(windowType string) UpgradePolicyV2APIListRequest {
 	r.windowType = &windowType
 	return r
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2ListRequest) Execute() (*ServiceV2ListMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2ListExecute(r)
+func (r UpgradePolicyV2APIListRequest) Execute() (*ListMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-UpgradePolicyV2List List all the maintenance windows
+List List all the maintenance windows
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradePolicyV2APIUpgradePolicyV2ListRequest
+	@return UpgradePolicyV2APIListRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2List(ctx context.Context) UpgradePolicyV2APIUpgradePolicyV2ListRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2ListRequest{
+func (a *UpgradePolicyV2APIService) List(ctx context.Context) UpgradePolicyV2APIListRequest {
+	return UpgradePolicyV2APIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -634,16 +634,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2List(ctx context.Context) Upg
 
 // Execute executes the request
 //
-//	@return ServiceV2ListMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2ListExecute(r UpgradePolicyV2APIUpgradePolicyV2ListRequest) (*ServiceV2ListMaintenanceWindowResponse, *http.Response, error) {
+//	@return ListMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) ListExecute(r UpgradePolicyV2APIListRequest) (*ListMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2ListMaintenanceWindowResponse
+		localVarReturnValue *ListMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2List")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -704,31 +704,31 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2ListExecute(r UpgradePolicyV2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradePolicyV2APIUpgradePolicyV2UpdateRequest struct {
+type UpgradePolicyV2APIUpdateRequest struct {
 	ctx        context.Context
 	ApiService UpgradePolicyV2API
 	id         string
-	body       *ServiceV2UpdateMaintenanceWindowRequest
+	body       *UpdateMaintenanceWindowRequest
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2UpdateRequest) Body(body ServiceV2UpdateMaintenanceWindowRequest) UpgradePolicyV2APIUpgradePolicyV2UpdateRequest {
+func (r UpgradePolicyV2APIUpdateRequest) Body(body UpdateMaintenanceWindowRequest) UpgradePolicyV2APIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r UpgradePolicyV2APIUpgradePolicyV2UpdateRequest) Execute() (*ServiceV2UpdateMaintenanceWindowResponse, *http.Response, error) {
-	return r.ApiService.UpgradePolicyV2UpdateExecute(r)
+func (r UpgradePolicyV2APIUpdateRequest) Execute() (*UpdateMaintenanceWindowResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-UpgradePolicyV2Update Update an existing maintenance window
+Update Update an existing maintenance window
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id uuid of a maintenance window record
-	@return UpgradePolicyV2APIUpgradePolicyV2UpdateRequest
+	@return UpgradePolicyV2APIUpdateRequest
 */
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2Update(ctx context.Context, id string) UpgradePolicyV2APIUpgradePolicyV2UpdateRequest {
-	return UpgradePolicyV2APIUpgradePolicyV2UpdateRequest{
+func (a *UpgradePolicyV2APIService) Update(ctx context.Context, id string) UpgradePolicyV2APIUpdateRequest {
+	return UpgradePolicyV2APIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -737,16 +737,16 @@ func (a *UpgradePolicyV2APIService) UpgradePolicyV2Update(ctx context.Context, i
 
 // Execute executes the request
 //
-//	@return ServiceV2UpdateMaintenanceWindowResponse
-func (a *UpgradePolicyV2APIService) UpgradePolicyV2UpdateExecute(r UpgradePolicyV2APIUpgradePolicyV2UpdateRequest) (*ServiceV2UpdateMaintenanceWindowResponse, *http.Response, error) {
+//	@return UpdateMaintenanceWindowResponse
+func (a *UpgradePolicyV2APIService) UpdateExecute(r UpgradePolicyV2APIUpdateRequest) (*UpdateMaintenanceWindowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *ServiceV2UpdateMaintenanceWindowResponse
+		localVarReturnValue *UpdateMaintenanceWindowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.UpgradePolicyV2Update")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradePolicyV2APIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
