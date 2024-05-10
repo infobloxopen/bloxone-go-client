@@ -19,6 +19,7 @@ The following Bloxone APIs are supported:
 - [DNS Configuration](dns_config/README.md)
 - [DNS Data](dns_data/README.md)
 - [Keys](keys/README.md)
+- [Upgrade Policy](upgradePolicy/README.md)
 
 # Installation
 
