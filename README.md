@@ -8,6 +8,7 @@ The following Bloxone APIs are supported:
 - [Infrastructure Management](infra_mgmt/README.md)
 - [Infrastructure Provision (HostActivation API)](infra_provision/README.md)
 - [Anycast Configuration Manager](anycast/README.md)
+- [Upgrade Policy](upgradePolicy/README.md)
 
 ## Bloxone Threat Defense
 - [Threat Defense Cloud (FW API)](fw/README.md)
@@ -19,7 +20,6 @@ The following Bloxone APIs are supported:
 - [DNS Configuration](dns_config/README.md)
 - [DNS Data](dns_data/README.md)
 - [Keys](keys/README.md)
-- [Upgrade Policy](upgradePolicy/README.md)
 
 # Installation
 
