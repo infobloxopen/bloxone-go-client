@@ -12,7 +12,8 @@ info:
   title: Schedule Software/Config Updates
   version: v2
 servers:
-- url: /api/upgrade_policy/
+- url: http://csp.infoblox.com/api/upgrade_policy/
+- url: https://csp.infoblox.com/api/upgrade_policy/
 security:
 - ApiKeyAuth: []
 paths:

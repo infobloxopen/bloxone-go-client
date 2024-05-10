@@ -81,7 +81,7 @@ This will add the tags `tag1=value1` and `tag2=value2` to all API requests that 
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost/api/upgrade_policy*
+All URIs are relative to *http://csp.infoblox.com/api/upgrade_policy*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

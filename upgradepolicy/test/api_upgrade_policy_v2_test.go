@@ -23,11 +23,11 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	apiClient := upgradepolicy.NewAPIClient()
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2ApplyConfigNow", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService ApplyConfigNow", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2ApplyConfigNow(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.ApplyConfigNow(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,11 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2Batch", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService Batch", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Batch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.Batch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,11 +47,11 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2Create", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Create(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,13 +59,13 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2Delete", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Delete(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.Delete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +73,13 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2Get", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService Get", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Get(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.Get(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,11 +87,11 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2List", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2List(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,13 +99,13 @@ func TestUpgradePolicyV2APIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradePolicyV2APIService UpgradePolicyV2Update", func(t *testing.T) {
+	t.Run("Test UpgradePolicyV2APIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.UpgradePolicyV2API.UpgradePolicyV2Update(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.UpgradePolicyV2API.Update(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
