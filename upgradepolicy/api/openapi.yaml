@@ -240,8 +240,7 @@ components:
               end_time: 2000-01-23T04:56:07.000+00:00
               created_at: 2000-01-23T04:56:07.000+00:00
               enabled: true
-            tags:
-              key: "{}"
+            tags: "{}"
           - scheduled_window:
               duration: 0
               start_time: 6
@@ -257,8 +256,7 @@ components:
               end_time: 2000-01-23T04:56:07.000+00:00
               created_at: 2000-01-23T04:56:07.000+00:00
               enabled: true
-            tags:
-              key: "{}"
+            tags: "{}"
       properties:
         result:
           $ref: '#/components/schemas/service_v2BatchMaintenanceWindowResult'
@@ -284,8 +282,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
         - scheduled_window:
             duration: 0
             start_time: 6
@@ -301,8 +298,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
       properties:
         created_ids:
           items:
@@ -323,8 +319,7 @@ components:
         scheduled_window:
           $ref: '#/components/schemas/service_v2ScheduledWindow'
         tags:
-          additionalProperties:
-            type: object
+          additionalProperties: false
           type: object
         window_type:
           type: string
@@ -401,8 +396,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
       properties:
         result:
           $ref: '#/components/schemas/service_v2MaintenanceWindow'
@@ -425,8 +419,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
         - scheduled_window:
             duration: 0
             start_time: 6
@@ -442,8 +435,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
       properties:
         result:
           items:
@@ -467,8 +459,7 @@ components:
           end_time: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
           enabled: true
-        tags:
-          key: "{}"
+        tags: "{}"
       properties:
         deferred_window:
           $ref: '#/components/schemas/service_v2DeferredWindow'
@@ -478,8 +469,7 @@ components:
         scheduled_window:
           $ref: '#/components/schemas/service_v2ScheduledWindow'
         tags:
-          additionalProperties:
-            type: object
+          additionalProperties: false
           type: object
         window_type:
           readOnly: true
@@ -555,8 +545,7 @@ components:
         scheduled_window:
           $ref: '#/components/schemas/service_v2ScheduledWindow'
         tags:
-          additionalProperties:
-            type: object
+          additionalProperties: false
           type: object
       type: object
     service_v2UpdateMaintenanceWindow:
@@ -569,8 +558,7 @@ components:
         scheduled_window:
           $ref: '#/components/schemas/service_v2ScheduledWindow'
         tags:
-          additionalProperties:
-            type: object
+          additionalProperties: false
           type: object
       title: "Update maintenance window structure which includes schedule window,\
         \ defer window and tags"
@@ -602,8 +590,7 @@ components:
             end_time: 2000-01-23T04:56:07.000+00:00
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
       properties:
         result:
           $ref: '#/components/schemas/service_v2MaintenanceWindow'
