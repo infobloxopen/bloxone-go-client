@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DeferredWindow** | Pointer to [**DeferredWindow**](DeferredWindow.md) |  | [optional] 
 **MwId** | Pointer to **string** |  | [optional] 
 **ScheduledWindow** | Pointer to [**ScheduledWindow**](ScheduledWindow.md) |  | [optional] 
-**Tags** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasScheduledWindow returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *UpdateBatchMaintenanceWindow) GetTags() map[string]map[string]interface{}`
+`func (o *UpdateBatchMaintenanceWindow) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *UpdateBatchMaintenanceWindow) GetTagsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *UpdateBatchMaintenanceWindow) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *UpdateBatchMaintenanceWindow) SetTags(v map[string]map[string]interface{})`
+`func (o *UpdateBatchMaintenanceWindow) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api/openapi.yaml
 api_upgrade_policy_v2.go
@@ -48,5 +47,4 @@ model_update_batch_maintenance_window.go
 model_update_maintenance_window.go
 model_update_maintenance_window_request.go
 model_update_maintenance_window_response.go
-test/api_upgrade_policy_v2_test.go
 utils.go
