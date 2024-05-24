@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Asn** | Pointer to **int64** |  | [optional] 
 **AsnText** | Pointer to **string** | Examples:     ASDOT        ASPLAIN     INTEGER     VALID/INVALID     0.1          1           1           Valid     1            1           1           Valid     65535        65535       65535       Valid     0.65535      65535       65535       Valid     1.0          65536       65536       Valid     1.1          65537       65537       Valid     1.65535      131071      131071      Valid     65535.0      4294901760  4294901760  Valid     65535.1      4294901761  4294901761  Valid     65535.65535  4294967295  4294967295  Valid      0.65536                              Invalid     65535.655536                         Invalid     65536.0                              Invalid     65536.65535                          Invalid                  4294967296              Invalid | [optional] 
-**Fields** | Pointer to [**BufFieldMask**](BufFieldMask.md) |  | [optional] 
+**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) |  | [optional] 
 **HolddownSecs** | Pointer to **int64** |  | [optional] 
 **KeepAliveSecs** | Pointer to **int64** |  | [optional] 
 **LinkDetect** | Pointer to **bool** |  | [optional] 
@@ -84,20 +84,20 @@ HasAsnText returns a boolean if a field has been set.
 
 ### GetFields
 
-`func (o *BgpConfig) GetFields() BufFieldMask`
+`func (o *BgpConfig) GetFields() ProtobufFieldMask`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *BgpConfig) GetFieldsOk() (*BufFieldMask, bool)`
+`func (o *BgpConfig) GetFieldsOk() (*ProtobufFieldMask, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *BgpConfig) SetFields(v BufFieldMask)`
+`func (o *BgpConfig) SetFields(v ProtobufFieldMask)`
 
 SetFields sets Fields field to given value.
 

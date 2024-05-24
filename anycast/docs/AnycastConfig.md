@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AnycastIpv6Address** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Fields** | Pointer to [**BufFieldMask**](BufFieldMask.md) |  | [optional] 
+**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] [readonly] 
 **IsConfigured** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -165,20 +165,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetFields
 
-`func (o *AnycastConfig) GetFields() BufFieldMask`
+`func (o *AnycastConfig) GetFields() ProtobufFieldMask`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *AnycastConfig) GetFieldsOk() (*BufFieldMask, bool)`
+`func (o *AnycastConfig) GetFieldsOk() (*ProtobufFieldMask, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *AnycastConfig) SetFields(v BufFieldMask)`
+`func (o *AnycastConfig) SetFields(v ProtobufFieldMask)`
 
 SetFields sets Fields field to given value.
 

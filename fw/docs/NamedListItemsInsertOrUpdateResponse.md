@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | Pointer to [**AtcfwNamedListItemsInsertOrUpdateResponseSuccess**](AtcfwNamedListItemsInsertOrUpdateResponseSuccess.md) |  | [optional] 
+**Success** | Pointer to [**NamedListItemsInsertOrUpdateResponseSuccess**](NamedListItemsInsertOrUpdateResponseSuccess.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSuccess
 
-`func (o *NamedListItemsInsertOrUpdateResponse) GetSuccess() AtcfwNamedListItemsInsertOrUpdateResponseSuccess`
+`func (o *NamedListItemsInsertOrUpdateResponse) GetSuccess() NamedListItemsInsertOrUpdateResponseSuccess`
 
 GetSuccess returns the Success field if non-nil, zero value otherwise.
 
 ### GetSuccessOk
 
-`func (o *NamedListItemsInsertOrUpdateResponse) GetSuccessOk() (*AtcfwNamedListItemsInsertOrUpdateResponseSuccess, bool)`
+`func (o *NamedListItemsInsertOrUpdateResponse) GetSuccessOk() (*NamedListItemsInsertOrUpdateResponseSuccess, bool)`
 
 GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccess
 
-`func (o *NamedListItemsInsertOrUpdateResponse) SetSuccess(v AtcfwNamedListItemsInsertOrUpdateResponseSuccess)`
+`func (o *NamedListItemsInsertOrUpdateResponse) SetSuccess(v NamedListItemsInsertOrUpdateResponseSuccess)`
 
 SetSuccess sets Success field to given value.
 
