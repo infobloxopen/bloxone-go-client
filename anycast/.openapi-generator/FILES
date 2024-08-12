@@ -8,7 +8,6 @@ docs/AnycastConfigResponse.md
 docs/AnycastVersion.md
 docs/BgpConfig.md
 docs/BgpNeighbor.md
-docs/BufFieldMask.md
 docs/GetAnycastConfigListResponse.md
 docs/OnPremAnycastManagerAPI.md
 docs/OnpremHost.md
@@ -16,6 +15,7 @@ docs/OnpremHostRef.md
 docs/OnpremHostResponse.md
 docs/OspfConfig.md
 docs/Ospfv3Config.md
+docs/ProtobufFieldMask.md
 docs/ServiceConfig.md
 docs/ServiceConfigObject.md
 docs/ServiceStatusCode.md
@@ -26,13 +26,13 @@ model_anycast_config_response.go
 model_anycast_version.go
 model_bgp_config.go
 model_bgp_neighbor.go
-model_buf_field_mask.go
 model_get_anycast_config_list_response.go
 model_onprem_host.go
 model_onprem_host_ref.go
 model_onprem_host_response.go
 model_ospf_config.go
 model_ospfv3_config.go
+model_protobuf_field_mask.go
 model_service_config.go
 model_service_config_object.go
 model_service_status_code.go
