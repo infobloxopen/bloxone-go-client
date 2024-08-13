@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**HAGroup**](HAGroup.md) |  | [optional] 
+**Result** | Pointer to [**HAGroup**](HAGroup.md) | The HAGroup object. | [optional] 
 
 ## Methods
 

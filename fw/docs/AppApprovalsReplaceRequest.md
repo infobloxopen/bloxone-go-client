@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Approvals** | Pointer to [**[]AppApproval**](AppApproval.md) |  | [optional] 
-**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) |  | [optional] 
+**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) | Field Mask. | [optional] 
 
 ## Methods
 

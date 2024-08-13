@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Content** | **string** | Base64 encoded content. | 
 **Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) |  | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for uploaded content in JSON format. | [optional] 
-**Type** | [**UploadContentType**](UploadContentType.md) |  | [default to UPLOADCONTENTTYPE_UNKNOWN]
+**Type** | [**UploadContentType**](UploadContentType.md) | Type of uploaded content. | [default to UPLOADCONTENTTYPE_UNKNOWN]
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) |  | [optional] 
+**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) | The inheritance configuration for the _dhcp_options_ field. | [optional] 
 
 ## Methods
 

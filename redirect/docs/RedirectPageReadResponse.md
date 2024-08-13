@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**RedirectPage**](RedirectPage.md) |  | [optional] 
+**Results** | Pointer to [**RedirectPage**](RedirectPage.md) | The Redirect Page object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**SecurityPolicy**](SecurityPolicy.md) |  | [optional] 
+**Results** | Pointer to [**SecurityPolicy**](SecurityPolicy.md) | The Security Policy object. | [optional] 
 
 ## Methods
 

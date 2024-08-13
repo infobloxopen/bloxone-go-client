@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) |  | [optional] 
-**HeaderOptionFilename** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**HeaderOptionServerAddress** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**HeaderOptionServerName** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
+**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) | The inheritance configuration for _dhcp_options_ field. | [optional] 
+**HeaderOptionFilename** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_filename_ field. | [optional] 
+**HeaderOptionServerAddress** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_server_address_ field. | [optional] 
+**HeaderOptionServerName** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_server_name_ field. | [optional] 
 
 ## Methods
 

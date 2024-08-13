@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthZoneConfig** | Pointer to [**AuthZoneConfig**](AuthZoneConfig.md) |  | [optional] 
-**ForwardZoneConfig** | Pointer to [**ForwardZoneConfig**](ForwardZoneConfig.md) |  | [optional] 
+**AuthZoneConfig** | Pointer to [**AuthZoneConfig**](AuthZoneConfig.md) | Optional. Authoritative zone related configuration. | [optional] 
+**ForwardZoneConfig** | Pointer to [**ForwardZoneConfig**](ForwardZoneConfig.md) | Optional. Forward zone related configuration. | [optional] 
 **Recursive** | Pointer to **bool** | Indicates whether child objects should be copied or not.  Defaults to _false_. Reserved for future use. | [optional] 
 **Resources** | **[]string** | The resource identifier. | 
-**SecondaryZoneConfig** | Pointer to [**AuthZoneConfig**](AuthZoneConfig.md) |  | [optional] 
+**SecondaryZoneConfig** | Pointer to [**AuthZoneConfig**](AuthZoneConfig.md) | Optional. Secondary zone related configuration. | [optional] 
 **SkipOnError** | Pointer to **bool** | Indicates whether copying should skip object in case of error and continue with next, or abort copying in case of error.  Defaults to _false_. | [optional] 
 **Target** | **string** | The resource identifier. | 
 

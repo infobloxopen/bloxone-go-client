@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **LastUsedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**JoinTokenJoinTokenStatus**](JoinTokenJoinTokenStatus.md) |  | [optional] [default to JOINTOKENJOINTOKENSTATUS_UNKNOWN]
+**Status** | Pointer to [**JoinTokenJoinTokenStatus**](JoinTokenJoinTokenStatus.md) | derived field, \&quot;active\&quot; when expires_at and deleted_at are null. | [optional] [readonly] [default to JOINTOKENJOINTOKENSTATUS_UNKNOWN]
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 **TokenId** | Pointer to **string** | first half of the token. | [optional] [readonly] 
 **UseCounter** | Pointer to **int64** |  | [optional] [readonly] 

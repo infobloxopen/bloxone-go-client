@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**KerberosKeys** | Pointer to [**InheritedKerberosKeys**](InheritedKerberosKeys.md) |  | [optional] 
+**KerberosKeys** | Pointer to [**InheritedKerberosKeys**](InheritedKerberosKeys.md) | Optional. Field config for _kerberos_keys_ field from _Host_ object. | [optional] 
 
 ## Methods
 

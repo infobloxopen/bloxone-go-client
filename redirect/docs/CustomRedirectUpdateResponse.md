@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**CustomRedirect**](CustomRedirect.md) |  | [optional] 
+**Results** | Pointer to [**CustomRedirect**](CustomRedirect.md) | The Custom Redirect object. | [optional] 
 
 ## Methods
 

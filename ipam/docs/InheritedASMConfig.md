@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AsmEnableBlock** | Pointer to [**InheritedAsmEnableBlock**](InheritedAsmEnableBlock.md) |  | [optional] 
-**AsmGrowthBlock** | Pointer to [**InheritedAsmGrowthBlock**](InheritedAsmGrowthBlock.md) |  | [optional] 
-**AsmThreshold** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
-**ForecastPeriod** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
-**History** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
-**MinTotal** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
-**MinUnused** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) |  | [optional] 
+**AsmEnableBlock** | Pointer to [**InheritedAsmEnableBlock**](InheritedAsmEnableBlock.md) | The block of ASM fields: _enable_, _enable_notification_, _reenable_date_. | [optional] 
+**AsmGrowthBlock** | Pointer to [**InheritedAsmGrowthBlock**](InheritedAsmGrowthBlock.md) | The block of ASM fields: _growth_factor_, _growth_type_. | [optional] 
+**AsmThreshold** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | ASM shows the number of addresses forecast to be used _forecast_period_ days in the future, if it is greater than _asm_threshold_percent_ * _dhcp_total_ (see _dhcp_utilization_) then the subnet is flagged. | [optional] 
+**ForecastPeriod** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The forecast period in days. | [optional] 
+**History** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The minimum amount of history needed before ASM can run on this subnet. | [optional] 
+**MinTotal** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The minimum size of range needed for ASM to run on this subnet. | [optional] 
+**MinUnused** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The minimum percentage of addresses that must be available outside of the DHCP ranges and fixed addresses when making a suggested change. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Subnet**](Subnet.md) |  | [optional] 
+**Result** | Pointer to [**Subnet**](Subnet.md) | The created Subnet object. | [optional] 
 
 ## Methods
 

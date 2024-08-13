@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ProtocolFqdn** | Pointer to **string** | FQDN of nameserver in punycode. | [optional] [readonly] 
 **Stealth** | Pointer to **bool** | If enabled, the NS record and glue record will NOT be automatically generated according to secondaries nameserver assignment.  Default: _false_ | [optional] 
 **TsigEnabled** | Pointer to **bool** | If enabled, secondaries will use the configured TSIG key when requesting a zone transfer.  Default: _false_ | [optional] 
-**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) |  | [optional] 
+**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) | TSIG key.  Error if empty while _tsig_enabled_ is _true_. | [optional] 
 
 ## Methods
 

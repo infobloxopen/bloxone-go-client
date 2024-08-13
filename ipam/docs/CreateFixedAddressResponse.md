@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**FixedAddress**](FixedAddress.md) |  | [optional] 
+**Result** | Pointer to [**FixedAddress**](FixedAddress.md) | The created Fixed Address object. | [optional] 
 
 ## Methods
 

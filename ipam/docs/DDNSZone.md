@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **GssTsigEnabled** | Pointer to **bool** | _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_. | [optional] 
 **Nameservers** | Pointer to [**[]Nameserver**](Nameserver.md) | The Nameservers in the zone.  Each nameserver IP should be unique across the list of nameservers. | [optional] 
 **TsigEnabled** | Pointer to **bool** | Indicates if TSIG key should be used for the update.  Defaults to _false_. | [optional] 
-**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) |  | [optional] 
+**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) | The TSIG key. Required if _tsig_enabled_ is _true_.  Defaults to empty. | [optional] 
 **View** | Pointer to **string** | The resource identifier. | [optional] 
 **ViewName** | Pointer to **string** | The name of the view. | [optional] [readonly] 
 **Zone** | **string** | The resource identifier. | 

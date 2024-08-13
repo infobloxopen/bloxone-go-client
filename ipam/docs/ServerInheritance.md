@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DdnsBlock** | Pointer to [**InheritedDDNSBlock**](InheritedDDNSBlock.md) |  | [optional] 
-**DdnsClientUpdate** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**DdnsConflictResolutionMode** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**DdnsHostnameBlock** | Pointer to [**InheritedDDNSHostnameBlock**](InheritedDDNSHostnameBlock.md) |  | [optional] 
-**DdnsTtlPercent** | Pointer to [**InheritanceInheritedFloat**](InheritanceInheritedFloat.md) |  | [optional] 
-**DdnsUpdateOnRenew** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
-**DdnsUseConflictResolution** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) |  | [optional] 
-**DhcpConfig** | Pointer to [**InheritedDHCPConfig**](InheritedDHCPConfig.md) |  | [optional] 
-**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) |  | [optional] 
-**DhcpOptionsV6** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) |  | [optional] 
-**HeaderOptionFilename** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**HeaderOptionServerAddress** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**HeaderOptionServerName** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) |  | [optional] 
-**HostnameRewriteBlock** | Pointer to [**InheritedHostnameRewriteBlock**](InheritedHostnameRewriteBlock.md) |  | [optional] 
-**VendorSpecificOptionOptionSpace** | Pointer to [**InheritanceInheritedIdentifier**](InheritanceInheritedIdentifier.md) |  | [optional] 
+**DdnsBlock** | Pointer to [**InheritedDDNSBlock**](InheritedDDNSBlock.md) | The inheritance configuration for _ddns_enabled_, _ddns_send_updates_, _ddns_domain_, _ddns_zones_ fields from _Server_ object. | [optional] 
+**DdnsClientUpdate** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _ddns_client_update_ field from _Server_ object. | [optional] 
+**DdnsConflictResolutionMode** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _ddns_conflict_resolution_mode_ field from _Server_ object. | [optional] 
+**DdnsHostnameBlock** | Pointer to [**InheritedDDNSHostnameBlock**](InheritedDDNSHostnameBlock.md) | The inheritance configuration for _ddns_generate_name_ and _ddns_generated_prefix_ fields from _Server_ object. | [optional] 
+**DdnsTtlPercent** | Pointer to [**InheritanceInheritedFloat**](InheritanceInheritedFloat.md) | The inheritance configuration for _ddns_ttl_percent_ field from _Server_ object. | [optional] 
+**DdnsUpdateOnRenew** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _ddns_update_on_renew_ field from _Server_ object. | [optional] 
+**DdnsUseConflictResolution** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _ddns_use_conflict_resolution_ field from _Server_ object. | [optional] 
+**DhcpConfig** | Pointer to [**InheritedDHCPConfig**](InheritedDHCPConfig.md) | The inheritance configuration for _dhcp_config_ field from _Server_ object. | [optional] 
+**DhcpOptions** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) | The inheritance configuration for _dhcp_options_ field from _Server_ object. | [optional] 
+**DhcpOptionsV6** | Pointer to [**InheritedDHCPOptionList**](InheritedDHCPOptionList.md) | The inheritance configuration for _dhcp_options_v6_ field from _Server_ object. | [optional] 
+**HeaderOptionFilename** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_filename_ field. | [optional] 
+**HeaderOptionServerAddress** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_server_address_ field. | [optional] 
+**HeaderOptionServerName** | Pointer to [**InheritanceInheritedString**](InheritanceInheritedString.md) | The inheritance configuration for _header_option_server_name_ field. | [optional] 
+**HostnameRewriteBlock** | Pointer to [**InheritedHostnameRewriteBlock**](InheritedHostnameRewriteBlock.md) | The inheritance configuration for _hostname_rewrite_enabled_, _hostname_rewrite_regex_, _hostname_rewrite_char_ fields from _Server_ object. | [optional] 
+**VendorSpecificOptionOptionSpace** | Pointer to [**InheritanceInheritedIdentifier**](InheritanceInheritedIdentifier.md) | The inheritance configuration for _vendor_specific_option_option_space_ field from _Server_ object. | [optional] 
 
 ## Methods
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | The primary IP address of the on-prem host. | [optional] [readonly] 
 **AnycastAddresses** | Pointer to **[]string** | Anycast address configured to the host. Order is not significant. | [optional] [readonly] 
-**AssociatedServer** | Pointer to [**HostAssociatedServer**](HostAssociatedServer.md) |  | [optional] 
+**AssociatedServer** | Pointer to [**HostAssociatedServer**](HostAssociatedServer.md) | The DHCP Config Profile for the on-prem host. | [optional] 
 **Comment** | Pointer to **string** | The description for the on-prem host. | [optional] [readonly] 
 **CurrentVersion** | Pointer to **string** | Current dhcp application version of the host. | [optional] [readonly] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 

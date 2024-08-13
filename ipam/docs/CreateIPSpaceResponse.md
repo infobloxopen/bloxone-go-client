@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**IPSpace**](IPSpace.md) |  | [optional] 
+**Result** | Pointer to [**IPSpace**](IPSpace.md) | The created IP Space object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**HardwareFilter**](HardwareFilter.md) |  | [optional] 
+**Result** | Pointer to [**HardwareFilter**](HardwareFilter.md) | The created HardwareFilter object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**ForwardNSG**](ForwardNSG.md) |  | [optional] 
+**Result** | Pointer to [**ForwardNSG**](ForwardNSG.md) | The ForwardNSG object. | [optional] 
 
 ## Methods
 

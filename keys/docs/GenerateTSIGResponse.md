@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**GenerateTSIGResult**](GenerateTSIGResult.md) |  | [optional] 
+**Result** | Pointer to [**GenerateTSIGResult**](GenerateTSIGResult.md) | The generated TSIG key. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**KerberosKey**](KerberosKey.md) |  | [optional] 
+**Result** | Pointer to [**KerberosKey**](KerberosKey.md) | The __KerberosKey__ object. | [optional] 
 
 ## Methods
 

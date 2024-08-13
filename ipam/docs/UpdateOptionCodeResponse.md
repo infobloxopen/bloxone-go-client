@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**OptionCode**](OptionCode.md) |  | [optional] 
+**Result** | Pointer to [**OptionCode**](OptionCode.md) | The OptionCode object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**TSIGKey**](TSIGKey.md) |  | [optional] 
+**Result** | Pointer to [**TSIGKey**](TSIGKey.md) | The created TSIGKey object. | [optional] 
 
 ## Methods
 

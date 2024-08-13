@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**ForwardZone**](ForwardZone.md) |  | [optional] 
+**Result** | Pointer to [**ForwardZone**](ForwardZone.md) | The updated Forward Zone object. | [optional] 
 
 ## Methods
 

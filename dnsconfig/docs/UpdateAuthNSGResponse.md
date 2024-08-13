@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**AuthNSG**](AuthNSG.md) |  | [optional] 
+**Result** | Pointer to [**AuthNSG**](AuthNSG.md) | The updated AuthNSG object. | [optional] 
 
 ## Methods
 

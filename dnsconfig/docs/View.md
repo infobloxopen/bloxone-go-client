@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **DnssecRootKeys** | Pointer to [**[]TrustAnchor**](TrustAnchor.md) | DNSSEC root keys. The root keys are not configurable.  A default list is provided by cloud management and included here for config generation. | [optional] [readonly] 
 **DnssecTrustAnchors** | Pointer to [**[]TrustAnchor**](TrustAnchor.md) | Optional. DNSSEC trust anchors.  Error if there are list items with duplicate (_zone_, _sep_, _algorithm_) combinations.  Defaults to empty. | [optional] 
 **DnssecValidateExpiry** | Pointer to **bool** | Optional. _true_ to reject expired DNSSEC keys. Ignored if either _dnssec_enabled_ or _dnssec_enable_validation_ is _false_.  Defaults to _true_. | [optional] 
-**DtcConfig** | Pointer to [**DTCConfig**](DTCConfig.md) |  | [optional] 
+**DtcConfig** | Pointer to [**DTCConfig**](DTCConfig.md) | Optional. DTC configuration. | [optional] 
 **EcsEnabled** | Pointer to **bool** | Optional. _true_ to enable EDNS client subnet for recursive queries. Other _ecs_*_ fields are ignored if this field is not enabled.  Defaults to _false-. | [optional] 
 **EcsForwarding** | Pointer to **bool** | Optional. _true_ to enable ECS options in outbound queries. This functionality has additional overhead so it is disabled by default.  Defaults to _false_. | [optional] 
 **EcsPrefixV4** | Pointer to **int64** | Optional. Maximum scope length for v4 ECS.  Unsigned integer, min 1 max 24  Defaults to 24. | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **ForwardersOnly** | Pointer to **bool** | Optional. _true_ to only forward.  Defaults to _false_. | [optional] 
 **GssTsigEnabled** | Pointer to **bool** | _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**InheritanceSources** | Pointer to [**ViewInheritance**](ViewInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**ViewInheritance**](ViewInheritance.md) | Optional. Inheritance configuration. | [optional] 
 **IpSpaces** | Pointer to **[]string** | The resource identifier. | [optional] 
 **LameTtl** | Pointer to **int64** | Optional. Unused in the current on-prem DNS server implementation.  Unsigned integer, min 0 max 3600 (1h).  Defaults to 600. | [optional] 
 **MatchClientsAcl** | Pointer to [**[]ACLItem**](ACLItem.md) | Optional. Specifies which clients have access to the view.  Defaults to empty. | [optional] 
@@ -51,7 +51,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** | The timestamp when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **UseForwardersForSubzones** | Pointer to **bool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
 **UseRootForwardersForLocalResolutionWithB1td** | Pointer to **bool** | _use_root_forwarders_for_local_resolution_with_b1td_ allows DNS recursive queries sent to root forwarders for local resolution when deployed alongside BloxOne Thread Defense. Defaults to _false_. | [optional] 
-**ZoneAuthority** | Pointer to [**ZoneAuthority**](ZoneAuthority.md) |  | [optional] 
+**ZoneAuthority** | Pointer to [**ZoneAuthority**](ZoneAuthority.md) | Optional. ZoneAuthority. | [optional] 
 
 ## Methods
 

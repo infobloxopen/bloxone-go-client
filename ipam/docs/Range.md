@@ -15,17 +15,17 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **InheritanceAssignedHosts** | Pointer to [**[]InheritanceAssignedHost**](InheritanceAssignedHost.md) | The list of the inheritance assigned hosts of the object. | [optional] [readonly] 
 **InheritanceParent** | Pointer to **string** | The resource identifier. | [optional] 
-**InheritanceSources** | Pointer to [**DHCPOptionsInheritance**](DHCPOptionsInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**DHCPOptionsInheritance**](DHCPOptionsInheritance.md) | The DHCP inheritance configuration for the range. | [optional] 
 **Name** | Pointer to **string** | The name of the range. May contain 1 to 256 characters. Can include UTF-8. | [optional] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **Protocol** | Pointer to **string** | The type of protocol (_ip4_ or _ip6_). | [optional] [readonly] 
 **Space** | Pointer to **string** | The resource identifier. | [optional] 
 **Start** | **string** | The start IP address of the range. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the range in JSON format. | [optional] 
-**Threshold** | Pointer to [**UtilizationThreshold**](UtilizationThreshold.md) |  | [optional] 
+**Threshold** | Pointer to [**UtilizationThreshold**](UtilizationThreshold.md) | The utilization threshold settings for the range. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
-**Utilization** | Pointer to [**Utilization**](Utilization.md) |  | [optional] 
-**UtilizationV6** | Pointer to [**UtilizationV6**](UtilizationV6.md) |  | [optional] 
+**Utilization** | Pointer to [**Utilization**](Utilization.md) | The utilization statistics of IPV4 addresses for the range. | [optional] [readonly] 
+**UtilizationV6** | Pointer to [**UtilizationV6**](UtilizationV6.md) | The utilization of IPV6 addresses in the range. | [optional] [readonly] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**Dfp**](Dfp.md) |  | [optional] 
+**Results** | Pointer to [**Dfp**](Dfp.md) | The DNS Forwarding Proxy object. | [optional] 
 
 ## Methods
 

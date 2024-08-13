@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**AddressBlock**](AddressBlock.md) |  | [optional] 
+**Result** | Pointer to [**AddressBlock**](AddressBlock.md) | The created AddressBlock object. | [optional] 
 
 ## Methods
 

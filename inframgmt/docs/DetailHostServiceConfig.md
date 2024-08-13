@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ServiceId** | Pointer to **string** | The resource identifier. | [optional] 
 **ServiceName** | Pointer to **string** | The name of the Service. | [optional] 
 **ServiceType** | Pointer to **string** | The type of the Service deployed on the Host (&#x60;dns&#x60;, &#x60;cdc&#x60;, etc.). | [optional] 
-**Status** | Pointer to [**ShortServiceStatus**](ShortServiceStatus.md) |  | [optional] 
+**Status** | Pointer to [**ShortServiceStatus**](ShortServiceStatus.md) | Service status information. | [optional] 
 **UpgradedAt** | Pointer to **time.Time** | The timestamp of the latest upgrade of the Host-specific Service configuration. | [optional] 
 
 ## Methods

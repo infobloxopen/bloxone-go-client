@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**OptionGroup**](OptionGroup.md) |  | [optional] 
+**Result** | Pointer to [**OptionGroup**](OptionGroup.md) | The created OptionGroup object. | [optional] 
 
 ## Methods
 

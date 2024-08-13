@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**ASM**](ASM.md) |  | [optional] 
+**Result** | Pointer to [**ASM**](ASM.md) | The ASM object. | [optional] 
 
 ## Methods
 

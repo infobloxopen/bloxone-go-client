@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the option filter. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Protocol** | Pointer to **string** | The type of protocol of option filter (_ip4_ or _ip6_). | [optional] 
 **Role** | Pointer to **string** | The role of DHCP filter (_values_ or _selection_).  Defaults to _values_. | [optional] 
-**Rules** | [**OptionFilterRuleList**](OptionFilterRuleList.md) |  | 
+**Rules** | [**OptionFilterRuleList**](OptionFilterRuleList.md) | The list of option filter rules to match. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the option filter in JSON format. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 **VendorSpecificOptionOptionSpace** | Pointer to **string** | The resource identifier. | [optional] 

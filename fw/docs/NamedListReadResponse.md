@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**NamedList**](NamedList.md) |  | [optional] 
+**Results** | Pointer to [**NamedList**](NamedList.md) | The Named List object. | [optional] 
 
 ## Methods
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ExternalScopeId** | Pointer to **string** | external scope ID, UUID | [optional] 
 **HostId** | Pointer to **string** | Host reference, UUID | [optional] 
 **IpSpaceId** | Pointer to **string** | IPSpace reference, UUID | [optional] 
-**ScopeType** | Pointer to [**NetAddrDfpAssignmentScopeType**](NetAddrDfpAssignmentScopeType.md) |  | [optional] [default to NETADDRDFPASSIGNMENTSCOPETYPE_UNKNOWN]
+**ScopeType** | Pointer to [**NetAddrDfpAssignmentScopeType**](NetAddrDfpAssignmentScopeType.md) | scope type | [optional] [default to NETADDRDFPASSIGNMENTSCOPETYPE_UNKNOWN]
 **Start** | Pointer to **string** | Start and end pair of addresses used for range scope type | [optional] 
 
 ## Methods

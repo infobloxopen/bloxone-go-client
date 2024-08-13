@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**CategoryFilter**](CategoryFilter.md) |  | [optional] 
+**Results** | Pointer to [**CategoryFilter**](CategoryFilter.md) | The Category Filter object. | [optional] 
 
 ## Methods
 
