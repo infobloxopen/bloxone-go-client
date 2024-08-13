@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**OptionSpace**](OptionSpace.md) |  | [optional] 
+**Result** | Pointer to [**OptionSpace**](OptionSpace.md) | The created OptionSpace object. | [optional] 
 
 ## Methods
 

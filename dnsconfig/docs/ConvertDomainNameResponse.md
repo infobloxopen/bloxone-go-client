@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**ConvertDomainName**](ConvertDomainName.md) |  | [optional] 
+**Result** | Pointer to [**ConvertDomainName**](ConvertDomainName.md) | The ConvertDomainName object. | [optional] 
 
 ## Methods
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The brief description for the thread feed. | [optional] [readonly] 
 **Key** | Pointer to **string** | The TSIG key of the threat feed. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the thread feed. | [optional] [readonly] 
-**Source** | Pointer to [**ThreatFeedSource**](ThreatFeedSource.md) |  | [optional] [default to THREATFEEDSOURCE_INFOBLOX]
+**Source** | Pointer to [**ThreatFeedSource**](ThreatFeedSource.md) | The source of the threat feed. | [optional] [readonly] [default to THREATFEEDSOURCE_INFOBLOX]
 **ThreatLevel** | Pointer to **string** | The Threat Level of the Feed. | [optional] [readonly] 
 
 ## Methods

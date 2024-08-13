@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **ForwardersOnly** | Pointer to **bool** | Optional. _true_ to only forward.  Defaults to _false_. | [optional] 
 **GssTsigEnabled** | Pointer to **bool** | _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**InheritanceSources** | Pointer to [**ServerInheritance**](ServerInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**ServerInheritance**](ServerInheritance.md) | Optional. Inheritance configuration. | [optional] 
 **KerberosKeys** | Pointer to [**[]KerberosKey**](KerberosKey.md) | _kerberos_keys_ contains a list of keys for GSS-TSIG signed dynamic updates.  Defaults to empty. | [optional] 
 **LameTtl** | Pointer to **int64** | Optional. Unused in the current on-prem DNS server implementation.  Unsigned integer, min 0 max 3600 (1h).  Defaults to 600. | [optional] 
 **LogQueryResponse** | Pointer to **bool** | Optional. Control DNS query/response logging functionality.  Defaults to _true_. | [optional] 

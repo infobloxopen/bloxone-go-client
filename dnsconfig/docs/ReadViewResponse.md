@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**View**](View.md) |  | [optional] 
+**Result** | Pointer to [**View**](View.md) | The View object. | [optional] 
 
 ## Methods
 

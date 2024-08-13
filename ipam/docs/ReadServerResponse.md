@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Server**](Server.md) |  | [optional] 
+**Result** | Pointer to [**Server**](Server.md) | The Server object. | [optional] 
 
 ## Methods
 

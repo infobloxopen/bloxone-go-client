@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **GssTsigEnabled** | Pointer to **bool** | _gss_tsig_enabled_ enables/disables GSS-TSIG signed dynamic updates.  Defaults to _false_. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **InheritanceAssignedHosts** | Pointer to [**[]Inheritance2AssignedHost**](Inheritance2AssignedHost.md) | The list of the inheritance assigned hosts of the object. | [optional] [readonly] 
-**InheritanceSources** | Pointer to [**AuthZoneInheritance**](AuthZoneInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**AuthZoneInheritance**](AuthZoneInheritance.md) | Optional. Inheritance configuration. | [optional] 
 **InitialSoaSerial** | Pointer to **int64** | On-create-only. SOA serial is allowed to be set when the authoritative zone is created. | [optional] 
 **InternalSecondaries** | Pointer to [**[]InternalSecondary**](InternalSecondary.md) | Optional. BloxOne DDI hosts acting as internal secondaries. Order is not significant. | [optional] 
 **MappedSubnet** | Pointer to **string** | Reverse zone network address in the following format: \&quot;ip-address/cidr\&quot;. Defaults to empty. | [optional] [readonly] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **UseForwardersForSubzones** | Pointer to **bool** | Optional. Use default forwarders to resolve queries for subzones.  Defaults to _true_. | [optional] 
 **View** | Pointer to **string** | The resource identifier. | [optional] 
 **Warnings** | Pointer to [**[]Warning**](Warning.md) | The list of an auth zone warnings. | [optional] [readonly] 
-**ZoneAuthority** | Pointer to [**ZoneAuthority**](ZoneAuthority.md) |  | [optional] 
+**ZoneAuthority** | Pointer to [**ZoneAuthority**](ZoneAuthority.md) | Optional. ZoneAuthority. | [optional] 
 
 ## Methods
 

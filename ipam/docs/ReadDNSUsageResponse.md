@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**DNSUsage**](DNSUsage.md) |  | [optional] 
+**Result** | Pointer to [**DNSUsage**](DNSUsage.md) | The DNSUsage object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**ACL**](ACL.md) |  | [optional] 
+**Result** | Pointer to [**ACL**](ACL.md) | The ACL object. | [optional] 
 
 ## Methods
 

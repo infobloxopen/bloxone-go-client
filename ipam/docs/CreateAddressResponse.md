@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Address**](Address.md) |  | [optional] 
+**Result** | Pointer to [**Address**](Address.md) | The created Address object. | [optional] 
 
 ## Methods
 

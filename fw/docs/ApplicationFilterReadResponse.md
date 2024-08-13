@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**ApplicationFilter**](ApplicationFilter.md) |  | [optional] 
+**Results** | Pointer to [**ApplicationFilter**](ApplicationFilter.md) | The Application Filter object. | [optional] 
 
 ## Methods
 

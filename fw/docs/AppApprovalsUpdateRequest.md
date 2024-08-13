@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) |  | [optional] 
+**Fields** | Pointer to [**ProtobufFieldMask**](ProtobufFieldMask.md) | Field Mask. | [optional] 
 **InsertedApprovals** | Pointer to [**[]AppApproval**](AppApproval.md) |  | [optional] 
 **RemovedApprovals** | Pointer to [**[]AppApprovalRemovalRequest**](AppApprovalRemovalRequest.md) |  | [optional] 
 

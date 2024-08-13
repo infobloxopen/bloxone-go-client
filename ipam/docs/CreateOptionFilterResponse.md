@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**OptionFilter**](OptionFilter.md) |  | [optional] 
+**Result** | Pointer to [**OptionFilter**](OptionFilter.md) | The created OptionFilter object. | [optional] 
 
 ## Methods
 

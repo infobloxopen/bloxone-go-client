@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**AuthZone**](AuthZone.md) |  | [optional] 
+**Result** | Pointer to [**AuthZone**](AuthZone.md) | The updated AuthZone object. | [optional] 
 
 ## Methods
 

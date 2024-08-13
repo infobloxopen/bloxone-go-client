@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Address** | **string** | The address in form \&quot;a.b.c.d\&quot;. | 
 **Comment** | Pointer to **string** | The description for the address object. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
-**DhcpInfo** | Pointer to [**DHCPInfo**](DHCPInfo.md) |  | [optional] 
+**DhcpInfo** | Pointer to [**DHCPInfo**](DHCPInfo.md) | The DHCP information associated with this object. | [optional] [readonly] 
 **DisableDhcp** | Pointer to **bool** | Read only. Represent the value of the same field in the associated _dhcp/fixed_address_ object. | [optional] [readonly] 
 **DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this address in JSON format. | [optional] [readonly] 
 **DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this address in JSON format. | [optional] [readonly] 

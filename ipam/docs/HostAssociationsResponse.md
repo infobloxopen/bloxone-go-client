@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DhcpPktStats** | Pointer to [**DHCPPacketStats**](DHCPPacketStats.md) |  | [optional] 
+**DhcpPktStats** | Pointer to [**DHCPPacketStats**](DHCPPacketStats.md) | The DHCP packets statistics. | [optional] 
 **HaGroups** | Pointer to [**[]HAGroup**](HAGroup.md) | The list of HA groups. | [optional] 
-**Host** | Pointer to [**Host**](Host.md) |  | [optional] 
+**Host** | Pointer to [**Host**](Host.md) | The host for which the associated objects, subnets and HA groups, are returned. | [optional] 
 **Subnets** | Pointer to [**[]Subnet**](Subnet.md) | The list of subnets. | [optional] 
 
 ## Methods

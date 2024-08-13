@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CurrentVersion** | Pointer to **string** | The current version of the Service deployed on the Host. | [optional] 
-**Status** | Pointer to [**ShortServiceStatus**](ShortServiceStatus.md) |  | [optional] 
+**Status** | Pointer to [**ShortServiceStatus**](ShortServiceStatus.md) | Service status information. | [optional] 
 **UpgradedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Host**](Host.md) |  | [optional] 
+**Result** | Pointer to [**Host**](Host.md) | The DHCP Host object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Delegation**](Delegation.md) |  | [optional] 
+**Result** | Pointer to [**Delegation**](Delegation.md) | The created Delegation object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**AccessCode**](AccessCode.md) |  | [optional] 
+**Results** | Pointer to [**AccessCode**](AccessCode.md) | The Bypass Code object. | [optional] 
 
 ## Methods
 

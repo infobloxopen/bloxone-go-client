@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Global**](Global.md) |  | [optional] 
+**Result** | Pointer to [**Global**](Global.md) | The global object. | [optional] 
 
 ## Methods
 

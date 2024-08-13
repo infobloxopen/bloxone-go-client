@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**NetworkList**](NetworkList.md) |  | [optional] 
+**Results** | Pointer to [**NetworkList**](NetworkList.md) | The Network List object. | [optional] 
 
 ## Methods
 

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Optional. Comment for __LBDN__. | [optional] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration. | [optional] 
-**DtcPolicy** | Pointer to [**DTCPolicy**](DTCPolicy.md) |  | [optional] 
+**DtcPolicy** | Pointer to [**DTCPolicy**](DTCPolicy.md) | Optional. __DTC Policy__ information. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**InheritanceSources** | Pointer to [**TTLInheritance**](TTLInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**TTLInheritance**](TTLInheritance.md) | Optional. The inheritance configuration. | [optional] 
 **Name** | **string** | Name of __LBDN__. | 
 **Precedence** | Pointer to **int64** | Optional. Precedence. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | Optional. The tags for __LBDN__ in JSON format. | [optional] 

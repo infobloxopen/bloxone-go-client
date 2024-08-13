@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Acl** | Pointer to **string** | The resource identifier. | [optional] 
 **Address** | Pointer to **string** | Optional. Data for _ip_ _element_.  Must be empty if _element_ is not _ip_. | [optional] 
 **Element** | **string** | Type of element.  Allowed values:  * _any_,  * _ip_,  * _acl_,  * _tsig_key_. | 
-**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) |  | [optional] 
+**TsigKey** | Pointer to [**TSIGKey**](TSIGKey.md) | Optional. TSIG key.  Must be empty if _element_ is not _tsig_key_. | [optional] 
 
 ## Methods
 

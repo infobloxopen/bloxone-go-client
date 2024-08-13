@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**IpamHost**](IpamHost.md) |  | [optional] 
+**Result** | Pointer to [**IpamHost**](IpamHost.md) | The IpamHost object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**LBDN**](LBDN.md) |  | [optional] 
+**Result** | Pointer to [**LBDN**](LBDN.md) | The __LBDN__ object. | [optional] 
 
 ## Methods
 

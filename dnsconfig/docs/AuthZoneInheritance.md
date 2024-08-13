@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GssTsigEnabled** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) |  | [optional] 
-**Notify** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) |  | [optional] 
-**QueryAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) |  | [optional] 
-**TransferAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) |  | [optional] 
-**UpdateAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) |  | [optional] 
-**UseForwardersForSubzones** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) |  | [optional] 
-**ZoneAuthority** | Pointer to [**InheritedZoneAuthority**](InheritedZoneAuthority.md) |  | [optional] 
+**GssTsigEnabled** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) | Optional. Field config for _gss_tsig_enabled_ field from _AuthZone_ object. | [optional] 
+**Notify** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) | Field config for _notify_ field from _AuthZone_ object. | [optional] 
+**QueryAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) | Optional. Field config for _query_acl_ field from _AuthZone_ object. | [optional] 
+**TransferAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) | Optional. Field config for _transfer_acl_ field from _AuthZone_ object. | [optional] 
+**UpdateAcl** | Pointer to [**InheritedACLItems**](InheritedACLItems.md) | Optional. Field config for _update_acl_ field from _AuthZone_ object. | [optional] 
+**UseForwardersForSubzones** | Pointer to [**Inheritance2InheritedBool**](Inheritance2InheritedBool.md) | Optional. Field config for _use_forwarders_for_subzones_ field from _AuthZone_ object. | [optional] 
+**ZoneAuthority** | Pointer to [**InheritedZoneAuthority**](InheritedZoneAuthority.md) | Optional. Field config for _zone_authority_ field from _AuthZone_ object. | [optional] 
 
 ## Methods
 

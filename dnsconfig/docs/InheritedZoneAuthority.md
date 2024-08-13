@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultTtl** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
-**Expire** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
-**MnameBlock** | Pointer to [**InheritedZoneAuthorityMNameBlock**](InheritedZoneAuthorityMNameBlock.md) |  | [optional] 
-**NegativeTtl** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
-**ProtocolRname** | Pointer to [**Inheritance2InheritedString**](Inheritance2InheritedString.md) |  | [optional] 
-**Refresh** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
-**Retry** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) |  | [optional] 
-**Rname** | Pointer to [**Inheritance2InheritedString**](Inheritance2InheritedString.md) |  | [optional] 
+**DefaultTtl** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) | Optional. Field config for _default_ttl_ field from _ZoneAuthority_ object. | [optional] 
+**Expire** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) | Optional. Field config for _expire_ field from _ZoneAuthority_ object. | [optional] 
+**MnameBlock** | Pointer to [**InheritedZoneAuthorityMNameBlock**](InheritedZoneAuthorityMNameBlock.md) | Optional. Field config for _mname_ block from _ZoneAuthority_ object. | [optional] 
+**NegativeTtl** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) | Optional. Field config for _negative_ttl_ field from _ZoneAuthority_ object. | [optional] 
+**ProtocolRname** | Pointer to [**Inheritance2InheritedString**](Inheritance2InheritedString.md) | Optional. Field config for _protocol_rname_ field from _ZoneAuthority_ object. | [optional] 
+**Refresh** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) | Optional. Field config for _refresh_ field from _ZoneAuthority_ object. | [optional] 
+**Retry** | Pointer to [**Inheritance2InheritedUInt32**](Inheritance2InheritedUInt32.md) | Optional. Field config for _retry_ field from _ZoneAuthority_ object. | [optional] 
+**Rname** | Pointer to [**Inheritance2InheritedString**](Inheritance2InheritedString.md) | Optional. Field config for _rname_ field from _ZoneAuthority_ object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Record**](Record.md) |  | [optional] 
+**Result** | Pointer to [**Record**](Record.md) | The created Record object. | [optional] 
 
 ## Methods
 

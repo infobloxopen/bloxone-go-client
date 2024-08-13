@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**InternalDomains**](InternalDomains.md) |  | [optional] 
+**Results** | Pointer to [**InternalDomains**](InternalDomains.md) | The Internal Domains object. | [optional] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AsmConfig** | Pointer to [**ASMConfig**](ASMConfig.md) |  | [optional] 
+**AsmConfig** | Pointer to [**ASMConfig**](ASMConfig.md) | The Automated Scope Management configuration for the IP space. | [optional] 
 **AsmScopeFlag** | Pointer to **int64** | The number of times the automated scope management usage limits have been exceeded for any of the subnets in this IP space. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The description for the IP space. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **DdnsTtlPercent** | Pointer to **float32** | DDNS TTL value - to be calculated as a simple percentage of the lease&#39;s lifetime, using the parameter&#39;s value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified. | [optional] 
 **DdnsUpdateOnRenew** | Pointer to **bool** | Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_. | [optional] [default to false]
 **DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] [default to true]
-**DhcpConfig** | Pointer to [**DHCPConfig**](DHCPConfig.md) |  | [optional] 
+**DhcpConfig** | Pointer to [**DHCPConfig**](DHCPConfig.md) | The shared DHCP configuration for the IP space that controls how leases are issued. | [optional] 
 **DhcpOptions** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of IPv4 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
 **DhcpOptionsV6** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of IPv6 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
 **HeaderOptionFilename** | Pointer to **string** | The configuration for header option filename field. | [optional] 
@@ -27,13 +27,13 @@ Name | Type | Description | Notes
 **HostnameRewriteEnabled** | Pointer to **bool** | Indicates if client supplied hostnames will be rewritten prior to DDNS update by replacing every character that does not match _hostname_rewrite_regex_ by _hostname_rewrite_char_.  Defaults to _false_. | [optional] [default to false]
 **HostnameRewriteRegex** | Pointer to **string** | The regex bracket expression to match valid characters.  Must begin with \&quot;[\&quot; and end with \&quot;]\&quot; and be a compilable POSIX regex.  Defaults to \&quot;[^a-zA-Z0-9_.]\&quot;. | [optional] [default to "[^a-zA-Z0-9_.]"]
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
-**InheritanceSources** | Pointer to [**IPSpaceInheritance**](IPSpaceInheritance.md) |  | [optional] 
+**InheritanceSources** | Pointer to [**IPSpaceInheritance**](IPSpaceInheritance.md) | The inheritance configuration. | [optional] 
 **Name** | **string** | The name of the IP space. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the IP space in JSON format. | [optional] 
-**Threshold** | Pointer to [**UtilizationThreshold**](UtilizationThreshold.md) |  | [optional] 
+**Threshold** | Pointer to [**UtilizationThreshold**](UtilizationThreshold.md) | The utilization threshold settings for the IP space. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
-**Utilization** | Pointer to [**Utilization**](Utilization.md) |  | [optional] 
-**UtilizationV6** | Pointer to [**UtilizationV6**](UtilizationV6.md) |  | [optional] 
+**Utilization** | Pointer to [**Utilization**](Utilization.md) | The utilization of IPV4 addresses in the IP space. | [optional] [readonly] 
+**UtilizationV6** | Pointer to [**UtilizationV6**](UtilizationV6.md) | The utilization of IPV6 addresses in the IP space. | [optional] [readonly] 
 **VendorSpecificOptionOptionSpace** | Pointer to **string** | The resource identifier. | [optional] 
 
 ## Methods

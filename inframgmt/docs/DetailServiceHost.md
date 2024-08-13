@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CompositeStatus** | Pointer to **string** | Composite Status of the Host (&#x60;online&#x60;, &#x60;degraded&#x60;, &#x60;error&#x60;, &#x60;offline&#x60;, &#x60;pending&#x60;, &#x60;awaiting approval&#x60;). | [optional] 
-**Config** | Pointer to [**DetailServiceHostConfig**](DetailServiceHostConfig.md) |  | [optional] 
+**Config** | Pointer to [**DetailServiceHostConfig**](DetailServiceHostConfig.md) | List of Host-specific configurations of this Service. | [optional] 
 **DisplayName** | Pointer to **string** | The name of the Host (unique). | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **IpAddress** | Pointer to **string** | The IP address of the Host. | [optional] 

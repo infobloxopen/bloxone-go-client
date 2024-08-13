@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Option** | Pointer to [**OptionItem**](OptionItem.md) |  | [optional] 
+**Option** | Pointer to [**OptionItem**](OptionItem.md) | Option inherited from the ancestor. | [optional] 
 **OverridingGroup** | Pointer to **string** | The resource identifier. | [optional] 
 
 ## Methods

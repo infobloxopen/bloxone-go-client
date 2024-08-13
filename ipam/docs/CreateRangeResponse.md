@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | Pointer to [**Range**](Range.md) |  | [optional] 
+**Result** | Pointer to [**Range**](Range.md) | The created Range object. | [optional] 
 
 ## Methods
 
