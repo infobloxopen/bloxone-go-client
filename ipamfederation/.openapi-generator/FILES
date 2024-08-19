@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api/openapi.yaml
 api_bulk.go
@@ -116,15 +115,4 @@ model_federation_update_overlapping_block_response.go
 model_federation_update_reserved_block_response.go
 model_health_config_status_code.go
 model_protobuf_field_mask.go
-test/api_bulk_test.go
-test/api_config_gen_test.go
-test/api_delegation_test.go
-test/api_federated_block_test.go
-test/api_federated_realm_test.go
-test/api_next_available_delegation_test.go
-test/api_next_available_federated_block_test.go
-test/api_next_available_overlapping_block_test.go
-test/api_next_available_reserved_block_test.go
-test/api_overlapping_block_test.go
-test/api_reserved_block_test.go
 utils.go
