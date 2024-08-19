@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetNextAvailableDelegation
 
-> FederationGetNextAvailableDelegationResponse GetNextAvailableDelegation(ctx).Body(body).Execute()
+> GetNextAvailableDelegationResponse GetNextAvailableDelegation(ctx).Body(body).Execute()
 
 Retrieve the next available delegation.
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationGetNextAvailableDelegationRequest() // FederationGetNextAvailableDelegationRequest | 
+	body := *ipamfederation.NewGetNextAvailableDelegationRequest() // GetNextAvailableDelegationRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.NextAvailableDelegationAPI.GetNextAvailableDelegation(context.Background()).Body(body).Execute()
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableDelegationAPI.GetNextAvailableDelegation``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetNextAvailableDelegation`: FederationGetNextAvailableDelegationResponse
+	// response from `GetNextAvailableDelegation`: GetNextAvailableDelegationResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableDelegationAPI.GetNextAvailableDelegation`: %v\n", resp)
 }
 ```
@@ -54,11 +54,11 @@ Other parameters are passed through a pointer to a `NextAvailableDelegationAPIGe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationGetNextAvailableDelegationRequest**](FederationGetNextAvailableDelegationRequest.md) |  | 
+**body** | [**GetNextAvailableDelegationRequest**](GetNextAvailableDelegationRequest.md) |  | 
 
 ### Return type
 
-[**FederationGetNextAvailableDelegationResponse**](FederationGetNextAvailableDelegationResponse.md)
+[**GetNextAvailableDelegationResponse**](GetNextAvailableDelegationResponse.md)
 
 ### Authorization
 

@@ -33,8 +33,8 @@ type NextAvailableDelegationAPI interface {
 	GetNextAvailableDelegation(ctx context.Context) NextAvailableDelegationAPIGetNextAvailableDelegationRequest
 
 	// GetNextAvailableDelegationExecute executes the request
-	//  @return FederationGetNextAvailableDelegationResponse
-	GetNextAvailableDelegationExecute(r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) (*FederationGetNextAvailableDelegationResponse, *http.Response, error)
+	//  @return GetNextAvailableDelegationResponse
+	GetNextAvailableDelegationExecute(r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) (*GetNextAvailableDelegationResponse, *http.Response, error)
 }
 
 // NextAvailableDelegationAPIService NextAvailableDelegationAPI service
@@ -43,15 +43,15 @@ type NextAvailableDelegationAPIService internal.Service
 type NextAvailableDelegationAPIGetNextAvailableDelegationRequest struct {
 	ctx        context.Context
 	ApiService NextAvailableDelegationAPI
-	body       *FederationGetNextAvailableDelegationRequest
+	body       *GetNextAvailableDelegationRequest
 }
 
-func (r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) Body(body FederationGetNextAvailableDelegationRequest) NextAvailableDelegationAPIGetNextAvailableDelegationRequest {
+func (r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) Body(body GetNextAvailableDelegationRequest) NextAvailableDelegationAPIGetNextAvailableDelegationRequest {
 	r.body = &body
 	return r
 }
 
-func (r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) Execute() (*FederationGetNextAvailableDelegationResponse, *http.Response, error) {
+func (r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) Execute() (*GetNextAvailableDelegationResponse, *http.Response, error) {
 	return r.ApiService.GetNextAvailableDelegationExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *NextAvailableDelegationAPIService) GetNextAvailableDelegation(ctx conte
 
 // Execute executes the request
 //
-//	@return FederationGetNextAvailableDelegationResponse
-func (a *NextAvailableDelegationAPIService) GetNextAvailableDelegationExecute(r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) (*FederationGetNextAvailableDelegationResponse, *http.Response, error) {
+//	@return GetNextAvailableDelegationResponse
+func (a *NextAvailableDelegationAPIService) GetNextAvailableDelegationExecute(r NextAvailableDelegationAPIGetNextAvailableDelegationRequest) (*GetNextAvailableDelegationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationGetNextAvailableDelegationResponse
+		localVarReturnValue *GetNextAvailableDelegationResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableDelegationAPIService.GetNextAvailableDelegation")

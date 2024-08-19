@@ -34,8 +34,8 @@ type FederatedRealmAPI interface {
 	Create(ctx context.Context) FederatedRealmAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return FederationCreateFederatedRealmResponse
-	CreateExecute(r FederatedRealmAPICreateRequest) (*FederationCreateFederatedRealmResponse, *http.Response, error)
+	//  @return CreateFederatedRealmResponse
+	CreateExecute(r FederatedRealmAPICreateRequest) (*CreateFederatedRealmResponse, *http.Response, error)
 	/*
 		Delete Delete federated realm.
 
@@ -61,8 +61,8 @@ type FederatedRealmAPI interface {
 	List(ctx context.Context) FederatedRealmAPIListRequest
 
 	// ListExecute executes the request
-	//  @return FederationListFederatedRealmResponse
-	ListExecute(r FederatedRealmAPIListRequest) (*FederationListFederatedRealmResponse, *http.Response, error)
+	//  @return ListFederatedRealmResponse
+	ListExecute(r FederatedRealmAPIListRequest) (*ListFederatedRealmResponse, *http.Response, error)
 	/*
 			Read Retrieve the federated realm.
 
@@ -76,8 +76,8 @@ type FederatedRealmAPI interface {
 	Read(ctx context.Context, id string) FederatedRealmAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return FederationReadFederatedRealmResponse
-	ReadExecute(r FederatedRealmAPIReadRequest) (*FederationReadFederatedRealmResponse, *http.Response, error)
+	//  @return ReadFederatedRealmResponse
+	ReadExecute(r FederatedRealmAPIReadRequest) (*ReadFederatedRealmResponse, *http.Response, error)
 	/*
 			Update Update the federated realm.
 
@@ -91,8 +91,8 @@ type FederatedRealmAPI interface {
 	Update(ctx context.Context, id string) FederatedRealmAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return FederationUpdateFederatedRealmResponse
-	UpdateExecute(r FederatedRealmAPIUpdateRequest) (*FederationUpdateFederatedRealmResponse, *http.Response, error)
+	//  @return UpdateFederatedRealmResponse
+	UpdateExecute(r FederatedRealmAPIUpdateRequest) (*UpdateFederatedRealmResponse, *http.Response, error)
 }
 
 // FederatedRealmAPIService FederatedRealmAPI service
@@ -101,15 +101,15 @@ type FederatedRealmAPIService internal.Service
 type FederatedRealmAPICreateRequest struct {
 	ctx        context.Context
 	ApiService FederatedRealmAPI
-	body       *FederationFederatedRealm
+	body       *FederatedRealm
 }
 
-func (r FederatedRealmAPICreateRequest) Body(body FederationFederatedRealm) FederatedRealmAPICreateRequest {
+func (r FederatedRealmAPICreateRequest) Body(body FederatedRealm) FederatedRealmAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r FederatedRealmAPICreateRequest) Execute() (*FederationCreateFederatedRealmResponse, *http.Response, error) {
+func (r FederatedRealmAPICreateRequest) Execute() (*CreateFederatedRealmResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -131,13 +131,13 @@ func (a *FederatedRealmAPIService) Create(ctx context.Context) FederatedRealmAPI
 
 // Execute executes the request
 //
-//	@return FederationCreateFederatedRealmResponse
-func (a *FederatedRealmAPIService) CreateExecute(r FederatedRealmAPICreateRequest) (*FederationCreateFederatedRealmResponse, *http.Response, error) {
+//	@return CreateFederatedRealmResponse
+func (a *FederatedRealmAPIService) CreateExecute(r FederatedRealmAPICreateRequest) (*CreateFederatedRealmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateFederatedRealmResponse
+		localVarReturnValue *CreateFederatedRealmResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedRealmAPIService.Create")
@@ -353,7 +353,7 @@ func (r FederatedRealmAPIListRequest) Tfilter(tfilter string) FederatedRealmAPIL
 	return r
 }
 
-func (r FederatedRealmAPIListRequest) Execute() (*FederationListFederatedRealmResponse, *http.Response, error) {
+func (r FederatedRealmAPIListRequest) Execute() (*ListFederatedRealmResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -375,13 +375,13 @@ func (a *FederatedRealmAPIService) List(ctx context.Context) FederatedRealmAPILi
 
 // Execute executes the request
 //
-//	@return FederationListFederatedRealmResponse
-func (a *FederatedRealmAPIService) ListExecute(r FederatedRealmAPIListRequest) (*FederationListFederatedRealmResponse, *http.Response, error) {
+//	@return ListFederatedRealmResponse
+func (a *FederatedRealmAPIService) ListExecute(r FederatedRealmAPIListRequest) (*ListFederatedRealmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListFederatedRealmResponse
+		localVarReturnValue *ListFederatedRealmResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedRealmAPIService.List")
@@ -479,7 +479,7 @@ func (r FederatedRealmAPIReadRequest) Fields(fields string) FederatedRealmAPIRea
 	return r
 }
 
-func (r FederatedRealmAPIReadRequest) Execute() (*FederationReadFederatedRealmResponse, *http.Response, error) {
+func (r FederatedRealmAPIReadRequest) Execute() (*ReadFederatedRealmResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -503,13 +503,13 @@ func (a *FederatedRealmAPIService) Read(ctx context.Context, id string) Federate
 
 // Execute executes the request
 //
-//	@return FederationReadFederatedRealmResponse
-func (a *FederatedRealmAPIService) ReadExecute(r FederatedRealmAPIReadRequest) (*FederationReadFederatedRealmResponse, *http.Response, error) {
+//	@return ReadFederatedRealmResponse
+func (a *FederatedRealmAPIService) ReadExecute(r FederatedRealmAPIReadRequest) (*ReadFederatedRealmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationReadFederatedRealmResponse
+		localVarReturnValue *ReadFederatedRealmResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedRealmAPIService.Read")
@@ -578,15 +578,15 @@ type FederatedRealmAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService FederatedRealmAPI
 	id         string
-	body       *FederationFederatedRealm
+	body       *FederatedRealm
 }
 
-func (r FederatedRealmAPIUpdateRequest) Body(body FederationFederatedRealm) FederatedRealmAPIUpdateRequest {
+func (r FederatedRealmAPIUpdateRequest) Body(body FederatedRealm) FederatedRealmAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r FederatedRealmAPIUpdateRequest) Execute() (*FederationUpdateFederatedRealmResponse, *http.Response, error) {
+func (r FederatedRealmAPIUpdateRequest) Execute() (*UpdateFederatedRealmResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -610,13 +610,13 @@ func (a *FederatedRealmAPIService) Update(ctx context.Context, id string) Federa
 
 // Execute executes the request
 //
-//	@return FederationUpdateFederatedRealmResponse
-func (a *FederatedRealmAPIService) UpdateExecute(r FederatedRealmAPIUpdateRequest) (*FederationUpdateFederatedRealmResponse, *http.Response, error) {
+//	@return UpdateFederatedRealmResponse
+func (a *FederatedRealmAPIService) UpdateExecute(r FederatedRealmAPIUpdateRequest) (*UpdateFederatedRealmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationUpdateFederatedRealmResponse
+		localVarReturnValue *UpdateFederatedRealmResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedRealmAPIService.Update")

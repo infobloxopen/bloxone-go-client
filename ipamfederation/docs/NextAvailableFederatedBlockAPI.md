@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateNextAvailableFederatedBlocks
 
-> FederationCreateNextAvailableFederatedBlockResponse CreateNextAvailableFederatedBlocks(ctx, id).Body(body).Execute()
+> CreateNextAvailableFederatedBlockResponse CreateNextAvailableFederatedBlocks(ctx, id).Body(body).Execute()
 
 Retrieve the next available federated block.
 
@@ -34,7 +34,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationNextAvailableBlockRequest() // FederationNextAvailableBlockRequest | 
+	body := *ipamfederation.NewNextAvailableBlockRequest() // NextAvailableBlockRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.NextAvailableFederatedBlockAPI.CreateNextAvailableFederatedBlocks(context.Background(), id).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableFederatedBlockAPI.CreateNextAvailableFederatedBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateNextAvailableFederatedBlocks`: FederationCreateNextAvailableFederatedBlockResponse
+	// response from `CreateNextAvailableFederatedBlocks`: CreateNextAvailableFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableFederatedBlockAPI.CreateNextAvailableFederatedBlocks`: %v\n", resp)
 }
 ```
@@ -62,11 +62,11 @@ Other parameters are passed through a pointer to a `NextAvailableFederatedBlockA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationNextAvailableBlockRequest**](FederationNextAvailableBlockRequest.md) |  | 
+**body** | [**NextAvailableBlockRequest**](NextAvailableBlockRequest.md) |  | 
 
 ### Return type
 
-[**FederationCreateNextAvailableFederatedBlockResponse**](FederationCreateNextAvailableFederatedBlockResponse.md)
+[**CreateNextAvailableFederatedBlockResponse**](CreateNextAvailableFederatedBlockResponse.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## CreateNextAvailableOverlappingBlocks
 
-> FederationCreateNextAvailableOverlappingBlockResponse CreateNextAvailableOverlappingBlocks(ctx, id).Body(body).Execute()
+> CreateNextAvailableOverlappingBlockResponse CreateNextAvailableOverlappingBlocks(ctx, id).Body(body).Execute()
 
 Retrieve the next available overlapping block.
 
@@ -105,7 +105,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationNextAvailableBlockRequest() // FederationNextAvailableBlockRequest | 
+	body := *ipamfederation.NewNextAvailableBlockRequest() // NextAvailableBlockRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.NextAvailableFederatedBlockAPI.CreateNextAvailableOverlappingBlocks(context.Background(), id).Body(body).Execute()
@@ -113,7 +113,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableFederatedBlockAPI.CreateNextAvailableOverlappingBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateNextAvailableOverlappingBlocks`: FederationCreateNextAvailableOverlappingBlockResponse
+	// response from `CreateNextAvailableOverlappingBlocks`: CreateNextAvailableOverlappingBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableFederatedBlockAPI.CreateNextAvailableOverlappingBlocks`: %v\n", resp)
 }
 ```
@@ -133,11 +133,11 @@ Other parameters are passed through a pointer to a `NextAvailableFederatedBlockA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationNextAvailableBlockRequest**](FederationNextAvailableBlockRequest.md) |  | 
+**body** | [**NextAvailableBlockRequest**](NextAvailableBlockRequest.md) |  | 
 
 ### Return type
 
-[**FederationCreateNextAvailableOverlappingBlockResponse**](FederationCreateNextAvailableOverlappingBlockResponse.md)
+[**CreateNextAvailableOverlappingBlockResponse**](CreateNextAvailableOverlappingBlockResponse.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## CreateNextAvailableReservedBlocks
 
-> FederationCreateNextAvailableReservedBlockResponse CreateNextAvailableReservedBlocks(ctx, id).Body(body).Execute()
+> CreateNextAvailableReservedBlockResponse CreateNextAvailableReservedBlocks(ctx, id).Body(body).Execute()
 
 Retrieve the next available reserved block.
 
@@ -176,7 +176,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationNextAvailableBlockRequest() // FederationNextAvailableBlockRequest | 
+	body := *ipamfederation.NewNextAvailableBlockRequest() // NextAvailableBlockRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.NextAvailableFederatedBlockAPI.CreateNextAvailableReservedBlocks(context.Background(), id).Body(body).Execute()
@@ -184,7 +184,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableFederatedBlockAPI.CreateNextAvailableReservedBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateNextAvailableReservedBlocks`: FederationCreateNextAvailableReservedBlockResponse
+	// response from `CreateNextAvailableReservedBlocks`: CreateNextAvailableReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableFederatedBlockAPI.CreateNextAvailableReservedBlocks`: %v\n", resp)
 }
 ```
@@ -204,11 +204,11 @@ Other parameters are passed through a pointer to a `NextAvailableFederatedBlockA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationNextAvailableBlockRequest**](FederationNextAvailableBlockRequest.md) |  | 
+**body** | [**NextAvailableBlockRequest**](NextAvailableBlockRequest.md) |  | 
 
 ### Return type
 
-[**FederationCreateNextAvailableReservedBlockResponse**](FederationCreateNextAvailableReservedBlockResponse.md)
+[**CreateNextAvailableReservedBlockResponse**](CreateNextAvailableReservedBlockResponse.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## ListNextAvailableFederatedBlocks
 
-> FederationListNextAvailableFederatedBlockResponse ListNextAvailableFederatedBlocks(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
+> ListNextAvailableFederatedBlockResponse ListNextAvailableFederatedBlocks(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
 
 List the next available federated block.
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableFederatedBlockAPI.ListNextAvailableFederatedBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListNextAvailableFederatedBlocks`: FederationListNextAvailableFederatedBlockResponse
+	// response from `ListNextAvailableFederatedBlocks`: ListNextAvailableFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableFederatedBlockAPI.ListNextAvailableFederatedBlocks`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListNextAvailableFederatedBlockResponse**](FederationListNextAvailableFederatedBlockResponse.md)
+[**ListNextAvailableFederatedBlockResponse**](ListNextAvailableFederatedBlockResponse.md)
 
 ### Authorization
 

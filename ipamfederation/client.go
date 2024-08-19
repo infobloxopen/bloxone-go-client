@@ -23,7 +23,6 @@ type APIClient struct {
 	*internal.APIClient
 
 	// API Services
-	BulkAPI                          BulkAPI
 	ConfigGenAPI                     ConfigGenAPI
 	DelegationAPI                    DelegationAPI
 	FederatedBlockAPI                FederatedBlockAPI
@@ -54,7 +53,6 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)
 
 	// API Services
-	c.BulkAPI = (*BulkAPIService)(&c.Common)
 	c.ConfigGenAPI = (*ConfigGenAPIService)(&c.Common)
 	c.DelegationAPI = (*DelegationAPIService)(&c.Common)
 	c.FederatedBlockAPI = (*FederatedBlockAPIService)(&c.Common)

@@ -34,8 +34,8 @@ type OverlappingBlockAPI interface {
 	Create(ctx context.Context) OverlappingBlockAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return FederationCreateOverlappingBlockResponse
-	CreateExecute(r OverlappingBlockAPICreateRequest) (*FederationCreateOverlappingBlockResponse, *http.Response, error)
+	//  @return CreateOverlappingBlockResponse
+	CreateExecute(r OverlappingBlockAPICreateRequest) (*CreateOverlappingBlockResponse, *http.Response, error)
 	/*
 			Delete Delete the overlapping block.
 
@@ -62,8 +62,8 @@ type OverlappingBlockAPI interface {
 	List(ctx context.Context) OverlappingBlockAPIListRequest
 
 	// ListExecute executes the request
-	//  @return FederationListOverlappingBlockResponse
-	ListExecute(r OverlappingBlockAPIListRequest) (*FederationListOverlappingBlockResponse, *http.Response, error)
+	//  @return ListOverlappingBlockResponse
+	ListExecute(r OverlappingBlockAPIListRequest) (*ListOverlappingBlockResponse, *http.Response, error)
 	/*
 			Read Retrieve the overlapping block.
 
@@ -77,8 +77,8 @@ type OverlappingBlockAPI interface {
 	Read(ctx context.Context, id string) OverlappingBlockAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return FederationReadOverlappingBlockResponse
-	ReadExecute(r OverlappingBlockAPIReadRequest) (*FederationReadOverlappingBlockResponse, *http.Response, error)
+	//  @return ReadOverlappingBlockResponse
+	ReadExecute(r OverlappingBlockAPIReadRequest) (*ReadOverlappingBlockResponse, *http.Response, error)
 	/*
 			Update Update the overlapping block.
 
@@ -92,8 +92,8 @@ type OverlappingBlockAPI interface {
 	Update(ctx context.Context, id string) OverlappingBlockAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return FederationUpdateOverlappingBlockResponse
-	UpdateExecute(r OverlappingBlockAPIUpdateRequest) (*FederationUpdateOverlappingBlockResponse, *http.Response, error)
+	//  @return UpdateOverlappingBlockResponse
+	UpdateExecute(r OverlappingBlockAPIUpdateRequest) (*UpdateOverlappingBlockResponse, *http.Response, error)
 }
 
 // OverlappingBlockAPIService OverlappingBlockAPI service
@@ -102,15 +102,15 @@ type OverlappingBlockAPIService internal.Service
 type OverlappingBlockAPICreateRequest struct {
 	ctx        context.Context
 	ApiService OverlappingBlockAPI
-	body       *FederationOverlappingBlock
+	body       *OverlappingBlock
 }
 
-func (r OverlappingBlockAPICreateRequest) Body(body FederationOverlappingBlock) OverlappingBlockAPICreateRequest {
+func (r OverlappingBlockAPICreateRequest) Body(body OverlappingBlock) OverlappingBlockAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r OverlappingBlockAPICreateRequest) Execute() (*FederationCreateOverlappingBlockResponse, *http.Response, error) {
+func (r OverlappingBlockAPICreateRequest) Execute() (*CreateOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *OverlappingBlockAPIService) Create(ctx context.Context) OverlappingBloc
 
 // Execute executes the request
 //
-//	@return FederationCreateOverlappingBlockResponse
-func (a *OverlappingBlockAPIService) CreateExecute(r OverlappingBlockAPICreateRequest) (*FederationCreateOverlappingBlockResponse, *http.Response, error) {
+//	@return CreateOverlappingBlockResponse
+func (a *OverlappingBlockAPIService) CreateExecute(r OverlappingBlockAPICreateRequest) (*CreateOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateOverlappingBlockResponse
+		localVarReturnValue *CreateOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OverlappingBlockAPIService.Create")
@@ -355,7 +355,7 @@ func (r OverlappingBlockAPIListRequest) Tfilter(tfilter string) OverlappingBlock
 	return r
 }
 
-func (r OverlappingBlockAPIListRequest) Execute() (*FederationListOverlappingBlockResponse, *http.Response, error) {
+func (r OverlappingBlockAPIListRequest) Execute() (*ListOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -377,13 +377,13 @@ func (a *OverlappingBlockAPIService) List(ctx context.Context) OverlappingBlockA
 
 // Execute executes the request
 //
-//	@return FederationListOverlappingBlockResponse
-func (a *OverlappingBlockAPIService) ListExecute(r OverlappingBlockAPIListRequest) (*FederationListOverlappingBlockResponse, *http.Response, error) {
+//	@return ListOverlappingBlockResponse
+func (a *OverlappingBlockAPIService) ListExecute(r OverlappingBlockAPIListRequest) (*ListOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListOverlappingBlockResponse
+		localVarReturnValue *ListOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OverlappingBlockAPIService.List")
@@ -481,7 +481,7 @@ func (r OverlappingBlockAPIReadRequest) Fields(fields string) OverlappingBlockAP
 	return r
 }
 
-func (r OverlappingBlockAPIReadRequest) Execute() (*FederationReadOverlappingBlockResponse, *http.Response, error) {
+func (r OverlappingBlockAPIReadRequest) Execute() (*ReadOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -505,13 +505,13 @@ func (a *OverlappingBlockAPIService) Read(ctx context.Context, id string) Overla
 
 // Execute executes the request
 //
-//	@return FederationReadOverlappingBlockResponse
-func (a *OverlappingBlockAPIService) ReadExecute(r OverlappingBlockAPIReadRequest) (*FederationReadOverlappingBlockResponse, *http.Response, error) {
+//	@return ReadOverlappingBlockResponse
+func (a *OverlappingBlockAPIService) ReadExecute(r OverlappingBlockAPIReadRequest) (*ReadOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationReadOverlappingBlockResponse
+		localVarReturnValue *ReadOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OverlappingBlockAPIService.Read")
@@ -580,15 +580,15 @@ type OverlappingBlockAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService OverlappingBlockAPI
 	id         string
-	body       *FederationOverlappingBlock
+	body       *OverlappingBlock
 }
 
-func (r OverlappingBlockAPIUpdateRequest) Body(body FederationOverlappingBlock) OverlappingBlockAPIUpdateRequest {
+func (r OverlappingBlockAPIUpdateRequest) Body(body OverlappingBlock) OverlappingBlockAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r OverlappingBlockAPIUpdateRequest) Execute() (*FederationUpdateOverlappingBlockResponse, *http.Response, error) {
+func (r OverlappingBlockAPIUpdateRequest) Execute() (*UpdateOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -612,13 +612,13 @@ func (a *OverlappingBlockAPIService) Update(ctx context.Context, id string) Over
 
 // Execute executes the request
 //
-//	@return FederationUpdateOverlappingBlockResponse
-func (a *OverlappingBlockAPIService) UpdateExecute(r OverlappingBlockAPIUpdateRequest) (*FederationUpdateOverlappingBlockResponse, *http.Response, error) {
+//	@return UpdateOverlappingBlockResponse
+func (a *OverlappingBlockAPIService) UpdateExecute(r OverlappingBlockAPIUpdateRequest) (*UpdateOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationUpdateOverlappingBlockResponse
+		localVarReturnValue *UpdateOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OverlappingBlockAPIService.Update")

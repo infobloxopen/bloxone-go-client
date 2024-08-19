@@ -33,8 +33,8 @@ type DelegationAPI interface {
 	Bulk(ctx context.Context) DelegationAPIBulkRequest
 
 	// BulkExecute executes the request
-	//  @return FederationDelegationBulkResponse
-	BulkExecute(r DelegationAPIBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error)
+	//  @return DelegationBulkResponse
+	BulkExecute(r DelegationAPIBulkRequest) (*DelegationBulkResponse, *http.Response, error)
 	/*
 			Create Create the delegation.
 
@@ -47,8 +47,8 @@ type DelegationAPI interface {
 	Create(ctx context.Context) DelegationAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return FederationCreateDelegationResponse
-	CreateExecute(r DelegationAPICreateRequest) (*FederationCreateDelegationResponse, *http.Response, error)
+	//  @return CreateDelegationResponse
+	CreateExecute(r DelegationAPICreateRequest) (*CreateDelegationResponse, *http.Response, error)
 	/*
 			Delete Delete the delegation.
 
@@ -87,8 +87,8 @@ type DelegationAPI interface {
 	List(ctx context.Context) DelegationAPIListRequest
 
 	// ListExecute executes the request
-	//  @return FederationListDelegationResponse
-	ListExecute(r DelegationAPIListRequest) (*FederationListDelegationResponse, *http.Response, error)
+	//  @return ListDelegationResponse
+	ListExecute(r DelegationAPIListRequest) (*ListDelegationResponse, *http.Response, error)
 	/*
 			Read Retrieve the delegation.
 
@@ -102,8 +102,8 @@ type DelegationAPI interface {
 	Read(ctx context.Context, id string) DelegationAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return FederationReadDelegationResponse
-	ReadExecute(r DelegationAPIReadRequest) (*FederationReadDelegationResponse, *http.Response, error)
+	//  @return ReadDelegationResponse
+	ReadExecute(r DelegationAPIReadRequest) (*ReadDelegationResponse, *http.Response, error)
 	/*
 			Update Update the delegation.
 
@@ -117,8 +117,8 @@ type DelegationAPI interface {
 	Update(ctx context.Context, id string) DelegationAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return FederationUpdateDelegationResponse
-	UpdateExecute(r DelegationAPIUpdateRequest) (*FederationUpdateDelegationResponse, *http.Response, error)
+	//  @return UpdateDelegationResponse
+	UpdateExecute(r DelegationAPIUpdateRequest) (*UpdateDelegationResponse, *http.Response, error)
 }
 
 // DelegationAPIService DelegationAPI service
@@ -127,15 +127,15 @@ type DelegationAPIService internal.Service
 type DelegationAPIBulkRequest struct {
 	ctx        context.Context
 	ApiService DelegationAPI
-	body       *FederationDelegationBulkRequest
+	body       *DelegationBulkRequest
 }
 
-func (r DelegationAPIBulkRequest) Body(body FederationDelegationBulkRequest) DelegationAPIBulkRequest {
+func (r DelegationAPIBulkRequest) Body(body DelegationBulkRequest) DelegationAPIBulkRequest {
 	r.body = &body
 	return r
 }
 
-func (r DelegationAPIBulkRequest) Execute() (*FederationDelegationBulkResponse, *http.Response, error) {
+func (r DelegationAPIBulkRequest) Execute() (*DelegationBulkResponse, *http.Response, error) {
 	return r.ApiService.BulkExecute(r)
 }
 
@@ -156,13 +156,13 @@ func (a *DelegationAPIService) Bulk(ctx context.Context) DelegationAPIBulkReques
 
 // Execute executes the request
 //
-//	@return FederationDelegationBulkResponse
-func (a *DelegationAPIService) BulkExecute(r DelegationAPIBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error) {
+//	@return DelegationBulkResponse
+func (a *DelegationAPIService) BulkExecute(r DelegationAPIBulkRequest) (*DelegationBulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationDelegationBulkResponse
+		localVarReturnValue *DelegationBulkResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.Bulk")
@@ -231,15 +231,15 @@ func (a *DelegationAPIService) BulkExecute(r DelegationAPIBulkRequest) (*Federat
 type DelegationAPICreateRequest struct {
 	ctx        context.Context
 	ApiService DelegationAPI
-	body       *FederationDelegation
+	body       *Delegation
 }
 
-func (r DelegationAPICreateRequest) Body(body FederationDelegation) DelegationAPICreateRequest {
+func (r DelegationAPICreateRequest) Body(body Delegation) DelegationAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r DelegationAPICreateRequest) Execute() (*FederationCreateDelegationResponse, *http.Response, error) {
+func (r DelegationAPICreateRequest) Execute() (*CreateDelegationResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -261,13 +261,13 @@ func (a *DelegationAPIService) Create(ctx context.Context) DelegationAPICreateRe
 
 // Execute executes the request
 //
-//	@return FederationCreateDelegationResponse
-func (a *DelegationAPIService) CreateExecute(r DelegationAPICreateRequest) (*FederationCreateDelegationResponse, *http.Response, error) {
+//	@return CreateDelegationResponse
+func (a *DelegationAPIService) CreateExecute(r DelegationAPICreateRequest) (*CreateDelegationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateDelegationResponse
+		localVarReturnValue *CreateDelegationResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.Create")
@@ -569,7 +569,7 @@ func (r DelegationAPIListRequest) Tfilter(tfilter string) DelegationAPIListReque
 	return r
 }
 
-func (r DelegationAPIListRequest) Execute() (*FederationListDelegationResponse, *http.Response, error) {
+func (r DelegationAPIListRequest) Execute() (*ListDelegationResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -591,13 +591,13 @@ func (a *DelegationAPIService) List(ctx context.Context) DelegationAPIListReques
 
 // Execute executes the request
 //
-//	@return FederationListDelegationResponse
-func (a *DelegationAPIService) ListExecute(r DelegationAPIListRequest) (*FederationListDelegationResponse, *http.Response, error) {
+//	@return ListDelegationResponse
+func (a *DelegationAPIService) ListExecute(r DelegationAPIListRequest) (*ListDelegationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListDelegationResponse
+		localVarReturnValue *ListDelegationResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.List")
@@ -695,7 +695,7 @@ func (r DelegationAPIReadRequest) Fields(fields string) DelegationAPIReadRequest
 	return r
 }
 
-func (r DelegationAPIReadRequest) Execute() (*FederationReadDelegationResponse, *http.Response, error) {
+func (r DelegationAPIReadRequest) Execute() (*ReadDelegationResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -719,13 +719,13 @@ func (a *DelegationAPIService) Read(ctx context.Context, id string) DelegationAP
 
 // Execute executes the request
 //
-//	@return FederationReadDelegationResponse
-func (a *DelegationAPIService) ReadExecute(r DelegationAPIReadRequest) (*FederationReadDelegationResponse, *http.Response, error) {
+//	@return ReadDelegationResponse
+func (a *DelegationAPIService) ReadExecute(r DelegationAPIReadRequest) (*ReadDelegationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationReadDelegationResponse
+		localVarReturnValue *ReadDelegationResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.Read")
@@ -794,15 +794,15 @@ type DelegationAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService DelegationAPI
 	id         string
-	body       *FederationDelegation
+	body       *Delegation
 }
 
-func (r DelegationAPIUpdateRequest) Body(body FederationDelegation) DelegationAPIUpdateRequest {
+func (r DelegationAPIUpdateRequest) Body(body Delegation) DelegationAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r DelegationAPIUpdateRequest) Execute() (*FederationUpdateDelegationResponse, *http.Response, error) {
+func (r DelegationAPIUpdateRequest) Execute() (*UpdateDelegationResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -826,13 +826,13 @@ func (a *DelegationAPIService) Update(ctx context.Context, id string) Delegation
 
 // Execute executes the request
 //
-//	@return FederationUpdateDelegationResponse
-func (a *DelegationAPIService) UpdateExecute(r DelegationAPIUpdateRequest) (*FederationUpdateDelegationResponse, *http.Response, error) {
+//	@return UpdateDelegationResponse
+func (a *DelegationAPIService) UpdateExecute(r DelegationAPIUpdateRequest) (*UpdateDelegationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationUpdateDelegationResponse
+		localVarReturnValue *UpdateDelegationResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.Update")

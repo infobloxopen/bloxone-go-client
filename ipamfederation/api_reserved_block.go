@@ -34,8 +34,8 @@ type ReservedBlockAPI interface {
 	Create(ctx context.Context) ReservedBlockAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return FederationCreateReservedBlockResponse
-	CreateExecute(r ReservedBlockAPICreateRequest) (*FederationCreateReservedBlockResponse, *http.Response, error)
+	//  @return CreateReservedBlockResponse
+	CreateExecute(r ReservedBlockAPICreateRequest) (*CreateReservedBlockResponse, *http.Response, error)
 	/*
 			Delete Delete the reserved block.
 
@@ -62,8 +62,8 @@ type ReservedBlockAPI interface {
 	List(ctx context.Context) ReservedBlockAPIListRequest
 
 	// ListExecute executes the request
-	//  @return FederationListReservedBlockResponse
-	ListExecute(r ReservedBlockAPIListRequest) (*FederationListReservedBlockResponse, *http.Response, error)
+	//  @return ListReservedBlockResponse
+	ListExecute(r ReservedBlockAPIListRequest) (*ListReservedBlockResponse, *http.Response, error)
 	/*
 			Read Retrieve the reserved block.
 
@@ -77,8 +77,8 @@ type ReservedBlockAPI interface {
 	Read(ctx context.Context, id string) ReservedBlockAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return FederationReadReservedBlockResponse
-	ReadExecute(r ReservedBlockAPIReadRequest) (*FederationReadReservedBlockResponse, *http.Response, error)
+	//  @return ReadReservedBlockResponse
+	ReadExecute(r ReservedBlockAPIReadRequest) (*ReadReservedBlockResponse, *http.Response, error)
 	/*
 			Update Update the reserved block.
 
@@ -92,8 +92,8 @@ type ReservedBlockAPI interface {
 	Update(ctx context.Context, id string) ReservedBlockAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return FederationUpdateReservedBlockResponse
-	UpdateExecute(r ReservedBlockAPIUpdateRequest) (*FederationUpdateReservedBlockResponse, *http.Response, error)
+	//  @return UpdateReservedBlockResponse
+	UpdateExecute(r ReservedBlockAPIUpdateRequest) (*UpdateReservedBlockResponse, *http.Response, error)
 }
 
 // ReservedBlockAPIService ReservedBlockAPI service
@@ -102,15 +102,15 @@ type ReservedBlockAPIService internal.Service
 type ReservedBlockAPICreateRequest struct {
 	ctx        context.Context
 	ApiService ReservedBlockAPI
-	body       *FederationReservedBlock
+	body       *ReservedBlock
 }
 
-func (r ReservedBlockAPICreateRequest) Body(body FederationReservedBlock) ReservedBlockAPICreateRequest {
+func (r ReservedBlockAPICreateRequest) Body(body ReservedBlock) ReservedBlockAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ReservedBlockAPICreateRequest) Execute() (*FederationCreateReservedBlockResponse, *http.Response, error) {
+func (r ReservedBlockAPICreateRequest) Execute() (*CreateReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *ReservedBlockAPIService) Create(ctx context.Context) ReservedBlockAPICr
 
 // Execute executes the request
 //
-//	@return FederationCreateReservedBlockResponse
-func (a *ReservedBlockAPIService) CreateExecute(r ReservedBlockAPICreateRequest) (*FederationCreateReservedBlockResponse, *http.Response, error) {
+//	@return CreateReservedBlockResponse
+func (a *ReservedBlockAPIService) CreateExecute(r ReservedBlockAPICreateRequest) (*CreateReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateReservedBlockResponse
+		localVarReturnValue *CreateReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ReservedBlockAPIService.Create")
@@ -355,7 +355,7 @@ func (r ReservedBlockAPIListRequest) Tfilter(tfilter string) ReservedBlockAPILis
 	return r
 }
 
-func (r ReservedBlockAPIListRequest) Execute() (*FederationListReservedBlockResponse, *http.Response, error) {
+func (r ReservedBlockAPIListRequest) Execute() (*ListReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -377,13 +377,13 @@ func (a *ReservedBlockAPIService) List(ctx context.Context) ReservedBlockAPIList
 
 // Execute executes the request
 //
-//	@return FederationListReservedBlockResponse
-func (a *ReservedBlockAPIService) ListExecute(r ReservedBlockAPIListRequest) (*FederationListReservedBlockResponse, *http.Response, error) {
+//	@return ListReservedBlockResponse
+func (a *ReservedBlockAPIService) ListExecute(r ReservedBlockAPIListRequest) (*ListReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListReservedBlockResponse
+		localVarReturnValue *ListReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ReservedBlockAPIService.List")
@@ -481,7 +481,7 @@ func (r ReservedBlockAPIReadRequest) Fields(fields string) ReservedBlockAPIReadR
 	return r
 }
 
-func (r ReservedBlockAPIReadRequest) Execute() (*FederationReadReservedBlockResponse, *http.Response, error) {
+func (r ReservedBlockAPIReadRequest) Execute() (*ReadReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -505,13 +505,13 @@ func (a *ReservedBlockAPIService) Read(ctx context.Context, id string) ReservedB
 
 // Execute executes the request
 //
-//	@return FederationReadReservedBlockResponse
-func (a *ReservedBlockAPIService) ReadExecute(r ReservedBlockAPIReadRequest) (*FederationReadReservedBlockResponse, *http.Response, error) {
+//	@return ReadReservedBlockResponse
+func (a *ReservedBlockAPIService) ReadExecute(r ReservedBlockAPIReadRequest) (*ReadReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationReadReservedBlockResponse
+		localVarReturnValue *ReadReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ReservedBlockAPIService.Read")
@@ -580,15 +580,15 @@ type ReservedBlockAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService ReservedBlockAPI
 	id         string
-	body       *FederationReservedBlock
+	body       *ReservedBlock
 }
 
-func (r ReservedBlockAPIUpdateRequest) Body(body FederationReservedBlock) ReservedBlockAPIUpdateRequest {
+func (r ReservedBlockAPIUpdateRequest) Body(body ReservedBlock) ReservedBlockAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ReservedBlockAPIUpdateRequest) Execute() (*FederationUpdateReservedBlockResponse, *http.Response, error) {
+func (r ReservedBlockAPIUpdateRequest) Execute() (*UpdateReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -612,13 +612,13 @@ func (a *ReservedBlockAPIService) Update(ctx context.Context, id string) Reserve
 
 // Execute executes the request
 //
-//	@return FederationUpdateReservedBlockResponse
-func (a *ReservedBlockAPIService) UpdateExecute(r ReservedBlockAPIUpdateRequest) (*FederationUpdateReservedBlockResponse, *http.Response, error) {
+//	@return UpdateReservedBlockResponse
+func (a *ReservedBlockAPIService) UpdateExecute(r ReservedBlockAPIUpdateRequest) (*UpdateReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationUpdateReservedBlockResponse
+		localVarReturnValue *UpdateReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ReservedBlockAPIService.Update")

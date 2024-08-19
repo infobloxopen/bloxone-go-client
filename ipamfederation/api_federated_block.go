@@ -34,8 +34,8 @@ type FederatedBlockAPI interface {
 	Create(ctx context.Context) FederatedBlockAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return FederationCreateFederatedBlockResponse
-	CreateExecute(r FederatedBlockAPICreateRequest) (*FederationCreateFederatedBlockResponse, *http.Response, error)
+	//  @return CreateFederatedBlockResponse
+	CreateExecute(r FederatedBlockAPICreateRequest) (*CreateFederatedBlockResponse, *http.Response, error)
 	/*
 			Delete Delete the federated block.
 
@@ -62,8 +62,8 @@ type FederatedBlockAPI interface {
 	List(ctx context.Context) FederatedBlockAPIListRequest
 
 	// ListExecute executes the request
-	//  @return FederationListFederatedBlockResponse
-	ListExecute(r FederatedBlockAPIListRequest) (*FederationListFederatedBlockResponse, *http.Response, error)
+	//  @return ListFederatedBlockResponse
+	ListExecute(r FederatedBlockAPIListRequest) (*ListFederatedBlockResponse, *http.Response, error)
 	/*
 			Read Retrieve the federated block.
 
@@ -77,8 +77,8 @@ type FederatedBlockAPI interface {
 	Read(ctx context.Context, id string) FederatedBlockAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return FederationReadFederatedBlockResponse
-	ReadExecute(r FederatedBlockAPIReadRequest) (*FederationReadFederatedBlockResponse, *http.Response, error)
+	//  @return ReadFederatedBlockResponse
+	ReadExecute(r FederatedBlockAPIReadRequest) (*ReadFederatedBlockResponse, *http.Response, error)
 	/*
 			Update Update the federated block.
 
@@ -92,8 +92,8 @@ type FederatedBlockAPI interface {
 	Update(ctx context.Context, id string) FederatedBlockAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return FederationUpdateFederatedBlockResponse
-	UpdateExecute(r FederatedBlockAPIUpdateRequest) (*FederationUpdateFederatedBlockResponse, *http.Response, error)
+	//  @return UpdateFederatedBlockResponse
+	UpdateExecute(r FederatedBlockAPIUpdateRequest) (*UpdateFederatedBlockResponse, *http.Response, error)
 }
 
 // FederatedBlockAPIService FederatedBlockAPI service
@@ -102,15 +102,15 @@ type FederatedBlockAPIService internal.Service
 type FederatedBlockAPICreateRequest struct {
 	ctx        context.Context
 	ApiService FederatedBlockAPI
-	body       *FederationFederatedBlock
+	body       *FederatedBlock
 }
 
-func (r FederatedBlockAPICreateRequest) Body(body FederationFederatedBlock) FederatedBlockAPICreateRequest {
+func (r FederatedBlockAPICreateRequest) Body(body FederatedBlock) FederatedBlockAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r FederatedBlockAPICreateRequest) Execute() (*FederationCreateFederatedBlockResponse, *http.Response, error) {
+func (r FederatedBlockAPICreateRequest) Execute() (*CreateFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -132,13 +132,13 @@ func (a *FederatedBlockAPIService) Create(ctx context.Context) FederatedBlockAPI
 
 // Execute executes the request
 //
-//	@return FederationCreateFederatedBlockResponse
-func (a *FederatedBlockAPIService) CreateExecute(r FederatedBlockAPICreateRequest) (*FederationCreateFederatedBlockResponse, *http.Response, error) {
+//	@return CreateFederatedBlockResponse
+func (a *FederatedBlockAPIService) CreateExecute(r FederatedBlockAPICreateRequest) (*CreateFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateFederatedBlockResponse
+		localVarReturnValue *CreateFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedBlockAPIService.Create")
@@ -355,7 +355,7 @@ func (r FederatedBlockAPIListRequest) Tfilter(tfilter string) FederatedBlockAPIL
 	return r
 }
 
-func (r FederatedBlockAPIListRequest) Execute() (*FederationListFederatedBlockResponse, *http.Response, error) {
+func (r FederatedBlockAPIListRequest) Execute() (*ListFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -377,13 +377,13 @@ func (a *FederatedBlockAPIService) List(ctx context.Context) FederatedBlockAPILi
 
 // Execute executes the request
 //
-//	@return FederationListFederatedBlockResponse
-func (a *FederatedBlockAPIService) ListExecute(r FederatedBlockAPIListRequest) (*FederationListFederatedBlockResponse, *http.Response, error) {
+//	@return ListFederatedBlockResponse
+func (a *FederatedBlockAPIService) ListExecute(r FederatedBlockAPIListRequest) (*ListFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListFederatedBlockResponse
+		localVarReturnValue *ListFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedBlockAPIService.List")
@@ -481,7 +481,7 @@ func (r FederatedBlockAPIReadRequest) Fields(fields string) FederatedBlockAPIRea
 	return r
 }
 
-func (r FederatedBlockAPIReadRequest) Execute() (*FederationReadFederatedBlockResponse, *http.Response, error) {
+func (r FederatedBlockAPIReadRequest) Execute() (*ReadFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -505,13 +505,13 @@ func (a *FederatedBlockAPIService) Read(ctx context.Context, id string) Federate
 
 // Execute executes the request
 //
-//	@return FederationReadFederatedBlockResponse
-func (a *FederatedBlockAPIService) ReadExecute(r FederatedBlockAPIReadRequest) (*FederationReadFederatedBlockResponse, *http.Response, error) {
+//	@return ReadFederatedBlockResponse
+func (a *FederatedBlockAPIService) ReadExecute(r FederatedBlockAPIReadRequest) (*ReadFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationReadFederatedBlockResponse
+		localVarReturnValue *ReadFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedBlockAPIService.Read")
@@ -580,15 +580,15 @@ type FederatedBlockAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService FederatedBlockAPI
 	id         string
-	body       *FederationFederatedBlock
+	body       *FederatedBlock
 }
 
-func (r FederatedBlockAPIUpdateRequest) Body(body FederationFederatedBlock) FederatedBlockAPIUpdateRequest {
+func (r FederatedBlockAPIUpdateRequest) Body(body FederatedBlock) FederatedBlockAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r FederatedBlockAPIUpdateRequest) Execute() (*FederationUpdateFederatedBlockResponse, *http.Response, error) {
+func (r FederatedBlockAPIUpdateRequest) Execute() (*UpdateFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -612,13 +612,13 @@ func (a *FederatedBlockAPIService) Update(ctx context.Context, id string) Federa
 
 // Execute executes the request
 //
-//	@return FederationUpdateFederatedBlockResponse
-func (a *FederatedBlockAPIService) UpdateExecute(r FederatedBlockAPIUpdateRequest) (*FederationUpdateFederatedBlockResponse, *http.Response, error) {
+//	@return UpdateFederatedBlockResponse
+func (a *FederatedBlockAPIService) UpdateExecute(r FederatedBlockAPIUpdateRequest) (*UpdateFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationUpdateFederatedBlockResponse
+		localVarReturnValue *UpdateFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedBlockAPIService.Update")

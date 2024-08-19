@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> FederationCreateFederatedBlockResponse Create(ctx).Body(body).Execute()
+> CreateFederatedBlockResponse Create(ctx).Body(body).Execute()
 
 Create the federated block.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationFederatedBlock("Address_example", "FederatedRealm_example") // FederationFederatedBlock | 
+	body := *ipamfederation.NewFederatedBlock("Address_example", "FederatedRealm_example") // FederatedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedBlockAPI.Create(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedBlockAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: FederationCreateFederatedBlockResponse
+	// response from `Create`: CreateFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedBlockAPI.Create`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a `FederatedBlockAPICreateReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationFederatedBlock**](FederationFederatedBlock.md) |  | 
+**body** | [**FederatedBlock**](FederatedBlock.md) |  | 
 
 ### Return type
 
-[**FederationCreateFederatedBlockResponse**](FederationCreateFederatedBlockResponse.md)
+[**CreateFederatedBlockResponse**](CreateFederatedBlockResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> FederationListFederatedBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListFederatedBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the federated blocks.
 
@@ -174,7 +174,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedBlockAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: FederationListFederatedBlockResponse
+	// response from `List`: ListFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedBlockAPI.List`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListFederatedBlockResponse**](FederationListFederatedBlockResponse.md)
+[**ListFederatedBlockResponse**](ListFederatedBlockResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> FederationReadFederatedBlockResponse Read(ctx, id).Fields(fields).Execute()
+> ReadFederatedBlockResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the federated block.
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedBlockAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: FederationReadFederatedBlockResponse
+	// response from `Read`: ReadFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedBlockAPI.Read`: %v\n", resp)
 }
 ```
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationReadFederatedBlockResponse**](FederationReadFederatedBlockResponse.md)
+[**ReadFederatedBlockResponse**](ReadFederatedBlockResponse.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> FederationUpdateFederatedBlockResponse Update(ctx, id).Body(body).Execute()
+> UpdateFederatedBlockResponse Update(ctx, id).Body(body).Execute()
 
 Update the federated block.
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationFederatedBlock("Address_example", "FederatedRealm_example") // FederationFederatedBlock | 
+	body := *ipamfederation.NewFederatedBlock("Address_example", "FederatedRealm_example") // FederatedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedBlockAPI.Update(context.Background(), id).Body(body).Execute()
@@ -318,7 +318,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedBlockAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: FederationUpdateFederatedBlockResponse
+	// response from `Update`: UpdateFederatedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedBlockAPI.Update`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a `FederatedBlockAPIUpdateReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationFederatedBlock**](FederationFederatedBlock.md) |  | 
+**body** | [**FederatedBlock**](FederatedBlock.md) |  | 
 
 ### Return type
 
-[**FederationUpdateFederatedBlockResponse**](FederationUpdateFederatedBlockResponse.md)
+[**UpdateFederatedBlockResponse**](UpdateFederatedBlockResponse.md)
 
 ### Authorization
 

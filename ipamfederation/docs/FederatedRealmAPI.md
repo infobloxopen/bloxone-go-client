@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> FederationCreateFederatedRealmResponse Create(ctx).Body(body).Execute()
+> CreateFederatedRealmResponse Create(ctx).Body(body).Execute()
 
 Create the federated realm.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationFederatedRealm("Name_example") // FederationFederatedRealm | 
+	body := *ipamfederation.NewFederatedRealm("Name_example") // FederatedRealm | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedRealmAPI.Create(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedRealmAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: FederationCreateFederatedRealmResponse
+	// response from `Create`: CreateFederatedRealmResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedRealmAPI.Create`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a `FederatedRealmAPICreateReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationFederatedRealm**](FederationFederatedRealm.md) |  | 
+**body** | [**FederatedRealm**](FederatedRealm.md) |  | 
 
 ### Return type
 
-[**FederationCreateFederatedRealmResponse**](FederationCreateFederatedRealmResponse.md)
+[**CreateFederatedRealmResponse**](CreateFederatedRealmResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> FederationListFederatedRealmResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListFederatedRealmResponse List(ctx).Filter(filter).OrderBy(orderBy).Fields(fields).Offset(offset).Limit(limit).PageToken(pageToken).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve federated realms.
 
@@ -174,7 +174,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedRealmAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: FederationListFederatedRealmResponse
+	// response from `List`: ListFederatedRealmResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedRealmAPI.List`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListFederatedRealmResponse**](FederationListFederatedRealmResponse.md)
+[**ListFederatedRealmResponse**](ListFederatedRealmResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> FederationReadFederatedRealmResponse Read(ctx, id).Fields(fields).Execute()
+> ReadFederatedRealmResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the federated realm.
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedRealmAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: FederationReadFederatedRealmResponse
+	// response from `Read`: ReadFederatedRealmResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedRealmAPI.Read`: %v\n", resp)
 }
 ```
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationReadFederatedRealmResponse**](FederationReadFederatedRealmResponse.md)
+[**ReadFederatedRealmResponse**](ReadFederatedRealmResponse.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> FederationUpdateFederatedRealmResponse Update(ctx, id).Body(body).Execute()
+> UpdateFederatedRealmResponse Update(ctx, id).Body(body).Execute()
 
 Update the federated realm.
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationFederatedRealm("Name_example") // FederationFederatedRealm | 
+	body := *ipamfederation.NewFederatedRealm("Name_example") // FederatedRealm | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedRealmAPI.Update(context.Background(), id).Body(body).Execute()
@@ -318,7 +318,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FederatedRealmAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: FederationUpdateFederatedRealmResponse
+	// response from `Update`: UpdateFederatedRealmResponse
 	fmt.Fprintf(os.Stdout, "Response from `FederatedRealmAPI.Update`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a `FederatedRealmAPIUpdateReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationFederatedRealm**](FederationFederatedRealm.md) |  | 
+**body** | [**FederatedRealm**](FederatedRealm.md) |  | 
 
 ### Return type
 
-[**FederationUpdateFederatedRealmResponse**](FederationUpdateFederatedRealmResponse.md)
+[**UpdateFederatedRealmResponse**](UpdateFederatedRealmResponse.md)
 
 ### Authorization
 

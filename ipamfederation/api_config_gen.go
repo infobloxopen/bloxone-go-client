@@ -32,8 +32,8 @@ type ConfigGenAPI interface {
 	Fetch(ctx context.Context, ophid string) ConfigGenAPIFetchRequest
 
 	// FetchExecute executes the request
-	//  @return FederationGenerateConfigBundleResponse
-	FetchExecute(r ConfigGenAPIFetchRequest) (*FederationGenerateConfigBundleResponse, *http.Response, error)
+	//  @return GenerateConfigBundleResponse
+	FetchExecute(r ConfigGenAPIFetchRequest) (*GenerateConfigBundleResponse, *http.Response, error)
 	/*
 		UpdateConfigStatus Method for UpdateConfigStatus
 
@@ -43,8 +43,8 @@ type ConfigGenAPI interface {
 	UpdateConfigStatus(ctx context.Context) ConfigGenAPIUpdateConfigStatusRequest
 
 	// UpdateConfigStatusExecute executes the request
-	//  @return FederationHealthCheckConfigResponse
-	UpdateConfigStatusExecute(r ConfigGenAPIUpdateConfigStatusRequest) (*FederationHealthCheckConfigResponse, *http.Response, error)
+	//  @return HealthCheckConfigResponse
+	UpdateConfigStatusExecute(r ConfigGenAPIUpdateConfigStatusRequest) (*HealthCheckConfigResponse, *http.Response, error)
 }
 
 // ConfigGenAPIService ConfigGenAPI service
@@ -56,7 +56,7 @@ type ConfigGenAPIFetchRequest struct {
 	ophid      string
 }
 
-func (r ConfigGenAPIFetchRequest) Execute() (*FederationGenerateConfigBundleResponse, *http.Response, error) {
+func (r ConfigGenAPIFetchRequest) Execute() (*GenerateConfigBundleResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -77,13 +77,13 @@ func (a *ConfigGenAPIService) Fetch(ctx context.Context, ophid string) ConfigGen
 
 // Execute executes the request
 //
-//	@return FederationGenerateConfigBundleResponse
-func (a *ConfigGenAPIService) FetchExecute(r ConfigGenAPIFetchRequest) (*FederationGenerateConfigBundleResponse, *http.Response, error) {
+//	@return GenerateConfigBundleResponse
+func (a *ConfigGenAPIService) FetchExecute(r ConfigGenAPIFetchRequest) (*GenerateConfigBundleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationGenerateConfigBundleResponse
+		localVarReturnValue *GenerateConfigBundleResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ConfigGenAPIService.Fetch")
@@ -148,15 +148,15 @@ func (a *ConfigGenAPIService) FetchExecute(r ConfigGenAPIFetchRequest) (*Federat
 type ConfigGenAPIUpdateConfigStatusRequest struct {
 	ctx        context.Context
 	ApiService ConfigGenAPI
-	body       *FederationHealthConfig
+	body       *HealthConfig
 }
 
-func (r ConfigGenAPIUpdateConfigStatusRequest) Body(body FederationHealthConfig) ConfigGenAPIUpdateConfigStatusRequest {
+func (r ConfigGenAPIUpdateConfigStatusRequest) Body(body HealthConfig) ConfigGenAPIUpdateConfigStatusRequest {
 	r.body = &body
 	return r
 }
 
-func (r ConfigGenAPIUpdateConfigStatusRequest) Execute() (*FederationHealthCheckConfigResponse, *http.Response, error) {
+func (r ConfigGenAPIUpdateConfigStatusRequest) Execute() (*HealthCheckConfigResponse, *http.Response, error) {
 	return r.ApiService.UpdateConfigStatusExecute(r)
 }
 
@@ -175,13 +175,13 @@ func (a *ConfigGenAPIService) UpdateConfigStatus(ctx context.Context) ConfigGenA
 
 // Execute executes the request
 //
-//	@return FederationHealthCheckConfigResponse
-func (a *ConfigGenAPIService) UpdateConfigStatusExecute(r ConfigGenAPIUpdateConfigStatusRequest) (*FederationHealthCheckConfigResponse, *http.Response, error) {
+//	@return HealthCheckConfigResponse
+func (a *ConfigGenAPIService) UpdateConfigStatusExecute(r ConfigGenAPIUpdateConfigStatusRequest) (*HealthCheckConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationHealthCheckConfigResponse
+		localVarReturnValue *HealthCheckConfigResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ConfigGenAPIService.UpdateConfigStatus")

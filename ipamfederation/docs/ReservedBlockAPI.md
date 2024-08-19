@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> FederationCreateReservedBlockResponse Create(ctx).Body(body).Execute()
+> CreateReservedBlockResponse Create(ctx).Body(body).Execute()
 
 Create the reserved block.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationReservedBlock("Address_example", "FederatedRealm_example") // FederationReservedBlock | 
+	body := *ipamfederation.NewReservedBlock("Address_example", "FederatedRealm_example") // ReservedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.ReservedBlockAPI.Create(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReservedBlockAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: FederationCreateReservedBlockResponse
+	// response from `Create`: CreateReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `ReservedBlockAPI.Create`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a `ReservedBlockAPICreateReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationReservedBlock**](FederationReservedBlock.md) |  | 
+**body** | [**ReservedBlock**](ReservedBlock.md) |  | 
 
 ### Return type
 
-[**FederationCreateReservedBlockResponse**](FederationCreateReservedBlockResponse.md)
+[**CreateReservedBlockResponse**](CreateReservedBlockResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> FederationListReservedBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListReservedBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the reserved block.
 
@@ -174,7 +174,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReservedBlockAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: FederationListReservedBlockResponse
+	// response from `List`: ListReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `ReservedBlockAPI.List`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListReservedBlockResponse**](FederationListReservedBlockResponse.md)
+[**ListReservedBlockResponse**](ListReservedBlockResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> FederationReadReservedBlockResponse Read(ctx, id).Fields(fields).Execute()
+> ReadReservedBlockResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the reserved block.
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReservedBlockAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: FederationReadReservedBlockResponse
+	// response from `Read`: ReadReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `ReservedBlockAPI.Read`: %v\n", resp)
 }
 ```
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationReadReservedBlockResponse**](FederationReadReservedBlockResponse.md)
+[**ReadReservedBlockResponse**](ReadReservedBlockResponse.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> FederationUpdateReservedBlockResponse Update(ctx, id).Body(body).Execute()
+> UpdateReservedBlockResponse Update(ctx, id).Body(body).Execute()
 
 Update the reserved block.
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationReservedBlock("Address_example", "FederatedRealm_example") // FederationReservedBlock | 
+	body := *ipamfederation.NewReservedBlock("Address_example", "FederatedRealm_example") // ReservedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.ReservedBlockAPI.Update(context.Background(), id).Body(body).Execute()
@@ -318,7 +318,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReservedBlockAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: FederationUpdateReservedBlockResponse
+	// response from `Update`: UpdateReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `ReservedBlockAPI.Update`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a `ReservedBlockAPIUpdateReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationReservedBlock**](FederationReservedBlock.md) |  | 
+**body** | [**ReservedBlock**](ReservedBlock.md) |  | 
 
 ### Return type
 
-[**FederationUpdateReservedBlockResponse**](FederationUpdateReservedBlockResponse.md)
+[**UpdateReservedBlockResponse**](UpdateReservedBlockResponse.md)
 
 ### Authorization
 

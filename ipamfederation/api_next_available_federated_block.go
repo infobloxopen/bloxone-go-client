@@ -35,8 +35,8 @@ type NextAvailableFederatedBlockAPI interface {
 	CreateNextAvailableFederatedBlocks(ctx context.Context, id string) NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest
 
 	// CreateNextAvailableFederatedBlocksExecute executes the request
-	//  @return FederationCreateNextAvailableFederatedBlockResponse
-	CreateNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) (*FederationCreateNextAvailableFederatedBlockResponse, *http.Response, error)
+	//  @return CreateNextAvailableFederatedBlockResponse
+	CreateNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) (*CreateNextAvailableFederatedBlockResponse, *http.Response, error)
 	/*
 			CreateNextAvailableOverlappingBlocks Retrieve the next available overlapping block.
 
@@ -50,8 +50,8 @@ type NextAvailableFederatedBlockAPI interface {
 	CreateNextAvailableOverlappingBlocks(ctx context.Context, id string) NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest
 
 	// CreateNextAvailableOverlappingBlocksExecute executes the request
-	//  @return FederationCreateNextAvailableOverlappingBlockResponse
-	CreateNextAvailableOverlappingBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) (*FederationCreateNextAvailableOverlappingBlockResponse, *http.Response, error)
+	//  @return CreateNextAvailableOverlappingBlockResponse
+	CreateNextAvailableOverlappingBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) (*CreateNextAvailableOverlappingBlockResponse, *http.Response, error)
 	/*
 			CreateNextAvailableReservedBlocks Retrieve the next available reserved block.
 
@@ -65,8 +65,8 @@ type NextAvailableFederatedBlockAPI interface {
 	CreateNextAvailableReservedBlocks(ctx context.Context, id string) NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest
 
 	// CreateNextAvailableReservedBlocksExecute executes the request
-	//  @return FederationCreateNextAvailableReservedBlockResponse
-	CreateNextAvailableReservedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) (*FederationCreateNextAvailableReservedBlockResponse, *http.Response, error)
+	//  @return CreateNextAvailableReservedBlockResponse
+	CreateNextAvailableReservedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) (*CreateNextAvailableReservedBlockResponse, *http.Response, error)
 	/*
 			ListNextAvailableFederatedBlocks List the next available federated block.
 
@@ -80,8 +80,8 @@ type NextAvailableFederatedBlockAPI interface {
 	ListNextAvailableFederatedBlocks(ctx context.Context, id string) NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest
 
 	// ListNextAvailableFederatedBlocksExecute executes the request
-	//  @return FederationListNextAvailableFederatedBlockResponse
-	ListNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) (*FederationListNextAvailableFederatedBlockResponse, *http.Response, error)
+	//  @return ListNextAvailableFederatedBlockResponse
+	ListNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) (*ListNextAvailableFederatedBlockResponse, *http.Response, error)
 }
 
 // NextAvailableFederatedBlockAPIService NextAvailableFederatedBlockAPI service
@@ -91,15 +91,15 @@ type NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest str
 	ctx        context.Context
 	ApiService NextAvailableFederatedBlockAPI
 	id         string
-	body       *FederationNextAvailableBlockRequest
+	body       *NextAvailableBlockRequest
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) Body(body FederationNextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) Body(body NextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest {
 	r.body = &body
 	return r
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) Execute() (*FederationCreateNextAvailableFederatedBlockResponse, *http.Response, error) {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) Execute() (*CreateNextAvailableFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateNextAvailableFederatedBlocksExecute(r)
 }
 
@@ -123,13 +123,13 @@ func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableFederatedBloc
 
 // Execute executes the request
 //
-//	@return FederationCreateNextAvailableFederatedBlockResponse
-func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) (*FederationCreateNextAvailableFederatedBlockResponse, *http.Response, error) {
+//	@return CreateNextAvailableFederatedBlockResponse
+func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableFederatedBlocksRequest) (*CreateNextAvailableFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateNextAvailableFederatedBlockResponse
+		localVarReturnValue *CreateNextAvailableFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableFederatedBlockAPIService.CreateNextAvailableFederatedBlocks")
@@ -200,15 +200,15 @@ type NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest s
 	ctx        context.Context
 	ApiService NextAvailableFederatedBlockAPI
 	id         string
-	body       *FederationNextAvailableBlockRequest
+	body       *NextAvailableBlockRequest
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) Body(body FederationNextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) Body(body NextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest {
 	r.body = &body
 	return r
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) Execute() (*FederationCreateNextAvailableOverlappingBlockResponse, *http.Response, error) {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) Execute() (*CreateNextAvailableOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateNextAvailableOverlappingBlocksExecute(r)
 }
 
@@ -232,13 +232,13 @@ func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableOverlappingBl
 
 // Execute executes the request
 //
-//	@return FederationCreateNextAvailableOverlappingBlockResponse
-func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableOverlappingBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) (*FederationCreateNextAvailableOverlappingBlockResponse, *http.Response, error) {
+//	@return CreateNextAvailableOverlappingBlockResponse
+func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableOverlappingBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableOverlappingBlocksRequest) (*CreateNextAvailableOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateNextAvailableOverlappingBlockResponse
+		localVarReturnValue *CreateNextAvailableOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableFederatedBlockAPIService.CreateNextAvailableOverlappingBlocks")
@@ -309,15 +309,15 @@ type NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest stru
 	ctx        context.Context
 	ApiService NextAvailableFederatedBlockAPI
 	id         string
-	body       *FederationNextAvailableBlockRequest
+	body       *NextAvailableBlockRequest
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) Body(body FederationNextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) Body(body NextAvailableBlockRequest) NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest {
 	r.body = &body
 	return r
 }
 
-func (r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) Execute() (*FederationCreateNextAvailableReservedBlockResponse, *http.Response, error) {
+func (r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) Execute() (*CreateNextAvailableReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.CreateNextAvailableReservedBlocksExecute(r)
 }
 
@@ -341,13 +341,13 @@ func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableReservedBlock
 
 // Execute executes the request
 //
-//	@return FederationCreateNextAvailableReservedBlockResponse
-func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableReservedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) (*FederationCreateNextAvailableReservedBlockResponse, *http.Response, error) {
+//	@return CreateNextAvailableReservedBlockResponse
+func (a *NextAvailableFederatedBlockAPIService) CreateNextAvailableReservedBlocksExecute(r NextAvailableFederatedBlockAPICreateNextAvailableReservedBlocksRequest) (*CreateNextAvailableReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationCreateNextAvailableReservedBlockResponse
+		localVarReturnValue *CreateNextAvailableReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableFederatedBlockAPIService.CreateNextAvailableReservedBlocks")
@@ -448,7 +448,7 @@ func (r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) C
 	return r
 }
 
-func (r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) Execute() (*FederationListNextAvailableFederatedBlockResponse, *http.Response, error) {
+func (r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) Execute() (*ListNextAvailableFederatedBlockResponse, *http.Response, error) {
 	return r.ApiService.ListNextAvailableFederatedBlocksExecute(r)
 }
 
@@ -472,13 +472,13 @@ func (a *NextAvailableFederatedBlockAPIService) ListNextAvailableFederatedBlocks
 
 // Execute executes the request
 //
-//	@return FederationListNextAvailableFederatedBlockResponse
-func (a *NextAvailableFederatedBlockAPIService) ListNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) (*FederationListNextAvailableFederatedBlockResponse, *http.Response, error) {
+//	@return ListNextAvailableFederatedBlockResponse
+func (a *NextAvailableFederatedBlockAPIService) ListNextAvailableFederatedBlocksExecute(r NextAvailableFederatedBlockAPIListNextAvailableFederatedBlocksRequest) (*ListNextAvailableFederatedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListNextAvailableFederatedBlockResponse
+		localVarReturnValue *ListNextAvailableFederatedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableFederatedBlockAPIService.ListNextAvailableFederatedBlocks")

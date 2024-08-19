@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListNextAvailableReservedBlocks
 
-> FederationListNextAvailableReservedBlockResponse ListNextAvailableReservedBlocks(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
+> ListNextAvailableReservedBlockResponse ListNextAvailableReservedBlocks(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
 
 List the next available reserved block.
 
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `NextAvailableReservedBlockAPI.ListNextAvailableReservedBlocks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListNextAvailableReservedBlocks`: FederationListNextAvailableReservedBlockResponse
+	// response from `ListNextAvailableReservedBlocks`: ListNextAvailableReservedBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `NextAvailableReservedBlockAPI.ListNextAvailableReservedBlocks`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListNextAvailableReservedBlockResponse**](FederationListNextAvailableReservedBlockResponse.md)
+[**ListNextAvailableReservedBlockResponse**](ListNextAvailableReservedBlockResponse.md)
 
 ### Authorization
 

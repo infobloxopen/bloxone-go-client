@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## Fetch
 
-> FederationGenerateConfigBundleResponse Fetch(ctx, ophid).Execute()
+> GenerateConfigBundleResponse Fetch(ctx, ophid).Execute()
 
 
 
@@ -37,7 +37,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigGenAPI.Fetch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Fetch`: FederationGenerateConfigBundleResponse
+	// response from `Fetch`: GenerateConfigBundleResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConfigGenAPI.Fetch`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationGenerateConfigBundleResponse**](FederationGenerateConfigBundleResponse.md)
+[**GenerateConfigBundleResponse**](GenerateConfigBundleResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## UpdateConfigStatus
 
-> FederationHealthCheckConfigResponse UpdateConfigStatus(ctx).Body(body).Execute()
+> HealthCheckConfigResponse UpdateConfigStatus(ctx).Body(body).Execute()
 
 
 
@@ -96,7 +96,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationHealthConfig() // FederationHealthConfig | 
+	body := *ipamfederation.NewHealthConfig() // HealthConfig | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.ConfigGenAPI.UpdateConfigStatus(context.Background()).Body(body).Execute()
@@ -104,7 +104,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConfigGenAPI.UpdateConfigStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateConfigStatus`: FederationHealthCheckConfigResponse
+	// response from `UpdateConfigStatus`: HealthCheckConfigResponse
 	fmt.Fprintf(os.Stdout, "Response from `ConfigGenAPI.UpdateConfigStatus`: %v\n", resp)
 }
 ```
@@ -120,11 +120,11 @@ Other parameters are passed through a pointer to a `ConfigGenAPIUpdateConfigStat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationHealthConfig**](FederationHealthConfig.md) |  | 
+**body** | [**HealthConfig**](HealthConfig.md) |  | 
 
 ### Return type
 
-[**FederationHealthCheckConfigResponse**](FederationHealthCheckConfigResponse.md)
+[**HealthCheckConfigResponse**](HealthCheckConfigResponse.md)
 
 ### Authorization
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## Bulk
 
-> FederationDelegationBulkResponse Bulk(ctx).Body(body).Execute()
+> DelegationBulkResponse Bulk(ctx).Body(body).Execute()
 
 Execute multiple operations on delegation objects.
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationDelegationBulkRequest() // FederationDelegationBulkRequest | 
+	body := *ipamfederation.NewDelegationBulkRequest() // DelegationBulkRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.DelegationAPI.Bulk(context.Background()).Body(body).Execute()
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.Bulk``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Bulk`: FederationDelegationBulkResponse
+	// response from `Bulk`: DelegationBulkResponse
 	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.Bulk`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a `DelegationAPIBulkRequest` st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationDelegationBulkRequest**](FederationDelegationBulkRequest.md) |  | 
+**body** | [**DelegationBulkRequest**](DelegationBulkRequest.md) |  | 
 
 ### Return type
 
-[**FederationDelegationBulkResponse**](FederationDelegationBulkResponse.md)
+[**DelegationBulkResponse**](DelegationBulkResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## Create
 
-> FederationCreateDelegationResponse Create(ctx).Body(body).Execute()
+> CreateDelegationResponse Create(ctx).Body(body).Execute()
 
 Create the delegation.
 
@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationDelegation("Address_example", []string{"FederatedRealms_example"}) // FederationDelegation | 
+	body := *ipamfederation.NewDelegation("Address_example", []string{"FederatedRealms_example"}) // Delegation | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.DelegationAPI.Create(context.Background()).Body(body).Execute()
@@ -110,7 +110,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: FederationCreateDelegationResponse
+	// response from `Create`: CreateDelegationResponse
 	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.Create`: %v\n", resp)
 }
 ```
@@ -126,11 +126,11 @@ Other parameters are passed through a pointer to a `DelegationAPICreateRequest` 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationDelegation**](FederationDelegation.md) |  | 
+**body** | [**Delegation**](Delegation.md) |  | 
 
 ### Return type
 
-[**FederationCreateDelegationResponse**](FederationCreateDelegationResponse.md)
+[**CreateDelegationResponse**](CreateDelegationResponse.md)
 
 ### Authorization
 
@@ -274,7 +274,7 @@ Other parameters are passed through a pointer to a `DelegationAPIDeleteWithoutId
 
 ## List
 
-> FederationListDelegationResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListDelegationResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the delegation.
 
@@ -301,7 +301,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: FederationListDelegationResponse
+	// response from `List`: ListDelegationResponse
 	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.List`: %v\n", resp)
 }
 ```
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListDelegationResponse**](FederationListDelegationResponse.md)
+[**ListDelegationResponse**](ListDelegationResponse.md)
 
 ### Authorization
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> FederationReadDelegationResponse Read(ctx, id).Fields(fields).Execute()
+> ReadDelegationResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the delegation.
 
@@ -374,7 +374,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: FederationReadDelegationResponse
+	// response from `Read`: ReadDelegationResponse
 	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.Read`: %v\n", resp)
 }
 ```
@@ -398,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationReadDelegationResponse**](FederationReadDelegationResponse.md)
+[**ReadDelegationResponse**](ReadDelegationResponse.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> FederationUpdateDelegationResponse Update(ctx, id).Body(body).Execute()
+> UpdateDelegationResponse Update(ctx, id).Body(body).Execute()
 
 Update the delegation.
 
@@ -437,7 +437,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationDelegation("Address_example", []string{"FederatedRealms_example"}) // FederationDelegation | 
+	body := *ipamfederation.NewDelegation("Address_example", []string{"FederatedRealms_example"}) // Delegation | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.DelegationAPI.Update(context.Background(), id).Body(body).Execute()
@@ -445,7 +445,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: FederationUpdateDelegationResponse
+	// response from `Update`: UpdateDelegationResponse
 	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.Update`: %v\n", resp)
 }
 ```
@@ -465,11 +465,11 @@ Other parameters are passed through a pointer to a `DelegationAPIUpdateRequest` 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationDelegation**](FederationDelegation.md) |  | 
+**body** | [**Delegation**](Delegation.md) |  | 
 
 ### Return type
 
-[**FederationUpdateDelegationResponse**](FederationUpdateDelegationResponse.md)
+[**UpdateDelegationResponse**](UpdateDelegationResponse.md)
 
 ### Authorization
 

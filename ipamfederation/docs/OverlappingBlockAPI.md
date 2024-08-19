@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> FederationCreateOverlappingBlockResponse Create(ctx).Body(body).Execute()
+> CreateOverlappingBlockResponse Create(ctx).Body(body).Execute()
 
 Create the overlapping block.
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederationOverlappingBlock("Address_example", "FederatedRealm_example") // FederationOverlappingBlock | 
+	body := *ipamfederation.NewOverlappingBlock("Address_example", "FederatedRealm_example") // OverlappingBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.OverlappingBlockAPI.Create(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OverlappingBlockAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: FederationCreateOverlappingBlockResponse
+	// response from `Create`: CreateOverlappingBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `OverlappingBlockAPI.Create`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a `OverlappingBlockAPICreateReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationOverlappingBlock**](FederationOverlappingBlock.md) |  | 
+**body** | [**OverlappingBlock**](OverlappingBlock.md) |  | 
 
 ### Return type
 
-[**FederationCreateOverlappingBlockResponse**](FederationCreateOverlappingBlockResponse.md)
+[**CreateOverlappingBlockResponse**](CreateOverlappingBlockResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> FederationListOverlappingBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
+> ListOverlappingBlockResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).TorderBy(torderBy).Tfilter(tfilter).Execute()
 
 Retrieve the overlapping block.
 
@@ -174,7 +174,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OverlappingBlockAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: FederationListOverlappingBlockResponse
+	// response from `List`: ListOverlappingBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `OverlappingBlockAPI.List`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationListOverlappingBlockResponse**](FederationListOverlappingBlockResponse.md)
+[**ListOverlappingBlockResponse**](ListOverlappingBlockResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> FederationReadOverlappingBlockResponse Read(ctx, id).Fields(fields).Execute()
+> ReadOverlappingBlockResponse Read(ctx, id).Fields(fields).Execute()
 
 Retrieve the overlapping block.
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OverlappingBlockAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: FederationReadOverlappingBlockResponse
+	// response from `Read`: ReadOverlappingBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `OverlappingBlockAPI.Read`: %v\n", resp)
 }
 ```
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationReadOverlappingBlockResponse**](FederationReadOverlappingBlockResponse.md)
+[**ReadOverlappingBlockResponse**](ReadOverlappingBlockResponse.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> FederationUpdateOverlappingBlockResponse Update(ctx, id).Body(body).Execute()
+> UpdateOverlappingBlockResponse Update(ctx, id).Body(body).Execute()
 
 Update the overlapping block.
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederationOverlappingBlock("Address_example", "FederatedRealm_example") // FederationOverlappingBlock | 
+	body := *ipamfederation.NewOverlappingBlock("Address_example", "FederatedRealm_example") // OverlappingBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.OverlappingBlockAPI.Update(context.Background(), id).Body(body).Execute()
@@ -318,7 +318,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OverlappingBlockAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: FederationUpdateOverlappingBlockResponse
+	// response from `Update`: UpdateOverlappingBlockResponse
 	fmt.Fprintf(os.Stdout, "Response from `OverlappingBlockAPI.Update`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a `OverlappingBlockAPIUpdateReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**FederationOverlappingBlock**](FederationOverlappingBlock.md) |  | 
+**body** | [**OverlappingBlock**](OverlappingBlock.md) |  | 
 
 ### Return type
 
-[**FederationUpdateOverlappingBlockResponse**](FederationUpdateOverlappingBlockResponse.md)
+[**UpdateOverlappingBlockResponse**](UpdateOverlappingBlockResponse.md)
 
 ### Authorization
 

@@ -35,8 +35,8 @@ type NextAvailableOverlappingBlockAPI interface {
 	ListNextAvailableOverlappingBlocks(ctx context.Context, id string) NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest
 
 	// ListNextAvailableOverlappingBlocksExecute executes the request
-	//  @return FederationListNextAvailableOverlappingBlockResponse
-	ListNextAvailableOverlappingBlocksExecute(r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) (*FederationListNextAvailableOverlappingBlockResponse, *http.Response, error)
+	//  @return ListNextAvailableOverlappingBlockResponse
+	ListNextAvailableOverlappingBlocksExecute(r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) (*ListNextAvailableOverlappingBlockResponse, *http.Response, error)
 }
 
 // NextAvailableOverlappingBlockAPIService NextAvailableOverlappingBlockAPI service
@@ -76,7 +76,7 @@ func (r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksReques
 	return r
 }
 
-func (r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) Execute() (*FederationListNextAvailableOverlappingBlockResponse, *http.Response, error) {
+func (r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) Execute() (*ListNextAvailableOverlappingBlockResponse, *http.Response, error) {
 	return r.ApiService.ListNextAvailableOverlappingBlocksExecute(r)
 }
 
@@ -100,13 +100,13 @@ func (a *NextAvailableOverlappingBlockAPIService) ListNextAvailableOverlappingBl
 
 // Execute executes the request
 //
-//	@return FederationListNextAvailableOverlappingBlockResponse
-func (a *NextAvailableOverlappingBlockAPIService) ListNextAvailableOverlappingBlocksExecute(r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) (*FederationListNextAvailableOverlappingBlockResponse, *http.Response, error) {
+//	@return ListNextAvailableOverlappingBlockResponse
+func (a *NextAvailableOverlappingBlockAPIService) ListNextAvailableOverlappingBlocksExecute(r NextAvailableOverlappingBlockAPIListNextAvailableOverlappingBlocksRequest) (*ListNextAvailableOverlappingBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListNextAvailableOverlappingBlockResponse
+		localVarReturnValue *ListNextAvailableOverlappingBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableOverlappingBlockAPIService.ListNextAvailableOverlappingBlocks")

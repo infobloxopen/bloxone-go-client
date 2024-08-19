@@ -242,7 +242,6 @@ paths:
       summary: Execute multiple operations on delegation objects.
       tags:
       - delegation
-      - bulk
       x-codegen-request-body-name: body
   /federation/federated_block:
     get:

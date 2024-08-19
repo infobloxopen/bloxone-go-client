@@ -35,8 +35,8 @@ type NextAvailableReservedBlockAPI interface {
 	ListNextAvailableReservedBlocks(ctx context.Context, id string) NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest
 
 	// ListNextAvailableReservedBlocksExecute executes the request
-	//  @return FederationListNextAvailableReservedBlockResponse
-	ListNextAvailableReservedBlocksExecute(r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) (*FederationListNextAvailableReservedBlockResponse, *http.Response, error)
+	//  @return ListNextAvailableReservedBlockResponse
+	ListNextAvailableReservedBlocksExecute(r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) (*ListNextAvailableReservedBlockResponse, *http.Response, error)
 }
 
 // NextAvailableReservedBlockAPIService NextAvailableReservedBlockAPI service
@@ -76,7 +76,7 @@ func (r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) Com
 	return r
 }
 
-func (r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) Execute() (*FederationListNextAvailableReservedBlockResponse, *http.Response, error) {
+func (r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) Execute() (*ListNextAvailableReservedBlockResponse, *http.Response, error) {
 	return r.ApiService.ListNextAvailableReservedBlocksExecute(r)
 }
 
@@ -100,13 +100,13 @@ func (a *NextAvailableReservedBlockAPIService) ListNextAvailableReservedBlocks(c
 
 // Execute executes the request
 //
-//	@return FederationListNextAvailableReservedBlockResponse
-func (a *NextAvailableReservedBlockAPIService) ListNextAvailableReservedBlocksExecute(r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) (*FederationListNextAvailableReservedBlockResponse, *http.Response, error) {
+//	@return ListNextAvailableReservedBlockResponse
+func (a *NextAvailableReservedBlockAPIService) ListNextAvailableReservedBlocksExecute(r NextAvailableReservedBlockAPIListNextAvailableReservedBlocksRequest) (*ListNextAvailableReservedBlockResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *FederationListNextAvailableReservedBlockResponse
+		localVarReturnValue *ListNextAvailableReservedBlockResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NextAvailableReservedBlockAPIService.ListNextAvailableReservedBlocks")
