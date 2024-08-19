@@ -103,7 +103,7 @@ func TestDelegationAPIService(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DelegationAPI.bulkDelegationBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DelegationAPI.Bulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

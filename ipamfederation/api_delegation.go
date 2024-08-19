@@ -23,6 +23,19 @@ import (
 
 type DelegationAPI interface {
 	/*
+		Bulk Execute multiple operations on delegation objects.
+
+		Use this method to create, update, or delete multiple __Delegation__ objects.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DelegationAPIBulkRequest
+	*/
+	Bulk(ctx context.Context) DelegationAPIBulkRequest
+
+	// BulkExecute executes the request
+	//  @return FederationDelegationBulkResponse
+	BulkExecute(r DelegationAPIBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error)
+	/*
 			Create Create the delegation.
 
 			Use this method to create a __Delegation__ object.
@@ -106,23 +119,114 @@ type DelegationAPI interface {
 	// UpdateExecute executes the request
 	//  @return FederationUpdateDelegationResponse
 	UpdateExecute(r DelegationAPIUpdateRequest) (*FederationUpdateDelegationResponse, *http.Response, error)
-	/*
-		bulkDelegationBulk Execute multiple operations on delegation objects.
-
-		Use this method to create, update, or delete multiple __Delegation__ objects.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DelegationAPIbulkDelegationBulkRequest
-	*/
-	bulkDelegationBulk(ctx context.Context) DelegationAPIbulkDelegationBulkRequest
-
-	// bulkDelegationBulkExecute executes the request
-	//  @return FederationDelegationBulkResponse
-	bulkDelegationBulkExecute(r DelegationAPIbulkDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error)
 }
 
 // DelegationAPIService DelegationAPI service
 type DelegationAPIService internal.Service
+
+type DelegationAPIBulkRequest struct {
+	ctx        context.Context
+	ApiService DelegationAPI
+	body       *FederationDelegationBulkRequest
+}
+
+func (r DelegationAPIBulkRequest) Body(body FederationDelegationBulkRequest) DelegationAPIBulkRequest {
+	r.body = &body
+	return r
+}
+
+func (r DelegationAPIBulkRequest) Execute() (*FederationDelegationBulkResponse, *http.Response, error) {
+	return r.ApiService.BulkExecute(r)
+}
+
+/*
+Bulk Execute multiple operations on delegation objects.
+
+Use this method to create, update, or delete multiple __Delegation__ objects.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DelegationAPIBulkRequest
+*/
+func (a *DelegationAPIService) Bulk(ctx context.Context) DelegationAPIBulkRequest {
+	return DelegationAPIBulkRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return FederationDelegationBulkResponse
+func (a *DelegationAPIService) BulkExecute(r DelegationAPIBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *FederationDelegationBulkResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.Bulk")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/federation/delegation_bulk"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type DelegationAPICreateRequest struct {
 	ctx        context.Context
@@ -738,110 +842,6 @@ func (a *DelegationAPIService) UpdateExecute(r DelegationAPIUpdateRequest) (*Fed
 
 	localVarPath := localBasePath + "/federation/delegation/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(internal.ParameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, internal.ReportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DelegationAPIbulkDelegationBulkRequest struct {
-	ctx        context.Context
-	ApiService DelegationAPI
-	body       *FederationDelegationBulkRequest
-}
-
-func (r DelegationAPIbulkDelegationBulkRequest) Body(body FederationDelegationBulkRequest) DelegationAPIbulkDelegationBulkRequest {
-	r.body = &body
-	return r
-}
-
-func (r DelegationAPIbulkDelegationBulkRequest) Execute() (*FederationDelegationBulkResponse, *http.Response, error) {
-	return r.ApiService.bulkDelegationBulkExecute(r)
-}
-
-/*
-bulkDelegationBulk Execute multiple operations on delegation objects.
-
-Use this method to create, update, or delete multiple __Delegation__ objects.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DelegationAPIbulkDelegationBulkRequest
-*/
-func (a *DelegationAPIService) bulkDelegationBulk(ctx context.Context) DelegationAPIbulkDelegationBulkRequest {
-	return DelegationAPIbulkDelegationBulkRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return FederationDelegationBulkResponse
-func (a *DelegationAPIService) bulkDelegationBulkExecute(r DelegationAPIbulkDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *FederationDelegationBulkResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DelegationAPIService.bulkDelegationBulk")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/federation/delegation_bulk"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

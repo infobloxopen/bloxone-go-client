@@ -87,16 +87,16 @@ All URIs are relative to */api/ddi/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BulkAPI* | [**DelegationbulkDelegationBulk**](docs/BulkAPI.md#delegationbulkdelegationbulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
+*BulkAPI* | [**DelegationBulk**](docs/BulkAPI.md#delegationbulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 *ConfigGenAPI* | [**Fetch**](docs/ConfigGenAPI.md#fetch) | **Get** /federation/policy/config/{ophid}/latest | 
 *ConfigGenAPI* | [**UpdateConfigStatus**](docs/ConfigGenAPI.md#updateconfigstatus) | **Post** /federation/policy/config_status | 
+*DelegationAPI* | [**Bulk**](docs/DelegationAPI.md#bulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 *DelegationAPI* | [**Create**](docs/DelegationAPI.md#create) | **Post** /federation/delegation | Create the delegation.
 *DelegationAPI* | [**Delete**](docs/DelegationAPI.md#delete) | **Delete** /federation/delegation/{id} | Delete the delegation.
 *DelegationAPI* | [**DeleteWithoutId**](docs/DelegationAPI.md#deletewithoutid) | **Delete** /federation/delegation | No-op DELETE Delegation operation.
 *DelegationAPI* | [**List**](docs/DelegationAPI.md#list) | **Get** /federation/delegation | Retrieve the delegation.
 *DelegationAPI* | [**Read**](docs/DelegationAPI.md#read) | **Get** /federation/delegation/{id} | Retrieve the delegation.
 *DelegationAPI* | [**Update**](docs/DelegationAPI.md#update) | **Patch** /federation/delegation/{id} | Update the delegation.
-*DelegationAPI* | [**bulkDelegationBulk**](docs/DelegationAPI.md#bulkdelegationbulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 *FederatedBlockAPI* | [**Create**](docs/FederatedBlockAPI.md#create) | **Post** /federation/federated_block | Create the federated block.
 *FederatedBlockAPI* | [**Delete**](docs/FederatedBlockAPI.md#delete) | **Delete** /federation/federated_block/{id} | Delete the federated block.
 *FederatedBlockAPI* | [**List**](docs/FederatedBlockAPI.md#list) | **Get** /federation/federated_block | Retrieve the federated blocks.

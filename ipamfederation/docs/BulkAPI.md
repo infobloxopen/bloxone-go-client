@@ -4,13 +4,13 @@ All URIs are relative to */api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DelegationbulkDelegationBulk**](BulkAPI.md#DelegationbulkDelegationBulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
+[**DelegationBulk**](BulkAPI.md#DelegationBulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 
 
 
-## DelegationbulkDelegationBulk
+## DelegationBulk
 
-> FederationDelegationBulkResponse DelegationbulkDelegationBulk(ctx).Body(body).Execute()
+> FederationDelegationBulkResponse DelegationBulk(ctx).Body(body).Execute()
 
 Execute multiple operations on delegation objects.
 
@@ -33,13 +33,13 @@ func main() {
 	body := *ipamfederation.NewFederationDelegationBulkRequest() // FederationDelegationBulkRequest | 
 
 	apiClient := ipamfederation.NewAPIClient()
-	resp, r, err := apiClient.BulkAPI.DelegationbulkDelegationBulk(context.Background()).Body(body).Execute()
+	resp, r, err := apiClient.BulkAPI.DelegationBulk(context.Background()).Body(body).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkAPI.DelegationbulkDelegationBulk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkAPI.DelegationBulk``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DelegationbulkDelegationBulk`: FederationDelegationBulkResponse
-	fmt.Fprintf(os.Stdout, "Response from `BulkAPI.DelegationbulkDelegationBulk`: %v\n", resp)
+	// response from `DelegationBulk`: FederationDelegationBulkResponse
+	fmt.Fprintf(os.Stdout, "Response from `BulkAPI.DelegationBulk`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `BulkAPIDelegationbulkDelegationBulkRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `BulkAPIDelegationBulkRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -22,48 +22,48 @@ import (
 
 type BulkAPI interface {
 	/*
-		DelegationbulkDelegationBulk Execute multiple operations on delegation objects.
+		DelegationBulk Execute multiple operations on delegation objects.
 
 		Use this method to create, update, or delete multiple __Delegation__ objects.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BulkAPIDelegationbulkDelegationBulkRequest
+		@return BulkAPIDelegationBulkRequest
 	*/
-	DelegationbulkDelegationBulk(ctx context.Context) BulkAPIDelegationbulkDelegationBulkRequest
+	DelegationBulk(ctx context.Context) BulkAPIDelegationBulkRequest
 
-	// DelegationbulkDelegationBulkExecute executes the request
+	// DelegationBulkExecute executes the request
 	//  @return FederationDelegationBulkResponse
-	DelegationbulkDelegationBulkExecute(r BulkAPIDelegationbulkDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error)
+	DelegationBulkExecute(r BulkAPIDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error)
 }
 
 // BulkAPIService BulkAPI service
 type BulkAPIService internal.Service
 
-type BulkAPIDelegationbulkDelegationBulkRequest struct {
+type BulkAPIDelegationBulkRequest struct {
 	ctx        context.Context
 	ApiService BulkAPI
 	body       *FederationDelegationBulkRequest
 }
 
-func (r BulkAPIDelegationbulkDelegationBulkRequest) Body(body FederationDelegationBulkRequest) BulkAPIDelegationbulkDelegationBulkRequest {
+func (r BulkAPIDelegationBulkRequest) Body(body FederationDelegationBulkRequest) BulkAPIDelegationBulkRequest {
 	r.body = &body
 	return r
 }
 
-func (r BulkAPIDelegationbulkDelegationBulkRequest) Execute() (*FederationDelegationBulkResponse, *http.Response, error) {
-	return r.ApiService.DelegationbulkDelegationBulkExecute(r)
+func (r BulkAPIDelegationBulkRequest) Execute() (*FederationDelegationBulkResponse, *http.Response, error) {
+	return r.ApiService.DelegationBulkExecute(r)
 }
 
 /*
-DelegationbulkDelegationBulk Execute multiple operations on delegation objects.
+DelegationBulk Execute multiple operations on delegation objects.
 
 Use this method to create, update, or delete multiple __Delegation__ objects.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BulkAPIDelegationbulkDelegationBulkRequest
+	@return BulkAPIDelegationBulkRequest
 */
-func (a *BulkAPIService) DelegationbulkDelegationBulk(ctx context.Context) BulkAPIDelegationbulkDelegationBulkRequest {
-	return BulkAPIDelegationbulkDelegationBulkRequest{
+func (a *BulkAPIService) DelegationBulk(ctx context.Context) BulkAPIDelegationBulkRequest {
+	return BulkAPIDelegationBulkRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -72,7 +72,7 @@ func (a *BulkAPIService) DelegationbulkDelegationBulk(ctx context.Context) BulkA
 // Execute executes the request
 //
 //	@return FederationDelegationBulkResponse
-func (a *BulkAPIService) DelegationbulkDelegationBulkExecute(r BulkAPIDelegationbulkDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error) {
+func (a *BulkAPIService) DelegationBulkExecute(r BulkAPIDelegationBulkRequest) (*FederationDelegationBulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -80,7 +80,7 @@ func (a *BulkAPIService) DelegationbulkDelegationBulkExecute(r BulkAPIDelegation
 		localVarReturnValue *FederationDelegationBulkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkAPIService.DelegationbulkDelegationBulk")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkAPIService.DelegationBulk")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

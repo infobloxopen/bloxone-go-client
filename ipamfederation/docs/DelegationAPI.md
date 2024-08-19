@@ -4,14 +4,80 @@ All URIs are relative to */api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Bulk**](DelegationAPI.md#Bulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 [**Create**](DelegationAPI.md#Create) | **Post** /federation/delegation | Create the delegation.
 [**Delete**](DelegationAPI.md#Delete) | **Delete** /federation/delegation/{id} | Delete the delegation.
 [**DeleteWithoutId**](DelegationAPI.md#DeleteWithoutId) | **Delete** /federation/delegation | No-op DELETE Delegation operation.
 [**List**](DelegationAPI.md#List) | **Get** /federation/delegation | Retrieve the delegation.
 [**Read**](DelegationAPI.md#Read) | **Get** /federation/delegation/{id} | Retrieve the delegation.
 [**Update**](DelegationAPI.md#Update) | **Patch** /federation/delegation/{id} | Update the delegation.
-[**bulkDelegationBulk**](DelegationAPI.md#bulkDelegationBulk) | **Post** /federation/delegation_bulk | Execute multiple operations on delegation objects.
 
+
+
+## Bulk
+
+> FederationDelegationBulkResponse Bulk(ctx).Body(body).Execute()
+
+Execute multiple operations on delegation objects.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipamfederation"
+)
+
+func main() {
+	body := *ipamfederation.NewFederationDelegationBulkRequest() // FederationDelegationBulkRequest | 
+
+	apiClient := ipamfederation.NewAPIClient()
+	resp, r, err := apiClient.DelegationAPI.Bulk(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.Bulk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Bulk`: FederationDelegationBulkResponse
+	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.Bulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DelegationAPIBulkRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**body** | [**FederationDelegationBulkRequest**](FederationDelegationBulkRequest.md) |  | 
+
+### Return type
+
+[**FederationDelegationBulkResponse**](FederationDelegationBulkResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Create
@@ -404,72 +470,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FederationUpdateDelegationResponse**](FederationUpdateDelegationResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## bulkDelegationBulk
-
-> FederationDelegationBulkResponse bulkDelegationBulk(ctx).Body(body).Execute()
-
-Execute multiple operations on delegation objects.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/infobloxopen/bloxone-go-client/ipamfederation"
-)
-
-func main() {
-	body := *ipamfederation.NewFederationDelegationBulkRequest() // FederationDelegationBulkRequest | 
-
-	apiClient := ipamfederation.NewAPIClient()
-	resp, r, err := apiClient.DelegationAPI.bulkDelegationBulk(context.Background()).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DelegationAPI.bulkDelegationBulk``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `bulkDelegationBulk`: FederationDelegationBulkResponse
-	fmt.Fprintf(os.Stdout, "Response from `DelegationAPI.bulkDelegationBulk`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DelegationAPIbulkDelegationBulkRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**body** | [**FederationDelegationBulkRequest**](FederationDelegationBulkRequest.md) |  | 
-
-### Return type
-
-[**FederationDelegationBulkResponse**](FederationDelegationBulkResponse.md)
 
 ### Authorization
 
