@@ -2,6 +2,7 @@ package client
 
 import (
 	"github.com/infobloxopen/bloxone-go-client/anycast"
+	"github.com/infobloxopen/bloxone-go-client/clouddiscovery"
 	"github.com/infobloxopen/bloxone-go-client/dfp"
 	"github.com/infobloxopen/bloxone-go-client/dnsconfig"
 	"github.com/infobloxopen/bloxone-go-client/dnsdata"
@@ -18,6 +19,7 @@ import (
 // APIClient is an aggregation of different BloxOne API clients.
 type APIClient struct {
 	IPAddressManagementAPI *ipam.APIClient
+	CloudDiscoveryAPI      *clouddiscovery.APIClient
 	DNSConfigurationAPI    *dnsconfig.APIClient
 	DNSDataAPI             *dnsdata.APIClient
 	HostActivationAPI      *infraprovision.APIClient
@@ -54,6 +56,7 @@ type APIClient struct {
 func NewAPIClient(options ...option.ClientOption) *APIClient {
 	return &APIClient{
 		IPAddressManagementAPI: ipam.NewAPIClient(options...),
+		CloudDiscoveryAPI:      clouddiscovery.NewAPIClient(options...),
 		DNSConfigurationAPI:    dnsconfig.NewAPIClient(options...),
 		DNSDataAPI:             dnsdata.NewAPIClient(options...),
 		HostActivationAPI:      infraprovision.NewAPIClient(options...),
