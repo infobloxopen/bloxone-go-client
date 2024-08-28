@@ -1,0 +1,2012 @@
+openapi: 3.0.1
+info:
+  description: "The DDI IPAM Federation application enables a SaaS administrator to\
+    \ manage multiple IPAM systems from one central control point CSP.  \n\n"
+  title: IPAM Federation API
+  version: v1
+servers:
+- url: /api/ddi/v1
+security:
+- ApiKeyAuth: []
+paths:
+  /federation/federated_block:
+    get:
+      description: |-
+        Use this method to retrieve __FederatedBlock__ objects.
+        The __FederatedBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+      operationId: federated_blockList
+      parameters:
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListFederatedBlockResponse'
+          description: GET operation response
+      summary: Retrieve the federated blocks.
+      tags:
+      - federated_block
+    post:
+      description: |-
+        Use this method to create a __FederatedBlock__ object.
+        The __FederatedBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+      operationId: federated_blockCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationFederatedBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateFederatedBlockResponse'
+          description: POST operation response
+      summary: Create the federated block.
+      tags:
+      - federated_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_block/{id}:
+    delete:
+      description: |-
+        Use this method to delete a __FederatedBlock__ object.
+        The __FederatedBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+      operationId: federated_blockDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Delete the federated block.
+      tags:
+      - federated_block
+    get:
+      description: |-
+        Use this method to retrieve a __FederatedBlock__ object.
+        The __FederatedBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+      operationId: federated_blockRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationReadFederatedBlockResponse'
+          description: GET operation response
+      summary: Retrieve the federated block.
+      tags:
+      - federated_block
+    patch:
+      description: |-
+        Use this method to update a __FederatedBlock__ object.
+        The __FederatedBlock__ object allows a uniform representation of the address space segmentation, supporting functions such as administrative grouping, routing aggregation, delegation etc.
+      operationId: federated_blockUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationFederatedBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationUpdateFederatedBlockResponse'
+          description: PATCH operation response
+      summary: Update the federated block.
+      tags:
+      - federated_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_block/{id}/next_available_federated_block:
+    get:
+      description: |-
+        Use this method to generate the next "n" available __FederatedBlock__ object with user specified predicates.
+        The response will be "n" __FederatedBlock__ objects.
+      operationId: next_available_federated_blockListNextAvailableFederatedBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "The CIDR of the federated block. This is required, if _address_\
+          \ does not specify it in its input."
+        in: query
+        name: cidr
+        schema:
+          format: int64
+          type: integer
+      - description: "The count of __Block__ required. If not provided, it will default\
+          \ to 1."
+        in: query
+        name: count
+        schema:
+          format: int64
+          type: integer
+      - description: The name to be provided.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: The description for the _federation/federated_block_. May contain
+          0 to 1024 characters. Can include UTF-8.
+        in: query
+        name: comment
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListNextAvailableFederatedBlockResponse'
+          description: GET operation response
+      summary: List the next available federated block.
+      tags:
+      - next_available_federated_block
+    post:
+      description: |-
+        Use this method to generate the next "n" available __FederatedBlock__ object with user specified predicates.
+        The response will be "n" __FederatedBlock__ objects.
+      operationId: next_available_federated_blockCreateNextAvailableFederatedBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationNextAvailableBlockRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateNextAvailableFederatedBlockResponse'
+          description: POST operation response
+      summary: Retrieve the next available federated block.
+      tags:
+      - next_available_federated_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_block/{id}/next_available_overlapping_block:
+    get:
+      description: |-
+        Use this method to list the next "n" available __OverlappingBlock__ object with user specified predicates.
+        The response will be "n" __OverlappingBlock__ objects.
+      operationId: next_available_overlapping_blockListNextAvailableOverlappingBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "The CIDR of the federated block. This is required, if _address_\
+          \ does not specify it in its input."
+        in: query
+        name: cidr
+        schema:
+          format: int64
+          type: integer
+      - description: "The count of __Block__ required. If not provided, it will default\
+          \ to 1."
+        in: query
+        name: count
+        schema:
+          format: int64
+          type: integer
+      - description: The name to be provided.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: The description for the _federation/federated_block_. May contain
+          0 to 1024 characters. Can include UTF-8.
+        in: query
+        name: comment
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListNextAvailableOverlappingBlockResponse'
+          description: GET operation response
+      summary: List the next available overlapping block.
+      tags:
+      - next_available_overlapping_block
+    post:
+      description: |-
+        Use this method to generate the next "n" available __OverlappingBlock__ object with user specified predicates.
+        The response will be "n" __OverlappingBlock__ objects.
+      operationId: next_available_federated_blockCreateNextAvailableOverlappingBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationNextAvailableBlockRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateNextAvailableOverlappingBlockResponse'
+          description: POST operation response
+      summary: Retrieve the next available overlapping block.
+      tags:
+      - next_available_federated_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_block/{id}/next_available_reserved_block:
+    get:
+      description: |-
+        Use this method to list the next "n" available __ReservedBlock__ object with user specified predicates.
+        The response will be "n" __ReservedBlock__ objects.
+      operationId: next_available_reserved_blockListNextAvailableReservedBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "The CIDR of the federated block. This is required, if _address_\
+          \ does not specify it in its input."
+        in: query
+        name: cidr
+        schema:
+          format: int64
+          type: integer
+      - description: "The count of __Block__ required. If not provided, it will default\
+          \ to 1."
+        in: query
+        name: count
+        schema:
+          format: int64
+          type: integer
+      - description: The name to be provided.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: The description for the _federation/federated_block_. May contain
+          0 to 1024 characters. Can include UTF-8.
+        in: query
+        name: comment
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListNextAvailableReservedBlockResponse'
+          description: GET operation response
+      summary: List the next available reserved block.
+      tags:
+      - next_available_reserved_block
+    post:
+      description: |-
+        Use this method to generate the next "n" available __ReservedBlock__ object with user specified predicates.
+        The response will be "n" __ReservedBlock__ objects.
+      operationId: next_available_federated_blockCreateNextAvailableReservedBlocks
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationNextAvailableBlockRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateNextAvailableReservedBlockResponse'
+          description: POST operation response
+      summary: Retrieve the next available reserved block.
+      tags:
+      - next_available_federated_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_realm:
+    get:
+      description: |-
+        Use this method to retrieve __FederatedRealm__ objects.
+        The __FederatedRealm__ object object is a unique set of federated blocks per realm.
+      operationId: federated_realmList
+      parameters:
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListFederatedRealmResponse'
+          description: GET operation response
+      summary: Retrieve federated realms.
+      tags:
+      - federated_realm
+    post:
+      description: |-
+        Use this method to create a __FederatedRealm__ object.
+        The __FederatedRealm__ object object is a unique set of federated blocks per realm.
+      operationId: federated_realmCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationFederatedRealm'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateFederatedRealmResponse'
+          description: POST operation response
+      summary: Create the federated realm.
+      tags:
+      - federated_realm
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/federated_realm/{id}:
+    delete:
+      description: Use this method to delete a __FederatedRealm__ object.
+      operationId: federated_realmDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Delete federated realm.
+      tags:
+      - federated_realm
+    get:
+      description: |-
+        Use this method to retrieve a __FederatedRealm__ object.
+        The __FederatedRealm__ object object is a unique set of federated blocks per realm.
+      operationId: federated_realmRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationReadFederatedRealmResponse'
+          description: GET operation response
+      summary: Retrieve the federated realm.
+      tags:
+      - federated_realm
+    patch:
+      description: |-
+        Use this method to update a __FederatedRealm__ object.
+        The __FederatedRealm__ object object is a unique set of federated blocks per realm.
+      operationId: federated_realmUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationFederatedRealm'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationUpdateFederatedRealmResponse'
+          description: PATCH operation response
+      summary: Update the federated realm.
+      tags:
+      - federated_realm
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/overlapping_block:
+    get:
+      description: |-
+        Use this method to retrieve __OverlappingBlock__ objects.
+        The __OverlappingBlock__ indicates an address range that may be managed independently by all participating IPAM services.
+      operationId: overlapping_blockList
+      parameters:
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListOverlappingBlockResponse'
+          description: GET operation response
+      summary: Retrieve the overlapping block.
+      tags:
+      - overlapping_block
+    post:
+      description: |-
+        Use this method to create an __OverlappingBlock__ object.
+        The __OverlappingBlock__ indicates an address range that may be managed independently by all participating IPAM services.
+      operationId: overlapping_blockCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationOverlappingBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateOverlappingBlockResponse'
+          description: POST operation response
+      summary: Create the overlapping block.
+      tags:
+      - overlapping_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/overlapping_block/{id}:
+    delete:
+      description: |-
+        Use this method to delete an __OverlappingBlock__ object.
+        The __OverlappingBlock__ indicates an address range that may be managed independently by all participating IPAM services.
+      operationId: overlapping_blockDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Delete the overlapping block.
+      tags:
+      - overlapping_block
+    get:
+      description: |-
+        Use this method to retrieve an __OverlappingBlock__ object.
+        The __OverlappingBlock__ indicates an address range that may be managed independently by all participating IPAM services.
+      operationId: overlapping_blockRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationReadOverlappingBlockResponse'
+          description: GET operation response
+      summary: Retrieve the overlapping block.
+      tags:
+      - overlapping_block
+    patch:
+      description: |-
+        Use this method to update an __OverlappingBlock__ object.
+        The __OverlappingBlock__ indicates an address range that may be managed independently by all participating IPAM services.
+      operationId: overlapping_blockUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationOverlappingBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationUpdateOverlappingBlockResponse'
+          description: PATCH operation response
+      summary: Update the overlapping block.
+      tags:
+      - overlapping_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/reserved_block:
+    get:
+      description: |-
+        Use this method to retrieve __ReservedBlock__ objects.
+        The __ReservedBlock__ indicates an address range for which authority is expressly forbidden. Cooperating IPAM services must not make allocations in this range.
+      operationId: reserved_blockList
+      parameters:
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationListReservedBlockResponse'
+          description: GET operation response
+      summary: Retrieve the reserved block.
+      tags:
+      - reserved_block
+    post:
+      description: |-
+        Use this method to create a __ReservedBlock__ object.
+        The __ReservedBlock__ indicates an address range for which authority is expressly forbidden. Cooperating IPAM services must not make allocations in this range.
+      operationId: reserved_blockCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationReservedBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationCreateReservedBlockResponse'
+          description: POST operation response
+      summary: Create the reserved block.
+      tags:
+      - reserved_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /federation/reserved_block/{id}:
+    delete:
+      description: |-
+        Use this method to delete a __ReservedBlock__ object.
+        The __ReservedBlock__ indicates an address range for which authority is expressly forbidden. Cooperating IPAM services must not make allocations in this range.
+      operationId: reserved_blockDelete
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Delete the reserved block.
+      tags:
+      - reserved_block
+    get:
+      description: |-
+        Use this method to retrieve a __ReservedBlock__ object.
+        The __ReservedBlock__ indicates an address range for which authority is expressly forbidden. Cooperating IPAM services must not make allocations in this range.
+      operationId: reserved_blockRead
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationReadReservedBlockResponse'
+          description: GET operation response
+      summary: Retrieve the reserved block.
+      tags:
+      - reserved_block
+    patch:
+      description: |-
+        Use this method to update a __ReservedBlock__ object.
+        The __ReservedBlock__ indicates an address range for which authority is expressly forbidden. Cooperating IPAM services must not make allocations in this range.
+      operationId: reserved_blockUpdate
+      parameters:
+      - description: An application specific resource identity of a resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/federationReservedBlock'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/federationUpdateReservedBlockResponse'
+          description: PATCH operation response
+      summary: Update the reserved block.
+      tags:
+      - reserved_block
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    federationAllocation:
+      description: The __Allocation__ tracks the distribution of Federated Blocks
+        within each of the supported objects.
+      example:
+        reserved: 5
+        overlapping: 1
+        delegated: 6
+        allocated: 0
+      properties:
+        allocated:
+          description: Percent of total space allocated.
+          format: int64
+          readOnly: true
+          type: integer
+        delegated:
+          description: Percent of total space delegated.
+          format: int64
+          readOnly: true
+          type: integer
+        overlapping:
+          description: Percent of total space in overlapping blocks.
+          format: int64
+          readOnly: true
+          type: integer
+        reserved:
+          description: Percent of total space reserved.
+          format: int64
+          readOnly: true
+          type: integer
+      title: Allocation
+      type: object
+    federationCreateFederatedBlockResponse:
+      description: The response format to create the __FederatedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedBlock'
+      title: CreateFederatedBlockResponse
+      type: object
+    federationCreateFederatedRealmResponse:
+      description: The response format to create the __FederatedRealm__ object.
+      example:
+        result:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedRealm'
+      title: CreateFederatedRealmResponse
+      type: object
+    federationCreateNextAvailableFederatedBlockResponse:
+      description: The response format to allocate next available __FederatedBlock__
+        objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationFederatedBlock'
+          type: array
+      title: CreateNextAvailableFederatedBlockResponse
+      type: object
+    federationCreateNextAvailableOverlappingBlockResponse:
+      description: The response format to allocate next available __OverlappingBlock__
+        objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationOverlappingBlock'
+          type: array
+      title: CreateNextAvailableOverlappingBlockResponse
+      type: object
+    federationCreateNextAvailableReservedBlockResponse:
+      description: The response format to allocate next available __ReservedBlock__
+        objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationReservedBlock'
+          type: array
+      title: CreateNextAvailableReservedBlockResponse
+      type: object
+    federationCreateOverlappingBlockResponse:
+      description: The response format to create the __OverlappingBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationOverlappingBlock'
+      title: CreateOverlappingBlockResponse
+      type: object
+    federationCreateReservedBlockResponse:
+      description: The response format to create the __ReservedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationReservedBlock'
+      title: CreateReservedBlockResponse
+      type: object
+    federationFederatedBlock:
+      description: "A __FederatedBlock__ object (_federation/federated_block_) is\
+        \ a set of contiguous IP addresses with no gap, expressed as a CIDR block.\
+        \ Federated blocks are hierarchical and may be parented to other federated\
+        \ blocks as long as the parent block fully contains the child and no sibling\
+        \ overlaps. Top level federated blocks are parented to a federated realm."
+      example:
+        parent: parent
+        protocol: protocol
+        address: address
+        federated_realm: federated_realm
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        cidr: 72
+        comment: comment
+        id: id
+        allocation_v4:
+          reserved: 5
+          overlapping: 1
+          delegated: 6
+          allocated: 0
+        tags: "{}"
+      properties:
+        address:
+          description: "The address field in form “a.b.c.d/n” where the “/n” may be\
+            \ omitted. In this case, the CIDR value must be defined in the _cidr_\
+            \ field. When reading, the _address_ field is always in the form “a.b.c.d”\
+            ."
+          type: string
+        allocation_v4:
+          $ref: '#/components/schemas/federationAllocation'
+        cidr:
+          description: "The CIDR of the federated block. This is required, if _address_\
+            \ does not specify it in its input."
+          format: int64
+          maximum: 128
+          minimum: 1
+          type: integer
+        comment:
+          description: The description for the federated block. May contain 0 to 1024
+            characters. Can include UTF-8.
+          type: string
+        created_at:
+          description: Time when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        federated_realm:
+          description: The resource identifier.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the federated block. May contain 1 to 256 characters.
+            Can include UTF-8.
+          type: string
+        parent:
+          description: The resource identifier.
+          type: string
+        protocol:
+          description: The type of protocol of federated block (_ip4_ or _ip6_).
+          readOnly: true
+          type: string
+        tags:
+          additionalProperties: false
+          description: The tags for the federated block in JSON format.
+          type: object
+        updated_at:
+          description: Time when the object has been updated. Equals to _created_at_
+            if not updated after creation.
+          format: date-time
+          readOnly: true
+          type: string
+      title: FederatedBlock
+      type: object
+    federationFederatedRealm:
+      description: A __FederatedRealm__ object is a unique set of federated blocks
+        per realm.
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        comment: comment
+        id: id
+        allocation_v4:
+          reserved: 5
+          overlapping: 1
+          delegated: 6
+          allocated: 0
+        tags: "{}"
+      properties:
+        allocation_v4:
+          $ref: '#/components/schemas/federationAllocation'
+        comment:
+          description: The description of the federated realm. May contain 0 to 1024
+            characters. Can include UTF-8.
+          type: string
+        created_at:
+          description: Time when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the federated realm. May contain 1 to 256 characters;
+            can include UTF-8.
+          type: string
+        tags:
+          additionalProperties: false
+          description: The tags for the federated realm in JSON format.
+          type: object
+        updated_at:
+          description: Time when the object has been updated. Equals to _created_at_
+            if not updated after creation.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: FederatedRealm
+      type: object
+    federationListFederatedBlockResponse:
+      description: The response format to retrieve __FederatedBlock__ objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        results:
+          description: A list of FederatedBlock objects.
+          items:
+            $ref: '#/components/schemas/federationFederatedBlock'
+          type: array
+      title: ListFederatedBlockResponse
+      type: object
+    federationListFederatedRealmResponse:
+      description: The response format to retrieve __FederatedRealm__ objects.
+      example:
+        results:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        results:
+          description: The list of FederatedRealm objects.
+          items:
+            $ref: '#/components/schemas/federationFederatedRealm'
+          type: array
+      title: ListFederatedRealmResponse
+      type: object
+    federationListNextAvailableFederatedBlockResponse:
+      description: The response format to list next available __FederatedBlock__ objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationFederatedBlock'
+          type: array
+      title: ListNextAvailableFederatedBlockResponse
+      type: object
+    federationListNextAvailableOverlappingBlockResponse:
+      description: The response format to list next available __OverlappingBlock__
+        objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationOverlappingBlock'
+          type: array
+      title: ListNextAvailableOverlappingBlockResponse
+      type: object
+    federationListNextAvailableReservedBlockResponse:
+      description: The response format to list next available __ReservedBlock__ objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/federationReservedBlock'
+          type: array
+      title: ListNextAvailableReservedBlockResponse
+      type: object
+    federationListOverlappingBlockResponse:
+      description: The response format to retrieve __OverlappingBlock__ objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          description: A list of OverlappingBlock objects.
+          items:
+            $ref: '#/components/schemas/federationOverlappingBlock'
+          type: array
+      title: ListOverlappingBlockResponse
+      type: object
+    federationListReservedBlockResponse:
+      description: The response format to retrieve __ReservedBlock__ objects.
+      example:
+        results:
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+        - parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        results:
+          description: A list of ReservedBlock objects.
+          items:
+            $ref: '#/components/schemas/federationReservedBlock'
+          type: array
+      title: ListReservedBlockResponse
+      type: object
+    federationNextAvailableBlockRequest:
+      properties:
+        cidr:
+          description: "The CIDR of the federated block. This is required, if _address_\
+            \ does not specify it in its input."
+          format: int64
+          maximum: 128
+          minimum: 1
+          type: integer
+        comment:
+          description: The description for the _federation/federated_block_. May contain
+            0 to 1024 characters. Can include UTF-8.
+          type: string
+        count:
+          description: "The count of __Block__ required. If not provided, it will\
+            \ default to 1."
+          format: int64
+          type: integer
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name to be provided.
+          type: string
+        tags:
+          additionalProperties: false
+          description: The tags for the federated block in JSON format.
+          type: object
+      type: object
+    federationOverlappingBlock:
+      description: "An __OverlappingBlock__ object (_federation/overlapping_block_)\
+        \ is a set of contiguous IP addresses with no gap, expressed as a CIDR block.\
+        \ It is explicitly associated with a Federated Realm, and implicitly with\
+        \ a Federated Block Parent. An __OverlappingBlock__ in a given realm is said\
+        \ to be the child of the closest enclosing parent. An __OverlappingBlock__\
+        \ indicates an address range that may be managed independently by all participating\
+        \ IPAM services."
+      example:
+        parent: parent
+        protocol: protocol
+        address: address
+        federated_realm: federated_realm
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        cidr: 11
+        comment: comment
+        id: id
+        tags: "{}"
+      properties:
+        address:
+          description: "The address field in form “a.b.c.d/n” where the “/n” may be\
+            \ omitted. In this case, the CIDR value must be defined in the _cidr_\
+            \ field. When reading, the _address_ field is always in the form “a.b.c.d”\
+            ."
+          type: string
+        cidr:
+          description: "The CIDR of the overlapping block. This is required, if _address_\
+            \ does not specify it in its input."
+          format: int64
+          maximum: 128
+          minimum: 1
+          type: integer
+        comment:
+          description: The description for the overlapping block. May contain 0 to
+            1024 characters. Can include UTF-8.
+          type: string
+        created_at:
+          description: Time when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        federated_realm:
+          description: The resource identifier.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the overlapping block. May contain 1 to 256 characters.
+            Can include UTF-8.
+          type: string
+        parent:
+          description: The resource identifier.
+          type: string
+        protocol:
+          description: The type of protocol of overlapping block (_ip4_ or _ip6_).
+          readOnly: true
+          type: string
+        tags:
+          additionalProperties: false
+          description: The tags for the overlapping block in JSON format.
+          type: object
+        updated_at:
+          description: Time when the object has been updated. Equals to _created_at_
+            if not updated after creation.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - address
+      - federated_realm
+      title: OverlappingBlock
+      type: object
+    federationReadFederatedBlockResponse:
+      description: The response format to retrieve the __FederatedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedBlock'
+      title: ReadFederatedBlockResponse
+      type: object
+    federationReadFederatedRealmResponse:
+      description: The response format to retrieve the __FederatedRealm__ object.
+      example:
+        result:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedRealm'
+      title: ReadFederatedRealmResponse
+      type: object
+    federationReadOverlappingBlockResponse:
+      description: The response format to retrieve the __OverlappingBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationOverlappingBlock'
+      title: ReadOverlappingBlockResponse
+      type: object
+    federationReadReservedBlockResponse:
+      description: The response format to retrieve the __ReservedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationReservedBlock'
+      title: ReadReservedBlockResponse
+      type: object
+    federationReservedBlock:
+      description: "A __ReservedBlock__ object (_federation/reserved_block_) is a\
+        \ set of contiguous IP addresses with no gap, expressed as a CIDR block. It\
+        \ is explicitly associated with a Federated Realm. A __ReservedBlock__ indicates\
+        \ an address range for which authority is expressly forbidden. Cooperating\
+        \ IPAM services must not make allocations in this range."
+      example:
+        parent: parent
+        protocol: protocol
+        address: address
+        federated_realm: federated_realm
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        cidr: 11
+        comment: comment
+        id: id
+        tags: "{}"
+      properties:
+        address:
+          description: "The address field in form “a.b.c.d/n” where the “/n” may be\
+            \ omitted. In this case, the CIDR value must be defined in the _cidr_\
+            \ field. When reading, the _address_ field is always in the form “a.b.c.d”\
+            ."
+          type: string
+        cidr:
+          description: "The CIDR of the reserved block. This is required field, if\
+            \ _address_ does not specify it in its input."
+          format: int64
+          maximum: 128
+          minimum: 1
+          type: integer
+        comment:
+          description: The description for the reserved block. May contain 0 to 1024
+            characters. Can include UTF-8.
+          type: string
+        created_at:
+          description: Time when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        federated_realm:
+          description: The resource identifier.
+          type: string
+        id:
+          description: The resource identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the reserved block. May contain 1 to 256 characters.
+            Can include UTF-8.
+          type: string
+        parent:
+          description: The resource identifier.
+          type: string
+        protocol:
+          description: The type of protocol of reserved block (_ip4_ or _ip6_).
+          readOnly: true
+          type: string
+        tags:
+          additionalProperties: false
+          description: The tags for the reserved block in JSON format.
+          type: object
+        updated_at:
+          description: Time when the object has been updated. Equals to _created_at_
+            if not updated after creation.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - address
+      - federated_realm
+      title: ReservedBlock
+      type: object
+    federationUpdateFederatedBlockResponse:
+      description: The response format to update the __FederatedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 72
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedBlock'
+      title: UpdateFederatedBlockResponse
+      type: object
+    federationUpdateFederatedRealmResponse:
+      description: The response format to update the __FederatedRealm__ object.
+      example:
+        result:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          comment: comment
+          id: id
+          allocation_v4:
+            reserved: 5
+            overlapping: 1
+            delegated: 6
+            allocated: 0
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationFederatedRealm'
+      title: UpdateFederatedRealmResponse
+      type: object
+    federationUpdateOverlappingBlockResponse:
+      description: The response format to update the __OverlappingBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationOverlappingBlock'
+      title: UpdateOverlappingBlockResponse
+      type: object
+    federationUpdateReservedBlockResponse:
+      description: The response format to update the __ReservedBlock__ object.
+      example:
+        result:
+          parent: parent
+          protocol: protocol
+          address: address
+          federated_realm: federated_realm
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          cidr: 11
+          comment: comment
+          id: id
+          tags: "{}"
+      properties:
+        result:
+          $ref: '#/components/schemas/federationReservedBlock'
+      title: UpdateReservedBlockResponse
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
