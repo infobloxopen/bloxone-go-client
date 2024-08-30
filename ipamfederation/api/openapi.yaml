@@ -5,7 +5,8 @@ info:
   title: IPAM Federation API
   version: v1
 servers:
-- url: /api/ddi/v1
+- url: http://csp.infoblox.com/api/ddi/v1
+- url: https://csp.infoblox.com/api/ddi/v1
 security:
 - ApiKeyAuth: []
 paths:
@@ -123,6 +124,8 @@ paths:
       summary: Create the federated block.
       tags:
       - federated_block
+      x-tf-resource: federated_block
+      x-tf-datasource: federated_blocks
       x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /federation/federated_block/{id}:
@@ -557,6 +560,8 @@ paths:
       summary: Create the federated realm.
       tags:
       - federated_realm
+      x-tf-resource: federated_realm
+      x-tf-datasource: federated_realms
       x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /federation/federated_realm/{id}:
@@ -1347,6 +1352,8 @@ components:
           format: date-time
           readOnly: true
           type: string
+      required:
+      - federated_realm
       title: FederatedBlock
       type: object
     federationFederatedRealm:

@@ -1,6 +1,6 @@
 # FederatedBlockAPI
 
-All URIs are relative to */api/ddi/v1*
+All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *ipamfederation.NewFederatedBlock() // FederatedBlock | 
+	body := *ipamfederation.NewFederatedBlock("FederatedRealm_example") // FederatedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedBlockAPI.Create(context.Background()).Body(body).Execute()
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
-	body := *ipamfederation.NewFederatedBlock() // FederatedBlock | 
+	body := *ipamfederation.NewFederatedBlock("FederatedRealm_example") // FederatedBlock | 
 
 	apiClient := ipamfederation.NewAPIClient()
 	resp, r, err := apiClient.FederatedBlockAPI.Update(context.Background(), id).Body(body).Execute()

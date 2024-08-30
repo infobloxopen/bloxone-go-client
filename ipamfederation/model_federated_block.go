@@ -12,6 +12,7 @@ package ipamfederation
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -31,7 +32,7 @@ type FederatedBlock struct {
 	// Time when the object has been created.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// The resource identifier.
-	FederatedRealm *string `json:"federated_realm,omitempty"`
+	FederatedRealm string `json:"federated_realm"`
 	// The resource identifier.
 	Id *string `json:"id,omitempty"`
 	// The name of the federated block. May contain 1 to 256 characters. Can include UTF-8.
@@ -53,8 +54,9 @@ type _FederatedBlock FederatedBlock
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFederatedBlock() *FederatedBlock {
+func NewFederatedBlock(federatedRealm string) *FederatedBlock {
 	this := FederatedBlock{}
+	this.FederatedRealm = federatedRealm
 	return &this
 }
 
@@ -226,36 +228,28 @@ func (o *FederatedBlock) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetFederatedRealm returns the FederatedRealm field value if set, zero value otherwise.
+// GetFederatedRealm returns the FederatedRealm field value
 func (o *FederatedBlock) GetFederatedRealm() string {
-	if o == nil || IsNil(o.FederatedRealm) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.FederatedRealm
+
+	return o.FederatedRealm
 }
 
-// GetFederatedRealmOk returns a tuple with the FederatedRealm field value if set, nil otherwise
+// GetFederatedRealmOk returns a tuple with the FederatedRealm field value
 // and a boolean to check if the value has been set.
 func (o *FederatedBlock) GetFederatedRealmOk() (*string, bool) {
-	if o == nil || IsNil(o.FederatedRealm) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FederatedRealm, true
+	return &o.FederatedRealm, true
 }
 
-// HasFederatedRealm returns a boolean if a field has been set.
-func (o *FederatedBlock) HasFederatedRealm() bool {
-	if o != nil && !IsNil(o.FederatedRealm) {
-		return true
-	}
-
-	return false
-}
-
-// SetFederatedRealm gets a reference to the given string and assigns it to the FederatedRealm field.
+// SetFederatedRealm sets field value
 func (o *FederatedBlock) SetFederatedRealm(v string) {
-	o.FederatedRealm = &v
+	o.FederatedRealm = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -475,9 +469,7 @@ func (o FederatedBlock) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
-	if !IsNil(o.FederatedRealm) {
-		toSerialize["federated_realm"] = o.FederatedRealm
-	}
+	toSerialize["federated_realm"] = o.FederatedRealm
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -505,6 +497,27 @@ func (o FederatedBlock) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *FederatedBlock) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"federated_realm",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varFederatedBlock := _FederatedBlock{}
 
 	err = json.Unmarshal(data, &varFederatedBlock)

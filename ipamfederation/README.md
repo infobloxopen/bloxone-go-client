@@ -83,7 +83,7 @@ This will add the tags `tag1=value1` and `tag2=value2` to all API requests that 
 
 ## Documentation for API Endpoints
 
-All URIs are relative to */api/ddi/v1*
+All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

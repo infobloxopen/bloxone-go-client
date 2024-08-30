@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Cidr** | Pointer to **int64** | The CIDR of the federated block. This is required, if _address_ does not specify it in its input. | [optional] 
 **Comment** | Pointer to **string** | The description for the federated block. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
-**FederatedRealm** | Pointer to **string** | The resource identifier. | [optional] 
+**FederatedRealm** | **string** | The resource identifier. | 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the federated block. May contain 1 to 256 characters. Can include UTF-8. | [optional] 
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewFederatedBlock
 
-`func NewFederatedBlock() *FederatedBlock`
+`func NewFederatedBlock(federatedRealm string, ) *FederatedBlock`
 
 NewFederatedBlock instantiates a new FederatedBlock object
 This constructor will assign default values to properties that have it defined,
@@ -180,11 +180,6 @@ and a boolean to check if the value has been set.
 
 SetFederatedRealm sets FederatedRealm field to given value.
 
-### HasFederatedRealm
-
-`func (o *FederatedBlock) HasFederatedRealm() bool`
-
-HasFederatedRealm returns a boolean if a field has been set.
 
 ### GetId
 

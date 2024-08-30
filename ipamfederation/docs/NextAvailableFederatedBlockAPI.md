@@ -1,6 +1,6 @@
 # NextAvailableFederatedBlockAPI
 
-All URIs are relative to */api/ddi/v1*
+All URIs are relative to *http://csp.infoblox.com/api/ddi/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
