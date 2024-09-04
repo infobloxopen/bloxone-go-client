@@ -1,6 +1,6 @@
 # SubAccountsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://csp.infoblox.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## List
 
-> DdidnsrickettsSubAccountListResponseV2 List(ctx).Body(body).Execute()
+> SubAccountListResponseV2 List(ctx).Body(body).Execute()
 
 List Sub-accounts
 
@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	body := *clouddiscovery.NewDdidnsrickettsSubAccountListRequestV2() // DdidnsrickettsSubAccountListRequestV2 | 
+	body := *clouddiscovery.NewSubAccountListRequestV2() // SubAccountListRequestV2 | 
 
 	apiClient := clouddiscovery.NewAPIClient()
 	resp, r, err := apiClient.SubAccountsAPI.List(context.Background()).Body(body).Execute()
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubAccountsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: DdidnsrickettsSubAccountListResponseV2
+	// response from `List`: SubAccountListResponseV2
 	fmt.Fprintf(os.Stdout, "Response from `SubAccountsAPI.List`: %v\n", resp)
 }
 ```
@@ -54,11 +54,11 @@ Other parameters are passed through a pointer to a `SubAccountsAPIListRequest` s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**DdidnsrickettsSubAccountListRequestV2**](DdidnsrickettsSubAccountListRequestV2.md) |  | 
+**body** | [**SubAccountListRequestV2**](SubAccountListRequestV2.md) |  | 
 
 ### Return type
 
-[**DdidnsrickettsSubAccountListResponseV2**](DdidnsrickettsSubAccountListResponseV2.md)
+[**SubAccountListResponseV2**](SubAccountListResponseV2.md)
 
 ### Authorization
 

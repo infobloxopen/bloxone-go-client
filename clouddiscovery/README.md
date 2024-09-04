@@ -85,7 +85,7 @@ This will add the tags `tag1=value1` and `tag2=value2` to all API requests that 
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://csp.infoblox.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -100,30 +100,30 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Account](docs/Account.md)
+ - [AccountListResponse](docs/AccountListResponse.md)
+ - [AdditionalConfig](docs/AdditionalConfig.md)
  - [ApiPageInfo](docs/ApiPageInfo.md)
- - [DdidnsrickettsAccount](docs/DdidnsrickettsAccount.md)
- - [DdidnsrickettsAccountListResponse](docs/DdidnsrickettsAccountListResponse.md)
- - [DdidnsrickettsAdditionalConfig](docs/DdidnsrickettsAdditionalConfig.md)
- - [DdidnsrickettsCategory](docs/DdidnsrickettsCategory.md)
- - [DdidnsrickettsCredentialConfig](docs/DdidnsrickettsCredentialConfig.md)
- - [DdidnsrickettsCredentialPreference](docs/DdidnsrickettsCredentialPreference.md)
- - [DdidnsrickettsDNSConfig](docs/DdidnsrickettsDNSConfig.md)
- - [DdidnsrickettsDestination](docs/DdidnsrickettsDestination.md)
- - [DdidnsrickettsDestinationConfig](docs/DdidnsrickettsDestinationConfig.md)
- - [DdidnsrickettsDiscoveryConfig](docs/DdidnsrickettsDiscoveryConfig.md)
- - [DdidnsrickettsIPAMConfig](docs/DdidnsrickettsIPAMConfig.md)
- - [DdidnsrickettsObject](docs/DdidnsrickettsObject.md)
- - [DdidnsrickettsObjectType](docs/DdidnsrickettsObjectType.md)
- - [DdidnsrickettsProviderCreateResponse](docs/DdidnsrickettsProviderCreateResponse.md)
- - [DdidnsrickettsProviderListResponse](docs/DdidnsrickettsProviderListResponse.md)
- - [DdidnsrickettsProviderReadResponse](docs/DdidnsrickettsProviderReadResponse.md)
- - [DdidnsrickettsProviderUpdateResponse](docs/DdidnsrickettsProviderUpdateResponse.md)
- - [DdidnsrickettsResource](docs/DdidnsrickettsResource.md)
- - [DdidnsrickettsSourceConfig](docs/DdidnsrickettsSourceConfig.md)
- - [DdidnsrickettsSubAccountListRequestV2](docs/DdidnsrickettsSubAccountListRequestV2.md)
- - [DdidnsrickettsSubAccountListResponseV2](docs/DdidnsrickettsSubAccountListResponseV2.md)
- - [DdidnsrickettsSubAccountProvCredConfig](docs/DdidnsrickettsSubAccountProvCredConfig.md)
- - [DdidnsrickettsSubAccountV2](docs/DdidnsrickettsSubAccountV2.md)
+ - [Category](docs/Category.md)
+ - [CredentialConfig](docs/CredentialConfig.md)
+ - [CredentialPreference](docs/CredentialPreference.md)
+ - [DNSConfig](docs/DNSConfig.md)
+ - [Destination](docs/Destination.md)
+ - [DestinationConfig](docs/DestinationConfig.md)
+ - [DiscoveryConfig](docs/DiscoveryConfig.md)
+ - [IPAMConfig](docs/IPAMConfig.md)
+ - [Object](docs/Object.md)
+ - [ObjectType](docs/ObjectType.md)
+ - [ProviderCreateResponse](docs/ProviderCreateResponse.md)
+ - [ProviderListResponse](docs/ProviderListResponse.md)
+ - [ProviderReadResponse](docs/ProviderReadResponse.md)
+ - [ProviderUpdateResponse](docs/ProviderUpdateResponse.md)
+ - [Resource](docs/Resource.md)
+ - [SourceConfig](docs/SourceConfig.md)
+ - [SubAccountListRequestV2](docs/SubAccountListRequestV2.md)
+ - [SubAccountListResponseV2](docs/SubAccountListResponseV2.md)
+ - [SubAccountProvCredConfig](docs/SubAccountProvCredConfig.md)
+ - [SubAccountV2](docs/SubAccountV2.md)
 
 
 ## Documentation for Utility Methods

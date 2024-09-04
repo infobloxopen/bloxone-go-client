@@ -32,8 +32,8 @@ type AccountsAPI interface {
 	List(ctx context.Context) AccountsAPIListRequest
 
 	// ListExecute executes the request
-	//  @return DdidnsrickettsAccountListResponse
-	ListExecute(r AccountsAPIListRequest) (*DdidnsrickettsAccountListResponse, *http.Response, error)
+	//  @return AccountListResponse
+	ListExecute(r AccountsAPIListRequest) (*AccountListResponse, *http.Response, error)
 }
 
 // AccountsAPIService AccountsAPI service
@@ -100,7 +100,7 @@ func (r AccountsAPIListRequest) TorderBy(torderBy string) AccountsAPIListRequest
 	return r
 }
 
-func (r AccountsAPIListRequest) Execute() (*DdidnsrickettsAccountListResponse, *http.Response, error) {
+func (r AccountsAPIListRequest) Execute() (*AccountListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -121,13 +121,13 @@ func (a *AccountsAPIService) List(ctx context.Context) AccountsAPIListRequest {
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsAccountListResponse
-func (a *AccountsAPIService) ListExecute(r AccountsAPIListRequest) (*DdidnsrickettsAccountListResponse, *http.Response, error) {
+//	@return AccountListResponse
+func (a *AccountsAPIService) ListExecute(r AccountsAPIListRequest) (*AccountListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsAccountListResponse
+		localVarReturnValue *AccountListResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.List")

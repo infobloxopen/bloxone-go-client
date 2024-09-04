@@ -1,6 +1,6 @@
 # ProvidersAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://csp.infoblox.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> DdidnsrickettsProviderCreateResponse Create(ctx).Body(body).Execute()
+> ProviderCreateResponse Create(ctx).Body(body).Execute()
 
 Create Provider
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *clouddiscovery.NewDdidnsrickettsDiscoveryConfig("Name_example") // DdidnsrickettsDiscoveryConfig | 
+	body := *clouddiscovery.NewDiscoveryConfig("Name_example") // DiscoveryConfig | 
 
 	apiClient := clouddiscovery.NewAPIClient()
 	resp, r, err := apiClient.ProvidersAPI.Create(context.Background()).Body(body).Execute()
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.Create``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Create`: DdidnsrickettsProviderCreateResponse
+	// response from `Create`: ProviderCreateResponse
 	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.Create`: %v\n", resp)
 }
 ```
@@ -58,11 +58,11 @@ Other parameters are passed through a pointer to a `ProvidersAPICreateRequest` s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**DdidnsrickettsDiscoveryConfig**](DdidnsrickettsDiscoveryConfig.md) |  | 
+**body** | [**DiscoveryConfig**](DiscoveryConfig.md) |  | 
 
 ### Return type
 
-[**DdidnsrickettsProviderCreateResponse**](DdidnsrickettsProviderCreateResponse.md)
+[**ProviderCreateResponse**](ProviderCreateResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> DdidnsrickettsProviderListResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> ProviderListResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Provider
 
@@ -174,7 +174,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: DdidnsrickettsProviderListResponse
+	// response from `List`: ProviderListResponse
 	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.List`: %v\n", resp)
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DdidnsrickettsProviderListResponse**](DdidnsrickettsProviderListResponse.md)
+[**ProviderListResponse**](ProviderListResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> DdidnsrickettsProviderReadResponse Read(ctx, id).Fields(fields).Execute()
+> ProviderReadResponse Read(ctx, id).Fields(fields).Execute()
 
 Read Provider
 
@@ -247,7 +247,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Read`: DdidnsrickettsProviderReadResponse
+	// response from `Read`: ProviderReadResponse
 	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.Read`: %v\n", resp)
 }
 ```
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DdidnsrickettsProviderReadResponse**](DdidnsrickettsProviderReadResponse.md)
+[**ProviderReadResponse**](ProviderReadResponse.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> DdidnsrickettsProviderUpdateResponse Update(ctx, id).Body(body).Execute()
+> ProviderUpdateResponse Update(ctx, id).Body(body).Execute()
 
 Update Provider
 
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | Auto-generated unique discovery config ID. Format BloxID.
-	body := *clouddiscovery.NewDdidnsrickettsDiscoveryConfig("Name_example") // DdidnsrickettsDiscoveryConfig | 
+	body := *clouddiscovery.NewDiscoveryConfig("Name_example") // DiscoveryConfig | 
 
 	apiClient := clouddiscovery.NewAPIClient()
 	resp, r, err := apiClient.ProvidersAPI.Update(context.Background(), id).Body(body).Execute()
@@ -318,7 +318,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Update`: DdidnsrickettsProviderUpdateResponse
+	// response from `Update`: ProviderUpdateResponse
 	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.Update`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a `ProvidersAPIUpdateRequest` s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**body** | [**DdidnsrickettsDiscoveryConfig**](DdidnsrickettsDiscoveryConfig.md) |  | 
+**body** | [**DiscoveryConfig**](DiscoveryConfig.md) |  | 
 
 ### Return type
 
-[**DdidnsrickettsProviderUpdateResponse**](DdidnsrickettsProviderUpdateResponse.md)
+[**ProviderUpdateResponse**](ProviderUpdateResponse.md)
 
 ### Authorization
 

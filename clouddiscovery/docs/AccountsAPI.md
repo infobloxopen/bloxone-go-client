@@ -1,6 +1,6 @@
 # AccountsAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://csp.infoblox.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## List
 
-> DdidnsrickettsAccountListResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
+> AccountListResponse List(ctx).Fields(fields).Filter(filter).Offset(offset).Limit(limit).PageToken(pageToken).OrderBy(orderBy).Tfilter(tfilter).TorderBy(torderBy).Execute()
 
 List Accounts
 
@@ -37,7 +37,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `List`: DdidnsrickettsAccountListResponse
+	// response from `List`: AccountListResponse
 	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.List`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DdidnsrickettsAccountListResponse**](DdidnsrickettsAccountListResponse.md)
+[**AccountListResponse**](AccountListResponse.md)
 
 ### Authorization
 

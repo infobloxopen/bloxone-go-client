@@ -32,8 +32,8 @@ type SubAccountsAPI interface {
 	List(ctx context.Context) SubAccountsAPIListRequest
 
 	// ListExecute executes the request
-	//  @return DdidnsrickettsSubAccountListResponseV2
-	ListExecute(r SubAccountsAPIListRequest) (*DdidnsrickettsSubAccountListResponseV2, *http.Response, error)
+	//  @return SubAccountListResponseV2
+	ListExecute(r SubAccountsAPIListRequest) (*SubAccountListResponseV2, *http.Response, error)
 }
 
 // SubAccountsAPIService SubAccountsAPI service
@@ -42,15 +42,15 @@ type SubAccountsAPIService internal.Service
 type SubAccountsAPIListRequest struct {
 	ctx        context.Context
 	ApiService SubAccountsAPI
-	body       *DdidnsrickettsSubAccountListRequestV2
+	body       *SubAccountListRequestV2
 }
 
-func (r SubAccountsAPIListRequest) Body(body DdidnsrickettsSubAccountListRequestV2) SubAccountsAPIListRequest {
+func (r SubAccountsAPIListRequest) Body(body SubAccountListRequestV2) SubAccountsAPIListRequest {
 	r.body = &body
 	return r
 }
 
-func (r SubAccountsAPIListRequest) Execute() (*DdidnsrickettsSubAccountListResponseV2, *http.Response, error) {
+func (r SubAccountsAPIListRequest) Execute() (*SubAccountListResponseV2, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -71,13 +71,13 @@ func (a *SubAccountsAPIService) List(ctx context.Context) SubAccountsAPIListRequ
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsSubAccountListResponseV2
-func (a *SubAccountsAPIService) ListExecute(r SubAccountsAPIListRequest) (*DdidnsrickettsSubAccountListResponseV2, *http.Response, error) {
+//	@return SubAccountListResponseV2
+func (a *SubAccountsAPIService) ListExecute(r SubAccountsAPIListRequest) (*SubAccountListResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsSubAccountListResponseV2
+		localVarReturnValue *SubAccountListResponseV2
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SubAccountsAPIService.List")

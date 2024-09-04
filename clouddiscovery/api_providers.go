@@ -33,8 +33,8 @@ type ProvidersAPI interface {
 	Create(ctx context.Context) ProvidersAPICreateRequest
 
 	// CreateExecute executes the request
-	//  @return DdidnsrickettsProviderCreateResponse
-	CreateExecute(r ProvidersAPICreateRequest) (*DdidnsrickettsProviderCreateResponse, *http.Response, error)
+	//  @return ProviderCreateResponse
+	CreateExecute(r ProvidersAPICreateRequest) (*ProviderCreateResponse, *http.Response, error)
 	/*
 		Delete Delete Provider
 
@@ -59,8 +59,8 @@ type ProvidersAPI interface {
 	List(ctx context.Context) ProvidersAPIListRequest
 
 	// ListExecute executes the request
-	//  @return DdidnsrickettsProviderListResponse
-	ListExecute(r ProvidersAPIListRequest) (*DdidnsrickettsProviderListResponse, *http.Response, error)
+	//  @return ProviderListResponse
+	ListExecute(r ProvidersAPIListRequest) (*ProviderListResponse, *http.Response, error)
 	/*
 		Read Read Provider
 
@@ -73,8 +73,8 @@ type ProvidersAPI interface {
 	Read(ctx context.Context, id string) ProvidersAPIReadRequest
 
 	// ReadExecute executes the request
-	//  @return DdidnsrickettsProviderReadResponse
-	ReadExecute(r ProvidersAPIReadRequest) (*DdidnsrickettsProviderReadResponse, *http.Response, error)
+	//  @return ProviderReadResponse
+	ReadExecute(r ProvidersAPIReadRequest) (*ProviderReadResponse, *http.Response, error)
 	/*
 		Update Update Provider
 
@@ -87,8 +87,8 @@ type ProvidersAPI interface {
 	Update(ctx context.Context, id string) ProvidersAPIUpdateRequest
 
 	// UpdateExecute executes the request
-	//  @return DdidnsrickettsProviderUpdateResponse
-	UpdateExecute(r ProvidersAPIUpdateRequest) (*DdidnsrickettsProviderUpdateResponse, *http.Response, error)
+	//  @return ProviderUpdateResponse
+	UpdateExecute(r ProvidersAPIUpdateRequest) (*ProviderUpdateResponse, *http.Response, error)
 }
 
 // ProvidersAPIService ProvidersAPI service
@@ -97,15 +97,15 @@ type ProvidersAPIService internal.Service
 type ProvidersAPICreateRequest struct {
 	ctx        context.Context
 	ApiService ProvidersAPI
-	body       *DdidnsrickettsDiscoveryConfig
+	body       *DiscoveryConfig
 }
 
-func (r ProvidersAPICreateRequest) Body(body DdidnsrickettsDiscoveryConfig) ProvidersAPICreateRequest {
+func (r ProvidersAPICreateRequest) Body(body DiscoveryConfig) ProvidersAPICreateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ProvidersAPICreateRequest) Execute() (*DdidnsrickettsProviderCreateResponse, *http.Response, error) {
+func (r ProvidersAPICreateRequest) Execute() (*ProviderCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -126,13 +126,13 @@ func (a *ProvidersAPIService) Create(ctx context.Context) ProvidersAPICreateRequ
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsProviderCreateResponse
-func (a *ProvidersAPIService) CreateExecute(r ProvidersAPICreateRequest) (*DdidnsrickettsProviderCreateResponse, *http.Response, error) {
+//	@return ProviderCreateResponse
+func (a *ProvidersAPIService) CreateExecute(r ProvidersAPICreateRequest) (*ProviderCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsProviderCreateResponse
+		localVarReturnValue *ProviderCreateResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.Create")
@@ -165,6 +165,16 @@ func (a *ProvidersAPIService) CreateExecute(r ProvidersAPICreateRequest) (*Ddidn
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultTags) > 0 && r.body != nil {
+		if r.body.Tags == nil {
+			r.body.Tags = make(map[string]interface{})
+		}
+		for k, v := range a.Client.Cfg.DefaultTags {
+			if _, ok := r.body.Tags[k]; !ok {
+				r.body.Tags[k] = v
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.body
@@ -348,7 +358,7 @@ func (r ProvidersAPIListRequest) TorderBy(torderBy string) ProvidersAPIListReque
 	return r
 }
 
-func (r ProvidersAPIListRequest) Execute() (*DdidnsrickettsProviderListResponse, *http.Response, error) {
+func (r ProvidersAPIListRequest) Execute() (*ProviderListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -369,13 +379,13 @@ func (a *ProvidersAPIService) List(ctx context.Context) ProvidersAPIListRequest 
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsProviderListResponse
-func (a *ProvidersAPIService) ListExecute(r ProvidersAPIListRequest) (*DdidnsrickettsProviderListResponse, *http.Response, error) {
+//	@return ProviderListResponse
+func (a *ProvidersAPIService) ListExecute(r ProvidersAPIListRequest) (*ProviderListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsProviderListResponse
+		localVarReturnValue *ProviderListResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.List")
@@ -473,7 +483,7 @@ func (r ProvidersAPIReadRequest) Fields(fields string) ProvidersAPIReadRequest {
 	return r
 }
 
-func (r ProvidersAPIReadRequest) Execute() (*DdidnsrickettsProviderReadResponse, *http.Response, error) {
+func (r ProvidersAPIReadRequest) Execute() (*ProviderReadResponse, *http.Response, error) {
 	return r.ApiService.ReadExecute(r)
 }
 
@@ -496,13 +506,13 @@ func (a *ProvidersAPIService) Read(ctx context.Context, id string) ProvidersAPIR
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsProviderReadResponse
-func (a *ProvidersAPIService) ReadExecute(r ProvidersAPIReadRequest) (*DdidnsrickettsProviderReadResponse, *http.Response, error) {
+//	@return ProviderReadResponse
+func (a *ProvidersAPIService) ReadExecute(r ProvidersAPIReadRequest) (*ProviderReadResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsProviderReadResponse
+		localVarReturnValue *ProviderReadResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.Read")
@@ -571,15 +581,15 @@ type ProvidersAPIUpdateRequest struct {
 	ctx        context.Context
 	ApiService ProvidersAPI
 	id         string
-	body       *DdidnsrickettsDiscoveryConfig
+	body       *DiscoveryConfig
 }
 
-func (r ProvidersAPIUpdateRequest) Body(body DdidnsrickettsDiscoveryConfig) ProvidersAPIUpdateRequest {
+func (r ProvidersAPIUpdateRequest) Body(body DiscoveryConfig) ProvidersAPIUpdateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ProvidersAPIUpdateRequest) Execute() (*DdidnsrickettsProviderUpdateResponse, *http.Response, error) {
+func (r ProvidersAPIUpdateRequest) Execute() (*ProviderUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -602,13 +612,13 @@ func (a *ProvidersAPIService) Update(ctx context.Context, id string) ProvidersAP
 
 // Execute executes the request
 //
-//	@return DdidnsrickettsProviderUpdateResponse
-func (a *ProvidersAPIService) UpdateExecute(r ProvidersAPIUpdateRequest) (*DdidnsrickettsProviderUpdateResponse, *http.Response, error) {
+//	@return ProviderUpdateResponse
+func (a *ProvidersAPIService) UpdateExecute(r ProvidersAPIUpdateRequest) (*ProviderUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *DdidnsrickettsProviderUpdateResponse
+		localVarReturnValue *ProviderUpdateResponse
 	)
 
 	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.Update")
@@ -642,6 +652,16 @@ func (a *ProvidersAPIService) UpdateExecute(r ProvidersAPIUpdateRequest) (*Ddidn
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultTags) > 0 && r.body != nil {
+		if r.body.Tags == nil {
+			r.body.Tags = make(map[string]interface{})
+		}
+		for k, v := range a.Client.Cfg.DefaultTags {
+			if _, ok := r.body.Tags[k]; !ok {
+				r.body.Tags[k] = v
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.body

@@ -6,7 +6,8 @@ info:
   title: Discovery Configuration API V2
   version: v2
 servers:
-- url: /
+- url: http://csp.infoblox.com/
+- url: https://csp.infoblox.com/
 security:
 - ApiKeyAuth: []
 paths:
@@ -211,6 +212,7 @@ paths:
       summary: Create Provider
       tags:
       - Providers
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /providers/{id}:
     delete:
@@ -286,6 +288,7 @@ paths:
       summary: Update Provider
       tags:
       - Providers
+      x-sdk-default-tags: true
       x-codegen-request-body-name: body
   /sub_accounts:
     post:
