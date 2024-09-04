@@ -852,8 +852,7 @@ components:
           - excluded_accounts
           internal_ranges_enabled: true
           forward_zone_enabled: true
-        tags:
-          key: "{}"
+        tags: "{}"
         updated_at: 2000-01-23T04:56:07.000+00:00
         credential_preference:
           credential_type: credential_type
@@ -929,8 +928,7 @@ components:
             \ values: 15, 30, 60, 120, 180, 240, 360, 480, 720, 1440"
           type: string
         tags:
-          additionalProperties:
-            type: object
+          additionalProperties: false
           description: Tagging specifics.
           type: object
         updated_at:
@@ -1178,8 +1176,7 @@ components:
             - excluded_accounts
             internal_ranges_enabled: true
             forward_zone_enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           credential_preference:
             credential_type: credential_type
@@ -1370,8 +1367,7 @@ components:
             - excluded_accounts
             internal_ranges_enabled: true
             forward_zone_enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           credential_preference:
             credential_type: credential_type
@@ -1549,8 +1545,7 @@ components:
             - excluded_accounts
             internal_ranges_enabled: true
             forward_zone_enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           credential_preference:
             credential_type: credential_type
@@ -1741,8 +1736,7 @@ components:
             - excluded_accounts
             internal_ranges_enabled: true
             forward_zone_enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           credential_preference:
             credential_type: credential_type
@@ -1929,8 +1923,7 @@ components:
             - excluded_accounts
             internal_ranges_enabled: true
             forward_zone_enabled: true
-          tags:
-            key: "{}"
+          tags: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           credential_preference:
             credential_type: credential_type

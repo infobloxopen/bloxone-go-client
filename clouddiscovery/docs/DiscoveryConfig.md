@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | Status of the sync operation. In single account case, Its the combined status of account &amp; all the destinations statuses In auto discover case, Its the status of the account discovery only. | [optional] 
 **StatusMessage** | Pointer to **string** | Aggregate status message of the sync operation. | [optional] 
 **SyncInterval** | Pointer to **string** |  | [optional] 
-**Tags** | Pointer to **map[string]map[string]interface{}** | Tagging specifics. | [optional] 
+**Tags** | Pointer to **map[string]interface{}** | Tagging specifics. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Timestamp when the object has been updated. | [optional] [readonly] 
 
 ## Methods
@@ -465,20 +465,20 @@ HasSyncInterval returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *DiscoveryConfig) GetTags() map[string]map[string]interface{}`
+`func (o *DiscoveryConfig) GetTags() map[string]interface{}`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *DiscoveryConfig) GetTagsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *DiscoveryConfig) GetTagsOk() (*map[string]interface{}, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *DiscoveryConfig) SetTags(v map[string]map[string]interface{})`
+`func (o *DiscoveryConfig) SetTags(v map[string]interface{})`
 
 SetTags sets Tags field to given value.
 
