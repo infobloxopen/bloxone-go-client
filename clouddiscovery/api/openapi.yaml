@@ -1,0 +1,2111 @@
+openapi: 3.0.1
+info:
+  description: "The Discovery configuration service is a BloxOne Service that provides\
+    \ configuration for accessing and syncing the Cloud assets \n\nBase Paths: \n\
+    1. provider: **/api/cloud_discovery/v2/** \n"
+  title: Discovery Configuration API V2
+  version: v2
+servers:
+- url: http://csp.infoblox.com/api/cloud_discovery/v2
+- url: https://csp.infoblox.com/api/cloud_discovery/v2
+security:
+- ApiKeyAuth: []
+paths:
+  /accounts:
+    get:
+      description: Use this method to list Accounts
+      operationId: AccountsList
+      parameters:
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsAccountListResponse'
+          description: GET operation response
+      summary: List Accounts
+      tags:
+      - Accounts
+  /providers:
+    get:
+      description: Use this method to list Provider
+      operationId: ProvidersList
+      parameters:
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be filtered by a\
+          \ logical expression string that includes JSON tag references to values\
+          \ in each resource, literal values, and logical operators. If a resource\
+          \ does not have the specified tag, its value is assumed to be null.\n\n\
+          Literal values include numbers (integer and floating-point), and quoted\
+          \ (both single- or double-quoted) literal strings, and 'null'. The following\
+          \ operators are commonly used in filter expressions:\n\n|  Op   |  Description\
+          \               | \n|  --   |  -----------               | \n|  ==   | \
+          \ Equal                     | \n|  !=   |  Not Equal                 | \n\
+          |  >    |  Greater Than              | \n|   >=  |  Greater Than or Equal\
+          \ To  | \n|  <    |  Less Than                 | \n|  <=   |  Less Than\
+          \ or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |\
+          \  Matches Regex             | \n|  !~   |  Does Not Match Regex      |\
+          \ \n|  or   |  Logical OR                | \n|  not  |  Logical NOT    \
+          \           | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t"
+        in: query
+        name: _filter
+        schema:
+          type: string
+      - description: "\n\nThe integer index (zero-origin) of the offset into a collection\
+          \ of resources. If omitted or null the value is assumed to be '0'.\n\n\t\
+          \t\t\t\t\t\t"
+        in: query
+        name: _offset
+        schema:
+          type: integer
+      - description: "\n\nThe integer number of resources to be returned in the response.\
+          \ The service may impose maximum value. If omitted the service may impose\
+          \ a default value.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _limit
+        schema:
+          type: integer
+      - description: "\n\nThe service-defined string used to identify a page of resources.\
+          \ A null value indicates the first page.\n\n\t\t\t\t\t\t\t"
+        in: query
+        name: _page_token
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be sorted by their\
+          \ JSON tags. For a 'flat' resource, the tag name is straightforward. If\
+          \ sorting is allowed on non-flat hierarchical resources, the service should\
+          \ implement a qualified naming scheme such as dot-qualification to reference\
+          \ data down the hierarchy. If a resource does not have the specified tag,\
+          \ its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names. The sort direction can be specified by a suffix\
+          \ separated by whitespace before the tag name. The suffix 'asc' sorts the\
+          \ data in ascending order. The suffix 'desc' sorts the data in descending\
+          \ order. If no suffix is specified the data is sorted in ascending order.\n\
+          \n\t\t\t\t\t\t"
+        in: query
+        name: _order_by
+        schema:
+          type: string
+      - description: This parameter is used for filtering by tags.
+        in: query
+        name: _tfilter
+        schema:
+          type: string
+      - description: This parameter is used for sorting by tags.
+        in: query
+        name: _torder_by
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsProviderListResponse'
+          description: GET operation response
+      summary: List Provider
+      tags:
+      - Providers
+    post:
+      description: Use this method to create Provider
+      operationId: ProvidersCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsProviderCreateResponse'
+          description: POST operation response
+      summary: Create Provider
+      tags:
+      - Providers
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /providers/{id}:
+    delete:
+      description: Use this method to delete Provider
+      operationId: ProvidersDelete
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: Delete Provider
+      tags:
+      - Providers
+    get:
+      description: Use this method to retrieve a single Provider by ID
+      operationId: ProvidersRead
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: "\n\nA collection of response resources can be transformed by\
+          \ specifying a set of JSON tags to be returned. For a “flat” resource, the\
+          \ tag name is straightforward. If field selection is allowed on non-flat\
+          \ hierarchical resources, the service should implement a qualified naming\
+          \ scheme such as dot-qualification to reference data down the hierarchy.\
+          \ If a resource does not have the specified tag, the tag does not appear\
+          \ in the output resource.\n\nSpecify this parameter as a comma-separated\
+          \ list of JSON tag names.\n\n\t\t\t\t\t\t"
+        in: query
+        name: _fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsProviderReadResponse'
+          description: GET operation response
+      summary: Read Provider
+      tags:
+      - Providers
+    put:
+      description: Use this method to update Provider
+      operationId: ProvidersUpdate
+      parameters:
+      - description: Auto-generated unique discovery config ID. Format BloxID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsProviderUpdateResponse'
+          description: PUT operation response
+      summary: Update Provider
+      tags:
+      - Providers
+      x-sdk-default-tags: true
+      x-codegen-request-body-name: body
+  /sub_accounts:
+    post:
+      description: Use this method to list Sub-accounts
+      operationId: sub_accountsList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ddidnsrickettsSubAccountListRequestV2'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ddidnsrickettsSubAccountListResponseV2'
+          description: POST operation response
+      summary: List Sub-accounts
+      tags:
+      - sub_accounts
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    apiPageInfo:
+      description: |-
+        PageInfo represents both server-driven and client-driven pagination response.
+        Server-driven pagination is a model in which the server returns some
+        amount of data along with an token indicating there is more data
+        and where subsequent queries can get the next page of data.
+        Client-driven pagination is a model in which rows are addressable by
+        offset and page size (limit).
+      example:
+        offset: 0
+        size: 6
+        page_token: page_token
+      properties:
+        offset:
+          description: |-
+            The service may optionally include the offset of the next page of resources.
+            A null value indicates no more pages.
+          format: int32
+          type: integer
+        page_token:
+          description: |-
+            The service response should contain a string to indicate
+            the next page of resources.
+            A null value indicates no more pages.
+          type: string
+        size:
+          description: The service may optionally include the total number of resources
+            being paged.
+          format: int32
+          type: integer
+      type: object
+    ddidnsrickettsAccount:
+      description: Source account information
+      example:
+        status_message: status_message
+        last_sync: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        composite_status: composite_status
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        percent_complete: 1
+        last_successful_sync: 2000-01-23T04:56:07.000+00:00
+        dhcp_server_id: dhcp_server_id
+        provider_account_id: provider_account_id
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        parent_id: parent_id
+        name: name
+        id: id
+        state: state
+        composite_status_message: composite_status_message
+        dns_server_id: dns_server_id
+        schedule_id: schedule_id
+        status: status
+      properties:
+        composite_status:
+          title: combined status of the account and the all the destinations statuses
+          type: string
+        composite_status_message:
+          description: Status message of the sync operation.
+          type: string
+        created_at:
+          description: Timestamp when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        deleted_at:
+          description: Timestamp when the object has been deleted.
+          format: date-time
+          readOnly: true
+          type: string
+        dhcp_server_id:
+          readOnly: true
+          title: DHCP Server ID. MSAD case
+          type: string
+        dns_server_id:
+          description: DNS Server ID.
+          readOnly: true
+          type: string
+        id:
+          description: Auto-generated unique source account ID. Format BloxID.
+          readOnly: true
+          type: string
+        last_successful_sync:
+          description: Last successful sync timestamp.
+          format: date-time
+          readOnly: true
+          type: string
+        last_sync:
+          description: Last sync timestamp.
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name of the source account.
+          type: string
+        parent_id:
+          description: Parent ID.
+          type: string
+        percent_complete:
+          description: Sync progress as a percentage.
+          format: int32
+          readOnly: true
+          type: integer
+        provider_account_id:
+          title: "Provider Account ID value, such as aws account_id, azure subscription_id,\
+            \ gcp project_id"
+          type: string
+        schedule_id:
+          description: Schedule ID.
+          readOnly: true
+          type: string
+        state:
+          readOnly: true
+          title: "State represents the current state of the account, ex.: authorized,\
+            \ unauthorized, excluded, disabled"
+          type: string
+        status:
+          description: Status of the sync operation.
+          readOnly: true
+          type: string
+        status_message:
+          description: Status message of the sync operation.
+          readOnly: true
+          type: string
+        updated_at:
+          description: Timestamp when the object has been updated.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: Account
+      type: object
+    ddidnsrickettsAccountListResponse:
+      description: The Account object List response format.
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          percent_complete: 1
+          last_successful_sync: 2000-01-23T04:56:07.000+00:00
+          dhcp_server_id: dhcp_server_id
+          provider_account_id: provider_account_id
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          parent_id: parent_id
+          name: name
+          id: id
+          state: state
+          composite_status_message: composite_status_message
+          dns_server_id: dns_server_id
+          schedule_id: schedule_id
+          status: status
+        - status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          percent_complete: 1
+          last_successful_sync: 2000-01-23T04:56:07.000+00:00
+          dhcp_server_id: dhcp_server_id
+          provider_account_id: provider_account_id
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          parent_id: parent_id
+          name: name
+          id: id
+          state: state
+          composite_status_message: composite_status_message
+          dns_server_id: dns_server_id
+          schedule_id: schedule_id
+          status: status
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsAccount'
+          type: array
+      title: AccountListResponse
+      type: object
+    ddidnsrickettsAdditionalConfig:
+      example:
+        object_type:
+          objects:
+          - resource_set:
+            - excluded: true
+              id: id
+            - excluded: true
+              id: id
+            category:
+              excluded: true
+              id: id
+          - resource_set:
+            - excluded: true
+              id: id
+            - excluded: true
+              id: id
+            category:
+              excluded: true
+              id: id
+          version: 0.8008282
+          discover_new: true
+        excluded_accounts:
+        - excluded_accounts
+        - excluded_accounts
+        internal_ranges_enabled: true
+        forward_zone_enabled: true
+      properties:
+        excluded_accounts:
+          items:
+            type: string
+          title: excluded_accounts
+          type: array
+        forward_zone_enabled:
+          format: boolean
+          title: zone_forwarding refers to forwarding zone feature enabled or disabled.
+            values "true" or "false"
+          type: boolean
+        internal_ranges_enabled:
+          format: boolean
+          title: manage internal ranges for cloud provider GCP
+          type: boolean
+        object_type:
+          $ref: '#/components/schemas/ddidnsrickettsObjectType'
+      title: AdditionalConfig
+      type: object
+    ddidnsrickettsCategory:
+      description: Category ...
+      example:
+        excluded: true
+        id: id
+      properties:
+        excluded:
+          format: boolean
+          type: boolean
+        id:
+          readOnly: true
+          type: string
+      type: object
+    ddidnsrickettsCredentialConfig:
+      example:
+        access_identifier: access_identifier
+        region: region
+        enclave: enclave
+      properties:
+        access_identifier:
+          title: "access_identifier values: role_arn_1, tenant_id_123,project_id_123"
+          type: string
+        enclave:
+          title: enclave define whether its commercial or govt cloud
+          type: string
+        region:
+          title: region values for aws
+          type: string
+      title: CredentialConfig defines the credential configuration in source_configs
+      type: object
+    ddidnsrickettsCredentialPreference:
+      example:
+        credential_type: credential_type
+        access_identifier_type: access_identifier_type
+      properties:
+        access_identifier_type:
+          title: "access_identifier constants: role_id, tenant_id,project_id"
+          type: string
+        credential_type:
+          title: credential_type static or dynamic
+          type: string
+      title: CredentialPreference defines the credential preferences for the user
+      type: object
+    ddidnsrickettsDNSConfig:
+      example:
+        split_view_enabled: true
+        sync_type: sync_type
+        view_id: view_id
+        consolidated_zone_data_enabled: true
+        view_name: view_name
+      properties:
+        consolidated_zone_data_enabled:
+          format: boolean
+          title: consolidated_zone_data_enabled consolidates public & private zones
+            into a single view
+          type: boolean
+        split_view_enabled:
+          description: "split_view_enabled consolidates private zones into a single\
+            \ view, which is separate from the public zone view."
+          format: boolean
+          type: boolean
+        sync_type:
+          title: "sync_type values: \"read_only\", \"read_write\""
+          type: string
+        view_id:
+          type: string
+        view_name:
+          type: string
+      type: object
+    ddidnsrickettsDestination:
+      description: Destination information
+      example:
+        destination_type: destination_type
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: id
+        config:
+          ipam:
+            ip_space: ip_space
+            dhcp_server: dhcp_server
+          dns:
+            split_view_enabled: true
+            sync_type: sync_type
+            view_id: view_id
+            consolidated_zone_data_enabled: true
+            view_name: view_name
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        config:
+          $ref: '#/components/schemas/ddidnsrickettsDestinationConfig'
+        created_at:
+          description: Timestamp when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        deleted_at:
+          description: Timestamp when the object has been deleted.
+          format: date-time
+          readOnly: true
+          type: string
+        destination_type:
+          description: "Destination type: DNS / IPAM / ACCOUNT."
+          type: string
+        id:
+          description: Auto-generated unique destination ID. Format BloxID.
+          readOnly: true
+          type: string
+        updated_at:
+          description: Timestamp when the object has been updated.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - destination_type
+      title: Destination
+      type: object
+    ddidnsrickettsDestinationConfig:
+      example:
+        ipam:
+          ip_space: ip_space
+          dhcp_server: dhcp_server
+        dns:
+          split_view_enabled: true
+          sync_type: sync_type
+          view_id: view_id
+          consolidated_zone_data_enabled: true
+          view_name: view_name
+      properties:
+        dns:
+          $ref: '#/components/schemas/ddidnsrickettsDNSConfig'
+        ipam:
+          $ref: '#/components/schemas/ddidnsrickettsIPAMConfig'
+      title: DestinationConfig defines the destination configuration represented as
+        json object
+      type: object
+    ddidnsrickettsDiscoveryConfig:
+      description: Discovery configuration
+      example:
+        provider_type: provider_type
+        status_message: status_message
+        last_sync: 2000-01-23T04:56:07.000+00:00
+        destinations:
+        - destination_type: destination_type
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          config:
+            ipam:
+              ip_space: ip_space
+              dhcp_server: dhcp_server
+            dns:
+              split_view_enabled: true
+              sync_type: sync_type
+              view_id: view_id
+              consolidated_zone_data_enabled: true
+              view_name: view_name
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+        - destination_type: destination_type
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          config:
+            ipam:
+              ip_space: ip_space
+              dhcp_server: dhcp_server
+            dns:
+              split_view_enabled: true
+              sync_type: sync_type
+              view_id: view_id
+              consolidated_zone_data_enabled: true
+              view_name: view_name
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        account_preference: account_preference
+        desired_state: desired_state
+        sync_interval: sync_interval
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        destination_types_enabled:
+        - destination_types_enabled
+        - destination_types_enabled
+        source_configs:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          account_schedule_id: account_schedule_id
+          credential_config:
+            access_identifier: access_identifier
+            region: region
+            enclave: enclave
+          cloud_credential_id: cloud_credential_id
+          created_at: 2000-01-23T04:56:07.000+00:00
+          restricted_to_accounts:
+          - restricted_to_accounts
+          - restricted_to_accounts
+          accounts:
+          - status_message: status_message
+            last_sync: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            composite_status: composite_status
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            percent_complete: 1
+            last_successful_sync: 2000-01-23T04:56:07.000+00:00
+            dhcp_server_id: dhcp_server_id
+            provider_account_id: provider_account_id
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            parent_id: parent_id
+            name: name
+            id: id
+            state: state
+            composite_status_message: composite_status_message
+            dns_server_id: dns_server_id
+            schedule_id: schedule_id
+            status: status
+          - status_message: status_message
+            last_sync: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            composite_status: composite_status
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            percent_complete: 1
+            last_successful_sync: 2000-01-23T04:56:07.000+00:00
+            dhcp_server_id: dhcp_server_id
+            provider_account_id: provider_account_id
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            parent_id: parent_id
+            name: name
+            id: id
+            state: state
+            composite_status_message: composite_status_message
+            dns_server_id: dns_server_id
+            schedule_id: schedule_id
+            status: status
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          account_schedule_id: account_schedule_id
+          credential_config:
+            access_identifier: access_identifier
+            region: region
+            enclave: enclave
+          cloud_credential_id: cloud_credential_id
+          created_at: 2000-01-23T04:56:07.000+00:00
+          restricted_to_accounts:
+          - restricted_to_accounts
+          - restricted_to_accounts
+          accounts:
+          - status_message: status_message
+            last_sync: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            composite_status: composite_status
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            percent_complete: 1
+            last_successful_sync: 2000-01-23T04:56:07.000+00:00
+            dhcp_server_id: dhcp_server_id
+            provider_account_id: provider_account_id
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            parent_id: parent_id
+            name: name
+            id: id
+            state: state
+            composite_status_message: composite_status_message
+            dns_server_id: dns_server_id
+            schedule_id: schedule_id
+            status: status
+          - status_message: status_message
+            last_sync: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            composite_status: composite_status
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+            percent_complete: 1
+            last_successful_sync: 2000-01-23T04:56:07.000+00:00
+            dhcp_server_id: dhcp_server_id
+            provider_account_id: provider_account_id
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            parent_id: parent_id
+            name: name
+            id: id
+            state: state
+            composite_status_message: composite_status_message
+            dns_server_id: dns_server_id
+            schedule_id: schedule_id
+            status: status
+          id: id
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+        additional_config:
+          object_type:
+            objects:
+            - resource_set:
+              - excluded: true
+                id: id
+              - excluded: true
+                id: id
+              category:
+                excluded: true
+                id: id
+            - resource_set:
+              - excluded: true
+                id: id
+              - excluded: true
+                id: id
+              category:
+                excluded: true
+                id: id
+            version: 0.8008282
+            discover_new: true
+          excluded_accounts:
+          - excluded_accounts
+          - excluded_accounts
+          internal_ranges_enabled: true
+          forward_zone_enabled: true
+        tags: "{}"
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        credential_preference:
+          credential_type: credential_type
+          access_identifier_type: access_identifier_type
+        name: name
+        id: id
+        status: status
+      properties:
+        account_preference:
+          description: "Account preference. For ex.: single, multiple, auto-discover-multiple."
+          type: string
+        additional_config:
+          $ref: '#/components/schemas/ddidnsrickettsAdditionalConfig'
+        created_at:
+          description: Timestamp when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        credential_preference:
+          $ref: '#/components/schemas/ddidnsrickettsCredentialPreference'
+        deleted_at:
+          description: Timestamp when the object has been deleted.
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: Description of the discovery config. Optional.
+          type: string
+        desired_state:
+          description: Desired state. Default is "enabled".
+          type: string
+        destination_types_enabled:
+          description: "Destinations types enabled: Ex.: DNS, IPAM and ACCOUNT."
+          items:
+            type: string
+          type: array
+        destinations:
+          description: Destinations.
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsDestination'
+          type: array
+        id:
+          description: Auto-generated unique discovery config ID. Format BloxID.
+          readOnly: true
+          type: string
+        last_sync:
+          description: Last sync timestamp.
+          format: date-time
+          type: string
+        name:
+          description: Name of the discovery config.
+          type: string
+        provider_type:
+          description: "Provider type. Ex.: Amazon Web Services, Google Cloud Platform,\
+            \ Microsoft Azure."
+          type: string
+        source_configs:
+          description: Source configs.
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsSourceConfig'
+          type: array
+        status:
+          description: |-
+            Status of the sync operation.
+            In single account case, Its the combined status of account & all the destinations statuses
+            In auto discover case, Its the status of the account discovery only.
+          type: string
+        status_message:
+          description: Aggregate status message of the sync operation.
+          type: string
+        sync_interval:
+          title: "Time between sync jobs in minutes. Default is \"Auto\". Other supported\
+            \ values: 15, 30, 60, 120, 180, 240, 360, 480, 720, 1440"
+          type: string
+        tags:
+          additionalProperties: false
+          description: Tagging specifics.
+          type: object
+        updated_at:
+          description: Timestamp when the object has been updated.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - name
+      title: DiscoveryConfig
+      type: object
+    ddidnsrickettsIPAMConfig:
+      example:
+        ip_space: ip_space
+        dhcp_server: dhcp_server
+      properties:
+        dhcp_server:
+          type: string
+        ip_space:
+          type: string
+      type: object
+    ddidnsrickettsObject:
+      example:
+        resource_set:
+        - excluded: true
+          id: id
+        - excluded: true
+          id: id
+        category:
+          excluded: true
+          id: id
+      properties:
+        category:
+          $ref: '#/components/schemas/ddidnsrickettsCategory'
+        resource_set:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsResource'
+          type: array
+      title: Object
+      type: object
+    ddidnsrickettsObjectType:
+      example:
+        objects:
+        - resource_set:
+          - excluded: true
+            id: id
+          - excluded: true
+            id: id
+          category:
+            excluded: true
+            id: id
+        - resource_set:
+          - excluded: true
+            id: id
+          - excluded: true
+            id: id
+          category:
+            excluded: true
+            id: id
+        version: 0.8008282
+        discover_new: true
+      properties:
+        discover_new:
+          format: boolean
+          type: boolean
+        objects:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsObject'
+          type: array
+        version:
+          format: float
+          type: number
+      type: object
+    ddidnsrickettsProviderCreateResponse:
+      description: The Provider object create response format.
+      example:
+        result:
+          provider_type: provider_type
+          status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          destinations:
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          account_preference: account_preference
+          desired_state: desired_state
+          sync_interval: sync_interval
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          destination_types_enabled:
+          - destination_types_enabled
+          - destination_types_enabled
+          source_configs:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          additional_config:
+            object_type:
+              objects:
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              version: 0.8008282
+              discover_new: true
+            excluded_accounts:
+            - excluded_accounts
+            - excluded_accounts
+            internal_ranges_enabled: true
+            forward_zone_enabled: true
+          tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          credential_preference:
+            credential_type: credential_type
+            access_identifier_type: access_identifier_type
+          name: name
+          id: id
+          status: status
+      properties:
+        result:
+          $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+      title: ProviderCreateResponse
+      type: object
+    ddidnsrickettsProviderListResponse:
+      description: The Provider object List response format.
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - provider_type: provider_type
+          status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          destinations:
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          account_preference: account_preference
+          desired_state: desired_state
+          sync_interval: sync_interval
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          destination_types_enabled:
+          - destination_types_enabled
+          - destination_types_enabled
+          source_configs:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          additional_config:
+            object_type:
+              objects:
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              version: 0.8008282
+              discover_new: true
+            excluded_accounts:
+            - excluded_accounts
+            - excluded_accounts
+            internal_ranges_enabled: true
+            forward_zone_enabled: true
+          tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          credential_preference:
+            credential_type: credential_type
+            access_identifier_type: access_identifier_type
+          name: name
+          id: id
+          status: status
+        - provider_type: provider_type
+          status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          destinations:
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          account_preference: account_preference
+          desired_state: desired_state
+          sync_interval: sync_interval
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          destination_types_enabled:
+          - destination_types_enabled
+          - destination_types_enabled
+          source_configs:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          additional_config:
+            object_type:
+              objects:
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              version: 0.8008282
+              discover_new: true
+            excluded_accounts:
+            - excluded_accounts
+            - excluded_accounts
+            internal_ranges_enabled: true
+            forward_zone_enabled: true
+          tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          credential_preference:
+            credential_type: credential_type
+            access_identifier_type: access_identifier_type
+          name: name
+          id: id
+          status: status
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+          type: array
+      title: ProviderListResponse
+      type: object
+    ddidnsrickettsProviderReadResponse:
+      description: The Provider object read response format.
+      example:
+        result:
+          provider_type: provider_type
+          status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          destinations:
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          account_preference: account_preference
+          desired_state: desired_state
+          sync_interval: sync_interval
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          destination_types_enabled:
+          - destination_types_enabled
+          - destination_types_enabled
+          source_configs:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          additional_config:
+            object_type:
+              objects:
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              version: 0.8008282
+              discover_new: true
+            excluded_accounts:
+            - excluded_accounts
+            - excluded_accounts
+            internal_ranges_enabled: true
+            forward_zone_enabled: true
+          tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          credential_preference:
+            credential_type: credential_type
+            access_identifier_type: access_identifier_type
+          name: name
+          id: id
+          status: status
+      properties:
+        result:
+          $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+      title: ProviderReadResponse
+      type: object
+    ddidnsrickettsProviderUpdateResponse:
+      description: The Provider object to update response format.
+      example:
+        result:
+          provider_type: provider_type
+          status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          destinations:
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - destination_type: destination_type
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: id
+            config:
+              ipam:
+                ip_space: ip_space
+                dhcp_server: dhcp_server
+              dns:
+                split_view_enabled: true
+                sync_type: sync_type
+                view_id: view_id
+                consolidated_zone_data_enabled: true
+                view_name: view_name
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          account_preference: account_preference
+          desired_state: desired_state
+          sync_interval: sync_interval
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          destination_types_enabled:
+          - destination_types_enabled
+          - destination_types_enabled
+          source_configs:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            account_schedule_id: account_schedule_id
+            credential_config:
+              access_identifier: access_identifier
+              region: region
+              enclave: enclave
+            cloud_credential_id: cloud_credential_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            restricted_to_accounts:
+            - restricted_to_accounts
+            - restricted_to_accounts
+            accounts:
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            - status_message: status_message
+              last_sync: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              composite_status: composite_status
+              deleted_at: 2000-01-23T04:56:07.000+00:00
+              percent_complete: 1
+              last_successful_sync: 2000-01-23T04:56:07.000+00:00
+              dhcp_server_id: dhcp_server_id
+              provider_account_id: provider_account_id
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              parent_id: parent_id
+              name: name
+              id: id
+              state: state
+              composite_status_message: composite_status_message
+              dns_server_id: dns_server_id
+              schedule_id: schedule_id
+              status: status
+            id: id
+            deleted_at: 2000-01-23T04:56:07.000+00:00
+          additional_config:
+            object_type:
+              objects:
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              - resource_set:
+                - excluded: true
+                  id: id
+                - excluded: true
+                  id: id
+                category:
+                  excluded: true
+                  id: id
+              version: 0.8008282
+              discover_new: true
+            excluded_accounts:
+            - excluded_accounts
+            - excluded_accounts
+            internal_ranges_enabled: true
+            forward_zone_enabled: true
+          tags: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          credential_preference:
+            credential_type: credential_type
+            access_identifier_type: access_identifier_type
+          name: name
+          id: id
+          status: status
+      properties:
+        result:
+          $ref: '#/components/schemas/ddidnsrickettsDiscoveryConfig'
+      title: ProviderUpdateResponse
+      type: object
+    ddidnsrickettsResource:
+      example:
+        excluded: true
+        id: id
+      properties:
+        excluded:
+          format: boolean
+          type: boolean
+        id:
+          readOnly: true
+          type: string
+      title: Resource
+      type: object
+    ddidnsrickettsSourceConfig:
+      description: Source configuration
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        account_schedule_id: account_schedule_id
+        credential_config:
+          access_identifier: access_identifier
+          region: region
+          enclave: enclave
+        cloud_credential_id: cloud_credential_id
+        created_at: 2000-01-23T04:56:07.000+00:00
+        restricted_to_accounts:
+        - restricted_to_accounts
+        - restricted_to_accounts
+        accounts:
+        - status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          percent_complete: 1
+          last_successful_sync: 2000-01-23T04:56:07.000+00:00
+          dhcp_server_id: dhcp_server_id
+          provider_account_id: provider_account_id
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          parent_id: parent_id
+          name: name
+          id: id
+          state: state
+          composite_status_message: composite_status_message
+          dns_server_id: dns_server_id
+          schedule_id: schedule_id
+          status: status
+        - status_message: status_message
+          last_sync: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          composite_status: composite_status
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          percent_complete: 1
+          last_successful_sync: 2000-01-23T04:56:07.000+00:00
+          dhcp_server_id: dhcp_server_id
+          provider_account_id: provider_account_id
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          parent_id: parent_id
+          name: name
+          id: id
+          state: state
+          composite_status_message: composite_status_message
+          dns_server_id: dns_server_id
+          schedule_id: schedule_id
+          status: status
+        id: id
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        account_schedule_id:
+          description: Account Schedule ID.
+          readOnly: true
+          type: string
+        accounts:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsAccount'
+          title: accounts
+          type: array
+        cloud_credential_id:
+          description: Cloud Credential ID.
+          type: string
+        created_at:
+          description: Timestamp when the object has been created.
+          format: date-time
+          readOnly: true
+          type: string
+        credential_config:
+          $ref: '#/components/schemas/ddidnsrickettsCredentialConfig'
+        deleted_at:
+          description: Timestamp when the object has been deleted.
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          description: Auto-generated unique source config ID. Format BloxID.
+          readOnly: true
+          type: string
+        restricted_to_accounts:
+          description: Provider account IDs such as accountID/ SubscriptionID to be
+            restricted for a given source_config.
+          items:
+            type: string
+          type: array
+        updated_at:
+          description: Timestamp when the object has been updated.
+          format: date-time
+          readOnly: true
+          type: string
+      title: SourceConfig
+      type: object
+    ddidnsrickettsSubAccountListRequestV2:
+      properties:
+        access_type:
+          title: access_type represents static/dynamic credential access type
+          type: string
+        credential_id:
+          type: string
+        fields:
+          description: atlas.api.field_selection
+          type: string
+        provider_credentials_config:
+          $ref: '#/components/schemas/ddidnsrickettsSubAccountProvCredConfig'
+        provider_type:
+          type: string
+      type: object
+    ddidnsrickettsSubAccountListResponseV2:
+      example:
+        page:
+          offset: 0
+          size: 6
+          page_token: page_token
+        results:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        page:
+          $ref: '#/components/schemas/apiPageInfo'
+        results:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsSubAccountV2'
+          type: array
+      type: object
+    ddidnsrickettsSubAccountProvCredConfig:
+      properties:
+        project_id:
+          title: gcp project_id
+          type: string
+        role_arn:
+          title: aws role ARN
+          type: string
+        tenant_id:
+          title: azure tenant_id
+          type: string
+      type: object
+    ddidnsrickettsSubAccountV2:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          readOnly: true
+          type: string
+        name:
+          type: string
+      title: Sub Account contains information regarding the accounts which can be
+        accessed with a given credentials
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
