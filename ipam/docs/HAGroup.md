@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** | The mode of the HA group.  Valid values are: * _active-active_: Both on-prem hosts remain active. * _active-passive_: One on-prem host remains active and one remains passive. When the active on-prem host is down, the passive on-prem host takes over. * _advanced-active-passive_: One on-prem host may be part of multiple HA groups. When the active on-prem host is down, the passive on-prem host takes over. | [optional] 
 **Name** | **string** | The name of the HA group. Must contain 1 to 256 characters. Can include UTF-8. | 
 **Status** | Pointer to **string** | Status of the HA group. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
+**StatusV6** | Pointer to **string** | Status of the DHCPv6 HA group. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the HA group. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
 
@@ -249,6 +250,31 @@ SetStatus sets Status field to given value.
 `func (o *HAGroup) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetStatusV6
+
+`func (o *HAGroup) GetStatusV6() string`
+
+GetStatusV6 returns the StatusV6 field if non-nil, zero value otherwise.
+
+### GetStatusV6Ok
+
+`func (o *HAGroup) GetStatusV6Ok() (*string, bool)`
+
+GetStatusV6Ok returns a tuple with the StatusV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusV6
+
+`func (o *HAGroup) SetStatusV6(v string)`
+
+SetStatusV6 sets StatusV6 field to given value.
+
+### HasStatusV6
+
+`func (o *HAGroup) HasStatusV6() bool`
+
+HasStatusV6 returns a boolean if a field has been set.
 
 ### GetTags
 

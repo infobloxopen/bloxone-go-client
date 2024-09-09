@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AsmConfig** | Pointer to [**ASMConfig**](ASMConfig.md) | The Automated Scope Management configuration for the IP space. | [optional] 
 **AsmScopeFlag** | Pointer to **int64** | The number of times the automated scope management usage limits have been exceeded for any of the subnets in this IP space. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The description for the IP space. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
+**CompartmentId** | Pointer to **string** | The compartment associated with the object. If no compartment is associated with the object, the value defaults to empty. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DdnsClientUpdate** | Pointer to **string** | Controls who does the DDNS updates.  Valid values are: * _client_: DHCP server updates DNS if requested by client. * _server_: DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _ignore_: DHCP server always updates DNS, even if the client says not to. * _over_client_update_: Same as _server_. DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _over_no_update_: DHCP server updates DNS even if the client requests that no updates be done. If the client requests to do the update, DHCP server allows it.  Defaults to _client_. | [optional] [default to "client"]
 **DdnsConflictResolutionMode** | Pointer to **string** | The mode used for resolving conflicts while performing DDNS updates.  Valid values are: * _check_with_dhcid_: It includes adding a DHCID record and checking that record via conflict detection as per RFC 4703. * _no_check_with_dhcid_: This will ignore conflict detection but add a DHCID record when creating/updating an entry. * _check_exists_with_dhcid_: This will check if there is an existing DHCID record but does not verify the value of the record matches the update. This will also update the DHCID record for the entry. * _no_check_without_dhcid_: This ignores conflict detection and will not add a DHCID record when creating/updating a DDNS entry.  Defaults to _check_with_dhcid_. | [optional] [default to "check_with_dhcid"]
@@ -16,7 +17,8 @@ Name | Type | Description | Notes
 **DdnsSendUpdates** | Pointer to **bool** | Determines if DDNS updates are enabled at the IP space level. Defaults to _true_. | [optional] [default to true]
 **DdnsTtlPercent** | Pointer to **float32** | DDNS TTL value - to be calculated as a simple percentage of the lease&#39;s lifetime, using the parameter&#39;s value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified. | [optional] 
 **DdnsUpdateOnRenew** | Pointer to **bool** | Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_. | [optional] [default to false]
-**DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] [default to true]
+**DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
+**DefaultRealms** | Pointer to **[]string** | Reserved for future use. | [optional] 
 **DhcpConfig** | Pointer to [**DHCPConfig**](DHCPConfig.md) | The shared DHCP configuration for the IP space that controls how leases are issued. | [optional] 
 **DhcpOptions** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of IPv4 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
 **DhcpOptionsV6** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of IPv6 DHCP options for IP space. May be either a specific option or a group of options. | [optional] 
@@ -129,6 +131,31 @@ SetComment sets Comment field to given value.
 `func (o *IPSpace) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *IPSpace) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *IPSpace) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *IPSpace) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *IPSpace) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -379,6 +406,31 @@ SetDdnsUseConflictResolution sets DdnsUseConflictResolution field to given value
 `func (o *IPSpace) HasDdnsUseConflictResolution() bool`
 
 HasDdnsUseConflictResolution returns a boolean if a field has been set.
+
+### GetDefaultRealms
+
+`func (o *IPSpace) GetDefaultRealms() []string`
+
+GetDefaultRealms returns the DefaultRealms field if non-nil, zero value otherwise.
+
+### GetDefaultRealmsOk
+
+`func (o *IPSpace) GetDefaultRealmsOk() (*[]string, bool)`
+
+GetDefaultRealmsOk returns a tuple with the DefaultRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultRealms
+
+`func (o *IPSpace) SetDefaultRealms(v []string)`
+
+SetDefaultRealms sets DefaultRealms field to given value.
+
+### HasDefaultRealms
+
+`func (o *IPSpace) HasDefaultRealms() bool`
+
+HasDefaultRealms returns a boolean if a field has been set.
 
 ### GetDhcpConfig
 

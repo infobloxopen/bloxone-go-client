@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **KerberosTkeyLifetime** | Pointer to **int64** | Lifetime (in seconds) of GSS-TSIG keys in the TKEY protocol.  Defaults to 160 seconds. | [optional] 
 **KerberosTkeyProtocol** | Pointer to **string** | Determines which protocol is used to establish the security context with the external DNS servers, TCP or UDP.  Defaults to _tcp_. | [optional] 
 **Name** | **string** | The name of the DHCP Config Profile. Must contain 1 to 256 characters. Can include UTF-8. | 
+**ProfileType** | Pointer to **string** | The type of server object.  Defaults to _server_.  Valid values are: * _server_: The server profile type. * _subnet_: The subnet profile type. | [optional] 
 **ServerPrincipal** | Pointer to **string** | The Kerberos principal name of the external DNS server that will receive updates.  Defaults to empty. | [optional] 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the DHCP Config Profile in JSON format. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Time when the object has been updated. Equals to _created_at_ if not updated after creation. | [optional] [readonly] 
@@ -880,6 +881,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetProfileType
+
+`func (o *Server) GetProfileType() string`
+
+GetProfileType returns the ProfileType field if non-nil, zero value otherwise.
+
+### GetProfileTypeOk
+
+`func (o *Server) GetProfileTypeOk() (*string, bool)`
+
+GetProfileTypeOk returns a tuple with the ProfileType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileType
+
+`func (o *Server) SetProfileType(v string)`
+
+SetProfileType sets ProfileType field to given value.
+
+### HasProfileType
+
+`func (o *Server) HasProfileType() bool`
+
+HasProfileType returns a boolean if a field has been set.
 
 ### GetServerPrincipal
 

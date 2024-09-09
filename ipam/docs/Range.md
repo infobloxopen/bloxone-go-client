@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | The description for the range. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
+**CompartmentId** | Pointer to **string** | The compartment associated with the object. If no compartment is associated with the object, the value defaults to empty. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DhcpHost** | Pointer to **string** | The resource identifier. | [optional] 
 **DhcpOptions** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of DHCP options. May be either a specific option or a group of options. | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **string** | The resource identifier. | [optional] 
 **Protocol** | Pointer to **string** | The type of protocol (_ip4_ or _ip6_). | [optional] [readonly] 
 **Space** | Pointer to **string** | The resource identifier. | [optional] 
+**SpaceName** | Pointer to **string** | The name of the IP Space the range belongs to. | [optional] [readonly] 
 **Start** | **string** | The start IP address of the range. | 
 **Tags** | Pointer to **map[string]interface{}** | The tags for the range in JSON format. | [optional] 
 **Threshold** | Pointer to [**UtilizationThreshold**](UtilizationThreshold.md) | The utilization threshold settings for the range. | [optional] 
@@ -70,6 +72,31 @@ SetComment sets Comment field to given value.
 `func (o *Range) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *Range) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *Range) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *Range) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *Range) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -440,6 +467,31 @@ SetSpace sets Space field to given value.
 `func (o *Range) HasSpace() bool`
 
 HasSpace returns a boolean if a field has been set.
+
+### GetSpaceName
+
+`func (o *Range) GetSpaceName() string`
+
+GetSpaceName returns the SpaceName field if non-nil, zero value otherwise.
+
+### GetSpaceNameOk
+
+`func (o *Range) GetSpaceNameOk() (*string, bool)`
+
+GetSpaceNameOk returns a tuple with the SpaceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpaceName
+
+`func (o *Range) SetSpaceName(v string)`
+
+SetSpaceName sets SpaceName field to given value.
+
+### HasSpaceName
+
+`func (o *Range) HasSpaceName() bool`
+
+HasSpaceName returns a boolean if a field has been set.
 
 ### GetStart
 

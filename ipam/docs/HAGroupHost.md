@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **Heartbeats** | Pointer to [**[]HAGroupHeartbeats**](HAGroupHeartbeats.md) | Last successful heartbeat received from its peer/s. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
 **Host** | **string** | The resource identifier. | 
 **Port** | Pointer to **int64** | The HA port. | [optional] [readonly] 
+**PortV6** | Pointer to **int64** | The HA port used for IPv6 communication. | [optional] [readonly] 
 **Role** | Pointer to **string** | The role of this host in the HA relationship: _active_ or _passive_. | [optional] 
 **State** | Pointer to **string** | The state of DHCP on the host. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
+**StateV6** | Pointer to **string** | The state of DHCPv6 on the host. This field is set when the _collect_stats_ is set to _true_ in the _GET_ _/dhcp/ha_group_ request. | [optional] 
 
 ## Methods
 
@@ -125,6 +127,31 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
+### GetPortV6
+
+`func (o *HAGroupHost) GetPortV6() int64`
+
+GetPortV6 returns the PortV6 field if non-nil, zero value otherwise.
+
+### GetPortV6Ok
+
+`func (o *HAGroupHost) GetPortV6Ok() (*int64, bool)`
+
+GetPortV6Ok returns a tuple with the PortV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortV6
+
+`func (o *HAGroupHost) SetPortV6(v int64)`
+
+SetPortV6 sets PortV6 field to given value.
+
+### HasPortV6
+
+`func (o *HAGroupHost) HasPortV6() bool`
+
+HasPortV6 returns a boolean if a field has been set.
+
 ### GetRole
 
 `func (o *HAGroupHost) GetRole() string`
@@ -174,6 +201,31 @@ SetState sets State field to given value.
 `func (o *HAGroupHost) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetStateV6
+
+`func (o *HAGroupHost) GetStateV6() string`
+
+GetStateV6 returns the StateV6 field if non-nil, zero value otherwise.
+
+### GetStateV6Ok
+
+`func (o *HAGroupHost) GetStateV6Ok() (*string, bool)`
+
+GetStateV6Ok returns a tuple with the StateV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateV6
+
+`func (o *HAGroupHost) SetStateV6(v string)`
+
+SetStateV6 sets StateV6 field to given value.
+
+### HasStateV6
+
+`func (o *HAGroupHost) HasStateV6() bool`
+
+HasStateV6 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

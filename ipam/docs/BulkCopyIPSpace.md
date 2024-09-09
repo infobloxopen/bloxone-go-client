@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CopyDhcpOptions** | Pointer to **bool** | Indicates whether dhcp options for IPv4 should be copied or not when objects (_ipam/address_block_ and _ipam/subnet_ only) are copied.  Defaults to _false_. | [optional] 
 **CopyObjects** | **[]string** | The resource identifier. | 
 **Recursive** | Pointer to **bool** | Indicates whether child objects should be copied or not.  Defaults to _false_. | [optional] 
+**RetainChildCompartment** | Pointer to **bool** | Indicates whether the child objects are going to retain their compartment_id, or inherit from the object to copy into.  Defaults to false | [optional] 
 **SkipOnError** | Pointer to **bool** | Indicates whether copying should skip object in case of error and continue with next, or abort copying in case of error.  Defaults to _false_. | [optional] 
 **Target** | **string** | The resource identifier. | 
 
@@ -98,6 +99,31 @@ SetRecursive sets Recursive field to given value.
 `func (o *BulkCopyIPSpace) HasRecursive() bool`
 
 HasRecursive returns a boolean if a field has been set.
+
+### GetRetainChildCompartment
+
+`func (o *BulkCopyIPSpace) GetRetainChildCompartment() bool`
+
+GetRetainChildCompartment returns the RetainChildCompartment field if non-nil, zero value otherwise.
+
+### GetRetainChildCompartmentOk
+
+`func (o *BulkCopyIPSpace) GetRetainChildCompartmentOk() (*bool, bool)`
+
+GetRetainChildCompartmentOk returns a tuple with the RetainChildCompartment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetainChildCompartment
+
+`func (o *BulkCopyIPSpace) SetRetainChildCompartment(v bool)`
+
+SetRetainChildCompartment sets RetainChildCompartment field to given value.
+
+### HasRetainChildCompartment
+
+`func (o *BulkCopyIPSpace) HasRetainChildCompartment() bool`
+
+HasRetainChildCompartment returns a boolean if a field has been set.
 
 ### GetSkipOnError
 

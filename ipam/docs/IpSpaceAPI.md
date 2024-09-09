@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**Copy**](IpSpaceAPI.md#Copy) | **Post** /ipam/ip_space/{id}/copy | Copy the IP space.
 [**Create**](IpSpaceAPI.md#Create) | **Post** /ipam/ip_space | Create the IP space.
 [**Delete**](IpSpaceAPI.md#Delete) | **Delete** /ipam/ip_space/{id} | Move the IP space to the recycle bin.
+[**GetConflicts**](IpSpaceAPI.md#GetConflicts) | **Get** /ipam/ip_space/{id}/conflicts | Retrieve Conflicted __AddressBlock__ and __Subnet__ objects in Federated Realms.
 [**List**](IpSpaceAPI.md#List) | **Get** /ipam/ip_space | Retrieve IP spaces.
 [**Read**](IpSpaceAPI.md#Read) | **Get** /ipam/ip_space/{id} | Retrieve the IP space.
 [**Update**](IpSpaceAPI.md#Update) | **Patch** /ipam/ip_space/{id} | Update the IP space.
@@ -279,6 +280,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConflicts
+
+> RealmsConflictResponse GetConflicts(ctx, id).FederatedRealms(federatedRealms).Execute()
+
+Retrieve Conflicted __AddressBlock__ and __Subnet__ objects in Federated Realms.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
+)
+
+func main() {
+	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.IpSpaceAPI.GetConflicts(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IpSpaceAPI.GetConflicts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetConflicts`: RealmsConflictResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpSpaceAPI.GetConflicts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | An application specific resource identity of a resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `IpSpaceAPIGetConflictsRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**federatedRealms** | **[]string** | List of __FederatedRealm__ object ids. | 
+
+### Return type
+
+[**RealmsConflictResponse**](RealmsConflictResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
