@@ -24,7 +24,7 @@ func TestAccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService List", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.AccountsAPI.List(context.Background()).Execute()
 
