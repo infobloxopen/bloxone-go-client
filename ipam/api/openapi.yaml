@@ -13125,6 +13125,7 @@ components:
           format: boolean
           type: boolean
         ddns_use_conflict_resolution:
+          default: true
           description: |-
             When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.
 

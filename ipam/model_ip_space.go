@@ -110,6 +110,8 @@ func NewIPSpace(name string) *IPSpace {
 	this.DdnsSendUpdates = &ddnsSendUpdates
 	var ddnsUpdateOnRenew bool = false
 	this.DdnsUpdateOnRenew = &ddnsUpdateOnRenew
+	var ddnsUseConflictResolution bool = true
+	this.DdnsUseConflictResolution = &ddnsUseConflictResolution
 	var hostnameRewriteChar string = "-"
 	this.HostnameRewriteChar = &hostnameRewriteChar
 	var hostnameRewriteEnabled bool = false
@@ -137,6 +139,8 @@ func NewIPSpaceWithDefaults() *IPSpace {
 	this.DdnsSendUpdates = &ddnsSendUpdates
 	var ddnsUpdateOnRenew bool = false
 	this.DdnsUpdateOnRenew = &ddnsUpdateOnRenew
+	var ddnsUseConflictResolution bool = true
+	this.DdnsUseConflictResolution = &ddnsUseConflictResolution
 	var hostnameRewriteChar string = "-"
 	this.HostnameRewriteChar = &hostnameRewriteChar
 	var hostnameRewriteEnabled bool = false
