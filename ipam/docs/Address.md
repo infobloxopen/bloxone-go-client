@@ -6,11 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | The address in form \&quot;a.b.c.d\&quot;. | 
 **Comment** | Pointer to **string** | The description for the address object. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
+**CompartmentId** | Pointer to **string** | The compartment associated with the object. If no compartment is associated with the object, the value defaults to empty. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DhcpInfo** | Pointer to [**DHCPInfo**](DHCPInfo.md) | The DHCP information associated with this object. | [optional] [readonly] 
 **DisableDhcp** | Pointer to **bool** | Read only. Represent the value of the same field in the associated _dhcp/fixed_address_ object. | [optional] [readonly] 
 **DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this address in JSON format. | [optional] [readonly] 
 **DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this address in JSON format. | [optional] [readonly] 
+**ExternalKeys** | Pointer to **map[string]interface{}** | The external keys (source key) for this address in JSON format. | [optional] 
 **Host** | Pointer to **string** | The resource identifier. | [optional] 
 **Hwaddr** | Pointer to **string** | The hardware address associated with this IP address. | [optional] 
 **Id** | Pointer to **string** | The resource identifier. | [optional] [readonly] 
@@ -88,6 +90,31 @@ SetComment sets Comment field to given value.
 `func (o *Address) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *Address) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *Address) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *Address) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *Address) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -213,6 +240,31 @@ SetDiscoveryMetadata sets DiscoveryMetadata field to given value.
 `func (o *Address) HasDiscoveryMetadata() bool`
 
 HasDiscoveryMetadata returns a boolean if a field has been set.
+
+### GetExternalKeys
+
+`func (o *Address) GetExternalKeys() map[string]interface{}`
+
+GetExternalKeys returns the ExternalKeys field if non-nil, zero value otherwise.
+
+### GetExternalKeysOk
+
+`func (o *Address) GetExternalKeysOk() (*map[string]interface{}, bool)`
+
+GetExternalKeysOk returns a tuple with the ExternalKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalKeys
+
+`func (o *Address) SetExternalKeys(v map[string]interface{})`
+
+SetExternalKeys sets ExternalKeys field to given value.
+
+### HasExternalKeys
+
+`func (o *Address) HasExternalKeys() bool`
+
+HasExternalKeys returns a boolean if a field has been set.
 
 ### GetHost
 

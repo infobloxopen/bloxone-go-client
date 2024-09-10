@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**CreateNextAvailableSubnet**](AddressBlockAPI.md#CreateNextAvailableSubnet) | **Post** /ipam/address_block/{id}/nextavailablesubnet | Create the Next Available Subnet object.
 [**Delete**](AddressBlockAPI.md#Delete) | **Delete** /ipam/address_block/{id} | Move the address block to the recycle bin.
 [**List**](AddressBlockAPI.md#List) | **Get** /ipam/address_block | Retrieve the address blocks.
+[**ListAncestor**](AddressBlockAPI.md#ListAncestor) | **Get** /ipam/address_block/{id}/ancestor | Retrieve address block ancestors.
 [**ListNextAvailableAB**](AddressBlockAPI.md#ListNextAvailableAB) | **Get** /ipam/address_block/{id}/nextavailableaddressblock | List Next Available Address Block objects.
 [**ListNextAvailableIP**](AddressBlockAPI.md#ListNextAvailableIP) | **Get** /ipam/address_block/{id}/nextavailableip | Retrieve the next available IP address.
 [**ListNextAvailableSubnet**](AddressBlockAPI.md#ListNextAvailableSubnet) | **Get** /ipam/address_block/{id}/nextavailablesubnet | List Next Available Subnet objects.
@@ -517,9 +518,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListAncestor
+
+> ListAncestorResponse ListAncestor(ctx, id).Execute()
+
+Retrieve address block ancestors.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
+)
+
+func main() {
+	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.AddressBlockAPI.ListAncestor(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressBlockAPI.ListAncestor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAncestor`: ListAncestorResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddressBlockAPI.ListAncestor`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | An application specific resource identity of a resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AddressBlockAPIListAncestorRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+[**ListAncestorResponse**](ListAncestorResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListNextAvailableAB
 
-> NextAvailableABResponse ListNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).Execute()
+> NextAvailableABResponse ListNextAvailableAB(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).FederatedRealms(federatedRealms).CompartmentId(compartmentId).Execute()
 
 List Next Available Address Block objects.
 
@@ -571,6 +641,8 @@ Name | Type | Description  | Notes
 **count** | **int32** | Number of address blocks to generate. Default 1 if not set. | 
 **name** | **string** | Name of next available address blocks. | 
 **comment** | **string** | Comment of next available address blocks. | 
+**federatedRealms** | **[]string** | Reserved for future use. | 
+**compartmentId** | **string** | The compartment id of the address blocks to be created. | 
 
 ### Return type
 
@@ -663,7 +735,7 @@ Name | Type | Description  | Notes
 
 ## ListNextAvailableSubnet
 
-> NextAvailableSubnetResponse ListNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).Execute()
+> NextAvailableSubnetResponse ListNextAvailableSubnet(ctx, id).Cidr(cidr).Count(count).Name(name).Comment(comment).DhcpHost(dhcpHost).FederatedRealms(federatedRealms).Execute()
 
 List Next Available Subnet objects.
 
@@ -716,6 +788,7 @@ Name | Type | Description  | Notes
 **name** | **string** | Name of next available subnets. | 
 **comment** | **string** | Comment of next available subnets. | 
 **dhcpHost** | **string** | Reference of OnPrem Host associated with the next available subnets to be created. | 
+**federatedRealms** | **[]string** | Reserved for future use. | 
 
 ### Return type
 

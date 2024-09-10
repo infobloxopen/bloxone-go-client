@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **AsmScopeFlag** | Pointer to **int64** | Set to 1 to indicate that the subnet may run out of addresses. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The CIDR of the subnet. This is required if _address_ does not include CIDR. | [optional] 
 **Comment** | Pointer to **string** | The description for the subnet. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
+**CompartmentId** | Pointer to **string** | The compartment associated with the object. If no compartment is associated with the object, the value defaults to empty. | [optional] [readonly] 
+**ConfigProfiles** | Pointer to **[]string** | The resource identifier. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DdnsClientUpdate** | Pointer to **string** | Controls who does the DDNS updates.  Valid values are: * _client_: DHCP server updates DNS if requested by client. * _server_: DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _ignore_: DHCP server always updates DNS, even if the client says not to. * _over_client_update_: Same as _server_. DHCP server always updates DNS, overriding an update request from the client, unless the client requests no updates. * _over_no_update_: DHCP server updates DNS even if the client requests that no updates be done. If the client requests to do the update, DHCP server allows it.  Defaults to _client_. | [optional] 
 **DdnsConflictResolutionMode** | Pointer to **string** | The mode used for resolving conflicts while performing DDNS updates.  Valid values are: * _check_with_dhcid_: It includes adding a DHCID record and checking that record via conflict detection as per RFC 4703. * _no_check_with_dhcid_: This will ignore conflict detection but add a DHCID record when creating/updating an entry. * _check_exists_with_dhcid_: This will check if there is an existing DHCID record but does not verify the value of the record matches the update. This will also update the DHCID record for the entry. * _no_check_without_dhcid_: This ignores conflict detection and will not add a DHCID record when creating/updating a DDNS entry.  Defaults to _check_with_dhcid_. | [optional] 
@@ -26,6 +28,9 @@ Name | Type | Description | Notes
 **DisableDhcp** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating configuration.  Defaults to _false_. | [optional] 
 **DiscoveryAttrs** | Pointer to **map[string]interface{}** | The discovery attributes for this subnet in JSON format. | [optional] [readonly] 
 **DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this subnet in JSON format. | [optional] [readonly] 
+**ExternalKeys** | Pointer to **map[string]interface{}** | The external keys (source key) for this subnet in JSON format. | [optional] 
+**FederatedRealms** | Pointer to **[]string** | Reserved for future use. | [optional] 
+**Federation** | Pointer to **string** | Reserved for future use. | [optional] [readonly] 
 **HeaderOptionFilename** | Pointer to **string** | The configuration for header option filename field. | [optional] 
 **HeaderOptionServerAddress** | Pointer to **string** | The configuration for header option server address field. | [optional] 
 **HeaderOptionServerName** | Pointer to **string** | The configuration for header option server name field. | [optional] 
@@ -192,6 +197,56 @@ SetComment sets Comment field to given value.
 `func (o *Subnet) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *Subnet) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *Subnet) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *Subnet) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *Subnet) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
+
+### GetConfigProfiles
+
+`func (o *Subnet) GetConfigProfiles() []string`
+
+GetConfigProfiles returns the ConfigProfiles field if non-nil, zero value otherwise.
+
+### GetConfigProfilesOk
+
+`func (o *Subnet) GetConfigProfilesOk() (*[]string, bool)`
+
+GetConfigProfilesOk returns a tuple with the ConfigProfiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigProfiles
+
+`func (o *Subnet) SetConfigProfiles(v []string)`
+
+SetConfigProfiles sets ConfigProfiles field to given value.
+
+### HasConfigProfiles
+
+`func (o *Subnet) HasConfigProfiles() bool`
+
+HasConfigProfiles returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -617,6 +672,81 @@ SetDiscoveryMetadata sets DiscoveryMetadata field to given value.
 `func (o *Subnet) HasDiscoveryMetadata() bool`
 
 HasDiscoveryMetadata returns a boolean if a field has been set.
+
+### GetExternalKeys
+
+`func (o *Subnet) GetExternalKeys() map[string]interface{}`
+
+GetExternalKeys returns the ExternalKeys field if non-nil, zero value otherwise.
+
+### GetExternalKeysOk
+
+`func (o *Subnet) GetExternalKeysOk() (*map[string]interface{}, bool)`
+
+GetExternalKeysOk returns a tuple with the ExternalKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalKeys
+
+`func (o *Subnet) SetExternalKeys(v map[string]interface{})`
+
+SetExternalKeys sets ExternalKeys field to given value.
+
+### HasExternalKeys
+
+`func (o *Subnet) HasExternalKeys() bool`
+
+HasExternalKeys returns a boolean if a field has been set.
+
+### GetFederatedRealms
+
+`func (o *Subnet) GetFederatedRealms() []string`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *Subnet) GetFederatedRealmsOk() (*[]string, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *Subnet) SetFederatedRealms(v []string)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *Subnet) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
+
+### GetFederation
+
+`func (o *Subnet) GetFederation() string`
+
+GetFederation returns the Federation field if non-nil, zero value otherwise.
+
+### GetFederationOk
+
+`func (o *Subnet) GetFederationOk() (*string, bool)`
+
+GetFederationOk returns a tuple with the Federation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederation
+
+`func (o *Subnet) SetFederation(v string)`
+
+SetFederation sets Federation field to given value.
+
+### HasFederation
+
+`func (o *Subnet) HasFederation() bool`
+
+HasFederation returns a boolean if a field has been set.
 
 ### GetHeaderOptionFilename
 

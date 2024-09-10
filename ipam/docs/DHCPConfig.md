@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowUnknownV6** | Pointer to **bool** | Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured. | [optional] [default to true]
 **EchoClientId** | Pointer to **bool** | Enable/disable to include/exclude the client id when responding to discover or request. | [optional] [default to false]
 **Filters** | Pointer to **[]string** | The resource identifier. | [optional] 
+**FiltersLargeSelection** | Pointer to **[]string** | The resource identifier. | [optional] 
 **FiltersV6** | Pointer to **[]string** | The resource identifier. | [optional] 
 **IgnoreClientUid** | Pointer to **bool** | Enable to ignore the client UID when issuing a DHCP lease. Use this option to prevent assigning two IP addresses for a client which does not have a UID during one phase of PXE boot but acquires one for the other phase. | [optional] [default to false]
 **IgnoreList** | Pointer to [**[]IgnoreItem**](IgnoreItem.md) | The list of clients to ignore requests from. | [optional] 
@@ -184,6 +185,31 @@ SetFilters sets Filters field to given value.
 `func (o *DHCPConfig) HasFilters() bool`
 
 HasFilters returns a boolean if a field has been set.
+
+### GetFiltersLargeSelection
+
+`func (o *DHCPConfig) GetFiltersLargeSelection() []string`
+
+GetFiltersLargeSelection returns the FiltersLargeSelection field if non-nil, zero value otherwise.
+
+### GetFiltersLargeSelectionOk
+
+`func (o *DHCPConfig) GetFiltersLargeSelectionOk() (*[]string, bool)`
+
+GetFiltersLargeSelectionOk returns a tuple with the FiltersLargeSelection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFiltersLargeSelection
+
+`func (o *DHCPConfig) SetFiltersLargeSelection(v []string)`
+
+SetFiltersLargeSelection sets FiltersLargeSelection field to given value.
+
+### HasFiltersLargeSelection
+
+`func (o *DHCPConfig) HasFiltersLargeSelection() bool`
+
+HasFiltersLargeSelection returns a boolean if a field has been set.
 
 ### GetFiltersV6
 

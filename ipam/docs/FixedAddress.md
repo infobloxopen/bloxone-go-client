@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | The reserved address. | 
 **Comment** | Pointer to **string** | The description for the fixed address. May contain 0 to 1024 characters. Can include UTF-8. | [optional] 
+**CompartmentId** | Pointer to **string** | The compartment associated with the object. If no compartment is associated with the object, the value defaults to empty. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Time when the object has been created. | [optional] [readonly] 
 **DhcpOptions** | Pointer to [**[]OptionItem**](OptionItem.md) | The list of DHCP options. May be either a specific option or a group of options. | [optional] 
 **DisableDhcp** | Pointer to **bool** | Optional. _true_ to disable object. The fixed address is converted to an exclusion when generating configuration.  Defaults to _false_. | [optional] 
@@ -88,6 +89,31 @@ SetComment sets Comment field to given value.
 `func (o *FixedAddress) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *FixedAddress) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *FixedAddress) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *FixedAddress) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *FixedAddress) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

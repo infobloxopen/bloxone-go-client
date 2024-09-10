@@ -74,6 +74,20 @@ func TestIpSpaceAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IpSpaceAPIService GetConflicts", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.IpSpaceAPI.GetConflicts(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IpSpaceAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

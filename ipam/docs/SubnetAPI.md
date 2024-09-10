@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CreateNextAvailableIP**](SubnetAPI.md#CreateNextAvailableIP) | **Post** /ipam/subnet/{id}/nextavailableip | Allocate the next available IP address.
 [**Delete**](SubnetAPI.md#Delete) | **Delete** /ipam/subnet/{id} | Move the subnet to the recycle bin.
 [**List**](SubnetAPI.md#List) | **Get** /ipam/subnet | Retrieve subnets.
+[**ListAncestor**](SubnetAPI.md#ListAncestor) | **Get** /ipam/subnet/{id}/ancestor | Retrieve subnet ancestors.
 [**ListNextAvailableIP**](SubnetAPI.md#ListNextAvailableIP) | **Get** /ipam/subnet/{id}/nextavailableip | Retrieve the next available IP address.
 [**Read**](SubnetAPI.md#Read) | **Get** /ipam/subnet/{id} | Retrieve the subnet.
 [**Update**](SubnetAPI.md#Update) | **Patch** /ipam/subnet/{id} | Update the subnet.
@@ -349,6 +350,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListSubnetResponse**](ListSubnetResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAncestor
+
+> ListAncestorResponse ListAncestor(ctx, id).Inherit(inherit).Execute()
+
+Retrieve subnet ancestors.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/bloxone-go-client/ipam"
+)
+
+func main() {
+	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | An application specific resource identity of a resource
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.SubnetAPI.ListAncestor(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SubnetAPI.ListAncestor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAncestor`: ListAncestorResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubnetAPI.ListAncestor`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | An application specific resource identity of a resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SubnetAPIListAncestorRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**inherit** | **string** | This parameter is used for getting inheritance_sources.  Allowed values: * _none_, * _partial_, * _full_.  Defaults to _none | 
+
+### Return type
+
+[**ListAncestorResponse**](ListAncestorResponse.md)
 
 ### Authorization
 
