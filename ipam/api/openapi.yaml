@@ -5727,7 +5727,6 @@ components:
         id: id
         ddns_ttl_percent: 1.4658129
         header_option_server_address: header_option_server_address
-        federation: federation
         address: address
         ddns_client_update: ddns_client_update
         federated_realms:
@@ -5965,6 +5964,7 @@ components:
         comment: comment
         inheritance_parent: inheritance_parent
         ddns_update_on_renew: true
+        delegation: delegation
         dhcp_utilization:
           dhcp_free: dhcp_free
           dhcp_used: dhcp_used
@@ -6082,6 +6082,10 @@ components:
             Defaults to _true_.
           format: boolean
           type: boolean
+        delegation:
+          description: The ID of the delegation associated with the address block.
+          readOnly: true
+          type: string
         dhcp_config:
           $ref: '#/components/schemas/ipamsvcDHCPConfig'
         dhcp_options:
@@ -6112,10 +6116,6 @@ components:
           items:
             type: string
           type: array
-        federation:
-          description: Reserved for future use.
-          readOnly: true
-          type: string
         header_option_filename:
           description: The configuration for header option filename field.
           type: string
@@ -6766,7 +6766,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -7004,6 +7003,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -7648,7 +7648,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -7886,6 +7885,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -7950,7 +7950,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -8188,6 +8187,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -8392,7 +8392,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -8607,6 +8606,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -8708,7 +8708,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -8923,6 +8922,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -9653,7 +9653,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -9868,6 +9867,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -12085,7 +12085,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -12300,6 +12299,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -12401,7 +12401,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -12616,6 +12615,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -14356,7 +14356,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -14594,6 +14593,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -14658,7 +14658,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -14896,6 +14895,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -18325,7 +18325,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -18540,6 +18539,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -18641,7 +18641,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -18856,6 +18855,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -19074,7 +19074,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -19312,6 +19311,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -19376,7 +19376,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -19614,6 +19613,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -19818,7 +19818,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -20033,6 +20032,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -20134,7 +20134,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -20349,6 +20348,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -21062,7 +21062,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -21300,6 +21299,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -22826,7 +22826,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -23041,6 +23040,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
@@ -24188,7 +24188,6 @@ components:
         - config_profiles
         disable_dhcp: true
         rebind_time: 2
-        federation: federation
         address: address
         ddns_client_update: ddns_client_update
         federated_realms:
@@ -24403,6 +24402,7 @@ components:
         renew_time: 7
         comment: comment
         inheritance_parent: inheritance_parent
+        delegation: delegation
         dhcp_host: dhcp_host
         dhcp_utilization:
           dhcp_free: dhcp_free
@@ -24526,6 +24526,10 @@ components:
             Defaults to _true_.
           format: boolean
           type: boolean
+        delegation:
+          description: The ID of the delegation associated with the subnet.
+          readOnly: true
+          type: string
         dhcp_config:
           $ref: '#/components/schemas/ipamsvcDHCPConfig'
         dhcp_host:
@@ -24565,10 +24569,6 @@ components:
           items:
             type: string
           type: array
-        federation:
-          description: Reserved for future use.
-          readOnly: true
-          type: string
         header_option_filename:
           description: The configuration for header option filename field.
           type: string
@@ -24773,7 +24773,6 @@ components:
           id: id
           ddns_ttl_percent: 1.4658129
           header_option_server_address: header_option_server_address
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -25011,6 +25010,7 @@ components:
           comment: comment
           inheritance_parent: inheritance_parent
           ddns_update_on_renew: true
+          delegation: delegation
           dhcp_utilization:
             dhcp_free: dhcp_free
             dhcp_used: dhcp_used
@@ -26492,7 +26492,6 @@ components:
           - config_profiles
           disable_dhcp: true
           rebind_time: 2
-          federation: federation
           address: address
           ddns_client_update: ddns_client_update
           federated_realms:
@@ -26707,6 +26706,7 @@ components:
           renew_time: 7
           comment: comment
           inheritance_parent: inheritance_parent
+          delegation: delegation
           dhcp_host: dhcp_host
           dhcp_utilization:
             dhcp_free: dhcp_free
