@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **DdnsTtlPercent** | Pointer to **float32** | DDNS TTL value - to be calculated as a simple percentage of the lease&#39;s lifetime, using the parameter&#39;s value as the percentage. It is specified as a percentage (e.g. 25, 75). Defaults to unspecified. | [optional] 
 **DdnsUpdateOnRenew** | Pointer to **bool** | Instructs the DHCP server to always update the DNS information when a lease is renewed even if its DNS information has not changed.  Defaults to _false_. | [optional] 
 **DdnsUseConflictResolution** | Pointer to **bool** | When true, DHCP server will apply conflict resolution, as described in RFC 4703, when attempting to fulfill the update request.  When false, DHCP server will simply attempt to update the DNS entries per the request, regardless of whether or not they conflict with existing entries owned by other DHCP4 clients.  Defaults to _true_. | [optional] 
+**Delegation** | Pointer to **string** | The ID of the delegation associated with the subnet. | [optional] [readonly] 
 **DhcpConfig** | Pointer to [**DHCPConfig**](DHCPConfig.md) | The DHCP configuration of the subnet that controls how leases are issued. | [optional] 
 **DhcpHost** | Pointer to **string** | The resource identifier. | [optional] 
 **DhcpOptions** | Pointer to [**[]OptionItem**](OptionItem.md) | The DHCP options of the subnet. This can either be a specific option or a group of options. | [optional] 
@@ -30,7 +31,6 @@ Name | Type | Description | Notes
 **DiscoveryMetadata** | Pointer to **map[string]interface{}** | The discovery metadata for this subnet in JSON format. | [optional] [readonly] 
 **ExternalKeys** | Pointer to **map[string]interface{}** | The external keys (source key) for this subnet in JSON format. | [optional] 
 **FederatedRealms** | Pointer to **[]string** | Reserved for future use. | [optional] 
-**Federation** | Pointer to **string** | Reserved for future use. | [optional] [readonly] 
 **HeaderOptionFilename** | Pointer to **string** | The configuration for header option filename field. | [optional] 
 **HeaderOptionServerAddress** | Pointer to **string** | The configuration for header option server address field. | [optional] 
 **HeaderOptionServerName** | Pointer to **string** | The configuration for header option server name field. | [optional] 
@@ -498,6 +498,31 @@ SetDdnsUseConflictResolution sets DdnsUseConflictResolution field to given value
 
 HasDdnsUseConflictResolution returns a boolean if a field has been set.
 
+### GetDelegation
+
+`func (o *Subnet) GetDelegation() string`
+
+GetDelegation returns the Delegation field if non-nil, zero value otherwise.
+
+### GetDelegationOk
+
+`func (o *Subnet) GetDelegationOk() (*string, bool)`
+
+GetDelegationOk returns a tuple with the Delegation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDelegation
+
+`func (o *Subnet) SetDelegation(v string)`
+
+SetDelegation sets Delegation field to given value.
+
+### HasDelegation
+
+`func (o *Subnet) HasDelegation() bool`
+
+HasDelegation returns a boolean if a field has been set.
+
 ### GetDhcpConfig
 
 `func (o *Subnet) GetDhcpConfig() DHCPConfig`
@@ -722,31 +747,6 @@ SetFederatedRealms sets FederatedRealms field to given value.
 `func (o *Subnet) HasFederatedRealms() bool`
 
 HasFederatedRealms returns a boolean if a field has been set.
-
-### GetFederation
-
-`func (o *Subnet) GetFederation() string`
-
-GetFederation returns the Federation field if non-nil, zero value otherwise.
-
-### GetFederationOk
-
-`func (o *Subnet) GetFederationOk() (*string, bool)`
-
-GetFederationOk returns a tuple with the Federation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFederation
-
-`func (o *Subnet) SetFederation(v string)`
-
-SetFederation sets Federation field to given value.
-
-### HasFederation
-
-`func (o *Subnet) HasFederation() bool`
-
-HasFederation returns a boolean if a field has been set.
 
 ### GetHeaderOptionFilename
 
