@@ -901,6 +901,7 @@ components:
         last_sync:
           description: Last sync timestamp.
           format: date-time
+          readOnly: true
           type: string
         name:
           description: Name of the discovery config.
@@ -919,9 +920,11 @@ components:
             Status of the sync operation.
             In single account case, Its the combined status of account & all the destinations statuses
             In auto discover case, Its the status of the account discovery only.
+          readOnly: true
           type: string
         status_message:
           description: Aggregate status message of the sync operation.
+          readOnly: true
           type: string
         sync_interval:
           title: "Time between sync jobs in minutes. Default is \"Auto\". Other supported\
@@ -937,7 +940,11 @@ components:
           readOnly: true
           type: string
       required:
+      - account_preference
+      - credential_preference
       - name
+      - provider_type
+      - source_configs
       title: DiscoveryConfig
       type: object
     ddidnsrickettsIPAMConfig:

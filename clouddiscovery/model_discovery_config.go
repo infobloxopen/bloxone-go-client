@@ -22,13 +22,13 @@ var _ MappedNullable = &DiscoveryConfig{}
 // DiscoveryConfig Discovery configuration
 type DiscoveryConfig struct {
 	// Account preference. For ex.: single, multiple, auto-discover-multiple.
-	AccountPreference *string `json:"account_preference,omitempty"`
+	AccountPreference string `json:"account_preference"`
 	// Additional configuration. Ex.: '{    \"excluded_object_types\": [],    \"exclusion_account_list\": [],    \"zone_forwarding\": \"true\" or \"false\" }'.
 	AdditionalConfig *AdditionalConfig `json:"additional_config,omitempty"`
 	// Timestamp when the object has been created.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Credential preference. Ex.: '{    \"type\": \"static\" or \"delegated\",    \"access_identifier_type\": \"role_arn\" or \"tenant_id\" or \"project_id\"  }'.
-	CredentialPreference *CredentialPreference `json:"credential_preference,omitempty"`
+	CredentialPreference CredentialPreference `json:"credential_preference"`
 	// Timestamp when the object has been deleted.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// Description of the discovery config. Optional.
@@ -46,9 +46,9 @@ type DiscoveryConfig struct {
 	// Name of the discovery config.
 	Name string `json:"name"`
 	// Provider type. Ex.: Amazon Web Services, Google Cloud Platform, Microsoft Azure.
-	ProviderType *string `json:"provider_type,omitempty"`
+	ProviderType string `json:"provider_type"`
 	// Source configs.
-	SourceConfigs []SourceConfig `json:"source_configs,omitempty"`
+	SourceConfigs []SourceConfig `json:"source_configs"`
 	// Status of the sync operation. In single account case, Its the combined status of account & all the destinations statuses In auto discover case, Its the status of the account discovery only.
 	Status *string `json:"status,omitempty"`
 	// Aggregate status message of the sync operation.
@@ -67,9 +67,13 @@ type _DiscoveryConfig DiscoveryConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiscoveryConfig(name string) *DiscoveryConfig {
+func NewDiscoveryConfig(accountPreference string, credentialPreference CredentialPreference, name string, providerType string, sourceConfigs []SourceConfig) *DiscoveryConfig {
 	this := DiscoveryConfig{}
+	this.AccountPreference = accountPreference
+	this.CredentialPreference = credentialPreference
 	this.Name = name
+	this.ProviderType = providerType
+	this.SourceConfigs = sourceConfigs
 	return &this
 }
 
@@ -81,36 +85,28 @@ func NewDiscoveryConfigWithDefaults() *DiscoveryConfig {
 	return &this
 }
 
-// GetAccountPreference returns the AccountPreference field value if set, zero value otherwise.
+// GetAccountPreference returns the AccountPreference field value
 func (o *DiscoveryConfig) GetAccountPreference() string {
-	if o == nil || IsNil(o.AccountPreference) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountPreference
+
+	return o.AccountPreference
 }
 
-// GetAccountPreferenceOk returns a tuple with the AccountPreference field value if set, nil otherwise
+// GetAccountPreferenceOk returns a tuple with the AccountPreference field value
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetAccountPreferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountPreference) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccountPreference, true
+	return &o.AccountPreference, true
 }
 
-// HasAccountPreference returns a boolean if a field has been set.
-func (o *DiscoveryConfig) HasAccountPreference() bool {
-	if o != nil && !IsNil(o.AccountPreference) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountPreference gets a reference to the given string and assigns it to the AccountPreference field.
+// SetAccountPreference sets field value
 func (o *DiscoveryConfig) SetAccountPreference(v string) {
-	o.AccountPreference = &v
+	o.AccountPreference = v
 }
 
 // GetAdditionalConfig returns the AdditionalConfig field value if set, zero value otherwise.
@@ -177,36 +173,28 @@ func (o *DiscoveryConfig) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetCredentialPreference returns the CredentialPreference field value if set, zero value otherwise.
+// GetCredentialPreference returns the CredentialPreference field value
 func (o *DiscoveryConfig) GetCredentialPreference() CredentialPreference {
-	if o == nil || IsNil(o.CredentialPreference) {
+	if o == nil {
 		var ret CredentialPreference
 		return ret
 	}
-	return *o.CredentialPreference
+
+	return o.CredentialPreference
 }
 
-// GetCredentialPreferenceOk returns a tuple with the CredentialPreference field value if set, nil otherwise
+// GetCredentialPreferenceOk returns a tuple with the CredentialPreference field value
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetCredentialPreferenceOk() (*CredentialPreference, bool) {
-	if o == nil || IsNil(o.CredentialPreference) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CredentialPreference, true
+	return &o.CredentialPreference, true
 }
 
-// HasCredentialPreference returns a boolean if a field has been set.
-func (o *DiscoveryConfig) HasCredentialPreference() bool {
-	if o != nil && !IsNil(o.CredentialPreference) {
-		return true
-	}
-
-	return false
-}
-
-// SetCredentialPreference gets a reference to the given CredentialPreference and assigns it to the CredentialPreference field.
+// SetCredentialPreference sets field value
 func (o *DiscoveryConfig) SetCredentialPreference(v CredentialPreference) {
-	o.CredentialPreference = &v
+	o.CredentialPreference = v
 }
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
@@ -457,66 +445,50 @@ func (o *DiscoveryConfig) SetName(v string) {
 	o.Name = v
 }
 
-// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+// GetProviderType returns the ProviderType field value
 func (o *DiscoveryConfig) GetProviderType() string {
-	if o == nil || IsNil(o.ProviderType) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProviderType
+
+	return o.ProviderType
 }
 
-// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// GetProviderTypeOk returns a tuple with the ProviderType field value
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetProviderTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ProviderType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProviderType, true
+	return &o.ProviderType, true
 }
 
-// HasProviderType returns a boolean if a field has been set.
-func (o *DiscoveryConfig) HasProviderType() bool {
-	if o != nil && !IsNil(o.ProviderType) {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+// SetProviderType sets field value
 func (o *DiscoveryConfig) SetProviderType(v string) {
-	o.ProviderType = &v
+	o.ProviderType = v
 }
 
-// GetSourceConfigs returns the SourceConfigs field value if set, zero value otherwise.
+// GetSourceConfigs returns the SourceConfigs field value
 func (o *DiscoveryConfig) GetSourceConfigs() []SourceConfig {
-	if o == nil || IsNil(o.SourceConfigs) {
+	if o == nil {
 		var ret []SourceConfig
 		return ret
 	}
+
 	return o.SourceConfigs
 }
 
-// GetSourceConfigsOk returns a tuple with the SourceConfigs field value if set, nil otherwise
+// GetSourceConfigsOk returns a tuple with the SourceConfigs field value
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetSourceConfigsOk() ([]SourceConfig, bool) {
-	if o == nil || IsNil(o.SourceConfigs) {
+	if o == nil {
 		return nil, false
 	}
 	return o.SourceConfigs, true
 }
 
-// HasSourceConfigs returns a boolean if a field has been set.
-func (o *DiscoveryConfig) HasSourceConfigs() bool {
-	if o != nil && !IsNil(o.SourceConfigs) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceConfigs gets a reference to the given []SourceConfig and assigns it to the SourceConfigs field.
+// SetSourceConfigs sets field value
 func (o *DiscoveryConfig) SetSourceConfigs(v []SourceConfig) {
 	o.SourceConfigs = v
 }
@@ -691,18 +663,14 @@ func (o DiscoveryConfig) MarshalJSON() ([]byte, error) {
 
 func (o DiscoveryConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccountPreference) {
-		toSerialize["account_preference"] = o.AccountPreference
-	}
+	toSerialize["account_preference"] = o.AccountPreference
 	if !IsNil(o.AdditionalConfig) {
 		toSerialize["additional_config"] = o.AdditionalConfig
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
-	if !IsNil(o.CredentialPreference) {
-		toSerialize["credential_preference"] = o.CredentialPreference
-	}
+	toSerialize["credential_preference"] = o.CredentialPreference
 	if !IsNil(o.DeletedAt) {
 		toSerialize["deleted_at"] = o.DeletedAt
 	}
@@ -725,12 +693,8 @@ func (o DiscoveryConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["last_sync"] = o.LastSync
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.ProviderType) {
-		toSerialize["provider_type"] = o.ProviderType
-	}
-	if !IsNil(o.SourceConfigs) {
-		toSerialize["source_configs"] = o.SourceConfigs
-	}
+	toSerialize["provider_type"] = o.ProviderType
+	toSerialize["source_configs"] = o.SourceConfigs
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -759,7 +723,11 @@ func (o *DiscoveryConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"account_preference",
+		"credential_preference",
 		"name",
+		"provider_type",
+		"source_configs",
 	}
 
 	allProperties := make(map[string]interface{})
