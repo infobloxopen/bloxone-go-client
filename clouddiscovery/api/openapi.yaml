@@ -941,10 +941,8 @@ components:
           type: string
       required:
       - account_preference
-      - credential_preference
       - name
       - provider_type
-      - source_configs
       title: DiscoveryConfig
       type: object
     ddidnsrickettsIPAMConfig:

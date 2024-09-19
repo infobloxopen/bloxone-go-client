@@ -28,7 +28,7 @@ type DiscoveryConfig struct {
 	// Timestamp when the object has been created.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Credential preference. Ex.: '{    \"type\": \"static\" or \"delegated\",    \"access_identifier_type\": \"role_arn\" or \"tenant_id\" or \"project_id\"  }'.
-	CredentialPreference CredentialPreference `json:"credential_preference"`
+	CredentialPreference *CredentialPreference `json:"credential_preference,omitempty"`
 	// Timestamp when the object has been deleted.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// Description of the discovery config. Optional.
@@ -48,7 +48,7 @@ type DiscoveryConfig struct {
 	// Provider type. Ex.: Amazon Web Services, Google Cloud Platform, Microsoft Azure.
 	ProviderType string `json:"provider_type"`
 	// Source configs.
-	SourceConfigs []SourceConfig `json:"source_configs"`
+	SourceConfigs []SourceConfig `json:"source_configs,omitempty"`
 	// Status of the sync operation. In single account case, Its the combined status of account & all the destinations statuses In auto discover case, Its the status of the account discovery only.
 	Status *string `json:"status,omitempty"`
 	// Aggregate status message of the sync operation.
@@ -67,13 +67,11 @@ type _DiscoveryConfig DiscoveryConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiscoveryConfig(accountPreference string, credentialPreference CredentialPreference, name string, providerType string, sourceConfigs []SourceConfig) *DiscoveryConfig {
+func NewDiscoveryConfig(accountPreference string, name string, providerType string) *DiscoveryConfig {
 	this := DiscoveryConfig{}
 	this.AccountPreference = accountPreference
-	this.CredentialPreference = credentialPreference
 	this.Name = name
 	this.ProviderType = providerType
-	this.SourceConfigs = sourceConfigs
 	return &this
 }
 
@@ -173,28 +171,36 @@ func (o *DiscoveryConfig) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetCredentialPreference returns the CredentialPreference field value
+// GetCredentialPreference returns the CredentialPreference field value if set, zero value otherwise.
 func (o *DiscoveryConfig) GetCredentialPreference() CredentialPreference {
-	if o == nil {
+	if o == nil || IsNil(o.CredentialPreference) {
 		var ret CredentialPreference
 		return ret
 	}
-
-	return o.CredentialPreference
+	return *o.CredentialPreference
 }
 
-// GetCredentialPreferenceOk returns a tuple with the CredentialPreference field value
+// GetCredentialPreferenceOk returns a tuple with the CredentialPreference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetCredentialPreferenceOk() (*CredentialPreference, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CredentialPreference) {
 		return nil, false
 	}
-	return &o.CredentialPreference, true
+	return o.CredentialPreference, true
 }
 
-// SetCredentialPreference sets field value
+// HasCredentialPreference returns a boolean if a field has been set.
+func (o *DiscoveryConfig) HasCredentialPreference() bool {
+	if o != nil && !IsNil(o.CredentialPreference) {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentialPreference gets a reference to the given CredentialPreference and assigns it to the CredentialPreference field.
 func (o *DiscoveryConfig) SetCredentialPreference(v CredentialPreference) {
-	o.CredentialPreference = v
+	o.CredentialPreference = &v
 }
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
@@ -469,26 +475,34 @@ func (o *DiscoveryConfig) SetProviderType(v string) {
 	o.ProviderType = v
 }
 
-// GetSourceConfigs returns the SourceConfigs field value
+// GetSourceConfigs returns the SourceConfigs field value if set, zero value otherwise.
 func (o *DiscoveryConfig) GetSourceConfigs() []SourceConfig {
-	if o == nil {
+	if o == nil || IsNil(o.SourceConfigs) {
 		var ret []SourceConfig
 		return ret
 	}
-
 	return o.SourceConfigs
 }
 
-// GetSourceConfigsOk returns a tuple with the SourceConfigs field value
+// GetSourceConfigsOk returns a tuple with the SourceConfigs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiscoveryConfig) GetSourceConfigsOk() ([]SourceConfig, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SourceConfigs) {
 		return nil, false
 	}
 	return o.SourceConfigs, true
 }
 
-// SetSourceConfigs sets field value
+// HasSourceConfigs returns a boolean if a field has been set.
+func (o *DiscoveryConfig) HasSourceConfigs() bool {
+	if o != nil && !IsNil(o.SourceConfigs) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceConfigs gets a reference to the given []SourceConfig and assigns it to the SourceConfigs field.
 func (o *DiscoveryConfig) SetSourceConfigs(v []SourceConfig) {
 	o.SourceConfigs = v
 }
@@ -670,7 +684,9 @@ func (o DiscoveryConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
-	toSerialize["credential_preference"] = o.CredentialPreference
+	if !IsNil(o.CredentialPreference) {
+		toSerialize["credential_preference"] = o.CredentialPreference
+	}
 	if !IsNil(o.DeletedAt) {
 		toSerialize["deleted_at"] = o.DeletedAt
 	}
@@ -694,7 +710,9 @@ func (o DiscoveryConfig) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["provider_type"] = o.ProviderType
-	toSerialize["source_configs"] = o.SourceConfigs
+	if !IsNil(o.SourceConfigs) {
+		toSerialize["source_configs"] = o.SourceConfigs
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -724,10 +742,8 @@ func (o *DiscoveryConfig) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"account_preference",
-		"credential_preference",
 		"name",
 		"provider_type",
-		"source_configs",
 	}
 
 	allProperties := make(map[string]interface{})

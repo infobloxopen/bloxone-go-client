@@ -29,18 +29,18 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create AWS Provider", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		awsresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
+				AccountPreference: "single",
 				CredentialPreference: &clouddiscovery.CredentialPreference{
 					AccessIdentifierType: clouddiscovery.PtrString("role_arn"),
 					CredentialType:       clouddiscovery.PtrString("dynamic"),
 				},
 				Description:  clouddiscovery.PtrString("AWS Discovery"),
 				Name:         "TestSyncAWS1",
-				ProviderType: clouddiscovery.PtrString("Amazon Web Services"),
+				ProviderType: "Amazon Web Services",
 				SourceConfigs: []clouddiscovery.SourceConfig{
 					{
 						CredentialConfig: &clouddiscovery.CredentialConfig{
@@ -63,11 +63,11 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create Azure Provider", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		azureresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
+				AccountPreference: "single",
 				CredentialPreference: &clouddiscovery.CredentialPreference{
 					AccessIdentifierType: clouddiscovery.PtrString("tenant_id"),
 					CredentialType:       clouddiscovery.PtrString("dynamic"),
@@ -75,7 +75,7 @@ func TestProvidersAPIService(t *testing.T) {
 				},
 				Description:  clouddiscovery.PtrString("Azure Discovery"),
 				Name:         "TestSyncAzure",
-				ProviderType: clouddiscovery.PtrString("Microsoft Azure"),
+				ProviderType: "Microsoft Azure",
 				SourceConfigs: []clouddiscovery.SourceConfig{
 					{
 						CredentialConfig: &clouddiscovery.CredentialConfig{
@@ -103,11 +103,11 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create GCP Provider", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		gcpresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
+				AccountPreference: "single",
 				CredentialPreference: &clouddiscovery.CredentialPreference{
 					AccessIdentifierType: clouddiscovery.PtrString("project_id"),
 					CredentialType:       clouddiscovery.PtrString("dynamic"),
@@ -115,7 +115,7 @@ func TestProvidersAPIService(t *testing.T) {
 				},
 				Description:  clouddiscovery.PtrString("GCP Discovery"),
 				Name:         "TestSyncGCP",
-				ProviderType: clouddiscovery.PtrString("Google Cloud Platform"),
+				ProviderType: "Google Cloud Platform",
 				SourceConfigs: []clouddiscovery.SourceConfig{
 					{
 						CredentialConfig: &clouddiscovery.CredentialConfig{
@@ -140,7 +140,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService List", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.List(context.Background()).Execute()
 
@@ -155,7 +155,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Read", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Read(context.Background(), *gcpId).Execute()
 
@@ -167,30 +167,16 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Update", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Update(context.Background(), *awsId).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
-				CredentialPreference: &clouddiscovery.CredentialPreference{
-					AccessIdentifierType: clouddiscovery.PtrString("role_arn"),
-					CredentialType:       clouddiscovery.PtrString("dynamic"),
-					AdditionalProperties: nil,
-				},
-				Description:  clouddiscovery.PtrString("AWS Discovery"),
-				Name:         "TestSyncAWS",
-				ProviderType: clouddiscovery.PtrString("Amazon Web Services"),
-				SourceConfigs: []clouddiscovery.SourceConfig{
-					{
-						//Id: az,
-						CredentialConfig: &clouddiscovery.CredentialConfig{
-							AccessIdentifier: clouddiscovery.PtrString("arn:aws:iam::111111111111:role/infoblox_discovery"),
-						},
-						AdditionalProperties: nil,
-					},
-				},
-				SyncInterval: clouddiscovery.PtrString("Auto"),
-				Tags:         nil,
+				AccountPreference: "single",
+				Description:       clouddiscovery.PtrString("AWS Discovery Update"),
+				Name:              "TestSyncAWS1",
+				ProviderType:      "Amazon Web Services",
+				SyncInterval:      clouddiscovery.PtrString("Auto"),
+				Tags:              nil,
 			}).
 			Execute()
 
@@ -205,14 +191,14 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Azure Update", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Update(context.Background(), *azureId).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
-				Description:       clouddiscovery.PtrString("Azure Discovery meow"),
+				AccountPreference: "single",
+				Description:       clouddiscovery.PtrString("Azure Discovery Update"),
 				Name:              "TestSyncAzure",
-				ProviderType:      clouddiscovery.PtrString("Microsoft Azure"),
+				ProviderType:      "Microsoft Azure",
 				SyncInterval:      clouddiscovery.PtrString("Auto"),
 				Tags:              nil,
 			}).
@@ -233,10 +219,10 @@ func TestProvidersAPIService(t *testing.T) {
 
 		gcpresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Update(context.Background(), *gcpId).
 			Body(clouddiscovery.DiscoveryConfig{
-				AccountPreference: clouddiscovery.PtrString("single"),
+				AccountPreference: "single",
 				Description:       clouddiscovery.PtrString("GCP Discovery update"),
 				Name:              "TestSyncGCP",
-				ProviderType:      clouddiscovery.PtrString("Google Cloud Platform"),
+				ProviderType:      "Google Cloud Platform",
 			}).
 			Execute()
 
@@ -252,7 +238,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService AWS Delete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *awsId).Execute()
 
@@ -263,7 +249,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Azure Delete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *azureId).Execute()
 
@@ -274,7 +260,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService GCP Delete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *gcpId).Execute()
 

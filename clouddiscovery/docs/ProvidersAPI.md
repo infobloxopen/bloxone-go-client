@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	body := *clouddiscovery.NewDiscoveryConfig("AccountPreference_example", *clouddiscovery.NewCredentialPreference(), "Name_example", "ProviderType_example", []clouddiscovery.SourceConfig{*clouddiscovery.NewSourceConfig()}) // DiscoveryConfig | 
+	body := *clouddiscovery.NewDiscoveryConfig("AccountPreference_example", "Name_example", "ProviderType_example") // DiscoveryConfig | 
 
 	apiClient := clouddiscovery.NewAPIClient()
 	resp, r, err := apiClient.ProvidersAPI.Create(context.Background()).Body(body).Execute()
@@ -310,7 +310,7 @@ import (
 
 func main() {
 	id := "a5183192-1e00-475f-b334-38e1f0bb1bc7" // string | Auto-generated unique discovery config ID. Format BloxID.
-	body := *clouddiscovery.NewDiscoveryConfig("AccountPreference_example", *clouddiscovery.NewCredentialPreference(), "Name_example", "ProviderType_example", []clouddiscovery.SourceConfig{*clouddiscovery.NewSourceConfig()}) // DiscoveryConfig | 
+	body := *clouddiscovery.NewDiscoveryConfig("AccountPreference_example", "Name_example", "ProviderType_example") // DiscoveryConfig | 
 
 	apiClient := clouddiscovery.NewAPIClient()
 	resp, r, err := apiClient.ProvidersAPI.Update(context.Background(), id).Body(body).Execute()

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccountPreference** | **string** | Account preference. For ex.: single, multiple, auto-discover-multiple. | 
 **AdditionalConfig** | Pointer to [**AdditionalConfig**](AdditionalConfig.md) | Additional configuration. Ex.: &#39;{    \&quot;excluded_object_types\&quot;: [],    \&quot;exclusion_account_list\&quot;: [],    \&quot;zone_forwarding\&quot;: \&quot;true\&quot; or \&quot;false\&quot; }&#39;. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Timestamp when the object has been created. | [optional] [readonly] 
-**CredentialPreference** | [**CredentialPreference**](CredentialPreference.md) | Credential preference. Ex.: &#39;{    \&quot;type\&quot;: \&quot;static\&quot; or \&quot;delegated\&quot;,    \&quot;access_identifier_type\&quot;: \&quot;role_arn\&quot; or \&quot;tenant_id\&quot; or \&quot;project_id\&quot;  }&#39;. | 
+**CredentialPreference** | Pointer to [**CredentialPreference**](CredentialPreference.md) | Credential preference. Ex.: &#39;{    \&quot;type\&quot;: \&quot;static\&quot; or \&quot;delegated\&quot;,    \&quot;access_identifier_type\&quot;: \&quot;role_arn\&quot; or \&quot;tenant_id\&quot; or \&quot;project_id\&quot;  }&#39;. | [optional] 
 **DeletedAt** | Pointer to **time.Time** | Timestamp when the object has been deleted. | [optional] [readonly] 
 **Description** | Pointer to **string** | Description of the discovery config. Optional. | [optional] 
 **DesiredState** | Pointer to **string** | Desired state. Default is \&quot;enabled\&quot;. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **LastSync** | Pointer to **time.Time** | Last sync timestamp. | [optional] [readonly] 
 **Name** | **string** | Name of the discovery config. | 
 **ProviderType** | **string** | Provider type. Ex.: Amazon Web Services, Google Cloud Platform, Microsoft Azure. | 
-**SourceConfigs** | [**[]SourceConfig**](SourceConfig.md) | Source configs. | 
+**SourceConfigs** | Pointer to [**[]SourceConfig**](SourceConfig.md) | Source configs. | [optional] 
 **Status** | Pointer to **string** | Status of the sync operation. In single account case, Its the combined status of account &amp; all the destinations statuses In auto discover case, Its the status of the account discovery only. | [optional] [readonly] 
 **StatusMessage** | Pointer to **string** | Aggregate status message of the sync operation. | [optional] [readonly] 
 **SyncInterval** | Pointer to **string** |  | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewDiscoveryConfig
 
-`func NewDiscoveryConfig(accountPreference string, credentialPreference CredentialPreference, name string, providerType string, sourceConfigs []SourceConfig, ) *DiscoveryConfig`
+`func NewDiscoveryConfig(accountPreference string, name string, providerType string, ) *DiscoveryConfig`
 
 NewDiscoveryConfig instantiates a new DiscoveryConfig object
 This constructor will assign default values to properties that have it defined,
@@ -132,6 +132,11 @@ and a boolean to check if the value has been set.
 
 SetCredentialPreference sets CredentialPreference field to given value.
 
+### HasCredentialPreference
+
+`func (o *DiscoveryConfig) HasCredentialPreference() bool`
+
+HasCredentialPreference returns a boolean if a field has been set.
 
 ### GetDeletedAt
 
@@ -367,6 +372,11 @@ and a boolean to check if the value has been set.
 
 SetSourceConfigs sets SourceConfigs field to given value.
 
+### HasSourceConfigs
+
+`func (o *DiscoveryConfig) HasSourceConfigs() bool`
+
+HasSourceConfigs returns a boolean if a field has been set.
 
 ### GetStatus
 
