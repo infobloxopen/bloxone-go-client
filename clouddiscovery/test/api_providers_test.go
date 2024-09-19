@@ -29,7 +29,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create AWS Provider", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		awsresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
@@ -63,7 +63,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create Azure Provider", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		azureresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
@@ -103,7 +103,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Create GCP Provider", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		gcpresp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Create(context.Background()).
 			Body(clouddiscovery.DiscoveryConfig{
@@ -140,7 +140,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService List", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.List(context.Background()).Execute()
 
@@ -155,7 +155,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Read", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Read(context.Background(), *gcpId).Execute()
 
@@ -167,7 +167,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Update", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Update(context.Background(), *awsId).
 			Body(clouddiscovery.DiscoveryConfig{
@@ -191,7 +191,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Azure Update", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Update(context.Background(), *azureId).
 			Body(clouddiscovery.DiscoveryConfig{
@@ -238,7 +238,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService AWS Delete", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *awsId).Execute()
 
@@ -249,7 +249,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService Azure Delete", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *azureId).Execute()
 
@@ -260,7 +260,7 @@ func TestProvidersAPIService(t *testing.T) {
 
 	t.Run("Test ProvidersAPIService GCP Delete", func(t *testing.T) {
 
-		//t.Skip("skip test") // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.DiscoveryConfigurationAPIV2.ProvidersAPI.Delete(context.Background(), *gcpId).Execute()
 
