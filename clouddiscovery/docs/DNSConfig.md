@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConsolidatedZoneDataEnabled** | Pointer to **bool** |  | [optional] 
+**ResolverEndpointsSyncEnabled** | Pointer to **bool** | resolver_endpoints_sync_enabled enables discovery of inbound&amp;outbound endpoints from third party providers. | [optional] 
 **SplitViewEnabled** | Pointer to **bool** | split_view_enabled consolidates private zones into a single view, which is separate from the public zone view. | [optional] 
 **SyncType** | Pointer to **string** |  | [optional] 
 **ViewId** | Pointer to **string** |  | [optional] 
@@ -53,6 +54,31 @@ SetConsolidatedZoneDataEnabled sets ConsolidatedZoneDataEnabled field to given v
 `func (o *DNSConfig) HasConsolidatedZoneDataEnabled() bool`
 
 HasConsolidatedZoneDataEnabled returns a boolean if a field has been set.
+
+### GetResolverEndpointsSyncEnabled
+
+`func (o *DNSConfig) GetResolverEndpointsSyncEnabled() bool`
+
+GetResolverEndpointsSyncEnabled returns the ResolverEndpointsSyncEnabled field if non-nil, zero value otherwise.
+
+### GetResolverEndpointsSyncEnabledOk
+
+`func (o *DNSConfig) GetResolverEndpointsSyncEnabledOk() (*bool, bool)`
+
+GetResolverEndpointsSyncEnabledOk returns a tuple with the ResolverEndpointsSyncEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResolverEndpointsSyncEnabled
+
+`func (o *DNSConfig) SetResolverEndpointsSyncEnabled(v bool)`
+
+SetResolverEndpointsSyncEnabled sets ResolverEndpointsSyncEnabled field to given value.
+
+### HasResolverEndpointsSyncEnabled
+
+`func (o *DNSConfig) HasResolverEndpointsSyncEnabled() bool`
+
+HasResolverEndpointsSyncEnabled returns a boolean if a field has been set.
 
 ### GetSplitViewEnabled
 

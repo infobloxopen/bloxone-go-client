@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DhcpServer** | Pointer to **string** |  | [optional] 
+**DisableIpamProjection** | Pointer to **bool** |  | [optional] 
 **IpSpace** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetDhcpServer sets DhcpServer field to given value.
 `func (o *IPAMConfig) HasDhcpServer() bool`
 
 HasDhcpServer returns a boolean if a field has been set.
+
+### GetDisableIpamProjection
+
+`func (o *IPAMConfig) GetDisableIpamProjection() bool`
+
+GetDisableIpamProjection returns the DisableIpamProjection field if non-nil, zero value otherwise.
+
+### GetDisableIpamProjectionOk
+
+`func (o *IPAMConfig) GetDisableIpamProjectionOk() (*bool, bool)`
+
+GetDisableIpamProjectionOk returns a tuple with the DisableIpamProjection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableIpamProjection
+
+`func (o *IPAMConfig) SetDisableIpamProjection(v bool)`
+
+SetDisableIpamProjection sets DisableIpamProjection field to given value.
+
+### HasDisableIpamProjection
+
+`func (o *IPAMConfig) HasDisableIpamProjection() bool`
+
+HasDisableIpamProjection returns a boolean if a field has been set.
 
 ### GetIpSpace
 

@@ -5,7 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessIdentifier** | Pointer to **string** |  | [optional] 
+**AgentId** | Pointer to **string** |  | [optional] 
 **Enclave** | Pointer to **string** |  | [optional] 
+**ForestGuid** | Pointer to **string** |  | [optional] 
+**MsServers** | Pointer to [**[]MSServers**](MSServers.md) |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -52,6 +55,31 @@ SetAccessIdentifier sets AccessIdentifier field to given value.
 
 HasAccessIdentifier returns a boolean if a field has been set.
 
+### GetAgentId
+
+`func (o *CredentialConfig) GetAgentId() string`
+
+GetAgentId returns the AgentId field if non-nil, zero value otherwise.
+
+### GetAgentIdOk
+
+`func (o *CredentialConfig) GetAgentIdOk() (*string, bool)`
+
+GetAgentIdOk returns a tuple with the AgentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentId
+
+`func (o *CredentialConfig) SetAgentId(v string)`
+
+SetAgentId sets AgentId field to given value.
+
+### HasAgentId
+
+`func (o *CredentialConfig) HasAgentId() bool`
+
+HasAgentId returns a boolean if a field has been set.
+
 ### GetEnclave
 
 `func (o *CredentialConfig) GetEnclave() string`
@@ -76,6 +104,56 @@ SetEnclave sets Enclave field to given value.
 `func (o *CredentialConfig) HasEnclave() bool`
 
 HasEnclave returns a boolean if a field has been set.
+
+### GetForestGuid
+
+`func (o *CredentialConfig) GetForestGuid() string`
+
+GetForestGuid returns the ForestGuid field if non-nil, zero value otherwise.
+
+### GetForestGuidOk
+
+`func (o *CredentialConfig) GetForestGuidOk() (*string, bool)`
+
+GetForestGuidOk returns a tuple with the ForestGuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForestGuid
+
+`func (o *CredentialConfig) SetForestGuid(v string)`
+
+SetForestGuid sets ForestGuid field to given value.
+
+### HasForestGuid
+
+`func (o *CredentialConfig) HasForestGuid() bool`
+
+HasForestGuid returns a boolean if a field has been set.
+
+### GetMsServers
+
+`func (o *CredentialConfig) GetMsServers() []MSServers`
+
+GetMsServers returns the MsServers field if non-nil, zero value otherwise.
+
+### GetMsServersOk
+
+`func (o *CredentialConfig) GetMsServersOk() (*[]MSServers, bool)`
+
+GetMsServersOk returns a tuple with the MsServers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsServers
+
+`func (o *CredentialConfig) SetMsServers(v []MSServers)`
+
+SetMsServers sets MsServers field to given value.
+
+### HasMsServers
+
+`func (o *CredentialConfig) HasMsServers() bool`
+
+HasMsServers returns a boolean if a field has been set.
 
 ### GetRegion
 

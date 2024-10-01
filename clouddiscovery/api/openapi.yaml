@@ -559,16 +559,34 @@ components:
       type: object
     ddidnsrickettsCredentialConfig:
       example:
+        ms_servers:
+        - dns_host_id: dns_host_id
+          server_ip: server_ip
+        - dns_host_id: dns_host_id
+          server_ip: server_ip
         access_identifier: access_identifier
+        agent_id: agent_id
+        forest_guid: forest_guid
         region: region
         enclave: enclave
       properties:
         access_identifier:
           title: "access_identifier values: role_arn_1, tenant_id_123,project_id_123"
           type: string
+        agent_id:
+          title: "MSAD Agent ID: maps to a host OPHID in HostApp"
+          type: string
         enclave:
           title: enclave define whether its commercial or govt cloud
           type: string
+        forest_guid:
+          title: "MSAD Forest GUID: auto-populated from the MS Server IP Addresses"
+          type: string
+        ms_servers:
+          items:
+            $ref: '#/components/schemas/ddidnsrickettsMSServers'
+          title: MS Server IP addresses
+          type: array
         region:
           title: region values for aws
           type: string
@@ -589,6 +607,7 @@ components:
       type: object
     ddidnsrickettsDNSConfig:
       example:
+        resolver_endpoints_sync_enabled: true
         split_view_enabled: true
         sync_type: sync_type
         view_id: view_id
@@ -599,6 +618,11 @@ components:
           format: boolean
           title: consolidated_zone_data_enabled consolidates public & private zones
             into a single view
+          type: boolean
+        resolver_endpoints_sync_enabled:
+          description: resolver_endpoints_sync_enabled enables discovery of inbound&outbound
+            endpoints from third party providers.
+          format: boolean
           type: boolean
         split_view_enabled:
           description: "split_view_enabled consolidates private zones into a single\
@@ -624,7 +648,9 @@ components:
           ipam:
             ip_space: ip_space
             dhcp_server: dhcp_server
+            disable_ipam_projection: true
           dns:
+            resolver_endpoints_sync_enabled: true
             split_view_enabled: true
             sync_type: sync_type
             view_id: view_id
@@ -665,7 +691,9 @@ components:
         ipam:
           ip_space: ip_space
           dhcp_server: dhcp_server
+          disable_ipam_projection: true
         dns:
+          resolver_endpoints_sync_enabled: true
           split_view_enabled: true
           sync_type: sync_type
           view_id: view_id
@@ -694,7 +722,9 @@ components:
             ipam:
               ip_space: ip_space
               dhcp_server: dhcp_server
+              disable_ipam_projection: true
             dns:
+              resolver_endpoints_sync_enabled: true
               split_view_enabled: true
               sync_type: sync_type
               view_id: view_id
@@ -709,7 +739,9 @@ components:
             ipam:
               ip_space: ip_space
               dhcp_server: dhcp_server
+              disable_ipam_projection: true
             dns:
+              resolver_endpoints_sync_enabled: true
               split_view_enabled: true
               sync_type: sync_type
               view_id: view_id
@@ -729,7 +761,14 @@ components:
         - updated_at: 2000-01-23T04:56:07.000+00:00
           account_schedule_id: account_schedule_id
           credential_config:
+            ms_servers:
+            - dns_host_id: dns_host_id
+              server_ip: server_ip
+            - dns_host_id: dns_host_id
+              server_ip: server_ip
             access_identifier: access_identifier
+            agent_id: agent_id
+            forest_guid: forest_guid
             region: region
             enclave: enclave
           cloud_credential_id: cloud_credential_id
@@ -779,7 +818,14 @@ components:
         - updated_at: 2000-01-23T04:56:07.000+00:00
           account_schedule_id: account_schedule_id
           credential_config:
+            ms_servers:
+            - dns_host_id: dns_host_id
+              server_ip: server_ip
+            - dns_host_id: dns_host_id
+              server_ip: server_ip
             access_identifier: access_identifier
+            agent_id: agent_id
+            forest_guid: forest_guid
             region: region
             enclave: enclave
           cloud_credential_id: cloud_credential_id
@@ -949,11 +995,28 @@ components:
       example:
         ip_space: ip_space
         dhcp_server: dhcp_server
+        disable_ipam_projection: true
       properties:
         dhcp_server:
           type: string
+        disable_ipam_projection:
+          format: boolean
+          title: disable_ipam_projection disable_ipam_projection flag controls the
+            IPAM Sync/Reconciliation for the provider
+          type: boolean
         ip_space:
           type: string
+      type: object
+    ddidnsrickettsMSServers:
+      example:
+        dns_host_id: dns_host_id
+        server_ip: server_ip
+      properties:
+        dns_host_id:
+          type: string
+        server_ip:
+          type: string
+      title: MSServers defines the MSAD servers
       type: object
     ddidnsrickettsObject:
       example:
@@ -1023,7 +1086,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1038,7 +1103,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1058,7 +1125,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1108,7 +1182,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1214,7 +1295,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1229,7 +1312,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1249,7 +1334,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1299,7 +1391,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1392,7 +1491,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1407,7 +1508,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1427,7 +1530,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1477,7 +1587,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1583,7 +1700,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1598,7 +1717,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1618,7 +1739,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1668,7 +1796,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1770,7 +1905,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1785,7 +1922,9 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
+                resolver_endpoints_sync_enabled: true
                 split_view_enabled: true
                 sync_type: sync_type
                 view_id: view_id
@@ -1805,7 +1944,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1855,7 +2001,14 @@ components:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             account_schedule_id: account_schedule_id
             credential_config:
+              ms_servers:
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
+              - dns_host_id: dns_host_id
+                server_ip: server_ip
               access_identifier: access_identifier
+              agent_id: agent_id
+              forest_guid: forest_guid
               region: region
               enclave: enclave
             cloud_credential_id: cloud_credential_id
@@ -1960,7 +2113,14 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         account_schedule_id: account_schedule_id
         credential_config:
+          ms_servers:
+          - dns_host_id: dns_host_id
+            server_ip: server_ip
+          - dns_host_id: dns_host_id
+            server_ip: server_ip
           access_identifier: access_identifier
+          agent_id: agent_id
+          forest_guid: forest_guid
           region: region
           enclave: enclave
         cloud_credential_id: cloud_credential_id
