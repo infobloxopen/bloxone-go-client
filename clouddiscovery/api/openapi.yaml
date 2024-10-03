@@ -624,6 +624,7 @@ components:
           ipam:
             ip_space: ip_space
             dhcp_server: dhcp_server
+            disable_ipam_projection: true
           dns:
             split_view_enabled: true
             sync_type: sync_type
@@ -665,6 +666,7 @@ components:
         ipam:
           ip_space: ip_space
           dhcp_server: dhcp_server
+          disable_ipam_projection: true
         dns:
           split_view_enabled: true
           sync_type: sync_type
@@ -694,6 +696,7 @@ components:
             ipam:
               ip_space: ip_space
               dhcp_server: dhcp_server
+              disable_ipam_projection: true
             dns:
               split_view_enabled: true
               sync_type: sync_type
@@ -709,6 +712,7 @@ components:
             ipam:
               ip_space: ip_space
               dhcp_server: dhcp_server
+              disable_ipam_projection: true
             dns:
               split_view_enabled: true
               sync_type: sync_type
@@ -949,9 +953,14 @@ components:
       example:
         ip_space: ip_space
         dhcp_server: dhcp_server
+        disable_ipam_projection: true
       properties:
         dhcp_server:
           type: string
+        disable_ipam_projection:
+          description: This flag controls the IPAM Sync/Reconciliation for the provider
+          format: boolean
+          type: boolean
         ip_space:
           type: string
       type: object
@@ -1023,6 +1032,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1038,6 +1048,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1214,6 +1225,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1229,6 +1241,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1392,6 +1405,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1407,6 +1421,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1583,6 +1598,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1598,6 +1614,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1770,6 +1787,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
@@ -1785,6 +1803,7 @@ components:
               ipam:
                 ip_space: ip_space
                 dhcp_server: dhcp_server
+                disable_ipam_projection: true
               dns:
                 split_view_enabled: true
                 sync_type: sync_type
