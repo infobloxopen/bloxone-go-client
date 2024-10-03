@@ -19,12 +19,9 @@ var _ MappedNullable = &CredentialConfig{}
 
 // CredentialConfig struct for CredentialConfig
 type CredentialConfig struct {
-	AccessIdentifier     *string     `json:"access_identifier,omitempty"`
-	AgentId              *string     `json:"agent_id,omitempty"`
-	Enclave              *string     `json:"enclave,omitempty"`
-	ForestGuid           *string     `json:"forest_guid,omitempty"`
-	MsServers            []MSServers `json:"ms_servers,omitempty"`
-	Region               *string     `json:"region,omitempty"`
+	AccessIdentifier     *string `json:"access_identifier,omitempty"`
+	Enclave              *string `json:"enclave,omitempty"`
+	Region               *string `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,38 +76,6 @@ func (o *CredentialConfig) SetAccessIdentifier(v string) {
 	o.AccessIdentifier = &v
 }
 
-// GetAgentId returns the AgentId field value if set, zero value otherwise.
-func (o *CredentialConfig) GetAgentId() string {
-	if o == nil || IsNil(o.AgentId) {
-		var ret string
-		return ret
-	}
-	return *o.AgentId
-}
-
-// GetAgentIdOk returns a tuple with the AgentId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialConfig) GetAgentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AgentId) {
-		return nil, false
-	}
-	return o.AgentId, true
-}
-
-// HasAgentId returns a boolean if a field has been set.
-func (o *CredentialConfig) HasAgentId() bool {
-	if o != nil && !IsNil(o.AgentId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAgentId gets a reference to the given string and assigns it to the AgentId field.
-func (o *CredentialConfig) SetAgentId(v string) {
-	o.AgentId = &v
-}
-
 // GetEnclave returns the Enclave field value if set, zero value otherwise.
 func (o *CredentialConfig) GetEnclave() string {
 	if o == nil || IsNil(o.Enclave) {
@@ -141,70 +106,6 @@ func (o *CredentialConfig) HasEnclave() bool {
 // SetEnclave gets a reference to the given string and assigns it to the Enclave field.
 func (o *CredentialConfig) SetEnclave(v string) {
 	o.Enclave = &v
-}
-
-// GetForestGuid returns the ForestGuid field value if set, zero value otherwise.
-func (o *CredentialConfig) GetForestGuid() string {
-	if o == nil || IsNil(o.ForestGuid) {
-		var ret string
-		return ret
-	}
-	return *o.ForestGuid
-}
-
-// GetForestGuidOk returns a tuple with the ForestGuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialConfig) GetForestGuidOk() (*string, bool) {
-	if o == nil || IsNil(o.ForestGuid) {
-		return nil, false
-	}
-	return o.ForestGuid, true
-}
-
-// HasForestGuid returns a boolean if a field has been set.
-func (o *CredentialConfig) HasForestGuid() bool {
-	if o != nil && !IsNil(o.ForestGuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetForestGuid gets a reference to the given string and assigns it to the ForestGuid field.
-func (o *CredentialConfig) SetForestGuid(v string) {
-	o.ForestGuid = &v
-}
-
-// GetMsServers returns the MsServers field value if set, zero value otherwise.
-func (o *CredentialConfig) GetMsServers() []MSServers {
-	if o == nil || IsNil(o.MsServers) {
-		var ret []MSServers
-		return ret
-	}
-	return o.MsServers
-}
-
-// GetMsServersOk returns a tuple with the MsServers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialConfig) GetMsServersOk() ([]MSServers, bool) {
-	if o == nil || IsNil(o.MsServers) {
-		return nil, false
-	}
-	return o.MsServers, true
-}
-
-// HasMsServers returns a boolean if a field has been set.
-func (o *CredentialConfig) HasMsServers() bool {
-	if o != nil && !IsNil(o.MsServers) {
-		return true
-	}
-
-	return false
-}
-
-// SetMsServers gets a reference to the given []MSServers and assigns it to the MsServers field.
-func (o *CredentialConfig) SetMsServers(v []MSServers) {
-	o.MsServers = v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise.
@@ -252,17 +153,8 @@ func (o CredentialConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessIdentifier) {
 		toSerialize["access_identifier"] = o.AccessIdentifier
 	}
-	if !IsNil(o.AgentId) {
-		toSerialize["agent_id"] = o.AgentId
-	}
 	if !IsNil(o.Enclave) {
 		toSerialize["enclave"] = o.Enclave
-	}
-	if !IsNil(o.ForestGuid) {
-		toSerialize["forest_guid"] = o.ForestGuid
-	}
-	if !IsNil(o.MsServers) {
-		toSerialize["ms_servers"] = o.MsServers
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
@@ -290,10 +182,7 @@ func (o *CredentialConfig) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "access_identifier")
-		delete(additionalProperties, "agent_id")
 		delete(additionalProperties, "enclave")
-		delete(additionalProperties, "forest_guid")
-		delete(additionalProperties, "ms_servers")
 		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}

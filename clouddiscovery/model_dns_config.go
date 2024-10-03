@@ -20,8 +20,6 @@ var _ MappedNullable = &DNSConfig{}
 // DNSConfig struct for DNSConfig
 type DNSConfig struct {
 	ConsolidatedZoneDataEnabled *bool `json:"consolidated_zone_data_enabled,omitempty"`
-	// resolver_endpoints_sync_enabled enables discovery of inbound&outbound endpoints from third party providers.
-	ResolverEndpointsSyncEnabled *bool `json:"resolver_endpoints_sync_enabled,omitempty"`
 	// split_view_enabled consolidates private zones into a single view, which is separate from the public zone view.
 	SplitViewEnabled     *bool   `json:"split_view_enabled,omitempty"`
 	SyncType             *string `json:"sync_type,omitempty"`
@@ -79,38 +77,6 @@ func (o *DNSConfig) HasConsolidatedZoneDataEnabled() bool {
 // SetConsolidatedZoneDataEnabled gets a reference to the given bool and assigns it to the ConsolidatedZoneDataEnabled field.
 func (o *DNSConfig) SetConsolidatedZoneDataEnabled(v bool) {
 	o.ConsolidatedZoneDataEnabled = &v
-}
-
-// GetResolverEndpointsSyncEnabled returns the ResolverEndpointsSyncEnabled field value if set, zero value otherwise.
-func (o *DNSConfig) GetResolverEndpointsSyncEnabled() bool {
-	if o == nil || IsNil(o.ResolverEndpointsSyncEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.ResolverEndpointsSyncEnabled
-}
-
-// GetResolverEndpointsSyncEnabledOk returns a tuple with the ResolverEndpointsSyncEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DNSConfig) GetResolverEndpointsSyncEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.ResolverEndpointsSyncEnabled) {
-		return nil, false
-	}
-	return o.ResolverEndpointsSyncEnabled, true
-}
-
-// HasResolverEndpointsSyncEnabled returns a boolean if a field has been set.
-func (o *DNSConfig) HasResolverEndpointsSyncEnabled() bool {
-	if o != nil && !IsNil(o.ResolverEndpointsSyncEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetResolverEndpointsSyncEnabled gets a reference to the given bool and assigns it to the ResolverEndpointsSyncEnabled field.
-func (o *DNSConfig) SetResolverEndpointsSyncEnabled(v bool) {
-	o.ResolverEndpointsSyncEnabled = &v
 }
 
 // GetSplitViewEnabled returns the SplitViewEnabled field value if set, zero value otherwise.
@@ -254,9 +220,6 @@ func (o DNSConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConsolidatedZoneDataEnabled) {
 		toSerialize["consolidated_zone_data_enabled"] = o.ConsolidatedZoneDataEnabled
 	}
-	if !IsNil(o.ResolverEndpointsSyncEnabled) {
-		toSerialize["resolver_endpoints_sync_enabled"] = o.ResolverEndpointsSyncEnabled
-	}
 	if !IsNil(o.SplitViewEnabled) {
 		toSerialize["split_view_enabled"] = o.SplitViewEnabled
 	}
@@ -292,7 +255,6 @@ func (o *DNSConfig) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "consolidated_zone_data_enabled")
-		delete(additionalProperties, "resolver_endpoints_sync_enabled")
 		delete(additionalProperties, "split_view_enabled")
 		delete(additionalProperties, "sync_type")
 		delete(additionalProperties, "view_id")

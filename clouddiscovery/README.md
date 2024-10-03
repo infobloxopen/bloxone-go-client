@@ -112,7 +112,6 @@ Class | Method | HTTP request | Description
  - [DestinationConfig](docs/DestinationConfig.md)
  - [DiscoveryConfig](docs/DiscoveryConfig.md)
  - [IPAMConfig](docs/IPAMConfig.md)
- - [MSServers](docs/MSServers.md)
  - [Object](docs/Object.md)
  - [ObjectType](docs/ObjectType.md)
  - [ProviderCreateResponse](docs/ProviderCreateResponse.md)

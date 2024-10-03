@@ -17,7 +17,6 @@ docs/Destination.md
 docs/DestinationConfig.md
 docs/DiscoveryConfig.md
 docs/IPAMConfig.md
-docs/MSServers.md
 docs/Object.md
 docs/ObjectType.md
 docs/ProviderCreateResponse.md
@@ -44,7 +43,6 @@ model_destination_config.go
 model_discovery_config.go
 model_dns_config.go
 model_ipam_config.go
-model_ms_servers.go
 model_object.go
 model_object_type.go
 model_provider_create_response.go
