@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DhcpServer** | Pointer to **string** |  | [optional] 
-**DisableIpamProjection** | Pointer to **bool** |  | [optional] 
+**DisableIpamProjection** | Pointer to **bool** | This flag controls the IPAM Sync/Reconciliation for the provider | [optional] 
 **IpSpace** | Pointer to **string** |  | [optional] 
 
 ## Methods

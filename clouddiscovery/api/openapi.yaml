@@ -958,9 +958,8 @@ components:
         dhcp_server:
           type: string
         disable_ipam_projection:
+          description: This flag controls the IPAM Sync/Reconciliation for the provider
           format: boolean
-          title: disable_ipam_projection disable_ipam_projection flag controls the
-            IPAM Sync/Reconciliation for the provider
           type: boolean
         ip_space:
           type: string
