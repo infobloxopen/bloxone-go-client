@@ -30,6 +30,7 @@ const (
 
 	envBloxOneCSPURL = "BLOXONE_CSP_URL"
 	envBloxOneAPIKey = "BLOXONE_API_KEY"
+	envIBLogLevel    = "IB_LOG_LEVEL"
 
 	version       = "0.1"
 	sdkIdentifier = "golang-sdk"
@@ -276,7 +277,7 @@ func parameterToJson(obj interface{}) (string, error) {
 
 // CallAPI do the request.
 func (c *APIClient) CallAPI(request *http.Request) (*http.Response, error) {
-	if c.Cfg.Debug {
+	if c.Cfg.IBLogLevel {
 		dump, err := httputil.DumpRequestOut(request, true)
 		if err != nil {
 			return nil, err
@@ -289,7 +290,7 @@ func (c *APIClient) CallAPI(request *http.Request) (*http.Response, error) {
 		return resp, err
 	}
 
-	if c.Cfg.Debug {
+	if c.Cfg.IBLogLevel {
 		dump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
 			return resp, err

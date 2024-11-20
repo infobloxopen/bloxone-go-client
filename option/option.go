@@ -68,6 +68,6 @@ func WithClientName(clientName string) ClientOption {
 // Enabling the debug flag will write the request and response to the log.
 func WithDebug(debug bool) ClientOption {
 	return func(configuration *internal.Configuration) {
-		configuration.Debug = debug
+		configuration.IBLogLevel = debug
 	}
 }
