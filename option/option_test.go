@@ -53,5 +53,5 @@ func TestWithDebug(t *testing.T) {
 	config := &internal.Configuration{}
 	opt := WithDebug(true)
 	opt(config)
-	assert.Equal(t, true, config.IBLogLevel)
+	assert.Equal(t, true, config.Debug)
 }

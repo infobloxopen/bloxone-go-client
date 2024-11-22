@@ -61,7 +61,7 @@ type Configuration struct {
 	APIKey           string            `json:"apiKey,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
-	IBLogLevel       bool              `json:"debug,omitempty"`
+	Debug            bool              `json:"debug,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
@@ -80,7 +80,7 @@ func NewConfiguration() *Configuration {
 		CSPURL:           lookupEnv(envBloxOneCSPURL, "https://csp.infoblox.com"),
 		APIKey:           lookupEnv(envBloxOneAPIKey, ""),
 		DefaultHeader:    make(map[string]string),
-		IBLogLevel:       lookupEnvBool(envIBLogLevel, false),
+		Debug:            lookupEnvBool(envIBLogLevel, false),
 		UserAgent:        fmt.Sprintf("bloxone-%s/%s", sdkIdentifier, version),
 		Servers:          ServerConfigurations{},
 		OperationServers: map[string]ServerConfigurations{},
@@ -214,7 +214,7 @@ func lookupEnv(key, def string) string {
 
 func lookupEnvBool(key string, def bool) bool {
 	if logLvlStr, ok := os.LookupEnv(key); ok {
-		if logLvl, err := strconv.ParseBool(logLvlStr); err != nil {
+		if logLvl, err := strconv.ParseBool(logLvlStr); err == nil {
 			return logLvl
 		}
 	}
