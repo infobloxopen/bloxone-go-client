@@ -1,6 +1,6 @@
 module github.com/infobloxopen/bloxone-go-client
 
-go 1.25.1
+go 1.25
 
 require github.com/stretchr/testify v1.9.0
 
