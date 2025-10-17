@@ -5690,7 +5690,7 @@ components:
           - type: client_hex
             value: 01:23:45:67:89:AB
           allow_unknown: true
-          authoritative_dhcp: true
+          authoritative_dhcp: false
           abandoned_reclaim_time: 5
           allow_unknown_v6: true
           filters_large_selection:
@@ -6747,7 +6747,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -7262,7 +7262,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -7665,7 +7665,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -7985,7 +7985,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -8407,7 +8407,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -8741,7 +8741,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -9289,7 +9289,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -9722,7 +9722,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -10345,7 +10345,7 @@ components:
         - type: client_hex
           value: 01:23:45:67:89:AB
         allow_unknown: true
-        authoritative_dhcp: true
+        authoritative_dhcp: false
         abandoned_reclaim_time: 5
         allow_unknown_v6: true
         filters_large_selection:
@@ -10377,6 +10377,7 @@ components:
           format: boolean
           type: boolean
         authoritative_dhcp:
+          default: false
           description: Set DHCP server as authoritative.
           format: boolean
           type: boolean
@@ -10402,11 +10403,13 @@ components:
             type: string
           type: array
         hold_reclaimed_time:
-          description: The hold reclaimed time in seconds for IPV4 clients.
+          default: 3600
+          description: The hold reclaimed time in seconds for IPv4 clients.
           format: int64
           type: integer
         hold_reclaimed_time_v6:
-          description: The hold reclaimed time in seconds for IPV6 clients.
+          default: 3600
+          description: The hold reclaimed time in seconds for IPv6 clients.
           format: int64
           type: integer
         ignore_client_uid:
@@ -11382,7 +11385,7 @@ components:
           - type: client_hex
             value: 01:23:45:67:89:AB
           allow_unknown: true
-          authoritative_dhcp: true
+          authoritative_dhcp: false
           abandoned_reclaim_time: 5
           allow_unknown_v6: true
           filters_large_selection:
@@ -12205,7 +12208,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -12539,7 +12542,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -12958,7 +12961,7 @@ components:
           - type: client_hex
             value: 01:23:45:67:89:AB
           allow_unknown: true
-          authoritative_dhcp: true
+          authoritative_dhcp: false
           abandoned_reclaim_time: 5
           allow_unknown_v6: true
           filters_large_selection:
@@ -14604,7 +14607,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -14924,7 +14927,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -15407,7 +15410,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -15833,7 +15836,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -16678,7 +16681,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -17018,7 +17021,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -17817,7 +17820,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -18243,7 +18246,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -18679,7 +18682,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -19013,7 +19016,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -19504,7 +19507,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -19824,7 +19827,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -20246,7 +20249,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -20580,7 +20583,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -21564,7 +21567,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -22069,7 +22072,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -22320,7 +22323,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -22914,7 +22917,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -23347,7 +23350,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -23740,7 +23743,7 @@ components:
           - type: client_hex
             value: 01:23:45:67:89:AB
           allow_unknown: true
-          authoritative_dhcp: true
+          authoritative_dhcp: false
           abandoned_reclaim_time: 5
           allow_unknown_v6: true
           filters_large_selection:
@@ -24760,7 +24763,7 @@ components:
           - type: client_hex
             value: 01:23:45:67:89:AB
           allow_unknown: true
-          authoritative_dhcp: true
+          authoritative_dhcp: false
           abandoned_reclaim_time: 5
           allow_unknown_v6: true
           filters_large_selection:
@@ -25401,7 +25404,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -25861,7 +25864,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -26112,7 +26115,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -26706,7 +26709,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
@@ -27139,7 +27142,7 @@ components:
             - type: client_hex
               value: 01:23:45:67:89:AB
             allow_unknown: true
-            authoritative_dhcp: true
+            authoritative_dhcp: false
             abandoned_reclaim_time: 5
             allow_unknown_v6: true
             filters_large_selection:
