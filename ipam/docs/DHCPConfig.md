@@ -8,10 +8,13 @@ Name | Type | Description | Notes
 **AbandonedReclaimTimeV6** | Pointer to **int64** | The abandoned reclaim time in seconds for IPV6 clients. | [optional] [default to 3600]
 **AllowUnknown** | Pointer to **bool** | Disable to allow leases only for known IPv4 clients, those for which a fixed address is configured. | [optional] [default to true]
 **AllowUnknownV6** | Pointer to **bool** | Disable to allow leases only for known IPV6 clients, those for which a fixed address is configured. | [optional] [default to true]
+**AuthoritativeDhcp** | Pointer to **bool** | Set DHCP server as authoritative. | [optional] [default to false]
 **EchoClientId** | Pointer to **bool** | Enable/disable to include/exclude the client id when responding to discover or request. | [optional] [default to false]
 **Filters** | Pointer to **[]string** | The resource identifier. | [optional] 
 **FiltersLargeSelection** | Pointer to **[]string** | The resource identifier. | [optional] 
 **FiltersV6** | Pointer to **[]string** | The resource identifier. | [optional] 
+**HoldReclaimedTime** | Pointer to **int64** | The hold reclaimed time in seconds for IPv4 clients. | [optional] [default to 3600]
+**HoldReclaimedTimeV6** | Pointer to **int64** | The hold reclaimed time in seconds for IPv6 clients. | [optional] [default to 3600]
 **IgnoreClientUid** | Pointer to **bool** | Enable to ignore the client UID when issuing a DHCP lease. Use this option to prevent assigning two IP addresses for a client which does not have a UID during one phase of PXE boot but acquires one for the other phase. | [optional] [default to false]
 **IgnoreList** | Pointer to [**[]IgnoreItem**](IgnoreItem.md) | The list of clients to ignore requests from. | [optional] 
 **LeaseTime** | Pointer to **int64** | The lease duration in seconds. | [optional] [default to 3600]
@@ -136,6 +139,31 @@ SetAllowUnknownV6 sets AllowUnknownV6 field to given value.
 
 HasAllowUnknownV6 returns a boolean if a field has been set.
 
+### GetAuthoritativeDhcp
+
+`func (o *DHCPConfig) GetAuthoritativeDhcp() bool`
+
+GetAuthoritativeDhcp returns the AuthoritativeDhcp field if non-nil, zero value otherwise.
+
+### GetAuthoritativeDhcpOk
+
+`func (o *DHCPConfig) GetAuthoritativeDhcpOk() (*bool, bool)`
+
+GetAuthoritativeDhcpOk returns a tuple with the AuthoritativeDhcp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthoritativeDhcp
+
+`func (o *DHCPConfig) SetAuthoritativeDhcp(v bool)`
+
+SetAuthoritativeDhcp sets AuthoritativeDhcp field to given value.
+
+### HasAuthoritativeDhcp
+
+`func (o *DHCPConfig) HasAuthoritativeDhcp() bool`
+
+HasAuthoritativeDhcp returns a boolean if a field has been set.
+
 ### GetEchoClientId
 
 `func (o *DHCPConfig) GetEchoClientId() bool`
@@ -235,6 +263,56 @@ SetFiltersV6 sets FiltersV6 field to given value.
 `func (o *DHCPConfig) HasFiltersV6() bool`
 
 HasFiltersV6 returns a boolean if a field has been set.
+
+### GetHoldReclaimedTime
+
+`func (o *DHCPConfig) GetHoldReclaimedTime() int64`
+
+GetHoldReclaimedTime returns the HoldReclaimedTime field if non-nil, zero value otherwise.
+
+### GetHoldReclaimedTimeOk
+
+`func (o *DHCPConfig) GetHoldReclaimedTimeOk() (*int64, bool)`
+
+GetHoldReclaimedTimeOk returns a tuple with the HoldReclaimedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldReclaimedTime
+
+`func (o *DHCPConfig) SetHoldReclaimedTime(v int64)`
+
+SetHoldReclaimedTime sets HoldReclaimedTime field to given value.
+
+### HasHoldReclaimedTime
+
+`func (o *DHCPConfig) HasHoldReclaimedTime() bool`
+
+HasHoldReclaimedTime returns a boolean if a field has been set.
+
+### GetHoldReclaimedTimeV6
+
+`func (o *DHCPConfig) GetHoldReclaimedTimeV6() int64`
+
+GetHoldReclaimedTimeV6 returns the HoldReclaimedTimeV6 field if non-nil, zero value otherwise.
+
+### GetHoldReclaimedTimeV6Ok
+
+`func (o *DHCPConfig) GetHoldReclaimedTimeV6Ok() (*int64, bool)`
+
+GetHoldReclaimedTimeV6Ok returns a tuple with the HoldReclaimedTimeV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldReclaimedTimeV6
+
+`func (o *DHCPConfig) SetHoldReclaimedTimeV6(v int64)`
+
+SetHoldReclaimedTimeV6 sets HoldReclaimedTimeV6 field to given value.
+
+### HasHoldReclaimedTimeV6
+
+`func (o *DHCPConfig) HasHoldReclaimedTimeV6() bool`
+
+HasHoldReclaimedTimeV6 returns a boolean if a field has been set.
 
 ### GetIgnoreClientUid
 

@@ -8,9 +8,12 @@ Name | Type | Description | Notes
 **AbandonedReclaimTimeV6** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The inheritance configuration for _abandoned_reclaim_time_v6_ field from _DHCPConfig_ object. | [optional] 
 **AllowUnknown** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _allow_unknown_ field from _DHCPConfig_ object. | [optional] 
 **AllowUnknownV6** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _allow_unknown_v6_ field from _DHCPConfig_ object. | [optional] 
+**AuthoritativeDhcp** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _authoritative_dhcp_ field from _DHCPConfig_ object. | [optional] 
 **EchoClientId** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _echo_client_id_ field from _DHCPConfig_ object. | [optional] 
 **Filters** | Pointer to [**InheritedDHCPConfigFilterList**](InheritedDHCPConfigFilterList.md) | The inheritance configuration for filters field from _DHCPConfig_ object. | [optional] 
 **FiltersV6** | Pointer to [**InheritedDHCPConfigFilterList**](InheritedDHCPConfigFilterList.md) | The inheritance configuration for _filters_v6_ field from _DHCPConfig_ object. | [optional] 
+**HoldReclaimedTime** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The inheritance configuration for _hold_reclaimed_time_ field from _DHCPConfig_ object. | [optional] 
+**HoldReclaimedTimeV6** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The inheritance configuration for _hold_reclaimed_time_v6_ field from _DHCPConfig_ object. | [optional] 
 **IgnoreClientUid** | Pointer to [**InheritanceInheritedBool**](InheritanceInheritedBool.md) | The inheritance configuration for _ignore_client_uid_ field from _DHCPConfig_ object. | [optional] 
 **IgnoreList** | Pointer to [**InheritedDHCPConfigIgnoreItemList**](InheritedDHCPConfigIgnoreItemList.md) | The inheritance configuration for _ignore_list_ field from _DHCPConfig_ object. | [optional] 
 **LeaseTime** | Pointer to [**InheritanceInheritedUInt32**](InheritanceInheritedUInt32.md) | The inheritance configuration for _lease_time_ field from _DHCPConfig_ object. | [optional] 
@@ -135,6 +138,31 @@ SetAllowUnknownV6 sets AllowUnknownV6 field to given value.
 
 HasAllowUnknownV6 returns a boolean if a field has been set.
 
+### GetAuthoritativeDhcp
+
+`func (o *InheritedDHCPConfig) GetAuthoritativeDhcp() InheritanceInheritedBool`
+
+GetAuthoritativeDhcp returns the AuthoritativeDhcp field if non-nil, zero value otherwise.
+
+### GetAuthoritativeDhcpOk
+
+`func (o *InheritedDHCPConfig) GetAuthoritativeDhcpOk() (*InheritanceInheritedBool, bool)`
+
+GetAuthoritativeDhcpOk returns a tuple with the AuthoritativeDhcp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthoritativeDhcp
+
+`func (o *InheritedDHCPConfig) SetAuthoritativeDhcp(v InheritanceInheritedBool)`
+
+SetAuthoritativeDhcp sets AuthoritativeDhcp field to given value.
+
+### HasAuthoritativeDhcp
+
+`func (o *InheritedDHCPConfig) HasAuthoritativeDhcp() bool`
+
+HasAuthoritativeDhcp returns a boolean if a field has been set.
+
 ### GetEchoClientId
 
 `func (o *InheritedDHCPConfig) GetEchoClientId() InheritanceInheritedBool`
@@ -209,6 +237,56 @@ SetFiltersV6 sets FiltersV6 field to given value.
 `func (o *InheritedDHCPConfig) HasFiltersV6() bool`
 
 HasFiltersV6 returns a boolean if a field has been set.
+
+### GetHoldReclaimedTime
+
+`func (o *InheritedDHCPConfig) GetHoldReclaimedTime() InheritanceInheritedUInt32`
+
+GetHoldReclaimedTime returns the HoldReclaimedTime field if non-nil, zero value otherwise.
+
+### GetHoldReclaimedTimeOk
+
+`func (o *InheritedDHCPConfig) GetHoldReclaimedTimeOk() (*InheritanceInheritedUInt32, bool)`
+
+GetHoldReclaimedTimeOk returns a tuple with the HoldReclaimedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldReclaimedTime
+
+`func (o *InheritedDHCPConfig) SetHoldReclaimedTime(v InheritanceInheritedUInt32)`
+
+SetHoldReclaimedTime sets HoldReclaimedTime field to given value.
+
+### HasHoldReclaimedTime
+
+`func (o *InheritedDHCPConfig) HasHoldReclaimedTime() bool`
+
+HasHoldReclaimedTime returns a boolean if a field has been set.
+
+### GetHoldReclaimedTimeV6
+
+`func (o *InheritedDHCPConfig) GetHoldReclaimedTimeV6() InheritanceInheritedUInt32`
+
+GetHoldReclaimedTimeV6 returns the HoldReclaimedTimeV6 field if non-nil, zero value otherwise.
+
+### GetHoldReclaimedTimeV6Ok
+
+`func (o *InheritedDHCPConfig) GetHoldReclaimedTimeV6Ok() (*InheritanceInheritedUInt32, bool)`
+
+GetHoldReclaimedTimeV6Ok returns a tuple with the HoldReclaimedTimeV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldReclaimedTimeV6
+
+`func (o *InheritedDHCPConfig) SetHoldReclaimedTimeV6(v InheritanceInheritedUInt32)`
+
+SetHoldReclaimedTimeV6 sets HoldReclaimedTimeV6 field to given value.
+
+### HasHoldReclaimedTimeV6
+
+`func (o *InheritedDHCPConfig) HasHoldReclaimedTimeV6() bool`
+
+HasHoldReclaimedTimeV6 returns a boolean if a field has been set.
 
 ### GetIgnoreClientUid
 
