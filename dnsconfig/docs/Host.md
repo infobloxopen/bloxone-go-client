@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AbsoluteName** | Pointer to **string** | Host FQDN. | [optional] [readonly] 
+**AbsoluteName** | Pointer to **string** | Host FQDN. | [optional] 
 **Address** | Pointer to **string** | Host&#39;s primary IP Address. | [optional] [readonly] 
 **AnycastAddresses** | Pointer to **[]string** | Anycast address configured to the host. Order is not significant. | [optional] [readonly] 
 **AssociatedServer** | Pointer to [**HostAssociatedServer**](HostAssociatedServer.md) | Host associated server configuration. | [optional] 

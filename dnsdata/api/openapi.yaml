@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: "The DNS Data is a BloxOne DDI service providing primary authoritative\
+  description: "The DNS Data is a Universal DDI service providing primary authoritative\
     \ zone support. DNS Data is authoritative for all DNS resource records and is\
     \ acting as a primary DNS server. It is part of the full-featured, DDI cloud solution\
     \ that enables customers to deploy large numbers of protocol servers to deliver\
@@ -287,6 +287,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -302,7 +303,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata
@@ -330,6 +331,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -345,7 +347,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata
@@ -364,6 +366,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -379,7 +382,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata
@@ -410,6 +413,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -425,7 +429,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata
@@ -457,6 +461,7 @@ components:
         disabled: true
         id: id
         view_name: view_name
+        compartment_id: compartment_id
         ipam_host: ipam_host
         rdata:
           address: 10.0.0.0
@@ -472,7 +477,7 @@ components:
             value: 0
         dns_absolute_zone_name: dns_absolute_zone_name
         comment: comment
-        name_in_zone: name_in_zone
+        name_in_zone: ""
         provider_metadata: "{}"
         delegation: delegation
         dns_rdata: dns_rdata
@@ -480,7 +485,6 @@ components:
         absolute_name_spec:
           description: "Synthetic field, used to determine _zone_ and/or _name_in_zone_\
             \ field for records."
-          readOnly: true
           type: string
         absolute_zone_name:
           description: The absolute domain name of the zone where this record belongs.
@@ -489,6 +493,11 @@ components:
         comment:
           description: The description for the DNS resource record. May contain 0
             to 1024 characters. Can include UTF-8.
+          type: string
+        compartment_id:
+          description: "The compartment associated with the object. If no compartment\
+            \ is associated with the object, the value defaults to empty."
+          readOnly: true
           type: string
         created_at:
           description: The timestamp when the object has been created.
@@ -536,6 +545,7 @@ components:
           readOnly: true
           type: string
         name_in_zone:
+          default: ""
           description: The relative owner name to the zone origin. Must be specified
             for creating the DNS resource record and is read only for other operations.
           type: string
@@ -880,6 +890,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -895,7 +906,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata
@@ -923,6 +934,7 @@ components:
           disabled: true
           id: id
           view_name: view_name
+          compartment_id: compartment_id
           ipam_host: ipam_host
           rdata:
             address: 10.0.0.0
@@ -938,7 +950,7 @@ components:
               value: 0
           dns_absolute_zone_name: dns_absolute_zone_name
           comment: comment
-          name_in_zone: name_in_zone
+          name_in_zone: ""
           provider_metadata: "{}"
           delegation: delegation
           dns_rdata: dns_rdata

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Optional. Comment for zone delegation. | [optional] 
+**CompartmentId** | Pointer to **string** | The access view associated with the object. If no access view is associated with the object, the value defaults to empty. | [optional] 
 **DelegationServers** | Pointer to [**[]DelegationServer**](DelegationServer.md) | Required. DNS zone delegation servers. Order is not significant. | [optional] 
 **Disabled** | Pointer to **bool** | Optional. _true_ to disable object. A disabled object is effectively non-existent when generating resource records. | [optional] 
 **Fqdn** | Pointer to **string** | Delegation FQDN. The FQDN supplied at creation will be converted to canonical form.  Read-only after creation. | [optional] 
@@ -57,6 +58,31 @@ SetComment sets Comment field to given value.
 `func (o *Delegation) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetCompartmentId
+
+`func (o *Delegation) GetCompartmentId() string`
+
+GetCompartmentId returns the CompartmentId field if non-nil, zero value otherwise.
+
+### GetCompartmentIdOk
+
+`func (o *Delegation) GetCompartmentIdOk() (*string, bool)`
+
+GetCompartmentIdOk returns a tuple with the CompartmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompartmentId
+
+`func (o *Delegation) SetCompartmentId(v string)`
+
+SetCompartmentId sets CompartmentId field to given value.
+
+### HasCompartmentId
+
+`func (o *Delegation) HasCompartmentId() bool`
+
+HasCompartmentId returns a boolean if a field has been set.
 
 ### GetDelegationServers
 

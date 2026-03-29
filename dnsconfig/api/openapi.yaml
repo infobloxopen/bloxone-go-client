@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  description: "The DNS application is a BloxOne DDI service that provides cloud-based\
+  description: "The DNS application is a Universal DDI service that provides cloud-based\
     \ DNS configuration with on-prem host serving DNS protocol. It is part of the\
-    \ full-featured BloxOne DDI solution that enables customers the ability to deploy\
+    \ full-featured Universal DDI solution that enables customers the ability to deploy\
     \ large numbers of protocol servers in the delivery of DNS and DHCP throughout\
     \ their enterprise network. \n\n"
   title: DNS Configuration API
@@ -2446,6 +2446,7 @@ components:
       description: Named ACL (Access Control List).
       example:
         name: Example ACL
+        compartment_id: compartment_id
         comment: comment
         id: id
         list:
@@ -2475,6 +2476,10 @@ components:
       properties:
         comment:
           description: Optional. Comment for ACL.
+          type: string
+        compartment_id:
+          description: "The access view associated with the object. If no access view\
+            \ is associated with the object, the value defaults to empty."
           type: string
         id:
           description: The resource identifier.
@@ -2768,6 +2773,7 @@ components:
           message: message
         - name: name
           message: message
+        compartment_id: compartment_id
         tags: "{}"
         inheritance_sources:
           query_acl:
@@ -2979,6 +2985,10 @@ components:
       properties:
         comment:
           description: Optional. Comment for zone configuration.
+          type: string
+        compartment_id:
+          description: "The access view associated with the object. If no access view\
+            \ is associated with the object, the value defaults to empty."
           type: string
         created_at:
           description: Time when the object has been created.
@@ -3622,6 +3632,7 @@ components:
       example:
         result:
           name: Example ACL
+          compartment_id: compartment_id
           comment: comment
           id: id
           list:
@@ -3835,6 +3846,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           tags: "{}"
           inheritance_sources:
             query_acl:
@@ -4063,6 +4075,7 @@ components:
             protocol_fqdn: protocol_fqdn
           fqdn: fqdn
           protocol_fqdn: protocol_fqdn
+          compartment_id: compartment_id
           comment: comment
           disabled: true
           id: id
@@ -4125,6 +4138,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           created_at: 2000-01-23T04:56:07.000+00:00
           tags: "{}"
           view: view
@@ -4733,33 +4747,8 @@ components:
       example:
         result:
           max_cache_ttl: 5
-          query_acl:
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
           dnssec_enabled: true
-          custom_root_ns_enabled: true
           match_recursive_only: true
-          created_at: 2000-01-23T04:56:07.000+00:00
           recursion_acl:
           - access: allow
             address: address
@@ -4783,13 +4772,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          dnssec_enable_validation: true
           lame_ttl: 5
           forwarders_only: true
-          notify: true
           gss_tsig_enabled: true
-          use_root_forwarders_for_local_resolution_with_b1td: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
           ecs_zones:
           - access: allow
             fqdn: example.com
@@ -4804,6 +4789,71 @@ components:
           - address: 10.0.0.0
             fqdn: example.com
             protocol_fqdn: test.key.com.
+          id: id
+          dnssec_trust_anchors:
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          tags: "{}"
+          max_negative_ttl: 2
+          zone_authority:
+            rname: rname
+            default_ttl: 1
+            expire: 5
+            protocol_rname: protocol_rname
+            refresh: 2
+            negative_ttl: 5
+            protocol_mname: protocol_mname
+            use_default_mname: true
+            mname: mname
+            retry: 7
+          forwarders:
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          name: Example Config View
+          dnssec_validate_expiry: true
+          filter_aaaa_on_v4: filter_aaaa_on_v4
+          max_udp_size: 7
+          query_acl:
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          custom_root_ns_enabled: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          dnssec_enable_validation: true
+          notify: true
+          use_root_forwarders_for_local_resolution_with_b1td: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           dtc_config:
             default_ttl: 6
           ecs_prefix_v6: 6
@@ -4823,20 +4873,8 @@ components:
             element: ip
           disabled: true
           ecs_prefix_v4: 0
-          id: id
           edns_udp_size: 1
           minimal_responses: true
-          dnssec_trust_anchors:
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
           ip_spaces:
           - ip_spaces
           - ip_spaces
@@ -4864,6 +4902,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
+          compartment_id: compartment_id
           ecs_enabled: true
           ecs_forwarding: true
           add_edns_option_in_outgoing_query: true
@@ -4878,7 +4917,6 @@ components:
             zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             algorithm: 0
             sep: true
-          tags: "{}"
           inheritance_sources:
             max_cache_ttl:
               action: action
@@ -5214,7 +5252,6 @@ components:
               source: source
               display_name: display_name
               value: 0
-          max_negative_ttl: 2
           update_acl:
           - access: allow
             address: address
@@ -5239,24 +5276,6 @@ components:
             acl: acl
             element: ip
           synthesize_address_records_from_https: true
-          zone_authority:
-            rname: rname
-            default_ttl: 1
-            expire: 5
-            protocol_rname: protocol_rname
-            refresh: 2
-            negative_ttl: 5
-            protocol_mname: protocol_mname
-            use_default_mname: true
-            mname: mname
-            retry: 7
-          forwarders:
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
           transfer_acl:
           - access: allow
             address: address
@@ -5280,10 +5299,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          name: Example Config View
           comment: comment
-          dnssec_validate_expiry: true
-          filter_aaaa_on_v4: filter_aaaa_on_v4
           match_destinations_acl:
           - access: allow
             address: address
@@ -5330,7 +5346,6 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          max_udp_size: 7
       properties:
         result:
           $ref: '#/components/schemas/configView'
@@ -5440,6 +5455,7 @@ components:
           protocol_fqdn: protocol_fqdn
         fqdn: fqdn
         protocol_fqdn: protocol_fqdn
+        compartment_id: compartment_id
         comment: comment
         disabled: true
         id: id
@@ -5447,6 +5463,10 @@ components:
       properties:
         comment:
           description: Optional. Comment for zone delegation.
+          type: string
+        compartment_id:
+          description: "The access view associated with the object. If no access view\
+            \ is associated with the object, the value defaults to empty."
           type: string
         delegation_servers:
           description: Required. DNS zone delegation servers. Order is not significant.
@@ -5789,6 +5809,7 @@ components:
           message: message
         - name: name
           message: message
+        compartment_id: compartment_id
         created_at: 2000-01-23T04:56:07.000+00:00
         tags: "{}"
         view: view
@@ -5807,6 +5828,10 @@ components:
       properties:
         comment:
           description: Optional. Comment for zone configuration.
+          type: string
+        compartment_id:
+          description: "The access view associated with the object. If no access view\
+            \ is associated with the object, the value defaults to empty."
           type: string
         created_at:
           description: The timestamp when the object has been created.
@@ -6625,7 +6650,6 @@ components:
       properties:
         absolute_name:
           description: Host FQDN.
-          readOnly: true
           type: string
         address:
           description: Host's primary IP Address.
@@ -7254,6 +7278,7 @@ components:
       example:
         results:
         - name: Example ACL
+          compartment_id: compartment_id
           comment: comment
           id: id
           list:
@@ -7281,6 +7306,7 @@ components:
             element: ip
           tags: "{}"
         - name: Example ACL
+          compartment_id: compartment_id
           comment: comment
           id: id
           list:
@@ -7562,6 +7588,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           tags: "{}"
           inheritance_sources:
             query_acl:
@@ -7877,6 +7904,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           tags: "{}"
           inheritance_sources:
             query_acl:
@@ -8108,6 +8136,7 @@ components:
             protocol_fqdn: protocol_fqdn
           fqdn: fqdn
           protocol_fqdn: protocol_fqdn
+          compartment_id: compartment_id
           comment: comment
           disabled: true
           id: id
@@ -8123,6 +8152,7 @@ components:
             protocol_fqdn: protocol_fqdn
           fqdn: fqdn
           protocol_fqdn: protocol_fqdn
+          compartment_id: compartment_id
           comment: comment
           disabled: true
           id: id
@@ -8212,6 +8242,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           created_at: 2000-01-23T04:56:07.000+00:00
           tags: "{}"
           view: view
@@ -8246,6 +8277,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           created_at: 2000-01-23T04:56:07.000+00:00
           tags: "{}"
           view: view
@@ -9544,33 +9576,8 @@ components:
       example:
         results:
         - max_cache_ttl: 5
-          query_acl:
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
           dnssec_enabled: true
-          custom_root_ns_enabled: true
           match_recursive_only: true
-          created_at: 2000-01-23T04:56:07.000+00:00
           recursion_acl:
           - access: allow
             address: address
@@ -9594,13 +9601,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          dnssec_enable_validation: true
           lame_ttl: 5
           forwarders_only: true
-          notify: true
           gss_tsig_enabled: true
-          use_root_forwarders_for_local_resolution_with_b1td: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
           ecs_zones:
           - access: allow
             fqdn: example.com
@@ -9615,6 +9618,71 @@ components:
           - address: 10.0.0.0
             fqdn: example.com
             protocol_fqdn: test.key.com.
+          id: id
+          dnssec_trust_anchors:
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          tags: "{}"
+          max_negative_ttl: 2
+          zone_authority:
+            rname: rname
+            default_ttl: 1
+            expire: 5
+            protocol_rname: protocol_rname
+            refresh: 2
+            negative_ttl: 5
+            protocol_mname: protocol_mname
+            use_default_mname: true
+            mname: mname
+            retry: 7
+          forwarders:
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          name: Example Config View
+          dnssec_validate_expiry: true
+          filter_aaaa_on_v4: filter_aaaa_on_v4
+          max_udp_size: 7
+          query_acl:
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          custom_root_ns_enabled: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          dnssec_enable_validation: true
+          notify: true
+          use_root_forwarders_for_local_resolution_with_b1td: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           dtc_config:
             default_ttl: 6
           ecs_prefix_v6: 6
@@ -9634,20 +9702,8 @@ components:
             element: ip
           disabled: true
           ecs_prefix_v4: 0
-          id: id
           edns_udp_size: 1
           minimal_responses: true
-          dnssec_trust_anchors:
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
           ip_spaces:
           - ip_spaces
           - ip_spaces
@@ -9675,6 +9731,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
+          compartment_id: compartment_id
           ecs_enabled: true
           ecs_forwarding: true
           add_edns_option_in_outgoing_query: true
@@ -9689,7 +9746,6 @@ components:
             zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             algorithm: 0
             sep: true
-          tags: "{}"
           inheritance_sources:
             max_cache_ttl:
               action: action
@@ -10025,7 +10081,6 @@ components:
               source: source
               display_name: display_name
               value: 0
-          max_negative_ttl: 2
           update_acl:
           - access: allow
             address: address
@@ -10050,24 +10105,6 @@ components:
             acl: acl
             element: ip
           synthesize_address_records_from_https: true
-          zone_authority:
-            rname: rname
-            default_ttl: 1
-            expire: 5
-            protocol_rname: protocol_rname
-            refresh: 2
-            negative_ttl: 5
-            protocol_mname: protocol_mname
-            use_default_mname: true
-            mname: mname
-            retry: 7
-          forwarders:
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
           transfer_acl:
           - access: allow
             address: address
@@ -10091,10 +10128,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          name: Example Config View
           comment: comment
-          dnssec_validate_expiry: true
-          filter_aaaa_on_v4: filter_aaaa_on_v4
           match_destinations_acl:
           - access: allow
             address: address
@@ -10141,35 +10175,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          max_udp_size: 7
         - max_cache_ttl: 5
-          query_acl:
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
           dnssec_enabled: true
-          custom_root_ns_enabled: true
           match_recursive_only: true
-          created_at: 2000-01-23T04:56:07.000+00:00
           recursion_acl:
           - access: allow
             address: address
@@ -10193,13 +10201,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          dnssec_enable_validation: true
           lame_ttl: 5
           forwarders_only: true
-          notify: true
           gss_tsig_enabled: true
-          use_root_forwarders_for_local_resolution_with_b1td: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
           ecs_zones:
           - access: allow
             fqdn: example.com
@@ -10214,6 +10218,71 @@ components:
           - address: 10.0.0.0
             fqdn: example.com
             protocol_fqdn: test.key.com.
+          id: id
+          dnssec_trust_anchors:
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          tags: "{}"
+          max_negative_ttl: 2
+          zone_authority:
+            rname: rname
+            default_ttl: 1
+            expire: 5
+            protocol_rname: protocol_rname
+            refresh: 2
+            negative_ttl: 5
+            protocol_mname: protocol_mname
+            use_default_mname: true
+            mname: mname
+            retry: 7
+          forwarders:
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          name: Example Config View
+          dnssec_validate_expiry: true
+          filter_aaaa_on_v4: filter_aaaa_on_v4
+          max_udp_size: 7
+          query_acl:
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          custom_root_ns_enabled: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          dnssec_enable_validation: true
+          notify: true
+          use_root_forwarders_for_local_resolution_with_b1td: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           dtc_config:
             default_ttl: 6
           ecs_prefix_v6: 6
@@ -10233,20 +10302,8 @@ components:
             element: ip
           disabled: true
           ecs_prefix_v4: 0
-          id: id
           edns_udp_size: 1
           minimal_responses: true
-          dnssec_trust_anchors:
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
           ip_spaces:
           - ip_spaces
           - ip_spaces
@@ -10274,6 +10331,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
+          compartment_id: compartment_id
           ecs_enabled: true
           ecs_forwarding: true
           add_edns_option_in_outgoing_query: true
@@ -10288,7 +10346,6 @@ components:
             zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             algorithm: 0
             sep: true
-          tags: "{}"
           inheritance_sources:
             max_cache_ttl:
               action: action
@@ -10624,7 +10681,6 @@ components:
               source: source
               display_name: display_name
               value: 0
-          max_negative_ttl: 2
           update_acl:
           - access: allow
             address: address
@@ -10649,24 +10705,6 @@ components:
             acl: acl
             element: ip
           synthesize_address_records_from_https: true
-          zone_authority:
-            rname: rname
-            default_ttl: 1
-            expire: 5
-            protocol_rname: protocol_rname
-            refresh: 2
-            negative_ttl: 5
-            protocol_mname: protocol_mname
-            use_default_mname: true
-            mname: mname
-            retry: 7
-          forwarders:
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
           transfer_acl:
           - access: allow
             address: address
@@ -10690,10 +10728,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          name: Example Config View
           comment: comment
-          dnssec_validate_expiry: true
-          filter_aaaa_on_v4: filter_aaaa_on_v4
           match_destinations_acl:
           - access: allow
             address: address
@@ -10740,7 +10775,6 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          max_udp_size: 7
       properties:
         results:
           description: List of View objects.
@@ -10754,6 +10788,7 @@ components:
       example:
         result:
           name: Example ACL
+          compartment_id: compartment_id
           comment: comment
           id: id
           list:
@@ -10967,6 +11002,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           tags: "{}"
           inheritance_sources:
             query_acl:
@@ -11195,6 +11231,7 @@ components:
             protocol_fqdn: protocol_fqdn
           fqdn: fqdn
           protocol_fqdn: protocol_fqdn
+          compartment_id: compartment_id
           comment: comment
           disabled: true
           id: id
@@ -11257,6 +11294,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           created_at: 2000-01-23T04:56:07.000+00:00
           tags: "{}"
           view: view
@@ -12163,33 +12201,8 @@ components:
       example:
         result:
           max_cache_ttl: 5
-          query_acl:
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
           dnssec_enabled: true
-          custom_root_ns_enabled: true
           match_recursive_only: true
-          created_at: 2000-01-23T04:56:07.000+00:00
           recursion_acl:
           - access: allow
             address: address
@@ -12213,13 +12226,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          dnssec_enable_validation: true
           lame_ttl: 5
           forwarders_only: true
-          notify: true
           gss_tsig_enabled: true
-          use_root_forwarders_for_local_resolution_with_b1td: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
           ecs_zones:
           - access: allow
             fqdn: example.com
@@ -12234,6 +12243,71 @@ components:
           - address: 10.0.0.0
             fqdn: example.com
             protocol_fqdn: test.key.com.
+          id: id
+          dnssec_trust_anchors:
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          tags: "{}"
+          max_negative_ttl: 2
+          zone_authority:
+            rname: rname
+            default_ttl: 1
+            expire: 5
+            protocol_rname: protocol_rname
+            refresh: 2
+            negative_ttl: 5
+            protocol_mname: protocol_mname
+            use_default_mname: true
+            mname: mname
+            retry: 7
+          forwarders:
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          name: Example Config View
+          dnssec_validate_expiry: true
+          filter_aaaa_on_v4: filter_aaaa_on_v4
+          max_udp_size: 7
+          query_acl:
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          custom_root_ns_enabled: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          dnssec_enable_validation: true
+          notify: true
+          use_root_forwarders_for_local_resolution_with_b1td: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           dtc_config:
             default_ttl: 6
           ecs_prefix_v6: 6
@@ -12253,20 +12327,8 @@ components:
             element: ip
           disabled: true
           ecs_prefix_v4: 0
-          id: id
           edns_udp_size: 1
           minimal_responses: true
-          dnssec_trust_anchors:
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
           ip_spaces:
           - ip_spaces
           - ip_spaces
@@ -12294,6 +12356,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
+          compartment_id: compartment_id
           ecs_enabled: true
           ecs_forwarding: true
           add_edns_option_in_outgoing_query: true
@@ -12308,7 +12371,6 @@ components:
             zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             algorithm: 0
             sep: true
-          tags: "{}"
           inheritance_sources:
             max_cache_ttl:
               action: action
@@ -12644,7 +12706,6 @@ components:
               source: source
               display_name: display_name
               value: 0
-          max_negative_ttl: 2
           update_acl:
           - access: allow
             address: address
@@ -12669,24 +12730,6 @@ components:
             acl: acl
             element: ip
           synthesize_address_records_from_https: true
-          zone_authority:
-            rname: rname
-            default_ttl: 1
-            expire: 5
-            protocol_rname: protocol_rname
-            refresh: 2
-            negative_ttl: 5
-            protocol_mname: protocol_mname
-            use_default_mname: true
-            mname: mname
-            retry: 7
-          forwarders:
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
           transfer_acl:
           - access: allow
             address: address
@@ -12710,10 +12753,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          name: Example Config View
           comment: comment
-          dnssec_validate_expiry: true
-          filter_aaaa_on_v4: filter_aaaa_on_v4
           match_destinations_acl:
           - access: allow
             address: address
@@ -12760,7 +12800,6 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          max_udp_size: 7
       properties:
         result:
           $ref: '#/components/schemas/configView'
@@ -14255,6 +14294,7 @@ components:
       example:
         result:
           name: Example ACL
+          compartment_id: compartment_id
           comment: comment
           id: id
           list:
@@ -14468,6 +14508,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           tags: "{}"
           inheritance_sources:
             query_acl:
@@ -14696,6 +14737,7 @@ components:
             protocol_fqdn: protocol_fqdn
           fqdn: fqdn
           protocol_fqdn: protocol_fqdn
+          compartment_id: compartment_id
           comment: comment
           disabled: true
           id: id
@@ -14758,6 +14800,7 @@ components:
             message: message
           - name: name
             message: message
+          compartment_id: compartment_id
           created_at: 2000-01-23T04:56:07.000+00:00
           tags: "{}"
           view: view
@@ -15664,33 +15707,8 @@ components:
       example:
         result:
           max_cache_ttl: 5
-          query_acl:
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
-          - access: allow
-            address: address
-            tsig_key:
-              name: name
-              comment: comment
-              secret: secret
-              key: key
-              algorithm: algorithm
-              protocol_name: protocol_name
-            acl: acl
-            element: ip
           dnssec_enabled: true
-          custom_root_ns_enabled: true
           match_recursive_only: true
-          created_at: 2000-01-23T04:56:07.000+00:00
           recursion_acl:
           - access: allow
             address: address
@@ -15714,13 +15732,9 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          dnssec_enable_validation: true
           lame_ttl: 5
           forwarders_only: true
-          notify: true
           gss_tsig_enabled: true
-          use_root_forwarders_for_local_resolution_with_b1td: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
           ecs_zones:
           - access: allow
             fqdn: example.com
@@ -15735,6 +15749,71 @@ components:
           - address: 10.0.0.0
             fqdn: example.com
             protocol_fqdn: test.key.com.
+          id: id
+          dnssec_trust_anchors:
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+            protocol_zone: protocol_zone
+            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+            algorithm: 0
+            sep: true
+          tags: "{}"
+          max_negative_ttl: 2
+          zone_authority:
+            rname: rname
+            default_ttl: 1
+            expire: 5
+            protocol_rname: protocol_rname
+            refresh: 2
+            negative_ttl: 5
+            protocol_mname: protocol_mname
+            use_default_mname: true
+            mname: mname
+            retry: 7
+          forwarders:
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          - address: 10.0.0.0
+            fqdn: ns1.example.com
+            protocol_fqdn: protocol_fqdn
+          name: Example Config View
+          dnssec_validate_expiry: true
+          filter_aaaa_on_v4: filter_aaaa_on_v4
+          max_udp_size: 7
+          query_acl:
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          - access: allow
+            address: address
+            tsig_key:
+              name: name
+              comment: comment
+              secret: secret
+              key: key
+              algorithm: algorithm
+              protocol_name: protocol_name
+            acl: acl
+            element: ip
+          custom_root_ns_enabled: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          dnssec_enable_validation: true
+          notify: true
+          use_root_forwarders_for_local_resolution_with_b1td: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           dtc_config:
             default_ttl: 6
           ecs_prefix_v6: 6
@@ -15754,20 +15833,8 @@ components:
             element: ip
           disabled: true
           ecs_prefix_v4: 0
-          id: id
           edns_udp_size: 1
           minimal_responses: true
-          dnssec_trust_anchors:
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
-          - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-            protocol_zone: protocol_zone
-            zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-            algorithm: 0
-            sep: true
           ip_spaces:
           - ip_spaces
           - ip_spaces
@@ -15795,6 +15862,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
+          compartment_id: compartment_id
           ecs_enabled: true
           ecs_forwarding: true
           add_edns_option_in_outgoing_query: true
@@ -15809,7 +15877,6 @@ components:
             zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
             algorithm: 0
             sep: true
-          tags: "{}"
           inheritance_sources:
             max_cache_ttl:
               action: action
@@ -16145,7 +16212,6 @@ components:
               source: source
               display_name: display_name
               value: 0
-          max_negative_ttl: 2
           update_acl:
           - access: allow
             address: address
@@ -16170,24 +16236,6 @@ components:
             acl: acl
             element: ip
           synthesize_address_records_from_https: true
-          zone_authority:
-            rname: rname
-            default_ttl: 1
-            expire: 5
-            protocol_rname: protocol_rname
-            refresh: 2
-            negative_ttl: 5
-            protocol_mname: protocol_mname
-            use_default_mname: true
-            mname: mname
-            retry: 7
-          forwarders:
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
-          - address: 10.0.0.0
-            fqdn: ns1.example.com
-            protocol_fqdn: protocol_fqdn
           transfer_acl:
           - access: allow
             address: address
@@ -16211,10 +16259,7 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          name: Example Config View
           comment: comment
-          dnssec_validate_expiry: true
-          filter_aaaa_on_v4: filter_aaaa_on_v4
           match_destinations_acl:
           - access: allow
             address: address
@@ -16261,7 +16306,6 @@ components:
               protocol_name: protocol_name
             acl: acl
             element: ip
-          max_udp_size: 7
       properties:
         result:
           $ref: '#/components/schemas/configView'
@@ -16271,33 +16315,8 @@ components:
       description: Named collection of DNS View settings.
       example:
         max_cache_ttl: 5
-        query_acl:
-        - access: allow
-          address: address
-          tsig_key:
-            name: name
-            comment: comment
-            secret: secret
-            key: key
-            algorithm: algorithm
-            protocol_name: protocol_name
-          acl: acl
-          element: ip
-        - access: allow
-          address: address
-          tsig_key:
-            name: name
-            comment: comment
-            secret: secret
-            key: key
-            algorithm: algorithm
-            protocol_name: protocol_name
-          acl: acl
-          element: ip
         dnssec_enabled: true
-        custom_root_ns_enabled: true
         match_recursive_only: true
-        created_at: 2000-01-23T04:56:07.000+00:00
         recursion_acl:
         - access: allow
           address: address
@@ -16321,13 +16340,9 @@ components:
             protocol_name: protocol_name
           acl: acl
           element: ip
-        dnssec_enable_validation: true
         lame_ttl: 5
         forwarders_only: true
-        notify: true
         gss_tsig_enabled: true
-        use_root_forwarders_for_local_resolution_with_b1td: true
-        updated_at: 2000-01-23T04:56:07.000+00:00
         ecs_zones:
         - access: allow
           fqdn: example.com
@@ -16342,6 +16357,71 @@ components:
         - address: 10.0.0.0
           fqdn: example.com
           protocol_fqdn: test.key.com.
+        id: id
+        dnssec_trust_anchors:
+        - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+          protocol_zone: protocol_zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+          algorithm: 0
+          sep: true
+        - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
+          protocol_zone: protocol_zone
+          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
+          algorithm: 0
+          sep: true
+        tags: "{}"
+        max_negative_ttl: 2
+        zone_authority:
+          rname: rname
+          default_ttl: 1
+          expire: 5
+          protocol_rname: protocol_rname
+          refresh: 2
+          negative_ttl: 5
+          protocol_mname: protocol_mname
+          use_default_mname: true
+          mname: mname
+          retry: 7
+        forwarders:
+        - address: 10.0.0.0
+          fqdn: ns1.example.com
+          protocol_fqdn: protocol_fqdn
+        - address: 10.0.0.0
+          fqdn: ns1.example.com
+          protocol_fqdn: protocol_fqdn
+        name: Example Config View
+        dnssec_validate_expiry: true
+        filter_aaaa_on_v4: filter_aaaa_on_v4
+        max_udp_size: 7
+        query_acl:
+        - access: allow
+          address: address
+          tsig_key:
+            name: name
+            comment: comment
+            secret: secret
+            key: key
+            algorithm: algorithm
+            protocol_name: protocol_name
+          acl: acl
+          element: ip
+        - access: allow
+          address: address
+          tsig_key:
+            name: name
+            comment: comment
+            secret: secret
+            key: key
+            algorithm: algorithm
+            protocol_name: protocol_name
+          acl: acl
+          element: ip
+        custom_root_ns_enabled: true
+        created_at: 2000-01-23T04:56:07.000+00:00
+        dnssec_enable_validation: true
+        notify: true
+        use_root_forwarders_for_local_resolution_with_b1td: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
         dtc_config:
           default_ttl: 6
         ecs_prefix_v6: 6
@@ -16361,20 +16441,8 @@ components:
           element: ip
         disabled: true
         ecs_prefix_v4: 0
-        id: id
         edns_udp_size: 1
         minimal_responses: true
-        dnssec_trust_anchors:
-        - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-          protocol_zone: protocol_zone
-          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-          algorithm: 0
-          sep: true
-        - public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArGEl09qgDz+9YOH8Ff4Z
-          protocol_zone: protocol_zone
-          zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
-          algorithm: 0
-          sep: true
         ip_spaces:
         - ip_spaces
         - ip_spaces
@@ -16402,6 +16470,7 @@ components:
             protocol_name: protocol_name
           acl: acl
           element: ip
+        compartment_id: compartment_id
         ecs_enabled: true
         ecs_forwarding: true
         add_edns_option_in_outgoing_query: true
@@ -16416,7 +16485,6 @@ components:
           zone: dns/auth_zone/16d9158d-d0d7-48e1-9a55-087e7aa419d4
           algorithm: 0
           sep: true
-        tags: "{}"
         inheritance_sources:
           max_cache_ttl:
             action: action
@@ -16752,7 +16820,6 @@ components:
             source: source
             display_name: display_name
             value: 0
-        max_negative_ttl: 2
         update_acl:
         - access: allow
           address: address
@@ -16777,24 +16844,6 @@ components:
           acl: acl
           element: ip
         synthesize_address_records_from_https: true
-        zone_authority:
-          rname: rname
-          default_ttl: 1
-          expire: 5
-          protocol_rname: protocol_rname
-          refresh: 2
-          negative_ttl: 5
-          protocol_mname: protocol_mname
-          use_default_mname: true
-          mname: mname
-          retry: 7
-        forwarders:
-        - address: 10.0.0.0
-          fqdn: ns1.example.com
-          protocol_fqdn: protocol_fqdn
-        - address: 10.0.0.0
-          fqdn: ns1.example.com
-          protocol_fqdn: protocol_fqdn
         transfer_acl:
         - access: allow
           address: address
@@ -16818,10 +16867,7 @@ components:
             protocol_name: protocol_name
           acl: acl
           element: ip
-        name: Example Config View
         comment: comment
-        dnssec_validate_expiry: true
-        filter_aaaa_on_v4: filter_aaaa_on_v4
         match_destinations_acl:
         - access: allow
           address: address
@@ -16868,7 +16914,6 @@ components:
             protocol_name: protocol_name
           acl: acl
           element: ip
-        max_udp_size: 7
       properties:
         add_edns_option_in_outgoing_query:
           description: |-
@@ -16878,6 +16923,10 @@ components:
           type: boolean
         comment:
           description: Optional. Comment for view.
+          type: string
+        compartment_id:
+          description: "The access view associated with the object. If no access view\
+            \ is associated with the object, the value defaults to empty."
           type: string
         created_at:
           description: The timestamp when the object has been created.
